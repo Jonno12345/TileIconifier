@@ -1,0 +1,10 @@
+C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\bin\Debug\TileIconifier.exe.config
+C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\bin\Debug\TileIconifier.exe
+C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\bin\Debug\TileIconifier.pdb
+C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.csprojResolveAssemblyReference.cache
+C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.frmDropper.resources
+C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.Properties.Resources.resources
+C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.csproj.GenerateResource.Cache
+C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.exe
+C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.pdb
+C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.Utilities.IconSelector.resources
