@@ -15,39 +15,8 @@ namespace TileIconifier
     {
         private TileIconParameters _parameters;
 
-        string lnkFilePath
-        {
-            get
-            {
-                return _parameters.LnkFilePath;
-            }
-        }
-
-        string exeFilePath
-        {
-            get
-            {
-                return ShortcutUtils.GetShortcutTarget(lnkFilePath);
-            }
-        }
-
-        string exeFolderPath
-        {
-            get
-            {
-                return Path.GetDirectoryName(exeFilePath);
-            }
-        }
-
-        string VisualElementsPath
-        {
-            get
-            {
-                return exeFolderPath + @"\VisualElements\";
-            }
-        }
-
         Icon icon;
+
 
 
 
@@ -72,7 +41,7 @@ namespace TileIconifier
 
         private void GetLogo()
         {
-            IconExtractor IconExtraction = new IconExtractor(exeFilePath);
+            IconExtractor IconExtraction = new IconExtractor(_parameters.Shortcut.ExeFilePath);
             var Icons = IconExtraction.GetAllIcons();
 
             var IconSelection = new IconSelector(Icons);
@@ -103,19 +72,19 @@ namespace TileIconifier
       BackgroundColor='{2}'/>
 </Application>", _parameters.ShowNameOnSquare150x150Logo ? "on" : "off", _parameters.FgText, _parameters.BgColour);
 
-            if (!Directory.Exists(VisualElementsPath))
-                Directory.CreateDirectory(VisualElementsPath);
+            if (!Directory.Exists(_parameters.Shortcut.VisualElementsPath))
+                Directory.CreateDirectory(_parameters.Shortcut.VisualElementsPath);
 
-            File.WriteAllText(string.Format("{0}\\{1}.VisualElementsManifest.xml", exeFolderPath, Path.GetFileNameWithoutExtension(exeFilePath)), xmlContents);
+            File.WriteAllText(string.Format("{0}\\{1}.VisualElementsManifest.xml", _parameters.Shortcut.ExeFolderPath, Path.GetFileNameWithoutExtension(_parameters.Shortcut.ExeFilePath)), xmlContents);
         }
 
         private void DeleteFilesAndFolders()
         {
-            if (Directory.Exists(VisualElementsPath))
-                Directory.Delete(VisualElementsPath,true);
+            if (Directory.Exists(_parameters.Shortcut.VisualElementsPath))
+                Directory.Delete(_parameters.Shortcut.VisualElementsPath,true);
 
-            if (File.Exists(string.Format("{0}\\{1}.VisualElementsManifest.xml", exeFolderPath, Path.GetFileNameWithoutExtension(exeFilePath))))
-                File.Delete(string.Format("{0}\\{1}.VisualElementsManifest.xml", exeFolderPath, Path.GetFileNameWithoutExtension(exeFilePath)));
+            if (File.Exists(string.Format("{0}\\{1}.VisualElementsManifest.xml", _parameters.Shortcut.ExeFolderPath, Path.GetFileNameWithoutExtension(_parameters.Shortcut.ExeFilePath))))
+                File.Delete(string.Format("{0}\\{1}.VisualElementsManifest.xml", _parameters.Shortcut.ExeFolderPath, Path.GetFileNameWithoutExtension(_parameters.Shortcut.ExeFilePath)));
         }
 
 
@@ -123,7 +92,7 @@ namespace TileIconifier
         {
             using (var bmp = Bitmap.FromHicon(icon.Handle))
             {
-                using (var fs = new FileStream(VisualElementsPath + "Logo.png", FileMode.Create))
+                using (var fs = new FileStream(_parameters.Shortcut.VisualElementsPath + "Logo.png", FileMode.Create))
                 {
                     bmp.Save(fs, System.Drawing.Imaging.ImageFormat.Png);
                 }
@@ -133,7 +102,7 @@ namespace TileIconifier
 
         private void RebuildLnkInStartMenu()
         {
-            File.SetLastWriteTime(lnkFilePath, DateTime.Now);
+            File.SetLastWriteTime(_parameters.Shortcut.ShortcutFileInfo.FullName, DateTime.Now);
 
 
             //Seems setting last write time is enough, old code moving it back and forth
@@ -152,7 +121,7 @@ namespace TileIconifier
 
     public class TileIconParameters
     {
-        public string LnkFilePath;
+        public ShortcutItem Shortcut;
         public string BgColour;
         public string FgText;
         public bool ShowNameOnSquare150x150Logo;
