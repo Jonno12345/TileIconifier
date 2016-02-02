@@ -426,6 +426,7 @@
             this.Controls.Add(this.mnuMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mnuMain;
+            this.MaximizeBox = false;
             this.Name = "frmDropper";
             this.Text = "Tile Iconifier";
             this.Load += new System.EventHandler(this.frmDropper_Load);
