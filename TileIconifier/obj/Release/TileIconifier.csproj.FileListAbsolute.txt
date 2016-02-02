@@ -11,3 +11,4 @@ C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier
 C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier\obj\Release\TileIconifier.csproj.GenerateResource.Cache
 C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier\obj\Release\TileIconifier.exe
 C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier\obj\Release\TileIconifier.pdb
+C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier\obj\Release\TileIconifier.csprojResolveAssemblyReference.cache

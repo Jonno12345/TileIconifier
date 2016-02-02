@@ -48,6 +48,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.getPinnedItemsRequiresPowershellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pctStandardIcon = new System.Windows.Forms.PictureBox();
@@ -58,7 +59,6 @@
             this.pctSmallIcon = new System.Windows.Forms.PictureBox();
             this.chkUseSameImg = new System.Windows.Forms.CheckBox();
             this.lblUnsaved = new System.Windows.Forms.Label();
-            this.refreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlFGColour.SuspendLayout();
             this.mnuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctStandardIcon)).BeginInit();
@@ -68,6 +68,7 @@
             // 
             // txtLnkPath
             // 
+            this.txtLnkPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtLnkPath.Location = new System.Drawing.Point(16, 397);
             this.txtLnkPath.Name = "txtLnkPath";
             this.txtLnkPath.ReadOnly = true;
@@ -76,6 +77,7 @@
             // 
             // lblLnkPath
             // 
+            this.lblLnkPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblLnkPath.AutoSize = true;
             this.lblLnkPath.Location = new System.Drawing.Point(12, 374);
             this.lblLnkPath.Name = "lblLnkPath";
@@ -85,6 +87,7 @@
             // 
             // lblBGColour
             // 
+            this.lblBGColour.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBGColour.AutoSize = true;
             this.lblBGColour.Location = new System.Drawing.Point(830, 374);
             this.lblBGColour.Name = "lblBGColour";
@@ -94,6 +97,7 @@
             // 
             // txtBGColour
             // 
+            this.txtBGColour.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBGColour.Location = new System.Drawing.Point(1016, 396);
             this.txtBGColour.Name = "txtBGColour";
             this.txtBGColour.Size = new System.Drawing.Size(141, 26);
@@ -102,6 +106,7 @@
             // 
             // btnIconify
             // 
+            this.btnIconify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnIconify.Location = new System.Drawing.Point(841, 522);
             this.btnIconify.Name = "btnIconify";
             this.btnIconify.Size = new System.Drawing.Size(129, 31);
@@ -112,6 +117,7 @@
             // 
             // btnRemove
             // 
+            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemove.Location = new System.Drawing.Point(1055, 522);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(144, 31);
@@ -122,6 +128,7 @@
             // 
             // cmbColour
             // 
+            this.cmbColour.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbColour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbColour.FormattingEnabled = true;
             this.cmbColour.Items.AddRange(new object[] {
@@ -150,6 +157,7 @@
             // 
             // pnlFGColour
             // 
+            this.pnlFGColour.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFGColour.Controls.Add(this.radFGDark);
             this.pnlFGColour.Controls.Add(this.chkFGTxtEnabled);
             this.pnlFGColour.Controls.Add(this.lblFGText);
@@ -215,6 +223,7 @@
             // 
             // lblExePath
             // 
+            this.lblExePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblExePath.AutoSize = true;
             this.lblExePath.Location = new System.Drawing.Point(12, 433);
             this.lblExePath.Name = "lblExePath";
@@ -224,6 +233,7 @@
             // 
             // txtExePath
             // 
+            this.txtExePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtExePath.Location = new System.Drawing.Point(16, 456);
             this.txtExePath.Name = "txtExePath";
             this.txtExePath.ReadOnly = true;
@@ -240,7 +250,7 @@
             this.helpToolStripMenuItem});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(1211, 33);
+            this.mnuMain.Size = new System.Drawing.Size(1209, 33);
             this.mnuMain.TabIndex = 15;
             this.mnuMain.Text = "MainMenu";
             // 
@@ -276,6 +286,13 @@
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.Text = "Get Pinned Items (Requires Powershell)";
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.Click += new System.EventHandler(this.getPinnedItemsRequiresPowershellToolStripMenuItem_Click);
             // 
+            // refreshAllToolStripMenuItem
+            // 
+            this.refreshAllToolStripMenuItem.Name = "refreshAllToolStripMenuItem";
+            this.refreshAllToolStripMenuItem.Size = new System.Drawing.Size(402, 30);
+            this.refreshAllToolStripMenuItem.Text = "Refresh All";
+            this.refreshAllToolStripMenuItem.Click += new System.EventHandler(this.refreshAllToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -292,6 +309,7 @@
             // 
             // pctStandardIcon
             // 
+            this.pctStandardIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctStandardIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctStandardIcon.Location = new System.Drawing.Point(834, 59);
             this.pctStandardIcon.Name = "pctStandardIcon";
@@ -302,6 +320,7 @@
             // 
             // lblCurrentIcon
             // 
+            this.lblCurrentIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurrentIcon.AutoSize = true;
             this.lblCurrentIcon.Location = new System.Drawing.Point(830, 36);
             this.lblCurrentIcon.Name = "lblCurrentIcon";
@@ -311,6 +330,7 @@
             // 
             // MediumIcon
             // 
+            this.MediumIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MediumIcon.AutoSize = true;
             this.MediumIcon.Location = new System.Drawing.Point(830, 110);
             this.MediumIcon.Name = "MediumIcon";
@@ -320,6 +340,7 @@
             // 
             // pctMediumIcon
             // 
+            this.pctMediumIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctMediumIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctMediumIcon.Location = new System.Drawing.Point(834, 133);
             this.pctMediumIcon.Name = "pctMediumIcon";
@@ -331,6 +352,7 @@
             // 
             // lblSmallIcon
             // 
+            this.lblSmallIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSmallIcon.AutoSize = true;
             this.lblSmallIcon.Location = new System.Drawing.Point(1012, 110);
             this.lblSmallIcon.Name = "lblSmallIcon";
@@ -340,6 +362,7 @@
             // 
             // pctSmallIcon
             // 
+            this.pctSmallIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctSmallIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctSmallIcon.Location = new System.Drawing.Point(1016, 133);
             this.pctSmallIcon.Name = "pctSmallIcon";
@@ -351,6 +374,7 @@
             // 
             // chkUseSameImg
             // 
+            this.chkUseSameImg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkUseSameImg.AutoSize = true;
             this.chkUseSameImg.Checked = true;
             this.chkUseSameImg.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -363,6 +387,7 @@
             // 
             // lblUnsaved
             // 
+            this.lblUnsaved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUnsaved.AutoSize = true;
             this.lblUnsaved.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnsaved.ForeColor = System.Drawing.Color.Red;
@@ -373,19 +398,12 @@
             this.lblUnsaved.Text = "This shortcut has unsaved changes!";
             this.lblUnsaved.Visible = false;
             // 
-            // refreshAllToolStripMenuItem
-            // 
-            this.refreshAllToolStripMenuItem.Name = "refreshAllToolStripMenuItem";
-            this.refreshAllToolStripMenuItem.Size = new System.Drawing.Size(402, 30);
-            this.refreshAllToolStripMenuItem.Text = "Refresh All";
-            this.refreshAllToolStripMenuItem.Click += new System.EventHandler(this.refreshAllToolStripMenuItem_Click);
-            // 
             // frmDropper
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1211, 565);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(1209, 559);
             this.Controls.Add(this.lblUnsaved);
             this.Controls.Add(this.chkUseSameImg);
             this.Controls.Add(this.lblSmallIcon);
