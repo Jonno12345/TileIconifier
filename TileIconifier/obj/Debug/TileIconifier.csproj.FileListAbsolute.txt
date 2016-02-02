@@ -2,12 +2,13 @@ C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier
 C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\bin\Debug\TileIconifier.exe
 C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\bin\Debug\TileIconifier.pdb
 C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.csprojResolveAssemblyReference.cache
-C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.frmDropper.resources
 C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.Properties.Resources.resources
 C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.csproj.GenerateResource.Cache
 C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.exe
 C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.pdb
-C:\Users\Jonno\Documents\Visual Studio 2015\Projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.Utilities.IconSelector.resources
 C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier\bin\Debug\System.Management.Automation.dll
-C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.Utilities.frmLoadingSplash.resources
-C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.Utilities.frmAbout.resources
+C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.Forms.frmDropper.resources
+C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.Forms.frmHelp.resources
+C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.Forms.frmAbout.resources
+C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.Forms.frmIconSelector.resources
+C:\Users\Jonno\Documents\Visual Studio 2015\projects\TileIconifier\TileIconifier\obj\Debug\TileIconifier.Forms.frmLoadingSplash.resources

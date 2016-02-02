@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -14,7 +15,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using TileIconifier.Utilities;
 
-namespace TileIconifier
+namespace TileIconifier.Forms
 {
     public partial class frmDropper : Form
     {
@@ -62,6 +63,8 @@ namespace TileIconifier
                 lstShortcuts.DataSource = _shortcutsList;
         }
 
+
+
         private void GetPinnedStartMenuInformation()
         {
             if (!getPinnedItemsRequiresPowershellToolStripMenuItem.Checked)
@@ -76,12 +79,18 @@ namespace TileIconifier
             try
             {
                 PowerShellUtils.DumpStartLayout(tempFilePath);
+                PowerShellUtils.MarryAppIDs(_shortcutsList);
+
+                MarkPinnedShortcuts(tempFilePath);
             }
-            catch (PowershellException) { return; }
+            catch
+            {
+                MessageBox.Show("A problem occurred with PowerShell functionality. It has been disabled.", "PowerShell failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                getPinnedItemsRequiresPowershellToolStripMenuItem_Click(this, null);
+                return;
+            }
 
-            PowerShellUtils.MarryAppIDs(_shortcutsList);
 
-            MarkPinnedShortcuts(tempFilePath);
 
             _shortcutsList = _shortcutsList.OrderByDescending(s => s.IsPinned)
                                             .ThenBy(s => s.ShortcutFileInfo.Name)
@@ -136,40 +145,6 @@ namespace TileIconifier
 
         }
 
-        //
-        //
-        //Code for drag and drop. Doesn't work unless you're dragging from an
-        //elevated explorer window though, so left out for now.
-        //
-
-        //private void frmDropper_DragEnter(object sender, DragEventArgs e)
-        //{
-        //    e.Effect = DragDropEffects.Copy;
-        //}
-
-        //private void frmDropper_DragDrop(object sender, DragEventArgs e)
-        //{
-        //    string[] FileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-        //    var lnkFiles = FileList.Where(f => Path.GetExtension(f).ToUpper() == ".LNK");
-
-        //    try
-        //    {
-        //        foreach (var lnkFile in lnkFiles)
-        //        {
-
-        //            new TileIcon(BuildParameters());
-        //        }
-        //    }
-        //    catch (UserCancellationException)
-        //    {
-        //        MessageBox.Show("Process cancelled.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message + " - " + ex.ToString());
-        //    }
-        //}
-
         private TileIconParameters BuildParameters()
         {
             return new TileIconParameters()
@@ -190,10 +165,12 @@ namespace TileIconifier
             {
                 var TileIconify = new TileIcon(BuildParameters());
                 TileIconify.RunIconify();
+                _currentShortcut.SmallImage = null;
+                _currentShortcut.MediumImage = null;
+                UpdateShortcut();
             }
             catch (UserCancellationException)
             {
-                MessageBox.Show("Process cancelled.");
             }
             catch (Exception ex)
             {
@@ -204,58 +181,40 @@ namespace TileIconifier
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (!DoValidation(true))
+            if (!DoValidation())
                 return;
 
             if (MessageBox.Show("Are you sure you wish to remove iconification?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 var TileDeIconify = new TileIcon(BuildParameters());
                 TileDeIconify.DeIconify();
+                UpdateShortcut();
             }
         }
 
 
 
 
-        private bool DoValidation(bool pathOnly = false)
+        private bool DoValidation()
         {
             ResetValidation();
-            CleanFields();
 
-            return ValidateFields(pathOnly);
-        }
-
-        private void CleanFields()
-        {
-            txtLnkPath.Text = txtLnkPath.Text.Replace("\"", "");
+            return ValidateColour();
         }
 
         private void ResetValidation()
         {
-            txtLnkPath.BackColor = Color.White;
             txtBGColour.BackColor = Color.White;
         }
 
-        private bool ValidateFields(bool pathOnly = false)
+        private bool ValidateColour()
         {
             bool valid = true;
 
             Action<Control> controlInvalid = (c => { c.BackColor = Color.Red; valid = false; });
 
-            if (!File.Exists(txtLnkPath.Text))
-                controlInvalid(txtLnkPath);
-
-            if (Path.GetExtension(txtLnkPath.Text).ToUpper() != ".LNK")
-                controlInvalid(txtLnkPath);
-
-            if (!pathOnly)
-            {
-                if (cmbColour.Text != "Custom")
-                {
-                    if (!Regex.Match(txtBGColour.Text, @"#\d{6}").Success)
-                        controlInvalid(txtBGColour);
-                }
-            }
+            if (cmbColour.Text == "Custom" && !Regex.Match(txtBGColour.Text, @"^#\d{6}$").Success)
+                controlInvalid(txtBGColour);
 
             return valid;
         }
@@ -287,7 +246,14 @@ namespace TileIconifier
             txtExePath.SelectionStart = txtExePath.Text.Length;
             txtExePath.ScrollToCaret();
 
-            //pctCurrentIcon = _currentShortcut.
+            btnRemove.Enabled = _currentShortcut.IsIconified;
+            btnIconify.Enabled = _currentShortcut.HasUnsavedChanges;
+
+            pctStandardIcon.Image = _currentShortcut.StandardIcon.ToBitmap();
+            pctMediumIcon.Image = _currentShortcut.MediumImage;
+            pctSmallIcon.Image = _currentShortcut.SmallImage;
+
+            lblUnsaved.Visible = _currentShortcut.HasUnsavedChanges;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -299,11 +265,18 @@ namespace TileIconifier
         {
             if (getPinnedItemsRequiresPowershellToolStripMenuItem.Checked)
             {
-                getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = false;
+                if (InvokeRequired)
+                    Invoke(new Action(() =>
+                    {
+                        getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = false;
+                    }));
+                else
+                    getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = false;
+
             }
             else
             {
-                if(MessageBox.Show("Note- This feature uses Powershell and may take slightly longer to refresh. Continue?","Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Note- This feature uses Powershell and may take slightly longer to refresh. Continue?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = true;
                 }
@@ -316,6 +289,49 @@ namespace TileIconifier
             frmAbout AboutForm = new frmAbout();
             AboutForm.StartPosition = FormStartPosition.CenterScreen;
             AboutForm.ShowDialog();
+        }
+
+
+
+        private Bitmap GetImage()
+        {
+            frmIconSelector iconSelector = new frmIconSelector(_currentShortcut.ExeFilePath);
+            iconSelector.ShowDialog();
+            return iconSelector.ReturnedBitmap;
+
+        }
+
+        private void pctMediumIcon_Click(object sender, EventArgs e)
+        {
+            var ImageToUse = GetImage();
+            _currentShortcut.MediumImage = ImageToUse;
+
+            if (chkUseSameImg.Checked)
+                _currentShortcut.SmallImage = ImageToUse;
+
+            UpdateShortcut();
+        }
+
+        private void pctSmallIcon_Click(object sender, EventArgs e)
+        {
+            var ImageToUse = GetImage();
+            _currentShortcut.SmallImage = ImageToUse;
+
+            if (chkUseSameImg.Checked)
+                _currentShortcut.MediumImage = ImageToUse;
+
+            UpdateShortcut();
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHelp helpForm = new frmHelp();
+            helpForm.ShowDialog();
+        }
+
+        private void refreshAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StartFullUpdate();
         }
     }
 }

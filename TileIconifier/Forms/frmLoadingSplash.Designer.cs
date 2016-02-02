@@ -1,4 +1,4 @@
-﻿namespace TileIconifier.Utilities
+﻿namespace TileIconifier.Forms
 {
     partial class frmLoadingSplash
     {

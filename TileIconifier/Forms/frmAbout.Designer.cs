@@ -1,4 +1,4 @@
-﻿namespace TileIconifier.Utilities
+﻿namespace TileIconifier.Forms
 {
     partial class frmAbout
     {
@@ -53,7 +53,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAbout";
-            this.Text = "About TileIconify";
+            this.Text = "About TileIconifier";
             this.Load += new System.EventHandler(this.frmAbout_Load);
             this.ResumeLayout(false);
 

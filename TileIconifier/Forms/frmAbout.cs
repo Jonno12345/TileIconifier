@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TileIconifier.Utilities
+namespace TileIconifier.Forms
 {
     public partial class frmAbout : Form
     {
