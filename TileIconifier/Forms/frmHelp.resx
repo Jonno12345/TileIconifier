@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="rtxtAbout.Text" xml:space="preserve">
-    <value>To use, select the icon you wish to apply a tile icon to.
+    <value>To use, first select the shortcut you wish to apply a tile icon to.
 
 Select whether you'd like like have both the small and medium icon the same.
 
 Click the Medium or Small icon as required, and choose your image (either from the icons available in the EXE, or your own image file).
 
-Decide on any colour schemes, whether you wish for the text to show on the Medium icon or not.
+Decide on any colour schemes and whether you wish for the text to show on the Medium icon or not.
 
 When you're done, just click Tile Iconify! and it should update.
 

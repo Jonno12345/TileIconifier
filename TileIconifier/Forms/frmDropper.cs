@@ -326,6 +326,7 @@ namespace TileIconifier.Forms
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmHelp helpForm = new frmHelp();
+            helpForm.StartPosition = FormStartPosition.CenterParent;
             helpForm.ShowDialog();
         }
 
