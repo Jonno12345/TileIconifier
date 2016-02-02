@@ -83,9 +83,9 @@ namespace TileIconifier.Forms
 
                 MarkPinnedShortcuts(tempFilePath);
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("A problem occurred with PowerShell functionality. It has been disabled.", "PowerShell failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A problem occurred with PowerShell functionality. It has been disabled.\r\n"+ex.ToString() + "\r\n\r\n"+ex.Message, "PowerShell failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 getPinnedItemsRequiresPowershellToolStripMenuItem_Click(this, null);
                 return;
             }

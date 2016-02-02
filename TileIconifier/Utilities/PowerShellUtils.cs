@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Windows.Forms;
 
 namespace TileIconifier.Utilities
 {
@@ -14,7 +15,7 @@ namespace TileIconifier.Utilities
             {
                 powershellInstance.AddCommand("Export-StartLayout");
                 powershellInstance.AddParameter("Path", outputPath);
-                powershellInstance.Invoke();
+                var x = powershellInstance.Invoke();
             }
 
             if (!File.Exists(outputPath))
