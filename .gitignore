@@ -47,3 +47,13 @@ Temporary Items
 .apdisk
 *.exe
 *.exe
+
+
+# =========================
+# Visual Studio project
+# =========================
+
+.vs
+packages
+TileIconifier/bin/
+TileIconifier/obj/
