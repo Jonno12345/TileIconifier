@@ -20,7 +20,6 @@ namespace TileIconifier
             {
                 if (string.IsNullOrEmpty(_exeFilePath))
                     _exeFilePath = ShortcutUtils.ResolveShortcut(ShortcutFileInfo.FullName);
-                    //_exeFilePath = ShortcutUtils.GetShortcutTarget(ShortcutFileInfo.FullName);
                 return string.Equals(Path.GetExtension(_exeFilePath), ".exe", StringComparison.InvariantCultureIgnoreCase) ? _exeFilePath : null;
             }
         }
