@@ -26,7 +26,7 @@ namespace TileIconifier
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDropper());
+            Application.Run(new frmMain());
         }
 
         public static bool IsAdministrator()

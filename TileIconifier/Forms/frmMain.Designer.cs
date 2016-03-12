@@ -1,6 +1,6 @@
 ﻿namespace TileIconifier.Forms
 {
-    partial class frmDropper
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -59,6 +59,7 @@
             this.pctSmallIcon = new System.Windows.Forms.PictureBox();
             this.chkUseSameImg = new System.Windows.Forms.CheckBox();
             this.lblUnsaved = new System.Windows.Forms.Label();
+            this.btnUndo = new System.Windows.Forms.Button();
             this.pnlFGColour.SuspendLayout();
             this.mnuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctStandardIcon)).BeginInit();
@@ -132,7 +133,6 @@
             this.cmbColour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbColour.FormattingEnabled = true;
             this.cmbColour.Items.AddRange(new object[] {
-            "Custom",
             "black",
             "silver",
             "gray",
@@ -148,12 +148,12 @@
             "navy",
             "blue",
             "teal",
-            "aqua"});
+            "aqua",
+            "Custom"});
             this.cmbColour.Location = new System.Drawing.Point(834, 397);
             this.cmbColour.Name = "cmbColour";
             this.cmbColour.Size = new System.Drawing.Size(165, 28);
             this.cmbColour.TabIndex = 10;
-            this.cmbColour.SelectedIndexChanged += new System.EventHandler(this.cmbColour_SelectedIndexChanged);
             // 
             // pnlFGColour
             // 
@@ -182,22 +182,21 @@
             this.chkFGTxtEnabled.AutoSize = true;
             this.chkFGTxtEnabled.Checked = true;
             this.chkFGTxtEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFGTxtEnabled.Location = new System.Drawing.Point(164, 7);
+            this.chkFGTxtEnabled.Location = new System.Drawing.Point(273, 8);
             this.chkFGTxtEnabled.Name = "chkFGTxtEnabled";
             this.chkFGTxtEnabled.Size = new System.Drawing.Size(94, 24);
             this.chkFGTxtEnabled.TabIndex = 7;
             this.chkFGTxtEnabled.Text = "Enabled";
             this.chkFGTxtEnabled.UseVisualStyleBackColor = true;
-            this.chkFGTxtEnabled.CheckedChanged += new System.EventHandler(this.chkFGTxtEnabled_CheckedChanged);
             // 
             // lblFGText
             // 
             this.lblFGText.AutoSize = true;
-            this.lblFGText.Location = new System.Drawing.Point(8, 8);
+            this.lblFGText.Location = new System.Drawing.Point(1, 8);
             this.lblFGText.Name = "lblFGText";
-            this.lblFGText.Size = new System.Drawing.Size(126, 20);
+            this.lblFGText.Size = new System.Drawing.Size(266, 20);
             this.lblFGText.TabIndex = 6;
-            this.lblFGText.Text = "Foreground Text";
+            this.lblFGText.Text = "Foreground Text (Medium Icon Only)";
             // 
             // radFGLight
             // 
@@ -219,7 +218,6 @@
             this.lstShortcuts.Name = "lstShortcuts";
             this.lstShortcuts.Size = new System.Drawing.Size(767, 284);
             this.lstShortcuts.TabIndex = 12;
-            this.lstShortcuts.SelectedIndexChanged += new System.EventHandler(this.lstShortcuts_SelectedIndexChanged);
             // 
             // lblExePath
             // 
@@ -378,11 +376,11 @@
             this.chkUseSameImg.AutoSize = true;
             this.chkUseSameImg.Checked = true;
             this.chkUseSameImg.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkUseSameImg.Location = new System.Drawing.Point(834, 296);
+            this.chkUseSameImg.Location = new System.Drawing.Point(862, 296);
             this.chkUseSameImg.Name = "chkUseSameImg";
-            this.chkUseSameImg.Size = new System.Drawing.Size(344, 24);
+            this.chkUseSameImg.Size = new System.Drawing.Size(316, 24);
             this.chkUseSameImg.TabIndex = 22;
-            this.chkUseSameImg.Text = "Use same image for both medium and small";
+            this.chkUseSameImg.Text = "Sync Medium and Small image changes";
             this.chkUseSameImg.UseVisualStyleBackColor = true;
             // 
             // lblUnsaved
@@ -398,12 +396,23 @@
             this.lblUnsaved.Text = "This shortcut has unsaved changes!";
             this.lblUnsaved.Visible = false;
             // 
-            // frmDropper
+            // btnUndo
+            // 
+            this.btnUndo.Location = new System.Drawing.Point(1101, 330);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(96, 30);
+            this.btnUndo.TabIndex = 25;
+            this.btnUndo.Text = "Undo";
+            this.btnUndo.UseVisualStyleBackColor = true;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
+            // 
+            // frmMain
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1209, 559);
+            this.Controls.Add(this.btnUndo);
             this.Controls.Add(this.lblUnsaved);
             this.Controls.Add(this.chkUseSameImg);
             this.Controls.Add(this.lblSmallIcon);
@@ -427,7 +436,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mnuMain;
             this.MaximizeBox = false;
-            this.Name = "frmDropper";
+            this.Name = "frmMain";
             this.Text = "Tile Iconifier";
             this.Load += new System.EventHandler(this.frmDropper_Load);
             this.pnlFGColour.ResumeLayout(false);
@@ -474,6 +483,7 @@
         private System.Windows.Forms.Label lblUnsaved;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshAllToolStripMenuItem;
+        private System.Windows.Forms.Button btnUndo;
     }
 }
 
