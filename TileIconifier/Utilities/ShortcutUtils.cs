@@ -2,68 +2,117 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TileIconifier.Utilities
 {
-    static class ShortcutUtils
+    // Source: https://astoundingprogramming.wordpress.com/2012/12/17/how-to-get-the-target-of-a-windows-shortcut-c/
+    public static class ShortcutUtils
     {
-        public static string GetShortcutTarget(string file)
+        public static string GetTargetPath(string filePath)
         {
-            try
+            string targetPath = ResolveMsiShortcut(filePath);
+            if (targetPath == null)
             {
-                if (System.IO.Path.GetExtension(file).ToLower() != ".lnk")
+                targetPath = ResolveShortcut(filePath);
+            }
+
+            return targetPath;
+        }
+
+        public static string GetInternetShortcut(string filePath)
+        {
+            string url = "";
+
+            using (TextReader reader = new StreamReader(filePath))
+            {
+                string line = "";
+                while ((line = reader.ReadLine()) != null)
                 {
-                    throw new Exception("Supplied file must be a .LNK file");
-                }
-
-                FileStream fileStream = File.Open(file, FileMode.Open, FileAccess.Read);
-                using (System.IO.BinaryReader fileReader = new BinaryReader(fileStream))
-                {
-                    fileStream.Seek(0x14, SeekOrigin.Begin);     // Seek to flags
-                    uint flags = fileReader.ReadUInt32();        // Read flags
-                    if ((flags & 1) == 1)
-                    {                      // Bit 1 set means we have to
-                                           // skip the shell item ID list
-                        fileStream.Seek(0x4c, SeekOrigin.Begin); // Seek to the end of the header
-                        uint offset = fileReader.ReadUInt16();   // Read the length of the Shell item ID list
-                        fileStream.Seek(offset, SeekOrigin.Current); // Seek past it (to the file locator info)
-                    }
-
-                    long fileInfoStartsAt = fileStream.Position; // Store the offset where the file info
-                                                                 // structure begins
-                    uint totalStructLength = fileReader.ReadUInt32(); // read the length of the whole struct
-                    fileStream.Seek(0xc, SeekOrigin.Current); // seek to offset to base pathname
-                    uint fileOffset = fileReader.ReadUInt32(); // read offset to base pathname
-                                                               // the offset is from the beginning of the file info struct (fileInfoStartsAt)
-                    fileStream.Seek((fileInfoStartsAt + fileOffset), SeekOrigin.Begin); // Seek to beginning of
-                                                                                        // base pathname (target)
-                    long pathLength = (totalStructLength + fileInfoStartsAt) - fileStream.Position - 2; // read
-                                                                                                        // the base pathname. I don't need the 2 terminating nulls.
-                    char[] linkTarget = fileReader.ReadChars((int)pathLength); // should be unicode safe
-                    var link = new string(linkTarget);
-
-                    int begin = link.IndexOf("\0\0");
-                    if (begin > -1)
+                    if (line.StartsWith("URL="))
                     {
-                        int end = link.IndexOf("\\\\", begin + 2) + 2;
-                        end = link.IndexOf('\0', end) + 1;
-
-                        string firstPart = link.Substring(0, begin);
-                        string secondPart = link.Substring(end);
-
-                        return firstPart + secondPart;
-                    }
-                    else
-                    {
-                        return link;
+                        string[] splitLine = line.Split('=');
+                        if (splitLine.Length > 0)
+                        {
+                            url = splitLine[1];
+                            break;
+                        }
                     }
                 }
             }
-            catch
+
+            return url;
+        }
+
+        public static string ResolveShortcut(string filePath)
+        {
+            // IWshRuntimeLibrary is in the COM library "Windows Script Host Object Model"
+            IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShell();
+
+            try
             {
-                return "";
+                IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(filePath);
+                return shortcut.TargetPath;
+            }
+            catch (COMException)
+            {
+                // A COMException is thrown if the file is not a valid shortcut (.lnk) file 
+                return null;
+            }
+        }
+
+        static string ResolveMsiShortcut(string file)
+        {
+            StringBuilder product = new StringBuilder(NativeMethods.MaxGuidLength + 1);
+            StringBuilder feature = new StringBuilder(NativeMethods.MaxFeatureLength + 1);
+            StringBuilder component = new StringBuilder(NativeMethods.MaxGuidLength + 1);
+
+            NativeMethods.MsiGetShortcutTarget(file, product, feature, component);
+
+            int pathLength = NativeMethods.MaxPathLength;
+            StringBuilder path = new StringBuilder(pathLength);
+
+            NativeMethods.InstallState installState = NativeMethods.MsiGetComponentPath(product.ToString(), component.ToString(), path, ref pathLength);
+            if (installState == NativeMethods.InstallState.Local)
+            {
+                return path.ToString();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private class NativeMethods
+        {
+            [DllImport("msi.dll", CharSet = CharSet.Auto)]
+            public static extern uint MsiGetShortcutTarget(string targetFile, StringBuilder productCode, StringBuilder featureID, StringBuilder componentCode);
+
+            [DllImport("msi.dll", CharSet = CharSet.Auto)]
+            public static extern InstallState MsiGetComponentPath(string productCode, string componentCode, StringBuilder componentPath, ref int componentPathBufferSize);
+
+            public const int MaxFeatureLength = 38;
+            public const int MaxGuidLength = 38;
+            public const int MaxPathLength = 1024;
+
+            public enum InstallState
+            {
+                NotUsed = -7,
+                BadConfig = -6,
+                Incomplete = -5,
+                SourceAbsent = -4,
+                MoreData = -3,
+                InvalidArg = -2,
+                Unknown = -1,
+                Broken = 0,
+                Advertised = 1,
+                Removed = 1,
+                Absent = 2,
+                Local = 3,
+                Source = 4,
+                Default = 5
             }
         }
     }
