@@ -64,8 +64,6 @@ namespace TileIconifier.Forms
                 lstShortcuts.DataSource = _shortcutsList;
         }
 
-
-
         private void GetPinnedStartMenuInformation()
         {
             if (!getPinnedItemsRequiresPowershellToolStripMenuItem.Checked)
@@ -91,8 +89,6 @@ namespace TileIconifier.Forms
                 return;
             }
 
-
-
             _shortcutsList = _shortcutsList.OrderByDescending(s => s.IsPinned)
                                             .ThenBy(s => s.ShortcutFileInfo.Name)
                                             .ToList();
@@ -102,7 +98,6 @@ namespace TileIconifier.Forms
                 File.Delete(tempFilePath);
             }
             catch { }
-
         }
 
         private void MarkPinnedShortcuts(string tempFilePath)
@@ -135,15 +130,39 @@ namespace TileIconifier.Forms
                 @"%APPDATA%\Microsoft\Windows\Start Menu"
             };
 
-            foreach (var PathToScan in PathsToScan)
+            foreach (var pathToScan in PathsToScan)
             {
-                var FileEnumeration = new DirectoryInfo(Environment.ExpandEnvironmentVariables(PathToScan)).EnumerateFiles("*.lnk", SearchOption.AllDirectories);
-                _shortcutsList.AddRange(FileEnumeration.Select(f => new ShortcutItem(f))
-                                                        .Where(f => !string.IsNullOrEmpty(f.ExeFilePath) && File.Exists(f.ExeFilePath)));
+                ApplyAllFiles(Environment.ExpandEnvironmentVariables(pathToScan), f =>
+                {
+                    var fi = new FileInfo(f);
+                    if (!fi.Extension.Equals(".lnk", StringComparison.OrdinalIgnoreCase))
+                        return;
+
+                    var shortcutItem = new ShortcutItem(fi);
+                    if (!string.IsNullOrEmpty(shortcutItem.ExeFilePath) && File.Exists(shortcutItem.ExeFilePath))
+                        _shortcutsList.Add(shortcutItem);
+                });
             }
 
             _shortcutsList = _shortcutsList.OrderBy(f => f.ShortcutFileInfo.Name).ToList();
+        }
 
+        private void ApplyAllFiles(string folder, Action<string> fileAction)
+        {
+            foreach (string file in Directory.GetFiles(folder))
+            {
+                fileAction(file);
+            }
+            foreach (string subDir in Directory.GetDirectories(folder))
+            {
+                try
+                {
+                    ApplyAllFiles(subDir, fileAction);
+                }
+                catch
+                {
+                }
+            }
         }
 
         private void btnIconify_Click(object sender, EventArgs e)
@@ -167,7 +186,6 @@ namespace TileIconifier.Forms
             }
         }
 
-
         private void btnRemove_Click(object sender, EventArgs e)
         {
             if (!DoValidation())
@@ -182,7 +200,6 @@ namespace TileIconifier.Forms
             }
         }
 
-
         private bool DoValidation()
         {
             ResetValidation();
@@ -195,7 +212,6 @@ namespace TileIconifier.Forms
             txtBGColour.BackColor = Color.White;
             pctMediumIcon.BackColor = SystemColors.Control;
             pctSmallIcon.BackColor = SystemColors.Control;
-
         }
 
         private bool ValidateColour()
@@ -263,7 +279,7 @@ namespace TileIconifier.Forms
 
             //only show remove if the icon is successfully iconified
             btnRemove.Enabled = _currentShortcut.IsIconified;
-            
+
             //update the picture boxes to show the relevant images
             pctStandardIcon.Image = _currentShortcut.StandardIcon.ToBitmap();
             pctMediumIcon.Image = _currentShortcut.MediumImage;
@@ -321,7 +337,6 @@ namespace TileIconifier.Forms
                     }));
                 else
                     getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = false;
-
             }
             else
             {
@@ -362,7 +377,6 @@ namespace TileIconifier.Forms
                 UpdateShortcut();
             }
             catch (UserCancellationException) { }
-
         }
 
         private void pctSmallIcon_Click(object sender, EventArgs e)
@@ -410,7 +424,6 @@ namespace TileIconifier.Forms
 
         private void btnUndo_Click(object sender, EventArgs e)
         {
-
             _currentShortcut.UndoChanges();
 
             UpdateShortcut();
