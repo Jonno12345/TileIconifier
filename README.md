@@ -1,4 +1,4 @@
-# TileIconify
+# TileIconifier
 Creates tiles for (now practically all!) Windows 8.1 (Largely untested) and Windows 10 (Build 10586 and above) Start Menu icons.
 
 
