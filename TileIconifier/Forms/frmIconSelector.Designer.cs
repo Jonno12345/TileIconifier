@@ -17,7 +17,8 @@
             {
                 components.Dispose();
             }
-            ReturnedBitmap.Dispose();
+            if(ReturnedBitmap != null)
+                ReturnedBitmap.Dispose();
             base.Dispose(disposing);
         }
 

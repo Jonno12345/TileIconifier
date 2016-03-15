@@ -43,9 +43,11 @@ namespace TileIconifier.Forms
             var shortcutName = txtShortcutName.Text.CleanInvalidFilenameChars();
             Bitmap ImageToUse = null;
 
-            try {
+            try
+            {
                 ValidateFields(shortcutName, targetPath, out ImageToUse);
-            }catch (ValidationFailureException) { return; }
+            }
+            catch (ValidationFailureException) { return; }
             //build our new custom shortcut
             var customShortcut = new CustomShortcut(
                 shortcutName: shortcutName,
@@ -57,7 +59,7 @@ namespace TileIconifier.Forms
 
             //If we didn't specify a shortcut icon path, make one
             if (basicShortcutIcon == null)
-                customShortcut.BuildCustomShortcut(pctCurrentIcon.Image);
+                customShortcut.BuildCustomShortcut((Image)pctCurrentIcon.Image.Clone());
             else
                 customShortcut.BuildCustomShortcut();
 
@@ -82,8 +84,8 @@ namespace TileIconifier.Forms
                 MessageBox.Show("Invalid characters or invalid shortcut name!", "Invalid characters or shortcut name", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 throw new ValidationFailureException();
             }
-            
-            if(targetPath.Length == 0)
+
+            if (targetPath.Length == 0)
             {
                 MessageBox.Show("Target path is empty!", "Target path empty", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 throw new ValidationFailureException();
@@ -97,7 +99,7 @@ namespace TileIconifier.Forms
 
             try
             {
-                imageToUse = new Bitmap(pctCurrentIcon.Image);
+                imageToUse = new Bitmap((Image)pctCurrentIcon.Image.Clone());
             }
             catch
             {
@@ -156,14 +158,14 @@ namespace TileIconifier.Forms
 
         private void LoadCache(NewCustomShortcutFormCache cache)
         {
-            pctCurrentIcon.Image = cache.Icon;
+            pctCurrentIcon.Image = cache.Icon != null ? (Image)cache.Icon.Clone() : null;
             txtShortcutName.Text = cache.ShortcutName;
             radShortcutLocation.SetCheckedRadio(cache.AllOrCurrentUser);
         }
 
         private void SaveCache(NewCustomShortcutFormCache cache)
         {
-            cache.Icon = pctCurrentIcon.Image;
+            cache.Icon = pctCurrentIcon.Image != null ? (Image)pctCurrentIcon.Image.Clone() : null;
             cache.ShortcutName = txtShortcutName.Text;
             cache.AllOrCurrentUser = radShortcutLocation.GetCheckedRadio();
         }
@@ -319,7 +321,7 @@ namespace TileIconifier.Forms
                 return;
 
             SteamGame steamGame = ((SteamGame)lstSteamGames.SelectedItems[0]);
-            pctCurrentIcon.Image = steamGame.IconAsBitmap;
+            pctCurrentIcon.Image = (Image)steamGame.IconAsBitmap.Clone();
             txtShortcutName.Text = steamGame.GameName.CleanInvalidFilenameChars();
         }
 

@@ -35,7 +35,7 @@ namespace TileIconifier.Forms
             Show();
             StartFullUpdate();
         }
-        
+
         private void StartFullUpdate()
         {
             frmLoadingSplash loadingSplash = new frmLoadingSplash();
@@ -59,7 +59,7 @@ namespace TileIconifier.Forms
             {
                 Exception pinningException = null;
                 _shortcutsList = ShortcutItemEnumeration.TryGetShortcutsWithPinning(out pinningException, true);
-                if(pinningException != null)
+                if (pinningException != null)
                 {
                     MessageBox.Show("A problem occurred with PowerShell functionality. It has been disabled.\r\n" + pinningException.ToString() + "\r\n\r\n" + pinningException.Message, "PowerShell failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     getPinnedItemsRequiresPowershellToolStripMenuItem_Click(this, null);
@@ -75,7 +75,7 @@ namespace TileIconifier.Forms
             else
                 lstShortcuts.DataSource = _shortcutsList;
         }
-        
+
         private void btnIconify_Click(object sender, EventArgs e)
         {
             if (!DoValidation())
@@ -192,9 +192,9 @@ namespace TileIconifier.Forms
             btnRemove.Enabled = _currentShortcut.IsIconified;
 
             //update the picture boxes to show the relevant images
-            pctStandardIcon.Image = _currentShortcut.StandardIcon;
-            pctMediumIcon.Image = _currentShortcut.MediumImage;
-            pctSmallIcon.Image = _currentShortcut.SmallImage;
+            pctStandardIcon.Image = (Image)_currentShortcut.StandardIcon.Clone();
+            pctMediumIcon.Image = _currentShortcut.MediumImage != null ? (Image)_currentShortcut.MediumImage.Clone() : null;
+            pctSmallIcon.Image = _currentShortcut.MediumImage != null ? (Image)_currentShortcut.SmallImage.Clone() : null;
 
             //set relevant unsaved changes controls to required visibility/enabled states
             lblUnsaved.Visible = hasUnsavedChanges;
