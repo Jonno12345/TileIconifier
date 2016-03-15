@@ -20,7 +20,7 @@ namespace TileIconifier.Forms
 
         private void rtxtAbout_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            var p = Process.Start(e.LinkText);
+            using (var p = Process.Start(e.LinkText)) { }            
         }
 
         private void frmAbout_Load(object sender, EventArgs e)

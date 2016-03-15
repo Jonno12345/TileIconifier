@@ -40,8 +40,8 @@ namespace TileIconifier
             return (BackgroundColor == other.BackgroundColor
                 && ForegroundText == other.ForegroundText
                 && ShowNameOnSquare150x150Logo == other.ShowNameOnSquare150x150Logo
-                && ImageUtilities.BitmapsAreEqual(MediumImage, other.MediumImage)
-                && ImageUtilities.BitmapsAreEqual(SmallImage, other.SmallImage));
+                && ImageUtils.BitmapsAreEqual(MediumImage, other.MediumImage)
+                && ImageUtils.BitmapsAreEqual(SmallImage, other.SmallImage));
         }
     }
 }

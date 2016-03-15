@@ -62,8 +62,8 @@ namespace TileIconifier
             if (Directory.Exists(_shortcutItem.VisualElementsPath))
                 Directory.Delete(_shortcutItem.VisualElementsPath, true);
 
-            if (File.Exists(string.Format("{0}\\{1}.VisualElementsManifest.xml", _shortcutItem.ExeFolderPath, Path.GetFileNameWithoutExtension(_shortcutItem.ExeFilePath))))
-                File.Delete(string.Format("{0}\\{1}.VisualElementsManifest.xml", _shortcutItem.ExeFolderPath, Path.GetFileNameWithoutExtension(_shortcutItem.ExeFilePath)));
+            if (File.Exists(string.Format("{0}\\{1}.VisualElementsManifest.xml", _shortcutItem.TargetFolderPath, Path.GetFileNameWithoutExtension(_shortcutItem.TargetFilePath))))
+                File.Delete(string.Format("{0}\\{1}.VisualElementsManifest.xml", _shortcutItem.TargetFolderPath, Path.GetFileNameWithoutExtension(_shortcutItem.TargetFilePath)));
         }
 
 

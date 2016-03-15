@@ -3,40 +3,48 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
+using TileIconifier.Custom;
+using TileIconifier.Steam;
 using TileIconifier.Utilities;
 
 namespace TileIconifier
 {
+    [Serializable]
     public class ShortcutItem : ListViewItem
     {
         #region Path properties
-        private string _exeFilePath;
-        public string ExeFilePath
+        private string _targetFilePath;
+        public string TargetFilePath
         {
             get
             {
-                if (string.IsNullOrEmpty(_exeFilePath))
-                    _exeFilePath = ShortcutUtils.ResolveShortcut(ShortcutFileInfo.FullName);
-                return string.Equals(Path.GetExtension(_exeFilePath), ".exe", StringComparison.InvariantCultureIgnoreCase) ? _exeFilePath : null;
+                if (string.IsNullOrEmpty(_targetFilePath))
+                    _targetFilePath = ShortcutUtils.ResolveShortcut(ShortcutFileInfo.FullName);
+                return
+                    Environment.ExpandEnvironmentVariables("%PATHEXT%").Split(';').Any(
+                        e => string.Equals(Path.GetExtension(_targetFilePath), e, StringComparison.InvariantCultureIgnoreCase))
+                    ? _targetFilePath
+                    : null;
             }
         }
 
         public string VisualElementManifestPath
-        { get { return string.Format("{0}{1}.VisualElementsManifest.xml", ExeFolderPath, Path.GetFileNameWithoutExtension(ExeFilePath)); } }
+        { get { return string.Format("{0}{1}.VisualElementsManifest.xml", TargetFolderPath, Path.GetFileNameWithoutExtension(TargetFilePath)); } }
 
-        public string ExeFolderPath
-        { get { return Path.GetDirectoryName(ExeFilePath) + "\\"; } }
+        public string TargetFolderPath
+        { get { return Path.GetDirectoryName(TargetFilePath) + "\\"; } }
 
         public string VisualElementsPath
-        { get { return ExeFolderPath + @"\VisualElements\"; } }
+        { get { return TargetFolderPath + @"\VisualElements\"; } }
 
         public string MediumIconName
-        { get { return string.Format("MediumIcon{0}.png", Path.GetFileNameWithoutExtension(ExeFilePath)); } }
+        { get { return string.Format("MediumIcon{0}.png", Path.GetFileNameWithoutExtension(TargetFilePath)); } }
 
         public string RelativeMediumIconPath
         { get { return string.Format("{0}\\{1}", Path.GetFileName(Path.GetDirectoryName(VisualElementsPath)), MediumIconName); } }
@@ -45,7 +53,7 @@ namespace TileIconifier
         { get { return string.Format("{0}\\{1}", VisualElementsPath, MediumIconName); } }
 
         public string SmallIconName
-        { get { return string.Format("SmallIcon{0}.png", Path.GetFileNameWithoutExtension(ExeFilePath)); } }
+        { get { return string.Format("SmallIcon{0}.png", Path.GetFileNameWithoutExtension(TargetFilePath)); } }
 
         public string RelativeSmallIconPath
         { get { return string.Format("{0}\\{1}", Path.GetFileName(Path.GetDirectoryName(VisualElementsPath)), SmallIconName); } }
@@ -53,6 +61,34 @@ namespace TileIconifier
         public string FullSmallIconPath
         { get { return string.Format("{0}\\{1}", VisualElementsPath, SmallIconName); } }
         #endregion
+
+        public bool IsTileIconifierCustomShortcut
+        {
+            get
+            {
+                return new DirectoryInfo(TargetFolderPath).Parent.FullName + "\\" == CustomShortcutConstants.CUSTOM_SHORTCUT_VBS_PATH;
+            }
+        }
+
+        public ShortcutUser ShortcutUser
+        {
+            get
+            {
+                if (ShortcutFileInfo.FullName.StartsWith(CustomShortcutConstants.CUSTOM_SHORTCUT_ALL_USERS_PATH))
+                    return ShortcutUser.ALL_USERS;
+                if (ShortcutFileInfo.FullName.StartsWith(CustomShortcutConstants.CUSTOM_SHORTCUT_CURRENT_USER_PATH))
+                    return ShortcutUser.CURRENT_USER;
+                return ShortcutUser.UNKNOWN;
+            }
+        }
+
+        public bool IsValidForIconification
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(TargetFilePath) && File.Exists(TargetFilePath);
+            }
+        }
 
         public bool IsIconified
         {
@@ -65,13 +101,19 @@ namespace TileIconifier
             }
         }
 
-        private Icon _standardIcon;
-        public Icon StandardIcon
+        private Bitmap _standardIcon;
+        public Bitmap StandardIcon
         {
             get
             {
-                if(_standardIcon == null)
-                    _standardIcon = Icon.ExtractAssociatedIcon(ShortcutFileInfo.FullName);
+                if (_standardIcon == null)
+                {
+                    try
+                    {
+                        _standardIcon = Icon.ExtractAssociatedIcon(ShortcutFileInfo.FullName).ToBitmap();
+                    }
+                    catch { }
+                }
                 return _standardIcon;
             }
         }
@@ -145,7 +187,7 @@ namespace TileIconifier
             }
             set
             {
-                NewParameters.ShowNameOnSquare150x150Logo = (value ? "on": "off");
+                NewParameters.ShowNameOnSquare150x150Logo = (value ? "on" : "off");
             }
         }
 
@@ -153,6 +195,7 @@ namespace TileIconifier
         public string AppId { get; set; }
         public bool IsPinned { get; set; }
 
+        protected ShortcutItem(SerializationInfo info, StreamingContext context) : base(info, context) { }
         private ShortcutIconParameters OldParameters { get; set; }
         private ShortcutIconParameters NewParameters { get; set; }
 
@@ -164,11 +207,14 @@ namespace TileIconifier
             }
         }
         
-
         public ShortcutItem(FileInfo shortcutFileInfo)
         {
             ShortcutFileInfo = shortcutFileInfo;
-
+            LoadParameters();
+        }
+        public ShortcutItem(string shortcutPath)
+        {
+            ShortcutFileInfo = new FileInfo(shortcutPath);
             LoadParameters();
         }
 
@@ -178,15 +224,16 @@ namespace TileIconifier
             {
                 var xmlDoc = XDocument.Load(VisualElementManifestPath);
 
-                try {
+                try
+                {
                     var parameters = from b in xmlDoc.Descendants("VisualElements")
                                      select new ShortcutIconParameters()
                                      {
                                          BackgroundColor = b.Attribute("BackgroundColor").Value,
                                          ForegroundText = b.Attribute("ForegroundText").Value,
                                          ShowNameOnSquare150x150Logo = b.Attribute("ShowNameOnSquare150x150Logo").Value,
-                                         MediumImage = ImageUtilities.LoadIconifiedBitmap(ExeFolderPath + b.Attribute("Square150x150Logo").Value),
-                                         SmallImage = ImageUtilities.LoadIconifiedBitmap(ExeFolderPath + b.Attribute("Square70x70Logo").Value),
+                                         MediumImage = ImageUtils.LoadIconifiedBitmap(TargetFolderPath + b.Attribute("Square150x150Logo").Value),
+                                         SmallImage = ImageUtils.LoadIconifiedBitmap(TargetFolderPath + b.Attribute("Square70x70Logo").Value),
                                      };
                     OldParameters = parameters.Single();
                     NewParameters = OldParameters.Clone();
@@ -223,7 +270,7 @@ namespace TileIconifier
             };
             NewParameters = OldParameters.Clone();
         }
-        
+
         public override string ToString()
         {
             return Path.GetFileNameWithoutExtension(ShortcutFileInfo.Name) + (IsPinned ? " *" : "") + (IsIconified ? " #" : "");

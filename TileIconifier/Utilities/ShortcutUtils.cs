@@ -63,6 +63,24 @@ namespace TileIconifier.Utilities
             }
         }
 
+        public static void CreateLnkFile(string shortcutPath, string targetPath, string description, string workingDirectory = null, string iconPath = null)
+        {
+            Directory.CreateDirectory(new FileInfo(shortcutPath).Directory.FullName);
+
+            IWshRuntimeLibrary.WshShell wsh = new IWshRuntimeLibrary.WshShell();
+            IWshRuntimeLibrary.IWshShortcut shortcut = wsh.CreateShortcut(
+                shortcutPath) as IWshRuntimeLibrary.IWshShortcut;
+            shortcut.Arguments = "";
+            shortcut.TargetPath = targetPath;
+            shortcut.WindowStyle = 1;
+            shortcut.Description = description;
+            shortcut.WorkingDirectory = workingDirectory ?? new FileInfo(targetPath).Directory.FullName;
+            shortcut.IconLocation = iconPath?? targetPath;
+            shortcut.Save();
+            shortcut = null;
+            wsh = null;
+        }
+
         static string ResolveMsiShortcut(string file)
         {
             StringBuilder product = new StringBuilder(NativeMethods.MaxGuidLength + 1);
@@ -87,10 +105,10 @@ namespace TileIconifier.Utilities
 
         private class NativeMethods
         {
-            [DllImport("msi.dll", CharSet = CharSet.Auto)]
+            [DllImport("msi.dll", CharSet = CharSet.Unicode)]
             public static extern uint MsiGetShortcutTarget(string targetFile, StringBuilder productCode, StringBuilder featureID, StringBuilder componentCode);
 
-            [DllImport("msi.dll", CharSet = CharSet.Auto)]
+            [DllImport("msi.dll", CharSet = CharSet.Unicode)]
             public static extern InstallState MsiGetComponentPath(string productCode, string componentCode, StringBuilder componentPath, ref int componentPathBufferSize);
 
             public const int MaxFeatureLength = 38;

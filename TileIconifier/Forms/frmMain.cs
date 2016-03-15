@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using TileIconifier.Steam;
 using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms
@@ -25,17 +26,16 @@ namespace TileIconifier.Forms
         public frmMain()
         {
             InitializeComponent();
-            pctMediumIcon.MouseMove += (s, e) => { pctMediumIcon.Cursor = Cursors.Hand; };
-            pctSmallIcon.MouseMove += (s, e) => { pctSmallIcon.Cursor = Cursors.Hand; };
             AddEventHandlers();
         }
+
 
         private void frmDropper_Load(object sender, EventArgs e)
         {
             Show();
             StartFullUpdate();
         }
-
+        
         private void StartFullUpdate()
         {
             frmLoadingSplash loadingSplash = new frmLoadingSplash();
@@ -50,121 +50,32 @@ namespace TileIconifier.Forms
             });
 
             updateThread.RunWorkerAsync();
-            loadingSplash.ShowDialog();
+            loadingSplash.ShowDialog(this);
         }
 
         private void FullUpdate(object sender, DoWorkEventArgs e)
         {
-            EnumerateShortcuts();
-            GetPinnedStartMenuInformation();
+            if (getPinnedItemsRequiresPowershellToolStripMenuItem.Checked)
+            {
+                Exception pinningException = null;
+                _shortcutsList = ShortcutItemEnumeration.TryGetShortcutsWithPinning(out pinningException, true);
+                if(pinningException != null)
+                {
+                    MessageBox.Show("A problem occurred with PowerShell functionality. It has been disabled.\r\n" + pinningException.ToString() + "\r\n\r\n" + pinningException.Message, "PowerShell failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    getPinnedItemsRequiresPowershellToolStripMenuItem_Click(this, null);
+                }
+            }
+            else
+            {
+                _shortcutsList = ShortcutItemEnumeration.GetShortcuts(true);
+            }
 
             if (lstShortcuts.InvokeRequired)
                 lstShortcuts.Invoke(new Action(() => { lstShortcuts.DataSource = _shortcutsList; }));
             else
                 lstShortcuts.DataSource = _shortcutsList;
         }
-
-        private void GetPinnedStartMenuInformation()
-        {
-            if (!getPinnedItemsRequiresPowershellToolStripMenuItem.Checked)
-                return;
-
-            var tempOutputPath = string.Format("{0}{1}\\", Path.GetTempPath(), "TileIconifier");
-            if (!Directory.Exists(tempOutputPath))
-                Directory.CreateDirectory(tempOutputPath);
-
-            var tempFilePath = string.Format("{0}{1}.xml", tempOutputPath, Path.GetFileNameWithoutExtension(Path.GetRandomFileName()));
-
-            try
-            {
-                PowerShellUtils.DumpStartLayout(tempFilePath);
-                PowerShellUtils.MarryAppIDs(_shortcutsList);
-
-                MarkPinnedShortcuts(tempFilePath);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("A problem occurred with PowerShell functionality. It has been disabled.\r\n" + ex.ToString() + "\r\n\r\n" + ex.Message, "PowerShell failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                getPinnedItemsRequiresPowershellToolStripMenuItem_Click(this, null);
-                return;
-            }
-
-            _shortcutsList = _shortcutsList.OrderByDescending(s => s.IsPinned)
-                                            .ThenBy(s => s.ShortcutFileInfo.Name)
-                                            .ToList();
-
-            try
-            {
-                File.Delete(tempFilePath);
-            }
-            catch { }
-        }
-
-        private void MarkPinnedShortcuts(string tempFilePath)
-        {
-            var startLayout = File.ReadAllText(tempFilePath);
-
-            var regexMatches = Regex.Matches(startLayout, "<start:DesktopApplicationTile.*DesktopApplicationID=\"(.*)\".*");
-
-            foreach (Match regexMatch in regexMatches)
-            {
-                try
-                {
-                    var groupData = regexMatch.Groups[1].Value;
-
-                    var shortcutId = _shortcutsList.Where(s => s.AppId == groupData)
-                    .First();
-                    shortcutId.IsPinned = true;
-                }
-                catch { }
-            }
-        }
-
-        private void EnumerateShortcuts()
-        {
-            _shortcutsList = new List<ShortcutItem>();
-
-            List<string> PathsToScan = new List<string>()
-            {
-                @"%PROGRAMDATA%\Microsoft\Windows\Start Menu",
-                @"%APPDATA%\Microsoft\Windows\Start Menu"
-            };
-
-            foreach (var pathToScan in PathsToScan)
-            {
-                ApplyAllFiles(Environment.ExpandEnvironmentVariables(pathToScan), f =>
-                {
-                    var fi = new FileInfo(f);
-                    if (!fi.Extension.Equals(".lnk", StringComparison.OrdinalIgnoreCase))
-                        return;
-
-                    var shortcutItem = new ShortcutItem(fi);
-                    if (!string.IsNullOrEmpty(shortcutItem.ExeFilePath) && File.Exists(shortcutItem.ExeFilePath))
-                        _shortcutsList.Add(shortcutItem);
-                });
-            }
-
-            _shortcutsList = _shortcutsList.OrderBy(f => f.ShortcutFileInfo.Name).ToList();
-        }
-
-        private void ApplyAllFiles(string folder, Action<string> fileAction)
-        {
-            foreach (string file in Directory.GetFiles(folder))
-            {
-                fileAction(file);
-            }
-            foreach (string subDir in Directory.GetDirectories(folder))
-            {
-                try
-                {
-                    ApplyAllFiles(subDir, fileAction);
-                }
-                catch
-                {
-                }
-            }
-        }
-
+        
         private void btnIconify_Click(object sender, EventArgs e)
         {
             if (!DoValidation())
@@ -273,7 +184,7 @@ namespace TileIconifier.Forms
             txtLnkPath.ScrollToCaret();
 
             //set exe path box to value stored in shortcut
-            txtExePath.Text = _currentShortcut.ExeFilePath;
+            txtExePath.Text = _currentShortcut.TargetFilePath;
             txtExePath.SelectionStart = txtExePath.Text.Length;
             txtExePath.ScrollToCaret();
 
@@ -281,14 +192,14 @@ namespace TileIconifier.Forms
             btnRemove.Enabled = _currentShortcut.IsIconified;
 
             //update the picture boxes to show the relevant images
-            pctStandardIcon.Image = _currentShortcut.StandardIcon.ToBitmap();
+            pctStandardIcon.Image = _currentShortcut.StandardIcon;
             pctMediumIcon.Image = _currentShortcut.MediumImage;
             pctSmallIcon.Image = _currentShortcut.SmallImage;
 
             //set relevant unsaved changes controls to required visibility/enabled states
             lblUnsaved.Visible = hasUnsavedChanges;
             btnIconify.Enabled = hasUnsavedChanges;
-            btnUndo.Enabled = hasUnsavedChanges;
+            btnReset.Enabled = hasUnsavedChanges;
 
             //reset the combo box - choose actual colour, or custom if none of the combobox items
             if (cmbColour.Items.Contains(_currentShortcut.BackgroundColor))
@@ -348,27 +259,12 @@ namespace TileIconifier.Forms
             StartFullUpdate();
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmAbout AboutForm = new frmAbout();
-            AboutForm.StartPosition = FormStartPosition.CenterScreen;
-            AboutForm.ShowDialog();
-        }
-
-        private Bitmap GetImage()
-        {
-            frmIconSelector iconSelector = new frmIconSelector(_currentShortcut.ExeFilePath);
-            iconSelector.ShowDialog();
-            if (iconSelector.ReturnedBitmap == null)
-                throw new UserCancellationException();
-            return iconSelector.ReturnedBitmap;
-        }
 
         private void pctMediumIcon_Click(object sender, EventArgs e)
         {
             try
             {
-                var ImageToUse = GetImage();
+                var ImageToUse = ImageUtils.GetImage(this, _currentShortcut.TargetFilePath);
                 _currentShortcut.MediumImage = ImageToUse;
 
                 if (chkUseSameImg.Checked)
@@ -383,7 +279,7 @@ namespace TileIconifier.Forms
         {
             try
             {
-                var ImageToUse = GetImage();
+                var ImageToUse = ImageUtils.GetImage(this, _currentShortcut.TargetFilePath);
                 _currentShortcut.SmallImage = ImageToUse;
 
                 if (chkUseSameImg.Checked)
@@ -394,11 +290,23 @@ namespace TileIconifier.Forms
             catch (UserCancellationException) { }
         }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtils.ShowCenteredDialogForm<frmAbout>(this);
+        }
+
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmHelp helpForm = new frmHelp();
-            helpForm.StartPosition = FormStartPosition.CenterParent;
-            helpForm.ShowDialog();
+            FormUtils.ShowCenteredDialogForm<frmHelp>(this);
+        }
+
+        private void customShortcutManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var customShortcutManager = new frmCustomShortcutManagerMain())
+            {
+                customShortcutManager.ShowDialog(this);
+            }
+            StartFullUpdate();
         }
 
         private void refreshAllToolStripMenuItem_Click(object sender, EventArgs e)
@@ -422,7 +330,7 @@ namespace TileIconifier.Forms
             UpdateShortcut();
         }
 
-        private void btnUndo_Click(object sender, EventArgs e)
+        private void btnReset_Click(object sender, EventArgs e)
         {
             _currentShortcut.UndoChanges();
 
@@ -446,5 +354,6 @@ namespace TileIconifier.Forms
             this.radFGLight.CheckedChanged -= new System.EventHandler(this.radFGLight_CheckedChanged);
             this.lstShortcuts.SelectedIndexChanged -= new System.EventHandler(this.lstShortcuts_SelectedIndexChanged);
         }
+
     }
 }

@@ -117,24 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="rtxtAbout.Text" xml:space="preserve">
-    <value>Found a bug? Please let me know at https://github.com/Jonno12345/TileIconify/issues
+  <data name="rtxtHelp.Text" xml:space="preserve">
+    <value>This is used to create custom shortcuts that otherwise wouldn't be TileIconifiable. It works by generating VBS files, which do show as valid tiles.
 
-To use, first select the shortcut you wish to apply a tile icon to.
+The VBS and other data files will be created within the folder:
+[@@PROGRAMOUTPUTPATH@@]
 
-Select whether you'd like like have both the small and medium icon the same.
+Current user shortcut files will be added to:
+[@@PROGRAMCURRENTUSERSHORTCUTPATH@@]
 
-Click the Medium or Small icon as required, and choose your image (either from the icons available in the EXE, or your own image file). If you wish to select the images separately, make sure to uncheck "Sync Medium and Small image changes".
-
-Decide on any colour schemes and whether you wish for the text to show on the Medium icon or not.
-
-When you're done, just click Tile Iconify! and it should update.
-
-You can check the Get Pinned Items preference item in Utilities to get your pinned icons and list them at the top. This requires PowerShell and takes longer to run. It is disabled by default.
-
-Note that icons with a * next to them are detected as pinned, and icons with a # already have already been iconificiationilisationifiedicated.
-
-
-Enjoy!</value>
+All user shortcut files will be added to:
+[@@PROGRAMALLUSERSHORTCUTPATH@@]</value>
   </data>
 </root>

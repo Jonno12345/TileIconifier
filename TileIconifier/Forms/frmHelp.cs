@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,11 @@ namespace TileIconifier.Forms
         public frmHelp()
         {
             InitializeComponent();
+        }
+
+        private void rtxtAbout_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            using (var p = Process.Start(e.LinkText)) { }
         }
     }
 }

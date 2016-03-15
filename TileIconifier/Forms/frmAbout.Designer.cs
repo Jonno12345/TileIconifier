@@ -38,16 +38,16 @@
             this.rtxtAbout.Location = new System.Drawing.Point(0, 0);
             this.rtxtAbout.Name = "rtxtAbout";
             this.rtxtAbout.ReadOnly = true;
-            this.rtxtAbout.Size = new System.Drawing.Size(608, 423);
+            this.rtxtAbout.Size = new System.Drawing.Size(608, 264);
             this.rtxtAbout.TabIndex = 1;
             this.rtxtAbout.Text = resources.GetString("rtxtAbout.Text");
             this.rtxtAbout.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtAbout_LinkClicked);
             // 
             // frmAbout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(608, 423);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(608, 264);
             this.Controls.Add(this.rtxtAbout);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;

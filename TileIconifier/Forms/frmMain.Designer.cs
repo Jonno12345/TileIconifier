@@ -40,13 +40,14 @@
             this.chkFGTxtEnabled = new System.Windows.Forms.CheckBox();
             this.lblFGText = new System.Windows.Forms.Label();
             this.radFGLight = new System.Windows.Forms.RadioButton();
-            this.lstShortcuts = new System.Windows.Forms.ListBox();
             this.lblExePath = new System.Windows.Forms.Label();
             this.txtExePath = new System.Windows.Forms.TextBox();
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customShortcutManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.getPinnedItemsRequiresPowershellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +60,8 @@
             this.pctSmallIcon = new System.Windows.Forms.PictureBox();
             this.chkUseSameImg = new System.Windows.Forms.CheckBox();
             this.lblUnsaved = new System.Windows.Forms.Label();
-            this.btnUndo = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.lstShortcuts = new TileIconifier.ListBoxWithTyping();
             this.pnlFGColour.SuspendLayout();
             this.mnuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctStandardIcon)).BeginInit();
@@ -70,19 +72,21 @@
             // txtLnkPath
             // 
             this.txtLnkPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtLnkPath.Location = new System.Drawing.Point(16, 397);
+            this.txtLnkPath.Location = new System.Drawing.Point(11, 265);
+            this.txtLnkPath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtLnkPath.Name = "txtLnkPath";
             this.txtLnkPath.ReadOnly = true;
-            this.txtLnkPath.Size = new System.Drawing.Size(794, 26);
+            this.txtLnkPath.Size = new System.Drawing.Size(531, 20);
             this.txtLnkPath.TabIndex = 1;
             // 
             // lblLnkPath
             // 
             this.lblLnkPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblLnkPath.AutoSize = true;
-            this.lblLnkPath.Location = new System.Drawing.Point(12, 374);
+            this.lblLnkPath.Location = new System.Drawing.Point(8, 249);
+            this.lblLnkPath.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLnkPath.Name = "lblLnkPath";
-            this.lblLnkPath.Size = new System.Drawing.Size(76, 20);
+            this.lblLnkPath.Size = new System.Drawing.Size(53, 13);
             this.lblLnkPath.TabIndex = 2;
             this.lblLnkPath.Text = "LNK Path";
             // 
@@ -90,27 +94,30 @@
             // 
             this.lblBGColour.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBGColour.AutoSize = true;
-            this.lblBGColour.Location = new System.Drawing.Point(830, 374);
+            this.lblBGColour.Location = new System.Drawing.Point(554, 248);
+            this.lblBGColour.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBGColour.Name = "lblBGColour";
-            this.lblBGColour.Size = new System.Drawing.Size(145, 20);
+            this.lblBGColour.Size = new System.Drawing.Size(98, 13);
             this.lblBGColour.TabIndex = 5;
             this.lblBGColour.Text = "Background Colour";
             // 
             // txtBGColour
             // 
             this.txtBGColour.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBGColour.Location = new System.Drawing.Point(1016, 396);
+            this.txtBGColour.Location = new System.Drawing.Point(678, 263);
+            this.txtBGColour.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBGColour.Name = "txtBGColour";
-            this.txtBGColour.Size = new System.Drawing.Size(141, 26);
+            this.txtBGColour.Size = new System.Drawing.Size(95, 20);
             this.txtBGColour.TabIndex = 4;
             this.txtBGColour.Text = "#323232";
             // 
             // btnIconify
             // 
             this.btnIconify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnIconify.Location = new System.Drawing.Point(841, 522);
+            this.btnIconify.Location = new System.Drawing.Point(572, 348);
+            this.btnIconify.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnIconify.Name = "btnIconify";
-            this.btnIconify.Size = new System.Drawing.Size(129, 31);
+            this.btnIconify.Size = new System.Drawing.Size(86, 21);
             this.btnIconify.TabIndex = 8;
             this.btnIconify.Text = "Tile Iconify!";
             this.btnIconify.UseVisualStyleBackColor = true;
@@ -119,9 +126,10 @@
             // btnRemove
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove.Location = new System.Drawing.Point(1055, 522);
+            this.btnRemove.Location = new System.Drawing.Point(714, 348);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(144, 31);
+            this.btnRemove.Size = new System.Drawing.Size(96, 21);
             this.btnRemove.TabIndex = 9;
             this.btnRemove.Text = "Remove Iconify";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -150,9 +158,10 @@
             "teal",
             "aqua",
             "Custom"});
-            this.cmbColour.Location = new System.Drawing.Point(834, 397);
+            this.cmbColour.Location = new System.Drawing.Point(557, 264);
+            this.cmbColour.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbColour.Name = "cmbColour";
-            this.cmbColour.Size = new System.Drawing.Size(165, 28);
+            this.cmbColour.Size = new System.Drawing.Size(111, 21);
             this.cmbColour.TabIndex = 10;
             // 
             // pnlFGColour
@@ -162,17 +171,19 @@
             this.pnlFGColour.Controls.Add(this.chkFGTxtEnabled);
             this.pnlFGColour.Controls.Add(this.lblFGText);
             this.pnlFGColour.Controls.Add(this.radFGLight);
-            this.pnlFGColour.Location = new System.Drawing.Point(834, 442);
+            this.pnlFGColour.Location = new System.Drawing.Point(557, 295);
+            this.pnlFGColour.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlFGColour.Name = "pnlFGColour";
-            this.pnlFGColour.Size = new System.Drawing.Size(370, 68);
+            this.pnlFGColour.Size = new System.Drawing.Size(257, 45);
             this.pnlFGColour.TabIndex = 11;
             // 
             // radFGDark
             // 
             this.radFGDark.AutoSize = true;
-            this.radFGDark.Location = new System.Drawing.Point(87, 34);
+            this.radFGDark.Location = new System.Drawing.Point(58, 23);
+            this.radFGDark.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radFGDark.Name = "radFGDark";
-            this.radFGDark.Size = new System.Drawing.Size(68, 24);
+            this.radFGDark.Size = new System.Drawing.Size(48, 17);
             this.radFGDark.TabIndex = 8;
             this.radFGDark.Text = "Dark";
             this.radFGDark.UseVisualStyleBackColor = true;
@@ -182,9 +193,10 @@
             this.chkFGTxtEnabled.AutoSize = true;
             this.chkFGTxtEnabled.Checked = true;
             this.chkFGTxtEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFGTxtEnabled.Location = new System.Drawing.Point(273, 8);
+            this.chkFGTxtEnabled.Location = new System.Drawing.Point(182, 5);
+            this.chkFGTxtEnabled.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkFGTxtEnabled.Name = "chkFGTxtEnabled";
-            this.chkFGTxtEnabled.Size = new System.Drawing.Size(94, 24);
+            this.chkFGTxtEnabled.Size = new System.Drawing.Size(65, 17);
             this.chkFGTxtEnabled.TabIndex = 7;
             this.chkFGTxtEnabled.Text = "Enabled";
             this.chkFGTxtEnabled.UseVisualStyleBackColor = true;
@@ -192,9 +204,10 @@
             // lblFGText
             // 
             this.lblFGText.AutoSize = true;
-            this.lblFGText.Location = new System.Drawing.Point(1, 8);
+            this.lblFGText.Location = new System.Drawing.Point(1, 5);
+            this.lblFGText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFGText.Name = "lblFGText";
-            this.lblFGText.Size = new System.Drawing.Size(266, 20);
+            this.lblFGText.Size = new System.Drawing.Size(179, 13);
             this.lblFGText.TabIndex = 6;
             this.lblFGText.Text = "Foreground Text (Medium Icon Only)";
             // 
@@ -202,40 +215,34 @@
             // 
             this.radFGLight.AutoSize = true;
             this.radFGLight.Checked = true;
-            this.radFGLight.Location = new System.Drawing.Point(12, 34);
+            this.radFGLight.Location = new System.Drawing.Point(8, 23);
+            this.radFGLight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radFGLight.Name = "radFGLight";
-            this.radFGLight.Size = new System.Drawing.Size(69, 24);
+            this.radFGLight.Size = new System.Drawing.Size(48, 17);
             this.radFGLight.TabIndex = 0;
             this.radFGLight.TabStop = true;
             this.radFGLight.Text = "Light";
             this.radFGLight.UseVisualStyleBackColor = true;
             // 
-            // lstShortcuts
-            // 
-            this.lstShortcuts.FormattingEnabled = true;
-            this.lstShortcuts.ItemHeight = 20;
-            this.lstShortcuts.Location = new System.Drawing.Point(16, 36);
-            this.lstShortcuts.Name = "lstShortcuts";
-            this.lstShortcuts.Size = new System.Drawing.Size(767, 284);
-            this.lstShortcuts.TabIndex = 12;
-            // 
             // lblExePath
             // 
             this.lblExePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblExePath.AutoSize = true;
-            this.lblExePath.Location = new System.Drawing.Point(12, 433);
+            this.lblExePath.Location = new System.Drawing.Point(8, 289);
+            this.lblExePath.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblExePath.Name = "lblExePath";
-            this.lblExePath.Size = new System.Drawing.Size(79, 20);
+            this.lblExePath.Size = new System.Drawing.Size(63, 13);
             this.lblExePath.TabIndex = 14;
-            this.lblExePath.Text = "EXE Path";
+            this.lblExePath.Text = "Target Path";
             // 
             // txtExePath
             // 
             this.txtExePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtExePath.Location = new System.Drawing.Point(16, 456);
+            this.txtExePath.Location = new System.Drawing.Point(11, 304);
+            this.txtExePath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtExePath.Name = "txtExePath";
             this.txtExePath.ReadOnly = true;
-            this.txtExePath.Size = new System.Drawing.Size(794, 26);
+            this.txtExePath.Size = new System.Drawing.Size(531, 20);
             this.txtExePath.TabIndex = 13;
             // 
             // mnuMain
@@ -248,7 +255,8 @@
             this.helpToolStripMenuItem});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(1209, 33);
+            this.mnuMain.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.mnuMain.Size = new System.Drawing.Size(817, 24);
             this.mnuMain.TabIndex = 15;
             this.mnuMain.Text = "MainMenu";
             // 
@@ -257,51 +265,65 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(50, 29);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(124, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customShortcutManagerToolStripMenuItem,
+            this.toolStripSeparator1,
             this.getPinnedItemsRequiresPowershellToolStripMenuItem,
             this.refreshAllToolStripMenuItem});
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(81, 29);
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(58, 22);
             this.preferencesToolStripMenuItem.Text = "Utilities";
+            // 
+            // customShortcutManagerToolStripMenuItem
+            // 
+            this.customShortcutManagerToolStripMenuItem.Name = "customShortcutManagerToolStripMenuItem";
+            this.customShortcutManagerToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
+            this.customShortcutManagerToolStripMenuItem.Text = "Custom Shortcut Manager";
+            this.customShortcutManagerToolStripMenuItem.Click += new System.EventHandler(this.customShortcutManagerToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(277, 6);
             // 
             // getPinnedItemsRequiresPowershellToolStripMenuItem
             // 
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.Name = "getPinnedItemsRequiresPowershellToolStripMenuItem";
-            this.getPinnedItemsRequiresPowershellToolStripMenuItem.Size = new System.Drawing.Size(402, 30);
+            this.getPinnedItemsRequiresPowershellToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.Text = "Get Pinned Items (Requires Powershell)";
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.Click += new System.EventHandler(this.getPinnedItemsRequiresPowershellToolStripMenuItem_Click);
             // 
             // refreshAllToolStripMenuItem
             // 
             this.refreshAllToolStripMenuItem.Name = "refreshAllToolStripMenuItem";
-            this.refreshAllToolStripMenuItem.Size = new System.Drawing.Size(402, 30);
+            this.refreshAllToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
             this.refreshAllToolStripMenuItem.Text = "Refresh All";
             this.refreshAllToolStripMenuItem.Click += new System.EventHandler(this.refreshAllToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 29);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
@@ -309,9 +331,10 @@
             // 
             this.pctStandardIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctStandardIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctStandardIcon.Location = new System.Drawing.Point(834, 59);
+            this.pctStandardIcon.Location = new System.Drawing.Point(557, 38);
+            this.pctStandardIcon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pctStandardIcon.Name = "pctStandardIcon";
-            this.pctStandardIcon.Size = new System.Drawing.Size(35, 35);
+            this.pctStandardIcon.Size = new System.Drawing.Size(24, 24);
             this.pctStandardIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctStandardIcon.TabIndex = 16;
             this.pctStandardIcon.TabStop = false;
@@ -320,9 +343,10 @@
             // 
             this.lblCurrentIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurrentIcon.AutoSize = true;
-            this.lblCurrentIcon.Location = new System.Drawing.Point(830, 36);
+            this.lblCurrentIcon.Location = new System.Drawing.Point(554, 23);
+            this.lblCurrentIcon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCurrentIcon.Name = "lblCurrentIcon";
-            this.lblCurrentIcon.Size = new System.Drawing.Size(114, 20);
+            this.lblCurrentIcon.Size = new System.Drawing.Size(77, 13);
             this.lblCurrentIcon.TabIndex = 17;
             this.lblCurrentIcon.Text = "Standard Icon:";
             // 
@@ -330,9 +354,10 @@
             // 
             this.MediumIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MediumIcon.AutoSize = true;
-            this.MediumIcon.Location = new System.Drawing.Point(830, 110);
+            this.MediumIcon.Location = new System.Drawing.Point(554, 72);
+            this.MediumIcon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MediumIcon.Name = "MediumIcon";
-            this.MediumIcon.Size = new System.Drawing.Size(104, 20);
+            this.MediumIcon.Size = new System.Drawing.Size(71, 13);
             this.MediumIcon.TabIndex = 19;
             this.MediumIcon.Text = "Medium Icon:";
             // 
@@ -340,9 +365,11 @@
             // 
             this.pctMediumIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctMediumIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctMediumIcon.Location = new System.Drawing.Point(834, 133);
+            this.pctMediumIcon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctMediumIcon.Location = new System.Drawing.Point(557, 88);
+            this.pctMediumIcon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pctMediumIcon.Name = "pctMediumIcon";
-            this.pctMediumIcon.Size = new System.Drawing.Size(150, 150);
+            this.pctMediumIcon.Size = new System.Drawing.Size(101, 101);
             this.pctMediumIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctMediumIcon.TabIndex = 18;
             this.pctMediumIcon.TabStop = false;
@@ -352,9 +379,10 @@
             // 
             this.lblSmallIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSmallIcon.AutoSize = true;
-            this.lblSmallIcon.Location = new System.Drawing.Point(1012, 110);
+            this.lblSmallIcon.Location = new System.Drawing.Point(676, 72);
+            this.lblSmallIcon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSmallIcon.Name = "lblSmallIcon";
-            this.lblSmallIcon.Size = new System.Drawing.Size(87, 20);
+            this.lblSmallIcon.Size = new System.Drawing.Size(59, 13);
             this.lblSmallIcon.TabIndex = 21;
             this.lblSmallIcon.Text = "Small Icon:";
             // 
@@ -362,9 +390,11 @@
             // 
             this.pctSmallIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctSmallIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctSmallIcon.Location = new System.Drawing.Point(1016, 133);
+            this.pctSmallIcon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctSmallIcon.Location = new System.Drawing.Point(678, 88);
+            this.pctSmallIcon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pctSmallIcon.Name = "pctSmallIcon";
-            this.pctSmallIcon.Size = new System.Drawing.Size(70, 70);
+            this.pctSmallIcon.Size = new System.Drawing.Size(47, 47);
             this.pctSmallIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctSmallIcon.TabIndex = 20;
             this.pctSmallIcon.TabStop = false;
@@ -376,9 +406,10 @@
             this.chkUseSameImg.AutoSize = true;
             this.chkUseSameImg.Checked = true;
             this.chkUseSameImg.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkUseSameImg.Location = new System.Drawing.Point(862, 296);
+            this.chkUseSameImg.Location = new System.Drawing.Point(557, 193);
+            this.chkUseSameImg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkUseSameImg.Name = "chkUseSameImg";
-            this.chkUseSameImg.Size = new System.Drawing.Size(316, 24);
+            this.chkUseSameImg.Size = new System.Drawing.Size(214, 17);
             this.chkUseSameImg.TabIndex = 22;
             this.chkUseSameImg.Text = "Sync Medium and Small image changes";
             this.chkUseSameImg.UseVisualStyleBackColor = true;
@@ -389,30 +420,41 @@
             this.lblUnsaved.AutoSize = true;
             this.lblUnsaved.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnsaved.ForeColor = System.Drawing.Color.Red;
-            this.lblUnsaved.Location = new System.Drawing.Point(830, 335);
+            this.lblUnsaved.Location = new System.Drawing.Point(554, 222);
+            this.lblUnsaved.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUnsaved.Name = "lblUnsaved";
-            this.lblUnsaved.Size = new System.Drawing.Size(263, 20);
+            this.lblUnsaved.Size = new System.Drawing.Size(179, 13);
             this.lblUnsaved.TabIndex = 23;
             this.lblUnsaved.Text = "This shortcut has unsaved changes!";
             this.lblUnsaved.Visible = false;
             // 
-            // btnUndo
+            // btnReset
             // 
-            this.btnUndo.Location = new System.Drawing.Point(1101, 330);
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(96, 30);
-            this.btnUndo.TabIndex = 25;
-            this.btnUndo.Text = "Undo";
-            this.btnUndo.UseVisualStyleBackColor = true;
-            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
+            this.btnReset.Location = new System.Drawing.Point(746, 218);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(64, 20);
+            this.btnReset.TabIndex = 25;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // lstShortcuts
+            // 
+            this.lstShortcuts.FormattingEnabled = true;
+            this.lstShortcuts.Location = new System.Drawing.Point(11, 24);
+            this.lstShortcuts.Margin = new System.Windows.Forms.Padding(2);
+            this.lstShortcuts.Name = "lstShortcuts";
+            this.lstShortcuts.Size = new System.Drawing.Size(513, 186);
+            this.lstShortcuts.TabIndex = 26;
             // 
             // frmMain
             // 
-            this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1209, 559);
-            this.Controls.Add(this.btnUndo);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(817, 373);
+            this.Controls.Add(this.lstShortcuts);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblUnsaved);
             this.Controls.Add(this.chkUseSameImg);
             this.Controls.Add(this.lblSmallIcon);
@@ -423,7 +465,6 @@
             this.Controls.Add(this.pctStandardIcon);
             this.Controls.Add(this.lblExePath);
             this.Controls.Add(this.txtExePath);
-            this.Controls.Add(this.lstShortcuts);
             this.Controls.Add(this.pnlFGColour);
             this.Controls.Add(this.cmbColour);
             this.Controls.Add(this.btnRemove);
@@ -435,6 +476,7 @@
             this.Controls.Add(this.mnuMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mnuMain;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.Text = "Tile Iconifier";
@@ -464,7 +506,6 @@
         private System.Windows.Forms.CheckBox chkFGTxtEnabled;
         private System.Windows.Forms.Label lblFGText;
         private System.Windows.Forms.RadioButton radFGDark;
-        private System.Windows.Forms.ListBox lstShortcuts;
         private System.Windows.Forms.Label lblExePath;
         private System.Windows.Forms.TextBox txtExePath;
         private System.Windows.Forms.MenuStrip mnuMain;
@@ -483,7 +524,10 @@
         private System.Windows.Forms.Label lblUnsaved;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshAllToolStripMenuItem;
-        private System.Windows.Forms.Button btnUndo;
+        private System.Windows.Forms.Button btnReset;
+        private ListBoxWithTyping lstShortcuts;
+        private System.Windows.Forms.ToolStripMenuItem customShortcutManagerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

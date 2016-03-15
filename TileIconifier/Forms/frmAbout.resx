@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="rtxtAbout.Text" xml:space="preserve">
-    <value>A simple utility to create a Tile Icon for your shortcuts in Windows 10 Build 10586 and above.
+    <value>A simple utility to create a Tile Icon for your shortcuts in Windows 8.1 and Windows 10 Build 10586 and above.
 
 Created by Jonno @ Superuser - http://superuser.com/users/536125
 

@@ -1,6 +1,6 @@
 ﻿namespace TileIconifier.Forms
 {
-    partial class frmHelp
+    partial class frmCustomShortcutManagerHelp
     {
         /// <summary>
         /// Required designer variable.
@@ -28,38 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHelp));
-            this.rtxtAbout = new System.Windows.Forms.RichTextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomShortcutManagerHelp));
+            this.rtxtHelp = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // rtxtAbout
+            // rtxtHelp
             // 
-            this.rtxtAbout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtAbout.Location = new System.Drawing.Point(0, 0);
-            this.rtxtAbout.Name = "rtxtAbout";
-            this.rtxtAbout.ReadOnly = true;
-            this.rtxtAbout.Size = new System.Drawing.Size(660, 327);
-            this.rtxtAbout.TabIndex = 2;
-            this.rtxtAbout.Text = resources.GetString("rtxtAbout.Text");
-            this.rtxtAbout.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtAbout_LinkClicked);
+            this.rtxtHelp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtHelp.Location = new System.Drawing.Point(0, 0);
+            this.rtxtHelp.Name = "rtxtHelp";
+            this.rtxtHelp.ReadOnly = true;
+            this.rtxtHelp.Size = new System.Drawing.Size(637, 238);
+            this.rtxtHelp.TabIndex = 1;
+            this.rtxtHelp.Text = resources.GetString("rtxtHelp.Text");
+            this.rtxtHelp.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtHelp_LinkClicked);
             // 
-            // frmHelp
+            // frmCustomShortcutManagerHelp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 327);
-            this.Controls.Add(this.rtxtAbout);
+            this.ClientSize = new System.Drawing.Size(637, 238);
+            this.Controls.Add(this.rtxtHelp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmHelp";
-            this.Text = "Help";
+            this.Name = "frmCustomShortcutManagerHelp";
+            this.Text = "Custom Shortcut Manager - About";
+            this.Load += new System.EventHandler(this.frmHelp_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox rtxtAbout;
+        private System.Windows.Forms.RichTextBox rtxtHelp;
     }
 }

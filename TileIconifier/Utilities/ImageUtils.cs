@@ -5,10 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using TileIconifier.Forms;
 
 namespace TileIconifier.Utilities
 {
-    class ImageUtilities
+    class ImageUtils
     {
         public static Bitmap LoadIconifiedBitmap(string path)
         {
@@ -21,13 +23,17 @@ namespace TileIconifier.Utilities
             }
             catch
             {
-                try
-                {
-                    File.Move(path, path + "_BAD.png");
-                }
-                catch { }
             }
             return null;
+        }
+        
+        public static Bitmap GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
+        {
+            frmIconSelector iconSelector = new frmIconSelector(defaultPathForIconExtraction);
+            iconSelector.ShowDialog(owner);
+            if (iconSelector.ReturnedBitmap == null)
+                throw new UserCancellationException();
+            return iconSelector.ReturnedBitmap;
         }
 
         public static bool BitmapsAreEqual(Bitmap image1, Bitmap image2)

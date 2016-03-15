@@ -46,16 +46,16 @@
             this.lblLoading.Location = new System.Drawing.Point(0, 0);
             this.lblLoading.Margin = new System.Windows.Forms.Padding(0);
             this.lblLoading.Name = "lblLoading";
-            this.lblLoading.Size = new System.Drawing.Size(347, 68);
+            this.lblLoading.Size = new System.Drawing.Size(259, 44);
             this.lblLoading.TabIndex = 0;
             this.lblLoading.Text = "...................";
             this.lblLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmLoadingSplash
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(347, 68);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(259, 44);
             this.ControlBox = false;
             this.Controls.Add(this.lblLoading);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
