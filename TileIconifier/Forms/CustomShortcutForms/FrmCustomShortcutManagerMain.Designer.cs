@@ -1,6 +1,6 @@
-﻿namespace TileIconifier.Forms
+﻿namespace TileIconifier.Forms.CustomShortcutForms
 {
-    partial class frmCustomShortcutManagerMain
+    partial class FrmCustomShortcutManagerMain
     {
         /// <summary>
         /// Required designer variable.
@@ -100,7 +100,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(501, 159);
-            this.Name = "frmCustomShortcutManagerMain";
+            this.Name = "FrmCustomShortcutManagerMain";
             this.Text = "Custom Shortcut Manager";
             this.Load += new System.EventHandler(this.frmCustomShortcutManagerMain_Load);
             this.menuStrip1.ResumeLayout(false);

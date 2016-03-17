@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
 namespace TileIconifier.Utilities
 {
@@ -11,9 +6,9 @@ namespace TileIconifier.Utilities
     {
         public static string GetUniqueDirName(string sourcefolder)
         {
-            string dir = sourcefolder;
+            var dir = sourcefolder;
 
-            for (int i = 1; ; ++i)
+            for (var i = 1;; ++i)
             {
                 if (!Directory.Exists(dir))
                 {

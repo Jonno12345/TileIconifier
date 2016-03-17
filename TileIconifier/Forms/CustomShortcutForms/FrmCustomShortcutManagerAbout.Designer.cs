@@ -1,6 +1,6 @@
-﻿namespace TileIconifier.Forms
+﻿namespace TileIconifier.Forms.CustomShortcutForms
 {
-    partial class frmCustomShortcutManagerHelp
+    partial class FrmCustomShortcutManagerHelp
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomShortcutManagerHelp));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomShortcutManagerHelp));
             this.rtxtHelp = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
@@ -52,7 +52,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmCustomShortcutManagerHelp";
+            this.Name = "FrmCustomShortcutManagerHelp";
             this.Text = "Custom Shortcut Manager - About";
             this.Load += new System.EventHandler(this.frmHelp_Load);
             this.ResumeLayout(false);

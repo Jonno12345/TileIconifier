@@ -1,6 +1,6 @@
 ﻿namespace TileIconifier.Forms
 {
-    partial class frmIconSelector
+    partial class FrmIconSelector
     {
         /// <summary>
         /// Required designer variable.

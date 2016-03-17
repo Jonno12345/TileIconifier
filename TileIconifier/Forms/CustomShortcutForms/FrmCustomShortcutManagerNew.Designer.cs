@@ -1,6 +1,6 @@
-﻿namespace TileIconifier.Forms
+﻿namespace TileIconifier.Forms.CustomShortcutForms
 {
-    partial class frmCustomShortcutManagerNew
+    partial class FrmCustomShortcutManagerNew
     {
         /// <summary>
         /// Required designer variable.
@@ -441,7 +441,7 @@
             this.Controls.Add(this.pctCurrentIcon);
             this.Controls.Add(this.tabShortcutType);
             this.MinimumSize = new System.Drawing.Size(668, 409);
-            this.Name = "frmCustomShortcutManagerNew";
+            this.Name = "FrmCustomShortcutManagerNew";
             this.Text = "New Custom Shortcut";
             this.tabShortcutType.ResumeLayout(false);
             this.tabExplorer.ResumeLayout(false);

@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TileIconifier.Custom
 {
-    static class CustomShortcutConstants
+    internal static class CustomShortcutGetters
     {
-        public static string CUSTOM_SHORTCUT_VBS_PATH { get { return Environment.ExpandEnvironmentVariables(@"%PROGRAMDATA%\TileIconify\"); } }
-        public static string CUSTOM_SHORTCUT_CURRENT_USER_PATH { get { return Environment.ExpandEnvironmentVariables(@"%APPDATA%\Microsoft\Windows\Start Menu\Programs\TileIconify\Custom Shortcuts\"); } }
-        public static string CUSTOM_SHORTCUT_ALL_USERS_PATH { get { return Environment.ExpandEnvironmentVariables(@"%PROGRAMDATA%\Microsoft\Windows\Start Menu\Programs\TileIconify\Custom Shortcuts\"); } }
-        public static string EXPLORER_PATH { get { return Environment.ExpandEnvironmentVariables(@"%SYSTEMROOT%\explorer.exe"); } }
+        public static string CustomShortcutVbsPath
+            => Environment.ExpandEnvironmentVariables(@"%PROGRAMDATA%\TileIconify\");
 
-        public static Dictionary<string, string> EXPLORER_GUIDS { get { return _explorerGuids; } }
+        public static string CustomShortcutCurrentUserPath => Environment.ExpandEnvironmentVariables(
+            @"%APPDATA%\Microsoft\Windows\Start Menu\Programs\TileIconify\Custom Shortcuts\");
 
-        static Dictionary<string, string> _explorerGuids = new Dictionary<string, string>()
+        public static string CustomShortcutAllUsersPath => Environment.ExpandEnvironmentVariables(
+            @"%PROGRAMDATA%\Microsoft\Windows\Start Menu\Programs\TileIconify\Custom Shortcuts\");
+
+        public static string ExplorerPath => Environment.ExpandEnvironmentVariables(@"%SYSTEMROOT%\explorer.exe");
+
+        public static Dictionary<string, string> ExplorerGuids { get; } = new Dictionary<string, string>
         {
             {"Action Center", "{BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}"},
             {"Add Features", "{BE122A0E-4503-11DA-8BDE-F66BAD1E3F3A}"},
@@ -132,21 +133,21 @@ namespace TileIconifier.Custom
             {"Windows Mobility Center", "{5ea4f148-308c-46d7-98a9-49041b1dd468}"},
             {"Windows To Go", "{8E0C279D-0BD1-43C3-9EBD-31C3DC5B8A77}"},
             {"Windows Update", "{36eef7db-88ad-4e81-ad49-0e313f0c35f8}"},
-            {"Work Folders", "{ECDB0924-4208-451E-8EE0-373C0956DE16}"},
+            {"Work Folders", "{ECDB0924-4208-451E-8EE0-373C0956DE16}"}
         };
     }
 
     public enum CustomShortcutType
     {
-        EXPLORER = 0,
-        STEAM = 1,
-        OTHER = 2
+        Explorer = 0,
+        Steam = 1,
+        Other = 2
     }
 
     public enum ShortcutUser
     {
-        UNKNOWN = 0,
-        ALL_USERS = 1,
-        CURRENT_USER = 2
+        Unknown = 0,
+        AllUsers = 1,
+        CurrentUser = 2
     }
 }

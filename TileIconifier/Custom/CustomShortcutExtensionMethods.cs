@@ -1,29 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TileIconifier.Custom
 {
-    static class CustomShortcutExtensionMethods
+    internal static class CustomShortcutExtensionMethods
     {
-
         //These are potentially buggy!
         internal static string UnescapeVba(this string input)
         {
             return input.Replace("\"\"", "\"");
         }
+
         internal static string EscapeVba(this string input)
         {
             return input.Replace("\"", "\"\"");
         }
 
-
-
         /// <summary>
-        /// Extension method to wrap a string with double quotes
+        ///     Extension method to wrap a string with double quotes
         /// </summary>
         /// <param name="input"></param>
         /// <returns>Original string with " surrounding</returns>
@@ -33,13 +27,15 @@ namespace TileIconifier.Custom
         }
 
         /// <summary>
-        /// Quick and dirty extension method to remove any invalid characters and replace with a space
+        ///     Quick and dirty extension method to remove any invalid characters and replace with a space
         /// </summary>
         /// <param name="input"></param>
         /// <returns>Cleaned string for paths/filenames</returns>
         internal static string CleanInvalidFilenameChars(this string input)
         {
-            return string.Join("", input.Split(Path.GetInvalidFileNameChars(), StringSplitOptions.RemoveEmptyEntries)).TrimEnd('.');
+            return
+                string.Join("", input.Split(Path.GetInvalidFileNameChars(), StringSplitOptions.RemoveEmptyEntries))
+                    .TrimEnd('.');
         }
     }
 }

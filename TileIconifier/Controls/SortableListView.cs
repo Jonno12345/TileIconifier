@@ -1,40 +1,32 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 using System.Windows.Forms;
 
 namespace TileIconifier.Controls
 {
-    class SortableListView : ListView
+    internal class SortableListView : ListView
     {
-        protected int sortColumn;
+        protected int SortColumn;
 
-        public SortableListView() : base()
+        public SortableListView()
         {
             ColumnClick += SortableListView_ColumnClick;
         }
-        
+
         private void SortableListView_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            SortableListView listView = (SortableListView)sender;
+            var listView = (SortableListView) sender;
             // Determine whether the column is the same as the last column clicked.
-            if (e.Column != sortColumn)
+            if (e.Column != SortColumn)
             {
                 // Set the sort column to the new column.
-                sortColumn = e.Column;
+                SortColumn = e.Column;
                 // Set the sort order to ascending by default.
                 listView.Sorting = SortOrder.Ascending;
             }
             else
             {
                 // Determine what the last sort order was and change it.
-                if (listView.Sorting == SortOrder.Ascending)
-                    listView.Sorting = SortOrder.Descending;
-                else
-                    listView.Sorting = SortOrder.Ascending;
+                listView.Sorting = listView.Sorting == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
             }
 
             // Call the sort method to manually sort.
@@ -45,31 +37,31 @@ namespace TileIconifier.Controls
         }
     }
 
-    class ListViewItemComparer : IComparer
+    internal class ListViewItemComparer : IComparer
     {
-        private int col;
-        private SortOrder order;
+        private readonly int _col;
+        private readonly SortOrder _order;
+
         public ListViewItemComparer()
         {
-            col = 0;
-            order = SortOrder.Ascending;
+            _col = 0;
+            _order = SortOrder.Ascending;
         }
+
         public ListViewItemComparer(int column, SortOrder order)
         {
-            col = column;
-            this.order = order;
+            _col = column;
+            _order = order;
         }
+
         public int Compare(object x, object y)
         {
-            int returnVal = -1;
-            returnVal = String.Compare(((ListViewItem)x).SubItems[col].Text,
-                                    ((ListViewItem)y).SubItems[col].Text);
+            var returnVal = string.CompareOrdinal(((ListViewItem) x).SubItems[_col].Text, ((ListViewItem) y).SubItems[_col].Text);
             // Determine whether the sort order is descending.
-            if (order == SortOrder.Descending)
+            if (_order == SortOrder.Descending)
                 // Invert the value returned by String.Compare.
                 returnVal *= -1;
             return returnVal;
         }
     }
-
 }

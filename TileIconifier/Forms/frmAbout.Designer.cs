@@ -1,6 +1,6 @@
 ﻿namespace TileIconifier.Forms
 {
-    partial class frmAbout
+    partial class FrmAbout
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbout));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAbout));
             this.rtxtAbout = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
@@ -52,7 +52,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmAbout";
+            this.Name = "FrmAbout";
             this.Text = "About TileIconifier";
             this.Load += new System.EventHandler(this.frmAbout_Load);
             this.ResumeLayout(false);

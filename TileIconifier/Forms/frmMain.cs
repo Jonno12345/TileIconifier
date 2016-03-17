@@ -1,34 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.IO;
-using System.Linq;
-using System.Management.Automation;
-using System.Management.Automation.Runspaces;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using TileIconifier.Steam;
+using TileIconifier.Forms.CustomShortcutForms;
+using TileIconifier.Shortcut;
+using TileIconifier.TileIconify;
 using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms
 {
-    public partial class frmMain : Form
+    public partial class FrmMain : Form
     {
-        List<ShortcutItem> _shortcutsList;
-        ShortcutItem _currentShortcut;
+        private ShortcutItem _currentShortcut;
+        private List<ShortcutItem> _shortcutsList;
 
-        public frmMain()
+        public FrmMain()
         {
             InitializeComponent();
             AddEventHandlers();
         }
-
 
         private void frmDropper_Load(object sender, EventArgs e)
         {
@@ -38,16 +30,12 @@ namespace TileIconifier.Forms
 
         private void StartFullUpdate()
         {
-            frmLoadingSplash loadingSplash = new frmLoadingSplash();
-            loadingSplash.StartPosition = FormStartPosition.CenterParent;
+            var loadingSplash = new FrmLoadingSplash {StartPosition = FormStartPosition.CenterParent};
             loadingSplash.SetTitle("Refreshing");
 
-            BackgroundWorker updateThread = new BackgroundWorker();
-            updateThread.DoWork += new DoWorkEventHandler(FullUpdate);
-            updateThread.RunWorkerCompleted += new RunWorkerCompletedEventHandler((o, e) =>
-            {
-                loadingSplash.WorkCompleted();
-            });
+            var updateThread = new BackgroundWorker();
+            updateThread.DoWork += FullUpdate;
+            updateThread.RunWorkerCompleted += (o, e) => { loadingSplash.WorkCompleted(); };
 
             updateThread.RunWorkerAsync();
             loadingSplash.ShowDialog(this);
@@ -57,11 +45,14 @@ namespace TileIconifier.Forms
         {
             if (getPinnedItemsRequiresPowershellToolStripMenuItem.Checked)
             {
-                Exception pinningException = null;
+                Exception pinningException;
                 _shortcutsList = ShortcutItemEnumeration.TryGetShortcutsWithPinning(out pinningException, true);
                 if (pinningException != null)
                 {
-                    MessageBox.Show("A problem occurred with PowerShell functionality. It has been disabled.\r\n" + pinningException.ToString() + "\r\n\r\n" + pinningException.Message, "PowerShell failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        @"A problem occurred with PowerShell functionality. It has been disabled.\r\n" + pinningException +
+                        "\r\n" + pinningException.Message, @"PowerShell failure", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     getPinnedItemsRequiresPowershellToolStripMenuItem_Click(this, null);
                 }
             }
@@ -83,8 +74,8 @@ namespace TileIconifier.Forms
 
             try
             {
-                var TileIconify = new TileIcon(_currentShortcut);
-                TileIconify.RunIconify();
+                var tileIconify = new TileIcon(_currentShortcut);
+                tileIconify.RunIconify();
                 _currentShortcut.CommitChanges();
                 UpdateShortcut();
             }
@@ -93,7 +84,7 @@ namespace TileIconifier.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + " - " + ex.ToString());
+                MessageBox.Show(ex.Message + @" - " + ex);
             }
         }
 
@@ -102,10 +93,12 @@ namespace TileIconifier.Forms
             if (!DoValidation())
                 return;
 
-            if (MessageBox.Show("Are you sure you wish to remove iconification?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (
+                MessageBox.Show(@"Are you sure you wish to remove iconification?", @"Confirm", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                var TileDeIconify = new TileIcon(_currentShortcut);
-                TileDeIconify.DeIconify();
+                var tileDeIconify = new TileIcon(_currentShortcut);
+                tileDeIconify.DeIconify();
                 _currentShortcut.ResetParameters();
                 UpdateShortcut();
             }
@@ -127,11 +120,15 @@ namespace TileIconifier.Forms
 
         private bool ValidateColour()
         {
-            bool valid = true;
+            var valid = true;
 
-            Action<Control> controlInvalid = (c => { c.BackColor = Color.Red; valid = false; });
+            Action<Control> controlInvalid = (c =>
+            {
+                c.BackColor = Color.Red;
+                valid = false;
+            });
 
-            if (cmbColour.Text == "Custom" && !Regex.Match(txtBGColour.Text, @"^#\d{6}$").Success)
+            if (cmbColour.Text == @"Custom" && !Regex.Match(txtBGColour.Text, @"^#\d{6}$").Success)
                 controlInvalid(txtBGColour);
 
             if (_currentShortcut.MediumImage == null)
@@ -145,13 +142,10 @@ namespace TileIconifier.Forms
 
         private void cmbColour_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtBGColour.Enabled = (cmbColour.Text == "Custom");
+            txtBGColour.Enabled = (cmbColour.Text == @"Custom");
             if (_currentShortcut != null)
             {
-                if (cmbColour.Text == "Custom")
-                    _currentShortcut.BackgroundColor = txtBGColour.Text;
-                else
-                    _currentShortcut.BackgroundColor = cmbColour.Text;
+                _currentShortcut.BackgroundColor = cmbColour.Text == @"Custom" ? txtBGColour.Text : cmbColour.Text;
                 UpdateShortcut();
             }
         }
@@ -160,13 +154,13 @@ namespace TileIconifier.Forms
         {
             radFGDark.Enabled = chkFGTxtEnabled.Checked;
             radFGLight.Enabled = chkFGTxtEnabled.Checked;
-            _currentShortcut.ShowNameOnSquare150x150Logo = chkFGTxtEnabled.Checked;
+            _currentShortcut.ShowNameOnSquare150X150Logo = chkFGTxtEnabled.Checked;
             UpdateShortcut();
         }
 
         private void lstShortcuts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentShortcut = (ShortcutItem)lstShortcuts.SelectedItem;
+            _currentShortcut = (ShortcutItem) lstShortcuts.SelectedItem;
             UpdateShortcut();
         }
 
@@ -192,9 +186,11 @@ namespace TileIconifier.Forms
             btnRemove.Enabled = _currentShortcut.IsIconified;
 
             //update the picture boxes to show the relevant images
-            pctStandardIcon.Image = (Image)_currentShortcut.StandardIcon.Clone();
-            pctMediumIcon.Image = _currentShortcut.MediumImage != null ? (Image)_currentShortcut.MediumImage.Clone() : null;
-            pctSmallIcon.Image = _currentShortcut.MediumImage != null ? (Image)_currentShortcut.SmallImage.Clone() : null;
+            pctStandardIcon.Image = (Image) _currentShortcut.StandardIcon?.Clone();
+            pctMediumIcon.Image = (Image) _currentShortcut.MediumImage?.Clone();
+            pctSmallIcon.Image = _currentShortcut.MediumImage != null
+                ? (Image) _currentShortcut.SmallImage?.Clone()
+                : null;
 
             //set relevant unsaved changes controls to required visibility/enabled states
             lblUnsaved.Visible = hasUnsavedChanges;
@@ -209,13 +205,13 @@ namespace TileIconifier.Forms
             }
             else
             {
-                cmbColour.Text = "Custom";
+                cmbColour.Text = @"Custom";
                 txtBGColour.Enabled = true;
                 txtBGColour.Text = _currentShortcut.BackgroundColor;
             }
 
             //set the foreground text checkbox based on value stored for this shortcut
-            chkFGTxtEnabled.Checked = _currentShortcut.ShowNameOnSquare150x150Logo;
+            chkFGTxtEnabled.Checked = _currentShortcut.ShowNameOnSquare150X150Logo;
 
             //enable radio buttons if the foreground text is enabled
             radFGDark.Enabled = chkFGTxtEnabled.Checked;
@@ -242,16 +238,16 @@ namespace TileIconifier.Forms
             if (getPinnedItemsRequiresPowershellToolStripMenuItem.Checked)
             {
                 if (InvokeRequired)
-                    Invoke(new Action(() =>
-                    {
-                        getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = false;
-                    }));
+                    Invoke(new Action(() => { getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = false; }));
                 else
                     getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = false;
             }
             else
             {
-                if (MessageBox.Show("Note- This feature uses Powershell and may take slightly longer to refresh. Continue?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (
+                    MessageBox.Show(
+                        @"Note- This feature uses Powershell and may take slightly longer to refresh. Continue?",
+                        @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = true;
                 }
@@ -259,50 +255,53 @@ namespace TileIconifier.Forms
             StartFullUpdate();
         }
 
-
         private void pctMediumIcon_Click(object sender, EventArgs e)
         {
             try
             {
-                var ImageToUse = ImageUtils.GetImage(this, _currentShortcut.TargetFilePath);
-                _currentShortcut.MediumImage = ImageToUse;
+                var imageToUse = ImageUtils.GetImage(this, _currentShortcut.TargetFilePath);
+                _currentShortcut.MediumImage = imageToUse;
 
                 if (chkUseSameImg.Checked)
-                    _currentShortcut.SmallImage = ImageToUse;
+                    _currentShortcut.SmallImage = imageToUse;
 
                 UpdateShortcut();
             }
-            catch (UserCancellationException) { }
+            catch (UserCancellationException)
+            {
+            }
         }
 
         private void pctSmallIcon_Click(object sender, EventArgs e)
         {
             try
             {
-                var ImageToUse = ImageUtils.GetImage(this, _currentShortcut.TargetFilePath);
-                _currentShortcut.SmallImage = ImageToUse;
+                var imageToUse = ImageUtils.GetImage(this, _currentShortcut.TargetFilePath);
+                _currentShortcut.SmallImage = imageToUse;
 
                 if (chkUseSameImg.Checked)
-                    _currentShortcut.MediumImage = ImageToUse;
+                    _currentShortcut.MediumImage = imageToUse;
 
                 UpdateShortcut();
             }
-            catch (UserCancellationException) { }
+            catch (UserCancellationException)
+            {
+            }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormUtils.ShowCenteredDialogForm<frmAbout>(this);
+            FormUtils.ShowCenteredDialogForm<FrmAbout>(this);
         }
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormUtils.ShowCenteredDialogForm<frmHelp>(this);
+            FormUtils.ShowCenteredDialogForm<FrmHelp>(this);
         }
 
         private void customShortcutManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var customShortcutManager = new frmCustomShortcutManagerMain())
+            using (var customShortcutManager = new FrmCustomShortcutManagerMain())
             {
                 customShortcutManager.ShowDialog(this);
             }
@@ -322,10 +321,7 @@ namespace TileIconifier.Forms
 
         private void radFGLight_CheckedChanged(object sender, EventArgs e)
         {
-            if (radFGLight.Checked)
-                _currentShortcut.ForegroundText = "light";
-            else
-                _currentShortcut.ForegroundText = "dark";
+            _currentShortcut.ForegroundText = radFGLight.Checked ? "light" : "dark";
 
             UpdateShortcut();
         }
@@ -339,21 +335,20 @@ namespace TileIconifier.Forms
 
         private void AddEventHandlers()
         {
-            this.txtBGColour.TextChanged += new System.EventHandler(this.txtBGColour_TextChanged);
-            this.cmbColour.SelectedIndexChanged += new System.EventHandler(this.cmbColour_SelectedIndexChanged);
-            this.chkFGTxtEnabled.CheckedChanged += new System.EventHandler(this.chkFGTxtEnabled_CheckedChanged);
-            this.radFGLight.CheckedChanged += new System.EventHandler(this.radFGLight_CheckedChanged);
-            this.lstShortcuts.SelectedIndexChanged += new System.EventHandler(this.lstShortcuts_SelectedIndexChanged);
+            txtBGColour.TextChanged += txtBGColour_TextChanged;
+            cmbColour.SelectedIndexChanged += cmbColour_SelectedIndexChanged;
+            chkFGTxtEnabled.CheckedChanged += chkFGTxtEnabled_CheckedChanged;
+            radFGLight.CheckedChanged += radFGLight_CheckedChanged;
+            lstShortcuts.SelectedIndexChanged += lstShortcuts_SelectedIndexChanged;
         }
 
         private void RemoveEventHandlers()
         {
-            this.txtBGColour.TextChanged -= new System.EventHandler(this.txtBGColour_TextChanged);
-            this.cmbColour.SelectedIndexChanged -= new System.EventHandler(this.cmbColour_SelectedIndexChanged);
-            this.chkFGTxtEnabled.CheckedChanged -= new System.EventHandler(this.chkFGTxtEnabled_CheckedChanged);
-            this.radFGLight.CheckedChanged -= new System.EventHandler(this.radFGLight_CheckedChanged);
-            this.lstShortcuts.SelectedIndexChanged -= new System.EventHandler(this.lstShortcuts_SelectedIndexChanged);
+            txtBGColour.TextChanged -= txtBGColour_TextChanged;
+            cmbColour.SelectedIndexChanged -= cmbColour_SelectedIndexChanged;
+            chkFGTxtEnabled.CheckedChanged -= chkFGTxtEnabled_CheckedChanged;
+            radFGLight.CheckedChanged -= radFGLight_CheckedChanged;
+            lstShortcuts.SelectedIndexChanged -= lstShortcuts_SelectedIndexChanged;
         }
-
     }
 }

@@ -1,13 +1,9 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using TileIconifier.Properties;
 
 namespace TileIconifier.Steam
@@ -15,11 +11,12 @@ namespace TileIconifier.Steam
     [Serializable]
     public class SteamGame : ListViewItem
     {
-        public string AppId { get; private set; }
-        public string GameName { get; private set; }
-        public string AppManifestPath { get; private set; }
+        private string _iconPath;
 
-        protected SteamGame(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected SteamGame(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
+
         public SteamGame(string appId, string gameName, string appManifestPath)
         {
             AppId = appId;
@@ -29,18 +26,26 @@ namespace TileIconifier.Steam
             SubItems.Add(GameName);
         }
 
-        private string _iconPath;
+        public string AppId { get; }
+        public string GameName { get; }
+        public string AppManifestPath { get; private set; }
+
         public string IconPath
         {
             get
             {
-                if (_iconPath == null)
-                {
-                    var defaultRegistryKey = string.Format(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {0}", AppId);
-                    var defaultRegistryKey32BitOs = string.Format(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {0}", AppId);
+                if (_iconPath != null) return _iconPath;
+                var defaultRegistryKey =
+                    string.Format(
+                        @"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {0}",
+                        AppId);
+                var defaultRegistryKey32BitOs =
+                    string.Format(
+                        @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {0}",
+                        AppId);
 
-                    _iconPath = (string)Registry.GetValue(defaultRegistryKey, "DisplayIcon", null) ?? (string)Registry.GetValue(defaultRegistryKey32BitOs, "DisplayIcon", null);
-                }
+                _iconPath = (string) Registry.GetValue(defaultRegistryKey, "DisplayIcon", null) ??
+                            (string) Registry.GetValue(defaultRegistryKey32BitOs, "DisplayIcon", null);
                 return _iconPath;
             }
         }
@@ -53,22 +58,19 @@ namespace TileIconifier.Steam
                 {
                     try
                     {
-                        FileStream readImage = new FileStream(IconPath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                        var readImage = new FileStream(IconPath, FileMode.Open, FileAccess.Read, FileShare.Read);
                         return new Bitmap(readImage);
                     }
-                    catch { }
+                    catch
+                    {
+                        // ignored
+                    }
                 }
                 return Resources.SteamIco.ToBitmap();
             }
         }
 
-        public string GameExecutionArgument
-        {
-            get
-            {
-                return string.Format("-applaunch \"{0}\"", AppId);
-            }
-        }
+        public string GameExecutionArgument => string.Format("-applaunch \"{0}\"", AppId);
 
         public override string ToString()
         {

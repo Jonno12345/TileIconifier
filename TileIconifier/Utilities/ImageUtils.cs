@@ -1,35 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TileIconifier.Forms;
 
 namespace TileIconifier.Utilities
 {
-    class ImageUtils
+    internal class ImageUtils
     {
         public static Bitmap LoadIconifiedBitmap(string path)
         {
             try
             {
-                FileStream bitmapFile = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                Bitmap Logo = new Bitmap(bitmapFile);
+                var bitmapFile = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                var logo = new Bitmap(bitmapFile);
                 bitmapFile.Close();
-                return Logo;
+                return logo;
             }
             catch
             {
+                // ignored
             }
             return null;
         }
-        
+
         public static Bitmap GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
         {
-            frmIconSelector iconSelector = new frmIconSelector(defaultPathForIconExtraction);
+            var iconSelector = new FrmIconSelector(defaultPathForIconExtraction);
             iconSelector.ShowDialog(owner);
             if (iconSelector.ReturnedBitmap == null)
                 throw new UserCancellationException();
@@ -48,9 +44,9 @@ namespace TileIconifier.Utilities
             {
                 return false;
             }
-            for (int x = 0; x < image1.Width; ++x)
+            for (var x = 0; x < image1.Width; ++x)
             {
-                for (int y = 0; y < image1.Height; ++y)
+                for (var y = 0; y < image1.Height; ++y)
                 {
                     if (image1.GetPixel(x, y) != image2.GetPixel(x, y))
                     {

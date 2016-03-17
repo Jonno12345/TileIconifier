@@ -89,77 +89,77 @@
     <Compile Include="Custom\CustomShortcutExtensionMethods.cs" />
     <Compile Include="Custom\CustomShortcut.cs" />
     <Compile Include="Custom\NewCustomShortcutFormCache.cs" />
-    <Compile Include="Forms\CustomShortcut\frmCustomShortcutManagerAbout.cs">
+    <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CustomShortcut\frmCustomShortcutManagerAbout.Designer.cs">
-      <DependentUpon>frmCustomShortcutManagerAbout.cs</DependentUpon>
+    <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerAbout.Designer.cs">
+      <DependentUpon>FrmCustomShortcutManagerAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CustomShortcut\frmCustomShortcutManagerMain.cs">
+    <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CustomShortcut\frmCustomShortcutManagerMain.Designer.cs">
-      <DependentUpon>frmCustomShortcutManagerMain.cs</DependentUpon>
+    <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerMain.Designer.cs">
+      <DependentUpon>FrmCustomShortcutManagerMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CustomShortcut\frmCustomShortcutManagerNew.cs">
+    <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CustomShortcut\frmCustomShortcutManagerNew.Designer.cs">
-      <DependentUpon>frmCustomShortcutManagerNew.cs</DependentUpon>
+    <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerNew.Designer.cs">
+      <DependentUpon>FrmCustomShortcutManagerNew.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmUnhandledException.cs">
+    <Compile Include="Forms\FrmUnhandledException.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmUnhandledException.Designer.cs">
-      <DependentUpon>frmUnhandledException.cs</DependentUpon>
+    <Compile Include="Forms\FrmUnhandledException.Designer.cs">
+      <DependentUpon>FrmUnhandledException.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmHelp.cs">
+    <Compile Include="Forms\FrmHelp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmHelp.Designer.cs">
-      <DependentUpon>frmHelp.cs</DependentUpon>
+    <Compile Include="Forms\FrmHelp.Designer.cs">
+      <DependentUpon>FrmHelp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmMain.cs">
+    <Compile Include="Forms\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="Forms\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="IconExtractor\IconExtractor.cs" />
     <Compile Include="IconExtractor\IconUtil.cs" />
     <Compile Include="IconExtractor\NativeMethods.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShortcutItem\ShortcutItemEnumeration.cs" />
-    <Compile Include="ShortcutItem\ShortcutItemParameters.cs" />
+    <Compile Include="Shortcut\ShortcutItemEnumeration.cs" />
+    <Compile Include="Shortcut\ShortcutItemParameters.cs" />
     <Compile Include="Steam\KeyValues\KeyValues.cs" />
     <Compile Include="Steam\KeyValues\KeyValues_Data.cs" />
     <Compile Include="Steam\KeyValues\Utils.cs" />
     <Compile Include="Steam\SteamGame.cs" />
-    <Compile Include="TileIconifier\TileIcon.cs" />
-    <Compile Include="Forms\frmAbout.cs">
+    <Compile Include="TileIconify\TileIcon.cs" />
+    <Compile Include="Forms\FrmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmAbout.Designer.cs">
-      <DependentUpon>frmAbout.cs</DependentUpon>
+    <Compile Include="Forms\FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLoadingSplash.cs">
+    <Compile Include="Forms\FrmLoadingSplash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLoadingSplash.Designer.cs">
-      <DependentUpon>frmLoadingSplash.cs</DependentUpon>
+    <Compile Include="Forms\FrmLoadingSplash.Designer.cs">
+      <DependentUpon>FrmLoadingSplash.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\DirectoryUtils.cs" />
     <Compile Include="Utilities\FormUtils.cs" />
     <Compile Include="Utilities\ImageUtils.cs" />
     <Compile Include="Utilities\PowerShellUtils.cs" />
-    <Compile Include="ShortcutItem\ShortcutItem.cs" />
+    <Compile Include="Shortcut\ShortcutItem.cs" />
     <Compile Include="CustomExceptions.cs" />
-    <Compile Include="Forms\frmIconSelector.cs">
+    <Compile Include="Forms\FrmIconSelector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmIconSelector.Designer.cs">
-      <DependentUpon>frmIconSelector.cs</DependentUpon>
+    <Compile Include="Forms\FrmIconSelector.Designer.cs">
+      <DependentUpon>FrmIconSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\ShortcutUtils.cs" />
     <Compile Include="Controls\ListBoxWithTyping.cs">
@@ -169,23 +169,23 @@
     <EmbeddedResource Include="Controls\AllOrCurrentUserRadios.resx">
       <DependentUpon>AllOrCurrentUserRadios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomShortcut\frmCustomShortcutManagerAbout.resx">
-      <DependentUpon>frmCustomShortcutManagerAbout.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerAbout.resx">
+      <DependentUpon>FrmCustomShortcutManagerAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomShortcut\frmCustomShortcutManagerMain.resx">
-      <DependentUpon>frmCustomShortcutManagerMain.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerMain.resx">
+      <DependentUpon>FrmCustomShortcutManagerMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomShortcut\frmCustomShortcutManagerNew.resx">
-      <DependentUpon>frmCustomShortcutManagerNew.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerNew.resx">
+      <DependentUpon>FrmCustomShortcutManagerNew.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmUnhandledException.resx">
-      <DependentUpon>frmUnhandledException.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmUnhandledException.resx">
+      <DependentUpon>FrmUnhandledException.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmHelp.resx">
-      <DependentUpon>frmHelp.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmHelp.resx">
+      <DependentUpon>FrmHelp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -197,14 +197,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Forms\frmAbout.resx">
-      <DependentUpon>frmAbout.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmIconSelector.resx">
-      <DependentUpon>frmIconSelector.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmIconSelector.resx">
+      <DependentUpon>FrmIconSelector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLoadingSplash.resx">
-      <DependentUpon>frmLoadingSplash.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmLoadingSplash.resx">
+      <DependentUpon>FrmLoadingSplash.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>

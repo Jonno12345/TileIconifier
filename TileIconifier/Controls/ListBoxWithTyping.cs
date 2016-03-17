@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TileIconifier
+namespace TileIconifier.Controls
 {
     /// <summary>
-    /// Allows typing first few letters in a list box to jump to that item - a little hacky
+    ///     Allows typing first few letters in a list box to jump to that item - a little hacky
     /// </summary>
     public class ListBoxWithTyping : ListBox
     {
@@ -34,11 +30,9 @@ namespace TileIconifier
             for (var i = 0; i < Items.Count; i++)
             {
                 var item = Items[i].ToString();
-                if (item.ToLower().StartsWith(_searchString))
-                {
-                    SelectedIndex = i;
-                    break;
-                }
+                if (!item.ToLower().StartsWith(_searchString)) continue;
+                SelectedIndex = i;
+                break;
             }
             _lastKeyPress = newDate;
             e.Handled = true;

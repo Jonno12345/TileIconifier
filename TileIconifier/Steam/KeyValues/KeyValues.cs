@@ -19,12 +19,15 @@
  *  
  * ***************************************************************************
 */
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 
-namespace Callysto
+namespace TileIconifier.Steam.KeyValues
 {
     /// <summary>
     /// KeyValues Class
@@ -34,82 +37,27 @@ namespace Callysto
     {
         #region Variables
 
-        private object TagObj;
-        public object Tag
-        {
-            get { return TagObj; }
-            set { TagObj = value; }
-        }
+        public object Tag { get; set; }
 
-        private string szName;
-        public string Name
-        {
-            get { return szName; } 
-            set { szName = value; }
-        }
+        public string Name { get; set; }
 
-        private string szComment;
-        public string Comment
-        {
-            get { return szComment; }
-            set { szComment = value; }
-        }
+        public string Comment { get; set; }
 
-        private List<KeyValuesData> KeyNameValuesList;
-        public List<KeyValuesData> KeyNameValues
-        {
-            get { return KeyNameValuesList; }
-            private set { KeyNameValuesList = value; }
-        }
+        public List<KeyValuesData> KeyNameValues { get; set; }
 
-        private List<KeyValues> KeyChildsList;
-        public List<KeyValues> KeyChilds
-        {
-            get { return KeyChildsList; }
-            private set { KeyChildsList = value; }
-        }
+        public List<KeyValues> KeyChilds { get; set; }
 
-        private List<string> IncludedFilesList;
-        public List<string> IncludedFiles
-        {
-            get { return IncludedFilesList; }
-            private set { IncludedFilesList = value; }
-        }
+        public List<string> IncludedFiles { get; private set; }
 
-        private KeyValues FirstParentKV;
-        public KeyValues FirstParent
-        {
-            get { return FirstParentKV; }
-            private set { FirstParentKV = value; }
-        }
+        public KeyValues FirstParent { get; set; }
 
-        private KeyValues ParentKV;
-        public KeyValues Parent
-        {
-            get { return ParentKV; }
-            private set { ParentKV = value; }
-        }
+        public KeyValues Parent { get; set; }
 
-        private uint iNextSubKeyIndex;
-        public uint NextSubKeyIndex
-        {
-            get { return iNextSubKeyIndex; }
-            private set { iNextSubKeyIndex = value; }
-        }
+        public uint NextSubKeyIndex { get; set; }
 
-        private uint iNextKeyValueIndex;
-        public uint NextKeyValueIndex
-        {
-            get { return iNextKeyValueIndex; }
-            private set { iNextKeyValueIndex = value; }
-        }
+        public uint NextKeyValueIndex { get; set; }
 
-        private uint iDistanceFromTop;
-        public uint DistanceFromTop
-        {
-            get { return iDistanceFromTop; }
-            private set { iDistanceFromTop = value; }
-        }
+        public uint DistanceFromTop { get; set; }
 
         #endregion
 
@@ -220,18 +168,18 @@ namespace Callysto
         {
             if (!onlySubKeys)
             {
-                for (int i = 0; i < kv.KeyNameValues.Count; i++)
-                    kv.KeyNameValues[i].Parent = null;
+                foreach (KeyValuesData t in kv.KeyNameValues)
+                    t.Parent = null;
                 kv.KeyNameValues.Clear();
             }
-            for (int i = 0; i < kv.KeyChilds.Count; i++)
+            foreach (KeyValues t in kv.KeyChilds)
             {
-                CleanFromKv(kv.KeyChilds[i], onlySubKeys);
-                kv.KeyChilds[i].Parent = null;
-                kv.KeyChilds[i].FirstParent = null;
-                kv.KeyChilds[i].DistanceFromTop = 0;
-                kv.KeyChilds[i].NextSubKeyIndex = 0;
-                kv.KeyChilds[i].NextKeyValueIndex = 0;
+                CleanFromKv(t, onlySubKeys);
+                t.Parent = null;
+                t.FirstParent = null;
+                t.DistanceFromTop = 0;
+                t.NextSubKeyIndex = 0;
+                t.NextKeyValueIndex = 0;
             }
             kv.KeyChilds.Clear();
         }
@@ -261,8 +209,8 @@ namespace Callysto
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (KeyValues)) return false;
-            return Equals((KeyValues) obj);
+            if (obj.GetType() != typeof(KeyValues)) return false;
+            return Equals((KeyValues)obj);
         }
 
         /// <summary>
@@ -276,14 +224,15 @@ namespace Callysto
         {
             unchecked
             {
-                int result = (Name != null ? Name.GetHashCode() : 0);
-                result = (result*397) ^ (KeyNameValues != null ? KeyNameValues.GetHashCode() : 0);
-                result = (result*397) ^ (KeyChilds != null ? KeyChilds.GetHashCode() : 0);
-                result = (result*397) ^ (FirstParent != null ? FirstParent.GetHashCode() : 0);
-                result = (result*397) ^ (Parent != null ? Parent.GetHashCode() : 0);
-                result = (result*397) ^ NextSubKeyIndex.GetHashCode();
-                result = (result*397) ^ NextKeyValueIndex.GetHashCode();
-                result = (result*397) ^ DistanceFromTop.GetHashCode();
+                // Getting hash codes from volatile variables doesn't seem a good move...
+                var result = Name?.GetHashCode() ?? 0;
+                result = (result * 397) ^ (KeyNameValues?.GetHashCode() ?? 0);
+                result = (result * 397) ^ (KeyChilds?.GetHashCode() ?? 0);
+                result = (result * 397) ^ (FirstParent?.GetHashCode() ?? 0);
+                result = (result * 397) ^ (Parent?.GetHashCode() ?? 0);
+                result = (result * 397) ^ NextSubKeyIndex.GetHashCode();
+                result = (result * 397) ^ NextKeyValueIndex.GetHashCode();
+                result = (result * 397) ^ DistanceFromTop.GetHashCode();
                 return result;
             }
         }
@@ -305,16 +254,18 @@ namespace Callysto
         /// </returns>
         public KeyValues Clone()
         {
-            KeyValues cloneKV = new KeyValues(Name);
-            cloneKV.DistanceFromTop = DistanceFromTop;
-            cloneKV.Parent = Parent;
-            cloneKV.Comment = Comment;
-            cloneKV.NextKeyValueIndex = NextKeyValueIndex;
-            cloneKV.NextSubKeyIndex = NextSubKeyIndex;
-            cloneKV.IncludedFiles = new List<string>(IncludedFiles);
-            cloneKV.KeyChilds = new List<KeyValues>(KeyChilds);
-            cloneKV.KeyNameValues = new List<KeyValuesData>(KeyNameValues);
-            return cloneKV;
+            KeyValues cloneKv = new KeyValues(Name)
+            {
+                DistanceFromTop = DistanceFromTop,
+                Parent = Parent,
+                Comment = Comment,
+                NextKeyValueIndex = NextKeyValueIndex,
+                NextSubKeyIndex = NextSubKeyIndex,
+                IncludedFiles = new List<string>(IncludedFiles),
+                KeyChilds = new List<KeyValues>(KeyChilds),
+                KeyNameValues = new List<KeyValuesData>(KeyNameValues)
+            };
+            return cloneKv;
         }
 
         /// <summary>
@@ -395,13 +346,14 @@ namespace Callysto
         /// <param name="distanceFromTop">Assert DistanceFromTop according with parent class</param>
         private void UpdateChilds(KeyValues child, uint distanceFromTop)
         {
-            for(int i = 0; i < child.KeyChilds.Count; i++)
+            foreach (KeyValues t in child.KeyChilds)
             {
-                child.KeyChilds[i].FirstParent = FirstParent;
-                child.KeyChilds[i].DistanceFromTop = distanceFromTop;
-                UpdateChilds(child.KeyChilds[i], distanceFromTop+1);
+                t.FirstParent = FirstParent;
+                t.DistanceFromTop = distanceFromTop;
+                UpdateChilds(t, distanceFromTop + 1);
             }
         }
+
         /// <summary>
         /// Update a new KeyValues and make child of this.
         /// This will update (First Parent, Parent, DistanceFromTop).
@@ -447,13 +399,14 @@ namespace Callysto
         /// <param name="keyName">An keyname for the value.</param>
         public bool IsEmpty(string keyName)
         {
-            for (int i = 0; i < KeyNameValues.Count; i++)
+            foreach (KeyValuesData t in KeyNameValues)
             {
-                if (KeyNameValues[i].Key == keyName)
-                    return string.IsNullOrEmpty(KeyNameValues[i].Value);
+                if (t.Key == keyName)
+                    return string.IsNullOrEmpty(t.Value);
             }
             return true;
         }
+
         /// <summary>
         /// Check if a filename is already in the list
         /// </summary>
@@ -463,13 +416,9 @@ namespace Callysto
         /// <param name="fileName">fileName to check.</param>
         public bool ExistsInclude(string fileName)
         {
-            for (int i = 0; i < IncludedFiles.Count; i++)
-            {
-                if(IncludedFiles[i] == fileName)
-                    return true;
-            }
-            return false;
+            return IncludedFiles.Any(t => t == fileName);
         }
+
         /// <summary>
         /// Check if exists a KeyName under that KeyValues Class
         /// </summary>
@@ -479,13 +428,9 @@ namespace Callysto
         /// <param name="keyName">keyName to check.</param>
         public bool ExistsKey(string keyName)
         {
-            for (int i = 0; i < KeyNameValues.Count; i++)
-            {
-                if (KeyNameValues[i].Key == keyName)
-                    return true;
-            }
-            return false;
+            return KeyNameValues.Any(t => t.Key == keyName);
         }
+
         /// <summary>
         /// Check if exists a SubKey under that KeyValues Class
         /// </summary>
@@ -495,13 +440,9 @@ namespace Callysto
         /// <param name="subKeyName">SubKey Name to check.</param>
         public bool ExistsSubKey(string subKeyName)
         {
-            for (int i = 0; i < KeyChilds.Count; i++)
-            {
-                if (KeyChilds[i].Name == subKeyName)
-                    return true;
-            }
-            return false;
+            return KeyChilds.Any(t => t.Name == subKeyName);
         }
+
         #endregion
 
         #region Load From HardDrive
@@ -518,7 +459,7 @@ namespace Callysto
         {
             wasQuoted = false;
             wasComment = false;
-            KeyValuePair<string, string> kvPair = new KeyValuePair<string, string>(null, null);
+            var kvPair = new KeyValuePair<string, string>(null, null);
             if (string.IsNullOrEmpty(line))
                 return kvPair;
 
@@ -549,9 +490,9 @@ namespace Callysto
             {
                 wasQuoted = true;
                 line = line.Remove(0, 1);
-                string[] delimeedString = line.Split(new char[] {'"'}, StringSplitOptions.RemoveEmptyEntries);
-                bool assertSplit = false;
-                foreach (string s in delimeedString)
+                var delimeedString = line.Split(new[] { '"' }, StringSplitOptions.RemoveEmptyEntries);
+                var assertSplit = false;
+                foreach (var s in delimeedString)
                 {
                     //if (string.IsNullOrEmpty(s.Trim())) continue;
                     if (assertSplit)
@@ -563,7 +504,7 @@ namespace Callysto
                     {
                         assertSplit = true;
                         key = s;
-                        string lineCopy = line;
+                        var lineCopy = line;
                         line = line.Replace(s, "").Trim();
                         if (!line.StartsWith("\""))
                         {
@@ -582,14 +523,10 @@ namespace Callysto
             }
             if (keyCount == 0)
                 key = "";
-            string value = "";
+            var value = "";
             // read in the token until we hit a whitespace or a control character
-            foreach (char c in line)
+            foreach (var c in line.TakeWhile(c => c != '{' && c != '}'))
             {
-                // break if any control character appears in non quoted tokens
-                // break on whitespace
-                if (c == '{' || c == '}')
-                    break;
                 if (c == '"' || c == ' ' || c == '\t')
                 {
                     // This will keep eating '"' '' '\t' util get a valid text
@@ -630,12 +567,12 @@ namespace Callysto
         /// <param name="startIndex">Start search on that location.</param>
         private uint RetriveIndex(List<string> lines, string search, uint startIndex)
         {
-            if(string.IsNullOrEmpty(search)) return 0;
+            if (string.IsNullOrEmpty(search)) return 0;
             bool wasQuote = false;
             bool wasComment = false;
             for (int i = (int)startIndex; i < lines.Count; i++)
             {
-                KeyValuePair<string,string> kvPair = ReadToken(lines[i], ref wasQuote, ref wasComment);
+                KeyValuePair<string, string> kvPair = ReadToken(lines[i], ref wasQuote, ref wasComment);
                 if (kvPair.Key == search && !wasComment && !wasQuote)
                     return (uint)i;
             }
@@ -652,7 +589,7 @@ namespace Callysto
         public bool LoadFromFile(string fileName)
         {
             //byte[] buffer = Utils.ReadFile(fileName);
-//            StreamReader sr = new StreamReader(fileName);
+            //            StreamReader sr = new StreamReader(fileName);
             uint endPos = 0;
             return LoadFromList(Utils.ReadFileToList(fileName), 0, ref endPos);
         }
@@ -675,14 +612,14 @@ namespace Callysto
             endPos = 0;
             for (uint i = startPos; i < stream.Count; i++)
             {
-                KeyValuePair<string, string> kvPair = ReadToken(stream[(int) i], ref wasQuoted, ref wasComment);
+                KeyValuePair<string, string> kvPair = ReadToken(stream[(int)i], ref wasQuoted, ref wasComment);
                 if (string.IsNullOrEmpty(kvPair.Key)) continue;
                 endPos = i;
                 // Is the end of KeyValues Class?
                 if (kvPair.Key == "}")
                 {
                     endPos = i + 1;
-                    return Name == null ? false : true;
+                    return Name != null;
                 }
                 // This line is a comment
                 if (wasComment)
@@ -761,18 +698,7 @@ namespace Callysto
             }
             return true;
         }
-        /// <summary>
-        /// Include a KeyValues file into current KeyValues Class    
-        /// </summary>
-        /// <returns>
-        /// true if the sucessfully include file (KeyValue is valid); otherwise, false.
-        /// </returns>
-        /// <param name="fileName">File to include on current KeyValues Class</param>
-        /// <param name="addToList">if true on save KeyValues to HDD will put a #include macro for the fileName on correct place; otherwise false.</param>
-        public bool AddIncludeFile(string fileName, bool addToList)
-        {
-            return AddIncludeFile(fileName, addToList);
-        }
+
         #endregion
 
         #region Save To HardDrive
@@ -807,28 +733,28 @@ namespace Callysto
         {
             if (!string.IsNullOrEmpty(kv.Comment))
             {
-                Utils.makeTabs(sw, tabSpaces);
+                Utils.MakeTabs(sw, tabSpaces);
                 sw.WriteLine("// {0}", kv.Comment);
             }
-            Utils.makeTabs(sw, tabSpaces);
+            Utils.MakeTabs(sw, tabSpaces);
             sw.WriteLine("\"{0}\"", kv.Name);
-            Utils.makeTabs(sw, tabSpaces);
+            Utils.MakeTabs(sw, tabSpaces);
             sw.WriteLine("{");
             foreach (KeyValuesData data in kv.KeyNameValues)
             {
                 if (!string.IsNullOrEmpty(data.Comment))
                 {
-                    Utils.makeTabs(sw, tabSpaces);
+                    Utils.MakeTabs(sw, tabSpaces);
                     sw.WriteLine("\t// {0}", data.Comment);
                 }
-                Utils.makeTabs(sw, tabSpaces);
+                Utils.MakeTabs(sw, tabSpaces);
                 sw.WriteLine("\t\"{0}\"\t\t\"{1}\"", data.Key, data.Value);
             }
             foreach (KeyValues child in kv.KeyChilds)
             {
                 SaveFromChild(sw, child, tabSpaces + 1);
             }
-            Utils.makeTabs(sw, tabSpaces);
+            Utils.MakeTabs(sw, tabSpaces);
             sw.WriteLine("}");
         }
 
@@ -868,7 +794,7 @@ namespace Callysto
                 Update(KeyChilds[index], false);
                 return true;
             }
-            catch(ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
                 return false;
             }
@@ -894,16 +820,17 @@ namespace Callysto
 
         public KeyValues FindKey(string keyName, bool create)
         {
-            for (int i = 0; i < KeyChilds.Count; i++)
+            foreach (var t in KeyChilds.Where(t => t.Name == keyName))
             {
-                if (KeyChilds[i].Name == keyName)
-                    return KeyChilds[i];
+                return t;
             }
             if (!create) return null;
-            KeyValues newKv = new KeyValues(keyName);
-            newKv.FirstParent = Parent == null ? this : Parent.FirstParent;
-            newKv.Parent = this;
-            newKv.DistanceFromTop = DistanceFromTop + 1;
+            var newKv = new KeyValues(keyName)
+            {
+                FirstParent = Parent == null ? this : Parent.FirstParent,
+                Parent = this,
+                DistanceFromTop = DistanceFromTop + 1
+            };
             return newKv;
         }
 
@@ -939,7 +866,7 @@ namespace Callysto
             if (NextSubKeyIndex < KeyChilds.Count)
             {
                 NextSubKeyIndex++;
-                return KeyChilds[(int) NextSubKeyIndex - 1];
+                return KeyChilds[(int)NextSubKeyIndex - 1];
             }
             return null;
         }
@@ -960,7 +887,7 @@ namespace Callysto
             if (NextKeyValueIndex < KeyNameValues.Count)
             {
                 NextKeyValueIndex++;
-                return KeyNameValues[(int) NextKeyValueIndex - 1];
+                return KeyNameValues[(int)NextKeyValueIndex - 1];
             }
             return null;
         }
@@ -1026,13 +953,11 @@ namespace Callysto
         {
             if (string.IsNullOrEmpty(value))
                 return false;
-            for (int i = 0; i < KeyNameValues.Count; i++)
+            foreach (KeyValuesData t in KeyNameValues)
             {
-                if (KeyNameValues[i].Key == keyName)
-                {
-                    KeyNameValues[i].Comment = value;
-                    return true;
-                }
+                if (t.Key != keyName) continue;
+                t.Comment = value;
+                return true;
             }
             return false;
         }
@@ -1041,9 +966,9 @@ namespace Callysto
         {
             if (string.IsNullOrEmpty(value))
                 return false;
-            if(index >= KeyNameValues.Count)
+            if (index >= KeyNameValues.Count)
                 return false;
-            KeyNameValues[(int) index].Comment = value;
+            KeyNameValues[(int)index].Comment = value;
             return true;
         }
 
@@ -1064,13 +989,11 @@ namespace Callysto
         {
             if (string.IsNullOrEmpty(value))
                 value = "";
-            for (int i = 0; i < KeyNameValues.Count; i++)
+            foreach (var t in KeyNameValues)
             {
-                if (KeyNameValues[i].Key == keyName)
-                {
-                    KeyNameValues[i].Value = value;
-                    return;
-                }
+                if (t.Key != keyName) continue;
+                t.Value = value;
+                return;
             }
             KeyValuesData kvValue = new KeyValuesData(keyName, value, null, this);
             KeyNameValues.Add(kvValue);
@@ -1113,22 +1036,22 @@ namespace Callysto
 
         public void SetFloat(string keyName, float value)
         {
-            SetString(keyName, value.ToString());
+            SetString(keyName, value.ToString(CultureInfo.InvariantCulture));
         }
 
         public void SetDecimal(string keyName, decimal value)
         {
-            SetString(keyName, value.ToString());
+            SetString(keyName, value.ToString(CultureInfo.InvariantCulture));
         }
 
         public void SetDouble(string keyName, double value)
         {
-            SetString(keyName, value.ToString());
+            SetString(keyName, value.ToString(CultureInfo.InvariantCulture));
         }
 
         public void SetDateTime(string keyName, DateTime value)
         {
-            SetString(keyName, value.ToString());
+            SetString(keyName, value.ToString(CultureInfo.InvariantCulture));
         }
 
         public void SetColor(string keyName, Color value)
@@ -1147,11 +1070,11 @@ namespace Callysto
 
         public string GetComment(string keyName, string defaultValue)
         {
+            if (keyName == null) throw new ArgumentNullException("keyName");
             if (string.IsNullOrEmpty(keyName))
                 return defaultValue;
-            for (int i = 0; i < KeyNameValues.Count; i++)
-                if (KeyNameValues[i].Key == keyName)
-                    return KeyNameValues[i].Comment;
+            foreach (var t in KeyNameValues.Where(t => t.Key == keyName))
+                return t.Comment;
             return defaultValue;
         }
 
@@ -1164,9 +1087,8 @@ namespace Callysto
         {
             if (string.IsNullOrEmpty(keyName))
                 return defaultValue;
-            for (int i = 0; i < KeyNameValues.Count; i++)
-                if (KeyNameValues[i].Key == keyName)
-                    return KeyNameValues[i].Value;
+            foreach (KeyValuesData t in KeyNameValues.Where(t => t.Key == keyName))
+                return t.Value;
             return defaultValue;
         }
 
@@ -1202,22 +1124,22 @@ namespace Callysto
 
         public float GetValue(string keyName, float defaultValue)
         {
-            return Convert.ToSingle(GetValue(keyName, defaultValue.ToString()));
+            return Convert.ToSingle(GetValue(keyName, defaultValue.ToString(CultureInfo.InvariantCulture)));
         }
 
         public decimal GetValue(string keyName, decimal defaultValue)
         {
-            return Convert.ToDecimal(GetValue(keyName, defaultValue.ToString()));
+            return Convert.ToDecimal(GetValue(keyName, defaultValue.ToString(CultureInfo.InvariantCulture)));
         }
 
         public double GetValue(string keyName, double defaultValue)
         {
-            return Convert.ToDouble(GetValue(keyName, defaultValue.ToString()));
+            return Convert.ToDouble(GetValue(keyName, defaultValue.ToString(CultureInfo.InvariantCulture)));
         }
 
         public DateTime GetValue(string keyName, DateTime defaultValue)
         {
-            return Convert.ToDateTime(GetValue(keyName, defaultValue.ToString()));
+            return Convert.ToDateTime(GetValue(keyName, defaultValue.ToString(CultureInfo.InvariantCulture)));
         }
 
         public Color GetValue(string keyName, Color defaultValue)

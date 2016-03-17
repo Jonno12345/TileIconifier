@@ -30,7 +30,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 
-namespace TsudaKageyu
+namespace TileIconifier.IconExtractor
 {
     internal static class NativeMethods
     {
@@ -44,7 +44,7 @@ namespace TsudaKageyu
 
         [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         [SuppressUnmanagedCodeSecurity]
-        public static extern bool EnumResourceNames(IntPtr hModule, IntPtr lpszType, ENUMRESNAMEPROC lpEnumFunc, IntPtr lParam);
+        public static extern bool EnumResourceNames(IntPtr hModule, IntPtr lpszType, Enumresnameproc lpEnumFunc, IntPtr lParam);
 
         [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         [SuppressUnmanagedCodeSecurity]
@@ -77,5 +77,5 @@ namespace TsudaKageyu
 
     [UnmanagedFunctionPointer(CallingConvention.Winapi, SetLastError = true, CharSet = CharSet.Unicode)]
     [SuppressUnmanagedCodeSecurity]
-    internal delegate bool ENUMRESNAMEPROC(IntPtr hModule, IntPtr lpszType, IntPtr lpszName, IntPtr lParam);
+    internal delegate bool Enumresnameproc(IntPtr hModule, IntPtr lpszType, IntPtr lpszName, IntPtr lParam);
 }

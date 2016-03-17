@@ -1,6 +1,8 @@
-﻿namespace TileIconifier.Forms
+﻿using TileIconifier.Controls;
+
+namespace TileIconifier.Forms
 {
-    partial class frmMain
+    partial class FrmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -61,7 +63,7 @@
             this.chkUseSameImg = new System.Windows.Forms.CheckBox();
             this.lblUnsaved = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
-            this.lstShortcuts = new TileIconifier.ListBoxWithTyping();
+            this.lstShortcuts = new ListBoxWithTyping();
             this.pnlFGColour.SuspendLayout();
             this.mnuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctStandardIcon)).BeginInit();

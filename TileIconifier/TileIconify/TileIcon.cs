@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using TileIconifier.Utilities;
-using TsudaKageyu;
+using TileIconifier.Shortcut;
 
-namespace TileIconifier
+namespace TileIconifier.TileIconify
 {
     class TileIcon
     {
-        ShortcutItem _shortcutItem;
+        readonly ShortcutItem _shortcutItem;
 
         public TileIcon(ShortcutItem shortcutItem)
         {
@@ -34,8 +27,6 @@ namespace TileIconifier
             RebuildLnkInStartMenu();
         }
 
-
-
         private void BuildFilesAndFolders()
         {
             var xNamespace = XNamespace.Get("http://www.w3.org/2001/XMLSchema-instance");
@@ -44,7 +35,7 @@ namespace TileIconifier
                 new XElement("Application",
                     new XAttribute(XNamespace.Xmlns + "xsi", xNamespace),
                     new XElement("VisualElements",
-                        new XAttribute("ShowNameOnSquare150x150Logo", (_shortcutItem.ShowNameOnSquare150x150Logo ? "on" : "off")),
+                        new XAttribute("ShowNameOnSquare150x150Logo", (_shortcutItem.ShowNameOnSquare150X150Logo ? "on" : "off")),
                         new XAttribute("Square150x150Logo", _shortcutItem.RelativeMediumIconPath),
                         new XAttribute("Square70x70Logo", _shortcutItem.RelativeSmallIconPath),
                         new XAttribute("ForegroundText", _shortcutItem.ForegroundText),
@@ -79,7 +70,6 @@ namespace TileIconifier
                 _shortcutItem.SmallImage.Save(fs, System.Drawing.Imaging.ImageFormat.Png);
             }
         }
-
 
         private void RebuildLnkInStartMenu()
         {

@@ -1,8 +1,9 @@
 ﻿// Utilities for the library
+
 using System.Collections.Generic;
 using System.IO;
 
-namespace Callysto
+namespace TileIconifier.Steam.KeyValues
 {
     /// <summary>
     /// Just Utilis to KeyValues Class
@@ -47,7 +48,7 @@ namespace Callysto
             }
         }
 
-        public static void makeTabs(StreamWriter stream, uint num)
+        public static void MakeTabs(StreamWriter stream, uint num)
         {
             for (uint i = 0; i < num; i++)
                 stream.Write("\t");

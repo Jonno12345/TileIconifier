@@ -1,35 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace TileIconifier.Forms
 {
-    public partial class frmAbout : Form
+    public partial class FrmAbout : Form
     {
-        public frmAbout()
+        public FrmAbout()
         {
             InitializeComponent();
         }
 
         private void rtxtAbout_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            using (var p = Process.Start(e.LinkText)) { }            
+            using (Process.Start(e.LinkText))
+            {
+            }
         }
 
         private void frmAbout_Load(object sender, EventArgs e)
         {
-            rtxtAbout.Text = rtxtAbout.Text.Replace("[@@CURVER@@]", System.Reflection.Assembly.GetExecutingAssembly()
-                                           .GetName()
-                                           .Version
-                                           .ToString());
-
+            rtxtAbout.Text = rtxtAbout.Text.Replace("[@@CURVER@@]", Assembly.GetExecutingAssembly()
+                .GetName()
+                .Version
+                .ToString());
         }
     }
 }

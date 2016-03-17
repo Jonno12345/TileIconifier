@@ -1,7 +1,8 @@
 ﻿// Class for hold "Key" "Value" data
+
 using System;
 
-namespace Callysto
+namespace TileIconifier.Steam.KeyValues
 {
     /// <summary>
     /// 'Key' 'Value' Data
@@ -28,22 +29,20 @@ namespace Callysto
         /// return null if there are no Parent.
         /// </summary>
         public KeyValues Parent;
-        private object TagObj;
-        public object Tag{
-            get { return TagObj; }
-            set { TagObj = value; }
-        }
+
+        public object Tag { get; set; }
+
         #endregion
         #region Constructors
-        public KeyValuesData(string Key, string Value, string Comment, KeyValues parent)
+        public KeyValuesData(string key, string value, string comment, KeyValues parent)
         {
             Tag = null;
-            this.Key = Key;
-            this.Value = Value;
-            this.Comment = Comment;
+            Key = key;
+            Value = value;
+            Comment = comment;
             Parent = parent;
         }
-        public KeyValuesData(string Key, string Value, string Comment) : this(Key, Value, Comment, null)
+        public KeyValuesData(string key, string value, string comment) : this(key, value, comment, null)
         {
         }
         public KeyValuesData()
@@ -115,9 +114,9 @@ namespace Callysto
         {
             unchecked
             {
-                int result = (Key != null ? Key.GetHashCode() : 0);
-                result = (result*397) ^ (Value != null ? Value.GetHashCode() : 0);
-                result = (result*397) ^ (Parent != null ? Parent.GetHashCode() : 0);
+                int result = Key?.GetHashCode() ?? 0;
+                result = (result*397) ^ (Value?.GetHashCode() ?? 0);
+                result = (result*397) ^ (Parent?.GetHashCode() ?? 0);
                 return result;
             }
         }

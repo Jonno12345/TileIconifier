@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using TileIconifier.Utilities;
 
-namespace TileIconifier
+namespace TileIconifier.Shortcut
 {
     public static class ShortcutItemEnumeration
     {
@@ -27,26 +25,31 @@ namespace TileIconifier
 
             var shortcutsList = new List<ShortcutItem>();
 
-            List<string> PathsToScan = new List<string>()
+            List<string> pathsToScan = new List<string>()
             {
                 @"%PROGRAMDATA%\Microsoft\Windows\Start Menu",
                 @"%APPDATA%\Microsoft\Windows\Start Menu"
             };
 
-            foreach (var pathToScan in PathsToScan)
+            foreach (var pathToScan in pathsToScan)
             {
                 //Recursively go through all folders of lnk files, adding each ShortcutItem to the list
-                Action<string, Action<string>> ApplyAllFiles = null;
-                ApplyAllFiles = (folder, fileAction) =>
+                Action<string, Action<string>> applyAllFiles = null;
+                applyAllFiles = (folder, fileAction) =>
                 {
                     foreach (string file in Directory.GetFiles(folder)) fileAction(file);
                     foreach (string subDir in Directory.GetDirectories(folder))
-                        try { ApplyAllFiles(subDir, fileAction); } catch { }
+                        try { applyAllFiles(subDir, fileAction); }
+                        catch
+                        {
+                            // ignored
+                        }
                 };
 
-                ApplyAllFiles(Environment.ExpandEnvironmentVariables(pathToScan), f =>
+                applyAllFiles(Environment.ExpandEnvironmentVariables(pathToScan), f =>
                 {
-                    if (!Path.GetExtension(f).Equals(".lnk", StringComparison.OrdinalIgnoreCase))
+                    var extension = Path.GetExtension(f);
+                    if (extension != null && !extension.Equals(".lnk", StringComparison.OrdinalIgnoreCase))
                         return;
 
                     var shortcutItem = new ShortcutItem(f);
@@ -97,7 +100,10 @@ namespace TileIconifier
             {
                 File.Delete(tempFilePath);
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
         }
 
         private static void MarkPinnedShortcuts(string tempFilePath)
@@ -112,11 +118,13 @@ namespace TileIconifier
                 {
                     var groupData = regexMatch.Groups[1].Value;
 
-                    var shortcutId = _shortcutsCache.Where(s => s.AppId == groupData)
-                    .First();
+                    var shortcutId = _shortcutsCache.First(s => s.AppId == groupData);
                     shortcutId.IsPinned = true;
                 }
-                catch { }
+                catch
+                {
+                    // ignored
+                }
             }
         }
     }

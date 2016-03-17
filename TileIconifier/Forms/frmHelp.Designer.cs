@@ -1,6 +1,6 @@
 ﻿namespace TileIconifier.Forms
 {
-    partial class frmHelp
+    partial class FrmHelp
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHelp));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHelp));
             this.rtxtAbout = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 

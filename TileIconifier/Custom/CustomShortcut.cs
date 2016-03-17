@@ -1,44 +1,17 @@
-﻿using System.IO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
-using TileIconifier.Utilities;
-using TileIconifier.Properties;
-using System.Windows.Forms;
+﻿using System;
 using System.Drawing;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using TileIconifier.Properties;
+using TileIconifier.Shortcut;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Custom
 {
-    class CustomShortcut : ListViewItem
+    internal class CustomShortcut : ListViewItem
     {
-        public ShortcutItem ShortcutItem { get; set; }
-
-        private string VbsFilePath { get; set; }
-        private string VbsFolderPath { get; set; }
-
-        private string ShortcutName { get; set; }
-        private string TargetPath { get; set; }
-        private string TargetArguments { get; set; }
-
-        private CustomShortcutType ShortcutType { get; set; }
-
         private string _basicShortcutIcon;
-        private string BasicShortcutIcon
-        {
-            get
-            {
-                if (!string.IsNullOrEmpty(_basicShortcutIcon))
-                    return _basicShortcutIcon;
-                return TargetPath;
-            }
-            set
-            {
-                _basicShortcutIcon = value;
-            }
-        }
 
         public CustomShortcut(
             string shortcutName,
@@ -62,7 +35,6 @@ namespace TileIconifier.Custom
             Text = ShortcutName;
             SubItems.Add(ShortcutType.ToString());
             SubItems.Add(ShortcutItem.ShortcutUser.ToString());
-
         }
 
         public CustomShortcut(
@@ -71,13 +43,13 @@ namespace TileIconifier.Custom
             string targetArguments,
             CustomShortcutType shortcutType,
             string shortcutRootFolder,
-            string basicIconToUse = null)
-            {
-
-
-            var vbsFolderPath = DirectoryUtils.GetUniqueDirName(CustomShortcutConstants.CUSTOM_SHORTCUT_VBS_PATH + shortcutName) + "\\";
-            var shortcutPath = string.Format("{0}{1}\\{2}.lnk", shortcutRootFolder, new DirectoryInfo(vbsFolderPath).Name, shortcutName);
-
+            string basicIconToUse = null,
+            string workingFolder = null)
+        {
+            var vbsFolderPath =
+                DirectoryUtils.GetUniqueDirName(CustomShortcutGetters.CustomShortcutVbsPath + shortcutName) + "\\";
+            var shortcutPath = string.Format("{0}{1}\\{2}.lnk", shortcutRootFolder,
+                new DirectoryInfo(vbsFolderPath).Name, shortcutName);
 
 
             ShortcutName = shortcutName.CleanInvalidFilenameChars();
@@ -86,40 +58,52 @@ namespace TileIconifier.Custom
             TargetArguments = targetArguments;
             ShortcutType = shortcutType;
             VbsFolderPath = vbsFolderPath;
+            WorkingFolder = workingFolder;
 
             Directory.CreateDirectory(VbsFolderPath);
 
-            if (basicIconToUse != null && File.Exists(basicIconToUse))
-            {
-                string newBasicIconToUsePath = vbsFolderPath + Path.GetFileName(basicIconToUse);
-                try
-                {
-                    File.Copy(basicIconToUse, newBasicIconToUsePath);
-                    BasicShortcutIcon = newBasicIconToUsePath;
-                }
-                catch { }
-            }
+            if (basicIconToUse != null && File.Exists(basicIconToUse)) BasicShortcutIcon = basicIconToUse;
+
             Text = ShortcutName;
             SubItems.Add(ShortcutType.ToString());
         }
 
+        public ShortcutItem ShortcutItem { get; set; }
+        private string VbsFilePath { get; set; }
+        private string VbsFolderPath { get; }
+        private string ShortcutName { get; }
+        private string TargetPath { get; }
+        private string TargetArguments { get; }
+        private string WorkingFolder { get; }
+        private CustomShortcutType ShortcutType { get; }
+
+        private string BasicShortcutIcon
+        {
+            get { return !string.IsNullOrEmpty(_basicShortcutIcon) ? _basicShortcutIcon : TargetPath; }
+            set { _basicShortcutIcon = value; }
+        }
 
         /// <summary>
-        /// Create a custom shortcut and save its icon alongside it
+        ///     Create a custom shortcut and save its icon alongside it
         /// </summary>
         /// <param name="basicIconTouse"></param>
         public void BuildCustomShortcut(Image basicIconTouse)
         {
             BasicShortcutIcon = VbsFolderPath + ShortcutName + ".ico";
-            try {
-                using (StreamWriter iconWriter = new StreamWriter(BasicShortcutIcon))
+            try
+            {
+                using (var iconWriter = new StreamWriter(BasicShortcutIcon))
                 {
-                    using (Icon ico = Icon.FromHandle(((Bitmap)basicIconTouse).GetHicon()))
+                    using (var ico = Icon.FromHandle(((Bitmap)basicIconTouse).GetHicon()))
                     {
                         ico.Save(iconWriter.BaseStream);
                     }
                 }
-            } catch { basicIconTouse = null; }
+            }
+            catch
+            {
+                BasicShortcutIcon = null;
+            }
 
             BuildCustomShortcut();
         }
@@ -135,27 +119,40 @@ namespace TileIconifier.Custom
                     TargetPath.QuoteWrap().EscapeVba(),
                     TargetArguments.EscapeVba(),
                     ShortcutType
-                ));
+                    ));
 
-            ShortcutUtils.CreateLnkFile(
-                shortcutPath: ShortcutItem.ShortcutFileInfo.FullName,
-                targetPath: VbsFilePath,
-                description: ShortcutName + " shortcut created by TileIconifier",
-                iconPath: BasicShortcutIcon
+            ShortcutUtils.CreateLnkFile(ShortcutItem.ShortcutFileInfo.FullName, VbsFilePath,
+                ShortcutName + " shortcut created by TileIconifier",
+                iconPath: BasicShortcutIcon,
+                workingDirectory: WorkingFolder
                 );
         }
 
         public void Delete()
         {
-            if(ShortcutItem.ShortcutFileInfo.Directory.Exists)
-                ShortcutItem.ShortcutFileInfo.Directory.Delete(true);
+            if (ShortcutItem.ShortcutFileInfo.Directory != null && ShortcutItem.ShortcutFileInfo.Directory.Exists)
+                try
+                {
+                    ShortcutItem.ShortcutFileInfo.Directory.Delete(true);
+                }
+                catch
+                {
+                    // ignored
+                }
 
             if (Directory.Exists(VbsFolderPath))
-                Directory.Delete(VbsFolderPath, true);
+                try
+                {
+                    Directory.Delete(VbsFolderPath, true);
+                }
+                catch
+                {
+                    // ignored
+                }
         }
 
         /// <summary>
-        /// Parses data from a VBS file and returns a custom shortcut
+        ///     Parses data from a VBS file and returns a custom shortcut
         /// </summary>
         /// <exception cref="InvalidCustomShortcutException">If a property Regex could not be matched</exception>
         public static CustomShortcut Load(string vbsFilePath)
@@ -172,14 +169,16 @@ namespace TileIconifier.Custom
             if (!regexMatch.Success)
                 throw new InvalidCustomShortcutException();
 
-            return new CustomShortcut(
-                shortcutName: (regexMatch.Groups[2].Value).UnescapeVba(),
-                shortcutPath: (regexMatch.Groups[3].Value).UnescapeVba(),
-                targetPath: (regexMatch.Groups[4].Value).UnescapeVba(),
-                targetArguments: (regexMatch.Groups[5].Value).UnescapeVba(),
-                shortcutType: (CustomShortcutType)Enum.Parse(typeof(CustomShortcutType), regexMatch.Groups[1].Value),
-                vbsFilePath: vbsFilePath,
-                vbsFolderPath: new FileInfo(vbsFilePath).Directory.FullName + "\\");
+            var directoryInfo = new FileInfo(vbsFilePath).Directory;
+            if (directoryInfo != null)
+                return new CustomShortcut((regexMatch.Groups[2].Value).UnescapeVba(),
+                    (regexMatch.Groups[3].Value).UnescapeVba(), (regexMatch.Groups[4].Value).UnescapeVba(),
+                    (regexMatch.Groups[5].Value).UnescapeVba(),
+                    (CustomShortcutType)Enum.Parse(typeof(CustomShortcutType), regexMatch.Groups[1].Value, true),
+                    vbsFilePath: vbsFilePath,
+                    vbsFolderPath: directoryInfo.FullName + "\\");
+
+            throw new DirectoryNotFoundException();
         }
     }
 }

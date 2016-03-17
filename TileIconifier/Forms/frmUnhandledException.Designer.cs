@@ -1,6 +1,6 @@
 ﻿namespace TileIconifier.Forms
 {
-    partial class frmUnhandledException
+    partial class FrmUnhandledException
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUnhandledException));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUnhandledException));
             this.rtxtUnhandledException = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 

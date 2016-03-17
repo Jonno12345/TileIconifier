@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace TileIconifier.Utilities
 {
-    class FormUtils
+    internal class FormUtils
     {
         public static void ShowCenteredDialogForm<T>(IWin32Window sender) where T : Form, new()
         {

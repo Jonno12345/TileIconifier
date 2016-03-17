@@ -1,6 +1,6 @@
 ﻿namespace TileIconifier.Forms
 {
-    partial class frmLoadingSplash
+    partial class FrmLoadingSplash
     {
         /// <summary>
         /// Required designer variable.

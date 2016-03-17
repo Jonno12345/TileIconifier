@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Windows.Forms;
+using TileIconifier.Shortcut;
 
 namespace TileIconifier.Utilities
 {
-    static class PowerShellUtils
+    internal static class PowerShellUtils
     {
         internal static void DumpStartLayout(string outputPath)
         {
@@ -15,30 +14,32 @@ namespace TileIconifier.Utilities
             {
                 powershellInstance.AddCommand("Export-StartLayout");
                 powershellInstance.AddParameter("Path", outputPath);
-                var x = powershellInstance.Invoke();
+                powershellInstance.Invoke();
             }
 
             if (!File.Exists(outputPath))
                 throw new PowershellException();
         }
 
-        internal static void MarryAppIDs(List<ShortcutItem> _shortcutsList)
+        internal static void MarryAppIDs(List<ShortcutItem> shortcutsList)
         {
             using (var powershellInstance = PowerShell.Create())
             {
                 powershellInstance.AddCommand("Get-StartApps");
                 var results = powershellInstance.Invoke();
-                foreach (var result in results)
+                foreach (var properties in results.Select(result => result.Properties))
                 {
-                    PSMemberInfoCollection<PSPropertyInfo> properties = result.Properties;
                     try
                     {
-                        var shortcutItem = _shortcutsList.Where(s => Path.GetFileNameWithoutExtension(s.ShortcutFileInfo.Name) == (string)properties["Name"].Value)
-                                       .First();
+                        var shortcutItem =
+                            shortcutsList.First(s => Path.GetFileNameWithoutExtension(s.ShortcutFileInfo.Name) ==
+                                                     (string) properties["Name"].Value);
                         shortcutItem.AppId = properties["AppID"].Value.ToString();
-
                     }
-                    catch { }
+                    catch
+                    {
+                        // ignored
+                    }
                 }
             }
         }

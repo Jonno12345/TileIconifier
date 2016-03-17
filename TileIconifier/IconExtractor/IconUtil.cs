@@ -32,28 +32,28 @@ using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace TsudaKageyu
+namespace TileIconifier.IconExtractor
 {
     public static class IconUtil
     {
         private delegate byte[] GetIconDataDelegate(Icon icon);
 
-        static GetIconDataDelegate getIconData;
+        static GetIconDataDelegate _getIconData;
 
         static IconUtil()
         {
             // Create a dynamic method to access Icon.iconData private field.
 
             var dm = new DynamicMethod(
-                "GetIconData", typeof(byte[]), new Type[] { typeof(Icon) }, typeof(Icon));
+                "GetIconData", typeof(byte[]), new[] { typeof(Icon) }, typeof(Icon));
             var fi = typeof(Icon).GetField(
                 "iconData", BindingFlags.Instance | BindingFlags.NonPublic);
             var gen = dm.GetILGenerator();
             gen.Emit(OpCodes.Ldarg_0);
-            gen.Emit(OpCodes.Ldfld, fi);
+            if (fi != null) gen.Emit(OpCodes.Ldfld, fi);
             gen.Emit(OpCodes.Ret);
 
-            getIconData = (GetIconDataDelegate)dm.CreateDelegate(typeof(GetIconDataDelegate));
+            _getIconData = (GetIconDataDelegate)dm.CreateDelegate(typeof(GetIconDataDelegate));
         }
 
         /// <summary>
@@ -167,9 +167,7 @@ namespace TsudaKageyu
                         return data[46] * 2;
                     case 6:
                         return data[46] * 4;
-                    default:
-                        // NOP
-                        break;
+                    // NOP
                 }
             }
             else if (data.Length >= 22)
@@ -179,12 +177,12 @@ namespace TsudaKageyu
                 return BitConverter.ToUInt16(data, 12);
             }
 
-            throw new ArgumentException("The icon is corrupt. Couldn't read the header.", "icon");
+            throw new ArgumentException(@"The icon is corrupt. Couldn't read the header.", "icon");
         }
 
         private static byte[] GetIconData(Icon icon)
         {
-            var data = getIconData(icon);
+            var data = _getIconData(icon);
             if (data != null)
             {
                 return data;
