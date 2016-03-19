@@ -46,8 +46,8 @@ namespace TileIconifier.IconExtractor
 
         // Resource types for EnumResourceNames().
 
-        private readonly static IntPtr RtIcon = (IntPtr)3;
-        private readonly static IntPtr RtGroupIcon = (IntPtr)14;
+        private static readonly IntPtr RtIcon = (IntPtr)3;
+        private static readonly IntPtr RtGroupIcon = (IntPtr)14;
 
         private const int MaxPath = 260;
 
@@ -91,7 +91,7 @@ namespace TileIconifier.IconExtractor
         public Icon GetIcon(int index)
         {
             if (index < 0 || Count <= index)
-                throw new ArgumentOutOfRangeException("index");
+                throw new ArgumentOutOfRangeException(nameof(index));
 
             // Create an Icon based on a .ico file in memory.
 
@@ -118,7 +118,7 @@ namespace TileIconifier.IconExtractor
         private void Initialize(string fileName)
         {
             if (fileName == null)
-                throw new ArgumentNullException("fileName");
+                throw new ArgumentNullException(nameof(fileName));
 
             IntPtr hModule = IntPtr.Zero;
             try
@@ -254,7 +254,7 @@ namespace TileIconifier.IconExtractor
 
                 var devPath = buf.ToString();
                 if (fileName.StartsWith(devPath))
-                    return (drive + fileName.Substring(devPath.Length));
+                    return drive + fileName.Substring(devPath.Length);
             }
 
             return fileName;

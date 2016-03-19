@@ -12,9 +12,7 @@ namespace TileIconifier
     public class ValidationFailureException : Exception { }
     [Serializable]
     public class UnableToDetectAdministratorException : Exception { }
-
-
-
+    
     //steam exceptions
     [Serializable]
     public class SteamExecutableNotFoundException : Exception { }

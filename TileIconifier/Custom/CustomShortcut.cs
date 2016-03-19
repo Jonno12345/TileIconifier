@@ -48,8 +48,7 @@ namespace TileIconifier.Custom
         {
             var vbsFolderPath =
                 DirectoryUtils.GetUniqueDirName(CustomShortcutGetters.CustomShortcutVbsPath + shortcutName) + "\\";
-            var shortcutPath = string.Format("{0}{1}\\{2}.lnk", shortcutRootFolder,
-                new DirectoryInfo(vbsFolderPath).Name, shortcutName);
+            var shortcutPath = $"{shortcutRootFolder}{new DirectoryInfo(vbsFolderPath).Name}\\{shortcutName}.lnk";
 
 
             ShortcutName = shortcutName.CleanInvalidFilenameChars();
@@ -94,7 +93,7 @@ namespace TileIconifier.Custom
             {
                 using (var iconWriter = new StreamWriter(BasicShortcutIcon))
                 {
-                    using (var ico = Icon.FromHandle(((Bitmap)basicIconTouse).GetHicon()))
+                    using (var ico = Icon.FromHandle(((Bitmap) basicIconTouse).GetHicon()))
                     {
                         ico.Save(iconWriter.BaseStream);
                     }
@@ -131,6 +130,7 @@ namespace TileIconifier.Custom
         public void Delete()
         {
             if (ShortcutItem.ShortcutFileInfo.Directory != null && ShortcutItem.ShortcutFileInfo.Directory.Exists)
+            {
                 try
                 {
                     ShortcutItem.ShortcutFileInfo.Directory.Delete(true);
@@ -139,16 +139,17 @@ namespace TileIconifier.Custom
                 {
                     // ignored
                 }
+            }
 
-            if (Directory.Exists(VbsFolderPath))
-                try
-                {
-                    Directory.Delete(VbsFolderPath, true);
-                }
-                catch
-                {
-                    // ignored
-                }
+            if (!Directory.Exists(VbsFolderPath)) return;
+            try
+            {
+                Directory.Delete(VbsFolderPath, true);
+            }
+            catch
+            {
+                // ignored
+            }
         }
 
         /// <summary>
@@ -171,10 +172,10 @@ namespace TileIconifier.Custom
 
             var directoryInfo = new FileInfo(vbsFilePath).Directory;
             if (directoryInfo != null)
-                return new CustomShortcut((regexMatch.Groups[2].Value).UnescapeVba(),
-                    (regexMatch.Groups[3].Value).UnescapeVba(), (regexMatch.Groups[4].Value).UnescapeVba(),
-                    (regexMatch.Groups[5].Value).UnescapeVba(),
-                    (CustomShortcutType)Enum.Parse(typeof(CustomShortcutType), regexMatch.Groups[1].Value, true),
+                return new CustomShortcut(regexMatch.Groups[2].Value.UnescapeVba(),
+                    regexMatch.Groups[3].Value.UnescapeVba(), regexMatch.Groups[4].Value.UnescapeVba(),
+                    regexMatch.Groups[5].Value.UnescapeVba(),
+                    (CustomShortcutType) Enum.Parse(typeof (CustomShortcutType), regexMatch.Groups[1].Value, true),
                     vbsFilePath: vbsFilePath,
                     vbsFolderPath: directoryInfo.FullName + "\\");
 

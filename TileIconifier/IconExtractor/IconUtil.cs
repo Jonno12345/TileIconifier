@@ -38,7 +38,7 @@ namespace TileIconifier.IconExtractor
     {
         private delegate byte[] GetIconDataDelegate(Icon icon);
 
-        static GetIconDataDelegate _getIconData;
+        private static readonly GetIconDataDelegate IconDataDelegate;
 
         static IconUtil()
         {
@@ -53,7 +53,7 @@ namespace TileIconifier.IconExtractor
             if (fi != null) gen.Emit(OpCodes.Ldfld, fi);
             gen.Emit(OpCodes.Ret);
 
-            _getIconData = (GetIconDataDelegate)dm.CreateDelegate(typeof(GetIconDataDelegate));
+            IconDataDelegate = (GetIconDataDelegate)dm.CreateDelegate(typeof(GetIconDataDelegate));
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace TileIconifier.IconExtractor
         public static Icon[] Split(Icon icon)
         {
             if (icon == null)
-                throw new ArgumentNullException("icon");
+                throw new ArgumentNullException(nameof(icon));
 
             // Get an .ico file in memory, then split it into separate icons.
 
@@ -115,7 +115,7 @@ namespace TileIconifier.IconExtractor
         public static Bitmap ToBitmap(Icon icon)
         {
             if (icon == null)
-                throw new ArgumentNullException("icon");
+                throw new ArgumentNullException(nameof(icon));
 
             // Quick workaround: Create an .ico file in memory, then load it as a Bitmap.
 
@@ -142,7 +142,7 @@ namespace TileIconifier.IconExtractor
         public static int GetBitCount(Icon icon)
         {
             if (icon == null)
-                throw new ArgumentNullException("icon");
+                throw new ArgumentNullException(nameof(icon));
 
             // Get an .ico file in memory, then read the header.
 
@@ -177,12 +177,12 @@ namespace TileIconifier.IconExtractor
                 return BitConverter.ToUInt16(data, 12);
             }
 
-            throw new ArgumentException(@"The icon is corrupt. Couldn't read the header.", "icon");
+            throw new ArgumentException(@"The icon is corrupt. Couldn't read the header.", nameof(icon));
         }
 
         private static byte[] GetIconData(Icon icon)
         {
-            var data = _getIconData(icon);
+            var data = IconDataDelegate(icon);
             if (data != null)
             {
                 return data;

@@ -19,13 +19,13 @@ namespace TileIconifier.Forms.CustomShortcutForms
         //*********************************************************************
 
         private readonly NewCustomShortcutFormCache _explorerCache = new NewCustomShortcutFormCache();
-       
+
         //*********************************************************************
         // OTHER RELATED FIELDS
         //*********************************************************************
 
         private readonly NewCustomShortcutFormCache _otherCache = new NewCustomShortcutFormCache();
-        
+
         //*********************************************************************
         // STEAM RELATED FIELDS
         //*********************************************************************
@@ -38,7 +38,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
         //*********************************************************************
 
         private TabPage _previousTabPage;
-
 
 
         //*********************************************************************
@@ -78,7 +77,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             //If we didn't specify a shortcut icon path, make one
             if (basicShortcutIcon == null)
-                customShortcut.BuildCustomShortcut((Image) pctCurrentIcon.Image.Clone());
+                customShortcut.BuildCustomShortcut((Image)pctCurrentIcon.Image.Clone());
             else
                 customShortcut.BuildCustomShortcut();
 
@@ -92,9 +91,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             //confirm to the user the shortcut has been created
             MessageBox.Show(
-                string.Format(
-                    "A shortcut for {0} has been created in your start menu under TileIconify. The item will need to be pinned manually.",
-                    shortcutName.QuoteWrap()), @"Shortcut created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                $"A shortcut for {shortcutName.QuoteWrap()} has been created in your start menu under TileIconify. The item will need to be pinned manually.",
+                @"Shortcut created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Hacked this in quickly - fix it up.
@@ -124,7 +122,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             try
             {
-                imageToUse = new Bitmap((Image) pctCurrentIcon.Image.Clone());
+                imageToUse = new Bitmap((Image)pctCurrentIcon.Image.Clone());
             }
             catch
             {
@@ -190,14 +188,14 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void LoadCache(NewCustomShortcutFormCache cache)
         {
-            pctCurrentIcon.Image = (Image) cache.Icon?.Clone();
+            pctCurrentIcon.Image = (Image)cache.Icon?.Clone();
             txtShortcutName.Text = cache.ShortcutName;
             radShortcutLocation.SetCheckedRadio(cache.AllOrCurrentUser);
         }
 
         private void SaveCache(NewCustomShortcutFormCache cache)
         {
-            cache.Icon = (Image) pctCurrentIcon.Image?.Clone();
+            cache.Icon = (Image)pctCurrentIcon.Image?.Clone();
             cache.ShortcutName = txtShortcutName.Text;
             cache.AllOrCurrentUser = radShortcutLocation.GetCheckedRadio();
         }
@@ -223,7 +221,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private void GenerateExplorerShortcut()
         {
             var targetArguments = radSpecialFolder.Checked
-                ? string.Format("shell:::{0}", cmbExplorerGuids.SelectedValue)
+                ? $"shell:::{cmbExplorerGuids.SelectedValue}"
                 : txtCustomFolder.Text;
             var workingFolder = radSpecialFolder.Checked ? null : txtCustomFolder.Text;
 
@@ -269,7 +267,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             try
             {
                 var steamInstallationPath = SteamLibrary.Instance.GetSteamInstallationFolder();
-                txtSteamInstallationPath.Text = string.Format("Steam installation path: {0}", steamInstallationPath);
+                txtSteamInstallationPath.Text = $"Steam installation path: {steamInstallationPath}";
             }
             catch (SteamInstallationPathNotFoundException)
             {
@@ -280,7 +278,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             try
             {
                 var steamExecutable = SteamLibrary.Instance.GetSteamExePath();
-                txtSteamExecutablePath.Text = string.Format("Steam executable path: {0}", steamExecutable);
+                txtSteamExecutablePath.Text = $"Steam executable path: {steamExecutable}";
             }
             catch (SteamExecutableNotFoundException)
             {
@@ -293,8 +291,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 var steamLibraryFolders = SteamLibrary.Instance.GetLibraryFolders();
                 if (steamLibraryFolders.Count > 0)
                 {
-                    txtSteamLibraryPaths.Text = string.Format("Steam library folders: {0}",
-                        string.Join("; ", steamLibraryFolders));
+                    txtSteamLibraryPaths.Text = $"Steam library folders: {string.Join("; ", steamLibraryFolders)}";
                 }
                 else
                 {
@@ -316,10 +313,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
             lstSteamGames.Clear();
             lstSteamGames.Columns.Clear();
 
-            lstSteamGames.Columns.Add("App Id", (lstSteamGames.Width/8) - 10, HorizontalAlignment.Left);
-            lstSteamGames.Columns.Add("Game Name", ((lstSteamGames.Width/8)*7) - 10, HorizontalAlignment.Left);
+            lstSteamGames.Columns.Add("App Id", lstSteamGames.Width / 8 - 10, HorizontalAlignment.Left);
+            lstSteamGames.Columns.Add("Game Name", lstSteamGames.Width / 8 * 7 - 10, HorizontalAlignment.Left);
 
-            lstSteamGames.Items.AddRange(_steamGames.OrderBy(s => s.GameName).ToArray());
+            lstSteamGames.Items.AddRange(_steamGames.OrderBy(s => s.GameName).ToArray<ListViewItem>());
         }
 
         private void LoadSteamGames()
@@ -357,8 +354,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             if (lstSteamGames.SelectedItems.Count == 0)
                 return;
 
-            var steamGame = ((SteamGame) lstSteamGames.SelectedItems[0]);
-            pctCurrentIcon.Image = (Image) steamGame.IconAsBitmap.Clone();
+            var steamGame = (SteamGame)lstSteamGames.SelectedItems[0];
+            pctCurrentIcon.Image = (Image)steamGame.IconAsBitmap.Clone();
             txtShortcutName.Text = steamGame.GameName.CleanInvalidFilenameChars();
         }
 
@@ -366,7 +363,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             if (lstSteamGames.SelectedItems.Count == 0) return;
 
-            var steamGame = ((SteamGame) lstSteamGames.SelectedItems[0]);
+            var steamGame = (SteamGame)lstSteamGames.SelectedItems[0];
 
             GenerateFullShortcut(SteamLibrary.Instance.GetSteamExePath(), steamGame.GameExecutionArgument,
                 CustomShortcutType.Steam, steamGame.IconPath);
@@ -378,9 +375,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             while (!isValid)
             {
                 fldBrowser.Description =
-                    string.Format(
-                        "Select a folder containing your Steam library (This will be a folder containing a {0} folder)",
-                        "steamapps".QuoteWrap());
+                    @"Select a folder containing your Steam library (This will be a folder containing a ""steamapps"" folder)";
 
                 if (fldBrowser.ShowDialog(this) != DialogResult.OK) return;
                 try
@@ -423,6 +418,5 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             GenerateFullShortcut(txtOtherTargetPath.Text, txtOtherShortcutArguments.Text, CustomShortcutType.Other, null);
         }
-
     }
 }

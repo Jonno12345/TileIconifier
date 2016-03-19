@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace TileIconifier.Forms
@@ -17,10 +16,10 @@ namespace TileIconifier.Forms
         {
             const int maxPeriods = 5;
 
-            if (lblLoading.Text.Split('.').Count() > maxPeriods)
+            if (lblLoading.Text.Split('.').Length > maxPeriods)
                 lblLoading.Text = _title;
 
-            if (Text.Split('.').Count() > maxPeriods)
+            if (Text.Split('.').Length > maxPeriods)
                 Text = _title;
 
             lblLoading.Text += @".";

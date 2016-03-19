@@ -18,11 +18,11 @@ namespace TileIconifier.Shortcut
             if (this == other)
                 return true;
 
-            return (BackgroundColor == other.BackgroundColor
-                    && ForegroundText == other.ForegroundText
-                    && ShowNameOnSquare150X150Logo == other.ShowNameOnSquare150X150Logo
-                    && ImageUtils.BitmapsAreEqual(MediumImage, other.MediumImage)
-                    && ImageUtils.BitmapsAreEqual(SmallImage, other.SmallImage));
+            return BackgroundColor == other.BackgroundColor
+                   && ForegroundText == other.ForegroundText
+                   && ShowNameOnSquare150X150Logo == other.ShowNameOnSquare150X150Logo
+                   && ImageUtils.BitmapsAreEqual(MediumImage, other.MediumImage)
+                   && ImageUtils.BitmapsAreEqual(SmallImage, other.SmallImage);
         }
 
         public ShortcutIconParameters Clone()

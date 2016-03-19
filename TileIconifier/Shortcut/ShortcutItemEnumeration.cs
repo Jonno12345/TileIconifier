@@ -37,8 +37,8 @@ namespace TileIconifier.Shortcut
                 Action<string, Action<string>> applyAllFiles = null;
                 applyAllFiles = (folder, fileAction) =>
                 {
-                    foreach (string file in Directory.GetFiles(folder)) fileAction(file);
-                    foreach (string subDir in Directory.GetDirectories(folder))
+                    foreach (var file in Directory.GetFiles(folder)) fileAction(file);
+                    foreach (var subDir in Directory.GetDirectories(folder))
                         try { applyAllFiles(subDir, fileAction); }
                         catch
                         {
@@ -82,10 +82,10 @@ namespace TileIconifier.Shortcut
 
         private static void GetPinnedStartMenuInformation()
         {
-            var tempOutputPath = string.Format("{0}{1}\\", Path.GetTempPath(), "TileIconifier");
+            var tempOutputPath = $"{Path.GetTempPath()}{"TileIconifier"}\\";
             Directory.CreateDirectory(tempOutputPath);
 
-            var tempFilePath = string.Format("{0}{1}.xml", tempOutputPath, Path.GetFileNameWithoutExtension(Path.GetRandomFileName()));
+            var tempFilePath = $"{tempOutputPath}{Path.GetFileNameWithoutExtension(Path.GetRandomFileName())}.xml";
 
             PowerShellUtils.DumpStartLayout(tempFilePath);
             PowerShellUtils.MarryAppIDs(_shortcutsCache);

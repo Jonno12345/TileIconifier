@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms
 {
@@ -21,10 +22,7 @@ namespace TileIconifier.Forms
 
         private void frmAbout_Load(object sender, EventArgs e)
         {
-            rtxtAbout.Text = rtxtAbout.Text.Replace("[@@CURVER@@]", Assembly.GetExecutingAssembly()
-                .GetName()
-                .Version
-                .ToString());
+            rtxtAbout.Text = rtxtAbout.Text.Replace("[@@CURVER@@]", UpdateUtils.CurrentVersion);
         }
     }
 }

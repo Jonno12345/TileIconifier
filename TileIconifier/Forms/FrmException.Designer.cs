@@ -1,6 +1,6 @@
 ﻿namespace TileIconifier.Forms
 {
-    partial class FrmUnhandledException
+    partial class FrmException
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUnhandledException));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmException));
             this.rtxtUnhandledException = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
@@ -41,10 +41,10 @@
             this.rtxtUnhandledException.Size = new System.Drawing.Size(614, 452);
             this.rtxtUnhandledException.TabIndex = 1;
             this.rtxtUnhandledException.Text = resources.GetString("rtxtUnhandledException.Text");
-            this.rtxtUnhandledException.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtUnhandledException_LinkClicked);
+            this.rtxtUnhandledException.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtException_LinkClicked);
             this.rtxtUnhandledException.MouseUp += new System.Windows.Forms.MouseEventHandler(this.rtxtUnhandledException_MouseUp);
             // 
-            // frmUnhandledException
+            // FrmUnhandledException
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -53,9 +53,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmUnhandledException";
+            this.Name = "FrmUnhandledException";
             this.Text = "Unhandled Exception!!!";
-            this.Load += new System.EventHandler(this.frmUnhandledException_Load);
+            this.Load += new System.EventHandler(this.FrmUnhandledExceptionLoad);
             this.ResumeLayout(false);
 
         }

@@ -36,13 +36,9 @@ namespace TileIconifier.Steam
             {
                 if (_iconPath != null) return _iconPath;
                 var defaultRegistryKey =
-                    string.Format(
-                        @"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {0}",
-                        AppId);
+                    $@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {AppId}";
                 var defaultRegistryKey32BitOs =
-                    string.Format(
-                        @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {0}",
-                        AppId);
+                    $@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {AppId}";
 
                 _iconPath = (string) Registry.GetValue(defaultRegistryKey, "DisplayIcon", null) ??
                             (string) Registry.GetValue(defaultRegistryKey32BitOs, "DisplayIcon", null);
@@ -70,7 +66,7 @@ namespace TileIconifier.Steam
             }
         }
 
-        public string GameExecutionArgument => string.Format("-applaunch \"{0}\"", AppId);
+        public string GameExecutionArgument => $"-applaunch \"{AppId}\"";
 
         public override string ToString()
         {

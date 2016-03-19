@@ -63,7 +63,8 @@ namespace TileIconifier.Forms
             this.chkUseSameImg = new System.Windows.Forms.CheckBox();
             this.lblUnsaved = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
-            this.lstShortcuts = new ListBoxWithTyping();
+            this.lstShortcuts = new TileIconifier.Controls.ListBoxWithTyping();
+            this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlFGColour.SuspendLayout();
             this.mnuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctStandardIcon)).BeginInit();
@@ -75,7 +76,7 @@ namespace TileIconifier.Forms
             // 
             this.txtLnkPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtLnkPath.Location = new System.Drawing.Point(11, 265);
-            this.txtLnkPath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLnkPath.Margin = new System.Windows.Forms.Padding(2);
             this.txtLnkPath.Name = "txtLnkPath";
             this.txtLnkPath.ReadOnly = true;
             this.txtLnkPath.Size = new System.Drawing.Size(531, 20);
@@ -107,7 +108,7 @@ namespace TileIconifier.Forms
             // 
             this.txtBGColour.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBGColour.Location = new System.Drawing.Point(678, 263);
-            this.txtBGColour.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBGColour.Margin = new System.Windows.Forms.Padding(2);
             this.txtBGColour.Name = "txtBGColour";
             this.txtBGColour.Size = new System.Drawing.Size(95, 20);
             this.txtBGColour.TabIndex = 4;
@@ -117,7 +118,7 @@ namespace TileIconifier.Forms
             // 
             this.btnIconify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnIconify.Location = new System.Drawing.Point(572, 348);
-            this.btnIconify.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnIconify.Margin = new System.Windows.Forms.Padding(2);
             this.btnIconify.Name = "btnIconify";
             this.btnIconify.Size = new System.Drawing.Size(86, 21);
             this.btnIconify.TabIndex = 8;
@@ -129,7 +130,7 @@ namespace TileIconifier.Forms
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemove.Location = new System.Drawing.Point(714, 348);
-            this.btnRemove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(96, 21);
             this.btnRemove.TabIndex = 9;
@@ -161,7 +162,7 @@ namespace TileIconifier.Forms
             "aqua",
             "Custom"});
             this.cmbColour.Location = new System.Drawing.Point(557, 264);
-            this.cmbColour.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbColour.Margin = new System.Windows.Forms.Padding(2);
             this.cmbColour.Name = "cmbColour";
             this.cmbColour.Size = new System.Drawing.Size(111, 21);
             this.cmbColour.TabIndex = 10;
@@ -174,7 +175,7 @@ namespace TileIconifier.Forms
             this.pnlFGColour.Controls.Add(this.lblFGText);
             this.pnlFGColour.Controls.Add(this.radFGLight);
             this.pnlFGColour.Location = new System.Drawing.Point(557, 295);
-            this.pnlFGColour.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlFGColour.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFGColour.Name = "pnlFGColour";
             this.pnlFGColour.Size = new System.Drawing.Size(257, 45);
             this.pnlFGColour.TabIndex = 11;
@@ -183,7 +184,7 @@ namespace TileIconifier.Forms
             // 
             this.radFGDark.AutoSize = true;
             this.radFGDark.Location = new System.Drawing.Point(58, 23);
-            this.radFGDark.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radFGDark.Margin = new System.Windows.Forms.Padding(2);
             this.radFGDark.Name = "radFGDark";
             this.radFGDark.Size = new System.Drawing.Size(48, 17);
             this.radFGDark.TabIndex = 8;
@@ -196,7 +197,7 @@ namespace TileIconifier.Forms
             this.chkFGTxtEnabled.Checked = true;
             this.chkFGTxtEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFGTxtEnabled.Location = new System.Drawing.Point(182, 5);
-            this.chkFGTxtEnabled.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkFGTxtEnabled.Margin = new System.Windows.Forms.Padding(2);
             this.chkFGTxtEnabled.Name = "chkFGTxtEnabled";
             this.chkFGTxtEnabled.Size = new System.Drawing.Size(65, 17);
             this.chkFGTxtEnabled.TabIndex = 7;
@@ -218,7 +219,7 @@ namespace TileIconifier.Forms
             this.radFGLight.AutoSize = true;
             this.radFGLight.Checked = true;
             this.radFGLight.Location = new System.Drawing.Point(8, 23);
-            this.radFGLight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radFGLight.Margin = new System.Windows.Forms.Padding(2);
             this.radFGLight.Name = "radFGLight";
             this.radFGLight.Size = new System.Drawing.Size(48, 17);
             this.radFGLight.TabIndex = 0;
@@ -241,7 +242,7 @@ namespace TileIconifier.Forms
             // 
             this.txtExePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtExePath.Location = new System.Drawing.Point(11, 304);
-            this.txtExePath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtExePath.Margin = new System.Windows.Forms.Padding(2);
             this.txtExePath.Name = "txtExePath";
             this.txtExePath.ReadOnly = true;
             this.txtExePath.Size = new System.Drawing.Size(531, 20);
@@ -283,7 +284,8 @@ namespace TileIconifier.Forms
             this.customShortcutManagerToolStripMenuItem,
             this.toolStripSeparator1,
             this.getPinnedItemsRequiresPowershellToolStripMenuItem,
-            this.refreshAllToolStripMenuItem});
+            this.refreshAllToolStripMenuItem,
+            this.checkForUpdateToolStripMenuItem});
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
             this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(58, 22);
             this.preferencesToolStripMenuItem.Text = "Utilities";
@@ -334,7 +336,7 @@ namespace TileIconifier.Forms
             this.pctStandardIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctStandardIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctStandardIcon.Location = new System.Drawing.Point(557, 38);
-            this.pctStandardIcon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pctStandardIcon.Margin = new System.Windows.Forms.Padding(2);
             this.pctStandardIcon.Name = "pctStandardIcon";
             this.pctStandardIcon.Size = new System.Drawing.Size(24, 24);
             this.pctStandardIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -369,7 +371,7 @@ namespace TileIconifier.Forms
             this.pctMediumIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctMediumIcon.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctMediumIcon.Location = new System.Drawing.Point(557, 88);
-            this.pctMediumIcon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pctMediumIcon.Margin = new System.Windows.Forms.Padding(2);
             this.pctMediumIcon.Name = "pctMediumIcon";
             this.pctMediumIcon.Size = new System.Drawing.Size(101, 101);
             this.pctMediumIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -394,7 +396,7 @@ namespace TileIconifier.Forms
             this.pctSmallIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctSmallIcon.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pctSmallIcon.Location = new System.Drawing.Point(678, 88);
-            this.pctSmallIcon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pctSmallIcon.Margin = new System.Windows.Forms.Padding(2);
             this.pctSmallIcon.Name = "pctSmallIcon";
             this.pctSmallIcon.Size = new System.Drawing.Size(47, 47);
             this.pctSmallIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -409,7 +411,7 @@ namespace TileIconifier.Forms
             this.chkUseSameImg.Checked = true;
             this.chkUseSameImg.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkUseSameImg.Location = new System.Drawing.Point(557, 193);
-            this.chkUseSameImg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkUseSameImg.Margin = new System.Windows.Forms.Padding(2);
             this.chkUseSameImg.Name = "chkUseSameImg";
             this.chkUseSameImg.Size = new System.Drawing.Size(214, 17);
             this.chkUseSameImg.TabIndex = 22;
@@ -433,7 +435,7 @@ namespace TileIconifier.Forms
             // btnReset
             // 
             this.btnReset.Location = new System.Drawing.Point(746, 218);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(2);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(64, 20);
             this.btnReset.TabIndex = 25;
@@ -450,7 +452,14 @@ namespace TileIconifier.Forms
             this.lstShortcuts.Size = new System.Drawing.Size(513, 186);
             this.lstShortcuts.TabIndex = 26;
             // 
-            // frmMain
+            // checkForUpdateToolStripMenuItem
+            // 
+            this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
+            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
+            this.checkForUpdateToolStripMenuItem.Text = "Check For Updates";
+            this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
+            // 
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -478,9 +487,9 @@ namespace TileIconifier.Forms
             this.Controls.Add(this.mnuMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mnuMain;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "frmMain";
+            this.Name = "FrmMain";
             this.Text = "Tile Iconifier";
             this.Load += new System.EventHandler(this.frmDropper_Load);
             this.pnlFGColour.ResumeLayout(false);
@@ -530,6 +539,7 @@ namespace TileIconifier.Forms
         private ListBoxWithTyping lstShortcuts;
         private System.Windows.Forms.ToolStripMenuItem customShortcutManagerToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem checkForUpdateToolStripMenuItem;
     }
 }
 

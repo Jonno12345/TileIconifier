@@ -4,22 +4,22 @@ using System.Windows.Forms;
 
 namespace TileIconifier.Forms
 {
-    public partial class FrmUnhandledException : Form
+    public partial class FrmException : Form
     {
         private readonly Exception _ex;
 
-        public FrmUnhandledException(Exception ex)
+        public FrmException(Exception ex)
         {
             InitializeComponent();
             _ex = ex;
         }
 
-        private void rtxtUnhandledException_LinkClicked(object sender, LinkClickedEventArgs e)
+        private void rtxtException_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             using (Process.Start(e.LinkText)) { }
         }
 
-        private void frmUnhandledException_Load(object sender, EventArgs e)
+        private void FrmUnhandledExceptionLoad(object sender, EventArgs e)
         {
             rtxtUnhandledException.Text = rtxtUnhandledException.Text.Replace("[@@EXCEPTIONSTACKTRACE@@]",
                 _ex.ToString());
@@ -27,7 +27,7 @@ namespace TileIconifier.Forms
 
         public static void ShowExceptionHandler(Exception ex)
         {
-            using (var unhandedException = new FrmUnhandledException(ex))
+            using (var unhandedException = new FrmException(ex))
             {
                 unhandedException.StartPosition = FormStartPosition.CenterScreen;
                 unhandedException.ShowDialog();

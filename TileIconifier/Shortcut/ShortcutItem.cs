@@ -103,7 +103,7 @@ namespace TileIconifier.Shortcut
         public bool ShowNameOnSquare150X150Logo
         {
             get { return NewParameters.ShowNameOnSquare150X150Logo == "on"; }
-            set { NewParameters.ShowNameOnSquare150X150Logo = (value ? "on" : "off"); }
+            set { NewParameters.ShowNameOnSquare150X150Logo = value ? "on" : "off"; }
         }
 
         public FileInfo ShortcutFileInfo { get; set; }
@@ -194,30 +194,28 @@ namespace TileIconifier.Shortcut
             }
         }
 
-        public string VisualElementManifestPath => string.Format("{0}{1}.VisualElementsManifest.xml", TargetFolderPath,
-            Path.GetFileNameWithoutExtension(TargetFilePath));
+        public string VisualElementManifestPath =>
+            $"{TargetFolderPath}{Path.GetFileNameWithoutExtension(TargetFilePath)}.VisualElementsManifest.xml";
 
         public string TargetFolderPath => Path.GetDirectoryName(TargetFilePath) + "\\";
 
         public string VisualElementsPath => TargetFolderPath + @"\VisualElements\";
 
         public string MediumIconName
-            => string.Format("MediumIcon{0}.png", Path.GetFileNameWithoutExtension(TargetFilePath));
+            => $"MediumIcon{Path.GetFileNameWithoutExtension(TargetFilePath)}.png";
 
         public string RelativeMediumIconPath
-            => string.Format("{0}\\{1}", Path.GetFileName(Path.GetDirectoryName(VisualElementsPath)),
-                MediumIconName);
+            => $"{Path.GetFileName(Path.GetDirectoryName(VisualElementsPath))}\\{MediumIconName}";
 
-        public string FullMediumIconPath => string.Format("{0}\\{1}", VisualElementsPath, MediumIconName);
+        public string FullMediumIconPath => $"{VisualElementsPath}\\{MediumIconName}";
 
         public string SmallIconName
-            => string.Format("SmallIcon{0}.png", Path.GetFileNameWithoutExtension(TargetFilePath));
+            => $"SmallIcon{Path.GetFileNameWithoutExtension(TargetFilePath)}.png";
 
         public string RelativeSmallIconPath
-            => string.Format("{0}\\{1}", Path.GetFileName(Path.GetDirectoryName(VisualElementsPath)),
-                SmallIconName);
+            => $"{Path.GetFileName(Path.GetDirectoryName(VisualElementsPath))}\\{SmallIconName}";
 
-        public string FullSmallIconPath => string.Format("{0}\\{1}", VisualElementsPath, SmallIconName);
+        public string FullSmallIconPath => $"{VisualElementsPath}\\{SmallIconName}";
 
         #endregion
     }

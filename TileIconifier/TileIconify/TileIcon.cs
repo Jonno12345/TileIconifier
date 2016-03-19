@@ -35,7 +35,7 @@ namespace TileIconifier.TileIconify
                 new XElement("Application",
                     new XAttribute(XNamespace.Xmlns + "xsi", xNamespace),
                     new XElement("VisualElements",
-                        new XAttribute("ShowNameOnSquare150x150Logo", (_shortcutItem.ShowNameOnSquare150X150Logo ? "on" : "off")),
+                        new XAttribute("ShowNameOnSquare150x150Logo", _shortcutItem.ShowNameOnSquare150X150Logo ? "on" : "off"),
                         new XAttribute("Square150x150Logo", _shortcutItem.RelativeMediumIconPath),
                         new XAttribute("Square70x70Logo", _shortcutItem.RelativeSmallIconPath),
                         new XAttribute("ForegroundText", _shortcutItem.ForegroundText),
@@ -53,8 +53,10 @@ namespace TileIconifier.TileIconify
             if (Directory.Exists(_shortcutItem.VisualElementsPath))
                 Directory.Delete(_shortcutItem.VisualElementsPath, true);
 
-            if (File.Exists(string.Format("{0}\\{1}.VisualElementsManifest.xml", _shortcutItem.TargetFolderPath, Path.GetFileNameWithoutExtension(_shortcutItem.TargetFilePath))))
-                File.Delete(string.Format("{0}\\{1}.VisualElementsManifest.xml", _shortcutItem.TargetFolderPath, Path.GetFileNameWithoutExtension(_shortcutItem.TargetFilePath)));
+            if (File.Exists(
+                $"{_shortcutItem.TargetFolderPath}\\{Path.GetFileNameWithoutExtension(_shortcutItem.TargetFilePath)}.VisualElementsManifest.xml"))
+                File.Delete(
+                    $"{_shortcutItem.TargetFolderPath}\\{Path.GetFileNameWithoutExtension(_shortcutItem.TargetFilePath)}.VisualElementsManifest.xml");
         }
 
 

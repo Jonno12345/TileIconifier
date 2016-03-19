@@ -25,9 +25,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
             lstCustomShortcuts.Clear();
             lstCustomShortcuts.Columns.Clear();
 
-            lstCustomShortcuts.Columns.Add("Shortcut Name", (lstCustomShortcuts.Width/4)*2 - 2, HorizontalAlignment.Left);
-            lstCustomShortcuts.Columns.Add("Shortcut Type", (lstCustomShortcuts.Width/4) - 1, HorizontalAlignment.Left);
-            lstCustomShortcuts.Columns.Add("Shortcut User", (lstCustomShortcuts.Width/4) - 1, HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add("Shortcut Name", lstCustomShortcuts.Width/4 *2 - 2, HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add("Shortcut Type", lstCustomShortcuts.Width/4 - 1, HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add("Shortcut User", lstCustomShortcuts.Width/4 - 1, HorizontalAlignment.Left);
 
             var smallImageList = new ImageList();
             for (var i = 0; i < _customShortcutsList.Count; i++)
@@ -84,8 +84,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             if (
                 MessageBox.Show(
-                    string.Format("Are you sure you wish to delete the custom shortcut for {0}?",
-                        customShortcut.Text.QuoteWrap()), @"Are you sure?", MessageBoxButtons.YesNo) == DialogResult.No)
+                    $"Are you sure you wish to delete the custom shortcut for {customShortcut.Text.QuoteWrap()}?", 
+                    @"Are you sure?",
+                    MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
             try

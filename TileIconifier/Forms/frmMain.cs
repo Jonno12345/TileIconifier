@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -30,7 +31,7 @@ namespace TileIconifier.Forms
 
         private void StartFullUpdate()
         {
-            var loadingSplash = new FrmLoadingSplash {StartPosition = FormStartPosition.CenterParent};
+            var loadingSplash = new FrmLoadingSplash { StartPosition = FormStartPosition.CenterParent };
             loadingSplash.SetTitle("Refreshing");
 
             var updateThread = new BackgroundWorker();
@@ -50,8 +51,9 @@ namespace TileIconifier.Forms
                 if (pinningException != null)
                 {
                     MessageBox.Show(
-                        @"A problem occurred with PowerShell functionality. It has been disabled.\r\n" + pinningException +
-                        "\r\n" + pinningException.Message, @"PowerShell failure", MessageBoxButtons.OK,
+                        @"A problem occurred with PowerShell functionality. It has been disabled
+" + pinningException,
+                        @"PowerShell failure", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     getPinnedItemsRequiresPowershellToolStripMenuItem_Click(this, null);
                 }
@@ -122,11 +124,11 @@ namespace TileIconifier.Forms
         {
             var valid = true;
 
-            Action<Control> controlInvalid = (c =>
+            Action<Control> controlInvalid = c =>
             {
                 c.BackColor = Color.Red;
                 valid = false;
-            });
+            };
 
             if (cmbColour.Text == @"Custom" && !Regex.Match(txtBGColour.Text, @"^#\d{6}$").Success)
                 controlInvalid(txtBGColour);
@@ -142,7 +144,7 @@ namespace TileIconifier.Forms
 
         private void cmbColour_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtBGColour.Enabled = (cmbColour.Text == @"Custom");
+            txtBGColour.Enabled = cmbColour.Text == @"Custom";
             if (_currentShortcut != null)
             {
                 _currentShortcut.BackgroundColor = cmbColour.Text == @"Custom" ? txtBGColour.Text : cmbColour.Text;
@@ -160,7 +162,7 @@ namespace TileIconifier.Forms
 
         private void lstShortcuts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentShortcut = (ShortcutItem) lstShortcuts.SelectedItem;
+            _currentShortcut = (ShortcutItem)lstShortcuts.SelectedItem;
             UpdateShortcut();
         }
 
@@ -186,10 +188,10 @@ namespace TileIconifier.Forms
             btnRemove.Enabled = _currentShortcut.IsIconified;
 
             //update the picture boxes to show the relevant images
-            pctStandardIcon.Image = (Image) _currentShortcut.StandardIcon?.Clone();
-            pctMediumIcon.Image = (Image) _currentShortcut.MediumImage?.Clone();
+            pctStandardIcon.Image = (Image)_currentShortcut.StandardIcon?.Clone();
+            pctMediumIcon.Image = (Image)_currentShortcut.MediumImage?.Clone();
             pctSmallIcon.Image = _currentShortcut.MediumImage != null
-                ? (Image) _currentShortcut.SmallImage?.Clone()
+                ? (Image)_currentShortcut.SmallImage?.Clone()
                 : null;
 
             //set relevant unsaved changes controls to required visibility/enabled states
@@ -218,8 +220,8 @@ namespace TileIconifier.Forms
             radFGLight.Enabled = chkFGTxtEnabled.Checked;
 
             //set the radio buttons based on the current shortcuts selection
-            radFGDark.Checked = (_currentShortcut.ForegroundText == "dark");
-            radFGLight.Checked = (_currentShortcut.ForegroundText == "light");
+            radFGDark.Checked = _currentShortcut.ForegroundText == "dark";
+            radFGLight.Checked = _currentShortcut.ForegroundText == "light";
 
             //reset any validation failures
             ResetValidation();
@@ -350,5 +352,39 @@ namespace TileIconifier.Forms
             radFGLight.CheckedChanged -= radFGLight_CheckedChanged;
             lstShortcuts.SelectedIndexChanged -= lstShortcuts_SelectedIndexChanged;
         }
+
+        private async void checkForUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var updateDetails = await UpdateUtils.CheckForUpdate();
+
+                if (updateDetails.UpdateAvailable)
+                {
+                    if (MessageBox.Show(
+                        $@"An update is available! Would you like to visit the releases page? (Your version: {updateDetails.CurrentVersion} - Latest version: ({updateDetails.LatestVersion})",
+                        @"New version available!",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button1) == DialogResult.Yes
+                        )
+                    {
+                        Process.Start("https://github.com/Jonno12345/TileIconify");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(@"You are already on the latest version!", @"Up-to-date");
+                }
+            }
+            catch
+            {
+                MessageBox.Show(
+                    $@"An error occurred getting latest release information. Click Ok to visit the latest releases page to check manually. (Your version: {UpdateUtils.CurrentVersion})",
+                    @"Unable to check server!",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Exclamation);
+            }
+}
     }
 }

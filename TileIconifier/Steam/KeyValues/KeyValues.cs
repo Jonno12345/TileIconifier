@@ -1070,7 +1070,7 @@ namespace TileIconifier.Steam.KeyValues
 
         public string GetComment(string keyName, string defaultValue)
         {
-            if (keyName == null) throw new ArgumentNullException("keyName");
+            if (keyName == null) throw new ArgumentNullException(nameof(keyName));
             if (string.IsNullOrEmpty(keyName))
                 return defaultValue;
             foreach (var t in KeyNameValues.Where(t => t.Key == keyName))
