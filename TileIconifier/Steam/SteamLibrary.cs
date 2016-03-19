@@ -32,9 +32,12 @@ namespace TileIconifier.Steam
         public static SteamLibrary Instance => _instance ?? (_instance = new SteamLibrary());
 
         public ShortcutItem SteamShortcutItem => _steamShortcutItem ??
-                       (_steamShortcutItem =
-                           ShortcutItemEnumeration.GetShortcuts()
-                               .FirstOrDefault(s => Path.GetFileNameWithoutExtension(s.ShortcutFileInfo.Name) == "Steam"));
+                                                 (_steamShortcutItem =
+                                                     ShortcutItemEnumeration.GetShortcuts()
+                                                         .FirstOrDefault(
+                                                             s =>
+                                                                 Path.GetFileNameWithoutExtension(
+                                                                     s.ShortcutFileInfo.Name) == "Steam"));
 
 
         private string GetLibraryFoldersVdf()
@@ -87,7 +90,9 @@ namespace TileIconifier.Steam
 
             var kv = new KeyValues.KeyValues("LibraryFolders");
             kv.LoadFromFile(GetLibraryFoldersVdf());
-            foreach (var keyValuePair in kv.KeyNameValues.Where(keyValuePair => Regex.Match(keyValuePair.Key, @"\d+").Success))
+            foreach (
+                var keyValuePair in
+                    kv.KeyNameValues.Where(keyValuePair => Regex.Match(keyValuePair.Key, @"\d+").Success))
             {
                 try
                 {
@@ -122,6 +127,10 @@ namespace TileIconifier.Steam
                 {
                     var kv = new KeyValues.KeyValues("AppState");
                     kv.LoadFromFile(acfFile.FullName);
+
+                    //Empty list of key name values, skip
+                    if (!kv.KeyNameValues.Any())
+                        continue;
                     var appId = kv.KeyNameValues.Single(k => k.Key == "appid").Value;
                     var gameName = kv.KeyNameValues.Single(k => k.Key == "name").Value;
                     steamGames.Add(new SteamGame(appId, gameName, acfFile.FullName));
