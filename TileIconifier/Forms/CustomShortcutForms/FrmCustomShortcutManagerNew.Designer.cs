@@ -43,6 +43,7 @@
             this.txtSteamInstallationPath = new System.Windows.Forms.TextBox();
             this.txtSteamExecutablePath = new System.Windows.Forms.TextBox();
             this.txtSteamLibraryPaths = new System.Windows.Forms.TextBox();
+            this.lstSteamGames = new TileIconifier.Controls.SortableListView();
             this.tabOther = new System.Windows.Forms.TabPage();
             this.lblOtherShortcutArguments = new System.Windows.Forms.Label();
             this.txtOtherShortcutArguments = new System.Windows.Forms.TextBox();
@@ -57,6 +58,7 @@
             this.lblCurrentIcon = new System.Windows.Forms.Label();
             this.pctCurrentIcon = new System.Windows.Forms.PictureBox();
             this.opnOtherTarget = new System.Windows.Forms.OpenFileDialog();
+            this.radShortcutLocation = new TileIconifier.Controls.AllOrCurrentUserRadios();
             this.tabShortcutType.SuspendLayout();
             this.tabExplorer.SuspendLayout();
             this.pnlExplorer.SuspendLayout();
@@ -100,7 +102,7 @@
             this.pnlExplorer.Controls.Add(this.radCustomFolder);
             this.pnlExplorer.Controls.Add(this.radSpecialFolder);
             this.pnlExplorer.Controls.Add(this.cmbExplorerGuids);
-            this.pnlExplorer.Location = new System.Drawing.Point(6, 29);
+            this.pnlExplorer.Location = new System.Drawing.Point(6, 33);
             this.pnlExplorer.Name = "pnlExplorer";
             this.pnlExplorer.Size = new System.Drawing.Size(610, 72);
             this.pnlExplorer.TabIndex = 1;
@@ -174,6 +176,7 @@
             this.tabSteam.Controls.Add(this.txtSteamInstallationPath);
             this.tabSteam.Controls.Add(this.txtSteamExecutablePath);
             this.tabSteam.Controls.Add(this.txtSteamLibraryPaths);
+            this.tabSteam.Controls.Add(this.lstSteamGames);
             this.tabSteam.Location = new System.Drawing.Point(4, 22);
             this.tabSteam.Name = "tabSteam";
             this.tabSteam.Padding = new System.Windows.Forms.Padding(3);
@@ -268,6 +271,22 @@
             this.txtSteamLibraryPaths.TabIndex = 5;
             this.txtSteamLibraryPaths.Text = "txtSteamLibraryPaths";
             this.txtSteamLibraryPaths.WordWrap = false;
+            // 
+            // lstSteamGames
+            // 
+            this.lstSteamGames.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstSteamGames.FullRowSelect = true;
+            this.lstSteamGames.Location = new System.Drawing.Point(6, 90);
+            this.lstSteamGames.MultiSelect = false;
+            this.lstSteamGames.Name = "lstSteamGames";
+            this.lstSteamGames.Size = new System.Drawing.Size(607, 152);
+            this.lstSteamGames.TabIndex = 1;
+            this.lstSteamGames.UseCompatibleStateImageBehavior = false;
+            this.lstSteamGames.View = System.Windows.Forms.View.Details;
+            this.lstSteamGames.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.lstSteamGames_ColumnWidthChanging);
+            this.lstSteamGames.SelectedIndexChanged += new System.EventHandler(this.lstSteamGames_SelectedIndexChanged);
             // 
             // tabOther
             // 
@@ -401,11 +420,20 @@
             // 
             this.opnOtherTarget.Filter = "All Files|*";
             // 
+            // radShortcutLocation
+            // 
+            this.radShortcutLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.radShortcutLocation.Location = new System.Drawing.Point(391, 283);
+            this.radShortcutLocation.Name = "radShortcutLocation";
+            this.radShortcutLocation.Size = new System.Drawing.Size(96, 66);
+            this.radShortcutLocation.TabIndex = 30;
+            // 
             // FrmCustomShortcutManagerNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 370);
+            this.Controls.Add(this.radShortcutLocation);
             this.Controls.Add(this.txtShortcutName);
             this.Controls.Add(this.lblShortcutName);
             this.Controls.Add(this.btnGenerateShortcut);
