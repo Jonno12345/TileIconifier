@@ -130,7 +130,7 @@ namespace TileIconifier.Forms
                 valid = false;
             };
 
-            if (cmbColour.Text == @"Custom" && !Regex.Match(txtBGColour.Text, @"^#\d{6}$").Success)
+            if (cmbColour.Text == @"Custom" && !Regex.Match(txtBGColour.Text, @"^#[0-9a-fA-F]{6}$").Success)
                 controlInvalid(txtBGColour);
 
             if (_currentShortcut.MediumImage == null)

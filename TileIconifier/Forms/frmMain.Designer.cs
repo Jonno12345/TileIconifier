@@ -52,6 +52,7 @@ namespace TileIconifier.Forms
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.getPinnedItemsRequiresPowershellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pctStandardIcon = new System.Windows.Forms.PictureBox();
@@ -64,7 +65,6 @@ namespace TileIconifier.Forms
             this.lblUnsaved = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.lstShortcuts = new TileIconifier.Controls.ListBoxWithTyping();
-            this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlFGColour.SuspendLayout();
             this.mnuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctStandardIcon)).BeginInit();
@@ -109,6 +109,7 @@ namespace TileIconifier.Forms
             this.txtBGColour.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBGColour.Location = new System.Drawing.Point(678, 263);
             this.txtBGColour.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBGColour.MaxLength = 7;
             this.txtBGColour.Name = "txtBGColour";
             this.txtBGColour.Size = new System.Drawing.Size(95, 20);
             this.txtBGColour.TabIndex = 4;
@@ -317,6 +318,13 @@ namespace TileIconifier.Forms
             this.refreshAllToolStripMenuItem.Text = "Refresh All";
             this.refreshAllToolStripMenuItem.Click += new System.EventHandler(this.refreshAllToolStripMenuItem_Click);
             // 
+            // checkForUpdateToolStripMenuItem
+            // 
+            this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
+            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
+            this.checkForUpdateToolStripMenuItem.Text = "Check For Updates";
+            this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -451,13 +459,6 @@ namespace TileIconifier.Forms
             this.lstShortcuts.Name = "lstShortcuts";
             this.lstShortcuts.Size = new System.Drawing.Size(513, 186);
             this.lstShortcuts.TabIndex = 26;
-            // 
-            // checkForUpdateToolStripMenuItem
-            // 
-            this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
-            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
-            this.checkForUpdateToolStripMenuItem.Text = "Check For Updates";
-            this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
             // 
             // FrmMain
             // 

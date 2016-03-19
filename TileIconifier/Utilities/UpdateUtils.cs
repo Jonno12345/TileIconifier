@@ -1,33 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using Octokit;
-using Octokit.Internal;
 
 namespace TileIconifier.Utilities
 {
     public static class UpdateUtils
     {
         public static GitHubClient Client { get; } = new GitHubClient(new ProductHeaderValue("TileIconify"));
+
         public static string CurrentVersion => Assembly.GetExecutingAssembly()
-                .GetName()
-                .Version
-                .ToString();
+            .GetName()
+            .Version
+            .ToString();
 
 
         public static async Task<UpdateDetails> CheckForUpdate()
         {
-            var updateDetails = new UpdateDetails()
+            var updateDetails = new UpdateDetails
             {
                 CurrentVersion = CurrentVersion,
                 UpdateAvailable = false,
-                LatestVersion = "",
+                LatestVersion = ""
             };
 
             var releases = await Client.Repository.Release.GetAll("Jonno12345", "TileIconify");
@@ -60,8 +54,8 @@ namespace TileIconifier.Utilities
 
     public class UpdateDetails
     {
-        public bool UpdateAvailable;
-        public string LatestVersion;
         public string CurrentVersion;
+        public string LatestVersion;
+        public bool UpdateAvailable;
     }
 }
