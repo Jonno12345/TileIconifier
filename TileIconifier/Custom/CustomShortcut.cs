@@ -163,7 +163,7 @@ namespace TileIconifier.Custom
             var vbsFileContents = File.ReadAllText(vbsFilePath);
 
             var regexMatch = Regex.Match(vbsFileContents,
-                "'Custom Shortcut Type = \"(.*)\".*'Shortcut Name = \"(.*)\".*'Shortcut Path = \"(.*)\".*targetPath = \"(.*)\".*targetArguments = \"(.*)\"\r\n.*",
+                "'Custom Shortcut Type = \"(.*)\".*'Shortcut Name = \"(.*)\".*'Shortcut Path = \"(.*)\".*targetPath = \"(.*)\".*targetArguments = \"(.*)\".*",
                 RegexOptions.Singleline);
 
             if (!regexMatch.Success)
