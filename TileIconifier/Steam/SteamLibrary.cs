@@ -111,6 +111,19 @@ namespace TileIconifier.Steam
                 throw new SteamLibraryPathNotFoundException();
         }
 
+        private string GetGameName(KeyValues.KeyValues kv)
+        {
+            var kvp = kv.KeyNameValues.FirstOrDefault(k => k.Key.Equals("name", StringComparison.InvariantCultureIgnoreCase));
+            if (kvp != null)
+                return kvp.Value;
+            
+            var userConfigKv = kv.KeyChilds.FirstOrDefault(c => c.Name.Equals("UserConfig", StringComparison.InvariantCultureIgnoreCase));
+            if (userConfigKv != null)
+                return GetGameName(userConfigKv);
+
+            return null;
+        }
+
         public List<SteamGame> GetAllSteamGames()
         {
             var steamGames = new List<SteamGame>();
@@ -123,7 +136,9 @@ namespace TileIconifier.Steam
                     var kv = new KeyValues.KeyValues("AppState");
                     kv.LoadFromFile(acfFile.FullName);
                     var appId = kv.KeyNameValues.Single(k => k.Key == "appid").Value;
-                    var gameName = kv.KeyNameValues.Single(k => k.Key == "name").Value;
+                    var gameName = GetGameName(kv);
+                    if (gameName == null)
+                        continue;
                     steamGames.Add(new SteamGame(appId, gameName, acfFile.FullName));
                 }
             }
