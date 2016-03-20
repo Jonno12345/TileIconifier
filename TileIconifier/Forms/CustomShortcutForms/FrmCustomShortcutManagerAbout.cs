@@ -5,7 +5,7 @@ using TileIconifier.Custom;
 
 namespace TileIconifier.Forms.CustomShortcutForms
 {
-    public partial class FrmCustomShortcutManagerHelp : Form
+    public partial class FrmCustomShortcutManagerHelp : SkinnableForm
     {
         public FrmCustomShortcutManagerHelp()
         {

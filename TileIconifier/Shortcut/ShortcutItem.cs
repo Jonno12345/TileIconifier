@@ -2,8 +2,6 @@
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Windows.Forms;
 using System.Xml.Linq;
 using TileIconifier.Custom;
 using TileIconifier.Utilities;
@@ -11,13 +9,13 @@ using TileIconifier.Utilities;
 namespace TileIconifier.Shortcut
 {
     [Serializable]
-    public class ShortcutItem : ListViewItem
+    public class ShortcutItem
     {
+        private Image _mediumImageCache;
+        private byte[] _mediumImageCacheBytes;
+        private Image _smallImageCache;
+        private byte[] _smallImageCacheBytes;
         private Bitmap _standardIcon;
-
-        protected ShortcutItem(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
 
         public ShortcutItem(FileInfo shortcutFileInfo)
         {
@@ -70,23 +68,18 @@ namespace TileIconifier.Shortcut
             }
         }
 
-        public Bitmap MediumImage
+        public byte[] MediumImageBytes
         {
-            get
-            {
-                return NewParameters.MediumImage ?? OldParameters?.MediumImage;
-            }
-            set { NewParameters.MediumImage = value; }
+            get { return NewParameters.MediumImageBytes ?? OldParameters?.MediumImageBytes; }
+            set { NewParameters.MediumImageBytes = value; }
         }
 
-        public Bitmap SmallImage
+        public byte[] SmallImageBytes
         {
-            get
-            {
-                return NewParameters.SmallImage ?? OldParameters?.SmallImage;
-            }
-            set { NewParameters.SmallImage = value; }
+            get { return NewParameters.SmallImageBytes ?? OldParameters?.SmallImageBytes; }
+            set { NewParameters.SmallImageBytes = value; }
         }
+
 
         public string BackgroundColor
         {
@@ -108,13 +101,44 @@ namespace TileIconifier.Shortcut
 
         public FileInfo ShortcutFileInfo { get; set; }
         public string AppId { get; set; }
-        public bool IsPinned { get; set; }
+        public bool? IsPinned { get; set; }
         private ShortcutIconParameters OldParameters { get; set; }
         private ShortcutIconParameters NewParameters { get; set; }
+
         public bool HasUnsavedChanges => !NewParameters.Equals(OldParameters);
+        public bool MediumImageChange => !NewParameters.MediumImageBytesEqual(OldParameters);
+        public bool SmallImageChange => !NewParameters.SmallImageBytesEqual(OldParameters);
+        public bool ForegroundTextColourChanged => NewParameters.ForegroundText != OldParameters.ForegroundText;
+
+        public Image MediumImage()
+        {
+            if (_mediumImageCacheBytes == MediumImageBytes) return _mediumImageCache;
+
+            if (_mediumImageCacheBytes == MediumImageBytes && _mediumImageCacheBytes.SequenceEqual(MediumImageBytes))
+                return _mediumImageCache;
+
+            _mediumImageCache = ImageUtils.ByteArrayToImage(MediumImageBytes);
+            _mediumImageCacheBytes = MediumImageBytes?.ToArray();
+
+            return _mediumImageCache;
+        }
+
+        public Image SmallImage()
+        {
+            if (_smallImageCacheBytes == SmallImageBytes) return _smallImageCache;
+
+            if (_smallImageCacheBytes == SmallImageBytes && _smallImageCacheBytes.SequenceEqual(SmallImageBytes))
+                return _smallImageCache;
+
+            _smallImageCache = ImageUtils.ByteArrayToImage(SmallImageBytes);
+            _smallImageCacheBytes = SmallImageBytes?.ToArray();
+
+            return _smallImageCache;
+        }
 
         private void LoadParameters()
         {
+            IsPinned = null;
             if (IsIconified)
             {
                 var xmlDoc = XDocument.Load(VisualElementManifestPath);
@@ -127,10 +151,11 @@ namespace TileIconifier.Shortcut
                             BackgroundColor = b.Attribute("BackgroundColor").Value,
                             ForegroundText = b.Attribute("ForegroundText").Value,
                             ShowNameOnSquare150X150Logo = b.Attribute("ShowNameOnSquare150x150Logo").Value,
-                            MediumImage =
-                                ImageUtils.LoadIconifiedBitmap(TargetFolderPath + b.Attribute("Square150x150Logo").Value),
-                            SmallImage =
-                                ImageUtils.LoadIconifiedBitmap(TargetFolderPath + b.Attribute("Square70x70Logo").Value)
+                            MediumImageBytes =
+                                ImageUtils.LoadBitmapToByteArray(TargetFolderPath +
+                                                                 b.Attribute("Square150x150Logo").Value),
+                            SmallImageBytes =
+                                ImageUtils.LoadBitmapToByteArray(TargetFolderPath + b.Attribute("Square70x70Logo").Value)
                         };
                     OldParameters = parameters.Single();
                     NewParameters = OldParameters.Clone();
@@ -166,12 +191,6 @@ namespace TileIconifier.Shortcut
                 ShowNameOnSquare150X150Logo = "on"
             };
             NewParameters = OldParameters.Clone();
-        }
-
-        public override string ToString()
-        {
-            return Path.GetFileNameWithoutExtension(ShortcutFileInfo.Name) + (IsPinned ? " *" : "") +
-                   (IsIconified ? " #" : "");
         }
 
         #region Path properties

@@ -1,4 +1,4 @@
-﻿namespace TileIconifier.Forms
+﻿namespace TileIconifier.Forms.Shared
 {
     partial class FrmIconSelector
     {
@@ -17,8 +17,8 @@
             {
                 components.Dispose();
             }
-            if(ReturnedBitmap != null)
-                ReturnedBitmap.Dispose();
+            //if(ReturnedBitmap != null)
+            //    ReturnedBitmap.Dispose();
             base.Dispose(disposing);
         }
 
@@ -184,11 +184,11 @@
             this.lblCommonDlls.AutoSize = true;
             this.lblCommonDlls.Location = new System.Drawing.Point(10, 56);
             this.lblCommonDlls.Name = "lblCommonDlls";
-            this.lblCommonDlls.Size = new System.Drawing.Size(92, 13);
+            this.lblCommonDlls.Size = new System.Drawing.Size(100, 13);
             this.lblCommonDlls.TabIndex = 14;
-            this.lblCommonDlls.Text = "Common Icon Dlls";
+            this.lblCommonDlls.Text = "Common Icon DLLs";
             // 
-            // frmIconSelector
+            // FrmIconSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -205,7 +205,7 @@
             this.Controls.Add(this.radUseCustomImage);
             this.Controls.Add(this.radIconFromTarget);
             this.Controls.Add(this.lvwIcons);
-            this.Name = "frmIconSelector";
+            this.Name = "FrmIconSelector";
             this.Text = "Icon Selector";
             this.ResumeLayout(false);
             this.PerformLayout();

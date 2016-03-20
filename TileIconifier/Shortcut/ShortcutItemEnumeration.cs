@@ -12,7 +12,7 @@ namespace TileIconifier.Shortcut
         private static List<ShortcutItem> _shortcutsCache;
 
         /// <summary>
-        /// Gather a list of ShortcutItems from the current environment
+        ///     Gather a list of ShortcutItems from the current environment
         /// </summary>
         /// <returns></returns>
         public static List<ShortcutItem> GetShortcuts(bool refreshCache = false)
@@ -25,7 +25,7 @@ namespace TileIconifier.Shortcut
 
             var shortcutsList = new List<ShortcutItem>();
 
-            List<string> pathsToScan = new List<string>()
+            var pathsToScan = new List<string>
             {
                 @"%PROGRAMDATA%\Microsoft\Windows\Start Menu",
                 @"%APPDATA%\Microsoft\Windows\Start Menu"
@@ -39,7 +39,10 @@ namespace TileIconifier.Shortcut
                 {
                     foreach (var file in Directory.GetFiles(folder)) fileAction(file);
                     foreach (var subDir in Directory.GetDirectories(folder))
-                        try { applyAllFiles(subDir, fileAction); }
+                        try
+                        {
+                            applyAllFiles(subDir, fileAction);
+                        }
                         catch
                         {
                             // ignored
@@ -64,7 +67,9 @@ namespace TileIconifier.Shortcut
 
             return _shortcutsCache;
         }
-        public static List<ShortcutItem> TryGetShortcutsWithPinning(out Exception pinnedInformationException, bool refreshCache = false)
+
+        public static List<ShortcutItem> TryGetShortcutsWithPinning(out Exception pinnedInformationException,
+            bool refreshCache = false)
         {
             GetShortcuts(refreshCache);
             try
@@ -92,9 +97,7 @@ namespace TileIconifier.Shortcut
 
             MarkPinnedShortcuts(tempFilePath);
 
-            _shortcutsCache = _shortcutsCache.OrderByDescending(s => s.IsPinned)
-                                            .ThenBy(s => s.ShortcutFileInfo.Name)
-                                            .ToList();
+            _shortcutsCache = _shortcutsCache.ToList();
 
             try
             {
@@ -110,7 +113,11 @@ namespace TileIconifier.Shortcut
         {
             var startLayout = File.ReadAllText(tempFilePath);
 
-            var regexMatches = Regex.Matches(startLayout, "<start:DesktopApplicationTile.*DesktopApplicationID=\"(.*)\".*");
+            var regexMatches = Regex.Matches(startLayout,
+                "<start:DesktopApplicationTile.*DesktopApplicationID=\"(.*)\".*");
+
+            foreach (var shortcutItem in _shortcutsCache)
+                shortcutItem.IsPinned = false;
 
             foreach (Match regexMatch in regexMatches)
             {

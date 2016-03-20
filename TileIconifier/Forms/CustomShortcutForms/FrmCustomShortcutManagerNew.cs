@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -12,7 +11,7 @@ using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms.CustomShortcutForms
 {
-    public partial class FrmCustomShortcutManagerNew : Form
+    public partial class FrmCustomShortcutManagerNew : SkinnableForm
     {
         //*********************************************************************
         // EXPLORER RELATED FIELDS
@@ -61,7 +60,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             )
         {
             var shortcutName = txtShortcutName.Text.CleanInvalidFilenameChars();
-            Bitmap imageToUse;
+            byte[] imageToUse;
 
             try
             {
@@ -77,15 +76,15 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             //If we didn't specify a shortcut icon path, make one
             if (basicShortcutIcon == null)
-                customShortcut.BuildCustomShortcut((Image)pctCurrentIcon.Image.Clone());
+                customShortcut.BuildCustomShortcut(pctCurrentIcon.Image);
             else
                 customShortcut.BuildCustomShortcut();
 
 
             //Iconify a TileIconifier shortcut for this with default settings
             var newShortcutItem = customShortcut.ShortcutItem;
-            newShortcutItem.MediumImage = imageToUse;
-            newShortcutItem.SmallImage = imageToUse;
+            newShortcutItem.MediumImageBytes = imageToUse;
+            newShortcutItem.SmallImageBytes = imageToUse;
             var iconify = new TileIcon(newShortcutItem);
             iconify.RunIconify();
 
@@ -96,7 +95,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         }
 
         //Hacked this in quickly - fix it up.
-        private void ValidateFields(string shortcutName, string targetPath, out Bitmap imageToUse)
+        private void ValidateFields(string shortcutName, string targetPath, out byte[] imageToUse)
         {
             //Check if there are invalid characters in the shortcut name
             if (txtShortcutName.Text != shortcutName || shortcutName.Length == 0)
@@ -122,7 +121,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             try
             {
-                imageToUse = new Bitmap((Image)pctCurrentIcon.Image.Clone());
+                imageToUse = ImageUtils.ImageToByteArray(pctCurrentIcon.Image);
             }
             catch
             {
@@ -153,7 +152,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             try
             {
-                pctCurrentIcon.Image = ImageUtils.GetImage(this, CustomShortcutGetters.ExplorerPath);
+                CurrentCache.SetIconBytes(ImageUtils.GetImage(this, CustomShortcutGetters.ExplorerPath));
+                pctCurrentIcon.Image = CurrentCache.GetIcon();
             }
             catch (UserCancellationException)
             {
@@ -164,40 +164,60 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             //save the previous tab state in it's cache before changing
             //This seems to be the only way to get the tab before it actually changes...?
-            if (_previousTabPage == tabExplorer)
-                SaveCache(_explorerCache);
-            else if (_previousTabPage == tabSteam)
-                SaveCache(_steamCache);
-            else if (_previousTabPage == tabOther)
-                SaveCache(_otherCache);
+            SaveCache(PreviousCache);
 
             _previousTabPage = tabShortcutType.SelectedTab;
 
             //load the cache of the new tab
-            var tabControl = sender as TabControl;
-            if (tabControl == null) return;
+            LoadCache(CurrentCache);
+        }
 
-            var current = tabControl.SelectedTab;
-            if (current == tabExplorer)
-                LoadCache(_explorerCache);
-            else if (current == tabSteam)
-                LoadCache(_steamCache);
-            else if (current == tabOther)
-                LoadCache(_otherCache);
+        private NewCustomShortcutFormCache PreviousCache
+        {
+            get
+            {
+                if (_previousTabPage == tabExplorer)
+                    return _explorerCache;
+                if (_previousTabPage == tabSteam)
+                    return _steamCache;
+                if (_previousTabPage == tabOther)
+                    return _otherCache;
+                return null;
+            }
+        }
+
+        private NewCustomShortcutFormCache CurrentCache
+        {
+            get
+            {
+                var current = tabShortcutType.SelectedTab;
+                if (current == tabExplorer)
+                    return _explorerCache;
+                if (current == tabSteam)
+                    return _steamCache;
+                if (current == tabOther)
+                    return _otherCache;
+                return null;
+            }
         }
 
         private void LoadCache(NewCustomShortcutFormCache cache)
         {
-            pctCurrentIcon.Image = (Image)cache.Icon?.Clone();
+            pctCurrentIcon.Image = cache.GetIcon();
             txtShortcutName.Text = cache.ShortcutName;
             radShortcutLocation.SetCheckedRadio(cache.AllOrCurrentUser);
         }
 
         private void SaveCache(NewCustomShortcutFormCache cache)
         {
-            cache.Icon = (Image)pctCurrentIcon.Image?.Clone();
             cache.ShortcutName = txtShortcutName.Text;
             cache.AllOrCurrentUser = radShortcutLocation.GetCheckedRadio();
+        }
+
+        private void UpdatedCacheIcon(byte[] bytesIn)
+        {
+            CurrentCache.SetIconBytes(bytesIn);
+            pctCurrentIcon.Image = CurrentCache.GetIcon();
         }
 
         //*********************************************************************
@@ -314,7 +334,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             lstSteamGames.Columns.Clear();
 
             lstSteamGames.Columns.Add("App Id", lstSteamGames.Width / 8 - 10, HorizontalAlignment.Left);
-            lstSteamGames.Columns.Add("Game Name", lstSteamGames.Width / 8 * 7 - 10, HorizontalAlignment.Left);
+            lstSteamGames.Columns.Add("Game Name", lstSteamGames.Width / 8 * 7 -4, HorizontalAlignment.Left);
 
             lstSteamGames.Items.AddRange(_steamGames.OrderBy(s => s.GameName).ToArray<ListViewItem>());
         }
@@ -322,12 +342,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private void LoadSteamGames()
         {
             _steamGames = SteamLibrary.Instance.GetAllSteamGames();
-        }
-
-        private void lstSteamGames_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
-        {
-            e.Cancel = true;
-            e.NewWidth = lstSteamGames.Columns[e.ColumnIndex].Width;
         }
 
         private void btnInstallationChange_Click(object sender, EventArgs e)
@@ -355,7 +369,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 return;
 
             var steamGame = (SteamGame)lstSteamGames.SelectedItems[0];
-            pctCurrentIcon.Image = (Image)steamGame.IconAsBitmap.Clone();
+            UpdatedCacheIcon(steamGame.IconAsBytes);
             txtShortcutName.Text = steamGame.GameName.CleanInvalidFilenameChars();
         }
 
@@ -406,7 +420,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             try
             {
-                pctCurrentIcon.Image = new IconExtractor.IconExtractor(filePath).GetIcon(0).ToBitmap();
+                UpdatedCacheIcon(
+                    ImageUtils.ImageToByteArray(new IconExtractor.IconExtractor(filePath).GetIcon(0).ToBitmap()));
             }
             catch
             {

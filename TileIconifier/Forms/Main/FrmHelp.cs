@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace TileIconifier.Forms
 {
-    public partial class FrmHelp : Form
+    public partial class FrmHelp : SkinnableForm
     {
         public FrmHelp()
         {

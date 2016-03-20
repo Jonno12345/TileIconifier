@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TileIconifier.Forms;
+using TileIconifier.Forms.Shared;
 using TileIconifier.Shortcut;
 
 namespace TileIconifier.Steam

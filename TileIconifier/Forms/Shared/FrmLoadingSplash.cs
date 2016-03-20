@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace TileIconifier.Forms
+namespace TileIconifier.Forms.Shared
 {
-    public partial class FrmLoadingSplash : Form
+    public partial class FrmLoadingSplash : SkinnableForm
     {
         private string _title = "Loading";
 

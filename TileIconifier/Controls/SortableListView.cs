@@ -10,6 +10,13 @@ namespace TileIconifier.Controls
         public SortableListView()
         {
             ColumnClick += SortableListView_ColumnClick;
+            ColumnWidthChanging += OnColumnWidthChanging;
+        }
+
+        private void OnColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = Columns[e.ColumnIndex].Width;
         }
 
         private void SortableListView_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -56,7 +63,8 @@ namespace TileIconifier.Controls
 
         public int Compare(object x, object y)
         {
-            var returnVal = string.CompareOrdinal(((ListViewItem) x).SubItems[_col].Text, ((ListViewItem) y).SubItems[_col].Text);
+            var returnVal = string.CompareOrdinal(((ListViewItem) x).SubItems[_col].Text,
+                ((ListViewItem) y).SubItems[_col].Text);
             // Determine whether the sort order is descending.
             if (_order == SortOrder.Descending)
                 // Invert the value returned by String.Compare.

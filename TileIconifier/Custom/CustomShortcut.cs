@@ -2,14 +2,13 @@
 using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 using TileIconifier.Properties;
 using TileIconifier.Shortcut;
 using TileIconifier.Utilities;
 
 namespace TileIconifier.Custom
 {
-    internal class CustomShortcut : ListViewItem
+    internal class CustomShortcut
     {
         private string _basicShortcutIcon;
 
@@ -31,10 +30,6 @@ namespace TileIconifier.Custom
             BasicShortcutIcon = basicShortcutIcon;
             VbsFilePath = vbsFilePath;
             VbsFolderPath = vbsFolderPath;
-
-            Text = ShortcutName;
-            SubItems.Add(ShortcutType.ToString());
-            SubItems.Add(ShortcutItem.ShortcutUser.ToString());
         }
 
         public CustomShortcut(
@@ -62,19 +57,16 @@ namespace TileIconifier.Custom
             Directory.CreateDirectory(VbsFolderPath);
 
             if (basicIconToUse != null && File.Exists(basicIconToUse)) BasicShortcutIcon = basicIconToUse;
-
-            Text = ShortcutName;
-            SubItems.Add(ShortcutType.ToString());
         }
 
         public ShortcutItem ShortcutItem { get; set; }
         private string VbsFilePath { get; set; }
         private string VbsFolderPath { get; }
-        private string ShortcutName { get; }
+        public string ShortcutName { get; }
         private string TargetPath { get; }
         private string TargetArguments { get; }
         private string WorkingFolder { get; }
-        private CustomShortcutType ShortcutType { get; }
+        public CustomShortcutType ShortcutType { get; }
 
         private string BasicShortcutIcon
         {

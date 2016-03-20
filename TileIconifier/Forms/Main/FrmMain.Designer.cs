@@ -55,8 +55,7 @@ namespace TileIconifier.Forms
             this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pctStandardIcon = new System.Windows.Forms.PictureBox();
-            this.lblCurrentIcon = new System.Windows.Forms.Label();
+            this.skinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MediumIcon = new System.Windows.Forms.Label();
             this.pctMediumIcon = new System.Windows.Forms.PictureBox();
             this.lblSmallIcon = new System.Windows.Forms.Label();
@@ -64,10 +63,11 @@ namespace TileIconifier.Forms
             this.chkUseSameImg = new System.Windows.Forms.CheckBox();
             this.lblUnsaved = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
-            this.lstShortcuts = new TileIconifier.Controls.ListBoxWithTyping();
+            this.srtlstShortcuts = new TileIconifier.Controls.SortableListView();
+            this.defaultSkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkSkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlFGColour.SuspendLayout();
             this.mnuMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctStandardIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctMediumIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctSmallIcon)).BeginInit();
             this.SuspendLayout();
@@ -123,6 +123,7 @@ namespace TileIconifier.Forms
             this.btnIconify.Name = "btnIconify";
             this.btnIconify.Size = new System.Drawing.Size(86, 21);
             this.btnIconify.TabIndex = 8;
+            this.btnIconify.Tag = "";
             this.btnIconify.Text = "Tile Iconify!";
             this.btnIconify.UseVisualStyleBackColor = true;
             this.btnIconify.Click += new System.EventHandler(this.btnIconify_Click);
@@ -255,6 +256,7 @@ namespace TileIconifier.Forms
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.preferencesToolStripMenuItem,
+            this.skinToolStripMenuItem,
             this.aboutToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
@@ -339,34 +341,20 @@ namespace TileIconifier.Forms
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
-            // pctStandardIcon
+            // skinToolStripMenuItem
             // 
-            this.pctStandardIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctStandardIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctStandardIcon.Location = new System.Drawing.Point(557, 38);
-            this.pctStandardIcon.Margin = new System.Windows.Forms.Padding(2);
-            this.pctStandardIcon.Name = "pctStandardIcon";
-            this.pctStandardIcon.Size = new System.Drawing.Size(24, 24);
-            this.pctStandardIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pctStandardIcon.TabIndex = 16;
-            this.pctStandardIcon.TabStop = false;
-            // 
-            // lblCurrentIcon
-            // 
-            this.lblCurrentIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCurrentIcon.AutoSize = true;
-            this.lblCurrentIcon.Location = new System.Drawing.Point(554, 23);
-            this.lblCurrentIcon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCurrentIcon.Name = "lblCurrentIcon";
-            this.lblCurrentIcon.Size = new System.Drawing.Size(77, 13);
-            this.lblCurrentIcon.TabIndex = 17;
-            this.lblCurrentIcon.Text = "Standard Icon:";
+            this.skinToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.defaultSkinToolStripMenuItem,
+            this.darkSkinToolStripMenuItem});
+            this.skinToolStripMenuItem.Name = "skinToolStripMenuItem";
+            this.skinToolStripMenuItem.Size = new System.Drawing.Size(41, 22);
+            this.skinToolStripMenuItem.Text = "Skin";
             // 
             // MediumIcon
             // 
             this.MediumIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MediumIcon.AutoSize = true;
-            this.MediumIcon.Location = new System.Drawing.Point(554, 72);
+            this.MediumIcon.Location = new System.Drawing.Point(554, 27);
             this.MediumIcon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MediumIcon.Name = "MediumIcon";
             this.MediumIcon.Size = new System.Drawing.Size(71, 13);
@@ -378,7 +366,7 @@ namespace TileIconifier.Forms
             this.pctMediumIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctMediumIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctMediumIcon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctMediumIcon.Location = new System.Drawing.Point(557, 88);
+            this.pctMediumIcon.Location = new System.Drawing.Point(557, 43);
             this.pctMediumIcon.Margin = new System.Windows.Forms.Padding(2);
             this.pctMediumIcon.Name = "pctMediumIcon";
             this.pctMediumIcon.Size = new System.Drawing.Size(101, 101);
@@ -391,7 +379,7 @@ namespace TileIconifier.Forms
             // 
             this.lblSmallIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSmallIcon.AutoSize = true;
-            this.lblSmallIcon.Location = new System.Drawing.Point(676, 72);
+            this.lblSmallIcon.Location = new System.Drawing.Point(676, 27);
             this.lblSmallIcon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSmallIcon.Name = "lblSmallIcon";
             this.lblSmallIcon.Size = new System.Drawing.Size(59, 13);
@@ -403,7 +391,7 @@ namespace TileIconifier.Forms
             this.pctSmallIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctSmallIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctSmallIcon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctSmallIcon.Location = new System.Drawing.Point(678, 88);
+            this.pctSmallIcon.Location = new System.Drawing.Point(678, 43);
             this.pctSmallIcon.Margin = new System.Windows.Forms.Padding(2);
             this.pctSmallIcon.Name = "pctSmallIcon";
             this.pctSmallIcon.Size = new System.Drawing.Size(47, 47);
@@ -451,21 +439,37 @@ namespace TileIconifier.Forms
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // lstShortcuts
+            // srtlstShortcuts
             // 
-            this.lstShortcuts.FormattingEnabled = true;
-            this.lstShortcuts.Location = new System.Drawing.Point(11, 24);
-            this.lstShortcuts.Margin = new System.Windows.Forms.Padding(2);
-            this.lstShortcuts.Name = "lstShortcuts";
-            this.lstShortcuts.Size = new System.Drawing.Size(513, 186);
-            this.lstShortcuts.TabIndex = 26;
+            this.srtlstShortcuts.FullRowSelect = true;
+            this.srtlstShortcuts.Location = new System.Drawing.Point(12, 23);
+            this.srtlstShortcuts.MultiSelect = false;
+            this.srtlstShortcuts.Name = "srtlstShortcuts";
+            this.srtlstShortcuts.Size = new System.Drawing.Size(530, 187);
+            this.srtlstShortcuts.TabIndex = 27;
+            this.srtlstShortcuts.UseCompatibleStateImageBehavior = false;
+            this.srtlstShortcuts.View = System.Windows.Forms.View.Details;
+            // 
+            // defaultSkinToolStripMenuItem
+            // 
+            this.defaultSkinToolStripMenuItem.Checked = true;
+            this.defaultSkinToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.defaultSkinToolStripMenuItem.Name = "defaultSkinToolStripMenuItem";
+            this.defaultSkinToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.defaultSkinToolStripMenuItem.Text = "Default Skin";
+            // 
+            // darkSkinToolStripMenuItem
+            // 
+            this.darkSkinToolStripMenuItem.Name = "darkSkinToolStripMenuItem";
+            this.darkSkinToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.darkSkinToolStripMenuItem.Text = "Dark Skin";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 373);
-            this.Controls.Add(this.lstShortcuts);
+            this.Controls.Add(this.srtlstShortcuts);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblUnsaved);
             this.Controls.Add(this.chkUseSameImg);
@@ -473,8 +477,6 @@ namespace TileIconifier.Forms
             this.Controls.Add(this.pctSmallIcon);
             this.Controls.Add(this.MediumIcon);
             this.Controls.Add(this.pctMediumIcon);
-            this.Controls.Add(this.lblCurrentIcon);
-            this.Controls.Add(this.pctStandardIcon);
             this.Controls.Add(this.lblExePath);
             this.Controls.Add(this.txtExePath);
             this.Controls.Add(this.pnlFGColour);
@@ -497,7 +499,6 @@ namespace TileIconifier.Forms
             this.pnlFGColour.PerformLayout();
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctStandardIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctMediumIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctSmallIcon)).EndInit();
             this.ResumeLayout(false);
@@ -525,8 +526,6 @@ namespace TileIconifier.Forms
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem getPinnedItemsRequiresPowershellToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pctStandardIcon;
-        private System.Windows.Forms.Label lblCurrentIcon;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Label MediumIcon;
         private System.Windows.Forms.PictureBox pctMediumIcon;
@@ -537,10 +536,13 @@ namespace TileIconifier.Forms
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshAllToolStripMenuItem;
         private System.Windows.Forms.Button btnReset;
-        private ListBoxWithTyping lstShortcuts;
         private System.Windows.Forms.ToolStripMenuItem customShortcutManagerToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdateToolStripMenuItem;
+        private SortableListView srtlstShortcuts;
+        private System.Windows.Forms.ToolStripMenuItem skinToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem defaultSkinToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem darkSkinToolStripMenuItem;
     }
 }
 

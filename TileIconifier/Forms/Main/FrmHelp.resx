@@ -130,10 +130,7 @@ Decide on any colour schemes and whether you wish for the text to show on the Me
 
 When you're done, just click Tile Iconify! and it should update.
 
-You can check the Get Pinned Items preference item in Utilities to get your pinned icons and list them at the top. This requires PowerShell and takes longer to run. It is disabled by default.
-
-Note that icons with a * next to them are detected as pinned, and icons with a # already have already been iconificiationilisationifiedicated.
-
+You can check the Get Pinned Items preference item in Utilities to get results in the "Is Pinned?" column, and then be able to sort them to the top. This requires PowerShell and takes longer to run. It is disabled by default.
 
 Enjoy!</value>
   </data>

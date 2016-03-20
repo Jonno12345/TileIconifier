@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using TileIconifier.Properties;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Steam
 {
@@ -46,23 +47,22 @@ namespace TileIconifier.Steam
             }
         }
 
-        public Bitmap IconAsBitmap
+        public byte[] IconAsBytes
         {
             get
             {
-                if (IconPath != null)
+                if (IconPath == null) return ImageUtils.ImageToByteArray(Resources.SteamIco.ToBitmap());
+
+                try
                 {
-                    try
-                    {
-                        var readImage = new FileStream(IconPath, FileMode.Open, FileAccess.Read, FileShare.Read);
-                        return new Bitmap(readImage);
-                    }
-                    catch
-                    {
-                        // ignored
-                    }
+                    using (var readImage = new FileStream(IconPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+                        return ImageUtils.ImageToByteArray(new Bitmap(readImage));
                 }
-                return Resources.SteamIco.ToBitmap();
+                catch
+                {
+                    // ignored
+                }
+                return ImageUtils.ImageToByteArray(Resources.SteamIco.ToBitmap());
             }
         }
 

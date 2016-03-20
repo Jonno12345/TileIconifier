@@ -3,7 +3,7 @@ using System.Security.Principal;
 using System.Threading;
 using System.Windows.Forms;
 using TileIconifier.Forms;
-using TileIconifier.Utilities;
+using TileIconifier.Forms.Shared;
 
 namespace TileIconifier
 {

@@ -2,9 +2,9 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace TileIconifier.Forms
+namespace TileIconifier.Forms.Shared
 {
-    public partial class FrmException : Form
+    public partial class FrmException : SkinnableForm
     {
         private readonly Exception _ex;
 

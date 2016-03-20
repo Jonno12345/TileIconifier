@@ -1,4 +1,4 @@
-﻿namespace TileIconifier.Forms
+﻿namespace TileIconifier.Forms.Shared
 {
     partial class FrmException
     {

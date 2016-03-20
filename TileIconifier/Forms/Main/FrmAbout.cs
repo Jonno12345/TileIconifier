@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Reflection;
 using System.Windows.Forms;
 using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms
 {
-    public partial class FrmAbout : Form
+    public partial class FrmAbout : SkinnableForm
     {
         public FrmAbout()
         {

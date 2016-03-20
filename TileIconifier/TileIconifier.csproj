@@ -117,6 +117,7 @@
     <Compile Include="Custom\CustomShortcutConstantsAndEnums.cs" />
     <Compile Include="Custom\CustomShortcutExtensionMethods.cs" />
     <Compile Include="Custom\CustomShortcut.cs" />
+    <Compile Include="Custom\CustomShortcutListViewItem.cs" />
     <Compile Include="Custom\NewCustomShortcutFormCache.cs" />
     <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerAbout.cs">
       <SubType>Form</SubType>
@@ -136,22 +137,22 @@
     <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerNew.Designer.cs">
       <DependentUpon>FrmCustomShortcutManagerNew.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmException.cs">
+    <Compile Include="Forms\Shared\FrmException.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmException.Designer.cs">
+    <Compile Include="Forms\Shared\FrmException.Designer.cs">
       <DependentUpon>FrmException.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmHelp.cs">
+    <Compile Include="Forms\Main\FrmHelp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmHelp.Designer.cs">
+    <Compile Include="Forms\Main\FrmHelp.Designer.cs">
       <DependentUpon>FrmHelp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmMain.cs">
+    <Compile Include="Forms\Main\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmMain.Designer.cs">
+    <Compile Include="Forms\Main\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="IconExtractor\IconExtractor.cs" />
@@ -160,22 +161,29 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shortcut\ShortcutItemEnumeration.cs" />
+    <Compile Include="Shortcut\ShortcutItemListViewItem.cs" />
     <Compile Include="Shortcut\ShortcutItemParameters.cs" />
+    <Compile Include="Skinning\SkinHandler.cs" />
+    <Compile Include="Skinning\Skins\Dark\DarkSkin.cs" />
+    <Compile Include="Skinning\Skins\BaseSkin.cs" />
+    <Compile Include="Forms\SkinnableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Steam\KeyValues\KeyValues.cs" />
     <Compile Include="Steam\KeyValues\KeyValues_Data.cs" />
     <Compile Include="Steam\KeyValues\Utils.cs" />
     <Compile Include="Steam\SteamGame.cs" />
     <Compile Include="TileIconify\TileIcon.cs" />
-    <Compile Include="Forms\FrmAbout.cs">
+    <Compile Include="Forms\Main\FrmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmAbout.Designer.cs">
+    <Compile Include="Forms\Main\FrmAbout.Designer.cs">
       <DependentUpon>FrmAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmLoadingSplash.cs">
+    <Compile Include="Forms\Shared\FrmLoadingSplash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmLoadingSplash.Designer.cs">
+    <Compile Include="Forms\Shared\FrmLoadingSplash.Designer.cs">
       <DependentUpon>FrmLoadingSplash.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\DirectoryUtils.cs" />
@@ -184,16 +192,14 @@
     <Compile Include="Utilities\PowerShellUtils.cs" />
     <Compile Include="Shortcut\ShortcutItem.cs" />
     <Compile Include="CustomExceptions.cs" />
-    <Compile Include="Forms\FrmIconSelector.cs">
+    <Compile Include="Forms\Shared\FrmIconSelector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmIconSelector.Designer.cs">
+    <Compile Include="Forms\Shared\FrmIconSelector.Designer.cs">
       <DependentUpon>FrmIconSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\ShortcutUtils.cs" />
-    <Compile Include="Controls\ListBoxWithTyping.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Controls\ListBoxWithTyping.cs" />
     <Compile Include="Steam\SteamLibrary.cs" />
     <Compile Include="Utilities\UpdateUtils.cs" />
     <EmbeddedResource Include="Controls\AllOrCurrentUserRadios.resx">
@@ -208,13 +214,15 @@
     <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerNew.resx">
       <DependentUpon>FrmCustomShortcutManagerNew.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmException.resx">
+    <EmbeddedResource Include="Forms\Shared\FrmException.resx">
       <DependentUpon>FrmException.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmHelp.resx">
+    <EmbeddedResource Include="Forms\Main\FrmHelp.resx">
       <DependentUpon>FrmHelp.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmMain.resx">
+    <EmbeddedResource Include="Forms\Main\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -227,19 +235,22 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Forms\FrmAbout.resx">
+    <EmbeddedResource Include="Forms\Main\FrmAbout.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmIconSelector.resx">
+    <EmbeddedResource Include="Forms\Shared\FrmIconSelector.resx">
       <DependentUpon>FrmIconSelector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmLoadingSplash.resx">
+    <EmbeddedResource Include="Forms\Shared\FrmLoadingSplash.resx">
       <DependentUpon>FrmLoadingSplash.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

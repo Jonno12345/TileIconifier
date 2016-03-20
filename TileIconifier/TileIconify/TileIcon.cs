@@ -5,7 +5,7 @@ using TileIconifier.Shortcut;
 
 namespace TileIconifier.TileIconify
 {
-    class TileIcon
+    internal class TileIcon
     {
         readonly ShortcutItem _shortcutItem;
 
@@ -65,11 +65,12 @@ namespace TileIconifier.TileIconify
 
             using (var fs = new FileStream(_shortcutItem.FullMediumIconPath, FileMode.Create))
             {
-                _shortcutItem.MediumImage.Save(fs, System.Drawing.Imaging.ImageFormat.Png);
+                fs.Write(_shortcutItem.MediumImageBytes,0, _shortcutItem.MediumImageBytes.Length);
             }
             using (var fs = new FileStream(_shortcutItem.FullSmallIconPath, FileMode.Create))
             {
-                _shortcutItem.SmallImage.Save(fs, System.Drawing.Imaging.ImageFormat.Png);
+                fs.Write(_shortcutItem.SmallImageBytes, 0, _shortcutItem.SmallImageBytes.Length);
+
             }
         }
 

@@ -6,10 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using TileIconifier.IconExtractor;
+using TileIconifier.Utilities;
 
-namespace TileIconifier.Forms
+namespace TileIconifier.Forms.Shared
 {
-    public partial class FrmIconSelector : Form
+    public partial class FrmIconSelector : SkinnableForm
     {
         private readonly List<string> _commonIconDlls = new List<string>
         {
@@ -43,7 +44,8 @@ namespace TileIconifier.Forms
         };
 
         private Icon[] _icons;
-        public Bitmap ReturnedBitmap;
+        //public Bitmap ReturnedBitmap;
+        public byte[] ReturnedBitmapBytes;
 
         public FrmIconSelector(string targetPath)
         {
@@ -122,7 +124,7 @@ namespace TileIconifier.Forms
             e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
             e.Graphics.Clip = new Region(e.Bounds);
 
-            e.Graphics.FillRectangle(e.Item.Selected ? SystemBrushes.MenuHighlight : SystemBrushes.Control, e.Bounds);
+            e.Graphics.FillRectangle(e.Item.Selected ? new SolidBrush(CurrentBaseSkin.HighlightColor) : new SolidBrush(CurrentBaseSkin.BackColor), e.Bounds);
 
             var w = (int) Math.Ceiling(lvwIcons.TileSize.Width*0.8);
             var h = (int) Math.Ceiling(lvwIcons.TileSize.Height*0.8);
@@ -157,7 +159,8 @@ namespace TileIconifier.Forms
             {
                 if (radIconFromTarget.Checked)
                 {
-                    GetLogo();
+                    //GetLogo()
+                    ReturnedBitmapBytes = GetLogoBytes();
                 }
                 else
                 {
@@ -165,8 +168,8 @@ namespace TileIconifier.Forms
                     if (!File.Exists(imagePath))
                         throw new FileNotFoundException();
 
-                    var readImage = new FileStream(imagePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-                    ReturnedBitmap = new Bitmap(readImage);
+                    ReturnedBitmapBytes = ImageUtils.LoadBitmapToByteArray(imagePath);
+                    //ReturnedBitmap = ImageUtils.LoadIconifiedBitmap(imagePath);
                 }
             }
             catch (FileNotFoundException ex)
@@ -182,13 +185,32 @@ namespace TileIconifier.Forms
             Close();
         }
 
-        private void GetLogo()
+        //private void GetLogo()
+        //{
+        //    var splitIcons = IconUtil.Split(_icons[lvwIcons.SelectedItems[0].Index]);
+
+        //    ReturnedBitmap = Bitmap.FromHicon(splitIcons.OrderByDescending(k => k.Width)
+        //        .ThenByDescending(k => k.Height)
+        //        .First().Handle);
+        //}
+
+        private byte[] GetLogoBytes()
         {
             var splitIcons = IconUtil.Split(_icons[lvwIcons.SelectedItems[0].Index]);
+            byte[] byteArray;
+            using (var stream = new MemoryStream())
+            {
+                using (var bitmapLoad = Bitmap.FromHicon(splitIcons.OrderByDescending(k => k.Width)
+                    .ThenByDescending(k => k.Height)
+                    .First().Handle))
+                {
+                    bitmapLoad.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                    stream.Close();
 
-            ReturnedBitmap = Bitmap.FromHicon(splitIcons.OrderByDescending(k => k.Width)
-                .ThenByDescending(k => k.Height)
-                .First().Handle);
+                    byteArray = stream.ToArray();
+                }
+            }
+            return byteArray;
         }
 
         private void lvwIcons_SelectedIndexChanged(object sender, EventArgs e)

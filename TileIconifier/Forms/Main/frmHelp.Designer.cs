@@ -43,7 +43,7 @@
             this.rtxtAbout.Text = resources.GetString("rtxtAbout.Text");
             this.rtxtAbout.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtAbout_LinkClicked);
             // 
-            // frmHelp
+            // FrmHelp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -52,7 +52,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmHelp";
+            this.Name = "FrmHelp";
             this.Text = "Help";
             this.ResumeLayout(false);
 

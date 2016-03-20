@@ -9,9 +9,9 @@ using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms.CustomShortcutForms
 {
-    public partial class FrmCustomShortcutManagerMain : Form
+    public partial class FrmCustomShortcutManagerMain : SkinnableForm
     {
-        private List<CustomShortcut> _customShortcutsList;
+        private List<CustomShortcutListViewItem> _customShortcutsList;
 
         public FrmCustomShortcutManagerMain()
         {
@@ -21,7 +21,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void RefreshCustomShortcuts()
         {
-            LoadCustomShortcuts();
+            var customShortcuts = LoadCustomShortcuts();
+            _customShortcutsList = customShortcuts.Select(c => new CustomShortcutListViewItem(c)).ToList();
             lstCustomShortcuts.Clear();
             lstCustomShortcuts.Columns.Clear();
 
@@ -32,8 +33,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             var smallImageList = new ImageList();
             for (var i = 0; i < _customShortcutsList.Count; i++)
             {
-                smallImageList.Images.Add(_customShortcutsList[i].ShortcutItem.MediumImage ??
-                                          (_customShortcutsList[i].ShortcutItem.StandardIcon ?? Resources.QuestionMark));
+                smallImageList.Images.Add(_customShortcutsList[i].CustomShortcut.ShortcutItem.MediumImage() ??
+                                          (_customShortcutsList[i].CustomShortcut.ShortcutItem.StandardIcon ?? Resources.QuestionMark));
                 _customShortcutsList[i].ImageIndex = i;
                 lstCustomShortcuts.Items.Add(_customShortcutsList[i]);
             }
@@ -49,21 +50,17 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
         }
 
-        private void LoadCustomShortcuts()
+        private static IEnumerable<CustomShortcut> LoadCustomShortcuts()
         {
-            _customShortcutsList = new List<CustomShortcut>();
-
             if (!Directory.Exists(CustomShortcutGetters.CustomShortcutVbsPath))
-                return;
+                return new List<CustomShortcut>();
 
             //get all VBS files built by TileIconifier
-            foreach (var customShortcut in 
-                new DirectoryInfo(CustomShortcutGetters.CustomShortcutVbsPath).GetFiles("*.vbs", SearchOption.AllDirectories)
-                    .Select(vbsFile => CustomShortcut.Load(vbsFile.FullName))
-                        .Where(customShortcut => customShortcut.ShortcutItem.ShortcutUser != ShortcutUser.Unknown))
-            {
-                _customShortcutsList.Add(customShortcut);
-            }
+            return new DirectoryInfo(CustomShortcutGetters.CustomShortcutVbsPath)
+                .GetFiles("*.vbs", SearchOption.AllDirectories)
+                .Select(vbsFile => CustomShortcut.Load(vbsFile.FullName))
+                .Where(customShortcut => customShortcut.ShortcutItem.ShortcutUser != ShortcutUser.Unknown)
+                .ToList();
         }
 
         private void btnCreateNewShortcut_Click(object sender, EventArgs e)
@@ -80,7 +77,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             if (lstCustomShortcuts.SelectedItems.Count == 0)
                 return;
 
-            var customShortcut = (CustomShortcut) lstCustomShortcuts.SelectedItems[0];
+            var customShortcut = (CustomShortcutListViewItem) lstCustomShortcuts.SelectedItems[0];
 
             if (
                 MessageBox.Show(
@@ -91,7 +88,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             try
             {
-                customShortcut.Delete();
+                customShortcut.CustomShortcut.Delete();
             }
             catch (Exception ex)
             {

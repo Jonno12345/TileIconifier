@@ -285,7 +285,6 @@
             this.lstSteamGames.TabIndex = 1;
             this.lstSteamGames.UseCompatibleStateImageBehavior = false;
             this.lstSteamGames.View = System.Windows.Forms.View.Details;
-            this.lstSteamGames.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.lstSteamGames_ColumnWidthChanging);
             this.lstSteamGames.SelectedIndexChanged += new System.EventHandler(this.lstSteamGames_SelectedIndexChanged);
             // 
             // tabOther
