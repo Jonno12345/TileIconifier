@@ -144,8 +144,8 @@
             // 
             // opnFile
             // 
-            this.opnFile.Filter = "Image Files (*.bmp, *.jpg, *.png, *.ico)|*.bmp;*.jpg;*.png;*.ico|Programs and Lib" +
-    "raries (*.exe, *.dll)|*.exe;*.dll";
+            this.opnFile.Filter = "Image Files (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png|Programs, ICO\'s and Libraries" +
+    " (*.exe, *.dll, *.ico)|*.exe;*.dll;*.ico";
             // 
             // txtPathToExtractFrom
             // 

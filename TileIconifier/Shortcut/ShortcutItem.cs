@@ -181,10 +181,10 @@ namespace TileIconifier.Shortcut
                             ForegroundText = b.Attribute("ForegroundText").Value,
                             ShowNameOnSquare150X150Logo = b.Attribute("ShowNameOnSquare150x150Logo").Value,
                             MediumImageBytes =
-                                ImageUtils.LoadBitmapToByteArray(TargetFolderPath +
+                                ImageUtils.LoadFileToByteArray(TargetFolderPath +
                                                                  b.Attribute("Square150x150Logo").Value),
                             SmallImageBytes =
-                                ImageUtils.LoadBitmapToByteArray(TargetFolderPath + b.Attribute("Square70x70Logo").Value)
+                                ImageUtils.LoadFileToByteArray(TargetFolderPath + b.Attribute("Square70x70Logo").Value)
                         };
                     OldParameters = parameters.Single();
                     NewParameters = OldParameters.Clone();

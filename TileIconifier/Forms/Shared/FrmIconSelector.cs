@@ -116,8 +116,16 @@ namespace TileIconifier.Forms.Shared
             lvwIcons.BeginUpdate();
             try
             {
-                var iconExtraction = new IconExtractor.IconExtractor(targetPath);
-                _icons = iconExtraction.GetAllIcons();
+
+                if (string.Equals(Path.GetExtension(targetPath), ".ico", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    _icons = new[] {new Icon(targetPath)};
+                }
+                else
+                {
+                    var iconExtraction = new IconExtractor.IconExtractor(targetPath);
+                    _icons = iconExtraction.GetAllIcons();
+                }
 
                 foreach (var i in _icons)
                 {
@@ -192,7 +200,12 @@ namespace TileIconifier.Forms.Shared
             {
                 if (radIconFromTarget.Checked)
                 {
-                    //GetLogo()
+                    if (lvwIcons.SelectedItems.Count != 1)
+                    {
+                        MessageBox.Show(@"Please select an icon to use!", @"Select an icon", MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation);
+                        return;
+                    }
                     ReturnedBitmapBytes = GetLogoBytes();
                 }
                 else
@@ -201,8 +214,7 @@ namespace TileIconifier.Forms.Shared
                     if (!File.Exists(imagePath))
                         throw new FileNotFoundException();
 
-                    ReturnedBitmapBytes = ImageUtils.LoadBitmapToByteArray(imagePath);
-                    //ReturnedBitmap = ImageUtils.LoadIconifiedBitmap(imagePath);
+                    ReturnedBitmapBytes = ImageUtils.LoadFileToByteArray(imagePath);
                 }
             }
             catch (FileNotFoundException ex)
@@ -210,22 +222,9 @@ namespace TileIconifier.Forms.Shared
                 MessageBox.Show(@"File could not be found: " + ex.FileName, @"File not found!", MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
             }
-            catch
-            {
-                // ignored
-            }
 
             Close();
         }
-
-        //private void GetLogo()
-        //{
-        //    var splitIcons = IconUtil.Split(_icons[lvwIcons.SelectedItems[0].Index]);
-
-        //    ReturnedBitmap = Bitmap.FromHicon(splitIcons.OrderByDescending(k => k.Width)
-        //        .ThenByDescending(k => k.Height)
-        //        .First().Handle);
-        //}
 
         private byte[] GetLogoBytes()
         {
@@ -299,7 +298,8 @@ namespace TileIconifier.Forms.Shared
         {
             //need clean this up... actually using the filters from the file selector would be best.
             if (string.Equals(Path.GetExtension(fileName), ".exe", StringComparison.InvariantCultureIgnoreCase) ||
-                string.Equals(Path.GetExtension(fileName), ".dll", StringComparison.InvariantCultureIgnoreCase))
+                string.Equals(Path.GetExtension(fileName), ".dll", StringComparison.InvariantCultureIgnoreCase) ||
+                     string.Equals(Path.GetExtension(fileName), ".ico", StringComparison.InvariantCultureIgnoreCase))
             {
                 txtPathToExtractFrom.Text = opnFile.FileName;
                 radIconFromTarget.Checked = true;
@@ -307,8 +307,7 @@ namespace TileIconifier.Forms.Shared
             }
             else if (string.Equals(Path.GetExtension(fileName), ".jpg", StringComparison.InvariantCultureIgnoreCase) ||
                      string.Equals(Path.GetExtension(fileName), ".png", StringComparison.InvariantCultureIgnoreCase) ||
-                     string.Equals(Path.GetExtension(fileName), ".bmp", StringComparison.InvariantCultureIgnoreCase) ||
-                     string.Equals(Path.GetExtension(fileName), ".ico", StringComparison.InvariantCultureIgnoreCase))
+                     string.Equals(Path.GetExtension(fileName), ".bmp", StringComparison.InvariantCultureIgnoreCase))
             {
                 txtImagePath.Text = opnFile.FileName;
                 radUseCustomImage.Checked = true;

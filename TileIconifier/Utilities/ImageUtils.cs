@@ -32,6 +32,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 using TileIconifier.Forms.Shared;
+using TileIconifier.IconExtractor;
 
 namespace TileIconifier.Utilities
 {
@@ -55,7 +56,7 @@ namespace TileIconifier.Utilities
             return null;
         }
 
-        public static byte[] LoadBitmapToByteArray(string path)
+        public static byte[] LoadFileToByteArray(string path)
         {
             try
             {
