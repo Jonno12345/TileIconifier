@@ -186,6 +186,7 @@
     <Compile Include="Forms\Shared\FrmLoadingSplash.Designer.cs">
       <DependentUpon>FrmLoadingSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\ColorUtils.cs" />
     <Compile Include="Utilities\DirectoryUtils.cs" />
     <Compile Include="Utilities\FormUtils.cs" />
     <Compile Include="Utilities\ImageUtils.cs" />
@@ -292,6 +293,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENCE.txt" />
+    <None Include="Resources\Actions-color-picker-black-icon.png" />
+    <None Include="Resources\Color-picker-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

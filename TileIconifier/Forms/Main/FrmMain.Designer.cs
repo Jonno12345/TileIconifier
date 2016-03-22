@@ -53,9 +53,11 @@ namespace TileIconifier.Forms
             this.getPinnedItemsRequiresPowershellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.skinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.defaultSkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkSkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.skinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MediumIcon = new System.Windows.Forms.Label();
             this.pctMediumIcon = new System.Windows.Forms.PictureBox();
             this.lblSmallIcon = new System.Windows.Forms.Label();
@@ -64,8 +66,8 @@ namespace TileIconifier.Forms
             this.lblUnsaved = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.srtlstShortcuts = new TileIconifier.Controls.SortableListView();
-            this.defaultSkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkSkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clrDialog = new System.Windows.Forms.ColorDialog();
+            this.btnColourPicker = new System.Windows.Forms.Button();
             this.pnlFGColour.SuspendLayout();
             this.mnuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctMediumIcon)).BeginInit();
@@ -327,6 +329,29 @@ namespace TileIconifier.Forms
             this.checkForUpdateToolStripMenuItem.Text = "Check For Updates";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
             // 
+            // skinToolStripMenuItem
+            // 
+            this.skinToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.defaultSkinToolStripMenuItem,
+            this.darkSkinToolStripMenuItem});
+            this.skinToolStripMenuItem.Name = "skinToolStripMenuItem";
+            this.skinToolStripMenuItem.Size = new System.Drawing.Size(41, 22);
+            this.skinToolStripMenuItem.Text = "Skin";
+            // 
+            // defaultSkinToolStripMenuItem
+            // 
+            this.defaultSkinToolStripMenuItem.Checked = true;
+            this.defaultSkinToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.defaultSkinToolStripMenuItem.Name = "defaultSkinToolStripMenuItem";
+            this.defaultSkinToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.defaultSkinToolStripMenuItem.Text = "Default Skin";
+            // 
+            // darkSkinToolStripMenuItem
+            // 
+            this.darkSkinToolStripMenuItem.Name = "darkSkinToolStripMenuItem";
+            this.darkSkinToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.darkSkinToolStripMenuItem.Text = "Dark Skin";
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -340,15 +365,6 @@ namespace TileIconifier.Forms
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
-            // 
-            // skinToolStripMenuItem
-            // 
-            this.skinToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.defaultSkinToolStripMenuItem,
-            this.darkSkinToolStripMenuItem});
-            this.skinToolStripMenuItem.Name = "skinToolStripMenuItem";
-            this.skinToolStripMenuItem.Size = new System.Drawing.Size(41, 22);
-            this.skinToolStripMenuItem.Text = "Skin";
             // 
             // MediumIcon
             // 
@@ -450,25 +466,25 @@ namespace TileIconifier.Forms
             this.srtlstShortcuts.UseCompatibleStateImageBehavior = false;
             this.srtlstShortcuts.View = System.Windows.Forms.View.Details;
             // 
-            // defaultSkinToolStripMenuItem
+            // btnColourPicker
             // 
-            this.defaultSkinToolStripMenuItem.Checked = true;
-            this.defaultSkinToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.defaultSkinToolStripMenuItem.Name = "defaultSkinToolStripMenuItem";
-            this.defaultSkinToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.defaultSkinToolStripMenuItem.Text = "Default Skin";
-            // 
-            // darkSkinToolStripMenuItem
-            // 
-            this.darkSkinToolStripMenuItem.Name = "darkSkinToolStripMenuItem";
-            this.darkSkinToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.darkSkinToolStripMenuItem.Text = "Dark Skin";
+            this.btnColourPicker.BackgroundImage = global::TileIconifier.Properties.Resources.Actions_color_picker_black_icon;
+            this.btnColourPicker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnColourPicker.FlatAppearance.BorderSize = 0;
+            this.btnColourPicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnColourPicker.Location = new System.Drawing.Point(778, 262);
+            this.btnColourPicker.Name = "btnColourPicker";
+            this.btnColourPicker.Size = new System.Drawing.Size(23, 23);
+            this.btnColourPicker.TabIndex = 28;
+            this.btnColourPicker.UseVisualStyleBackColor = true;
+            this.btnColourPicker.Click += new System.EventHandler(this.btnColourPicker_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 373);
+            this.Controls.Add(this.btnColourPicker);
             this.Controls.Add(this.srtlstShortcuts);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblUnsaved);
@@ -543,6 +559,8 @@ namespace TileIconifier.Forms
         private System.Windows.Forms.ToolStripMenuItem skinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem defaultSkinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darkSkinToolStripMenuItem;
+        private System.Windows.Forms.ColorDialog clrDialog;
+        private System.Windows.Forms.Button btnColourPicker;
     }
 }
 

@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -62,6 +63,7 @@ namespace TileIconifier.Forms
         {
             base.ApplySkin();
             lblUnsaved.ForeColor = CurrentBaseSkin.ErrorColor;
+            SetPictureBoxesBackColor();
         }
 
         private void frmDropper_Load(object sender, EventArgs e)
@@ -112,9 +114,9 @@ namespace TileIconifier.Forms
         {
             srtlstShortcuts.Items.Clear();
             srtlstShortcuts.Columns.Clear();
-            srtlstShortcuts.Columns.Add("Shortcut Name", srtlstShortcuts.Width/7*5 - 10, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Iconified?", srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Pinned?", srtlstShortcuts.Width/7 - 4, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Shortcut Name", srtlstShortcuts.Width / 7 * 5 - 10, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Is Iconified?", srtlstShortcuts.Width / 7 - 2, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Is Pinned?", srtlstShortcuts.Width / 7 - 4, HorizontalAlignment.Left);
 
             var smallImageList = new ImageList();
             for (var i = 0; i < _shortcutsList.Count; i++)
@@ -129,6 +131,29 @@ namespace TileIconifier.Forms
 
             if (srtlstShortcuts.Items.Count > 0)
                 srtlstShortcuts.Items[0].Selected = true;
+        }
+
+        private void SetPictureBoxesBackColor()
+        {
+            var color = GetPictureBoxesBackColor();
+            pctMediumIcon.BackColor = color;
+            pctSmallIcon.BackColor = color;
+        }
+
+        private Color GetPictureBoxesBackColor()
+        {
+            if (!string.Equals(cmbColour.Text, "custom", StringComparison.InvariantCultureIgnoreCase))
+                return Color.FromName(cmbColour.Text);
+            try
+            {
+                if (txtBGColour.Text.Length == txtBGColour.MaxLength)
+                    return ColorUtils.HexToColor(txtBGColour.Text);
+            }
+            catch
+            {
+                // ignored
+            }
+            return CurrentBaseSkin.BackColor;
         }
 
         private void btnIconify_Click(object sender, EventArgs e)
@@ -160,7 +185,8 @@ namespace TileIconifier.Forms
                 return;
 
             if (MessageBox.Show(@"Are you sure you wish to remove iconification?", @"Confirm", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) != DialogResult.Yes) return;
+                MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
 
             var tileDeIconify = new TileIcon(CurrentShortcutItem);
             tileDeIconify.DeIconify();
@@ -178,8 +204,7 @@ namespace TileIconifier.Forms
         private void ResetValidation()
         {
             txtBGColour.BackColor = CurrentBaseSkin.BackColor;
-            pctMediumIcon.BackColor = CurrentBaseSkin.BackColor;
-            pctSmallIcon.BackColor = CurrentBaseSkin.BackColor;
+            SetPictureBoxesBackColor();
         }
 
         private bool ValidateColour()
@@ -227,7 +252,7 @@ namespace TileIconifier.Forms
             if (srtlstShortcuts.SelectedItems.Count != 1)
                 return;
 
-            _currentShortcutListViewItem = (ShortcutItemListViewItem) srtlstShortcuts.SelectedItems[0];
+            _currentShortcutListViewItem = (ShortcutItemListViewItem)srtlstShortcuts.SelectedItems[0];
             UpdateShortcut();
         }
 
@@ -393,6 +418,11 @@ namespace TileIconifier.Forms
 
         private void txtBGColour_TextChanged(object sender, EventArgs e)
         {
+            var textBox = sender as TextBox;
+            if (textBox != null && textBox.Text.Length != textBox.MaxLength)
+                return;
+
+
             CurrentShortcutItem.BackgroundColor = txtBGColour.Text;
             UpdateShortcut();
         }
@@ -492,6 +522,14 @@ namespace TileIconifier.Forms
                 .Select(item => item))
             {
                 menuItem.Checked = Equals(menuItem, checkedItem);
+            }
+        }
+
+        private void btnColourPicker_Click(object sender, EventArgs e)
+        {
+            if (clrDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                txtBGColour.Text = ColorUtils.ColorToHex(clrDialog.Color);
             }
         }
     }
