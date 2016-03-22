@@ -1,24 +1,31 @@
-﻿/****************************************************************************
- *  Library: KeyValues 
- *  Version: 1.0.0.0
- *  By: Callysto.net (http://www.callysto.net)
- *  Target: .NET FRAMEWORK 2.0
- *  
- * 
- *  This library is inspired on "Source Engine" (HL2SDK) KeyValues Class
- *  http://developer.valvesoftware.com/wiki/KeyValues_class (SourceSDK KeyValues Class)
- *  It was used to save data and for send data to a entity.
- *  It can have unlimited keys and subkeys inside a KeyValue
- *  SourceSDK KeyValues metods: http://svn.alliedmods.net/viewvc.cgi/hl2sdk/public/tier1/KeyValues.h?view=co&root=sourcemm
- *  Diferences: 
- *  * More Metods
- *  ** More easy to loop all keys
- *  *** Easy to update or add features
- *
- *  
- *  
- * ***************************************************************************
-*/
+﻿#region LICENCE
+
+// /*
+//         The MIT License (MIT)
+// 
+//         Copyright (c) 2016 Johnathon M
+// 
+//         Permission is hereby granted, free of charge, to any person obtaining a copy
+//         of this software and associated documentation files (the "Software"), to deal
+//         in the Software without restriction, including without limitation the rights
+//         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//         copies of the Software, and to permit persons to whom the Software is
+//         furnished to do so, subject to the following conditions:
+// 
+//         The above copyright notice and this permission notice shall be included in
+//         all copies or substantial portions of the Software.
+// 
+//         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//         THE SOFTWARE.
+// 
+// */
+
+#endregion
 
 using System;
 using System.Collections.Generic;
@@ -30,11 +37,50 @@ using System.Linq;
 namespace TileIconifier.Steam.KeyValues
 {
     /// <summary>
-    /// KeyValues Class
-    /// Can contain many keys and subkeys
+    ///     KeyValues Class
+    ///     Can contain many keys and subkeys
     /// </summary>
     public sealed class KeyValues : IEquatable<KeyValues>, ICloneable
     {
+        #region Utilities
+
+        /// <summary>
+        ///     Create a new KeyValue with indexed Alphabet.
+        /// </summary>
+        public static KeyValues UTIL_CreateAlphabet()
+        {
+            var alphabet = new KeyValues("Alphabet");
+            alphabet.SetChar("1", 'A');
+            alphabet.SetChar("2", 'B');
+            alphabet.SetChar("3", 'C');
+            alphabet.SetChar("4", 'D');
+            alphabet.SetChar("5", 'E');
+            alphabet.SetChar("6", 'F');
+            alphabet.SetChar("7", 'G');
+            alphabet.SetChar("8", 'H');
+            alphabet.SetChar("9", 'I');
+            alphabet.SetChar("10", 'J');
+            alphabet.SetChar("11", 'K');
+            alphabet.SetChar("12", 'L');
+            alphabet.SetChar("13", 'M');
+            alphabet.SetChar("14", 'N');
+            alphabet.SetChar("15", 'O');
+            alphabet.SetChar("16", 'P');
+            alphabet.SetChar("17", 'Q');
+            alphabet.SetChar("18", 'R');
+            alphabet.SetChar("19", 'S');
+            alphabet.SetChar("20", 'T');
+            alphabet.SetChar("21", 'U');
+            alphabet.SetChar("22", 'V');
+            alphabet.SetChar("23", 'W');
+            alphabet.SetChar("24", 'X');
+            alphabet.SetChar("25", 'Y');
+            alphabet.SetChar("26", 'Z');
+            return alphabet;
+        }
+
+        #endregion
+
         #region Variables
 
         public object Tag { get; set; }
@@ -82,7 +128,8 @@ namespace TileIconifier.Steam.KeyValues
             SetComment(firstKey, firstComment);
         }
 
-        public KeyValues(string setName, string firstKey, string firstValue, string firstComment, string secoundKey, string secoundValue, string secoundComment)
+        public KeyValues(string setName, string firstKey, string firstValue, string firstComment, string secoundKey,
+            string secoundValue, string secoundComment)
             : this(setName)
         {
             SetString(firstKey, firstValue);
@@ -116,7 +163,7 @@ namespace TileIconifier.Steam.KeyValues
         }
 
         /// <summary>
-        /// Prepare class to be used.
+        ///     Prepare class to be used.
         /// </summary>
         private void Init()
         {
@@ -136,31 +183,35 @@ namespace TileIconifier.Steam.KeyValues
         #endregion
 
         #region Remove KeyValues
+
         /// <summary>
-        /// Clean and ReInit class
+        ///     Clean and ReInit class
         /// </summary>
         public void Reset()
         {
             Clean();
             Init();
         }
+
         /// <summary>
-        /// Clean all keyvalues and thier subkeys.
+        ///     Clean all keyvalues and thier subkeys.
         /// </summary>
         public void Clean()
         {
             CleanFromKv(this, false);
         }
+
         /// <summary>
-        /// Clean all keyvalues and/or thier subkeys.
+        ///     Clean all keyvalues and/or thier subkeys.
         /// </summary>
         /// <param name="onlySubKeys">true if you want to remove only subkeys and keep keyvalues; otherwise clean both.</param>
         public void Clean(bool onlySubKeys)
         {
             CleanFromKv(this, onlySubKeys);
         }
+
         /// <summary>
-        /// Start Cleaning a KeyValues and loop all thier childs.
+        ///     Start Cleaning a KeyValues and loop all thier childs.
         /// </summary>
         /// <param name="kv">Current KeyValues to clean.</param>
         /// <param name="onlySubKeys">true if you want to remove only subkeys and keep keyvalues; otherwise clean both.</param>
@@ -168,11 +219,11 @@ namespace TileIconifier.Steam.KeyValues
         {
             if (!onlySubKeys)
             {
-                foreach (KeyValuesData t in kv.KeyNameValues)
+                foreach (var t in kv.KeyNameValues)
                     t.Parent = null;
                 kv.KeyNameValues.Clear();
             }
-            foreach (KeyValues t in kv.KeyChilds)
+            foreach (var t in kv.KeyChilds)
             {
                 CleanFromKv(t, onlySubKeys);
                 t.Parent = null;
@@ -189,10 +240,10 @@ namespace TileIconifier.Steam.KeyValues
         #region Overrides
 
         /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
+        ///     Indicates whether the current object is equal to another object of the same type.
         /// </summary>
         /// <returns>
-        /// true if the current object is equal to the other parameter; otherwise, false.
+        ///     true if the current object is equal to the other parameter; otherwise, false.
         /// </returns>
         /// <param name="obj">An object to compare with this object.</param>
         public bool Equals(KeyValues obj)
@@ -209,15 +260,16 @@ namespace TileIconifier.Steam.KeyValues
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(KeyValues)) return false;
-            return Equals((KeyValues)obj);
+            if (obj.GetType() != typeof (KeyValues)) return false;
+            return Equals((KeyValues) obj);
         }
 
         /// <summary>
-        /// Serves as a hash function for a particular type. <see cref="M:System.Object.GetHashCode"></see> is suitable for use in hashing algorithms and data structures like a hash table.
+        ///     Serves as a hash function for a particular type. <see cref="M:System.Object.GetHashCode"></see> is suitable for use
+        ///     in hashing algorithms and data structures like a hash table.
         /// </summary>
         /// <returns>
-        /// A hash code for the current <see cref="T:System.Object"></see>.
+        ///     A hash code for the current <see cref="T:System.Object"></see>.
         /// </returns>
         /// <filterpriority>2</filterpriority>
         public override int GetHashCode()
@@ -226,35 +278,37 @@ namespace TileIconifier.Steam.KeyValues
             {
                 // Getting hash codes from volatile variables doesn't seem a good move...
                 var result = Name?.GetHashCode() ?? 0;
-                result = (result * 397) ^ (KeyNameValues?.GetHashCode() ?? 0);
-                result = (result * 397) ^ (KeyChilds?.GetHashCode() ?? 0);
-                result = (result * 397) ^ (FirstParent?.GetHashCode() ?? 0);
-                result = (result * 397) ^ (Parent?.GetHashCode() ?? 0);
-                result = (result * 397) ^ NextSubKeyIndex.GetHashCode();
-                result = (result * 397) ^ NextKeyValueIndex.GetHashCode();
-                result = (result * 397) ^ DistanceFromTop.GetHashCode();
+                result = (result*397) ^ (KeyNameValues?.GetHashCode() ?? 0);
+                result = (result*397) ^ (KeyChilds?.GetHashCode() ?? 0);
+                result = (result*397) ^ (FirstParent?.GetHashCode() ?? 0);
+                result = (result*397) ^ (Parent?.GetHashCode() ?? 0);
+                result = (result*397) ^ NextSubKeyIndex.GetHashCode();
+                result = (result*397) ^ NextKeyValueIndex.GetHashCode();
+                result = (result*397) ^ DistanceFromTop.GetHashCode();
                 return result;
             }
         }
+
         /// <summary>
-        /// Clone current Class.
+        ///     Clone current Class.
         /// </summary>
         /// <returns>
-        /// Clonned Class.
+        ///     Clonned Class.
         /// </returns>
         object ICloneable.Clone()
         {
             return Clone();
         }
+
         /// <summary>
-        /// Clone current Class.
+        ///     Clone current Class.
         /// </summary>
         /// <returns>
-        /// Clonned Class.
+        ///     Clonned Class.
         /// </returns>
         public KeyValues Clone()
         {
-            KeyValues cloneKv = new KeyValues(Name)
+            var cloneKv = new KeyValues(Name)
             {
                 DistanceFromTop = DistanceFromTop,
                 Parent = Parent,
@@ -269,10 +323,10 @@ namespace TileIconifier.Steam.KeyValues
         }
 
         /// <summary>
-        /// Return KeyValues Name.
+        ///     Return KeyValues Name.
         /// </summary>
         /// <returns>
-        /// KeyValues Name.
+        ///     KeyValues Name.
         /// </returns>
         public override string ToString()
         {
@@ -295,42 +349,42 @@ namespace TileIconifier.Steam.KeyValues
 
         public static KeyValues operator +(KeyValues kv1, KeyValues kv2)
         {
-            KeyValues newKv = kv1.Clone();
+            var newKv = kv1.Clone();
             newKv.AddSubKey(kv2);
             return newKv;
         }
 
         public static KeyValues operator +(KeyValues kv1, KeyValuesData kv2)
         {
-            KeyValues newKv = kv1.Clone();
+            var newKv = kv1.Clone();
             newKv.KeyNameValues.Add(kv2);
             return newKv;
         }
 
         public static KeyValues operator +(KeyValues kv1, string name)
         {
-            KeyValues newKv = kv1.Clone();
+            var newKv = kv1.Clone();
             newKv.AddSubKey(new KeyValues(name));
             return newKv;
         }
 
         public static KeyValues operator -(KeyValues kv1, KeyValues kv2)
         {
-            KeyValues newKv = kv1.Clone();
+            var newKv = kv1.Clone();
             newKv.RemoveSubKey(kv2);
             return newKv;
         }
 
         public static KeyValues operator -(KeyValues kv1, KeyValuesData kv2)
         {
-            KeyValues newKv = kv1.Clone();
+            var newKv = kv1.Clone();
             newKv.RemoveKeyName(kv2);
             return newKv;
         }
 
         public static KeyValues operator -(KeyValues kv1, string name)
         {
-            KeyValues newKv = kv1.Clone();
+            var newKv = kv1.Clone();
             newKv.RemoveSubKey(kv1.FindKey(name));
             return newKv;
         }
@@ -338,15 +392,16 @@ namespace TileIconifier.Steam.KeyValues
         #endregion
 
         #region Validate Tools
+
         /// <summary>
-        /// Update a KeyValues child.
-        /// This will update (First Parent, DistanceFromTop).
+        ///     Update a KeyValues child.
+        ///     This will update (First Parent, DistanceFromTop).
         /// </summary>
         /// <param name="child">Current child to update</param>
         /// <param name="distanceFromTop">Assert DistanceFromTop according with parent class</param>
         private void UpdateChilds(KeyValues child, uint distanceFromTop)
         {
-            foreach (KeyValues t in child.KeyChilds)
+            foreach (var t in child.KeyChilds)
             {
                 t.FirstParent = FirstParent;
                 t.DistanceFromTop = distanceFromTop;
@@ -355,11 +410,11 @@ namespace TileIconifier.Steam.KeyValues
         }
 
         /// <summary>
-        /// Update a new KeyValues and make child of this.
-        /// This will update (First Parent, Parent, DistanceFromTop).
-        /// This is for optional run, current functions automatic ajust and update all Propreities.
-        /// Only run that 1 time in correct Child when necessary!
-        /// This can be used for fix any bad update bug.
+        ///     Update a new KeyValues and make child of this.
+        ///     This will update (First Parent, Parent, DistanceFromTop).
+        ///     This is for optional run, current functions automatic ajust and update all Propreities.
+        ///     Only run that 1 time in correct Child when necessary!
+        ///     This can be used for fix any bad update bug.
         /// </summary>
         /// <param name="newChild">SubKey to update and make child of this</param>
         /// <param name="appendedSubKey">true if newChild have an parent and you want apeendit to current Class; otherwise false</param>
@@ -378,11 +433,12 @@ namespace TileIconifier.Steam.KeyValues
             newChild.DistanceFromTop = 0;
             UpdateChilds(newChild, DistanceFromTop + 1);
         }
+
         /// <summary>
-        /// Check if KeyValues object is valid
+        ///     Check if KeyValues object is valid
         /// </summary>
         /// <returns>
-        /// true if the name != null; otherwise, false.
+        ///     true if the name != null; otherwise, false.
         /// </returns>
         public bool IsValid()
         {
@@ -390,16 +446,17 @@ namespace TileIconifier.Steam.KeyValues
                 return false;
             return true;
         }
+
         /// <summary>
-        /// Check if a KeyName Value is empty or NULL
+        ///     Check if a KeyName Value is empty or NULL
         /// </summary>
         /// <returns>
-        /// true if the value is null or empty; otherwise, false.
+        ///     true if the value is null or empty; otherwise, false.
         /// </returns>
         /// <param name="keyName">An keyname for the value.</param>
         public bool IsEmpty(string keyName)
         {
-            foreach (KeyValuesData t in KeyNameValues)
+            foreach (var t in KeyNameValues)
             {
                 if (t.Key == keyName)
                     return string.IsNullOrEmpty(t.Value);
@@ -408,10 +465,10 @@ namespace TileIconifier.Steam.KeyValues
         }
 
         /// <summary>
-        /// Check if a filename is already in the list
+        ///     Check if a filename is already in the list
         /// </summary>
         /// <returns>
-        /// true if exists; otherwise, false.
+        ///     true if exists; otherwise, false.
         /// </returns>
         /// <param name="fileName">fileName to check.</param>
         public bool ExistsInclude(string fileName)
@@ -420,10 +477,10 @@ namespace TileIconifier.Steam.KeyValues
         }
 
         /// <summary>
-        /// Check if exists a KeyName under that KeyValues Class
+        ///     Check if exists a KeyName under that KeyValues Class
         /// </summary>
         /// <returns>
-        /// true if exists; otherwise, false.
+        ///     true if exists; otherwise, false.
         /// </returns>
         /// <param name="keyName">keyName to check.</param>
         public bool ExistsKey(string keyName)
@@ -432,10 +489,10 @@ namespace TileIconifier.Steam.KeyValues
         }
 
         /// <summary>
-        /// Check if exists a SubKey under that KeyValues Class
+        ///     Check if exists a SubKey under that KeyValues Class
         /// </summary>
         /// <returns>
-        /// true if exists; otherwise, false.
+        ///     true if exists; otherwise, false.
         /// </returns>
         /// <param name="subKeyName">SubKey Name to check.</param>
         public bool ExistsSubKey(string subKeyName)
@@ -446,11 +503,12 @@ namespace TileIconifier.Steam.KeyValues
         #endregion
 
         #region Load From HardDrive
+
         /// <summary>
-        /// Parse a line and return a KeyValuePair
+        ///     Parse a line and return a KeyValuePair
         /// </summary>
         /// <returns>
-        /// KeyValuePair
+        ///     KeyValuePair
         /// </returns>
         /// <param name="line">Current Line to parse.</param>
         /// <param name="wasQuoted">True if Key have quotes " so is not a { or }.</param>
@@ -490,7 +548,7 @@ namespace TileIconifier.Steam.KeyValues
             {
                 wasQuoted = true;
                 line = line.Remove(0, 1);
-                var delimeedString = line.Split(new[] { '"' }, StringSplitOptions.RemoveEmptyEntries);
+                var delimeedString = line.Split(new[] {'"'}, StringSplitOptions.RemoveEmptyEntries);
                 var assertSplit = false;
                 foreach (var s in delimeedString)
                 {
@@ -556,11 +614,12 @@ namespace TileIconifier.Steam.KeyValues
             kvPair = new KeyValuePair<string, string>(key, value);
             return kvPair;
         }
+
         /// <summary>
-        /// Search for a string on a list and return thier index
+        ///     Search for a string on a list and return thier index
         /// </summary>
         /// <returns>
-        /// true if the sucessfully load (KeyValue is valid); otherwise, false.
+        ///     true if the sucessfully load (KeyValue is valid); otherwise, false.
         /// </returns>
         /// <param name="lines">List Collection (Target).</param>
         /// <param name="search">Search for that text.</param>
@@ -568,22 +627,23 @@ namespace TileIconifier.Steam.KeyValues
         private uint RetriveIndex(List<string> lines, string search, uint startIndex)
         {
             if (string.IsNullOrEmpty(search)) return 0;
-            bool wasQuote = false;
-            bool wasComment = false;
-            for (int i = (int)startIndex; i < lines.Count; i++)
+            var wasQuote = false;
+            var wasComment = false;
+            for (var i = (int) startIndex; i < lines.Count; i++)
             {
-                KeyValuePair<string, string> kvPair = ReadToken(lines[i], ref wasQuote, ref wasComment);
+                var kvPair = ReadToken(lines[i], ref wasQuote, ref wasComment);
                 if (kvPair.Key == search && !wasComment && !wasQuote)
-                    return (uint)i;
+                    return (uint) i;
             }
             return 0;
         }
+
         /// <summary>
-        /// Create a KeyValue from File
-        /// This will load KeyValues data from a file stored in HDD
+        ///     Create a KeyValue from File
+        ///     This will load KeyValues data from a file stored in HDD
         /// </summary>
         /// <returns>
-        /// true if the sucessfully load (KeyValue is valid); otherwise, false.
+        ///     true if the sucessfully load (KeyValue is valid); otherwise, false.
         /// </returns>
         /// <param name="fileName">Path of the file to load.</param>
         public bool LoadFromFile(string fileName)
@@ -593,11 +653,12 @@ namespace TileIconifier.Steam.KeyValues
             uint endPos = 0;
             return LoadFromList(Utils.ReadFileToList(fileName), 0, ref endPos);
         }
+
         /// <summary>
-        /// Create a KeyValue from List wich contains file lines
+        ///     Create a KeyValue from List wich contains file lines
         /// </summary>
         /// <returns>
-        /// true if the sucessfully load (KeyValue is valid); otherwise, false.
+        ///     true if the sucessfully load (KeyValue is valid); otherwise, false.
         /// </returns>
         /// <param name="stream">List collection wich contain file lines</param>
         /// <param name="startPos">Start parse List in that position</param>
@@ -605,14 +666,14 @@ namespace TileIconifier.Steam.KeyValues
         private bool LoadFromList(List<string> stream, uint startPos, ref uint endPos)
         {
             if (stream == null) return false;
-            bool wasQuoted = false;
-            bool wasComment = false;
+            var wasQuoted = false;
+            var wasComment = false;
             string lastComment = null;
-            bool wasName = false;
+            var wasName = false;
             endPos = 0;
-            for (uint i = startPos; i < stream.Count; i++)
+            for (var i = startPos; i < stream.Count; i++)
             {
-                KeyValuePair<string, string> kvPair = ReadToken(stream[(int)i], ref wasQuoted, ref wasComment);
+                var kvPair = ReadToken(stream[(int) i], ref wasQuoted, ref wasComment);
                 if (string.IsNullOrEmpty(kvPair.Key)) continue;
                 endPos = i;
                 // Is the end of KeyValues Class?
@@ -636,7 +697,7 @@ namespace TileIconifier.Steam.KeyValues
                         Comment = lastComment;
                     wasName = true;
                     lastComment = null;
-                    uint beganIndex = RetriveIndex(stream, "{", i + 1);
+                    var beganIndex = RetriveIndex(stream, "{", i + 1);
                     if (beganIndex == 0) return false;
                     i = beganIndex;
                     continue;
@@ -655,7 +716,7 @@ namespace TileIconifier.Steam.KeyValues
                     if (!wasQuoted)
                     {
                         lastComment = null;
-                        KeyValues kvChild = new KeyValues("NewName");
+                        var kvChild = new KeyValues("NewName");
                         if (!kvChild.LoadFromList(stream, i - 1, ref endPos)) continue;
                         Update(kvChild, true);
                         KeyChilds.Add(kvChild);
@@ -666,21 +727,25 @@ namespace TileIconifier.Steam.KeyValues
                 }
                 // Is a KeyValue    "Key"       "Value"
                 if (string.IsNullOrEmpty(kvPair.Value)) continue;
-                KeyValuesData kvData = new KeyValuesData(kvPair.Key, kvPair.Value, lastComment, this);
+                var kvData = new KeyValuesData(kvPair.Key, kvPair.Value, lastComment, this);
                 KeyNameValues.Add(kvData);
                 lastComment = null;
             }
             return true;
         }
+
         /// <summary>
-        /// Include or just save fileName into current KeyValues Class      
+        ///     Include or just save fileName into current KeyValues Class
         /// </summary>
         /// <returns>
-        /// true if the sucessfully include file (KeyValue is valid); otherwise, false.
+        ///     true if the sucessfully include file (KeyValue is valid); otherwise, false.
         /// </returns>
         /// <param name="fileName">File to include on current KeyValues Class</param>
         /// <param name="loadToKeyValues">if true will load file and in current KeyValues Class; otherwise false.</param>
-        /// <param name="addToList">if true on save KeyValues to HDD will put a #include macro for the fileName on correct place; otherwise false.</param>
+        /// <param name="addToList">
+        ///     if true on save KeyValues to HDD will put a #include macro for the fileName on correct place;
+        ///     otherwise false.
+        /// </param>
         public bool AddIncludeFile(string fileName, bool loadToKeyValues, bool addToList)
         {
             if (addToList)
@@ -688,7 +753,7 @@ namespace TileIconifier.Steam.KeyValues
                     IncludedFiles.Add(fileName);
             if (loadToKeyValues)
             {
-                KeyValues incKv = new KeyValues("include");
+                var incKv = new KeyValues("include");
                 if (!incKv.LoadFromFile(fileName)) return false;
                 /*incKv.FirstParent = Parent == null ? this : Parent.FirstParent;
                 incKv.Parent = this;
@@ -702,18 +767,19 @@ namespace TileIconifier.Steam.KeyValues
         #endregion
 
         #region Save To HardDrive
+
         /// <summary>
-        /// Save KeyValue to a file on HDD
+        ///     Save KeyValue to a file on HDD
         /// </summary>
         /// <returns>
-        /// true if file was sucessfully saved to hdd; otherwise, false.
+        ///     true if file was sucessfully saved to hdd; otherwise, false.
         /// </returns>
         /// <param name="fileName">Path to store file.</param>
         public bool SaveToFile(string fileName)
         {
             try
             {
-                StreamWriter sw = new StreamWriter(fileName);
+                var sw = new StreamWriter(fileName);
                 SaveFromChild(sw, this, 0);
                 sw.Close();
                 return true;
@@ -723,8 +789,9 @@ namespace TileIconifier.Steam.KeyValues
                 return false;
             }
         }
+
         /// <summary>
-        /// Continue saving a KeyValue to a file.
+        ///     Continue saving a KeyValue to a file.
         /// </summary>
         /// <param name="sw">The file Writer object to Write contents on file.</param>
         /// <param name="kv">Current KeyValues to print on file.</param>
@@ -740,7 +807,7 @@ namespace TileIconifier.Steam.KeyValues
             sw.WriteLine("\"{0}\"", kv.Name);
             Utils.MakeTabs(sw, tabSpaces);
             sw.WriteLine("{");
-            foreach (KeyValuesData data in kv.KeyNameValues)
+            foreach (var data in kv.KeyNameValues)
             {
                 if (!string.IsNullOrEmpty(data.Comment))
                 {
@@ -750,7 +817,7 @@ namespace TileIconifier.Steam.KeyValues
                 Utils.MakeTabs(sw, tabSpaces);
                 sw.WriteLine("\t\"{0}\"\t\t\"{1}\"", data.Key, data.Value);
             }
-            foreach (KeyValues child in kv.KeyChilds)
+            foreach (var child in kv.KeyChilds)
             {
                 SaveFromChild(sw, child, tabSpaces + 1);
             }
@@ -761,8 +828,9 @@ namespace TileIconifier.Steam.KeyValues
         #endregion
 
         #region SubKeys Management
+
         /// <summary>
-        /// Add a SubKey to the current KeyValues
+        ///     Add a SubKey to the current KeyValues
         /// </summary>
         /// <param name="pSubkey">KeyValue to Append.</param>
         public void AddSubKey(KeyValues pSubkey)
@@ -774,7 +842,7 @@ namespace TileIconifier.Steam.KeyValues
 
         public void AddSubKey(KeyValues[] pSubkeys)
         {
-            foreach (KeyValues subkey in pSubkeys)
+            foreach (var subkey in pSubkeys)
             {
                 AddSubKey(subkey);
             }
@@ -810,7 +878,7 @@ namespace TileIconifier.Steam.KeyValues
         public bool RemoveSubKey(string keyName)
         {
             if (string.IsNullOrEmpty(keyName)) return false;
-            for (int i = 0; i < KeyChilds.Count; i++)
+            for (var i = 0; i < KeyChilds.Count; i++)
             {
                 if (KeyChilds[i].Name == keyName)
                     return RemoveSubKey(i);
@@ -866,7 +934,7 @@ namespace TileIconifier.Steam.KeyValues
             if (NextSubKeyIndex < KeyChilds.Count)
             {
                 NextSubKeyIndex++;
-                return KeyChilds[(int)NextSubKeyIndex - 1];
+                return KeyChilds[(int) NextSubKeyIndex - 1];
             }
             return null;
         }
@@ -887,7 +955,7 @@ namespace TileIconifier.Steam.KeyValues
             if (NextKeyValueIndex < KeyNameValues.Count)
             {
                 NextKeyValueIndex++;
-                return KeyNameValues[(int)NextKeyValueIndex - 1];
+                return KeyNameValues[(int) NextKeyValueIndex - 1];
             }
             return null;
         }
@@ -904,9 +972,9 @@ namespace TileIconifier.Steam.KeyValues
         public uint RemoveAllKeyNames(uint startPos)
         {
             uint count = 0;
-            for (uint i = startPos; i < KeyNameValues.Count; i++)
+            for (var i = startPos; i < KeyNameValues.Count; i++)
             {
-                KeyNameValues[(int)i].Parent = null;
+                KeyNameValues[(int) i].Parent = null;
                 count++;
             }
             KeyNameValues.Clear();
@@ -924,7 +992,7 @@ namespace TileIconifier.Steam.KeyValues
         public bool RemoveKeyName(string keyName)
         {
             if (string.IsNullOrEmpty(keyName)) return false;
-            for (int i = 0; i < KeyNameValues.Count; i++)
+            for (var i = 0; i < KeyNameValues.Count; i++)
             {
                 if (KeyNameValues[i].Key == keyName)
                 {
@@ -949,11 +1017,12 @@ namespace TileIconifier.Steam.KeyValues
         #endregion
 
         #region Set Values
+
         public bool SetComment(string keyName, string value)
         {
             if (string.IsNullOrEmpty(value))
                 return false;
-            foreach (KeyValuesData t in KeyNameValues)
+            foreach (var t in KeyNameValues)
             {
                 if (t.Key != keyName) continue;
                 t.Comment = value;
@@ -968,7 +1037,7 @@ namespace TileIconifier.Steam.KeyValues
                 return false;
             if (index >= KeyNameValues.Count)
                 return false;
-            KeyNameValues[(int)index].Comment = value;
+            KeyNameValues[(int) index].Comment = value;
             return true;
         }
 
@@ -981,7 +1050,7 @@ namespace TileIconifier.Steam.KeyValues
 
         public void SetRange(KeyValuesData[] range)
         {
-            foreach (KeyValuesData data in range)
+            foreach (var data in range)
                 Set(data);
         }
 
@@ -995,7 +1064,7 @@ namespace TileIconifier.Steam.KeyValues
                 t.Value = value;
                 return;
             }
-            KeyValuesData kvValue = new KeyValuesData(keyName, value, null, this);
+            var kvValue = new KeyValuesData(keyName, value, null, this);
             KeyNameValues.Add(kvValue);
         }
 
@@ -1087,7 +1156,7 @@ namespace TileIconifier.Steam.KeyValues
         {
             if (string.IsNullOrEmpty(keyName))
                 return defaultValue;
-            foreach (KeyValuesData t in KeyNameValues.Where(t => t.Key == keyName))
+            foreach (var t in KeyNameValues.Where(t => t.Key == keyName))
                 return t.Value;
             return defaultValue;
         }
@@ -1147,43 +1216,6 @@ namespace TileIconifier.Steam.KeyValues
             return Color.FromName(GetValue(keyName, defaultValue.ToString()));
         }
 
-        #endregion
-
-        #region Utilities
-        /// <summary>
-        /// Create a new KeyValue with indexed Alphabet.
-        /// </summary>
-        public static KeyValues UTIL_CreateAlphabet()
-        {
-            KeyValues alphabet = new KeyValues("Alphabet");
-            alphabet.SetChar("1", 'A');
-            alphabet.SetChar("2", 'B');
-            alphabet.SetChar("3", 'C');
-            alphabet.SetChar("4", 'D');
-            alphabet.SetChar("5", 'E');
-            alphabet.SetChar("6", 'F');
-            alphabet.SetChar("7", 'G');
-            alphabet.SetChar("8", 'H');
-            alphabet.SetChar("9", 'I');
-            alphabet.SetChar("10", 'J');
-            alphabet.SetChar("11", 'K');
-            alphabet.SetChar("12", 'L');
-            alphabet.SetChar("13", 'M');
-            alphabet.SetChar("14", 'N');
-            alphabet.SetChar("15", 'O');
-            alphabet.SetChar("16", 'P');
-            alphabet.SetChar("17", 'Q');
-            alphabet.SetChar("18", 'R');
-            alphabet.SetChar("19", 'S');
-            alphabet.SetChar("20", 'T');
-            alphabet.SetChar("21", 'U');
-            alphabet.SetChar("22", 'V');
-            alphabet.SetChar("23", 'W');
-            alphabet.SetChar("24", 'X');
-            alphabet.SetChar("25", 'Y');
-            alphabet.SetChar("26", 'Z');
-            return alphabet;
-        }
         #endregion
     }
 }

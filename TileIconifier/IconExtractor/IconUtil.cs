@@ -1,29 +1,31 @@
-﻿/*
- *  IconExtractor/IconUtil for .NET
- *  Copyright (C) 2014 Tsuda Kageyu. All rights reserved.
- *
- *  Redistribution and use in source and binary forms, with or without
- *  modification, are permitted provided that the following conditions
- *  are met:
- *
- *   1. Redistributions of source code must retain the above copyright
- *      notice, this list of conditions and the following disclaimer.
- *   2. Redistributions in binary form must reproduce the above copyright
- *      notice, this list of conditions and the following disclaimer in the
- *      documentation and/or other materials provided with the distribution.
- *
- *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
- *  TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
- *  PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER
- *  OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- *  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- *  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- *  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+﻿#region LICENCE
+
+// /*
+//         The MIT License (MIT)
+// 
+//         Copyright (c) 2016 Johnathon M
+// 
+//         Permission is hereby granted, free of charge, to any person obtaining a copy
+//         of this software and associated documentation files (the "Software"), to deal
+//         in the Software without restriction, including without limitation the rights
+//         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//         copies of the Software, and to permit persons to whom the Software is
+//         furnished to do so, subject to the following conditions:
+// 
+//         The above copyright notice and this permission notice shall be included in
+//         all copies or substantial portions of the Software.
+// 
+//         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//         THE SOFTWARE.
+// 
+// */
+
+#endregion
 
 using System;
 using System.Collections.Generic;
@@ -36,8 +38,6 @@ namespace TileIconifier.IconExtractor
 {
     public static class IconUtil
     {
-        private delegate byte[] GetIconDataDelegate(Icon icon);
-
         private static readonly GetIconDataDelegate IconDataDelegate;
 
         static IconUtil()
@@ -45,20 +45,20 @@ namespace TileIconifier.IconExtractor
             // Create a dynamic method to access Icon.iconData private field.
 
             var dm = new DynamicMethod(
-                "GetIconData", typeof(byte[]), new[] { typeof(Icon) }, typeof(Icon));
-            var fi = typeof(Icon).GetField(
+                "GetIconData", typeof (byte[]), new[] {typeof (Icon)}, typeof (Icon));
+            var fi = typeof (Icon).GetField(
                 "iconData", BindingFlags.Instance | BindingFlags.NonPublic);
             var gen = dm.GetILGenerator();
             gen.Emit(OpCodes.Ldarg_0);
             if (fi != null) gen.Emit(OpCodes.Ldfld, fi);
             gen.Emit(OpCodes.Ret);
 
-            IconDataDelegate = (GetIconDataDelegate)dm.CreateDelegate(typeof(GetIconDataDelegate));
+            IconDataDelegate = (GetIconDataDelegate) dm.CreateDelegate(typeof (GetIconDataDelegate));
         }
 
         /// <summary>
-        /// Split an Icon consists of multiple icons into an array of Icon each
-        /// consists of single icons.
+        ///     Split an Icon consists of multiple icons into an array of Icon each
+        ///     consists of single icons.
         /// </summary>
         /// <param name="icon">A System.Drawing.Icon to be split.</param>
         /// <returns>An array of System.Drawing.Icon.</returns>
@@ -75,22 +75,22 @@ namespace TileIconifier.IconExtractor
             {
                 int count = BitConverter.ToUInt16(src, 4);
 
-                for (int i = 0; i < count; i++)
+                for (var i = 0; i < count; i++)
                 {
-                    int length = BitConverter.ToInt32(src, 6 + 16 * i + 8);    // ICONDIRENTRY.dwBytesInRes
-                    int offset = BitConverter.ToInt32(src, 6 + 16 * i + 12);   // ICONDIRENTRY.dwImageOffset
+                    var length = BitConverter.ToInt32(src, 6 + 16*i + 8); // ICONDIRENTRY.dwBytesInRes
+                    var offset = BitConverter.ToInt32(src, 6 + 16*i + 12); // ICONDIRENTRY.dwImageOffset
 
                     using (var dst = new BinaryWriter(new MemoryStream(6 + 16 + length)))
                     {
                         // Copy ICONDIR and set idCount to 1.
 
                         dst.Write(src, 0, 4);
-                        dst.Write((short)1);
+                        dst.Write((short) 1);
 
                         // Copy ICONDIRENTRY and set dwImageOffset to 22.
 
-                        dst.Write(src, 6 + 16 * i, 12); // ICONDIRENTRY except dwImageOffset
-                        dst.Write(22);                   // ICONDIRENTRY.dwImageOffset
+                        dst.Write(src, 6 + 16*i, 12); // ICONDIRENTRY except dwImageOffset
+                        dst.Write(22); // ICONDIRENTRY.dwImageOffset
 
                         // Copy a picture.
 
@@ -108,7 +108,7 @@ namespace TileIconifier.IconExtractor
         }
 
         /// <summary>
-        /// Converts an Icon to a GDI+ Bitmap preserving the transparent area.
+        ///     Converts an Icon to a GDI+ Bitmap preserving the transparent area.
         /// </summary>
         /// <param name="icon">An System.Drawing.Icon to be converted.</param>
         /// <returns>A System.Drawing.Bitmap Object.</returns>
@@ -122,7 +122,7 @@ namespace TileIconifier.IconExtractor
             using (var ms = new MemoryStream())
             {
                 icon.Save(ms);
-                using (var bmp = (Bitmap)Image.FromStream(ms))
+                using (var bmp = (Bitmap) Image.FromStream(ms))
                 {
                     return new Bitmap(bmp);
                 }
@@ -130,14 +130,14 @@ namespace TileIconifier.IconExtractor
         }
 
         /// <summary>
-        /// Gets the bit depth of an Icon.
+        ///     Gets the bit depth of an Icon.
         /// </summary>
         /// <param name="icon">An System.Drawing.Icon object.</param>
         /// <returns>Bit depth of the icon.</returns>
         /// <remarks>
-        /// This method takes into account the PNG header.
-        /// If the icon has multiple variations, this method returns the bit 
-        /// depth of the first variation.
+        ///     This method takes into account the PNG header.
+        ///     If the icon has multiple variations, this method returns the bit
+        ///     depth of the first variation.
         /// </remarks>
         public static int GetBitCount(Icon icon)
         {
@@ -160,13 +160,13 @@ namespace TileIconifier.IconExtractor
                     case 0:
                         return data[46];
                     case 2:
-                        return data[46] * 3;
+                        return data[46]*3;
                     case 3:
                         return data[46];
                     case 4:
-                        return data[46] * 2;
+                        return data[46]*2;
                     case 6:
-                        return data[46] * 4;
+                        return data[46]*4;
                     // NOP
                 }
             }
@@ -187,14 +187,13 @@ namespace TileIconifier.IconExtractor
             {
                 return data;
             }
-            else
+            using (var ms = new MemoryStream())
             {
-                using (var ms = new MemoryStream())
-                {
-                    icon.Save(ms);
-                    return ms.ToArray();
-                }
+                icon.Save(ms);
+                return ms.ToArray();
             }
         }
+
+        private delegate byte[] GetIconDataDelegate(Icon icon);
     }
 }

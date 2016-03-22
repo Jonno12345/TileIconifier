@@ -1,29 +1,31 @@
-﻿/*
- *  IconExtractor/IconUtil for .NET
- *  Copyright (C) 2014 Tsuda Kageyu. All rights reserved.
- *
- *  Redistribution and use in source and binary forms, with or without
- *  modification, are permitted provided that the following conditions
- *  are met:
- *
- *   1. Redistributions of source code must retain the above copyright
- *      notice, this list of conditions and the following disclaimer.
- *   2. Redistributions in binary form must reproduce the above copyright
- *      notice, this list of conditions and the following disclaimer in the
- *      documentation and/or other materials provided with the distribution.
- *
- *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
- *  TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
- *  PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER
- *  OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- *  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- *  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- *  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+﻿#region LICENCE
+
+// /*
+//         The MIT License (MIT)
+// 
+//         Copyright (c) 2016 Johnathon M
+// 
+//         Permission is hereby granted, free of charge, to any person obtaining a copy
+//         of this software and associated documentation files (the "Software"), to deal
+//         in the Software without restriction, including without limitation the rights
+//         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//         copies of the Software, and to permit persons to whom the Software is
+//         furnished to do so, subject to the following conditions:
+// 
+//         The above copyright notice and this permission notice shall be included in
+//         all copies or substantial portions of the Software.
+// 
+//         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//         THE SOFTWARE.
+// 
+// */
+
+#endregion
 
 using System;
 using System.Collections.Generic;
@@ -44,37 +46,20 @@ namespace TileIconifier.IconExtractor
 
         private const uint LoadLibraryAsDatafile = 0x00000002;
 
+        private const int MaxPath = 260;
+
         // Resource types for EnumResourceNames().
 
-        private static readonly IntPtr RtIcon = (IntPtr)3;
-        private static readonly IntPtr RtGroupIcon = (IntPtr)14;
-
-        private const int MaxPath = 260;
+        private static readonly IntPtr RtIcon = (IntPtr) 3;
+        private static readonly IntPtr RtGroupIcon = (IntPtr) 14;
 
         ////////////////////////////////////////////////////////////////////////
         // Fields
 
-        private byte[][] _iconData;   // Binary data of each icon.
-
-        ////////////////////////////////////////////////////////////////////////
-        // Public properties
+        private byte[][] _iconData; // Binary data of each icon.
 
         /// <summary>
-        /// Gets the full path of the associated file.
-        /// </summary>
-        public string FileName
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// Gets the count of the icons in the associated file.
-        /// </summary>
-        public int Count => _iconData.Length;
-
-        /// <summary>
-        /// Initializes a new instance of the IconExtractor class from the specified file name.
+        ///     Initializes a new instance of the IconExtractor class from the specified file name.
         /// </summary>
         /// <param name="fileName">The file to extract icons from.</param>
         public IconExtractor(string fileName)
@@ -82,8 +67,21 @@ namespace TileIconifier.IconExtractor
             Initialize(fileName);
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        // Public properties
+
         /// <summary>
-        /// Extracts an icon from the file.
+        ///     Gets the full path of the associated file.
+        /// </summary>
+        public string FileName { get; private set; }
+
+        /// <summary>
+        ///     Gets the count of the icons in the associated file.
+        /// </summary>
+        public int Count => _iconData.Length;
+
+        /// <summary>
+        ///     Extracts an icon from the file.
         /// </summary>
         /// <param name="index">Zero based index of the icon to be extracted.</param>
         /// <returns>A System.Drawing.Icon object.</returns>
@@ -102,14 +100,14 @@ namespace TileIconifier.IconExtractor
         }
 
         /// <summary>
-        /// Extracts all the icons from the file.
+        ///     Extracts all the icons from the file.
         /// </summary>
         /// <returns>An array of System.Drawing.Icon objects.</returns>
         /// <remarks>Always returns new copies of the Icons. They should be disposed by the user.</remarks>
         public Icon[] GetAllIcons()
         {
             var icons = new List<Icon>();
-            for (int i = 0; i < Count; ++i)
+            for (var i = 0; i < Count; ++i)
                 icons.Add(GetIcon(i));
 
             return icons.ToArray();
@@ -120,7 +118,7 @@ namespace TileIconifier.IconExtractor
             if (fileName == null)
                 throw new ArgumentNullException(nameof(fileName));
 
-            IntPtr hModule = IntPtr.Zero;
+            var hModule = IntPtr.Zero;
             try
             {
                 hModule = NativeMethods.LoadLibraryEx(fileName, IntPtr.Zero, LoadLibraryAsDatafile);
@@ -144,10 +142,10 @@ namespace TileIconifier.IconExtractor
 
                     // Calculate the size of an entire .icon file.
 
-                    int count = BitConverter.ToUInt16(dir, 4);  // GRPICONDIR.idCount
-                    int len = 6 + 16 * count;                   // sizeof(ICONDIR) + sizeof(ICONDIRENTRY) * count
-                    for (int i = 0; i < count; ++i)
-                        len += BitConverter.ToInt32(dir, 6 + 14 * i + 8);   // GRPICONDIRENTRY.dwBytesInRes
+                    int count = BitConverter.ToUInt16(dir, 4); // GRPICONDIR.idCount
+                    var len = 6 + 16*count; // sizeof(ICONDIR) + sizeof(ICONDIRENTRY) * count
+                    for (var i = 0; i < count; ++i)
+                        len += BitConverter.ToInt32(dir, 6 + 14*i + 8); // GRPICONDIRENTRY.dwBytesInRes
 
                     using (var dst = new BinaryWriter(new MemoryStream(len)))
                     {
@@ -155,22 +153,22 @@ namespace TileIconifier.IconExtractor
 
                         dst.Write(dir, 0, 6);
 
-                        int picOffset = 6 + 16 * count; // sizeof(ICONDIR) + sizeof(ICONDIRENTRY) * count
+                        var picOffset = 6 + 16*count; // sizeof(ICONDIR) + sizeof(ICONDIRENTRY) * count
 
-                        for (int i = 0; i < count; ++i)
+                        for (var i = 0; i < count; ++i)
                         {
                             // Load the picture.
 
-                            ushort id = BitConverter.ToUInt16(dir, 6 + 14 * i + 12);    // GRPICONDIRENTRY.nID
-                            var pic = GetDataFromResource(hModule, RtIcon, (IntPtr)id);
+                            var id = BitConverter.ToUInt16(dir, 6 + 14*i + 12); // GRPICONDIRENTRY.nID
+                            var pic = GetDataFromResource(hModule, RtIcon, (IntPtr) id);
 
                             // Copy GRPICONDIRENTRY to ICONDIRENTRY.
 
-                            dst.Seek(6 + 16 * i, SeekOrigin.Begin);
+                            dst.Seek(6 + 16*i, SeekOrigin.Begin);
 
-                            dst.Write(dir, 6 + 14 * i, 8);  // First 8bytes are identical.
-                            dst.Write(pic.Length);          // ICONDIRENTRY.dwBytesInRes
-                            dst.Write(picOffset);           // ICONDIRENTRY.dwImageOffset
+                            dst.Write(dir, 6 + 14*i, 8); // First 8bytes are identical.
+                            dst.Write(pic.Length); // ICONDIRENTRY.dwBytesInRes
+                            dst.Write(picOffset); // ICONDIRENTRY.dwImageOffset
 
                             // Copy a picture.
 
@@ -180,7 +178,7 @@ namespace TileIconifier.IconExtractor
                             picOffset += pic.Length;
                         }
 
-                        tmpData.Add(((MemoryStream)dst.BaseStream).ToArray());
+                        tmpData.Add(((MemoryStream) dst.BaseStream).ToArray());
                     }
 
                     return true;
@@ -200,23 +198,23 @@ namespace TileIconifier.IconExtractor
         {
             // Load the binary data from the specified resource.
 
-            IntPtr hResInfo = NativeMethods.FindResource(hModule, name, type);
+            var hResInfo = NativeMethods.FindResource(hModule, name, type);
             if (hResInfo == IntPtr.Zero)
                 throw new Win32Exception();
 
-            IntPtr hResData = NativeMethods.LoadResource(hModule, hResInfo);
+            var hResData = NativeMethods.LoadResource(hModule, hResInfo);
             if (hResData == IntPtr.Zero)
                 throw new Win32Exception();
 
-            IntPtr pResData = NativeMethods.LockResource(hResData);
+            var pResData = NativeMethods.LockResource(hResData);
             if (pResData == IntPtr.Zero)
                 throw new Win32Exception();
 
-            uint size = NativeMethods.SizeofResource(hModule, hResInfo);
+            var size = NativeMethods.SizeofResource(hModule, hResInfo);
             if (size == 0)
                 throw new Win32Exception();
 
-            byte[] buf = new byte[size];
+            var buf = new byte[size];
             Marshal.Copy(pResData, buf, 0, buf.Length);
 
             return buf;
@@ -233,7 +231,7 @@ namespace TileIconifier.IconExtractor
             string fileName;
             {
                 var buf = new StringBuilder(MaxPath);
-                int len = NativeMethods.GetMappedFileName(
+                var len = NativeMethods.GetMappedFileName(
                     NativeMethods.GetCurrentProcess(), hModule, buf, buf.Capacity);
                 if (len == 0)
                     throw new Win32Exception();
@@ -244,11 +242,11 @@ namespace TileIconifier.IconExtractor
             // Convert the device name to drive name like:
             // "C:\\Windows\\System32\\shell32.dll"
 
-            for (char c = 'A'; c <= 'Z'; ++c)
+            for (var c = 'A'; c <= 'Z'; ++c)
             {
                 var drive = c + ":";
                 var buf = new StringBuilder(MaxPath);
-                int len = NativeMethods.QueryDosDevice(drive, buf, buf.Capacity);
+                var len = NativeMethods.QueryDosDevice(drive, buf, buf.Capacity);
                 if (len == 0)
                     continue;
 

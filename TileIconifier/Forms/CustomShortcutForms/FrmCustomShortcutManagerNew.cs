@@ -1,4 +1,33 @@
-﻿using System;
+﻿#region LICENCE
+
+// /*
+//         The MIT License (MIT)
+// 
+//         Copyright (c) 2016 Johnathon M
+// 
+//         Permission is hereby granted, free of charge, to any person obtaining a copy
+//         of this software and associated documentation files (the "Software"), to deal
+//         in the Software without restriction, including without limitation the rights
+//         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//         copies of the Software, and to permit persons to whom the Software is
+//         furnished to do so, subject to the following conditions:
+// 
+//         The above copyright notice and this permission notice shall be included in
+//         all copies or substantial portions of the Software.
+// 
+//         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//         THE SOFTWARE.
+// 
+// */
+
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,13 +59,13 @@ namespace TileIconifier.Forms.CustomShortcutForms
         //*********************************************************************
 
         private readonly NewCustomShortcutFormCache _steamCache = new NewCustomShortcutFormCache();
-        private List<SteamGame> _steamGames;
 
         //*********************************************************************
         // GENERAL FIELDS
         //*********************************************************************
 
         private TabPage _previousTabPage;
+        private List<SteamGame> _steamGames;
 
 
         //*********************************************************************
@@ -49,6 +78,35 @@ namespace TileIconifier.Forms.CustomShortcutForms
             _previousTabPage = tabShortcutType.SelectedTab;
             SetUpExplorer();
             SetUpSteam();
+        }
+
+        private NewCustomShortcutFormCache PreviousCache
+        {
+            get
+            {
+                if (_previousTabPage == tabExplorer)
+                    return _explorerCache;
+                if (_previousTabPage == tabSteam)
+                    return _steamCache;
+                if (_previousTabPage == tabOther)
+                    return _otherCache;
+                return null;
+            }
+        }
+
+        private NewCustomShortcutFormCache CurrentCache
+        {
+            get
+            {
+                var current = tabShortcutType.SelectedTab;
+                if (current == tabExplorer)
+                    return _explorerCache;
+                if (current == tabSteam)
+                    return _steamCache;
+                if (current == tabOther)
+                    return _otherCache;
+                return null;
+            }
         }
 
         private void GenerateFullShortcut(
@@ -172,35 +230,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             LoadCache(CurrentCache);
         }
 
-        private NewCustomShortcutFormCache PreviousCache
-        {
-            get
-            {
-                if (_previousTabPage == tabExplorer)
-                    return _explorerCache;
-                if (_previousTabPage == tabSteam)
-                    return _steamCache;
-                if (_previousTabPage == tabOther)
-                    return _otherCache;
-                return null;
-            }
-        }
-
-        private NewCustomShortcutFormCache CurrentCache
-        {
-            get
-            {
-                var current = tabShortcutType.SelectedTab;
-                if (current == tabExplorer)
-                    return _explorerCache;
-                if (current == tabSteam)
-                    return _steamCache;
-                if (current == tabOther)
-                    return _otherCache;
-                return null;
-            }
-        }
-
         private void LoadCache(NewCustomShortcutFormCache cache)
         {
             pctCurrentIcon.Image = cache.GetIcon();
@@ -244,9 +273,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 ? $"shell:::{cmbExplorerGuids.SelectedValue}"
                 : txtCustomFolder.Text;
             var workingFolder = radSpecialFolder.Checked ? null : txtCustomFolder.Text;
-
-            //radSpecialFolder.Checked ? cmbExplorerGuids.SelectedValue
-
+            
             GenerateFullShortcut(CustomShortcutGetters.ExplorerPath, targetArguments, CustomShortcutType.Explorer,
                 CustomShortcutGetters.ExplorerPath, workingFolder
                 );
@@ -333,8 +360,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             lstSteamGames.Clear();
             lstSteamGames.Columns.Clear();
 
-            lstSteamGames.Columns.Add("App Id", lstSteamGames.Width / 8 - 10, HorizontalAlignment.Left);
-            lstSteamGames.Columns.Add("Game Name", lstSteamGames.Width / 8 * 7 -4, HorizontalAlignment.Left);
+            lstSteamGames.Columns.Add("App Id", lstSteamGames.Width/8 - 10, HorizontalAlignment.Left);
+            lstSteamGames.Columns.Add("Game Name", lstSteamGames.Width/8*7 - 4, HorizontalAlignment.Left);
 
             lstSteamGames.Items.AddRange(_steamGames.OrderBy(s => s.GameName).ToArray<ListViewItem>());
         }
@@ -368,7 +395,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             if (lstSteamGames.SelectedItems.Count == 0)
                 return;
 
-            var steamGame = (SteamGame)lstSteamGames.SelectedItems[0];
+            var steamGame = (SteamGame) lstSteamGames.SelectedItems[0];
             UpdatedCacheIcon(steamGame.IconAsBytes);
             txtShortcutName.Text = steamGame.GameName.CleanInvalidFilenameChars();
         }
@@ -377,7 +404,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             if (lstSteamGames.SelectedItems.Count == 0) return;
 
-            var steamGame = (SteamGame)lstSteamGames.SelectedItems[0];
+            var steamGame = (SteamGame) lstSteamGames.SelectedItems[0];
 
             GenerateFullShortcut(SteamLibrary.Instance.GetSteamExePath(), steamGame.GameExecutionArgument,
                 CustomShortcutType.Steam, steamGame.IconPath);

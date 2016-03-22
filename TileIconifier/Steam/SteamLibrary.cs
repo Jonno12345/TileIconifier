@@ -1,4 +1,33 @@
-﻿using System;
+﻿#region LICENCE
+
+// /*
+//         The MIT License (MIT)
+// 
+//         Copyright (c) 2016 Johnathon M
+// 
+//         Permission is hereby granted, free of charge, to any person obtaining a copy
+//         of this software and associated documentation files (the "Software"), to deal
+//         in the Software without restriction, including without limitation the rights
+//         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//         copies of the Software, and to permit persons to whom the Software is
+//         furnished to do so, subject to the following conditions:
+// 
+//         The above copyright notice and this permission notice shall be included in
+//         all copies or substantial portions of the Software.
+// 
+//         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//         THE SOFTWARE.
+// 
+// */
+
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -121,11 +150,15 @@ namespace TileIconifier.Steam
         {
             while (true)
             {
-                var kvp = kv.KeyNameValues.FirstOrDefault(k => k.Key.Equals("name", StringComparison.InvariantCultureIgnoreCase));
+                var kvp =
+                    kv.KeyNameValues.FirstOrDefault(
+                        k => k.Key.Equals("name", StringComparison.InvariantCultureIgnoreCase));
                 if (kvp != null)
                     return kvp.Value;
 
-                var userConfigKv = kv.KeyChilds.FirstOrDefault(c => c.Name.Equals("UserConfig", StringComparison.InvariantCultureIgnoreCase));
+                var userConfigKv =
+                    kv.KeyChilds.FirstOrDefault(
+                        c => c.Name.Equals("UserConfig", StringComparison.InvariantCultureIgnoreCase));
                 if (userConfigKv == null) return null;
                 kv = userConfigKv;
             }
@@ -148,7 +181,9 @@ namespace TileIconifier.Steam
                         //Empty list of key name values, skip
                         if (!kv.KeyNameValues.Any())
                             continue;
-                        var appId = kv.KeyNameValues.Single(k => k.Key.Equals("appid", StringComparison.InvariantCultureIgnoreCase)).Value;
+                        var appId =
+                            kv.KeyNameValues.Single(
+                                k => k.Key.Equals("appid", StringComparison.InvariantCultureIgnoreCase)).Value;
                         var gameName = GetGameName(kv);
                         if (gameName == null)
                             continue;

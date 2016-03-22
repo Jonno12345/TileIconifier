@@ -1,4 +1,33 @@
-﻿using System;
+﻿#region LICENCE
+
+// /*
+//         The MIT License (MIT)
+// 
+//         Copyright (c) 2016 Johnathon M
+// 
+//         Permission is hereby granted, free of charge, to any person obtaining a copy
+//         of this software and associated documentation files (the "Software"), to deal
+//         in the Software without restriction, including without limitation the rights
+//         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//         copies of the Software, and to permit persons to whom the Software is
+//         furnished to do so, subject to the following conditions:
+// 
+//         The above copyright notice and this permission notice shall be included in
+//         all copies or substantial portions of the Software.
+// 
+//         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//         THE SOFTWARE.
+// 
+// */
+
+#endregion
+
+using System;
 using System.Security.Principal;
 using System.Threading;
 using System.Windows.Forms;
@@ -53,8 +82,8 @@ namespace TileIconifier
                 MessageBox.Show(
                     @"You are running Windows 10, but not on or above Build 10586! The program will run, but some changes may not take effect.",
                     @"TileIconifier - Build Too Early", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            
-            
+
+
             ////Warning for Windows 8.1, but I think it's actually fine with all builds... Disabled it
             //else if (ver.Major == 6 && ver.Minor == 3)
             //    MessageBox.Show(
@@ -62,7 +91,7 @@ namespace TileIconifier
             //        @"TileIconifier - Windows 8.1", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
             //Test the process is running 32 bit on 32 bit, or 64 bit on 64 bit
-            if(!Environment.Is64BitProcess && Environment.Is64BitOperatingSystem)
+            if (!Environment.Is64BitProcess && Environment.Is64BitOperatingSystem)
                 MessageBox.Show(
                     @"You are running as a 32-bit process within a 64-bit operating system. Certain functionality, such as powershell, may not work correctly.",
                     @"TileIconifier - Incorrect platform", MessageBoxButtons.OK, MessageBoxIcon.Stop);

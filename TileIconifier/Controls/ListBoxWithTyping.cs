@@ -1,44 +1,29 @@
-﻿//    //!!!NO LONGER USED!!!
+﻿#region LICENCE
 
-//using System;
-//using System.Windows.Forms;
+// /*
+//         The MIT License (MIT)
+// 
+//         Copyright (c) 2016 Johnathon M
+// 
+//         Permission is hereby granted, free of charge, to any person obtaining a copy
+//         of this software and associated documentation files (the "Software"), to deal
+//         in the Software without restriction, including without limitation the rights
+//         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//         copies of the Software, and to permit persons to whom the Software is
+//         furnished to do so, subject to the following conditions:
+// 
+//         The above copyright notice and this permission notice shall be included in
+//         all copies or substantial portions of the Software.
+// 
+//         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//         THE SOFTWARE.
+// 
+// */
 
-//namespace TileIconifier.Controls
-//{
+#endregion
 
-//    /// <summary>
-//    ///     Allows typing first few letters in a list box to jump to that item - a little hacky
-//    /// </summary>
-//    public class ListBoxWithTyping : ListBox
-//    {
-//        private DateTime _lastKeyPress;
-//        private string _searchString;
-
-//        public ListBoxWithTyping()
-//        {
-//            KeyPress += SearchByCharacters_KeyPress;
-//        }
-
-//        private void SearchByCharacters_KeyPress(object sender, KeyPressEventArgs e)
-//        {
-//            var newDate = DateTime.Now;
-//            var diff = newDate - _lastKeyPress;
-
-//            //reset search after 1.5 seconds
-//            if (diff.TotalSeconds >= 1.5)
-//                _searchString = string.Empty;
-//            _searchString += e.KeyChar.ToString().ToLower();
-
-//            //loop through all items in order
-//            for (var i = 0; i < Items.Count; i++)
-//            {
-//                var item = Items[i].ToString();
-//                if (!item.ToLower().StartsWith(_searchString)) continue;
-//                SelectedIndex = i;
-//                break;
-//            }
-//            _lastKeyPress = newDate;
-//            e.Handled = true;
-//        }
-//    }
-//}
