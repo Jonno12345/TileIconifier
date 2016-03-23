@@ -33,8 +33,8 @@ namespace TileIconifier.Skinning.Skins.Dark
 {
     public class DarkSkin : BaseSkin
     {
-        public override Color BackColor => Color.Black;
-        public override Color ForeColor => Color.White;
+        public override Color BackColor => ColorTranslator.FromHtml("#323232");
+        public override Color ForeColor => ColorTranslator.FromHtml("#E3E3E3");
         public override Color DisabledForeColor => Color.LightGray;
         public override Color DisabledBackColor => Color.DarkGray;
 
