@@ -155,13 +155,12 @@ namespace TileIconifier.Steam.KeyValues
         /// <filterpriority>2</filterpriority>
         public override int GetHashCode()
         {
-            unchecked
-            {
-                var result = Key?.GetHashCode() ?? 0;
-                result = (result*397) ^ (Value?.GetHashCode() ?? 0);
-                result = (result*397) ^ (Parent?.GetHashCode() ?? 0);
-                return result;
-            }
+            // Getting hash codes from volatile variables doesn't seem a good move... //TODO Find an immutable way?
+
+            var result = Key?.GetHashCode() ?? 0;
+            result = (result*397) ^ (Value?.GetHashCode() ?? 0);
+            result = (result*397) ^ (Parent?.GetHashCode() ?? 0);
+            return result;
         }
 
         /// <summary>

@@ -66,7 +66,8 @@ namespace TileIconifier.Steam
             {
                 if (_iconPath != null) return _iconPath;
                 var defaultRegistryKey =
-                    $@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {AppId}";
+                    $@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {
+                        AppId}";
                 var defaultRegistryKey32BitOs =
                     $@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {AppId}";
 

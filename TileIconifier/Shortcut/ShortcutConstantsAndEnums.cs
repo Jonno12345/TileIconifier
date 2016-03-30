@@ -27,36 +27,13 @@
 
 #endregion
 
-using System.IO;
-using System.Windows.Forms;
+using System.Drawing;
 
 namespace TileIconifier.Shortcut
 {
-    internal class ShortcutItemListViewItem : ListViewItem
+    public static class ShortcutConstantsAndEnums
     {
-        public ShortcutItemListViewItem(ShortcutItem shortcutItem)
-        {
-            ShortcutItem = shortcutItem;
-            UpdateColumns();
-        }
-
-        public ShortcutItem ShortcutItem { get; }
-
-        public void UpdateColumns()
-        {
-            SubItems.Clear();
-            Text = Path.GetFileNameWithoutExtension(ShortcutItem.ShortcutFileInfo.Name);
-            SubItems.Add(ShortcutItem.IsIconified ? "✔" : "✘");
-            var shortcutPinnedString = ShortcutItem.IsPinned == null ? "?" : ShortcutItem.IsPinned == true ? "✔" : "✘";
-            SubItems.Add(shortcutPinnedString);
-        }
-
-        //    return Path.GetFileNameWithoutExtension(ShortcutItem.ShortcutFileInfo.Name) + (ShortcutItem.IsPinned ? " *" : "") +
-        //{
-
-
-        //public override string ToString()
-        //           (ShortcutItem.IsIconified ? " #" : "");
-        //}
+        public static Size MediumShortcutSize => new Size(100, 100);
+        public static Size SmallShortcutSize => new Size(50, 50);
     }
 }

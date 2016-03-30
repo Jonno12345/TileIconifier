@@ -116,7 +116,6 @@ namespace TileIconifier.Forms.Shared
             lvwIcons.BeginUpdate();
             try
             {
-
                 if (string.Equals(Path.GetExtension(targetPath), ".ico", StringComparison.InvariantCultureIgnoreCase))
                 {
                     _icons = new[] {new Icon(targetPath)};
@@ -213,7 +212,6 @@ namespace TileIconifier.Forms.Shared
                     var imagePath = txtImagePath.Text;
                     if (!File.Exists(imagePath))
                         throw new FileNotFoundException();
-
                     ReturnedBitmapBytes = ImageUtils.LoadFileToByteArray(imagePath);
                 }
             }
@@ -237,7 +235,6 @@ namespace TileIconifier.Forms.Shared
                     .First().Handle))
                 {
                     bitmapLoad.Save(stream, ImageFormat.Png);
-                    stream.Close();
 
                     byteArray = stream.ToArray();
                 }
@@ -299,7 +296,7 @@ namespace TileIconifier.Forms.Shared
             //need clean this up... actually using the filters from the file selector would be best.
             if (string.Equals(Path.GetExtension(fileName), ".exe", StringComparison.InvariantCultureIgnoreCase) ||
                 string.Equals(Path.GetExtension(fileName), ".dll", StringComparison.InvariantCultureIgnoreCase) ||
-                     string.Equals(Path.GetExtension(fileName), ".ico", StringComparison.InvariantCultureIgnoreCase))
+                string.Equals(Path.GetExtension(fileName), ".ico", StringComparison.InvariantCultureIgnoreCase))
             {
                 txtPathToExtractFrom.Text = opnFile.FileName;
                 radIconFromTarget.Checked = true;
@@ -319,6 +316,15 @@ namespace TileIconifier.Forms.Shared
             if (cmbCommonIconDlls.SelectedIndex >= 0)
                 txtPathToExtractFrom.Text = cmbCommonIconDlls.SelectedValue.ToString();
             BuildListView();
+        }
+
+        public static byte[] GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
+        {
+            var iconSelector = new FrmIconSelector(defaultPathForIconExtraction);
+            iconSelector.ShowDialog(owner);
+            if (iconSelector.ReturnedBitmapBytes == null)
+                throw new UserCancellationException();
+            return iconSelector.ReturnedBitmapBytes;
         }
 
         private class IconListViewItem : ListViewItem

@@ -27,17 +27,18 @@
 
 #endregion
 
+using System;
 using TileIconifier.Skinning.Skins;
 
 namespace TileIconifier.Skinning
 {
     public static class SkinHandler
     {
-        public delegate void SkinChangedEventArgs();
+        public delegate void SkinChangedEventHandler(object sender, EventArgs e);
 
         private static BaseSkin _currentBaseSkin = new BaseSkin();
 
-        public static event SkinChangedEventArgs SkinChanged;
+        public static event SkinChangedEventHandler SkinChanged;
 
         public static BaseSkin GetCurrentSkin()
         {
@@ -47,7 +48,7 @@ namespace TileIconifier.Skinning
         public static void SetCurrentSkin(BaseSkin baseSkin)
         {
             _currentBaseSkin = baseSkin;
-            SkinChanged?.Invoke();
+            SkinChanged?.Invoke(null, null);
         }
     }
 }

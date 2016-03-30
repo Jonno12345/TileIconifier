@@ -28,9 +28,12 @@
 #endregion
 
 using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Xml.Linq;
 using TileIconifier.Shortcut;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.TileIconify
 {
@@ -46,7 +49,8 @@ namespace TileIconifier.TileIconify
         public void RunIconify()
         {
             BuildFilesAndFolders();
-            SaveIcon();
+            SaveMetadata();
+            SaveIcons();
             RebuildLnkInStartMenu();
         }
 
@@ -65,11 +69,11 @@ namespace TileIconifier.TileIconify
                     new XAttribute(XNamespace.Xmlns + "xsi", xNamespace),
                     new XElement("VisualElements",
                         new XAttribute("ShowNameOnSquare150x150Logo",
-                            _shortcutItem.ShowNameOnSquare150X150Logo ? "on" : "off"),
+                            _shortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo ? "on" : "off"),
                         new XAttribute("Square150x150Logo", _shortcutItem.RelativeMediumIconPath),
                         new XAttribute("Square70x70Logo", _shortcutItem.RelativeSmallIconPath),
-                        new XAttribute("ForegroundText", _shortcutItem.ForegroundText),
-                        new XAttribute("BackgroundColor", _shortcutItem.BackgroundColor)
+                        new XAttribute("ForegroundText", _shortcutItem.Properties.CurrentState.ForegroundText),
+                        new XAttribute("BackgroundColor", _shortcutItem.Properties.CurrentState.BackgroundColor)
                         )));
 
             if (!Directory.Exists(_shortcutItem.VisualElementsPath))
@@ -90,15 +94,48 @@ namespace TileIconifier.TileIconify
         }
 
 
-        private void SaveIcon()
+        private void SaveMetadata()
         {
-            using (var fs = new FileStream(_shortcutItem.FullMediumIconPath, FileMode.Create))
+            _shortcutItem.Properties.SaveMediumIconMetadata(_shortcutItem.MediumImageResizeMetadataPath);
+            _shortcutItem.Properties.SaveSmallIconMetadata(_shortcutItem.SmallImageResizeMetadataPath);
+        }
+
+        private void SaveIcons()
+        {
+            BuildIcon(_shortcutItem.FullMediumIconPath, ShortcutConstantsAndEnums.MediumShortcutSize.Width,
+                ShortcutConstantsAndEnums.MediumShortcutSize.Height,
+                _shortcutItem.Properties.CurrentState.MediumImage.Bytes,
+                _shortcutItem.Properties.CurrentState.MediumImage.Width,
+                _shortcutItem.Properties.CurrentState.MediumImage.Height,
+                _shortcutItem.Properties.CurrentState.MediumImage.X, _shortcutItem.Properties.CurrentState.MediumImage.Y);
+
+            BuildIcon(_shortcutItem.FullSmallIconPath, ShortcutConstantsAndEnums.SmallShortcutSize.Width,
+                ShortcutConstantsAndEnums.SmallShortcutSize.Height,
+                _shortcutItem.Properties.CurrentState.SmallImage.Bytes,
+                _shortcutItem.Properties.CurrentState.SmallImage.Width,
+                _shortcutItem.Properties.CurrentState.SmallImage.Height,
+                _shortcutItem.Properties.CurrentState.SmallImage.X, _shortcutItem.Properties.CurrentState.SmallImage.Y);
+        }
+
+        private void BuildIcon(string filePath, int width, int height, byte[] imageBytes, int imageWidth,
+            int imageHeight, int imageX, int imageY)
+        {
+            using (var fs = new FileStream(filePath, FileMode.Create))
             {
-                fs.Write(_shortcutItem.MediumImageBytes, 0, _shortcutItem.MediumImageBytes.Length);
-            }
-            using (var fs = new FileStream(_shortcutItem.FullSmallIconPath, FileMode.Create))
-            {
-                fs.Write(_shortcutItem.SmallImageBytes, 0, _shortcutItem.SmallImageBytes.Length);
+                var outputBitmap = new Bitmap(width, height);
+
+                var tempImage = ImageUtils.ByteArrayToImage(imageBytes);
+                tempImage = ImageUtils.ScaleImage(tempImage, imageWidth, imageHeight);
+
+                using (var graphics = Graphics.FromImage(outputBitmap))
+                {
+                    graphics.DrawImage(tempImage,
+                        new PointF(imageX, imageY));
+                }
+
+                outputBitmap.Save(fs, ImageFormat.Png);
+                outputBitmap.Dispose();
+                tempImage.Dispose();
             }
         }
 

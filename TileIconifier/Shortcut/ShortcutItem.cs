@@ -31,8 +31,8 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Xml.Linq;
 using TileIconifier.Custom;
+using TileIconifier.Shortcut.State;
 using TileIconifier.Utilities;
 
 namespace TileIconifier.Shortcut
@@ -46,16 +46,22 @@ namespace TileIconifier.Shortcut
         private byte[] _smallImageCacheBytes;
         private Bitmap _standardIcon;
 
+        [NonSerialized] public ShortcutItemStateController Properties = new ShortcutItemStateController();
+
         public ShortcutItem(FileInfo shortcutFileInfo)
         {
             ShortcutFileInfo = shortcutFileInfo;
-            LoadParameters();
+            IsPinned = null;
+            Properties.LoadParameters(IsIconified, VisualElementManifestPath, MediumImageResizeMetadataPath,
+                SmallImageResizeMetadataPath, TargetFolderPath);
         }
 
         public ShortcutItem(string shortcutPath)
         {
             ShortcutFileInfo = new FileInfo(shortcutPath);
-            LoadParameters();
+            IsPinned = null;
+            Properties.LoadParameters(IsIconified, VisualElementManifestPath, MediumImageResizeMetadataPath,
+                SmallImageResizeMetadataPath, TargetFolderPath);
         }
 
         public bool IsTileIconifierCustomShortcut => new DirectoryInfo(TargetFolderPath).Parent?.FullName + "\\" ==
@@ -97,129 +103,37 @@ namespace TileIconifier.Shortcut
             }
         }
 
-        public byte[] MediumImageBytes
-        {
-            get { return NewParameters.MediumImageBytes ?? OldParameters?.MediumImageBytes; }
-            set { NewParameters.MediumImageBytes = value; }
-        }
-
-        public byte[] SmallImageBytes
-        {
-            get { return NewParameters.SmallImageBytes ?? OldParameters?.SmallImageBytes; }
-            set { NewParameters.SmallImageBytes = value; }
-        }
-
-
-        public string BackgroundColor
-        {
-            get { return NewParameters.BackgroundColor; }
-            set { NewParameters.BackgroundColor = value; }
-        }
-
-        public string ForegroundText
-        {
-            get { return NewParameters.ForegroundText; }
-            set { NewParameters.ForegroundText = value; }
-        }
-
-        public bool ShowNameOnSquare150X150Logo
-        {
-            get { return NewParameters.ShowNameOnSquare150X150Logo == "on"; }
-            set { NewParameters.ShowNameOnSquare150X150Logo = value ? "on" : "off"; }
-        }
 
         public FileInfo ShortcutFileInfo { get; set; }
         public string AppId { get; set; }
         public bool? IsPinned { get; set; }
-        private ShortcutIconParameters OldParameters { get; set; }
-        private ShortcutIconParameters NewParameters { get; set; }
-
-        public bool HasUnsavedChanges => !NewParameters.Equals(OldParameters);
-        public bool MediumImageChange => !NewParameters.MediumImageBytesEqual(OldParameters);
-        public bool SmallImageChange => !NewParameters.SmallImageBytesEqual(OldParameters);
-        public bool ForegroundTextColourChanged => NewParameters.ForegroundText != OldParameters.ForegroundText;
 
         public Image MediumImage()
         {
-            if (_mediumImageCacheBytes == MediumImageBytes) return _mediumImageCache;
+            if (_mediumImageCacheBytes == Properties.CurrentState.MediumImage.Bytes) return _mediumImageCache;
 
-            if (_mediumImageCacheBytes == MediumImageBytes && _mediumImageCacheBytes.SequenceEqual(MediumImageBytes))
+            if (_mediumImageCacheBytes == Properties.CurrentState.MediumImage.Bytes &&
+                _mediumImageCacheBytes.SequenceEqual(Properties.CurrentState.MediumImage.Bytes))
                 return _mediumImageCache;
 
-            _mediumImageCache = ImageUtils.ByteArrayToImage(MediumImageBytes);
-            _mediumImageCacheBytes = MediumImageBytes?.ToArray();
+            _mediumImageCache = ImageUtils.ByteArrayToImage(Properties.CurrentState.MediumImage.Bytes);
+            _mediumImageCacheBytes = Properties.CurrentState.MediumImage.Bytes?.ToArray();
 
             return _mediumImageCache;
         }
 
         public Image SmallImage()
         {
-            if (_smallImageCacheBytes == SmallImageBytes) return _smallImageCache;
+            if (_smallImageCacheBytes == Properties.CurrentState.SmallImage.Bytes) return _smallImageCache;
 
-            if (_smallImageCacheBytes == SmallImageBytes && _smallImageCacheBytes.SequenceEqual(SmallImageBytes))
+            if (_smallImageCacheBytes == Properties.CurrentState.SmallImage.Bytes &&
+                _smallImageCacheBytes.SequenceEqual(Properties.CurrentState.SmallImage.Bytes))
                 return _smallImageCache;
 
-            _smallImageCache = ImageUtils.ByteArrayToImage(SmallImageBytes);
-            _smallImageCacheBytes = SmallImageBytes?.ToArray();
+            _smallImageCache = ImageUtils.ByteArrayToImage(Properties.CurrentState.SmallImage.Bytes);
+            _smallImageCacheBytes = Properties.CurrentState.SmallImage.Bytes?.ToArray();
 
             return _smallImageCache;
-        }
-
-        private void LoadParameters()
-        {
-            IsPinned = null;
-            if (IsIconified)
-            {
-                var xmlDoc = XDocument.Load(VisualElementManifestPath);
-
-                try
-                {
-                    var parameters = from b in xmlDoc.Descendants("VisualElements")
-                        select new ShortcutIconParameters
-                        {
-                            BackgroundColor = b.Attribute("BackgroundColor").Value,
-                            ForegroundText = b.Attribute("ForegroundText").Value,
-                            ShowNameOnSquare150X150Logo = b.Attribute("ShowNameOnSquare150x150Logo").Value,
-                            MediumImageBytes =
-                                ImageUtils.LoadFileToByteArray(TargetFolderPath +
-                                                                 b.Attribute("Square150x150Logo").Value),
-                            SmallImageBytes =
-                                ImageUtils.LoadFileToByteArray(TargetFolderPath + b.Attribute("Square70x70Logo").Value)
-                        };
-                    OldParameters = parameters.Single();
-                    NewParameters = OldParameters.Clone();
-                }
-                catch
-                {
-                    ResetParameters();
-                }
-            }
-            else
-            {
-                ResetParameters();
-            }
-        }
-
-        public void UndoChanges()
-        {
-            NewParameters = OldParameters.Clone();
-        }
-
-        public void CommitChanges()
-        {
-            OldParameters = NewParameters.Clone();
-        }
-
-        public void ResetParameters()
-        {
-            //defaults
-            OldParameters = new ShortcutIconParameters
-            {
-                BackgroundColor = "black",
-                ForegroundText = "light",
-                ShowNameOnSquare150X150Logo = "on"
-            };
-            NewParameters = OldParameters.Clone();
         }
 
         #region Path properties
@@ -255,7 +169,7 @@ namespace TileIconifier.Shortcut
         public string RelativeMediumIconPath
             => $"{Path.GetFileName(Path.GetDirectoryName(VisualElementsPath))}\\{MediumIconName}";
 
-        public string FullMediumIconPath => $"{VisualElementsPath}\\{MediumIconName}";
+        public string FullMediumIconPath => $"{VisualElementsPath}{MediumIconName}";
 
         public string SmallIconName
             => $"SmallIcon{Path.GetFileNameWithoutExtension(TargetFilePath)}.png";
@@ -263,7 +177,13 @@ namespace TileIconifier.Shortcut
         public string RelativeSmallIconPath
             => $"{Path.GetFileName(Path.GetDirectoryName(VisualElementsPath))}\\{SmallIconName}";
 
-        public string FullSmallIconPath => $"{VisualElementsPath}\\{SmallIconName}";
+        public string FullSmallIconPath => $"{VisualElementsPath}{SmallIconName}";
+
+        public string MediumImageResizeMetadataPath
+            => $"{VisualElementsPath}{Path.GetFileNameWithoutExtension(MediumIconName)}_Metadata.xml";
+
+        public string SmallImageResizeMetadataPath
+            => $"{VisualElementsPath}{Path.GetFileNameWithoutExtension(SmallIconName)}_Metadata.xml";
 
         #endregion
     }

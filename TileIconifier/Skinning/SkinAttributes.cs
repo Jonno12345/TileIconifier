@@ -27,20 +27,11 @@
 
 #endregion
 
-using System.Drawing;
+using System;
 
-namespace TileIconifier.Utilities
+namespace TileIconifier.Skinning
 {
-    public static class ColorUtils
+    public class SkinIgnore : Attribute
     {
-        public static string ColorToHex(Color c)
-        {
-            return "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
-        }
-
-        public static Color HexToColor(string h)
-        {
-            return ColorTranslator.FromHtml(h);
-        }
     }
 }

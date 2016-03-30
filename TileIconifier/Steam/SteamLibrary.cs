@@ -203,7 +203,8 @@ namespace TileIconifier.Steam
                         }
                         FrmException.ShowExceptionHandler(
                             new Exception(
-                                $@"An non-critical issue occured with file {acfFile.FullName} - Contents{"\r\n"}{fileContents}"
+                                $@"An non-critical issue occured with file {acfFile.FullName} - Contents{"\r\n"}{
+                                    fileContents}"
                                 , ex));
                     }
                 }

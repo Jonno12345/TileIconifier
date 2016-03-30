@@ -58,20 +58,22 @@ namespace TileIconifier.Forms
             this.darkSkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MediumIcon = new System.Windows.Forms.Label();
-            this.pctMediumIcon = new System.Windows.Forms.PictureBox();
-            this.lblSmallIcon = new System.Windows.Forms.Label();
-            this.pctSmallIcon = new System.Windows.Forms.PictureBox();
             this.chkUseSameImg = new System.Windows.Forms.CheckBox();
             this.lblUnsaved = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.srtlstShortcuts = new TileIconifier.Controls.SortableListView();
             this.clrDialog = new System.Windows.Forms.ColorDialog();
             this.btnColourPicker = new System.Windows.Forms.Button();
+            this.panPctMediumIcon = new TileIconifier.Controls.PannablePictureBox.PannablePictureBox();
+            this.panPctSmallIcon = new TileIconifier.Controls.PannablePictureBox.PannablePictureBox();
+            this.pannablePictureBoxControlPanelMedium = new TileIconifier.Controls.PannablePictureBox.PannablePictureBoxControlPanel();
+            this.pnlImages = new System.Windows.Forms.Panel();
+            this.lblSmallIcon = new System.Windows.Forms.Label();
+            this.lblMediumIcon = new System.Windows.Forms.Label();
+            this.pannablePictureBoxControlPanelSmall = new TileIconifier.Controls.PannablePictureBox.PannablePictureBoxControlPanel();
             this.pnlFGColour.SuspendLayout();
             this.mnuMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctMediumIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctSmallIcon)).BeginInit();
+            this.pnlImages.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtLnkPath
@@ -366,68 +368,18 @@ namespace TileIconifier.Forms
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
-            // MediumIcon
-            // 
-            this.MediumIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MediumIcon.AutoSize = true;
-            this.MediumIcon.Location = new System.Drawing.Point(554, 27);
-            this.MediumIcon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.MediumIcon.Name = "MediumIcon";
-            this.MediumIcon.Size = new System.Drawing.Size(71, 13);
-            this.MediumIcon.TabIndex = 19;
-            this.MediumIcon.Text = "Medium Icon:";
-            // 
-            // pctMediumIcon
-            // 
-            this.pctMediumIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctMediumIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctMediumIcon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctMediumIcon.Location = new System.Drawing.Point(557, 43);
-            this.pctMediumIcon.Margin = new System.Windows.Forms.Padding(2);
-            this.pctMediumIcon.Name = "pctMediumIcon";
-            this.pctMediumIcon.Size = new System.Drawing.Size(101, 101);
-            this.pctMediumIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pctMediumIcon.TabIndex = 18;
-            this.pctMediumIcon.TabStop = false;
-            this.pctMediumIcon.Click += new System.EventHandler(this.pctMediumIcon_Click);
-            // 
-            // lblSmallIcon
-            // 
-            this.lblSmallIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblSmallIcon.AutoSize = true;
-            this.lblSmallIcon.Location = new System.Drawing.Point(676, 27);
-            this.lblSmallIcon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSmallIcon.Name = "lblSmallIcon";
-            this.lblSmallIcon.Size = new System.Drawing.Size(59, 13);
-            this.lblSmallIcon.TabIndex = 21;
-            this.lblSmallIcon.Text = "Small Icon:";
-            // 
-            // pctSmallIcon
-            // 
-            this.pctSmallIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctSmallIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctSmallIcon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctSmallIcon.Location = new System.Drawing.Point(678, 43);
-            this.pctSmallIcon.Margin = new System.Windows.Forms.Padding(2);
-            this.pctSmallIcon.Name = "pctSmallIcon";
-            this.pctSmallIcon.Size = new System.Drawing.Size(47, 47);
-            this.pctSmallIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pctSmallIcon.TabIndex = 20;
-            this.pctSmallIcon.TabStop = false;
-            this.pctSmallIcon.Click += new System.EventHandler(this.pctSmallIcon_Click);
-            // 
             // chkUseSameImg
             // 
             this.chkUseSameImg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkUseSameImg.AutoSize = true;
             this.chkUseSameImg.Checked = true;
             this.chkUseSameImg.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkUseSameImg.Location = new System.Drawing.Point(557, 193);
+            this.chkUseSameImg.Location = new System.Drawing.Point(5, 165);
             this.chkUseSameImg.Margin = new System.Windows.Forms.Padding(2);
             this.chkUseSameImg.Name = "chkUseSameImg";
-            this.chkUseSameImg.Size = new System.Drawing.Size(214, 17);
+            this.chkUseSameImg.Size = new System.Drawing.Size(225, 17);
             this.chkUseSameImg.TabIndex = 22;
-            this.chkUseSameImg.Text = "Sync Medium and Small image changes";
+            this.chkUseSameImg.Text = "Change Medium and Small image together";
             this.chkUseSameImg.UseVisualStyleBackColor = true;
             // 
             // lblUnsaved
@@ -479,20 +431,84 @@ namespace TileIconifier.Forms
             this.btnColourPicker.UseVisualStyleBackColor = true;
             this.btnColourPicker.Click += new System.EventHandler(this.btnColourPicker_Click);
             // 
+            // panPctMediumIcon
+            // 
+            this.panPctMediumIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panPctMediumIcon.Location = new System.Drawing.Point(5, 17);
+            this.panPctMediumIcon.Name = "panPctMediumIcon";
+            this.panPctMediumIcon.Size = new System.Drawing.Size(100, 100);
+            this.panPctMediumIcon.TabIndex = 29;
+            this.panPctMediumIcon.Click += new System.EventHandler(this.panPctMediumIcon_Click);
+            this.panPctMediumIcon.DoubleClick += new System.EventHandler(this.panPctMediumIcon_DoubleClick);
+            // 
+            // panPctSmallIcon
+            // 
+            this.panPctSmallIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panPctSmallIcon.Location = new System.Drawing.Point(157, 17);
+            this.panPctSmallIcon.Name = "panPctSmallIcon";
+            this.panPctSmallIcon.Size = new System.Drawing.Size(50, 50);
+            this.panPctSmallIcon.TabIndex = 30;
+            this.panPctSmallIcon.Click += new System.EventHandler(this.panPctSmallIcon_Click);
+            this.panPctSmallIcon.DoubleClick += new System.EventHandler(this.panPctSmallIcon_DoubleClick);
+            // 
+            // pannablePictureBoxControlPanelMedium
+            // 
+            this.pannablePictureBoxControlPanelMedium.Location = new System.Drawing.Point(111, 17);
+            this.pannablePictureBoxControlPanelMedium.Name = "pannablePictureBoxControlPanelMedium";
+            this.pannablePictureBoxControlPanelMedium.PannablePictureBoxControl = null;
+            this.pannablePictureBoxControlPanelMedium.Size = new System.Drawing.Size(37, 143);
+            this.pannablePictureBoxControlPanelMedium.TabIndex = 31;
+            // 
+            // pnlImages
+            // 
+            this.pnlImages.Controls.Add(this.lblSmallIcon);
+            this.pnlImages.Controls.Add(this.lblMediumIcon);
+            this.pnlImages.Controls.Add(this.pannablePictureBoxControlPanelSmall);
+            this.pnlImages.Controls.Add(this.pannablePictureBoxControlPanelMedium);
+            this.pnlImages.Controls.Add(this.panPctSmallIcon);
+            this.pnlImages.Controls.Add(this.panPctMediumIcon);
+            this.pnlImages.Controls.Add(this.chkUseSameImg);
+            this.pnlImages.Location = new System.Drawing.Point(557, 23);
+            this.pnlImages.Name = "pnlImages";
+            this.pnlImages.Size = new System.Drawing.Size(257, 187);
+            this.pnlImages.TabIndex = 32;
+            // 
+            // lblSmallIcon
+            // 
+            this.lblSmallIcon.AutoSize = true;
+            this.lblSmallIcon.Location = new System.Drawing.Point(154, 2);
+            this.lblSmallIcon.Name = "lblSmallIcon";
+            this.lblSmallIcon.Size = new System.Drawing.Size(58, 13);
+            this.lblSmallIcon.TabIndex = 34;
+            this.lblSmallIcon.Text = "Small icon:";
+            // 
+            // lblMediumIcon
+            // 
+            this.lblMediumIcon.AutoSize = true;
+            this.lblMediumIcon.Location = new System.Drawing.Point(5, 2);
+            this.lblMediumIcon.Name = "lblMediumIcon";
+            this.lblMediumIcon.Size = new System.Drawing.Size(70, 13);
+            this.lblMediumIcon.TabIndex = 33;
+            this.lblMediumIcon.Text = "Medium icon:";
+            // 
+            // pannablePictureBoxControlPanelSmall
+            // 
+            this.pannablePictureBoxControlPanelSmall.Location = new System.Drawing.Point(213, 17);
+            this.pannablePictureBoxControlPanelSmall.Name = "pannablePictureBoxControlPanelSmall";
+            this.pannablePictureBoxControlPanelSmall.PannablePictureBoxControl = null;
+            this.pannablePictureBoxControlPanelSmall.Size = new System.Drawing.Size(37, 143);
+            this.pannablePictureBoxControlPanelSmall.TabIndex = 32;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 373);
+            this.Controls.Add(this.pnlImages);
             this.Controls.Add(this.btnColourPicker);
             this.Controls.Add(this.srtlstShortcuts);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblUnsaved);
-            this.Controls.Add(this.chkUseSameImg);
-            this.Controls.Add(this.lblSmallIcon);
-            this.Controls.Add(this.pctSmallIcon);
-            this.Controls.Add(this.MediumIcon);
-            this.Controls.Add(this.pctMediumIcon);
             this.Controls.Add(this.lblExePath);
             this.Controls.Add(this.txtExePath);
             this.Controls.Add(this.pnlFGColour);
@@ -515,8 +531,8 @@ namespace TileIconifier.Forms
             this.pnlFGColour.PerformLayout();
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctMediumIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctSmallIcon)).EndInit();
+            this.pnlImages.ResumeLayout(false);
+            this.pnlImages.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -543,10 +559,6 @@ namespace TileIconifier.Forms
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem getPinnedItemsRequiresPowershellToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.Label MediumIcon;
-        private System.Windows.Forms.PictureBox pctMediumIcon;
-        private System.Windows.Forms.Label lblSmallIcon;
-        private System.Windows.Forms.PictureBox pctSmallIcon;
         private System.Windows.Forms.CheckBox chkUseSameImg;
         private System.Windows.Forms.Label lblUnsaved;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
@@ -561,6 +573,13 @@ namespace TileIconifier.Forms
         private System.Windows.Forms.ToolStripMenuItem darkSkinToolStripMenuItem;
         private System.Windows.Forms.ColorDialog clrDialog;
         private System.Windows.Forms.Button btnColourPicker;
+        private Controls.PannablePictureBox.PannablePictureBox panPctMediumIcon;
+        private Controls.PannablePictureBox.PannablePictureBox panPctSmallIcon;
+        private Controls.PannablePictureBox.PannablePictureBoxControlPanel pannablePictureBoxControlPanelMedium;
+        private System.Windows.Forms.Panel pnlImages;
+        private Controls.PannablePictureBox.PannablePictureBoxControlPanel pannablePictureBoxControlPanelSmall;
+        private System.Windows.Forms.Label lblSmallIcon;
+        private System.Windows.Forms.Label lblMediumIcon;
     }
 }
 

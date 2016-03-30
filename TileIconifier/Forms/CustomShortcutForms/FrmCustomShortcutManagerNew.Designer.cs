@@ -1,4 +1,6 @@
-﻿namespace TileIconifier.Forms.CustomShortcutForms
+﻿using TileIconifier.Controls;
+
+namespace TileIconifier.Forms.CustomShortcutForms
 {
     partial class FrmCustomShortcutManagerNew
     {
@@ -43,7 +45,7 @@
             this.txtSteamInstallationPath = new System.Windows.Forms.TextBox();
             this.txtSteamExecutablePath = new System.Windows.Forms.TextBox();
             this.txtSteamLibraryPaths = new System.Windows.Forms.TextBox();
-            this.lstSteamGames = new TileIconifier.Controls.SortableListView();
+            this.lstSteamGames = new SortableListView();
             this.tabOther = new System.Windows.Forms.TabPage();
             this.lblOtherShortcutArguments = new System.Windows.Forms.Label();
             this.txtOtherShortcutArguments = new System.Windows.Forms.TextBox();
@@ -58,7 +60,7 @@
             this.lblCurrentIcon = new System.Windows.Forms.Label();
             this.pctCurrentIcon = new System.Windows.Forms.PictureBox();
             this.opnOtherTarget = new System.Windows.Forms.OpenFileDialog();
-            this.radShortcutLocation = new TileIconifier.Controls.AllOrCurrentUserRadios();
+            this.radShortcutLocation = new AllOrCurrentUserRadios();
             this.tabShortcutType.SuspendLayout();
             this.tabExplorer.SuspendLayout();
             this.pnlExplorer.SuspendLayout();
@@ -461,7 +463,7 @@
         private System.Windows.Forms.TabControl tabShortcutType;
         private System.Windows.Forms.TabPage tabExplorer;
         private System.Windows.Forms.TabPage tabSteam;
-        private TileIconifier.Controls.SortableListView lstSteamGames;
+        private SortableListView lstSteamGames;
         private System.Windows.Forms.TextBox txtSteamLibraryPaths;
         private System.Windows.Forms.TextBox txtSteamInstallationPath;
         private System.Windows.Forms.TextBox txtSteamExecutablePath;
@@ -470,7 +472,7 @@
         private System.Windows.Forms.OpenFileDialog opnSteamExe;
         private System.Windows.Forms.Button btnSteamLibrariesPath;
         private System.Windows.Forms.FolderBrowserDialog fldBrowser;
-        private Controls.AllOrCurrentUserRadios radShortcutLocation;
+        private AllOrCurrentUserRadios radShortcutLocation;
         private System.Windows.Forms.TextBox txtShortcutName;
         private System.Windows.Forms.Label lblShortcutName;
         private System.Windows.Forms.Button btnGenerateShortcut;

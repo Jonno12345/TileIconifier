@@ -1,4 +1,6 @@
-﻿namespace TileIconifier.Forms.CustomShortcutForms
+﻿using TileIconifier.Controls;
+
+namespace TileIconifier.Forms.CustomShortcutForms
 {
     partial class FrmCustomShortcutManagerMain
     {
@@ -32,7 +34,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDeleteCustomShortcut = new System.Windows.Forms.Button();
-            this.lstCustomShortcuts = new TileIconifier.Controls.SortableListView();
+            this.lstCustomShortcuts = new SortableListView();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,6 +117,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btnDeleteCustomShortcut;
-        private Controls.SortableListView lstCustomShortcuts;
+        private SortableListView lstCustomShortcuts;
     }
 }

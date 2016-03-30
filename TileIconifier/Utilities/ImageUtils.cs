@@ -27,12 +27,11 @@
 
 #endregion
 
+using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Windows.Forms;
-using TileIconifier.Forms.Shared;
-using TileIconifier.IconExtractor;
 
 namespace TileIconifier.Utilities
 {
@@ -67,15 +66,6 @@ namespace TileIconifier.Utilities
                 // ignored
             }
             return null;
-        }
-
-        public static byte[] GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
-        {
-            var iconSelector = new FrmIconSelector(defaultPathForIconExtraction);
-            iconSelector.ShowDialog(owner);
-            if (iconSelector.ReturnedBitmapBytes == null)
-                throw new UserCancellationException();
-            return iconSelector.ReturnedBitmapBytes;
         }
 
         public static byte[] ImageToByteArray(Image imageIn)
@@ -126,6 +116,55 @@ namespace TileIconifier.Utilities
                 return false;
             }
             return true;
+        }
+
+        public static Bitmap ResizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
+        }
+
+        public static Size GetScaledWidthAndHeight(int curWidth, int curHeight, int maxWidth, int maxHeight)
+        {
+            var ratioX = (double) maxWidth/curWidth;
+            var ratioY = (double) maxHeight/curHeight;
+            var ratio = Math.Min(ratioX, ratioY);
+
+            var newWidth = (int) (curWidth*ratio);
+            var newHeight = (int) (curHeight*ratio);
+
+            return new Size(newWidth, newHeight);
+        }
+
+        public static Image ScaleImage(Image image, int maxWidth, int maxHeight)
+        {
+            var newSize = GetScaledWidthAndHeight(image.Width, image.Height, maxWidth, maxHeight);
+
+            var newImage = new Bitmap(newSize.Width, newSize.Height);
+
+            using (var graphics = Graphics.FromImage(newImage))
+                graphics.DrawImage(image, 0, 0, newSize.Width, newSize.Height);
+
+            return newImage;
         }
     }
 }

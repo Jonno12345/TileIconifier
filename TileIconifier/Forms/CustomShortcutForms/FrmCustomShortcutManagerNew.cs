@@ -33,7 +33,9 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using TileIconifier.Custom;
+using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
+using TileIconifier.Shortcut;
 using TileIconifier.Steam;
 using TileIconifier.TileIconify;
 using TileIconifier.Utilities;
@@ -141,8 +143,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             //Iconify a TileIconifier shortcut for this with default settings
             var newShortcutItem = customShortcut.ShortcutItem;
-            newShortcutItem.MediumImageBytes = imageToUse;
-            newShortcutItem.SmallImageBytes = imageToUse;
+            newShortcutItem.Properties.CurrentState.MediumImage.SetImage(imageToUse,
+                ShortcutConstantsAndEnums.MediumShortcutSize);
+            newShortcutItem.Properties.CurrentState.SmallImage.SetImage(imageToUse,
+                ShortcutConstantsAndEnums.SmallShortcutSize);
             var iconify = new TileIcon(newShortcutItem);
             iconify.RunIconify();
 
@@ -210,7 +214,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             try
             {
-                CurrentCache.SetIconBytes(ImageUtils.GetImage(this, CustomShortcutGetters.ExplorerPath));
+                CurrentCache.SetIconBytes(FrmIconSelector.GetImage(this, CustomShortcutGetters.ExplorerPath));
                 pctCurrentIcon.Image = CurrentCache.GetIcon();
             }
             catch (UserCancellationException)
@@ -273,7 +277,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 ? $"shell:::{cmbExplorerGuids.SelectedValue}"
                 : txtCustomFolder.Text;
             var workingFolder = radSpecialFolder.Checked ? null : txtCustomFolder.Text;
-            
+
             GenerateFullShortcut(CustomShortcutGetters.ExplorerPath, targetArguments, CustomShortcutType.Explorer,
                 CustomShortcutGetters.ExplorerPath, workingFolder
                 );

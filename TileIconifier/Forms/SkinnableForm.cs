@@ -52,7 +52,7 @@ namespace TileIconifier.Forms
         {
             AddControlEvents(Controls);
 
-            ApplySkin();
+            ApplySkin(this, null);
         }
 
         private void AddControlEvents(IEnumerable baseControl)
@@ -90,7 +90,7 @@ namespace TileIconifier.Forms
             }
         }
 
-        protected virtual void ApplySkin()
+        protected virtual void ApplySkin(object sender, EventArgs e)
         {
             CurrentBaseSkin = SkinHandler.GetCurrentSkin();
             ApplyControlSkins(Controls);
@@ -102,6 +102,9 @@ namespace TileIconifier.Forms
         {
             foreach (Control control in baseControls)
             {
+                //if (control.GetType().GetCustomAttributes(typeof(SkinIgnore), true).Length != 0)
+                //    continue;
+
                 control.BackColor = CurrentBaseSkin.BackColor;
                 if (control.GetType() == typeof (SortableListView))
                     control.BackColor = CurrentBaseSkin.SortableListViewBackColor;

@@ -27,20 +27,28 @@
 
 #endregion
 
-using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
-namespace TileIconifier.Utilities
+namespace TileIconifier.Shortcut.Controls
 {
-    public static class ColorUtils
+    internal class ShortcutItemListViewItem : ListViewItem
     {
-        public static string ColorToHex(Color c)
+        public ShortcutItemListViewItem(ShortcutItem shortcutItem)
         {
-            return "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
+            ShortcutItem = shortcutItem;
+            UpdateColumns();
         }
 
-        public static Color HexToColor(string h)
+        public ShortcutItem ShortcutItem { get; }
+
+        public void UpdateColumns()
         {
-            return ColorTranslator.FromHtml(h);
+            SubItems.Clear();
+            Text = Path.GetFileNameWithoutExtension(ShortcutItem.ShortcutFileInfo.Name);
+            SubItems.Add(ShortcutItem.IsIconified ? "✔" : "✘");
+            var shortcutPinnedString = ShortcutItem.IsPinned == null ? "?" : ShortcutItem.IsPinned == true ? "✔" : "✘";
+            SubItems.Add(shortcutPinnedString);
         }
     }
 }

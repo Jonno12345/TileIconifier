@@ -274,19 +274,16 @@ namespace TileIconifier.Steam.KeyValues
         /// <filterpriority>2</filterpriority>
         public override int GetHashCode()
         {
-            unchecked
-            {
-                // Getting hash codes from volatile variables doesn't seem a good move...
-                var result = Name?.GetHashCode() ?? 0;
-                result = (result*397) ^ (KeyNameValues?.GetHashCode() ?? 0);
-                result = (result*397) ^ (KeyChilds?.GetHashCode() ?? 0);
-                result = (result*397) ^ (FirstParent?.GetHashCode() ?? 0);
-                result = (result*397) ^ (Parent?.GetHashCode() ?? 0);
-                result = (result*397) ^ NextSubKeyIndex.GetHashCode();
-                result = (result*397) ^ NextKeyValueIndex.GetHashCode();
-                result = (result*397) ^ DistanceFromTop.GetHashCode();
-                return result;
-            }
+            // Getting hash codes from volatile variables doesn't seem a good move... //TODO Find an immutable way?
+            var result = Name?.GetHashCode() ?? 0;
+            result = (result*397) ^ (KeyNameValues?.GetHashCode() ?? 0);
+            result = (result*397) ^ (KeyChilds?.GetHashCode() ?? 0);
+            result = (result*397) ^ (FirstParent?.GetHashCode() ?? 0);
+            result = (result*397) ^ (Parent?.GetHashCode() ?? 0);
+            result = (result*397) ^ NextSubKeyIndex.GetHashCode();
+            result = (result*397) ^ NextKeyValueIndex.GetHashCode();
+            result = (result*397) ^ DistanceFromTop.GetHashCode();
+            return result;
         }
 
         /// <summary>
