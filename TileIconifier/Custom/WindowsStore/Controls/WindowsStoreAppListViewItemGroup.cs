@@ -27,13 +27,21 @@
 
 #endregion
 
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Windows.Forms;
 
 namespace TileIconifier.Custom.WindowsStore.Controls
 {
+    [Serializable]
     public class WindowsStoreAppListViewItemGroup : ListViewItem
     {
+        protected WindowsStoreAppListViewItemGroup(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        {
+        }
+
         public WindowsStoreAppListViewItemGroup(string name, List<WindowsStoreAppProtocol> windowsStoreAppProtocols)
         {
             WindowsStoreAppProtocols = windowsStoreAppProtocols;

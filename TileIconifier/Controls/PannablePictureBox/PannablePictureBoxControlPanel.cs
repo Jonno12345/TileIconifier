@@ -39,7 +39,13 @@ namespace TileIconifier.Controls.PannablePictureBox
             InitializeComponent();
         }
 
-        public PannablePictureBox PannablePictureBoxControl { get; set; }
+        public PannablePictureBox PannablePictureBoxControl { get; private set; }
+
+        public void SetPannablePictureBoxControl(PannablePictureBox value)
+        {
+            PannablePictureBoxControl = value;
+            PannablePictureBoxControl.OnPannablePictureImagePropertyChange += (o, args) => UpdateControls();
+        }
 
         public event EventHandler ChangeImageClick;
 
@@ -53,6 +59,8 @@ namespace TileIconifier.Controls.PannablePictureBox
             resetToolTip.SetToolTip(btnReset, "Reset");
             var changeImageToolTip = new ToolTip();
             changeImageToolTip.SetToolTip(btnOpenImage, "Change Image");
+            var centerImageToolTip = new ToolTip();
+            centerImageToolTip.SetToolTip(btnCenter, "Center Image");
         }
 
         private void btnEnlarge_MouseDown(object sender, MouseEventArgs e)
@@ -95,6 +103,59 @@ namespace TileIconifier.Controls.PannablePictureBox
         private void btnOpenImage_Click(object sender, EventArgs e)
         {
             ChangeImageClick?.Invoke(this, null);
+        }
+
+        private void btnCenter_Click(object sender, EventArgs e)
+        {
+            PannablePictureBoxControl.CenterImage();
+        }
+
+        private void trkZoom_Scroll(object sender, EventArgs e)
+        {
+            PannablePictureBoxControl.SetZoom(trkZoom.Value);
+            UpdateZoomPercentage();
+        }
+
+        public void UpdateTrackBarAndZoom()
+        {
+            trkZoom.Value = (int) Math.Round(PannablePictureBoxControl.GetZoomPercentage(), 1);
+            UpdateZoomPercentage();
+        }
+
+        public void UpdateControls()
+        {
+            if (PannablePictureBoxControl?.PannablePictureBoxImage.Image == null)
+            {
+                DisableControls();
+                return;
+            }
+            EnableControls();
+            UpdateTrackBarAndZoom();
+        }
+
+        private void EnableControls()
+        {
+            trkZoom.Enabled = true;
+            btnCenter.Enabled = true;
+            btnEnlarge.Enabled = true;
+            btnReset.Enabled = true;
+            btnShrink.Enabled = true;
+        }
+
+        private void DisableControls()
+        {
+            trkZoom.Value = 1;
+            trkZoom.Enabled = false;
+            lblPercent.Text = @"---%";
+            btnCenter.Enabled = false;
+            btnEnlarge.Enabled = false;
+            btnReset.Enabled = false;
+            btnShrink.Enabled = false;
+        }
+
+        private void UpdateZoomPercentage()
+        {
+            lblPercent.Text = PannablePictureBoxControl.GetZoomPercentage().ToString("F") + @"%";
         }
     }
 }

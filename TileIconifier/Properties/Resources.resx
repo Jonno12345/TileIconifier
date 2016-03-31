@@ -153,6 +153,9 @@ WshShell.Run targetPath &amp; " " &amp; targetArguments, {5}</value>
   <data name="SteamIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Steam.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Translate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Translate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ZoomOut_12927" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ZoomOut_12927.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

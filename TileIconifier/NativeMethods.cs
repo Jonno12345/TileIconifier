@@ -28,53 +28,16 @@
 #endregion
 
 using System;
+using System.Runtime.InteropServices;
+using System.Text;
 
 namespace TileIconifier
 {
-    [Serializable]
-    public class UserCancellationException : Exception
+    public static class NativeMethods
     {
-    }
-
-    [Serializable]
-    public class PowershellException : Exception
-    {
-    }
-
-    [Serializable]
-    public class InvalidCustomShortcutException : Exception
-    {
-    }
-
-    [Serializable]
-    public class ValidationFailureException : Exception
-    {
-    }
-
-    [Serializable]
-    public class UnableToDetectAdministratorException : Exception
-    {
-    }
-
-    //steam exceptions
-    [Serializable]
-    public class SteamExecutableNotFoundException : Exception
-    {
-    }
-
-    [Serializable]
-    public class SteamInstallationPathNotFoundException : Exception
-    {
-    }
-
-    [Serializable]
-    public class SteamLibraryPathNotFoundException : Exception
-    {
-    }
-
-    //windows store exceptions
-    [Serializable]
-    public class WindowsStoreRegistryKeyNotFoundException : Exception
-    {
+        [DllImport("shlwapi.dll", BestFitMapping = false, CharSet = CharSet.Unicode, ExactSpelling = true,
+            SetLastError = false, ThrowOnUnmappableChar = true)]
+        internal static extern int SHLoadIndirectString(string pszSource, StringBuilder pszOutBuf, int cchOutBuf,
+            IntPtr ppvReserved);
     }
 }

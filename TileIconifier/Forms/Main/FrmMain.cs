@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using TileIconifier.Controls.PannablePictureBox;
-using TileIconifier.Custom.WindowsStore;
 using TileIconifier.Forms.CustomShortcutForms;
 using TileIconifier.Shortcut;
 using TileIconifier.Shortcut.Controls;
@@ -66,12 +65,11 @@ namespace TileIconifier.Forms
 
         private void frmDropper_Load(object sender, EventArgs e)
         {
-            Show();
-            StartFullUpdate();
             darkSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
             defaultSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
-
             BuildPannableShortcutBoxControlPanels();
+            Show();
+            StartFullUpdate();
         }
 
         private void btnIconify_Click(object sender, EventArgs e)
@@ -116,13 +114,11 @@ namespace TileIconifier.Forms
         private void cmbColour_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtBGColour.Enabled = cmbColour.Text == @"Custom";
-            if (_currentShortcutListViewItem != null)
-            {
-                CurrentShortcutItem.Properties.CurrentState.BackgroundColor = cmbColour.Text == @"Custom"
-                    ? txtBGColour.Text
-                    : cmbColour.Text;
-                UpdateControlsToShortcut();
-            }
+            if (_currentShortcutListViewItem == null) return;
+            CurrentShortcutItem.Properties.CurrentState.BackgroundColor = cmbColour.Text == @"Custom"
+                ? txtBGColour.Text
+                : cmbColour.Text;
+            UpdateControlsToShortcut();
         }
 
         private void chkFGTxtEnabled_CheckedChanged(object sender, EventArgs e)
@@ -346,12 +342,6 @@ namespace TileIconifier.Forms
         private void panPctSmallIcon_DoubleClick(object sender, EventArgs e)
         {
             SmallIconSet();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var x = WindowsStoreLibrary.GetAppKeysFromRegistry();
-            Console.WriteLine();
         }
     }
 }

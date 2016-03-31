@@ -85,7 +85,7 @@ namespace TileIconifier.Custom.Steam.KeyValues
         ///     Gets or Sets the KeyValues Parent for that Key.
         ///     return null if there are no Parent.
         /// </summary>
-        public Custom.Steam.KeyValues.KeyValues Parent;
+        public KeyValues Parent;
 
         public object Tag { get; set; }
 
@@ -93,7 +93,7 @@ namespace TileIconifier.Custom.Steam.KeyValues
 
         #region Constructors
 
-        public KeyValuesData(string key, string value, string comment, Custom.Steam.KeyValues.KeyValues parent)
+        public KeyValuesData(string key, string value, string comment, KeyValues parent)
         {
             Tag = null;
             Key = key;

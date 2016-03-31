@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
@@ -41,15 +40,10 @@ namespace TileIconifier.Custom.WindowsStore
 {
     public static class WindowsStoreLibrary
     {
-        [DllImport("shlwapi.dll", BestFitMapping = false, CharSet = CharSet.Unicode, ExactSpelling = true,
-            SetLastError = false, ThrowOnUnmappableChar = true)]
-        private static extern int SHLoadIndirectString(string pszSource, StringBuilder pszOutBuf, int cchOutBuf,
-            IntPtr ppvReserved);
-
         private static string ExtractStringFromPriFile(string resourcePath)
         {
             var stringOut = new StringBuilder(1024);
-            SHLoadIndirectString(resourcePath, stringOut, stringOut.Capacity, IntPtr.Zero);
+            NativeMethods.SHLoadIndirectString(resourcePath, stringOut, stringOut.Capacity, IntPtr.Zero);
             return stringOut.ToString();
         }
 

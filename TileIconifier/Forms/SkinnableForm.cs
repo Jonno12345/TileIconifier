@@ -102,8 +102,8 @@ namespace TileIconifier.Forms
         {
             foreach (Control control in baseControls)
             {
-                //if (control.GetType().GetCustomAttributes(typeof(SkinIgnore), true).Length != 0)
-                //    continue;
+                if (control.GetType().GetCustomAttributes(typeof (SkinIgnore), true).Length != 0)
+                    continue;
 
                 control.BackColor = CurrentBaseSkin.BackColor;
                 if (control.GetType() == typeof (SortableListView))
@@ -117,7 +117,6 @@ namespace TileIconifier.Forms
 
                 if (control.GetType() == typeof (MenuStrip))
                     ApplyToolStripMenuItemSkins((control as MenuStrip)?.Items);
-
 
                 control.Refresh();
 

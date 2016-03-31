@@ -82,6 +82,10 @@ namespace TileIconifier.Forms
                 CurrentShortcutItem.Properties.CurrentState.SmallImage.X,
                 CurrentShortcutItem.Properties.CurrentState.SmallImage.Y);
 
+            //update the picture box control panels
+            pannablePictureBoxControlPanelMedium.UpdateControls();
+            pannablePictureBoxControlPanelSmall.UpdateControls();
+
             //set relevant unsaved changes controls to required visibility/enabled states
             lblUnsaved.Visible = hasUnsavedChanges;
             btnIconify.Enabled = hasUnsavedChanges;
@@ -202,7 +206,7 @@ namespace TileIconifier.Forms
             {
                 // ignored
             }
-            return SystemColors.Control;
+            return CurrentBaseSkin.BackColor;
         }
 
 
@@ -215,7 +219,7 @@ namespace TileIconifier.Forms
 
         private void ResetValidation()
         {
-            txtBGColour.BackColor = Color.White;
+            txtBGColour.BackColor = CurrentBaseSkin.BackColor;
             SetPictureBoxesBackColor();
         }
 
@@ -324,10 +328,12 @@ namespace TileIconifier.Forms
 
         private void BuildPannableShortcutBoxControlPanels()
         {
-            pannablePictureBoxControlPanelMedium.PannablePictureBoxControl = panPctMediumIcon;
-            pannablePictureBoxControlPanelSmall.PannablePictureBoxControl = panPctSmallIcon;
+            pannablePictureBoxControlPanelMedium.SetPannablePictureBoxControl(panPctMediumIcon);
+            pannablePictureBoxControlPanelSmall.SetPannablePictureBoxControl(panPctSmallIcon);
             pannablePictureBoxControlPanelMedium.ChangeImageClick += (sender, args) => { MediumIconSet(); };
             pannablePictureBoxControlPanelSmall.ChangeImageClick += (sender, args) => { SmallIconSet(); };
+            pannablePictureBoxControlPanelMedium.UpdateTrackBarAndZoom();
+            pannablePictureBoxControlPanelSmall.UpdateTrackBarAndZoom();
         }
     }
 }

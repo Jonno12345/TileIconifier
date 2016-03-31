@@ -38,15 +38,14 @@ namespace TileIconifier.Controls.PannablePictureBox
     [SkinIgnore]
     public partial class PannablePictureBox : UserControl
     {
-        private int _maxHeight;
-        private int _maxWidth;
-        private int _minHeight;
-        private int _minWidth;
         private Point _movingPoint = Point.Empty;
         private bool _panning;
 
-
         private Point _startingPoint = Point.Empty;
+        internal int MaxHeight;
+        internal int MaxWidth;
+        internal int MinHeight;
+        internal int MinWidth;
 
         public PannablePictureBoxImage PannablePictureBoxImage;
 
@@ -60,8 +59,7 @@ namespace TileIconifier.Controls.PannablePictureBox
 
         public void PannablePictureBoxImage_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
         {
-            pctBox.Invalidate();
-            OnPannablePictureImagePropertyChange?.Invoke(sender, e);
+            TriggerUpdate();
         }
 
         public new event EventHandler Click;
@@ -80,49 +78,22 @@ namespace TileIconifier.Controls.PannablePictureBox
             }
         }
 
+
+        internal decimal GetZoomPercentage()
+        {
+            var zoomPercentage = (decimal) PannablePictureBoxImage.Width/MaxWidth*
+                                 100;
+            return zoomPercentage >= 1 ? zoomPercentage : 1;
+        }
+
         public void ShrinkImage()
         {
-            if (PannablePictureBoxImage.Width <= 1)
-            {
-                PannablePictureBoxImage.Width = 1;
-                return;
-            }
-            if (PannablePictureBoxImage.Height <= 1)
-            {
-                PannablePictureBoxImage.Height = 1;
-                return;
-            }
-
-            PannablePictureBoxImage.Width = PannablePictureBoxImage.Width - 1;
-            PannablePictureBoxImage.Height = (int) (PannablePictureBoxImage.Width/PannablePictureBoxImage.AspectRatio);
-
-            OnPannablePictureImagePropertyChange?.Invoke(PannablePictureBoxImage, null);
+            SetZoom(GetZoomPercentage() - 0.5m);
         }
 
         public void EnlargeImage()
         {
-            if (PannablePictureBoxImage.Width >= pctBox.Width*4)
-            {
-                PannablePictureBoxImage.Width = pctBox.Width*4;
-                return;
-            }
-            if (PannablePictureBoxImage.Height >= pctBox.Height*4)
-            {
-                PannablePictureBoxImage.Height = pctBox.Height*4;
-                return;
-            }
-
-            PannablePictureBoxImage.Width = PannablePictureBoxImage.Width + 1;
-            PannablePictureBoxImage.Height = (int) (PannablePictureBoxImage.Width/PannablePictureBoxImage.AspectRatio);
-
-            //don't expand beyond the width or height
-            if (PannablePictureBoxImage.X + PannablePictureBoxImage.Width > _maxWidth)
-                PannablePictureBoxImage.X = _maxWidth - PannablePictureBoxImage.Width;
-
-            if (PannablePictureBoxImage.Y + PannablePictureBoxImage.Height > _maxHeight)
-                PannablePictureBoxImage.Y = _maxHeight - PannablePictureBoxImage.Height;
-
-            OnPannablePictureImagePropertyChange?.Invoke(PannablePictureBoxImage, null);
+            SetZoom(GetZoomPercentage() + 0.5m);
         }
 
         private void Image_OnPannablePictureNewImageSet(object sender, EventArgs e)
@@ -156,7 +127,7 @@ namespace TileIconifier.Controls.PannablePictureBox
             if (e.Button != MouseButtons.Left)
                 return;
             _panning = false;
-            OnPannablePictureImagePropertyChange?.Invoke(PannablePictureBoxImage, null);
+            TriggerUpdate();
         }
 
         private void pctBox_MouseMove(object sender, MouseEventArgs e)
@@ -174,14 +145,14 @@ namespace TileIconifier.Controls.PannablePictureBox
             ////    _movingPoint.X = 0;
             ////if (_movingPoint.Y < 0)
             ////    _movingPoint.Y = 0;
-            if (_movingPoint.X + PannablePictureBoxImage.Width > _maxWidth)
-                _movingPoint.X = _maxWidth - PannablePictureBoxImage.Width;
-            if (_movingPoint.Y + PannablePictureBoxImage.Height > _maxHeight)
-                _movingPoint.Y = _maxHeight - PannablePictureBoxImage.Height;
-            if (_movingPoint.X < _minWidth)
-                _movingPoint.X = _minWidth;
-            if (_movingPoint.Y < _minHeight)
-                _movingPoint.Y = _minHeight;
+            if (_movingPoint.X + PannablePictureBoxImage.Width > MaxWidth*2)
+                _movingPoint.X = MaxWidth*2 - PannablePictureBoxImage.Width;
+            if (_movingPoint.Y + PannablePictureBoxImage.Height > MaxHeight*2)
+                _movingPoint.Y = MaxHeight*2 - PannablePictureBoxImage.Height;
+            if (_movingPoint.X < MinWidth*2)
+                _movingPoint.X = MinWidth*2;
+            if (_movingPoint.Y < MinHeight*2)
+                _movingPoint.Y = MinHeight*2;
 
             PannablePictureBoxImage.X = _movingPoint.X;
             PannablePictureBoxImage.Y = _movingPoint.Y;
@@ -200,11 +171,15 @@ namespace TileIconifier.Controls.PannablePictureBox
                 SetResolution(PannablePictureBoxImage.Image, PannablePictureBoxImage.Width,
                     PannablePictureBoxImage.Height), PannablePictureBoxImage.X, PannablePictureBoxImage.Y);
 
-            //////debug
-            ////e.Graphics.DrawString(PannablePictureBoxImage.Width.ToString(), DefaultFont, new SolidBrush(Color.Red), 0, 0);
-            ////e.Graphics.DrawString(PannablePictureBoxImage.Height.ToString(), DefaultFont, new SolidBrush(Color.Red), 0, 20);
-            ////e.Graphics.DrawString(PannablePictureBoxImage.X.ToString(), DefaultFont, new SolidBrush(Color.Red), 0, 40);
-            ////e.Graphics.DrawString(PannablePictureBoxImage.Y.ToString(), DefaultFont, new SolidBrush(Color.Red), 0, 60);
+#if DEBUG
+            e.Graphics.DrawString(PannablePictureBoxImage.Width + ", " + PannablePictureBoxImage.Height, DefaultFont,
+                new SolidBrush(Color.Red), 0, 0);
+            e.Graphics.DrawString(PannablePictureBoxImage.X + ", " + PannablePictureBoxImage.Y, DefaultFont,
+                new SolidBrush(Color.Red), 0, 20);
+            e.Graphics.DrawString(pctBox.Width + ", " + pctBox.Height, DefaultFont, new SolidBrush(Color.Red), 0, 40);
+            e.Graphics.DrawString(MinWidth + "_" + MaxWidth + ", " + MinHeight + "_" + MaxHeight, DefaultFont,
+                new SolidBrush(Color.Red), 0, 60);
+#endif
         }
 
         public void ResetImage()
@@ -218,8 +193,7 @@ namespace TileIconifier.Controls.PannablePictureBox
         {
             PannablePictureBoxImage.Width = pctBox.Width;
             PannablePictureBoxImage.Height = (int) (PannablePictureBoxImage.Width/PannablePictureBoxImage.AspectRatio);
-            OnPannablePictureImagePropertyChange?.Invoke(PannablePictureBoxImage, null);
-            if (invalidateImage) pctBox.Invalidate();
+            TriggerUpdate(invalidateImage);
         }
 
         public void CenterImage(bool invalidateImage = true)
@@ -227,24 +201,8 @@ namespace TileIconifier.Controls.PannablePictureBox
             if (PannablePictureBoxImage.Image == null) return;
             PannablePictureBoxImage.X = (pctBox.Width - PannablePictureBoxImage.Width)/2;
             PannablePictureBoxImage.Y = (pctBox.Height - PannablePictureBoxImage.Height)/2;
-            OnPannablePictureImagePropertyChange?.Invoke(PannablePictureBoxImage, null);
-            if (invalidateImage) pctBox.Invalidate();
+            TriggerUpdate(invalidateImage);
         }
-
-        //public void SetImage(Image image)
-        //{
-        //    if (image == null)
-        //    {
-        //        PannablePictureBoxImage.SetImage(null, 0, 0, 0, 0);
-        //    }
-        //    else
-        //    {
-        //        var scaledSize = ImageUtils.GetScaledWidthAndHeight(image.Width, image.Height, Width, Height);
-        //        PannablePictureBoxImage.SetImage(image, scaledSize.Width, scaledSize.Height, 0, 0);
-        //        CenterImage();
-        //        _movingPoint = new Point(PannablePictureBoxImage.X, PannablePictureBoxImage.Y);
-        //    }
-        //}
 
         public void SetImage(Image image, int width, int height, int x, int y)
         {
@@ -271,10 +229,32 @@ namespace TileIconifier.Controls.PannablePictureBox
 
         private void PannablePictureBox_Load(object sender, EventArgs e)
         {
-            _minHeight = -2*pctBox.Height;
-            _maxHeight = 4*pctBox.Height;
-            _minWidth = -2*pctBox.Width;
-            _maxWidth = 4*pctBox.Width;
+            MinHeight = -200; //-2*pctBox.Height;
+            MaxHeight = 400; //4*pctBox.Height;
+            MinWidth = -200; //-2*pctBox.Width;
+            MaxWidth = 400; //4*pctBox.Width;
+        }
+
+        public void SetZoom(decimal value)
+        {
+            if (value < 1) value = 1;
+            if (value > 100) value = 100;
+            var previousWidth = PannablePictureBoxImage.Width;
+            var previousHeight = PannablePictureBoxImage.Height;
+
+            PannablePictureBoxImage.Width = (int) ((decimal) MaxWidth/100*value);
+            PannablePictureBoxImage.Height = (int) (PannablePictureBoxImage.Width/PannablePictureBoxImage.AspectRatio);
+
+            PannablePictureBoxImage.X += (previousWidth - PannablePictureBoxImage.Width)/2;
+            PannablePictureBoxImage.Y += (previousHeight - PannablePictureBoxImage.Height)/2;
+
+            TriggerUpdate();
+        }
+
+        private void TriggerUpdate(bool invalidate = true)
+        {
+            OnPannablePictureImagePropertyChange?.Invoke(PannablePictureBoxImage, null);
+            if (invalidate) pctBox.Invalidate();
         }
     }
 }
