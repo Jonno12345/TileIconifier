@@ -35,7 +35,7 @@ using System.Text.RegularExpressions;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Shortcut;
 
-namespace TileIconifier.Steam
+namespace TileIconifier.Custom.Steam
 {
     internal class SteamLibrary
     {

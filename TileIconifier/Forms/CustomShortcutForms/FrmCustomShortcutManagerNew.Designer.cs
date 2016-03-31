@@ -41,11 +41,21 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabSteam = new System.Windows.Forms.TabPage();
             this.btnSteamLibrariesPath = new System.Windows.Forms.Button();
             this.btnSteamExeChange = new System.Windows.Forms.Button();
-            this.btnInstallationChange = new System.Windows.Forms.Button();
+            this.btnSteamInstallationChange = new System.Windows.Forms.Button();
             this.txtSteamInstallationPath = new System.Windows.Forms.TextBox();
             this.txtSteamExecutablePath = new System.Windows.Forms.TextBox();
             this.txtSteamLibraryPaths = new System.Windows.Forms.TextBox();
-            this.lstSteamGames = new SortableListView();
+            this.lstSteamGames = new TileIconifier.Controls.SortableListView();
+            this.tabChromeApps = new System.Windows.Forms.TabPage();
+            this.lstChromeAppItems = new TileIconifier.Controls.SortableListView();
+            this.btnChromeAppPathChange = new System.Windows.Forms.Button();
+            this.txtChromeAppPath = new System.Windows.Forms.TextBox();
+            this.btnChromeExePathChange = new System.Windows.Forms.Button();
+            this.txtChromeExePath = new System.Windows.Forms.TextBox();
+            this.tabWindowsStore = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbWindowsStoreAppProtocols = new System.Windows.Forms.ComboBox();
+            this.lstWindowsStoreApps = new TileIconifier.Controls.SortableListView();
             this.tabOther = new System.Windows.Forms.TabPage();
             this.lblOtherShortcutArguments = new System.Windows.Forms.Label();
             this.txtOtherShortcutArguments = new System.Windows.Forms.TextBox();
@@ -60,11 +70,14 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.lblCurrentIcon = new System.Windows.Forms.Label();
             this.pctCurrentIcon = new System.Windows.Forms.PictureBox();
             this.opnOtherTarget = new System.Windows.Forms.OpenFileDialog();
-            this.radShortcutLocation = new AllOrCurrentUserRadios();
+            this.radShortcutLocation = new TileIconifier.Controls.AllOrCurrentUserRadios();
+            this.opnChromeExe = new System.Windows.Forms.OpenFileDialog();
             this.tabShortcutType.SuspendLayout();
             this.tabExplorer.SuspendLayout();
             this.pnlExplorer.SuspendLayout();
             this.tabSteam.SuspendLayout();
+            this.tabChromeApps.SuspendLayout();
+            this.tabWindowsStore.SuspendLayout();
             this.tabOther.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctCurrentIcon)).BeginInit();
             this.SuspendLayout();
@@ -76,6 +89,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabShortcutType.Controls.Add(this.tabExplorer);
             this.tabShortcutType.Controls.Add(this.tabSteam);
+            this.tabShortcutType.Controls.Add(this.tabChromeApps);
+            this.tabShortcutType.Controls.Add(this.tabWindowsStore);
             this.tabShortcutType.Controls.Add(this.tabOther);
             this.tabShortcutType.Location = new System.Drawing.Point(11, 8);
             this.tabShortcutType.Name = "tabShortcutType";
@@ -174,7 +189,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             this.tabSteam.Controls.Add(this.btnSteamLibrariesPath);
             this.tabSteam.Controls.Add(this.btnSteamExeChange);
-            this.tabSteam.Controls.Add(this.btnInstallationChange);
+            this.tabSteam.Controls.Add(this.btnSteamInstallationChange);
             this.tabSteam.Controls.Add(this.txtSteamInstallationPath);
             this.tabSteam.Controls.Add(this.txtSteamExecutablePath);
             this.tabSteam.Controls.Add(this.txtSteamLibraryPaths);
@@ -219,21 +234,21 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.btnSteamExeChange.UseVisualStyleBackColor = true;
             this.btnSteamExeChange.Click += new System.EventHandler(this.btnSteamExeChange_Click);
             // 
-            // btnInstallationChange
+            // btnSteamInstallationChange
             // 
-            this.btnInstallationChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInstallationChange.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInstallationChange.FlatAppearance.BorderSize = 0;
-            this.btnInstallationChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInstallationChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInstallationChange.Location = new System.Drawing.Point(545, 8);
-            this.btnInstallationChange.Margin = new System.Windows.Forms.Padding(0);
-            this.btnInstallationChange.Name = "btnInstallationChange";
-            this.btnInstallationChange.Size = new System.Drawing.Size(68, 26);
-            this.btnInstallationChange.TabIndex = 8;
-            this.btnInstallationChange.Text = "Change";
-            this.btnInstallationChange.UseVisualStyleBackColor = true;
-            this.btnInstallationChange.Click += new System.EventHandler(this.btnInstallationChange_Click);
+            this.btnSteamInstallationChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSteamInstallationChange.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSteamInstallationChange.FlatAppearance.BorderSize = 0;
+            this.btnSteamInstallationChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSteamInstallationChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSteamInstallationChange.Location = new System.Drawing.Point(545, 8);
+            this.btnSteamInstallationChange.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSteamInstallationChange.Name = "btnSteamInstallationChange";
+            this.btnSteamInstallationChange.Size = new System.Drawing.Size(68, 26);
+            this.btnSteamInstallationChange.TabIndex = 8;
+            this.btnSteamInstallationChange.Text = "Change";
+            this.btnSteamInstallationChange.UseVisualStyleBackColor = true;
+            this.btnSteamInstallationChange.Click += new System.EventHandler(this.btnInstallationChange_Click);
             // 
             // txtSteamInstallationPath
             // 
@@ -288,6 +303,142 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.lstSteamGames.UseCompatibleStateImageBehavior = false;
             this.lstSteamGames.View = System.Windows.Forms.View.Details;
             this.lstSteamGames.SelectedIndexChanged += new System.EventHandler(this.lstSteamGames_SelectedIndexChanged);
+            // 
+            // tabChromeApps
+            // 
+            this.tabChromeApps.Controls.Add(this.lstChromeAppItems);
+            this.tabChromeApps.Controls.Add(this.btnChromeAppPathChange);
+            this.tabChromeApps.Controls.Add(this.txtChromeAppPath);
+            this.tabChromeApps.Controls.Add(this.btnChromeExePathChange);
+            this.tabChromeApps.Controls.Add(this.txtChromeExePath);
+            this.tabChromeApps.Location = new System.Drawing.Point(4, 22);
+            this.tabChromeApps.Name = "tabChromeApps";
+            this.tabChromeApps.Padding = new System.Windows.Forms.Padding(3);
+            this.tabChromeApps.Size = new System.Drawing.Size(622, 248);
+            this.tabChromeApps.TabIndex = 3;
+            this.tabChromeApps.Text = "Chrome Apps";
+            this.tabChromeApps.UseVisualStyleBackColor = true;
+            // 
+            // lstChromeAppItems
+            // 
+            this.lstChromeAppItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstChromeAppItems.FullRowSelect = true;
+            this.lstChromeAppItems.Location = new System.Drawing.Point(6, 63);
+            this.lstChromeAppItems.MultiSelect = false;
+            this.lstChromeAppItems.Name = "lstChromeAppItems";
+            this.lstChromeAppItems.Size = new System.Drawing.Size(607, 179);
+            this.lstChromeAppItems.TabIndex = 13;
+            this.lstChromeAppItems.UseCompatibleStateImageBehavior = false;
+            this.lstChromeAppItems.View = System.Windows.Forms.View.Details;
+            this.lstChromeAppItems.SelectedIndexChanged += new System.EventHandler(this.lstChromeAppItems_SelectedIndexChanged);
+            // 
+            // btnChromeAppPathChange
+            // 
+            this.btnChromeAppPathChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChromeAppPathChange.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChromeAppPathChange.FlatAppearance.BorderSize = 0;
+            this.btnChromeAppPathChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChromeAppPathChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChromeAppPathChange.Location = new System.Drawing.Point(545, 34);
+            this.btnChromeAppPathChange.Margin = new System.Windows.Forms.Padding(0);
+            this.btnChromeAppPathChange.Name = "btnChromeAppPathChange";
+            this.btnChromeAppPathChange.Size = new System.Drawing.Size(68, 26);
+            this.btnChromeAppPathChange.TabIndex = 12;
+            this.btnChromeAppPathChange.Text = "Change";
+            this.btnChromeAppPathChange.UseVisualStyleBackColor = true;
+            this.btnChromeAppPathChange.Click += new System.EventHandler(this.btnChromeAppPathChange_Click);
+            // 
+            // txtChromeAppPath
+            // 
+            this.txtChromeAppPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtChromeAppPath.Location = new System.Drawing.Point(6, 38);
+            this.txtChromeAppPath.Name = "txtChromeAppPath";
+            this.txtChromeAppPath.ReadOnly = true;
+            this.txtChromeAppPath.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtChromeAppPath.Size = new System.Drawing.Size(536, 20);
+            this.txtChromeAppPath.TabIndex = 11;
+            this.txtChromeAppPath.Text = "txtChromeAppPath";
+            this.txtChromeAppPath.WordWrap = false;
+            // 
+            // btnChromeExePathChange
+            // 
+            this.btnChromeExePathChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChromeExePathChange.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChromeExePathChange.FlatAppearance.BorderSize = 0;
+            this.btnChromeExePathChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChromeExePathChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChromeExePathChange.Location = new System.Drawing.Point(545, 8);
+            this.btnChromeExePathChange.Margin = new System.Windows.Forms.Padding(0);
+            this.btnChromeExePathChange.Name = "btnChromeExePathChange";
+            this.btnChromeExePathChange.Size = new System.Drawing.Size(68, 26);
+            this.btnChromeExePathChange.TabIndex = 10;
+            this.btnChromeExePathChange.Text = "Change";
+            this.btnChromeExePathChange.UseVisualStyleBackColor = true;
+            this.btnChromeExePathChange.Click += new System.EventHandler(this.btnChromeExePathChange_Click);
+            // 
+            // txtChromeExePath
+            // 
+            this.txtChromeExePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtChromeExePath.Location = new System.Drawing.Point(6, 12);
+            this.txtChromeExePath.Name = "txtChromeExePath";
+            this.txtChromeExePath.ReadOnly = true;
+            this.txtChromeExePath.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtChromeExePath.Size = new System.Drawing.Size(536, 20);
+            this.txtChromeExePath.TabIndex = 9;
+            this.txtChromeExePath.Text = "txtChromeExePath";
+            this.txtChromeExePath.WordWrap = false;
+            // 
+            // tabWindowsStore
+            // 
+            this.tabWindowsStore.Controls.Add(this.label1);
+            this.tabWindowsStore.Controls.Add(this.cmbWindowsStoreAppProtocols);
+            this.tabWindowsStore.Controls.Add(this.lstWindowsStoreApps);
+            this.tabWindowsStore.Location = new System.Drawing.Point(4, 22);
+            this.tabWindowsStore.Name = "tabWindowsStore";
+            this.tabWindowsStore.Size = new System.Drawing.Size(622, 248);
+            this.tabWindowsStore.TabIndex = 4;
+            this.tabWindowsStore.Text = "Windows Store";
+            this.tabWindowsStore.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(342, 9);
+            this.label1.MaximumSize = new System.Drawing.Size(275, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(269, 39);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Protocol:\r\n(Some of these behave differently with some apps. You may need to try " +
+    "and find one that works as you expect)";
+            // 
+            // cmbWindowsStoreAppProtocols
+            // 
+            this.cmbWindowsStoreAppProtocols.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbWindowsStoreAppProtocols.FormattingEnabled = true;
+            this.cmbWindowsStoreAppProtocols.Location = new System.Drawing.Point(345, 51);
+            this.cmbWindowsStoreAppProtocols.Name = "cmbWindowsStoreAppProtocols";
+            this.cmbWindowsStoreAppProtocols.Size = new System.Drawing.Size(270, 21);
+            this.cmbWindowsStoreAppProtocols.TabIndex = 3;
+            this.cmbWindowsStoreAppProtocols.SelectedIndexChanged += new System.EventHandler(this.cmbWindowsStoreAppProtocols_SelectedIndexChanged);
+            // 
+            // lstWindowsStoreApps
+            // 
+            this.lstWindowsStoreApps.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstWindowsStoreApps.FullRowSelect = true;
+            this.lstWindowsStoreApps.Location = new System.Drawing.Point(7, 9);
+            this.lstWindowsStoreApps.MultiSelect = false;
+            this.lstWindowsStoreApps.Name = "lstWindowsStoreApps";
+            this.lstWindowsStoreApps.Size = new System.Drawing.Size(332, 226);
+            this.lstWindowsStoreApps.TabIndex = 2;
+            this.lstWindowsStoreApps.UseCompatibleStateImageBehavior = false;
+            this.lstWindowsStoreApps.View = System.Windows.Forms.View.Details;
+            this.lstWindowsStoreApps.SelectedIndexChanged += new System.EventHandler(this.lstWindowsStoreApps_SelectedIndexChanged);
             // 
             // tabOther
             // 
@@ -429,6 +580,12 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.radShortcutLocation.Size = new System.Drawing.Size(96, 66);
             this.radShortcutLocation.TabIndex = 30;
             // 
+            // opnChromeExe
+            // 
+            this.opnChromeExe.FileName = "chrome.exe";
+            this.opnChromeExe.Filter = "chrome.exe|chrome.exe";
+            this.opnChromeExe.Title = "Please locate \"chrome.exe\"...";
+            // 
             // FrmCustomShortcutManagerNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,6 +607,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.pnlExplorer.PerformLayout();
             this.tabSteam.ResumeLayout(false);
             this.tabSteam.PerformLayout();
+            this.tabChromeApps.ResumeLayout(false);
+            this.tabChromeApps.PerformLayout();
+            this.tabWindowsStore.ResumeLayout(false);
+            this.tabWindowsStore.PerformLayout();
             this.tabOther.ResumeLayout(false);
             this.tabOther.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctCurrentIcon)).EndInit();
@@ -467,7 +628,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private System.Windows.Forms.TextBox txtSteamLibraryPaths;
         private System.Windows.Forms.TextBox txtSteamInstallationPath;
         private System.Windows.Forms.TextBox txtSteamExecutablePath;
-        private System.Windows.Forms.Button btnInstallationChange;
+        private System.Windows.Forms.Button btnSteamInstallationChange;
         private System.Windows.Forms.Button btnSteamExeChange;
         private System.Windows.Forms.OpenFileDialog opnSteamExe;
         private System.Windows.Forms.Button btnSteamLibrariesPath;
@@ -491,5 +652,16 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private System.Windows.Forms.RadioButton radSpecialFolder;
         private System.Windows.Forms.ComboBox cmbExplorerGuids;
         private System.Windows.Forms.Button btnExplorerBrowse;
+        private System.Windows.Forms.TabPage tabChromeApps;
+        private System.Windows.Forms.Button btnChromeExePathChange;
+        private System.Windows.Forms.TextBox txtChromeExePath;
+        private System.Windows.Forms.Button btnChromeAppPathChange;
+        private System.Windows.Forms.TextBox txtChromeAppPath;
+        private SortableListView lstChromeAppItems;
+        private System.Windows.Forms.TabPage tabWindowsStore;
+        private SortableListView lstWindowsStoreApps;
+        private System.Windows.Forms.ComboBox cmbWindowsStoreAppProtocols;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.OpenFileDialog opnChromeExe;
     }
 }

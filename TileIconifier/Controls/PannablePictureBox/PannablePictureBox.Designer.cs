@@ -37,10 +37,10 @@
             this.pctBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctBox.Location = new System.Drawing.Point(-1, -1);
+            this.pctBox.Location = new System.Drawing.Point(0, 0);
             this.pctBox.Margin = new System.Windows.Forms.Padding(0);
             this.pctBox.Name = "pctBox";
-            this.pctBox.Size = new System.Drawing.Size(152, 152);
+            this.pctBox.Size = new System.Drawing.Size(150, 150);
             this.pctBox.TabIndex = 0;
             this.pctBox.TabStop = false;
             this.pctBox.Click += new System.EventHandler(this.pctBox_Click);

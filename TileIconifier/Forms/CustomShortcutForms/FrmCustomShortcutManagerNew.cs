@@ -33,10 +33,13 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using TileIconifier.Custom;
+using TileIconifier.Custom.Chrome;
+using TileIconifier.Custom.Steam;
+using TileIconifier.Custom.WindowsStore;
+using TileIconifier.Custom.WindowsStore.Controls;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
 using TileIconifier.Shortcut;
-using TileIconifier.Steam;
 using TileIconifier.TileIconify;
 using TileIconifier.Utilities;
 
@@ -44,6 +47,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
 {
     public partial class FrmCustomShortcutManagerNew : SkinnableForm
     {
+        //*********************************************************************
+        // CHROME RELATED FIELDS
+        //*********************************************************************
+
+        private readonly NewCustomShortcutFormCache _chromeCache = new NewCustomShortcutFormCache();
         //*********************************************************************
         // EXPLORER RELATED FIELDS
         //*********************************************************************
@@ -63,11 +71,19 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private readonly NewCustomShortcutFormCache _steamCache = new NewCustomShortcutFormCache();
 
         //*********************************************************************
+        // WINDOWS STORE RELATED FIELDS
+        //*********************************************************************
+
+        private readonly NewCustomShortcutFormCache _windowsStoreCache = new NewCustomShortcutFormCache();
+        private List<ChromeAppListViewItem> _chromeApps;
+
+        //*********************************************************************
         // GENERAL FIELDS
         //*********************************************************************
 
         private TabPage _previousTabPage;
-        private List<SteamGame> _steamGames;
+        private List<SteamGameListViewItem> _steamGames;
+        private List<WindowsStoreAppListViewItemGroup> _windowsStoreApps;
 
 
         //*********************************************************************
@@ -80,6 +96,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             _previousTabPage = tabShortcutType.SelectedTab;
             SetUpExplorer();
             SetUpSteam();
+            SetUpChrome();
+            SetUpWindowsStore();
         }
 
         private NewCustomShortcutFormCache PreviousCache
@@ -92,6 +110,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
                     return _steamCache;
                 if (_previousTabPage == tabOther)
                     return _otherCache;
+                if (_previousTabPage == tabWindowsStore)
+                    return _windowsStoreCache;
+                if (_previousTabPage == tabChromeApps)
+                    return _chromeCache;
                 return null;
             }
         }
@@ -107,6 +129,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
                     return _steamCache;
                 if (current == tabOther)
                     return _otherCache;
+                if (current == tabWindowsStore)
+                    return _windowsStoreCache;
+                if (current == tabChromeApps)
+                    return _chromeCache;
                 return null;
             }
         }
@@ -116,7 +142,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             string targetArguments,
             CustomShortcutType shortcutType,
             string basicShortcutIcon,
-            string workingFolder = null
+            string workingFolder = null,
+            WindowType windowType = WindowType.ActiveAndDisplayed
             )
         {
             var shortcutName = txtShortcutName.Text.CleanInvalidFilenameChars();
@@ -130,8 +157,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
             {
                 return;
             }
+
             //build our new custom shortcut
-            var customShortcut = new CustomShortcut(shortcutName, targetPath, targetArguments, shortcutType,
+            var customShortcut = new CustomShortcut(shortcutName, targetPath, targetArguments, shortcutType, windowType,
                 radShortcutLocation.PathSelection(), basicShortcutIcon, workingFolder);
 
             //If we didn't specify a shortcut icon path, make one
@@ -204,6 +232,14 @@ namespace TileIconifier.Forms.CustomShortcutForms
             {
                 GenerateExplorerShortcut();
             }
+            else if (tabShortcutType.SelectedTab == tabChromeApps)
+            {
+                GenerateChromeAppShortcut();
+            }
+            else if (tabShortcutType.SelectedTab == tabWindowsStore)
+            {
+                GenerateWindowsStoreAppShortcut();
+            }
             else if (tabShortcutType.SelectedTab == tabOther)
             {
                 GenerateOtherShortcut();
@@ -262,7 +298,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             cmbExplorerGuids.DisplayMember = "Key";
             cmbExplorerGuids.ValueMember = "Value";
             cmbExplorerGuids.DataSource = new BindingSource(CustomShortcutGetters.ExplorerGuids, null);
-            pctCurrentIcon.Image = Resources.ExplorerIco.ToBitmap();
+            CurrentCache.SetIconBytes(ImageUtils.ImageToByteArray(Resources.ExplorerIco.ToBitmap()));
+            pctCurrentIcon.Image = CurrentCache.GetIcon();
         }
 
         private void radSpecialFolder_CheckedChanged(object sender, EventArgs e)
@@ -305,11 +342,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void SetUpSteam()
         {
-            if (TestSteamDetection())
-            {
-                LoadSteamGames();
-                SetUpSteamListBox();
-            }
+            if (!TestSteamDetection()) return;
+            LoadSteamGames();
+            SetUpSteamListBox();
         }
 
         private bool TestSteamDetection()
@@ -364,15 +399,15 @@ namespace TileIconifier.Forms.CustomShortcutForms
             lstSteamGames.Clear();
             lstSteamGames.Columns.Clear();
 
-            lstSteamGames.Columns.Add("App Id", lstSteamGames.Width/8 - 10, HorizontalAlignment.Left);
-            lstSteamGames.Columns.Add("Game Name", lstSteamGames.Width/8*7 - 4, HorizontalAlignment.Left);
+            lstSteamGames.Columns.Add("App Id", lstSteamGames.Width/8, HorizontalAlignment.Left);
+            lstSteamGames.Columns.Add("Game Name", lstSteamGames.Width/8*7 + 3, HorizontalAlignment.Left);
 
-            lstSteamGames.Items.AddRange(_steamGames.OrderBy(s => s.GameName).ToArray<ListViewItem>());
+            lstSteamGames.Items.AddRange(_steamGames.OrderBy(s => s.SteamGameItem.GameName).ToArray<ListViewItem>());
         }
 
         private void LoadSteamGames()
         {
-            _steamGames = SteamLibrary.Instance.GetAllSteamGames();
+            _steamGames = SteamLibrary.Instance.GetAllSteamGames().Select(s => new SteamGameListViewItem(s)).ToList();
         }
 
         private void btnInstallationChange_Click(object sender, EventArgs e)
@@ -399,7 +434,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             if (lstSteamGames.SelectedItems.Count == 0)
                 return;
 
-            var steamGame = (SteamGame) lstSteamGames.SelectedItems[0];
+            var steamGame = ((SteamGameListViewItem) lstSteamGames.SelectedItems[0]).SteamGameItem;
             UpdatedCacheIcon(steamGame.IconAsBytes);
             txtShortcutName.Text = steamGame.GameName.CleanInvalidFilenameChars();
         }
@@ -408,7 +443,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             if (lstSteamGames.SelectedItems.Count == 0) return;
 
-            var steamGame = (SteamGame) lstSteamGames.SelectedItems[0];
+            var steamGame = ((SteamGameListViewItem) lstSteamGames.SelectedItems[0]).SteamGameItem;
 
             GenerateFullShortcut(SteamLibrary.Instance.GetSteamExePath(), steamGame.GameExecutionArgument,
                 CustomShortcutType.Steam, steamGame.IconPath);
@@ -434,6 +469,190 @@ namespace TileIconifier.Forms.CustomShortcutForms
                         @"Selected folder is invalid (valid folders should contain a subfolder named ""steamapps""), please try again or cancel.");
                 }
             }
+        }
+
+        //*********************************************************************
+        // CHROME RELATED METHODS
+        //*********************************************************************
+
+        private void SetUpChrome()
+        {
+            PopulateChromeInstallationPath();
+            PopulateGoogleAppLibraryPath();
+
+            PopulateChromeAppList();
+            SetUpChromeListView();
+        }
+
+        private void PopulateGoogleAppLibraryPath()
+        {
+            try
+            {
+                txtChromeAppPath.Text = CustomShortcutGetters.GoogleAppLibraryPath;
+            }
+            catch (Exception ex)
+            {
+                txtChromeAppPath.Text = ex.Message;
+            }
+        }
+
+        private void PopulateChromeAppList()
+        {
+            if (!Directory.Exists(txtChromeAppPath.Text))
+                return;
+            _chromeApps =
+                ChromeAppLibrary.GetChromeAppItems(txtChromeAppPath.Text)
+                    .Select(c => new ChromeAppListViewItem(c))
+                    .ToList();
+        }
+
+        private void PopulateChromeInstallationPath()
+        {
+            try
+            {
+                txtChromeExePath.Text = ChromeAppLibrary.GetChromeInstallationPath();
+            }
+            catch (Exception ex)
+            {
+                txtChromeExePath.Text = ex.Message;
+            }
+        }
+
+        private void SetUpChromeListView()
+        {
+            if (_chromeApps == null)
+                return;
+
+            lstChromeAppItems.Clear();
+            lstChromeAppItems.Columns.Clear();
+
+            lstChromeAppItems.Columns.Add("App Id", lstSteamGames.Width/8*3, HorizontalAlignment.Left);
+            lstChromeAppItems.Columns.Add("App Name", lstSteamGames.Width/8*5 + 3, HorizontalAlignment.Left);
+
+            lstChromeAppItems.Items.AddRange(_chromeApps.OrderBy(a => a.ChromeAppItem.AppName).ToArray<ListViewItem>());
+        }
+
+        private void lstChromeAppItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstChromeAppItems.SelectedItems.Count == 0)
+                return;
+
+            var chromeApp = ((ChromeAppListViewItem) lstChromeAppItems.SelectedItems[0]).ChromeAppItem;
+            UpdatedCacheIcon(chromeApp.IconAsBytes);
+            txtShortcutName.Text = chromeApp.AppName.CleanInvalidFilenameChars();
+        }
+
+        private void GenerateChromeAppShortcut()
+        {
+            if (lstChromeAppItems.SelectedItems.Count == 0) return;
+
+            var chromeApp = ((ChromeAppListViewItem) lstChromeAppItems.SelectedItems[0]).ChromeAppItem;
+
+            GenerateFullShortcut(txtChromeExePath.Text, chromeApp.ChromeAppExecutionArgument,
+                CustomShortcutType.ChromeApp, chromeApp.IconPath);
+        }
+
+        private void btnChromeExePathChange_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(txtChromeExePath.Text))
+                opnChromeExe.InitialDirectory = new FileInfo(txtChromeExePath.Text).Directory?.FullName;
+
+            if (opnChromeExe.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            txtChromeExePath.Text = opnChromeExe.FileName;
+            SetUpChrome();
+        }
+
+        private void btnChromeAppPathChange_Click(object sender, EventArgs e)
+        {
+            fldBrowser.Description = @"Select your Chrome `Web Applications` folder";
+            if (fldBrowser.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            txtChromeAppPath.Text = fldBrowser.SelectedPath;
+        }
+
+        //*********************************************************************
+        // WINDOWS STORE RELATED METHODS
+        //*********************************************************************
+
+
+        private void SetUpWindowsStore()
+        {
+            try
+            {
+                GetWindowsStoreApps();
+                SetUpWindowsStoreListView();
+            }
+            catch (WindowsStoreRegistryKeyNotFoundException)
+            {
+                // handle error
+            }
+        }
+
+        private void GetWindowsStoreApps()
+        {
+            _windowsStoreApps = new List<WindowsStoreAppListViewItemGroup>();
+            var windowsStoreApps = WindowsStoreLibrary.GetAppKeysFromRegistry();
+            var allGroupedWindowsStoreApps =
+                windowsStoreApps.Select(s => s.StoreAppProtocols.GroupBy(p => p.DisplayName).ToList()).ToList();
+
+            foreach (
+                var windowsStoreAppProtocols in
+                    allGroupedWindowsStoreApps.SelectMany(groupedWindowsStoreApps => groupedWindowsStoreApps))
+            {
+                _windowsStoreApps.Add(new WindowsStoreAppListViewItemGroup(windowsStoreAppProtocols.Key,
+                    windowsStoreAppProtocols.ToList()));
+            }
+        }
+
+        private void SetUpWindowsStoreListView()
+        {
+            lstWindowsStoreApps.Clear();
+            lstWindowsStoreApps.Columns.Clear();
+
+            lstWindowsStoreApps.Columns.Add("Windows Store App", lstWindowsStoreApps.Width);
+
+            lstWindowsStoreApps.Items.AddRange(_windowsStoreApps.OrderBy(w => w.Text).ToArray<ListViewItem>());
+        }
+
+        private void lstWindowsStoreApps_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstWindowsStoreApps.SelectedItems.Count == 0) return;
+            cmbWindowsStoreAppProtocols.Items.Clear();
+
+            var windowsStoreAppListViewItem = (WindowsStoreAppListViewItemGroup) lstWindowsStoreApps.SelectedItems[0];
+
+            txtShortcutName.Text = windowsStoreAppListViewItem.Text;
+
+            foreach (var protocolItem in windowsStoreAppListViewItem.WindowsStoreAppProtocols)
+            {
+                cmbWindowsStoreAppProtocols.Items.Add(new WindowsStoreAppProtocolComboListItem(protocolItem));
+            }
+            cmbWindowsStoreAppProtocols.SelectedIndex = 0;
+        }
+
+        private void cmbWindowsStoreAppProtocols_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbWindowsStoreAppProtocols.SelectedItem == null)
+                return;
+            var selectedProtocol =
+                ((WindowsStoreAppProtocolComboListItem) cmbWindowsStoreAppProtocols.SelectedItem)
+                    .WindowsStoreAppProtocol;
+            UpdatedCacheIcon(selectedProtocol.LogoBytes);
+        }
+
+        private void GenerateWindowsStoreAppShortcut()
+        {
+            if (cmbWindowsStoreAppProtocols.SelectedItem == null)
+                return;
+            var selectedProtocol =
+                ((WindowsStoreAppProtocolComboListItem) cmbWindowsStoreAppProtocols.SelectedItem)
+                    .WindowsStoreAppProtocol;
+
+            GenerateFullShortcut("cmd", $@"/c start {selectedProtocol.ProtocolId}:", CustomShortcutType.WindowsStoreApp,
+                selectedProtocol.LogoPath, windowType: WindowType.Hidden);
         }
 
         //*********************************************************************

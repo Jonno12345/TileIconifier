@@ -127,11 +127,20 @@
     <Compile Include="Controls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Custom\CustomShortcutConstantsAndEnums.cs" />
+    <Compile Include="Custom\Chrome\ChromeApp.cs" />
+    <Compile Include="Custom\Chrome\ChromeAppLibrary.cs" />
+    <Compile Include="Custom\Chrome\ChromeAppListViewItem.cs" />
+    <Compile Include="Custom\CustomShortcutGetters.cs" />
     <Compile Include="Custom\CustomShortcutExtensionMethods.cs" />
     <Compile Include="Custom\CustomShortcut.cs" />
     <Compile Include="Custom\CustomShortcutListViewItem.cs" />
     <Compile Include="Custom\NewCustomShortcutFormCache.cs" />
+    <Compile Include="Custom\Steam\SteamGameListViewItem.cs" />
+    <Compile Include="Custom\WindowsStore\WindowsStoreApp.cs" />
+    <Compile Include="Custom\WindowsStore\Controls\WindowsStoreAppListViewItemGroup.cs" />
+    <Compile Include="Custom\WindowsStore\WindowsStoreAppProtocol.cs" />
+    <Compile Include="Custom\WindowsStore\Controls\WindowsStoreAppProtocolComboListItem.cs" />
+    <Compile Include="Custom\WindowsStore\WindowsStoreLibrary.cs" />
     <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,10 +198,10 @@
     <Compile Include="Forms\SkinnableForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Steam\KeyValues\KeyValues.cs" />
-    <Compile Include="Steam\KeyValues\KeyValues_Data.cs" />
-    <Compile Include="Steam\KeyValues\Utils.cs" />
-    <Compile Include="Steam\SteamGame.cs" />
+    <Compile Include="Custom\Steam\KeyValues\KeyValues.cs" />
+    <Compile Include="Custom\Steam\KeyValues\KeyValues_Data.cs" />
+    <Compile Include="Custom\Steam\KeyValues\Utils.cs" />
+    <Compile Include="Custom\Steam\SteamGame.cs" />
     <Compile Include="TileIconify\TileIcon.cs" />
     <Compile Include="Forms\Main\FrmAbout.cs">
       <SubType>Form</SubType>
@@ -220,7 +229,7 @@
       <DependentUpon>FrmIconSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\ShortcutUtils.cs" />
-    <Compile Include="Steam\SteamLibrary.cs" />
+    <Compile Include="Custom\Steam\SteamLibrary.cs" />
     <Compile Include="Utilities\UpdateUtils.cs" />
     <EmbeddedResource Include="Controls\AllOrCurrentUserRadios.resx">
       <DependentUpon>AllOrCurrentUserRadios.cs</DependentUpon>
@@ -320,12 +329,6 @@
     <None Include="Resources\Actions-color-picker-black-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\zoom-out-256x256.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\zoom-in-256x256.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ZoomOut_12927.png" />
   </ItemGroup>
   <ItemGroup>
@@ -335,11 +338,12 @@
     <None Include="Resources\OpenComparisonResult_9697.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Restart_6322.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ZoomToFit.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Google-Chrome-icon.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

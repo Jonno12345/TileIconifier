@@ -27,53 +27,19 @@
 
 #endregion
 
-using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
-namespace TileIconifier
+namespace TileIconifier.Custom.WindowsStore.Controls
 {
-    [Serializable]
-    public class UserCancellationException : Exception
+    public class WindowsStoreAppListViewItemGroup : ListViewItem
     {
-    }
+        public WindowsStoreAppListViewItemGroup(string name, List<WindowsStoreAppProtocol> windowsStoreAppProtocols)
+        {
+            WindowsStoreAppProtocols = windowsStoreAppProtocols;
+            Text = name;
+        }
 
-    [Serializable]
-    public class PowershellException : Exception
-    {
-    }
-
-    [Serializable]
-    public class InvalidCustomShortcutException : Exception
-    {
-    }
-
-    [Serializable]
-    public class ValidationFailureException : Exception
-    {
-    }
-
-    [Serializable]
-    public class UnableToDetectAdministratorException : Exception
-    {
-    }
-
-    //steam exceptions
-    [Serializable]
-    public class SteamExecutableNotFoundException : Exception
-    {
-    }
-
-    [Serializable]
-    public class SteamInstallationPathNotFoundException : Exception
-    {
-    }
-
-    [Serializable]
-    public class SteamLibraryPathNotFoundException : Exception
-    {
-    }
-
-    //windows store exceptions
-    public class WindowsStoreRegistryKeyNotFoundException : Exception
-    {
+        public List<WindowsStoreAppProtocol> WindowsStoreAppProtocols { get; }
     }
 }

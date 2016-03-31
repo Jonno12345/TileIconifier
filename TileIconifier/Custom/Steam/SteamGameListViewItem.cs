@@ -27,53 +27,19 @@
 
 #endregion
 
-using System;
+using System.Windows.Forms;
 
-namespace TileIconifier
+namespace TileIconifier.Custom.Steam
 {
-    [Serializable]
-    public class UserCancellationException : Exception
+    internal class SteamGameListViewItem : ListViewItem
     {
-    }
+        public SteamGameListViewItem(SteamGame steamGame)
+        {
+            SteamGameItem = steamGame;
+            Text = SteamGameItem.AppId;
+            SubItems.Add(SteamGameItem.GameName);
+        }
 
-    [Serializable]
-    public class PowershellException : Exception
-    {
-    }
-
-    [Serializable]
-    public class InvalidCustomShortcutException : Exception
-    {
-    }
-
-    [Serializable]
-    public class ValidationFailureException : Exception
-    {
-    }
-
-    [Serializable]
-    public class UnableToDetectAdministratorException : Exception
-    {
-    }
-
-    //steam exceptions
-    [Serializable]
-    public class SteamExecutableNotFoundException : Exception
-    {
-    }
-
-    [Serializable]
-    public class SteamInstallationPathNotFoundException : Exception
-    {
-    }
-
-    [Serializable]
-    public class SteamLibraryPathNotFoundException : Exception
-    {
-    }
-
-    //windows store exceptions
-    public class WindowsStoreRegistryKeyNotFoundException : Exception
-    {
+        public SteamGame SteamGameItem { get; set; }
     }
 }

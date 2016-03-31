@@ -37,7 +37,7 @@ namespace TileIconifier.Utilities
 {
     internal class ImageUtils
     {
-        public static Bitmap LoadIconifiedBitmap(string path)
+        public static Bitmap LoadFileToBitmap(string path)
         {
             try
             {
@@ -70,11 +70,18 @@ namespace TileIconifier.Utilities
 
         public static byte[] ImageToByteArray(Image imageIn)
         {
-            using (var ms = new MemoryStream())
+            //seems to error less?
+            var converter = new ImageConverter();
+            using (var tmp = new Bitmap(imageIn))
             {
-                imageIn?.Save(ms, ImageFormat.Png);
-                return ms.ToArray();
+                return (byte[]) converter.ConvertTo(tmp.Clone(), typeof (byte[]));
             }
+
+            //using (var ms = new MemoryStream())
+            //{
+            //    imageIn?.Save(ms, ImageFormat.Png);
+            //    return ms.ToArray();
+            //}
         }
 
         public static Image ByteArrayToImage(byte[] bytesIn)

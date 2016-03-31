@@ -66,9 +66,11 @@ namespace TileIconifier.Custom
             string targetPath,
             string targetArguments,
             CustomShortcutType shortcutType,
+            WindowType windowType,
             string shortcutRootFolder,
             string basicIconToUse = null,
-            string workingFolder = null)
+            string workingFolder = null
+            )
         {
             var vbsFolderPath =
                 DirectoryUtils.GetUniqueDirName(CustomShortcutGetters.CustomShortcutVbsPath + shortcutName) + "\\";
@@ -82,6 +84,7 @@ namespace TileIconifier.Custom
             ShortcutType = shortcutType;
             VbsFolderPath = vbsFolderPath;
             WorkingFolder = workingFolder;
+            WindowType = windowType;
 
             Directory.CreateDirectory(VbsFolderPath);
 
@@ -96,6 +99,7 @@ namespace TileIconifier.Custom
         private string TargetArguments { get; }
         private string WorkingFolder { get; }
         public CustomShortcutType ShortcutType { get; }
+        public WindowType WindowType { get; set; }
 
         private string BasicShortcutIcon
         {
@@ -138,7 +142,8 @@ namespace TileIconifier.Custom
                     ShortcutItem.ShortcutFileInfo.FullName.EscapeVba(),
                     TargetPath.QuoteWrap().EscapeVba(),
                     TargetArguments.EscapeVba(),
-                    ShortcutType
+                    ShortcutType,
+                    (int) WindowType
                     ));
 
             ShortcutUtils.CreateLnkFile(ShortcutItem.ShortcutFileInfo.FullName, VbsFilePath,

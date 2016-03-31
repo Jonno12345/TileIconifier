@@ -30,7 +30,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace TileIconifier.Steam.KeyValues
+namespace TileIconifier.Custom.Steam.KeyValues
 {
     /// <summary>
     ///     Just Utilis to KeyValues Class

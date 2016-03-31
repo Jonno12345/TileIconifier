@@ -71,6 +71,7 @@ namespace TileIconifier.Forms
             this.lblSmallIcon = new System.Windows.Forms.Label();
             this.lblMediumIcon = new System.Windows.Forms.Label();
             this.pannablePictureBoxControlPanelSmall = new TileIconifier.Controls.PannablePictureBox.PannablePictureBoxControlPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlFGColour.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.pnlImages.SuspendLayout();
@@ -499,11 +500,22 @@ namespace TileIconifier.Forms
             this.pannablePictureBoxControlPanelSmall.Size = new System.Drawing.Size(37, 143);
             this.pannablePictureBoxControlPanelSmall.TabIndex = 32;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(321, 340);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(77, 28);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 373);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlImages);
             this.Controls.Add(this.btnColourPicker);
             this.Controls.Add(this.srtlstShortcuts);
@@ -580,6 +592,7 @@ namespace TileIconifier.Forms
         private Controls.PannablePictureBox.PannablePictureBoxControlPanel pannablePictureBoxControlPanelSmall;
         private System.Windows.Forms.Label lblSmallIcon;
         private System.Windows.Forms.Label lblMediumIcon;
+        private System.Windows.Forms.Button button1;
     }
 }
 

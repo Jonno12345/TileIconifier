@@ -27,53 +27,19 @@
 
 #endregion
 
-using System;
+using System.Windows.Forms;
 
-namespace TileIconifier
+namespace TileIconifier.Custom.Chrome
 {
-    [Serializable]
-    public class UserCancellationException : Exception
+    internal class ChromeAppListViewItem : ListViewItem
     {
-    }
+        public ChromeAppListViewItem(ChromeApp chromeApp)
+        {
+            ChromeAppItem = chromeApp;
+            Text = chromeApp.AppId;
+            SubItems.Add(chromeApp.AppName);
+        }
 
-    [Serializable]
-    public class PowershellException : Exception
-    {
-    }
-
-    [Serializable]
-    public class InvalidCustomShortcutException : Exception
-    {
-    }
-
-    [Serializable]
-    public class ValidationFailureException : Exception
-    {
-    }
-
-    [Serializable]
-    public class UnableToDetectAdministratorException : Exception
-    {
-    }
-
-    //steam exceptions
-    [Serializable]
-    public class SteamExecutableNotFoundException : Exception
-    {
-    }
-
-    [Serializable]
-    public class SteamInstallationPathNotFoundException : Exception
-    {
-    }
-
-    [Serializable]
-    public class SteamLibraryPathNotFoundException : Exception
-    {
-    }
-
-    //windows store exceptions
-    public class WindowsStoreRegistryKeyNotFoundException : Exception
-    {
+        public ChromeApp ChromeAppItem { get; set; }
     }
 }

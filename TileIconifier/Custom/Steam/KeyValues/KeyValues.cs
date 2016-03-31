@@ -34,7 +34,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 
-namespace TileIconifier.Steam.KeyValues
+namespace TileIconifier.Custom.Steam.KeyValues
 {
     /// <summary>
     ///     KeyValues Class

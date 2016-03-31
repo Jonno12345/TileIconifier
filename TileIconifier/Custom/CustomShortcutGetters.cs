@@ -45,6 +45,24 @@ namespace TileIconifier.Custom
 
         public static string ExplorerPath => Environment.ExpandEnvironmentVariables(@"%SYSTEMROOT%\explorer.exe");
 
+        public static string GoogleAppLibraryPath =>
+            Environment.ExpandEnvironmentVariables(@"%localappdata%\Google\Chrome\User Data\Default\Web Applications");
+
+        public static List<string> DefaultChromeInstallationPaths =>
+            new List<string>
+            {
+                @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+                @"C:\Program Files\Google\Chrome\Application\chrome.exe"
+            };
+
+        public static List<string> ExcludedChromeAppIds =>
+            new List<string>
+            {
+                @"ahjaciijnoiaklcomgnblndopackapon",
+                @"bpficcollblmkmoofnbnfhibdhfolamm"
+            };
+
+
         public static Dictionary<string, string> ExplorerGuids { get; } = new Dictionary<string, string>
         {
             {"Action Center", "{BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}"},
@@ -170,7 +188,9 @@ namespace TileIconifier.Custom
     {
         Explorer = 0,
         Steam = 1,
-        Other = 2
+        Other = 2,
+        ChromeApp = 3,
+        WindowsStoreApp = 4
     }
 
     public enum ShortcutUser
@@ -178,5 +198,20 @@ namespace TileIconifier.Custom
         Unknown = 0,
         AllUsers = 1,
         CurrentUser = 2
+    }
+
+    public enum WindowType
+    {
+        Hidden = 0,
+        ActiveAndDisplayed = 1,
+        ActiveAndMinimized = 2,
+        ActiveAndMaximized = 3,
+        InactiveAndRecent = 4,
+        ActiveAndCurrent = 5,
+        MinimizedNextActive = 6,
+        MinimizedAndInactive = 7,
+        InactiveAndCurrent = 8,
+        ActiveAndRestore = 9,
+        BasedOnStartingProgram = 10
     }
 }

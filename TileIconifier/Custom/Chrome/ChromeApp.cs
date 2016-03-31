@@ -27,61 +27,27 @@
 
 #endregion
 
-using System;
 using System.Drawing;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Windows.Forms;
-using Microsoft.Win32;
 using TileIconifier.Properties;
 using TileIconifier.Utilities;
 
-namespace TileIconifier.Steam
+namespace TileIconifier.Custom.Chrome
 {
-    [Serializable]
-    public class SteamGame : ListViewItem
+    public class ChromeApp
     {
-        private string _iconPath;
+        public string IconPath { get; set; }
+        public string AppId { get; set; }
+        public string AppName { get; set; }
 
-        protected SteamGame(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
-
-        public SteamGame(string appId, string gameName, string appManifestPath)
-        {
-            AppId = appId;
-            GameName = gameName;
-            AppManifestPath = appManifestPath;
-            Text = AppId;
-            SubItems.Add(GameName);
-        }
-
-        public string AppId { get; }
-        public string GameName { get; }
-        public string AppManifestPath { get; private set; }
-
-        public string IconPath
-        {
-            get
-            {
-                if (_iconPath != null) return _iconPath;
-                var defaultRegistryKey =
-                    $@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {
-                        AppId}";
-                var defaultRegistryKey32BitOs =
-                    $@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App {AppId}";
-
-                _iconPath = (string) Registry.GetValue(defaultRegistryKey, "DisplayIcon", null) ??
-                            (string) Registry.GetValue(defaultRegistryKey32BitOs, "DisplayIcon", null);
-                return _iconPath;
-            }
-        }
+        public string ChromeAppExecutionArgument =>
+            $@"--profile-directory=Default --app-id={AppId}";
 
         public byte[] IconAsBytes
         {
             get
             {
-                if (IconPath == null) return ImageUtils.ImageToByteArray(Resources.SteamIco.ToBitmap());
+                if (IconPath == null) return ImageUtils.ImageToByteArray(Resources.Google_Chrome_icon);
 
                 try
                 {
@@ -92,15 +58,8 @@ namespace TileIconifier.Steam
                 {
                     // ignored
                 }
-                return ImageUtils.ImageToByteArray(Resources.SteamIco.ToBitmap());
+                return ImageUtils.ImageToByteArray(Resources.Google_Chrome_icon);
             }
-        }
-
-        public string GameExecutionArgument => $"-applaunch \"{AppId}\"";
-
-        public override string ToString()
-        {
-            return AppId;
         }
     }
 }

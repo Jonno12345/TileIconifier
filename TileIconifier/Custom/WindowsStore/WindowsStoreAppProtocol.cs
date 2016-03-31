@@ -27,53 +27,16 @@
 
 #endregion
 
-using System;
+using TileIconifier.Utilities;
 
-namespace TileIconifier
+namespace TileIconifier.Custom.WindowsStore
 {
-    [Serializable]
-    public class UserCancellationException : Exception
+    public class WindowsStoreAppProtocol
     {
-    }
+        public string ProtocolId { get; set; }
+        public string DisplayName { get; set; }
+        public string LogoPath { get; set; }
 
-    [Serializable]
-    public class PowershellException : Exception
-    {
-    }
-
-    [Serializable]
-    public class InvalidCustomShortcutException : Exception
-    {
-    }
-
-    [Serializable]
-    public class ValidationFailureException : Exception
-    {
-    }
-
-    [Serializable]
-    public class UnableToDetectAdministratorException : Exception
-    {
-    }
-
-    //steam exceptions
-    [Serializable]
-    public class SteamExecutableNotFoundException : Exception
-    {
-    }
-
-    [Serializable]
-    public class SteamInstallationPathNotFoundException : Exception
-    {
-    }
-
-    [Serializable]
-    public class SteamLibraryPathNotFoundException : Exception
-    {
-    }
-
-    //windows store exceptions
-    public class WindowsStoreRegistryKeyNotFoundException : Exception
-    {
+        public byte[] LogoBytes => !string.IsNullOrEmpty(LogoPath) ? ImageUtils.LoadFileToByteArray(LogoPath) : null;
     }
 }

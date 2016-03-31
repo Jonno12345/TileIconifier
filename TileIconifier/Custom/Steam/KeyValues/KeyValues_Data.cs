@@ -29,7 +29,7 @@
 
 using System;
 
-namespace TileIconifier.Steam.KeyValues
+namespace TileIconifier.Custom.Steam.KeyValues
 {
     /// <summary>
     ///     'Key' 'Value' Data
@@ -85,7 +85,7 @@ namespace TileIconifier.Steam.KeyValues
         ///     Gets or Sets the KeyValues Parent for that Key.
         ///     return null if there are no Parent.
         /// </summary>
-        public KeyValues Parent;
+        public Custom.Steam.KeyValues.KeyValues Parent;
 
         public object Tag { get; set; }
 
@@ -93,7 +93,7 @@ namespace TileIconifier.Steam.KeyValues
 
         #region Constructors
 
-        public KeyValuesData(string key, string value, string comment, KeyValues parent)
+        public KeyValuesData(string key, string value, string comment, Custom.Steam.KeyValues.KeyValues parent)
         {
             Tag = null;
             Key = key;

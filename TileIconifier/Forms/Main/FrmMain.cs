@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using TileIconifier.Controls.PannablePictureBox;
+using TileIconifier.Custom.WindowsStore;
 using TileIconifier.Forms.CustomShortcutForms;
 using TileIconifier.Shortcut;
 using TileIconifier.Shortcut.Controls;
@@ -137,7 +138,7 @@ namespace TileIconifier.Forms
             if (srtlstShortcuts.SelectedItems.Count != 1)
                 return;
 
-            _currentShortcutListViewItem = (ShortcutItemListViewItem)srtlstShortcuts.SelectedItems[0];
+            _currentShortcutListViewItem = (ShortcutItemListViewItem) srtlstShortcuts.SelectedItems[0];
             UpdateControlsToShortcut();
         }
 
@@ -221,7 +222,7 @@ namespace TileIconifier.Forms
 
         private void PanPctMediumIcon_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
         {
-            var item = (PannablePictureBoxImage)sender;
+            var item = (PannablePictureBoxImage) sender;
             _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.MediumImage.X = item.X;
             _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.MediumImage.Y = item.Y;
             _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.MediumImage.Width = item.Width;
@@ -232,7 +233,7 @@ namespace TileIconifier.Forms
 
         private void PanPctSmallIcon_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
         {
-            var item = (PannablePictureBoxImage)sender;
+            var item = (PannablePictureBoxImage) sender;
             _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.SmallImage.X = item.X;
             _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.SmallImage.Y = item.Y;
             _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.SmallImage.Width = item.Width;
@@ -308,7 +309,7 @@ namespace TileIconifier.Forms
 
         private void panPctMediumIcon_Click(object sender, EventArgs e)
         {
-            if (((MouseEventArgs)e).Button != MouseButtons.Right)
+            if (((MouseEventArgs) e).Button != MouseButtons.Right)
                 return;
 
             var contextMenu = new ContextMenu();
@@ -318,7 +319,7 @@ namespace TileIconifier.Forms
             menuItem = new MenuItem("Center image",
                 (o, args) => { panPctMediumIcon.CenterImage(); });
             contextMenu.MenuItems.Add(menuItem);
-            contextMenu.Show(panPctMediumIcon, ((MouseEventArgs)e).Location);
+            contextMenu.Show(panPctMediumIcon, ((MouseEventArgs) e).Location);
         }
 
         private void panPctMediumIcon_DoubleClick(object sender, EventArgs e)
@@ -329,7 +330,7 @@ namespace TileIconifier.Forms
 
         private void panPctSmallIcon_Click(object sender, EventArgs e)
         {
-            if (((MouseEventArgs)e).Button != MouseButtons.Right)
+            if (((MouseEventArgs) e).Button != MouseButtons.Right)
                 return;
 
             var contextMenu = new ContextMenu();
@@ -339,12 +340,18 @@ namespace TileIconifier.Forms
             menuItem = new MenuItem("Center image",
                 (o, args) => { panPctSmallIcon.CenterImage(); });
             contextMenu.MenuItems.Add(menuItem);
-            contextMenu.Show(panPctSmallIcon, ((MouseEventArgs)e).Location);
+            contextMenu.Show(panPctSmallIcon, ((MouseEventArgs) e).Location);
         }
 
         private void panPctSmallIcon_DoubleClick(object sender, EventArgs e)
         {
             SmallIconSet();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var x = WindowsStoreLibrary.GetAppKeysFromRegistry();
+            Console.WriteLine();
         }
     }
 }

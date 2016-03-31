@@ -50,14 +50,15 @@ namespace TileIconifier.Custom
 
         public Image GetIcon()
         {
-            var iconBytesChanged = _currentIconBytes != null && _newIconBytes != null &&
-                                   !_newIconBytes.SequenceEqual(_currentIconBytes);
-            if (_iconCache == null || iconBytesChanged)
-            {
-                _currentIconBytes = _newIconBytes?.ToArray();
-                _iconCache?.Dispose();
-                _iconCache = ImageUtils.ByteArrayToImage(_currentIconBytes);
-            }
+            var iconBytesChanged = (_currentIconBytes != null && _newIconBytes != null &&
+                                    !_currentIconBytes.SequenceEqual(_newIconBytes)) ||
+                                   _currentIconBytes != null && _newIconBytes == null;
+
+            if (_iconCache != null && !iconBytesChanged) return _iconCache;
+
+            _currentIconBytes = _newIconBytes?.ToArray();
+            _iconCache?.Dispose();
+            _iconCache = ImageUtils.ByteArrayToImage(_currentIconBytes);
             return _iconCache;
         }
     }

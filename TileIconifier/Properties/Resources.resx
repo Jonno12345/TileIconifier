@@ -136,10 +136,13 @@ targetPath = "{2}"
 targetArguments = "{3}"
 
 Set WshShell = WScript.CreateObject("WScript.Shell")
-WshShell.Run targetPath &amp; " " &amp; targetArguments, 1</value>
+WshShell.Run targetPath &amp; " " &amp; targetArguments, {5}</value>
   </data>
   <data name="ExplorerIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\explorer_ICO_MYCOMPUTER.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Google_Chrome_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Google-Chrome-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="OpenComparisonResult_9697" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\OpenComparisonResult_9697.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

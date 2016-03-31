@@ -85,7 +85,7 @@ namespace TileIconifier.Properties {
         ///targetArguments = &quot;{3}&quot;
         ///
         ///Set WshShell = WScript.CreateObject(&quot;WScript.Shell&quot;)
-        ///WshShell.Run targetPath &amp; &quot; &quot; &amp; targetArguments, 1.
+        ///WshShell.Run targetPath &amp; &quot; &quot; &amp; targetArguments, {5}.
         /// </summary>
         internal static string CustomShortcutVbsTemplate {
             get {
@@ -100,6 +100,16 @@ namespace TileIconifier.Properties {
             get {
                 object obj = ResourceManager.GetObject("ExplorerIco", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Google_Chrome_icon {
+            get {
+                object obj = ResourceManager.GetObject("Google_Chrome_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
