@@ -66,15 +66,15 @@ namespace TileIconifier.Custom.Chrome
             return (from chromeAppDir in new DirectoryInfo(appLibraryPath).GetDirectories()
                 let chromeAppId =
                     Regex.Match(chromeAppDir.Name, @"_crx_([a-zA-Z0-9]{32})", RegexOptions.None).Groups[1].Value
-                let chromeIconPath = chromeAppDir.GetFiles(@"*.ico").SingleOrDefault()
+                let chromeIconPaths = chromeAppDir.GetFiles(@"*.ico")
+                from chromeIconPath in chromeIconPaths
                 where chromeIconPath != null && CustomShortcutGetters.ExcludedChromeAppIds.All(s => s != chromeAppId)
-                select
-                    new ChromeApp
-                    {
-                        AppId = chromeAppId,
-                        AppName = Path.GetFileNameWithoutExtension(chromeIconPath.Name),
-                        IconPath = chromeIconPath.FullName
-                    }).ToList();
+                select new ChromeApp
+                {
+                    AppId = chromeAppId,
+                    AppName = Path.GetFileNameWithoutExtension(chromeIconPath.Name),
+                    IconPath = chromeIconPath.FullName
+                }).ToList();
         }
     }
 }

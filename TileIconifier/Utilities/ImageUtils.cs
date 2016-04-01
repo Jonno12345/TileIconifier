@@ -166,10 +166,21 @@ namespace TileIconifier.Utilities
         {
             var newSize = GetScaledWidthAndHeight(image.Width, image.Height, maxWidth, maxHeight);
 
+            //resize the image to the specified height and width
+
             var newImage = new Bitmap(newSize.Width, newSize.Height);
 
             using (var graphics = Graphics.FromImage(newImage))
-                graphics.DrawImage(image, 0, 0, newSize.Width, newSize.Height);
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                //draw the image into the target bitmap
+                graphics.DrawImage(image, 0, 0, newImage.Width, newImage.Height);
+            }
 
             return newImage;
         }

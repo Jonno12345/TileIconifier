@@ -29,6 +29,7 @@
 
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Xml.Linq;
@@ -129,6 +130,11 @@ namespace TileIconifier.TileIconify
 
                 using (var graphics = Graphics.FromImage(outputBitmap))
                 {
+                    graphics.CompositingMode = CompositingMode.SourceCopy;
+                    graphics.CompositingQuality = CompositingQuality.HighQuality;
+                    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    graphics.SmoothingMode = SmoothingMode.HighQuality;
+                    graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
                     graphics.DrawImage(tempImage,
                         new PointF(imageX, imageY));
                 }

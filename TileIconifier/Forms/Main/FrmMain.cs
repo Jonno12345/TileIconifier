@@ -257,7 +257,7 @@ namespace TileIconifier.Forms
                         MessageBoxDefaultButton.Button1) == DialogResult.Yes
                         )
                     {
-                        Process.Start("https://github.com/Jonno12345/TileIconifier");
+                        Process.Start("https://github.com/Jonno12345/TileIconifier/releases");
                     }
                 }
                 else
@@ -267,13 +267,16 @@ namespace TileIconifier.Forms
             }
             catch
             {
-                MessageBox.Show(
+                if (MessageBox.Show(
                     $@"An error occurred getting latest release information. Click Ok to visit the latest releases page to check manually. (Your version: {
                         UpdateUtils
                             .CurrentVersion})",
                     @"Unable to check server!",
                     MessageBoxButtons.OKCancel,
-                    MessageBoxIcon.Exclamation);
+                    MessageBoxIcon.Exclamation) == DialogResult.OK)
+                {
+                    Process.Start("https://github.com/Jonno12345/TileIconifier/releases");
+                }
             }
         }
 
