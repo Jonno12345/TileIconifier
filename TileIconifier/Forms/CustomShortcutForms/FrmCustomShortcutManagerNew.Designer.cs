@@ -406,6 +406,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(342, 9);
             this.label1.MaximumSize = new System.Drawing.Size(275, 0);
@@ -417,6 +418,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // cmbWindowsStoreAppProtocols
             // 
+            this.cmbWindowsStoreAppProtocols.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbWindowsStoreAppProtocols.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWindowsStoreAppProtocols.FormattingEnabled = true;
             this.cmbWindowsStoreAppProtocols.Location = new System.Drawing.Point(345, 51);
@@ -601,6 +603,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.MinimumSize = new System.Drawing.Size(668, 409);
             this.Name = "FrmCustomShortcutManagerNew";
             this.Text = "New Custom Shortcut";
+            this.Load += new System.EventHandler(this.FrmCustomShortcutManagerNew_Load);
             this.tabShortcutType.ResumeLayout(false);
             this.tabExplorer.ResumeLayout(false);
             this.pnlExplorer.ResumeLayout(false);

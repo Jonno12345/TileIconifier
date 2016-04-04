@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -97,48 +98,60 @@ namespace TileIconifier.Custom.WindowsStore
             //this is a somewhat hit and miss method... get the highest resolution icon with the file name and in the folder specified.
             //TODO: improve this...
 
-            var iconPathRegex = Regex.Match(iconTag, @"@{(.*)\?ms-resource://.*/Files/(.*)}");
+            var iconPathRegex = Regex.Match(iconTag, @"@{(.*?\..*?)_.*\?ms-resource://.*/Files/(.*)}");
             var iconPath = string.Empty;
             if (!iconPathRegex.Success) return iconPath;
 
-            var tempFileInfo = new FileInfo(Environment.ExpandEnvironmentVariables(
-                $@"%PROGRAMFILES%\WindowsApps\{iconPathRegex.Groups[1].Value}\{
-                    iconPathRegex.Groups[2].Value.Replace("/", "\\")}"));
-            var logoDirectoryInfo = tempFileInfo.Directory;
-            var imageNameWithoutExtension = Path.GetFileNameWithoutExtension(tempFileInfo.Name);
-
-            if (logoDirectoryInfo != null && !logoDirectoryInfo.Exists)
-                return string.Empty;
-
-            var matchingLogoFiles = logoDirectoryInfo?.GetFiles($@"{imageNameWithoutExtension}*");
-
-            FileInfo largestLogo = null;
-            if (matchingLogoFiles == null) return string.Empty;
-            foreach (var logoFile in matchingLogoFiles)
+            Func<string, string> getLogoPath = p =>
             {
-                try
-                {
-                    var image = ImageUtils.LoadFileToBitmap(logoFile.FullName);
-                    if (largestLogo == null)
+                var folderPaths = new DirectoryInfo(Environment.ExpandEnvironmentVariables(
+                    $@"{p}")).GetDirectories($@"{iconPathRegex.Groups[1].Value}*");
 
-                    {
-                        largestLogo = logoFile;
-                    }
-                    else
-                    {
-                        var currentLargestLogo = ImageUtils.LoadFileToBitmap(largestLogo.FullName);
-                        if (image.Width*image.Height > currentLargestLogo.Width*currentLargestLogo.Height)
-                            largestLogo = logoFile;
-                        currentLargestLogo.Dispose();
-                    }
-                    image.Dispose();
-                }
-                catch
+                var imageNameWithoutExtension = Path.GetFileNameWithoutExtension(iconPathRegex.Groups[2].Value);
+
+                if (folderPaths.Length == 0)
+                    return string.Empty;
+
+                FileInfo largestLogoPath = null;
+                Image largestLogoImage = null;
+
+                foreach (var matchingLogoFiles in folderPaths.Select(folderPath => folderPath?.GetFiles($@"{imageNameWithoutExtension}*",
+                    SearchOption.AllDirectories)))
                 {
-                    // ignore
+                    if (matchingLogoFiles == null) return string.Empty;
+                    foreach (var logoFile in matchingLogoFiles)
+                    {
+                        try
+                        {
+                            var image = ImageUtils.LoadFileToBitmap(logoFile.FullName);
+                            if (largestLogoPath == null)
+                            {
+                                largestLogoPath = logoFile;
+                                largestLogoImage = (Image)image.Clone();
+                            }
+                            else
+                            {
+                                if (image.Width*image.Height > largestLogoImage?.Width*largestLogoImage?.Height)
+                                {
+                                    largestLogoPath = logoFile;
+                                    largestLogoImage.Dispose();
+                                    largestLogoImage = (Image) image.Clone();
+                                }
+                            }
+                            image.Dispose();
+                        }
+                        catch
+                        {
+                            // ignore
+                        }
+                    }
                 }
-            }
-            return largestLogo?.FullName ?? string.Empty;
+                largestLogoImage?.Dispose();
+                return largestLogoPath?.FullName ?? string.Empty;
+            };
+
+            var logoPath = getLogoPath(@"%PROGRAMFILES%\WindowsApps\");
+            return string.IsNullOrEmpty(logoPath) ? getLogoPath(@"%SYSTEMROOT%\SystemApps\") : logoPath;
         }
 
         private static string GetDisplayName(string displayName)

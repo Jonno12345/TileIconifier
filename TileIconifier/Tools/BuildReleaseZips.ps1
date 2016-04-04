@@ -12,8 +12,8 @@ function CopyRequiredFiles( $sourceFolder, $destinationFolder)
 	}
 	New-Item -Force -ItemType directory -Path $destinationFolder
 	Copy-Item ($sourceFolder + "TileIconifier.exe") $destinationFolder
-	Copy-Item ($sourceFolder + "System.Management.Automation.dll") $destinationFolder
-	Copy-Item ($sourceFolder + "Octokit.dll") $destinationFolder
+	# Copy-Item ($sourceFolder + "System.Management.Automation.dll") $destinationFolder
+	# Copy-Item ($sourceFolder + "Octokit.dll") $destinationFolder
 }
 
 function BuildReleaseZipFiles($sourceFolder, $destinationFolder, $zipFilePath)

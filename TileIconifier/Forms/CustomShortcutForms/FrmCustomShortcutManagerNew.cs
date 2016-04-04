@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -94,6 +95,15 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             InitializeComponent();
             _previousTabPage = tabShortcutType.SelectedTab;
+        }
+
+        private void FrmCustomShortcutManagerNew_Load(object sender, EventArgs e)
+        {
+            FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, "Loading");
+        }
+
+        private void FullUpdate(object sender, DoWorkEventArgs e)
+        {
             SetUpExplorer();
             SetUpSteam();
             SetUpChrome();
@@ -293,13 +303,17 @@ namespace TileIconifier.Forms.CustomShortcutForms
         // EXPLORER RELATED METHODS
         //*********************************************************************
 
+        //TODO - Explorer stuff to it's own class
         private void SetUpExplorer()
         {
-            cmbExplorerGuids.DisplayMember = "Key";
-            cmbExplorerGuids.ValueMember = "Value";
-            cmbExplorerGuids.DataSource = new BindingSource(CustomShortcutGetters.ExplorerGuids, null);
-            CurrentCache.SetIconBytes(ImageUtils.ImageToByteArray(Resources.ExplorerIco.ToBitmap()));
-            pctCurrentIcon.Image = CurrentCache.GetIcon();
+            Invoke(new Action(() =>
+            {
+                cmbExplorerGuids.DisplayMember = "Key";
+                cmbExplorerGuids.ValueMember = "Value";
+                cmbExplorerGuids.DataSource = new BindingSource(CustomShortcutGetters.ExplorerGuids, null);
+                CurrentCache.SetIconBytes(ImageUtils.ImageToByteArray(Resources.ExplorerIco.ToBitmap()));
+                pctCurrentIcon.Image = CurrentCache.GetIcon();
+            }));
         }
 
         private void radSpecialFolder_CheckedChanged(object sender, EventArgs e)

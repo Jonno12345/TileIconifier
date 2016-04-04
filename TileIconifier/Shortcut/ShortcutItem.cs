@@ -136,7 +136,7 @@ namespace TileIconifier.Shortcut
             return _smallImageCache;
         }
 
-        #region Path properties
+                #region Path properties
 
         private string _targetFilePath;
 
@@ -185,6 +185,6 @@ namespace TileIconifier.Shortcut
         public string SmallImageResizeMetadataPath
             => $"{VisualElementsPath}{Path.GetFileNameWithoutExtension(SmallIconName)}_Metadata.xml";
 
-        #endregion
+                #endregion
     }
 }
