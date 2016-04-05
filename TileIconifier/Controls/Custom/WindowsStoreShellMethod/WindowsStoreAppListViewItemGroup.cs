@@ -27,20 +27,27 @@
 
 #endregion
 
+using System;
+using System.Runtime.Serialization;
 using System.Windows.Forms;
-using TileIconifier.Core.Custom.Chrome;
+using TileIconifier.Core.Custom.WindowsStoreShellMethod;
 
-namespace TileIconifier.Controls.Custom.Chrome
+namespace TileIconifier.Controls.Custom.WindowsStoreShellMethod
 {
-    internal class ChromeAppListViewItem : ListViewItem
+    [Serializable]
+    public class WindowsStoreAppListViewItemGroup : ListViewItem
     {
-        public ChromeAppListViewItem(ChromeApp chromeApp)
+        protected WindowsStoreAppListViewItemGroup(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
-            ChromeAppItem = chromeApp;
-            Text = chromeApp.AppId;
-            SubItems.Add(chromeApp.AppName);
         }
 
-        public ChromeApp ChromeAppItem { get; set; }
+        public WindowsStoreAppListViewItemGroup(WindowsStoreApp windowsStoreApp)
+        {
+            WindowsStoreApp = windowsStoreApp;
+            Text = windowsStoreApp.DisplayName;
+        }
+
+        public WindowsStoreApp WindowsStoreApp { get; }
     }
 }

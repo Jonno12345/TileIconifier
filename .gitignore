@@ -58,3 +58,6 @@ packages
 TileIconifier/bin/
 TileIconifier/obj/
 TileIconifier/Releases/
+TileIconifier.Core/bin/
+TileIconifier.Core/obj/
+*.pdb

@@ -36,7 +36,7 @@ namespace TileIconifier.Core.Utilities
 {
     public static class UpdateUtils
     {
-        public static GitHubClient Client { get; } = new GitHubClient(new ProductHeaderValue("TileIconify"));
+        public static GitHubClient Client { get; } = new GitHubClient(new ProductHeaderValue("TileIconifier"));
 
         public static string CurrentVersion => Assembly.GetExecutingAssembly()
             .GetName()
@@ -53,7 +53,7 @@ namespace TileIconifier.Core.Utilities
                 LatestVersion = ""
             };
 
-            var releases = await Client.Repository.Release.GetAll("Jonno12345", "TileIconify");
+            var releases = await Client.Repository.Release.GetAll("Jonno12345", "TileIconifier");
             var latestRelease = releases[0];
             updateDetails.LatestVersion = Regex.Replace(latestRelease.TagName, @"[^0-9\.]", "");
             updateDetails.UpdateAvailable = LatestIsNewerThanCurrent(CurrentVersion, updateDetails.LatestVersion);

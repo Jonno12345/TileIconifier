@@ -30,7 +30,7 @@
 using System.Windows.Forms;
 using TileIconifier.Core.Custom;
 
-namespace TileIconifier.Custom
+namespace TileIconifier.Controls.Custom
 {
     internal class CustomShortcutListViewItem : ListViewItem
     {

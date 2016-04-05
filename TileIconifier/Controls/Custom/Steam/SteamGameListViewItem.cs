@@ -30,7 +30,7 @@
 using System.Windows.Forms;
 using TileIconifier.Core.Custom.Steam;
 
-namespace TileIconifier.Custom.Steam
+namespace TileIconifier.Controls.Custom.Steam
 {
     internal class SteamGameListViewItem : ListViewItem
     {

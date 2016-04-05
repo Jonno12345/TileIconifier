@@ -31,7 +31,7 @@ using System.IO;
 using System.Windows.Forms;
 using TileIconifier.Core.Shortcut;
 
-namespace TileIconifier.Shortcut.Controls
+namespace TileIconifier.Controls.Shortcut
 {
     internal class ShortcutItemListViewItem : ListViewItem
     {

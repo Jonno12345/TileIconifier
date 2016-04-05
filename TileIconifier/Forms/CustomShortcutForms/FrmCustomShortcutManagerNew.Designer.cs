@@ -53,8 +53,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.btnChromeExePathChange = new System.Windows.Forms.Button();
             this.txtChromeExePath = new System.Windows.Forms.TextBox();
             this.tabWindowsStore = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbWindowsStoreAppProtocols = new System.Windows.Forms.ComboBox();
             this.lstWindowsStoreApps = new TileIconifier.Controls.SortableListView();
             this.tabOther = new System.Windows.Forms.TabPage();
             this.lblOtherShortcutArguments = new System.Windows.Forms.Label();
@@ -394,8 +392,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabWindowsStore
             // 
-            this.tabWindowsStore.Controls.Add(this.label1);
-            this.tabWindowsStore.Controls.Add(this.cmbWindowsStoreAppProtocols);
             this.tabWindowsStore.Controls.Add(this.lstWindowsStoreApps);
             this.tabWindowsStore.Location = new System.Drawing.Point(4, 22);
             this.tabWindowsStore.Name = "tabWindowsStore";
@@ -403,29 +399,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabWindowsStore.TabIndex = 4;
             this.tabWindowsStore.Text = "Windows Store";
             this.tabWindowsStore.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(342, 9);
-            this.label1.MaximumSize = new System.Drawing.Size(275, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(269, 39);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Protocol:\r\n(Some of these behave differently with some apps. You may need to try " +
-    "and find one that works as you expect)";
-            // 
-            // cmbWindowsStoreAppProtocols
-            // 
-            this.cmbWindowsStoreAppProtocols.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbWindowsStoreAppProtocols.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbWindowsStoreAppProtocols.FormattingEnabled = true;
-            this.cmbWindowsStoreAppProtocols.Location = new System.Drawing.Point(345, 51);
-            this.cmbWindowsStoreAppProtocols.Name = "cmbWindowsStoreAppProtocols";
-            this.cmbWindowsStoreAppProtocols.Size = new System.Drawing.Size(270, 21);
-            this.cmbWindowsStoreAppProtocols.TabIndex = 3;
-            this.cmbWindowsStoreAppProtocols.SelectedIndexChanged += new System.EventHandler(this.cmbWindowsStoreAppProtocols_SelectedIndexChanged);
             // 
             // lstWindowsStoreApps
             // 
@@ -436,7 +409,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.lstWindowsStoreApps.Location = new System.Drawing.Point(7, 9);
             this.lstWindowsStoreApps.MultiSelect = false;
             this.lstWindowsStoreApps.Name = "lstWindowsStoreApps";
-            this.lstWindowsStoreApps.Size = new System.Drawing.Size(332, 226);
+            this.lstWindowsStoreApps.Size = new System.Drawing.Size(608, 226);
             this.lstWindowsStoreApps.TabIndex = 2;
             this.lstWindowsStoreApps.UseCompatibleStateImageBehavior = false;
             this.lstWindowsStoreApps.View = System.Windows.Forms.View.Details;
@@ -613,7 +586,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabChromeApps.ResumeLayout(false);
             this.tabChromeApps.PerformLayout();
             this.tabWindowsStore.ResumeLayout(false);
-            this.tabWindowsStore.PerformLayout();
             this.tabOther.ResumeLayout(false);
             this.tabOther.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctCurrentIcon)).EndInit();
@@ -663,8 +635,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private SortableListView lstChromeAppItems;
         private System.Windows.Forms.TabPage tabWindowsStore;
         private SortableListView lstWindowsStoreApps;
-        private System.Windows.Forms.ComboBox cmbWindowsStoreAppProtocols;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog opnChromeExe;
     }
 }

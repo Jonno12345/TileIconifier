@@ -61,9 +61,11 @@
     <Compile Include="Custom\Steam\KeyValues\Utils.cs" />
     <Compile Include="Custom\Steam\SteamGame.cs" />
     <Compile Include="Custom\Steam\SteamLibrary.cs" />
-    <Compile Include="Custom\WindowsStore\WindowsStoreApp.cs" />
-    <Compile Include="Custom\WindowsStore\WindowsStoreAppProtocol.cs" />
-    <Compile Include="Custom\WindowsStore\WindowsStoreLibrary.cs" />
+    <Compile Include="Custom\WindowsStoreShellMethod\WindowsStoreApp.cs" />
+    <Compile Include="Custom\WindowsStoreShellMethod\WindowsStoreLibrary.cs" />
+    <None Include="Custom\WindowsStorePREVIOUSProtocolMethod\WindowsStoreApp.cs" />
+    <None Include="Custom\WindowsStorePREVIOUSProtocolMethod\WindowsStoreAppProtocol.cs" />
+    <None Include="Custom\WindowsStorePREVIOUSProtocolMethod\WindowsStoreLibrary.cs" />
     <Compile Include="IconExtractor\IconExtractor.cs" />
     <Compile Include="IconExtractor\IconUtil.cs" />
     <Compile Include="IconExtractor\NativeMethods.cs" />

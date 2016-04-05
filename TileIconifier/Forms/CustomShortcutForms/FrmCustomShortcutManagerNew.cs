@@ -33,21 +33,22 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using TileIconifier.Controls.Custom.Chrome;
+using TileIconifier.Controls.Custom.Steam;
+using TileIconifier.Controls.Custom.WindowsStoreShellMethod;
 using TileIconifier.Core;
 using TileIconifier.Core.Custom;
 using TileIconifier.Core.Custom.Chrome;
 using TileIconifier.Core.Custom.Steam;
-using TileIconifier.Core.Custom.WindowsStore;
+using TileIconifier.Core.Custom.WindowsStoreShellMethod;
 using TileIconifier.Core.IconExtractor;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.TileIconify;
 using TileIconifier.Core.Utilities;
-using TileIconifier.Custom.Chrome;
-using TileIconifier.Custom.Steam;
-using TileIconifier.Custom.WindowsStore.Controls;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
 using TileIconifier.Utilities;
+using WindowsStoreAppListViewItemGroup = TileIconifier.Controls.Custom.WindowsStoreShellMethod.WindowsStoreAppListViewItemGroup;
 
 namespace TileIconifier.Forms.CustomShortcutForms
 {
@@ -58,6 +59,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
         //*********************************************************************
 
         private readonly NewCustomShortcutFormCache _chromeCache = new NewCustomShortcutFormCache();
+        private List<ChromeAppListViewItem> _chromeApps;
+
         //*********************************************************************
         // EXPLORER RELATED FIELDS
         //*********************************************************************
@@ -75,21 +78,20 @@ namespace TileIconifier.Forms.CustomShortcutForms
         //*********************************************************************
 
         private readonly NewCustomShortcutFormCache _steamCache = new NewCustomShortcutFormCache();
+        private List<SteamGameListViewItem> _steamGames;
 
         //*********************************************************************
         // WINDOWS STORE RELATED FIELDS
         //*********************************************************************
 
         private readonly NewCustomShortcutFormCache _windowsStoreCache = new NewCustomShortcutFormCache();
-        private List<ChromeAppListViewItem> _chromeApps;
+        private List<WindowsStoreAppListViewItemGroup> _windowsStoreApps;
 
         //*********************************************************************
         // GENERAL FIELDS
         //*********************************************************************
 
         private TabPage _previousTabPage;
-        private List<SteamGameListViewItem> _steamGames;
-        private List<WindowsStoreAppListViewItemGroup> _windowsStoreApps;
 
 
         //*********************************************************************
@@ -141,6 +143,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void FrmCustomShortcutManagerNew_Load(object sender, EventArgs e)
         {
+            Show();
             FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, "Loading");
         }
 
@@ -614,16 +617,19 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             _windowsStoreApps = new List<WindowsStoreAppListViewItemGroup>();
             var windowsStoreApps = WindowsStoreLibrary.GetAppKeysFromRegistry();
-            var allGroupedWindowsStoreApps =
-                windowsStoreApps.Select(s => s.StoreAppProtocols.GroupBy(p => p.DisplayName).ToList()).ToList();
 
-            foreach (
-                var windowsStoreAppProtocols in
-                    allGroupedWindowsStoreApps.SelectMany(groupedWindowsStoreApps => groupedWindowsStoreApps))
+            foreach (var windowsStoreApp in windowsStoreApps)
             {
-                _windowsStoreApps.Add(new WindowsStoreAppListViewItemGroup(windowsStoreAppProtocols.Key,
-                    windowsStoreAppProtocols.ToList()));
+                _windowsStoreApps.Add(new WindowsStoreAppListViewItemGroup(windowsStoreApp));
             }
+
+            //foreach (
+            //    var windowsStoreAppProtocols in
+            //        allGroupedWindowsStoreApps.SelectMany(groupedWindowsStoreApps => groupedWindowsStoreApps))
+            //{
+            //    _windowsStoreApps.Add(new WindowsStoreAppListViewItemGroup(windowsStoreAppProtocols.Key,
+            //        windowsStoreAppProtocols.ToList()));
+            //}
         }
 
         private void SetUpWindowsStoreListView()
@@ -639,39 +645,22 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private void lstWindowsStoreApps_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstWindowsStoreApps.SelectedItems.Count == 0) return;
-            cmbWindowsStoreAppProtocols.Items.Clear();
 
             var windowsStoreAppListViewItem = (WindowsStoreAppListViewItemGroup) lstWindowsStoreApps.SelectedItems[0];
 
             txtShortcutName.Text = windowsStoreAppListViewItem.Text;
-
-            foreach (var protocolItem in windowsStoreAppListViewItem.WindowsStoreAppProtocols)
-            {
-                cmbWindowsStoreAppProtocols.Items.Add(new WindowsStoreAppProtocolComboListItem(protocolItem));
-            }
-            cmbWindowsStoreAppProtocols.SelectedIndex = 0;
-        }
-
-        private void cmbWindowsStoreAppProtocols_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbWindowsStoreAppProtocols.SelectedItem == null)
-                return;
-            var selectedProtocol =
-                ((WindowsStoreAppProtocolComboListItem) cmbWindowsStoreAppProtocols.SelectedItem)
-                    .WindowsStoreAppProtocol;
-            UpdatedCacheIcon(selectedProtocol.LogoBytes);
+            UpdatedCacheIcon(ImageUtils.LoadFileToByteArray(windowsStoreAppListViewItem.WindowsStoreApp.LogoPath));
         }
 
         private void GenerateWindowsStoreAppShortcut()
         {
-            if (cmbWindowsStoreAppProtocols.SelectedItem == null)
+            if (lstWindowsStoreApps.SelectedItems.Count == 0)
                 return;
-            var selectedProtocol =
-                ((WindowsStoreAppProtocolComboListItem) cmbWindowsStoreAppProtocols.SelectedItem)
-                    .WindowsStoreAppProtocol;
 
-            GenerateFullShortcut("cmd", $@"/c start {selectedProtocol.ProtocolId}:", CustomShortcutType.WindowsStoreApp,
-                selectedProtocol.LogoPath, windowType: WindowType.Hidden);
+            var selectedItem = (WindowsStoreAppListViewItemGroup) lstWindowsStoreApps.SelectedItems[0];
+
+            GenerateFullShortcut("explorer.exe", $@"shell:AppsFolder\{selectedItem.WindowsStoreApp.AppUserModelId}", CustomShortcutType.WindowsStoreApp,
+                selectedItem.WindowsStoreApp.LogoPath, windowType: WindowType.Hidden);
         }
 
         //*********************************************************************

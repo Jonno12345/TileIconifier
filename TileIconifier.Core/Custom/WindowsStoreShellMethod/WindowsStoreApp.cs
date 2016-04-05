@@ -27,20 +27,42 @@
 
 #endregion
 
-using System.Windows.Forms;
-using TileIconifier.Core.Custom.Chrome;
+using System.Collections.Generic;
 
-namespace TileIconifier.Controls.Custom.Chrome
+namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
 {
-    internal class ChromeAppListViewItem : ListViewItem
+    public class WindowsStoreApp :IEqualityComparer<WindowsStoreApp>
     {
-        public ChromeAppListViewItem(ChromeApp chromeApp)
+        public WindowsStoreApp(string displayName, string logoPath, string appUserModelId)
         {
-            ChromeAppItem = chromeApp;
-            Text = chromeApp.AppId;
-            SubItems.Add(chromeApp.AppName);
+            DisplayName = displayName;
+            LogoPath = logoPath;
+            AppUserModelId = appUserModelId;
         }
 
-        public ChromeApp ChromeAppItem { get; set; }
+        public string DisplayName { get; }
+        public string LogoPath { get; }
+        public string AppUserModelId { get; }
+
+        public bool Equals(WindowsStoreApp x, WindowsStoreApp y)
+        {
+            if (x == null || y == null)
+                return false;
+
+            if (ReferenceEquals(x, y))
+                return true;
+
+            if (x == y)
+                return true;
+
+            return x.DisplayName == y.DisplayName &&
+                   x.LogoPath == y.LogoPath &&
+                   x.AppUserModelId == y.AppUserModelId;
+        }
+
+        public int GetHashCode(WindowsStoreApp obj)
+        {
+            return DisplayName.GetHashCode() ^ LogoPath.GetHashCode() ^ AppUserModelId.GetHashCode();
+        }
     }
 }

@@ -32,8 +32,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using TileIconifier.Controls.Custom;
 using TileIconifier.Core.Custom;
-using TileIconifier.Custom;
 using TileIconifier.Properties;
 using TileIconifier.Utilities;
 
