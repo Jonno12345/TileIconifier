@@ -35,8 +35,9 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using TileIconifier.IconExtractor;
-using TileIconifier.Utilities;
+using TileIconifier.Core;
+using TileIconifier.Core.IconExtractor;
+using TileIconifier.Core.Utilities;
 
 namespace TileIconifier.Forms.Shared
 {
@@ -122,7 +123,7 @@ namespace TileIconifier.Forms.Shared
                 }
                 else
                 {
-                    var iconExtraction = new IconExtractor.IconExtractor(targetPath);
+                    var iconExtraction = new IconExtractor(targetPath);
                     _icons = iconExtraction.GetAllIcons();
                 }
 

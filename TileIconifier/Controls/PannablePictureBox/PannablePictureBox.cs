@@ -30,8 +30,8 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using TileIconifier.Core.Utilities;
 using TileIconifier.Skinning;
-using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls.PannablePictureBox
 {

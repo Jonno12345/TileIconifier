@@ -31,6 +31,7 @@ using System;
 using System.Security.Principal;
 using System.Threading;
 using System.Windows.Forms;
+using TileIconifier.Core;
 using TileIconifier.Forms;
 using TileIconifier.Forms.Shared;
 

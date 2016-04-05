@@ -33,15 +33,20 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using TileIconifier.Custom;
+using TileIconifier.Core;
+using TileIconifier.Core.Custom;
+using TileIconifier.Core.Custom.Chrome;
+using TileIconifier.Core.Custom.Steam;
+using TileIconifier.Core.Custom.WindowsStore;
+using TileIconifier.Core.IconExtractor;
+using TileIconifier.Core.Shortcut;
+using TileIconifier.Core.TileIconify;
+using TileIconifier.Core.Utilities;
 using TileIconifier.Custom.Chrome;
 using TileIconifier.Custom.Steam;
-using TileIconifier.Custom.WindowsStore;
 using TileIconifier.Custom.WindowsStore.Controls;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
-using TileIconifier.Shortcut;
-using TileIconifier.TileIconify;
 using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms.CustomShortcutForms
@@ -97,19 +102,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             _previousTabPage = tabShortcutType.SelectedTab;
         }
 
-        private void FrmCustomShortcutManagerNew_Load(object sender, EventArgs e)
-        {
-            FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, "Loading");
-        }
-
-        private void FullUpdate(object sender, DoWorkEventArgs e)
-        {
-            SetUpExplorer();
-            SetUpSteam();
-            SetUpChrome();
-            SetUpWindowsStore();
-        }
-
         private NewCustomShortcutFormCache PreviousCache
         {
             get
@@ -145,6 +137,19 @@ namespace TileIconifier.Forms.CustomShortcutForms
                     return _chromeCache;
                 return null;
             }
+        }
+
+        private void FrmCustomShortcutManagerNew_Load(object sender, EventArgs e)
+        {
+            FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, "Loading");
+        }
+
+        private void FullUpdate(object sender, DoWorkEventArgs e)
+        {
+            SetUpExplorer();
+            SetUpSteam();
+            SetUpChrome();
+            SetUpWindowsStore();
         }
 
         private void GenerateFullShortcut(
@@ -685,7 +690,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             try
             {
                 UpdatedCacheIcon(
-                    ImageUtils.ImageToByteArray(new IconExtractor.IconExtractor(filePath).GetIcon(0).ToBitmap()));
+                    ImageUtils.ImageToByteArray(new IconExtractor(filePath).GetIcon(0).ToBitmap()));
             }
             catch
             {

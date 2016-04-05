@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{02D2A2F4-8F79-4373-9804-9E7D339FD6E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TileIconifier.Core</RootNamespace>
+    <AssemblyName>TileIconifier.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Octokit, Version=0.19.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.0.19.0\lib\net45\Octokit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Management.Automation.6.1.7601.17515\lib\net45\System.Management.Automation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomExceptions.cs" />
+    <Compile Include="Custom\Chrome\ChromeApp.cs" />
+    <Compile Include="Custom\Chrome\ChromeAppLibrary.cs" />
+    <Compile Include="Custom\CustomShortcut.cs" />
+    <Compile Include="Custom\CustomShortcutExtensionMethods.cs" />
+    <Compile Include="Custom\CustomShortcutGetters.cs" />
+    <Compile Include="Custom\NewCustomShortcutFormCache.cs" />
+    <Compile Include="Custom\Steam\KeyValues\KeyValues.cs" />
+    <Compile Include="Custom\Steam\KeyValues\KeyValues_Data.cs" />
+    <Compile Include="Custom\Steam\KeyValues\Utils.cs" />
+    <Compile Include="Custom\Steam\SteamGame.cs" />
+    <Compile Include="Custom\Steam\SteamLibrary.cs" />
+    <Compile Include="Custom\WindowsStore\WindowsStoreApp.cs" />
+    <Compile Include="Custom\WindowsStore\WindowsStoreAppProtocol.cs" />
+    <Compile Include="Custom\WindowsStore\WindowsStoreLibrary.cs" />
+    <Compile Include="IconExtractor\IconExtractor.cs" />
+    <Compile Include="IconExtractor\IconUtil.cs" />
+    <Compile Include="IconExtractor\NativeMethods.cs" />
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Shortcut\ShortcutConstantsAndEnums.cs" />
+    <Compile Include="Shortcut\ShortcutItem.cs" />
+    <Compile Include="Shortcut\ShortcutItemEnumeration.cs" />
+    <Compile Include="Shortcut\ShortcutItemImage.cs" />
+    <Compile Include="Shortcut\State\ShortcutItemState.cs" />
+    <Compile Include="Shortcut\State\ShortcutItemStateController.cs" />
+    <Compile Include="TileIconify\TileIcon.cs" />
+    <Compile Include="Utilities\ColorUtils.cs" />
+    <Compile Include="Utilities\DirectoryUtils.cs" />
+    <Compile Include="Utilities\ImageUtils.cs" />
+    <Compile Include="Utilities\PowerShellUtils.cs" />
+    <Compile Include="Utilities\ShortcutUtils.cs" />
+    <Compile Include="Utilities\UpdateUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Google-Chrome-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\explorer_ICO_MYCOMPUTER.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Steam.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

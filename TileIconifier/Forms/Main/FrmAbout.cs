@@ -30,7 +30,7 @@
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using TileIconifier.Utilities;
+using TileIconifier.Core.Utilities;
 
 namespace TileIconifier.Forms
 {

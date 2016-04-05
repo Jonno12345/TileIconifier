@@ -29,7 +29,7 @@
 
 using System;
 using System.Windows.Forms;
-using TileIconifier.Custom;
+using TileIconifier.Core.Custom;
 
 namespace TileIconifier.Controls
 {

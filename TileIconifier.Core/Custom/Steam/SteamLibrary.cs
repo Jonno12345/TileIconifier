@@ -1,0 +1,238 @@
+﻿#region LICENCE
+
+// /*
+//         The MIT License (MIT)
+// 
+//         Copyright (c) 2016 Johnathon M
+// 
+//         Permission is hereby granted, free of charge, to any person obtaining a copy
+//         of this software and associated documentation files (the "Software"), to deal
+//         in the Software without restriction, including without limitation the rights
+//         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//         copies of the Software, and to permit persons to whom the Software is
+//         furnished to do so, subject to the following conditions:
+// 
+//         The above copyright notice and this permission notice shall be included in
+//         all copies or substantial portions of the Software.
+// 
+//         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//         THE SOFTWARE.
+// 
+// */
+
+#endregion
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+using TileIconifier.Core.Shortcut;
+
+namespace TileIconifier.Core.Custom.Steam
+{
+    public class SteamLibrary
+    {
+        /// <summary>
+        ///     Singleton class instantiator
+        /// </summary>
+        private static SteamLibrary _instance;
+
+        private readonly string[] _defaultInstallationPaths =
+        {
+            Environment.ExpandEnvironmentVariables(@"%programfiles(x86)%\Steam\"),
+            Environment.ExpandEnvironmentVariables(@"%programfiles%\Steam\")
+        };
+
+        private readonly List<string> _steamLibraryFolders = new List<string>();
+        private string _steamExecutablePath;
+        private string _steamInstallationFolderPath;
+        private ShortcutItem _steamShortcutItem;
+
+        private SteamLibrary()
+        {
+        }
+
+        public static SteamLibrary Instance => _instance ?? (_instance = new SteamLibrary());
+
+        public ShortcutItem SteamShortcutItem => _steamShortcutItem ??
+                                                 (_steamShortcutItem =
+                                                     ShortcutItemEnumeration.GetShortcuts()
+                                                         .FirstOrDefault(
+                                                             s =>
+                                                                 Path.GetFileNameWithoutExtension(
+                                                                     s.ShortcutFileInfo.Name) == "Steam"));
+
+
+        private string GetLibraryFoldersVdf()
+        {
+            var assumedVdfPath = GetSteamInstallationFolder() + @"steamapps\libraryfolders.vdf";
+
+            if (!File.Exists(assumedVdfPath))
+                throw new SteamLibraryPathNotFoundException();
+
+            return assumedVdfPath;
+        }
+
+        public string GetSteamInstallationFolder()
+        {
+            if (_steamInstallationFolderPath != null)
+                return _steamInstallationFolderPath;
+
+            if (SteamShortcutItem != null)
+            {
+                _steamInstallationFolderPath = SteamShortcutItem.TargetFolderPath;
+                return _steamInstallationFolderPath;
+            }
+            foreach (var defaultInstallationPath in _defaultInstallationPaths.Where(Directory.Exists))
+            {
+                _steamInstallationFolderPath = defaultInstallationPath;
+                return _steamInstallationFolderPath;
+            }
+
+            throw new SteamInstallationPathNotFoundException();
+        }
+
+        public void SetSteamInstallationFolder(string selectedPath)
+        {
+            _steamInstallationFolderPath = selectedPath;
+        }
+
+        public List<string> GetLibraryFolders()
+        {
+            if (_steamLibraryFolders.Count > 0)
+                return _steamLibraryFolders;
+
+            try
+            {
+                AddLibraryFolder(new FileInfo(GetLibraryFoldersVdf()).Directory?.Parent?.FullName + @"\");
+            }
+            catch
+            {
+                // ignored
+            }
+
+            var kv = new KeyValues.KeyValues("LibraryFolders");
+            kv.LoadFromFile(GetLibraryFoldersVdf());
+            foreach (
+                var keyValuePair in
+                    kv.KeyNameValues.Where(keyValuePair => Regex.Match(keyValuePair.Key, @"\d+").Success))
+            {
+                try
+                {
+                    var libraryFolder = keyValuePair.Value.Replace(@"\\", @"\") + "\\";
+                    AddLibraryFolder(libraryFolder);
+                }
+                catch (SteamLibraryPathNotFoundException)
+                {
+                    // ignored
+                }
+            }
+
+            return _steamLibraryFolders;
+        }
+
+        public void AddLibraryFolder(string libraryFolder)
+        {
+            if (Directory.Exists(libraryFolder + "steamapps\\"))
+                _steamLibraryFolders.Add(libraryFolder + "steamapps\\");
+            else
+                throw new SteamLibraryPathNotFoundException();
+        }
+
+        private static string GetGameName(KeyValues.KeyValues kv)
+        {
+            while (true)
+            {
+                var kvp =
+                    kv.KeyNameValues.FirstOrDefault(
+                        k => k.Key.Equals("name", StringComparison.InvariantCultureIgnoreCase));
+                if (kvp != null)
+                    return kvp.Value;
+
+                var userConfigKv =
+                    kv.KeyChilds.FirstOrDefault(
+                        c => c.Name.Equals("UserConfig", StringComparison.InvariantCultureIgnoreCase));
+                if (userConfigKv == null) return null;
+                kv = userConfigKv;
+            }
+        }
+
+        public List<SteamGame> GetAllSteamGames()
+        {
+            var steamGames = new List<SteamGame>();
+
+            foreach (var libraryFolder in GetLibraryFolders())
+            {
+                var acfFiles = new DirectoryInfo(libraryFolder).GetFiles("appmanifest*.acf");
+                foreach (var acfFile in acfFiles)
+                {
+                    try
+                    {
+                        var kv = new KeyValues.KeyValues("AppState");
+                        kv.LoadFromFile(acfFile.FullName);
+
+                        //Empty list of key name values, skip
+                        if (!kv.KeyNameValues.Any())
+                            continue;
+                        var appId =
+                            kv.KeyNameValues.Single(
+                                k => k.Key.Equals("appid", StringComparison.InvariantCultureIgnoreCase)).Value;
+                        var gameName = GetGameName(kv);
+                        if (gameName == null)
+                            continue;
+                        steamGames.Add(new SteamGame(appId, gameName, acfFile.FullName));
+                    }
+                    catch (Exception ex)
+                    {
+                        // // TODO: Add this back in with CORE and FORMS are separated
+
+                        // get a better stack trace if we do have an exception, including an attempt to get the failed file information
+                        var fileContents = "UNKNOWN";
+                        try
+                        {
+                            fileContents = File.ReadAllText(acfFile.FullName);
+                        }
+                        catch
+                        {
+                            // ignored
+                        }
+                        //FrmException.ShowExceptionHandler(
+                        //    new Exception(
+                        //        $@"An non-critical issue occured with file {acfFile.FullName} - Contents{"\r\n"}{
+                        //            fileContents}"
+                        //        , ex));
+                    }
+                }
+            }
+            return steamGames;
+        }
+
+        public string GetSteamExePath()
+        {
+            if (_steamExecutablePath != null)
+                return _steamExecutablePath;
+
+            if (SteamShortcutItem != null)
+            {
+                return SteamShortcutItem.TargetFilePath;
+            }
+            var assumedSteamExePath = _steamInstallationFolderPath + "Steam.exe";
+            if (File.Exists(assumedSteamExePath))
+                return assumedSteamExePath;
+
+            throw new SteamExecutableNotFoundException();
+        }
+
+        public void SetSteamExePath(string filePath)
+        {
+            if (File.Exists(filePath))
+                _steamExecutablePath = filePath;
+        }
+    }
+}

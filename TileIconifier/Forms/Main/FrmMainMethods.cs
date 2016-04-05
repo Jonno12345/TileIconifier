@@ -34,9 +34,11 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TileIconifier.Controls.PannablePictureBox;
+using TileIconifier.Core;
+using TileIconifier.Core.Shortcut;
+using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
-using TileIconifier.Shortcut;
 using TileIconifier.Shortcut.Controls;
 using TileIconifier.Utilities;
 
@@ -188,7 +190,7 @@ namespace TileIconifier.Forms
         private void SetPictureBoxesBackColor()
         {
             var color = GetPictureBoxesBackColor();
-            Action <PannablePictureBox> setBackColor = (b) =>
+            Action<PannablePictureBox> setBackColor = b =>
             {
                 b.BackColor = b.PannablePictureBoxImage.Image == null ? CurrentBaseSkin.BackColor : color;
                 b.Refresh();

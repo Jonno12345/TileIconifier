@@ -1,0 +1,12 @@
+C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier.Core\obj\Debug\TileIconifier.Core.Properties.Resources.resources
+C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier.Core\obj\Debug\TileIconifier.Core.csproj.GenerateResource.Cache
+C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier.Core\bin\Debug\TileIconifier.Core.dll
+C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier.Core\bin\Debug\TileIconifier.Core.pdb
+C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier.Core\bin\Debug\Octokit.dll
+C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier.Core\bin\Debug\System.Management.Automation.dll
+C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier.Core\bin\Debug\Octokit.pdb
+C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier.Core\bin\Debug\Octokit.xml
+C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier.Core\obj\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier.Core\obj\Debug\TileIconifier.Core.csproj.ResolveComReference.cache
+C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier.Core\obj\Debug\TileIconifier.Core.dll
+C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier.Core\obj\Debug\TileIconifier.Core.pdb

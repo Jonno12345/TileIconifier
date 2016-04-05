@@ -32,13 +32,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using TileIconifier.Controls.PannablePictureBox;
+using TileIconifier.Core;
+using TileIconifier.Core.Shortcut;
+using TileIconifier.Core.TileIconify;
+using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.CustomShortcutForms;
-using TileIconifier.Shortcut;
 using TileIconifier.Shortcut.Controls;
 using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
 using TileIconifier.Skinning.Skins.Dark;
-using TileIconifier.TileIconify;
 using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms

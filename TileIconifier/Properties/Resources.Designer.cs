@@ -106,16 +106,6 @@ namespace TileIconifier.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Google_Chrome_icon {
-            get {
-                object obj = ResourceManager.GetObject("Google_Chrome_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap OpenComparisonResult_9697 {
             get {
                 object obj = ResourceManager.GetObject("OpenComparisonResult_9697", resourceCulture);
