@@ -86,6 +86,15 @@ namespace TileIconifier.Forms.Shared
             BuildListView();
         }
 
+        public static byte[] GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
+        {
+            var iconSelector = new FrmIconSelector(defaultPathForIconExtraction);
+            iconSelector.ShowDialog(owner);
+            if (iconSelector.ReturnedBitmapBytes == null)
+                throw new UserCancellationException();
+            return iconSelector.ReturnedBitmapBytes;
+        }
+
         private void SetUpCommonDllComboBox()
         {
             foreach (var commonIconDll in _commonIconDlls.ToList())
@@ -317,15 +326,6 @@ namespace TileIconifier.Forms.Shared
             if (cmbCommonIconDlls.SelectedIndex >= 0)
                 txtPathToExtractFrom.Text = cmbCommonIconDlls.SelectedValue.ToString();
             BuildListView();
-        }
-
-        public static byte[] GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
-        {
-            var iconSelector = new FrmIconSelector(defaultPathForIconExtraction);
-            iconSelector.ShowDialog(owner);
-            if (iconSelector.ReturnedBitmapBytes == null)
-                throw new UserCancellationException();
-            return iconSelector.ReturnedBitmapBytes;
         }
 
         private class IconListViewItem : ListViewItem

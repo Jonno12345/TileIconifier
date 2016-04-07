@@ -31,17 +31,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
-using TileIconifier.Controls.PannablePictureBox;
 using TileIconifier.Controls.Shortcut;
-using TileIconifier.Core;
-using TileIconifier.Core.Custom.WindowsStoreShellMethod;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.TileIconify;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.CustomShortcutForms;
-using TileIconifier.Skinning;
-using TileIconifier.Skinning.Skins;
-using TileIconifier.Skinning.Skins.Dark;
 using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms
@@ -54,7 +48,6 @@ namespace TileIconifier.Forms
         public FrmMain()
         {
             InitializeComponent();
-            AddEventHandlers();
         }
 
         private ShortcutItem CurrentShortcutItem => _currentShortcutListViewItem.ShortcutItem;
@@ -62,45 +55,37 @@ namespace TileIconifier.Forms
         protected override void ApplySkin(object sender, EventArgs e)
         {
             base.ApplySkin(sender, e);
-            lblUnsaved.ForeColor = CurrentBaseSkin.ErrorColor;
-            SetPictureBoxesBackColor();
+            iconifyPanel.UpdateSkinColors(CurrentBaseSkin);
         }
 
         private void frmDropper_Load(object sender, EventArgs e)
         {
             darkSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
             defaultSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
-            BuildPannableShortcutBoxControlPanels();
+            iconifyPanel.OnIconifyPanelUpdate += (s, ev) => { UpdateFormControls(); };
             Show();
             StartFullUpdate();
         }
 
         private void btnIconify_Click(object sender, EventArgs e)
         {
-            if (!DoValidation())
+            if (!iconifyPanel.DoValidation())
                 return;
 
-            try
-            {
-                var showForegroundColourWarning = CurrentShortcutItem.Properties.ForegroundTextColourChanged;
-                var tileIconify = new TileIcon(CurrentShortcutItem);
-                tileIconify.RunIconify();
-                CurrentShortcutItem.Properties.CommitChanges();
-                UpdateControlsToShortcut();
-                if (showForegroundColourWarning)
-                    MessageBox.Show(
-                        @"Foreground colour changes don't always instantly apply. If this change hasn't applied, try unpinning and repinning the shortcut.",
-                        @"Foreground Colour Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (UserCancellationException)
-            {
-                // ignore if user cancelled
-            }
+            var showForegroundColourWarning = CurrentShortcutItem.Properties.ForegroundTextColourChanged;
+            var tileIconify = new TileIcon(CurrentShortcutItem);
+            tileIconify.RunIconify();
+            CurrentShortcutItem.Properties.CommitChanges();
+            UpdateShortcut();
+            if (showForegroundColourWarning)
+                MessageBox.Show(
+                    @"Foreground colour changes don't always instantly apply. If this change hasn't applied, try unpinning and repinning the shortcut.",
+                    @"Foreground Colour Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (!DoValidation())
+            if (!iconifyPanel.DoValidation())
                 return;
 
             if (MessageBox.Show(@"Are you sure you wish to remove iconification?", @"Confirm", MessageBoxButtons.YesNo,
@@ -110,37 +95,8 @@ namespace TileIconifier.Forms
             var tileDeIconify = new TileIcon(CurrentShortcutItem);
             tileDeIconify.DeIconify();
             CurrentShortcutItem.Properties.ResetParameters();
-            UpdateControlsToShortcut();
+            UpdateShortcut();
         }
-
-
-        private void cmbColour_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtBGColour.Enabled = cmbColour.Text == @"Custom";
-            if (_currentShortcutListViewItem == null) return;
-            CurrentShortcutItem.Properties.CurrentState.BackgroundColor = cmbColour.Text == @"Custom"
-                ? txtBGColour.Text
-                : cmbColour.Text;
-            UpdateControlsToShortcut();
-        }
-
-        private void chkFGTxtEnabled_CheckedChanged(object sender, EventArgs e)
-        {
-            radFGDark.Enabled = chkFGTxtEnabled.Checked;
-            radFGLight.Enabled = chkFGTxtEnabled.Checked;
-            CurrentShortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo = chkFGTxtEnabled.Checked;
-            UpdateControlsToShortcut();
-        }
-
-        private void srtlstShortcuts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (srtlstShortcuts.SelectedItems.Count != 1)
-                return;
-
-            _currentShortcutListViewItem = (ShortcutItemListViewItem) srtlstShortcuts.SelectedItems[0];
-            UpdateControlsToShortcut();
-        }
-
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -193,55 +149,6 @@ namespace TileIconifier.Forms
             StartFullUpdate();
         }
 
-        private void txtBGColour_TextChanged(object sender, EventArgs e)
-        {
-            var textBox = sender as TextBox;
-            if (textBox != null && textBox.Text.Length != textBox.MaxLength)
-                return;
-
-
-            CurrentShortcutItem.Properties.CurrentState.BackgroundColor = txtBGColour.Text;
-            UpdateControlsToShortcut();
-        }
-
-        private void radFGLight_CheckedChanged(object sender, EventArgs e)
-        {
-            CurrentShortcutItem.Properties.CurrentState.ForegroundText = radFGLight.Checked ? "light" : "dark";
-
-            UpdateControlsToShortcut();
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            CurrentShortcutItem.Properties.UndoChanges();
-
-            UpdateControlsToShortcut();
-        }
-
-
-        private void PanPctMediumIcon_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
-        {
-            var item = (PannablePictureBoxImage) sender;
-            _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.MediumImage.X = item.X;
-            _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.MediumImage.Y = item.Y;
-            _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.MediumImage.Width = item.Width;
-            _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.MediumImage.Height = item.Height;
-
-            UpdateControlsToShortcut();
-        }
-
-        private void PanPctSmallIcon_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
-        {
-            var item = (PannablePictureBoxImage) sender;
-            _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.SmallImage.X = item.X;
-            _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.SmallImage.Y = item.Y;
-            _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.SmallImage.Width = item.Width;
-            _currentShortcutListViewItem.ShortcutItem.Properties.CurrentState.SmallImage.Height = item.Height;
-
-            UpdateControlsToShortcut();
-        }
-
-
         private async void checkForUpdateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -290,64 +197,13 @@ namespace TileIconifier.Forms
             UpdateSkin();
         }
 
-        private void UpdateSkin()
+        private void srtlstShortcuts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (defaultSkinToolStripMenuItem.Checked)
-            {
-                SkinHandler.SetCurrentSkin(new BaseSkin());
-                return;
-            }
-            if (!darkSkinToolStripMenuItem.Checked) return;
-            SkinHandler.SetCurrentSkin(new DarkSkin());
-        }
-
-        private void btnColourPicker_Click(object sender, EventArgs e)
-        {
-            if (clrDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                txtBGColour.Text = ColorUtils.ColorToHex(clrDialog.Color);
-            }
-        }
-
-        private void panPctMediumIcon_Click(object sender, EventArgs e)
-        {
-            if (((MouseEventArgs) e).Button != MouseButtons.Right)
+            if (srtlstShortcuts.SelectedItems.Count != 1)
                 return;
 
-            var contextMenu = new ContextMenu();
-            var menuItem = new MenuItem("Change image...",
-                (o, args) => { MediumIconSet(); });
-            contextMenu.MenuItems.Add(menuItem);
-            menuItem = new MenuItem("Center image",
-                (o, args) => { panPctMediumIcon.CenterImage(); });
-            contextMenu.MenuItems.Add(menuItem);
-            contextMenu.Show(panPctMediumIcon, ((MouseEventArgs) e).Location);
-        }
-
-        private void panPctMediumIcon_DoubleClick(object sender, EventArgs e)
-        {
-            MediumIconSet();
-        }
-
-
-        private void panPctSmallIcon_Click(object sender, EventArgs e)
-        {
-            if (((MouseEventArgs) e).Button != MouseButtons.Right)
-                return;
-
-            var contextMenu = new ContextMenu();
-            var menuItem = new MenuItem("Change image...",
-                (o, args) => { SmallIconSet(); });
-            contextMenu.MenuItems.Add(menuItem);
-            menuItem = new MenuItem("Center image",
-                (o, args) => { panPctSmallIcon.CenterImage(); });
-            contextMenu.MenuItems.Add(menuItem);
-            contextMenu.Show(panPctSmallIcon, ((MouseEventArgs) e).Location);
-        }
-
-        private void panPctSmallIcon_DoubleClick(object sender, EventArgs e)
-        {
-            SmallIconSet();
+            _currentShortcutListViewItem = (ShortcutItemListViewItem) srtlstShortcuts.SelectedItems[0];
+            UpdateShortcut();
         }
     }
 }

@@ -43,6 +43,15 @@ namespace TileIconifier.Forms.Shared
             _ex = ex;
         }
 
+        public static void ShowExceptionHandler(Exception ex)
+        {
+            using (var unhandedException = new FrmException(ex))
+            {
+                unhandedException.StartPosition = FormStartPosition.CenterScreen;
+                unhandedException.ShowDialog();
+            }
+        }
+
         private void rtxtException_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             using (Process.Start(e.LinkText))
@@ -54,15 +63,6 @@ namespace TileIconifier.Forms.Shared
         {
             rtxtUnhandledException.Text = rtxtUnhandledException.Text.Replace("[@@EXCEPTIONSTACKTRACE@@]",
                 _ex.ToString());
-        }
-
-        public static void ShowExceptionHandler(Exception ex)
-        {
-            using (var unhandedException = new FrmException(ex))
-            {
-                unhandedException.StartPosition = FormStartPosition.CenterScreen;
-                unhandedException.ShowDialog();
-            }
         }
 
         private void rtxtUnhandledException_MouseUp(object sender, MouseEventArgs e)

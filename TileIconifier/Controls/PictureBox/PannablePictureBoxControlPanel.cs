@@ -30,7 +30,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace TileIconifier.Controls.PannablePictureBox
+namespace TileIconifier.Controls.PictureBox
 {
     public partial class PannablePictureBoxControlPanel : UserControl
     {
@@ -39,15 +39,32 @@ namespace TileIconifier.Controls.PannablePictureBox
             InitializeComponent();
         }
 
-        public PannablePictureBox PannablePictureBoxControl { get; private set; }
+        public PannablePictureBox PannablePictureBox { get; private set; }
 
         public void SetPannablePictureBoxControl(PannablePictureBox value)
         {
-            PannablePictureBoxControl = value;
-            PannablePictureBoxControl.OnPannablePictureImagePropertyChange += (o, args) => UpdateControls();
+            PannablePictureBox = value;
+            PannablePictureBox.OnPannablePictureImagePropertyChange += (o, args) => UpdateControls();
         }
 
         public event EventHandler ChangeImageClick;
+
+        public void UpdateTrackBarAndZoom()
+        {
+            trkZoom.Value = (int) Math.Round(PannablePictureBox.GetZoomPercentage(), 1);
+            UpdateZoomPercentage();
+        }
+
+        public void UpdateControls()
+        {
+            if (PannablePictureBox?.PannablePictureBoxImage.Image == null)
+            {
+                DisableControls();
+                return;
+            }
+            EnableControls();
+            UpdateTrackBarAndZoom();
+        }
 
         private void PannablePictureBoxControlPanel_Load(object sender, EventArgs e)
         {
@@ -76,17 +93,17 @@ namespace TileIconifier.Controls.PannablePictureBox
 
         private void tmrEnlarge_Tick(object sender, EventArgs e)
         {
-            PannablePictureBoxControl.EnlargeImage();
+            PannablePictureBox.EnlargeImage();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            PannablePictureBoxControl.ResetImage();
+            PannablePictureBox.ResetImage();
         }
 
         private void tmrShrink_Tick(object sender, EventArgs e)
         {
-            PannablePictureBoxControl.ShrinkImage();
+            PannablePictureBox.ShrinkImage();
         }
 
         private void btnShrink_MouseDown(object sender, MouseEventArgs e)
@@ -107,30 +124,13 @@ namespace TileIconifier.Controls.PannablePictureBox
 
         private void btnCenter_Click(object sender, EventArgs e)
         {
-            PannablePictureBoxControl.CenterImage();
+            PannablePictureBox.CenterImage();
         }
 
         private void trkZoom_Scroll(object sender, EventArgs e)
         {
-            PannablePictureBoxControl.SetZoom(trkZoom.Value);
+            PannablePictureBox.SetZoom(trkZoom.Value);
             UpdateZoomPercentage();
-        }
-
-        public void UpdateTrackBarAndZoom()
-        {
-            trkZoom.Value = (int) Math.Round(PannablePictureBoxControl.GetZoomPercentage(), 1);
-            UpdateZoomPercentage();
-        }
-
-        public void UpdateControls()
-        {
-            if (PannablePictureBoxControl?.PannablePictureBoxImage.Image == null)
-            {
-                DisableControls();
-                return;
-            }
-            EnableControls();
-            UpdateTrackBarAndZoom();
         }
 
         private void EnableControls()
@@ -155,7 +155,7 @@ namespace TileIconifier.Controls.PannablePictureBox
 
         private void UpdateZoomPercentage()
         {
-            lblPercent.Text = PannablePictureBoxControl.GetZoomPercentage().ToString("F") + @"%";
+            lblPercent.Text = PannablePictureBox.GetZoomPercentage().ToString("F") + @"%";
         }
     }
 }

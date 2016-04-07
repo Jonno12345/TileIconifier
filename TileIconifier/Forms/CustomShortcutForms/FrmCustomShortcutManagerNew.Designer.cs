@@ -70,6 +70,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.opnOtherTarget = new System.Windows.Forms.OpenFileDialog();
             this.radShortcutLocation = new TileIconifier.Controls.AllOrCurrentUserRadios();
             this.opnChromeExe = new System.Windows.Forms.OpenFileDialog();
+            this.tileIconifierPanel1 = new TileIconifier.Controls.TileIconifierPanel();
             this.tabShortcutType.SuspendLayout();
             this.tabExplorer.SuspendLayout();
             this.pnlExplorer.SuspendLayout();
@@ -82,9 +83,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabShortcutType
             // 
-            this.tabShortcutType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabShortcutType.Controls.Add(this.tabExplorer);
             this.tabShortcutType.Controls.Add(this.tabSteam);
             this.tabShortcutType.Controls.Add(this.tabChromeApps);
@@ -511,7 +509,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // btnGenerateShortcut
             // 
-            this.btnGenerateShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerateShortcut.Location = new System.Drawing.Point(493, 308);
             this.btnGenerateShortcut.Name = "btnGenerateShortcut";
             this.btnGenerateShortcut.Size = new System.Drawing.Size(144, 41);
@@ -549,7 +546,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // radShortcutLocation
             // 
-            this.radShortcutLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.radShortcutLocation.Location = new System.Drawing.Point(391, 283);
             this.radShortcutLocation.Name = "radShortcutLocation";
             this.radShortcutLocation.Size = new System.Drawing.Size(96, 66);
@@ -561,11 +557,20 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.opnChromeExe.Filter = "chrome.exe|chrome.exe";
             this.opnChromeExe.Title = "Please locate \"chrome.exe\"...";
             // 
+            // tileIconifierPanel1
+            // 
+            this.tileIconifierPanel1.CurrentShortcutItem = null;
+            this.tileIconifierPanel1.Location = new System.Drawing.Point(643, 7);
+            this.tileIconifierPanel1.Name = "tileIconifierPanel1";
+            this.tileIconifierPanel1.Size = new System.Drawing.Size(305, 351);
+            this.tileIconifierPanel1.TabIndex = 31;
+            // 
             // FrmCustomShortcutManagerNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 370);
+            this.ClientSize = new System.Drawing.Size(950, 370);
+            this.Controls.Add(this.tileIconifierPanel1);
             this.Controls.Add(this.radShortcutLocation);
             this.Controls.Add(this.txtShortcutName);
             this.Controls.Add(this.lblShortcutName);
@@ -636,5 +641,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private System.Windows.Forms.TabPage tabWindowsStore;
         private SortableListView lstWindowsStoreApps;
         private System.Windows.Forms.OpenFileDialog opnChromeExe;
+        private TileIconifierPanel tileIconifierPanel1;
     }
 }

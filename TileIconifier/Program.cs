@@ -39,6 +39,17 @@ namespace TileIconifier
 {
     internal static class Program
     {
+        public static bool IsAdministrator()
+        {
+            var identity = WindowsIdentity.GetCurrent();
+            if (identity != null)
+            {
+                var principal = new WindowsPrincipal(identity);
+                return principal.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+            throw new UnableToDetectAdministratorException();
+        }
+
         /// <summary>
         ///     The main entry point for the application.
         /// </summary>
@@ -106,17 +117,6 @@ namespace TileIconifier
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             FrmException.ShowExceptionHandler(e.ExceptionObject as Exception);
-        }
-
-        public static bool IsAdministrator()
-        {
-            var identity = WindowsIdentity.GetCurrent();
-            if (identity != null)
-            {
-                var principal = new WindowsPrincipal(identity);
-                return principal.IsInRole(WindowsBuiltInRole.Administrator);
-            }
-            throw new UnableToDetectAdministratorException();
         }
     }
 }

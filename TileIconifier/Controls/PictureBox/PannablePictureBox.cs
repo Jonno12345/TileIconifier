@@ -33,7 +33,7 @@ using System.Windows.Forms;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Skinning;
 
-namespace TileIconifier.Controls.PannablePictureBox
+namespace TileIconifier.Controls.PictureBox
 {
     [SkinIgnore]
     public partial class PannablePictureBox : UserControl
@@ -57,6 +57,8 @@ namespace TileIconifier.Controls.PannablePictureBox
             pctBox.MouseWheel += PctBox_MouseWheel;
         }
 
+        public Size AssociatedSize { get; set; }
+
         public void PannablePictureBoxImage_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
         {
             TriggerUpdate();
@@ -65,6 +67,68 @@ namespace TileIconifier.Controls.PannablePictureBox
         public new event EventHandler Click;
         public new event EventHandler DoubleClick;
         public event PannablePictureBoxImage.PannablePictureImagePropertyChanges OnPannablePictureImagePropertyChange;
+
+        public void ShrinkImage()
+        {
+            SetZoom(GetZoomPercentage() - 0.5m);
+        }
+
+        public void EnlargeImage()
+        {
+            SetZoom(GetZoomPercentage() + 0.5m);
+        }
+
+        public void ResetImage()
+        {
+            ResetZoom(false);
+            CenterImage(false);
+            pctBox.Invalidate();
+        }
+
+        public void ResetZoom(bool invalidateImage = true)
+        {
+            PannablePictureBoxImage.Width = pctBox.Width;
+            PannablePictureBoxImage.Height = (int) (PannablePictureBoxImage.Width/PannablePictureBoxImage.AspectRatio);
+            TriggerUpdate(invalidateImage);
+        }
+
+        public void CenterImage(bool invalidateImage = true)
+        {
+            if (PannablePictureBoxImage.Image == null) return;
+            PannablePictureBoxImage.X = (pctBox.Width - PannablePictureBoxImage.Width)/2;
+            PannablePictureBoxImage.Y = (pctBox.Height - PannablePictureBoxImage.Height)/2;
+            TriggerUpdate(invalidateImage);
+        }
+
+        public void SetImage(Image image, int width, int height, int x, int y)
+        {
+            PannablePictureBoxImage.SetImage(image, width, height, x, y);
+            _movingPoint = new Point(x, y);
+        }
+
+        public void SetZoom(decimal value)
+        {
+            if (value < 1) value = 1;
+            if (value > 100) value = 100;
+            var previousWidth = PannablePictureBoxImage.Width;
+            var previousHeight = PannablePictureBoxImage.Height;
+
+            PannablePictureBoxImage.Width = (int) ((decimal) MaxWidth/100*value);
+            PannablePictureBoxImage.Height = (int) (PannablePictureBoxImage.Width/PannablePictureBoxImage.AspectRatio);
+
+            PannablePictureBoxImage.X += (previousWidth - PannablePictureBoxImage.Width)/2;
+            PannablePictureBoxImage.Y += (previousHeight - PannablePictureBoxImage.Height)/2;
+
+            TriggerUpdate();
+        }
+
+
+        internal decimal GetZoomPercentage()
+        {
+            var zoomPercentage = (decimal) PannablePictureBoxImage.Width/MaxWidth*
+                                 100;
+            return zoomPercentage >= 1 ? zoomPercentage : 1;
+        }
 
         private void PctBox_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -76,24 +140,6 @@ namespace TileIconifier.Controls.PannablePictureBox
             {
                 EnlargeImage();
             }
-        }
-
-
-        internal decimal GetZoomPercentage()
-        {
-            var zoomPercentage = (decimal) PannablePictureBoxImage.Width/MaxWidth*
-                                 100;
-            return zoomPercentage >= 1 ? zoomPercentage : 1;
-        }
-
-        public void ShrinkImage()
-        {
-            SetZoom(GetZoomPercentage() - 0.5m);
-        }
-
-        public void EnlargeImage()
-        {
-            SetZoom(GetZoomPercentage() + 0.5m);
         }
 
         private void Image_OnPannablePictureNewImageSet(object sender, EventArgs e)
@@ -182,34 +228,6 @@ namespace TileIconifier.Controls.PannablePictureBox
 #endif
         }
 
-        public void ResetImage()
-        {
-            ResetZoom(false);
-            CenterImage(false);
-            pctBox.Invalidate();
-        }
-
-        public void ResetZoom(bool invalidateImage = true)
-        {
-            PannablePictureBoxImage.Width = pctBox.Width;
-            PannablePictureBoxImage.Height = (int) (PannablePictureBoxImage.Width/PannablePictureBoxImage.AspectRatio);
-            TriggerUpdate(invalidateImage);
-        }
-
-        public void CenterImage(bool invalidateImage = true)
-        {
-            if (PannablePictureBoxImage.Image == null) return;
-            PannablePictureBoxImage.X = (pctBox.Width - PannablePictureBoxImage.Width)/2;
-            PannablePictureBoxImage.Y = (pctBox.Height - PannablePictureBoxImage.Height)/2;
-            TriggerUpdate(invalidateImage);
-        }
-
-        public void SetImage(Image image, int width, int height, int x, int y)
-        {
-            PannablePictureBoxImage.SetImage(image, width, height, x, y);
-            _movingPoint = new Point(x, y);
-        }
-
         private Image SetResolution(Image image, int width, int height)
         {
             if (image == null) return null;
@@ -233,22 +251,6 @@ namespace TileIconifier.Controls.PannablePictureBox
             MaxHeight = 400; //4*pctBox.Height;
             MinWidth = -200; //-2*pctBox.Width;
             MaxWidth = 400; //4*pctBox.Width;
-        }
-
-        public void SetZoom(decimal value)
-        {
-            if (value < 1) value = 1;
-            if (value > 100) value = 100;
-            var previousWidth = PannablePictureBoxImage.Width;
-            var previousHeight = PannablePictureBoxImage.Height;
-
-            PannablePictureBoxImage.Width = (int) ((decimal) MaxWidth/100*value);
-            PannablePictureBoxImage.Height = (int) (PannablePictureBoxImage.Width/PannablePictureBoxImage.AspectRatio);
-
-            PannablePictureBoxImage.X += (previousWidth - PannablePictureBoxImage.Width)/2;
-            PannablePictureBoxImage.Y += (previousHeight - PannablePictureBoxImage.Height)/2;
-
-            TriggerUpdate();
         }
 
         private void TriggerUpdate(bool invalidate = true)

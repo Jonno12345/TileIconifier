@@ -27,44 +27,15 @@
 
 #endregion
 
-using System;
 using System.Drawing;
+using TileIconifier.Core.Shortcut;
 
-namespace TileIconifier.Controls.PannablePictureBox
+namespace TileIconifier.Controls.PictureBox
 {
-    public class PannablePictureBoxImage
+    public class PannablePictureBoxMetaData
     {
-        public delegate void PannablePictureImagePropertyChanges(object sender, EventArgs e);
-
-        public delegate void PannablePictureImageSet(object sender, EventArgs e);
-
-        public float AspectRatio;
-
-        public int Height { get; set; }
-
-        public int Width { get; set; }
-
-        public int X { get; set; }
-
-        public int Y { get; set; }
-
-        public Image Image { get; private set;
-            //set { _image = value; }
-        }
-
-        public event PannablePictureImageSet OnPannablePictureNewImageSet;
-
-
-        public void SetImage(Image image, int width, int height, int x, int y)
-        {
-            Image = image;
-            Width = width;
-            Height = height;
-            X = x;
-            Y = y;
-            AspectRatio = image != null ? (float) image.Width/image.Height : 0;
-            Image = image;
-            OnPannablePictureNewImageSet?.Invoke(this, null);
-        }
+        public PannablePictureBox PannablePictureBox { get; set; }
+        public Size Size { get; set; }
+        public ShortcutItemImage ShortcutItemImage { get; set; }
     }
 }

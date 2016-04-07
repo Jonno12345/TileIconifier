@@ -68,17 +68,6 @@ namespace TileIconifier.Core.Custom.Steam
                                                                  Path.GetFileNameWithoutExtension(
                                                                      s.ShortcutFileInfo.Name) == "Steam"));
 
-
-        private string GetLibraryFoldersVdf()
-        {
-            var assumedVdfPath = GetSteamInstallationFolder() + @"steamapps\libraryfolders.vdf";
-
-            if (!File.Exists(assumedVdfPath))
-                throw new SteamLibraryPathNotFoundException();
-
-            return assumedVdfPath;
-        }
-
         public string GetSteamInstallationFolder()
         {
             if (_steamInstallationFolderPath != null)
@@ -145,69 +134,48 @@ namespace TileIconifier.Core.Custom.Steam
                 throw new SteamLibraryPathNotFoundException();
         }
 
-        private static string GetGameName(KeyValues.KeyValues kv)
-        {
-            while (true)
-            {
-                var kvp =
-                    kv.KeyNameValues.FirstOrDefault(
-                        k => k.Key.Equals("name", StringComparison.InvariantCultureIgnoreCase));
-                if (kvp != null)
-                    return kvp.Value;
-
-                var userConfigKv =
-                    kv.KeyChilds.FirstOrDefault(
-                        c => c.Name.Equals("UserConfig", StringComparison.InvariantCultureIgnoreCase));
-                if (userConfigKv == null) return null;
-                kv = userConfigKv;
-            }
-        }
-
         public List<SteamGame> GetAllSteamGames()
         {
             var steamGames = new List<SteamGame>();
 
-            foreach (var libraryFolder in GetLibraryFolders())
+            foreach (
+                var acfFile in
+                    GetLibraryFolders()
+                        .Select(libraryFolder => new DirectoryInfo(libraryFolder).GetFiles("appmanifest*.acf"))
+                        .SelectMany(acfFiles => acfFiles))
             {
-                var acfFiles = new DirectoryInfo(libraryFolder).GetFiles("appmanifest*.acf");
-                foreach (var acfFile in acfFiles)
+                try
                 {
+                    var kv = new KeyValues.KeyValues("AppState");
+                    kv.LoadFromFile(acfFile.FullName);
+
+                    //Empty list of key name values, skip
+                    if (!kv.KeyNameValues.Any())
+                        continue;
+                    var appId =
+                        kv.KeyNameValues.Single(
+                            k => k.Key.Equals("appid", StringComparison.InvariantCultureIgnoreCase)).Value;
+                    var gameName = GetGameName(kv);
+                    if (gameName == null)
+                        continue;
+                    steamGames.Add(new SteamGame(appId, gameName, acfFile.FullName));
+                }
+                catch (Exception ex)
+                {
+                    // get a better stack trace if we do have an exception including the contents of the failed file information
+                    var fileContents = "UNKNOWN";
                     try
                     {
-                        var kv = new KeyValues.KeyValues("AppState");
-                        kv.LoadFromFile(acfFile.FullName);
-
-                        //Empty list of key name values, skip
-                        if (!kv.KeyNameValues.Any())
-                            continue;
-                        var appId =
-                            kv.KeyNameValues.Single(
-                                k => k.Key.Equals("appid", StringComparison.InvariantCultureIgnoreCase)).Value;
-                        var gameName = GetGameName(kv);
-                        if (gameName == null)
-                            continue;
-                        steamGames.Add(new SteamGame(appId, gameName, acfFile.FullName));
+                        fileContents = File.ReadAllText(acfFile.FullName);
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        // // TODO: Add this back in with CORE and FORMS are separated
-
-                        // get a better stack trace if we do have an exception, including an attempt to get the failed file information
-                        var fileContents = "UNKNOWN";
-                        try
-                        {
-                            fileContents = File.ReadAllText(acfFile.FullName);
-                        }
-                        catch
-                        {
-                            // ignored
-                        }
-                        //FrmException.ShowExceptionHandler(
-                        //    new Exception(
-                        //        $@"An non-critical issue occured with file {acfFile.FullName} - Contents{"\r\n"}{
-                        //            fileContents}"
-                        //        , ex));
+                        // ignored
                     }
+                    throw new Exception(
+                        $@"An issue occured handling Steam acf file {acfFile.FullName} - Contents{"\r\n"}{
+                            fileContents}"
+                        , ex);
                 }
             }
             return steamGames;
@@ -233,6 +201,35 @@ namespace TileIconifier.Core.Custom.Steam
         {
             if (File.Exists(filePath))
                 _steamExecutablePath = filePath;
+        }
+
+
+        private string GetLibraryFoldersVdf()
+        {
+            var assumedVdfPath = GetSteamInstallationFolder() + @"steamapps\libraryfolders.vdf";
+
+            if (!File.Exists(assumedVdfPath))
+                throw new SteamLibraryPathNotFoundException();
+
+            return assumedVdfPath;
+        }
+
+        private static string GetGameName(KeyValues.KeyValues kv)
+        {
+            while (true)
+            {
+                var kvp =
+                    kv.KeyNameValues.FirstOrDefault(
+                        k => k.Key.Equals("name", StringComparison.InvariantCultureIgnoreCase));
+                if (kvp != null)
+                    return kvp.Value;
+
+                var userConfigKv =
+                    kv.KeyChilds.FirstOrDefault(
+                        c => c.Name.Equals("UserConfig", StringComparison.InvariantCultureIgnoreCase));
+                if (userConfigKv == null) return null;
+                kv = userConfigKv;
+            }
         }
     }
 }

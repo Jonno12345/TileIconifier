@@ -41,20 +41,6 @@ namespace TileIconifier.Forms.Shared
             InitializeComponent();
         }
 
-        private void tmrIncrement_Tick(object sender, EventArgs e)
-        {
-            const int maxPeriods = 5;
-
-            if (lblLoading.Text.Split('.').Length > maxPeriods)
-                lblLoading.Text = _title;
-
-            if (Text.Split('.').Length > maxPeriods)
-                Text = _title;
-
-            lblLoading.Text += @".";
-            Text += @".";
-        }
-
         public void SetTitle(string title)
         {
             _title = title;
@@ -63,11 +49,6 @@ namespace TileIconifier.Forms.Shared
         public void WorkCompleted()
         {
             Close();
-        }
-
-        private void frmLoadingSplash_Load(object sender, EventArgs e)
-        {
-            tmrIncrement_Tick(null, null);
         }
 
         /// <summary>
@@ -89,6 +70,25 @@ namespace TileIconifier.Forms.Shared
             }
 
             base.WndProc(ref message);
+        }
+
+        private void tmrIncrement_Tick(object sender, EventArgs e)
+        {
+            const int maxPeriods = 5;
+
+            if (lblLoading.Text.Split('.').Length > maxPeriods)
+                lblLoading.Text = _title;
+
+            if (Text.Split('.').Length > maxPeriods)
+                Text = _title;
+
+            lblLoading.Text += @".";
+            Text += @".";
+        }
+
+        private void frmLoadingSplash_Load(object sender, EventArgs e)
+        {
+            tmrIncrement_Tick(null, null);
         }
     }
 }

@@ -48,7 +48,6 @@ using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
 using TileIconifier.Utilities;
-using WindowsStoreAppListViewItemGroup = TileIconifier.Controls.Custom.WindowsStoreShellMethod.WindowsStoreAppListViewItemGroup;
 
 namespace TileIconifier.Forms.CustomShortcutForms
 {
@@ -126,16 +125,16 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             get
             {
-                var current = tabShortcutType.SelectedTab;
-                if (current == tabExplorer)
+                var currentTab = tabShortcutType.SelectedTab;
+                if (currentTab == tabExplorer)
                     return _explorerCache;
-                if (current == tabSteam)
+                if (currentTab == tabSteam)
                     return _steamCache;
-                if (current == tabOther)
+                if (currentTab == tabOther)
                     return _otherCache;
-                if (current == tabWindowsStore)
+                if (currentTab == tabWindowsStore)
                     return _windowsStoreCache;
-                if (current == tabChromeApps)
+                if (currentTab == tabChromeApps)
                     return _chromeCache;
                 return null;
             }
@@ -307,6 +306,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             pctCurrentIcon.Image = CurrentCache.GetIcon();
         }
 
+        #region Explorer Methods
         //*********************************************************************
         // EXPLORER RELATED METHODS
         //*********************************************************************
@@ -358,6 +358,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
             radCustomFolder.Checked = true;
         }
 
+
+        #endregion
+        #region Steam Methods
         //*********************************************************************
         // STEAM RELATED METHODS
         //*********************************************************************
@@ -492,7 +495,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 }
             }
         }
-
+        #endregion
+        #region Chrome Methods
         //*********************************************************************
         // CHROME RELATED METHODS
         //*********************************************************************
@@ -594,7 +598,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             txtChromeAppPath.Text = fldBrowser.SelectedPath;
         }
-
+        #endregion
+#region Windows Store Methods
         //*********************************************************************
         // WINDOWS STORE RELATED METHODS
         //*********************************************************************
@@ -659,10 +664,13 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             var selectedItem = (WindowsStoreAppListViewItemGroup) lstWindowsStoreApps.SelectedItems[0];
 
-            GenerateFullShortcut("explorer.exe", $@"shell:AppsFolder\{selectedItem.WindowsStoreApp.AppUserModelId}", CustomShortcutType.WindowsStoreApp,
+            GenerateFullShortcut("explorer.exe", $@"shell:AppsFolder\{selectedItem.WindowsStoreApp.AppUserModelId}",
+                CustomShortcutType.WindowsStoreApp,
                 selectedItem.WindowsStoreApp.LogoPath, windowType: WindowType.Hidden);
         }
+        #endregion
 
+        #region Other Shortcut Methods
         //*********************************************************************
         // OTHER RELATED METHODS
         //*********************************************************************
@@ -691,5 +699,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             GenerateFullShortcut(txtOtherTargetPath.Text, txtOtherShortcutArguments.Text, CustomShortcutType.Other, null);
         }
+#endregion
     }
 }

@@ -48,6 +48,31 @@ namespace TileIconifier.Forms
             Load += OnLoad;
         }
 
+        protected virtual void ApplySkin(object sender, EventArgs e)
+        {
+            CurrentBaseSkin = SkinHandler.GetCurrentSkin();
+            ApplyControlSkins(Controls);
+
+            BackColor = CurrentBaseSkin.BackColor;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                try
+                {
+                    SkinHandler.SkinChanged -= ApplySkin;
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
+
+            base.Dispose(disposing);
+        }
+
         private void OnLoad(object sender, EventArgs eventArgs)
         {
             AddControlEvents(Controls);
@@ -88,14 +113,6 @@ namespace TileIconifier.Forms
                 if (control.Controls.Count > 0)
                     AddControlEvents(control.Controls);
             }
-        }
-
-        protected virtual void ApplySkin(object sender, EventArgs e)
-        {
-            CurrentBaseSkin = SkinHandler.GetCurrentSkin();
-            ApplyControlSkins(Controls);
-
-            BackColor = CurrentBaseSkin.BackColor;
         }
 
         private void ApplyControlSkins(IEnumerable baseControls)
@@ -191,23 +208,6 @@ namespace TileIconifier.Forms
                     e.Graphics.DrawString(btn.Tag?.ToString(), btn.Font, drawBrush, e.ClipRectangle, sf);
                 }
             }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                try
-                {
-                    SkinHandler.SkinChanged -= ApplySkin;
-                }
-                catch
-                {
-                    // ignored
-                }
-            }
-
-            base.Dispose(disposing);
         }
     }
 }

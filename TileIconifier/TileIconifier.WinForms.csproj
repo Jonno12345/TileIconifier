@@ -106,19 +106,20 @@
       <DependentUpon>AllOrCurrentUserRadios.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Custom\WindowsStoreShellMethod\WindowsStoreAppListViewItemGroup.cs" />
-    <Compile Include="Controls\PannablePictureBox\PannablePictureBox.cs">
+    <Compile Include="Controls\PictureBox\PannablePictureBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\PannablePictureBox\PannablePictureBox.Designer.cs">
+    <Compile Include="Controls\PictureBox\PannablePictureBox.Designer.cs">
       <DependentUpon>PannablePictureBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PannablePictureBox\PannablePictureBoxControlPanel.cs">
+    <Compile Include="Controls\PictureBox\PannablePictureBoxControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\PannablePictureBox\PannablePictureBoxControlPanel.Designer.cs">
+    <Compile Include="Controls\PictureBox\PannablePictureBoxControlPanel.Designer.cs">
       <DependentUpon>PannablePictureBoxControlPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PannablePictureBox\PannablePictureBoxImage.cs" />
+    <Compile Include="Controls\PictureBox\PannablePictureBoxImage.cs" />
+    <Compile Include="Controls\PictureBox\PannablePictureBoxMetaData.cs" />
     <Compile Include="Controls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -127,6 +128,12 @@
     <Compile Include="Controls\Custom\Steam\SteamGameListViewItem.cs" />
     <None Include="Controls\Custom\WindowsStorePREVIOUSProtocolMethod\WindowsStoreAppListViewItemGroup.cs" />
     <None Include="Controls\Custom\WindowsStorePREVIOUSProtocolMethod\WindowsStoreAppProtocolComboListItem.cs" />
+    <Compile Include="Controls\TileIconifierPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TileIconifierPanel.Designer.cs">
+      <DependentUpon>TileIconifierPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,11 +205,14 @@
     <EmbeddedResource Include="Controls\AllOrCurrentUserRadios.resx">
       <DependentUpon>AllOrCurrentUserRadios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PannablePictureBox\PannablePictureBox.resx">
+    <EmbeddedResource Include="Controls\PictureBox\PannablePictureBox.resx">
       <DependentUpon>PannablePictureBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PannablePictureBox\PannablePictureBoxControlPanel.resx">
+    <EmbeddedResource Include="Controls\PictureBox\PannablePictureBoxControlPanel.resx">
       <DependentUpon>PannablePictureBoxControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TileIconifierPanel.resx">
+      <DependentUpon>TileIconifierPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerAbout.resx">
       <DependentUpon>FrmCustomShortcutManagerAbout.cs</DependentUpon>

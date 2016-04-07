@@ -1,4 +1,4 @@
-﻿namespace TileIconifier.Controls.PannablePictureBox
+﻿namespace TileIconifier.Controls.PictureBox
 {
     partial class PannablePictureBoxControlPanel
     {
