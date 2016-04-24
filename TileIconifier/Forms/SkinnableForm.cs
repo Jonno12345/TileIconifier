@@ -46,6 +46,7 @@ namespace TileIconifier.Forms
         {
             SkinHandler.SkinChanged += ApplySkin;
             Load += OnLoad;
+            Icon = Properties.Resources.tiles2_shadow_lyk_icon;
         }
 
         protected virtual void ApplySkin(object sender, EventArgs e)
@@ -208,6 +209,20 @@ namespace TileIconifier.Forms
                     e.Graphics.DrawString(btn.Tag?.ToString(), btn.Font, drawBrush, e.ClipRectangle, sf);
                 }
             }
+        }
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SkinnableForm));
+            this.SuspendLayout();
+            // 
+            // SkinnableForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "SkinnableForm";
+            this.ResumeLayout(false);
+
         }
     }
 }

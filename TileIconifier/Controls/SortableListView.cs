@@ -40,6 +40,7 @@ namespace TileIconifier.Controls
         {
             ColumnClick += SortableListView_ColumnClick;
             ColumnWidthChanging += OnColumnWidthChanging;
+            HideSelection = false;
         }
 
         private void OnColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)

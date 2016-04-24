@@ -33,6 +33,7 @@ using System.Linq;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Shortcut;
+using TileIconifier.Core.TileIconify;
 using TileIconifier.Properties;
 using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
@@ -82,9 +83,9 @@ namespace TileIconifier.Forms
         {
             srtlstShortcuts.Items.Clear();
             srtlstShortcuts.Columns.Clear();
-            srtlstShortcuts.Columns.Add("Shortcut Name", srtlstShortcuts.Width/7*5 - 10, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Iconified?", srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Pinned?", srtlstShortcuts.Width/7 - 4, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Shortcut Name", srtlstShortcuts.Width / 7 * 5 - 10, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Is Iconified?", srtlstShortcuts.Width / 7 - 2, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Is Pinned?", srtlstShortcuts.Width / 7 - 4, HorizontalAlignment.Left);
 
             var smallImageList = new ImageList();
             for (var i = 0; i < _shortcutsList.Count; i++)
@@ -156,6 +157,23 @@ namespace TileIconifier.Forms
             iconifyPanel.CurrentShortcutItem = CurrentShortcutItem;
             iconifyPanel.UpdateControlsToShortcut();
             UpdateFormControls();
+        }
+
+        private void JumpToShortcutItem(ShortcutItem shortcutItem)
+        {
+            var shortcutListViewItem =
+                _shortcutsList.First(s => s.ShortcutItem.ShortcutFileInfo.FullName == shortcutItem.ShortcutFileInfo.FullName);
+            var itemInListView = srtlstShortcuts.Items[srtlstShortcuts.Items.IndexOf(shortcutListViewItem)];
+            itemInListView.Selected = true;
+            itemInListView.EnsureVisible();
+        }
+
+        private TileIcon GenerateTileIcon()
+        {
+            var mediumXyRatio = new XyRatio((double)ShortcutConstantsAndEnums.MediumShortcutSize.Width / iconifyPanel.MediumPictureBoxSize.Width, (double)ShortcutConstantsAndEnums.MediumShortcutSize.Height / iconifyPanel.MediumPictureBoxSize.Width);
+            var smallXyRatio = new XyRatio((double)ShortcutConstantsAndEnums.SmallShortcutSize.Width / iconifyPanel.SmallPictureBoxSize.Width, (double)ShortcutConstantsAndEnums.SmallShortcutSize.Height / iconifyPanel.SmallPictureBoxSize.Width);
+
+            return new TileIcon(CurrentShortcutItem, mediumXyRatio, smallXyRatio);
         }
     }
 }

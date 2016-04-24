@@ -116,12 +116,9 @@ namespace TileIconifier.Core.Custom
             BasicShortcutIcon = VbsFolderPath + ShortcutName + ".ico";
             try
             {
-                using (var iconWriter = new StreamWriter(BasicShortcutIcon))
+                using (var iconWriter = new FileStream(BasicShortcutIcon, FileMode.Create))
                 {
-                    using (var ico = Icon.FromHandle(((Bitmap) basicIconTouse).GetHicon()))
-                    {
-                        ico.Save(iconWriter.BaseStream);
-                    }
+                    ImageUtils.ConvertToIcon(basicIconTouse, iconWriter);
                 }
             }
             catch
@@ -143,7 +140,7 @@ namespace TileIconifier.Core.Custom
                     TargetPath.QuoteWrap().EscapeVba(),
                     TargetArguments.EscapeVba(),
                     ShortcutType,
-                    (int) WindowType
+                    (int)WindowType
                     ));
 
             ShortcutUtils.CreateLnkFile(ShortcutItem.ShortcutFileInfo.FullName, VbsFilePath,
@@ -201,7 +198,7 @@ namespace TileIconifier.Core.Custom
                 return new CustomShortcut(regexMatch.Groups[2].Value.UnescapeVba(),
                     regexMatch.Groups[3].Value.UnescapeVba(), regexMatch.Groups[4].Value.UnescapeVba(),
                     regexMatch.Groups[5].Value.UnescapeVba(),
-                    (CustomShortcutType) Enum.Parse(typeof (CustomShortcutType), regexMatch.Groups[1].Value, true),
+                    (CustomShortcutType)Enum.Parse(typeof(CustomShortcutType), regexMatch.Groups[1].Value, true),
                     vbsFilePath: vbsFilePath,
                     vbsFolderPath: directoryInfo.FullName + "\\");
 

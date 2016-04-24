@@ -34,7 +34,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDeleteCustomShortcut = new System.Windows.Forms.Button();
-            this.lstCustomShortcuts = new SortableListView();
+            this.lstCustomShortcuts = new TileIconifier.Controls.SortableListView();
+            this.btnGotoShortcut = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +71,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // btnDeleteCustomShortcut
             // 
             this.btnDeleteCustomShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeleteCustomShortcut.Location = new System.Drawing.Point(482, 71);
+            this.btnDeleteCustomShortcut.Location = new System.Drawing.Point(482, 114);
             this.btnDeleteCustomShortcut.Name = "btnDeleteCustomShortcut";
             this.btnDeleteCustomShortcut.Size = new System.Drawing.Size(131, 38);
             this.btnDeleteCustomShortcut.TabIndex = 3;
@@ -91,11 +92,23 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.lstCustomShortcuts.UseCompatibleStateImageBehavior = false;
             this.lstCustomShortcuts.View = System.Windows.Forms.View.Details;
             // 
-            // frmCustomShortcutManagerMain
+            // btnGotoShortcut
+            // 
+            this.btnGotoShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGotoShortcut.Location = new System.Drawing.Point(482, 70);
+            this.btnGotoShortcut.Name = "btnGotoShortcut";
+            this.btnGotoShortcut.Size = new System.Drawing.Size(131, 38);
+            this.btnGotoShortcut.TabIndex = 6;
+            this.btnGotoShortcut.Text = "Goto Selected Shortcut";
+            this.btnGotoShortcut.UseVisualStyleBackColor = true;
+            this.btnGotoShortcut.Click += new System.EventHandler(this.btnGotoShortcut_Click);
+            // 
+            // FrmCustomShortcutManagerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 285);
+            this.Controls.Add(this.btnGotoShortcut);
             this.Controls.Add(this.lstCustomShortcuts);
             this.Controls.Add(this.btnDeleteCustomShortcut);
             this.Controls.Add(this.btnCreateNewShortcut);
@@ -118,5 +131,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btnDeleteCustomShortcut;
         private SortableListView lstCustomShortcuts;
+        private System.Windows.Forms.Button btnGotoShortcut;
     }
 }

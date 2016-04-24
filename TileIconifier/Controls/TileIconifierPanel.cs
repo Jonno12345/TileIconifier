@@ -57,6 +57,9 @@ namespace TileIconifier.Controls
 
         public ShortcutItem CurrentShortcutItem { get; set; }
 
+        public Size MediumPictureBoxSize => panPctMediumIcon.Size;
+        public Size SmallPictureBoxSize => panPctSmallIcon.Size;
+
         public event EventHandler OnIconifyPanelUpdate;
 
         public void UpdateControlsToShortcut()

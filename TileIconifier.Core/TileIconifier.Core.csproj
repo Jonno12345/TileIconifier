@@ -83,6 +83,7 @@
     <Compile Include="Shortcut\State\ShortcutItemState.cs" />
     <Compile Include="Shortcut\State\ShortcutItemStateController.cs" />
     <Compile Include="TileIconify\TileIcon.cs" />
+    <Compile Include="TileIconify\XYRatio.cs" />
     <Compile Include="Utilities\ColorUtils.cs" />
     <Compile Include="Utilities\DirectoryUtils.cs" />
     <Compile Include="Utilities\ImageUtils.cs" />

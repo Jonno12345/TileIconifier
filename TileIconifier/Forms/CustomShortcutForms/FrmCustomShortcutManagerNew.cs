@@ -158,7 +158,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             string targetPath,
             string targetArguments,
             CustomShortcutType shortcutType,
-            string basicShortcutIcon,
+            string basicShortcutIcon = null,
             string workingFolder = null,
             WindowType windowType = WindowType.ActiveAndDisplayed
             )
@@ -180,7 +180,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 radShortcutLocation.PathSelection(), basicShortcutIcon, workingFolder);
 
             //If we didn't specify a shortcut icon path, make one
-            if (basicShortcutIcon == null)
+            if (string.IsNullOrWhiteSpace(basicShortcutIcon))
                 customShortcut.BuildCustomShortcut(pctCurrentIcon.Image);
             else
                 customShortcut.BuildCustomShortcut();
@@ -424,8 +424,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             lstSteamGames.Clear();
             lstSteamGames.Columns.Clear();
 
-            lstSteamGames.Columns.Add("App Id", lstSteamGames.Width/8, HorizontalAlignment.Left);
-            lstSteamGames.Columns.Add("Game Name", lstSteamGames.Width/8*7 + 3, HorizontalAlignment.Left);
+            lstSteamGames.Columns.Add("App Id", lstSteamGames.Width / 8, HorizontalAlignment.Left);
+            lstSteamGames.Columns.Add("Game Name", lstSteamGames.Width / 8 * 7 + 3, HorizontalAlignment.Left);
 
             lstSteamGames.Items.AddRange(_steamGames.OrderBy(s => s.SteamGameItem.GameName).ToArray<ListViewItem>());
         }
@@ -459,7 +459,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             if (lstSteamGames.SelectedItems.Count == 0)
                 return;
 
-            var steamGame = ((SteamGameListViewItem) lstSteamGames.SelectedItems[0]).SteamGameItem;
+            var steamGame = ((SteamGameListViewItem)lstSteamGames.SelectedItems[0]).SteamGameItem;
             UpdatedCacheIcon(steamGame.IconAsBytes);
             txtShortcutName.Text = steamGame.GameName.CleanInvalidFilenameChars();
         }
@@ -468,7 +468,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             if (lstSteamGames.SelectedItems.Count == 0) return;
 
-            var steamGame = ((SteamGameListViewItem) lstSteamGames.SelectedItems[0]).SteamGameItem;
+            var steamGame = ((SteamGameListViewItem)lstSteamGames.SelectedItems[0]).SteamGameItem;
 
             GenerateFullShortcut(SteamLibrary.Instance.GetSteamExePath(), steamGame.GameExecutionArgument,
                 CustomShortcutType.Steam, steamGame.IconPath);
@@ -552,8 +552,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             lstChromeAppItems.Clear();
             lstChromeAppItems.Columns.Clear();
 
-            lstChromeAppItems.Columns.Add("App Id", lstSteamGames.Width/8*3, HorizontalAlignment.Left);
-            lstChromeAppItems.Columns.Add("App Name", lstSteamGames.Width/8*5 + 3, HorizontalAlignment.Left);
+            lstChromeAppItems.Columns.Add("App Id", lstSteamGames.Width / 8 * 3, HorizontalAlignment.Left);
+            lstChromeAppItems.Columns.Add("App Name", lstSteamGames.Width / 8 * 5 + 3, HorizontalAlignment.Left);
 
             lstChromeAppItems.Items.AddRange(_chromeApps.OrderBy(a => a.ChromeAppItem.AppName).ToArray<ListViewItem>());
         }
@@ -563,7 +563,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             if (lstChromeAppItems.SelectedItems.Count == 0)
                 return;
 
-            var chromeApp = ((ChromeAppListViewItem) lstChromeAppItems.SelectedItems[0]).ChromeAppItem;
+            var chromeApp = ((ChromeAppListViewItem)lstChromeAppItems.SelectedItems[0]).ChromeAppItem;
             UpdatedCacheIcon(chromeApp.IconAsBytes);
             txtShortcutName.Text = chromeApp.AppName.CleanInvalidFilenameChars();
         }
@@ -572,7 +572,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             if (lstChromeAppItems.SelectedItems.Count == 0) return;
 
-            var chromeApp = ((ChromeAppListViewItem) lstChromeAppItems.SelectedItems[0]).ChromeAppItem;
+            var chromeApp = ((ChromeAppListViewItem)lstChromeAppItems.SelectedItems[0]).ChromeAppItem;
 
             GenerateFullShortcut(txtChromeExePath.Text, chromeApp.ChromeAppExecutionArgument,
                 CustomShortcutType.ChromeApp, chromeApp.IconPath);
@@ -599,7 +599,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             txtChromeAppPath.Text = fldBrowser.SelectedPath;
         }
         #endregion
-#region Windows Store Methods
+        #region Windows Store Methods
         //*********************************************************************
         // WINDOWS STORE RELATED METHODS
         //*********************************************************************
@@ -651,7 +651,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             if (lstWindowsStoreApps.SelectedItems.Count == 0) return;
 
-            var windowsStoreAppListViewItem = (WindowsStoreAppListViewItemGroup) lstWindowsStoreApps.SelectedItems[0];
+            var windowsStoreAppListViewItem = (WindowsStoreAppListViewItemGroup)lstWindowsStoreApps.SelectedItems[0];
 
             txtShortcutName.Text = windowsStoreAppListViewItem.Text;
             UpdatedCacheIcon(ImageUtils.LoadFileToByteArray(windowsStoreAppListViewItem.WindowsStoreApp.LogoPath));
@@ -662,11 +662,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
             if (lstWindowsStoreApps.SelectedItems.Count == 0)
                 return;
 
-            var selectedItem = (WindowsStoreAppListViewItemGroup) lstWindowsStoreApps.SelectedItems[0];
+            var selectedItem = (WindowsStoreAppListViewItemGroup)lstWindowsStoreApps.SelectedItems[0];
 
             GenerateFullShortcut("explorer.exe", $@"shell:AppsFolder\{selectedItem.WindowsStoreApp.AppUserModelId}",
-                CustomShortcutType.WindowsStoreApp,
-                selectedItem.WindowsStoreApp.LogoPath, windowType: WindowType.Hidden);
+                CustomShortcutType.WindowsStoreApp, windowType: WindowType.Hidden);
         }
         #endregion
 
@@ -699,6 +698,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             GenerateFullShortcut(txtOtherTargetPath.Text, txtOtherShortcutArguments.Text, CustomShortcutType.Other, null);
         }
-#endregion
+        #endregion
     }
 }

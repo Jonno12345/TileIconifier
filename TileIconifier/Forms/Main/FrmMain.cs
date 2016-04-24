@@ -30,7 +30,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
+using TileIconifier.Controls;
 using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.TileIconify;
@@ -73,7 +75,7 @@ namespace TileIconifier.Forms
                 return;
 
             var showForegroundColourWarning = CurrentShortcutItem.Properties.ForegroundTextColourChanged;
-            var tileIconify = new TileIcon(CurrentShortcutItem);
+            var tileIconify = GenerateTileIcon();
             tileIconify.RunIconify();
             CurrentShortcutItem.Properties.CommitChanges();
             UpdateShortcut();
@@ -92,7 +94,7 @@ namespace TileIconifier.Forms
                 MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
-            var tileDeIconify = new TileIcon(CurrentShortcutItem);
+            TileIcon tileDeIconify = GenerateTileIcon();
             tileDeIconify.DeIconify();
             CurrentShortcutItem.Properties.ResetParameters();
             UpdateShortcut();
@@ -140,8 +142,10 @@ namespace TileIconifier.Forms
             using (var customShortcutManager = new FrmCustomShortcutManagerMain())
             {
                 customShortcutManager.ShowDialog(this);
+                StartFullUpdate();
+                if (customShortcutManager.GotoShortcutItem != null)
+                    JumpToShortcutItem(customShortcutManager.GotoShortcutItem);
             }
-            StartFullUpdate();
         }
 
         private void refreshAllToolStripMenuItem_Click(object sender, EventArgs e)
@@ -202,7 +206,7 @@ namespace TileIconifier.Forms
             if (srtlstShortcuts.SelectedItems.Count != 1)
                 return;
 
-            _currentShortcutListViewItem = (ShortcutItemListViewItem) srtlstShortcuts.SelectedItems[0];
+            _currentShortcutListViewItem = (ShortcutItemListViewItem)srtlstShortcuts.SelectedItems[0];
             UpdateShortcut();
         }
     }

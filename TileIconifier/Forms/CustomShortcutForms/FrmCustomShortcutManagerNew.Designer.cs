@@ -70,7 +70,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.opnOtherTarget = new System.Windows.Forms.OpenFileDialog();
             this.radShortcutLocation = new TileIconifier.Controls.AllOrCurrentUserRadios();
             this.opnChromeExe = new System.Windows.Forms.OpenFileDialog();
-            this.tileIconifierPanel1 = new TileIconifier.Controls.TileIconifierPanel();
             this.tabShortcutType.SuspendLayout();
             this.tabExplorer.SuspendLayout();
             this.pnlExplorer.SuspendLayout();
@@ -83,6 +82,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabShortcutType
             // 
+            this.tabShortcutType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabShortcutType.Controls.Add(this.tabExplorer);
             this.tabShortcutType.Controls.Add(this.tabSteam);
             this.tabShortcutType.Controls.Add(this.tabChromeApps);
@@ -422,7 +424,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabOther.Controls.Add(this.txtOtherTargetPath);
             this.tabOther.Location = new System.Drawing.Point(4, 22);
             this.tabOther.Name = "tabOther";
-            this.tabOther.Size = new System.Drawing.Size(622, 248);
+            this.tabOther.Size = new System.Drawing.Size(874, 299);
             this.tabOther.TabIndex = 2;
             this.tabOther.Text = "Other";
             this.tabOther.UseVisualStyleBackColor = true;
@@ -442,7 +444,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOtherShortcutArguments.Location = new System.Drawing.Point(121, 38);
             this.txtOtherShortcutArguments.Name = "txtOtherShortcutArguments";
-            this.txtOtherShortcutArguments.Size = new System.Drawing.Size(421, 20);
+            this.txtOtherShortcutArguments.Size = new System.Drawing.Size(673, 20);
             this.txtOtherShortcutArguments.TabIndex = 11;
             // 
             // lblOtherTargetPath
@@ -461,7 +463,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.btnOtherTargetBrowse.FlatAppearance.BorderSize = 0;
             this.btnOtherTargetBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOtherTargetBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOtherTargetBrowse.Location = new System.Drawing.Point(545, 8);
+            this.btnOtherTargetBrowse.Location = new System.Drawing.Point(797, 8);
             this.btnOtherTargetBrowse.Margin = new System.Windows.Forms.Padding(0);
             this.btnOtherTargetBrowse.Name = "btnOtherTargetBrowse";
             this.btnOtherTargetBrowse.Size = new System.Drawing.Size(68, 26);
@@ -476,7 +478,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOtherTargetPath.Location = new System.Drawing.Point(121, 12);
             this.txtOtherTargetPath.Name = "txtOtherTargetPath";
-            this.txtOtherTargetPath.Size = new System.Drawing.Size(421, 20);
+            this.txtOtherTargetPath.Size = new System.Drawing.Size(673, 20);
             this.txtOtherTargetPath.TabIndex = 0;
             // 
             // fldBrowser
@@ -509,6 +511,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // btnGenerateShortcut
             // 
+            this.btnGenerateShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerateShortcut.Location = new System.Drawing.Point(493, 308);
             this.btnGenerateShortcut.Name = "btnGenerateShortcut";
             this.btnGenerateShortcut.Size = new System.Drawing.Size(144, 41);
@@ -546,6 +549,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // radShortcutLocation
             // 
+            this.radShortcutLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.radShortcutLocation.Location = new System.Drawing.Point(391, 283);
             this.radShortcutLocation.Name = "radShortcutLocation";
             this.radShortcutLocation.Size = new System.Drawing.Size(96, 66);
@@ -557,20 +561,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.opnChromeExe.Filter = "chrome.exe|chrome.exe";
             this.opnChromeExe.Title = "Please locate \"chrome.exe\"...";
             // 
-            // tileIconifierPanel1
-            // 
-            this.tileIconifierPanel1.CurrentShortcutItem = null;
-            this.tileIconifierPanel1.Location = new System.Drawing.Point(643, 7);
-            this.tileIconifierPanel1.Name = "tileIconifierPanel1";
-            this.tileIconifierPanel1.Size = new System.Drawing.Size(305, 351);
-            this.tileIconifierPanel1.TabIndex = 31;
-            // 
             // FrmCustomShortcutManagerNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(950, 370);
-            this.Controls.Add(this.tileIconifierPanel1);
+            this.ClientSize = new System.Drawing.Size(652, 370);
             this.Controls.Add(this.radShortcutLocation);
             this.Controls.Add(this.txtShortcutName);
             this.Controls.Add(this.lblShortcutName);
@@ -641,6 +636,5 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private System.Windows.Forms.TabPage tabWindowsStore;
         private SortableListView lstWindowsStoreApps;
         private System.Windows.Forms.OpenFileDialog opnChromeExe;
-        private TileIconifierPanel tileIconifierPanel1;
     }
 }

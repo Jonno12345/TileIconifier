@@ -41,10 +41,21 @@ namespace TileIconifier.Core.TileIconify
     public class TileIcon
     {
         private readonly ShortcutItem _shortcutItem;
+        private readonly XyRatio _mediumXyRatio;
+        private readonly XyRatio _smallXyRatio;
 
         public TileIcon(ShortcutItem shortcutItem)
         {
             _shortcutItem = shortcutItem;
+            _mediumXyRatio = new XyRatio(1, 1);
+            _smallXyRatio = new XyRatio(1, 1);
+        }
+
+        public TileIcon(ShortcutItem shortcutItem, XyRatio mediumXyRatio, XyRatio smallXyRatio)
+        {
+            _shortcutItem = shortcutItem;
+            _mediumXyRatio = mediumXyRatio;
+            _smallXyRatio = smallXyRatio;
         }
 
         public void RunIconify()
@@ -106,16 +117,18 @@ namespace TileIconifier.Core.TileIconify
             BuildIcon(_shortcutItem.FullMediumIconPath, ShortcutConstantsAndEnums.MediumShortcutSize.Width,
                 ShortcutConstantsAndEnums.MediumShortcutSize.Height,
                 _shortcutItem.Properties.CurrentState.MediumImage.Bytes,
-                _shortcutItem.Properties.CurrentState.MediumImage.Width,
-                _shortcutItem.Properties.CurrentState.MediumImage.Height,
-                _shortcutItem.Properties.CurrentState.MediumImage.X, _shortcutItem.Properties.CurrentState.MediumImage.Y);
+                (int)Math.Round(_shortcutItem.Properties.CurrentState.MediumImage.Width * _mediumXyRatio.X, 0),
+                (int)Math.Round(_shortcutItem.Properties.CurrentState.MediumImage.Height * _mediumXyRatio.Y, 0),
+                (int)Math.Round(_shortcutItem.Properties.CurrentState.MediumImage.X * _mediumXyRatio.X, 0),
+                (int)Math.Round(_shortcutItem.Properties.CurrentState.MediumImage.Y * _mediumXyRatio.Y, 0));
 
             BuildIcon(_shortcutItem.FullSmallIconPath, ShortcutConstantsAndEnums.SmallShortcutSize.Width,
                 ShortcutConstantsAndEnums.SmallShortcutSize.Height,
                 _shortcutItem.Properties.CurrentState.SmallImage.Bytes,
-                _shortcutItem.Properties.CurrentState.SmallImage.Width,
-                _shortcutItem.Properties.CurrentState.SmallImage.Height,
-                _shortcutItem.Properties.CurrentState.SmallImage.X, _shortcutItem.Properties.CurrentState.SmallImage.Y);
+                (int)Math.Round(_shortcutItem.Properties.CurrentState.SmallImage.Width * _smallXyRatio.X, 0),
+                (int)Math.Round(_shortcutItem.Properties.CurrentState.SmallImage.Height * _smallXyRatio.Y, 0),
+                (int)Math.Round(_shortcutItem.Properties.CurrentState.SmallImage.X * _smallXyRatio.X, 0),
+                (int)Math.Round(_shortcutItem.Properties.CurrentState.SmallImage.Y * _smallXyRatio.Y, 0));
         }
 
         private void BuildIcon(string filePath, int width, int height, byte[] imageBytes, int imageWidth,

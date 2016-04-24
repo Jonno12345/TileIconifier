@@ -34,6 +34,7 @@ using System.Linq;
 using System.Windows.Forms;
 using TileIconifier.Controls.Custom;
 using TileIconifier.Core.Custom;
+using TileIconifier.Core.Shortcut;
 using TileIconifier.Properties;
 using TileIconifier.Utilities;
 
@@ -42,6 +43,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
     public partial class FrmCustomShortcutManagerMain : SkinnableForm
     {
         private List<CustomShortcutListViewItem> _customShortcutsList;
+        public ShortcutItem GotoShortcutItem = null;
 
         public FrmCustomShortcutManagerMain()
         {
@@ -128,6 +130,15 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             //update our lists and refresh
             RefreshCustomShortcuts();
+        }
+
+        private void btnGotoShortcut_Click(object sender, EventArgs e)
+        {
+            if (lstCustomShortcuts.SelectedItems.Count == 0)
+                return;
+
+            GotoShortcutItem = ((CustomShortcutListViewItem) lstCustomShortcuts.SelectedItems[0]).CustomShortcut.ShortcutItem;
+            Close();
         }
     }
 }

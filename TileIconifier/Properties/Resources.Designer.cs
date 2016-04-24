@@ -136,6 +136,26 @@ namespace TileIconifier.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap tiles2_shadow {
+            get {
+                object obj = ResourceManager.GetObject("tiles2_shadow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon tiles2_shadow_lyk_icon {
+            get {
+                object obj = ResourceManager.GetObject("tiles2_shadow_lyk_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Translate {
             get {
                 object obj = ResourceManager.GetObject("Translate", resourceCulture);

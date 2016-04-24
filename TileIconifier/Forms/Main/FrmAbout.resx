@@ -121,6 +121,7 @@
     <value>A simple utility to create a Tile Icon for your shortcuts in Windows 8.1 and Windows 10 Build 10586 and above.
 
 Created by Jonno @ Superuser - http://superuser.com/users/536125
+Logo provided by @AdamDesrosiers of XDA Developers.
 
 Source is available at https://github.com/Jonno12345/TileIconify
 
@@ -128,7 +129,6 @@ This uses the IconExtractor library by Tsuda Kageyu available at https://github.
 
  *  IconExtractor/IconUtil for .NET
  *  Copyright (C) 2014 Tsuda Kageyu. All rights reserved.
-
 
 Current Version: [@@CURVER@@]
 

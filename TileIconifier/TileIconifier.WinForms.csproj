@@ -234,6 +234,9 @@
     <EmbeddedResource Include="Forms\Main\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SkinnableForm.resx">
+      <DependentUpon>SkinnableForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -308,6 +311,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+    <None Include="Resources\tiles2-shadow.png" />
+    <None Include="Resources\tiles2_shadow_lyk_icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TileIconifier.Core\TileIconifier.Core.csproj">

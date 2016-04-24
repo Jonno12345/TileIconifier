@@ -27,13 +27,17 @@
 
 #endregion
 
-using System.Drawing;
-
-namespace TileIconifier.Core.Shortcut
+namespace TileIconifier.Core.TileIconify
 {
-    public static class ShortcutConstantsAndEnums
+    public class XyRatio
     {
-        public static Size MediumShortcutSize => new Size(300, 300);
-        public static Size SmallShortcutSize => new Size(150, 150);
+        public XyRatio(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public double X { get; }
+        public double Y { get; }
     }
 }
