@@ -62,7 +62,7 @@ namespace TileIconifier.Controls.PictureBox
             Height = height;
             X = x;
             Y = y;
-            AspectRatio = image != null ? (float) image.Width/image.Height : 0;
+            AspectRatio = image != null ? (float) image.Width/image.Height : 1;
             Image = image;
             OnPannablePictureNewImageSet?.Invoke(this, null);
         }

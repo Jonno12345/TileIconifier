@@ -40,10 +40,6 @@ namespace TileIconifier.Core.Shortcut
     [Serializable]
     public class ShortcutItem
     {
-        private Image _mediumImageCache;
-        private byte[] _mediumImageCacheBytes;
-        private Image _smallImageCache;
-        private byte[] _smallImageCacheBytes;
         private Bitmap _standardIcon;
 
         [NonSerialized] public ShortcutItemStateController Properties = new ShortcutItemStateController();
@@ -107,34 +103,6 @@ namespace TileIconifier.Core.Shortcut
         public FileInfo ShortcutFileInfo { get; set; }
         public string AppId { get; set; }
         public bool? IsPinned { get; set; }
-
-        public Image MediumImage()
-        {
-            if (_mediumImageCacheBytes == Properties.CurrentState.MediumImage.Bytes) return _mediumImageCache;
-
-            if (_mediumImageCacheBytes == Properties.CurrentState.MediumImage.Bytes &&
-                _mediumImageCacheBytes.SequenceEqual(Properties.CurrentState.MediumImage.Bytes))
-                return _mediumImageCache;
-
-            _mediumImageCache = ImageUtils.ByteArrayToImage(Properties.CurrentState.MediumImage.Bytes);
-            _mediumImageCacheBytes = Properties.CurrentState.MediumImage.Bytes?.ToArray();
-
-            return _mediumImageCache;
-        }
-
-        public Image SmallImage()
-        {
-            if (_smallImageCacheBytes == Properties.CurrentState.SmallImage.Bytes) return _smallImageCache;
-
-            if (_smallImageCacheBytes == Properties.CurrentState.SmallImage.Bytes &&
-                _smallImageCacheBytes.SequenceEqual(Properties.CurrentState.SmallImage.Bytes))
-                return _smallImageCache;
-
-            _smallImageCache = ImageUtils.ByteArrayToImage(Properties.CurrentState.SmallImage.Bytes);
-            _smallImageCacheBytes = Properties.CurrentState.SmallImage.Bytes?.ToArray();
-
-            return _smallImageCache;
-        }
 
         #region Path properties
 

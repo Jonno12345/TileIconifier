@@ -38,14 +38,15 @@ namespace TileIconifier.Core.Shortcut.State
 
         public ShortcutIconState()
         {
-            MediumImage = new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutSize);
-            SmallImage = new ShortcutItemImage(ShortcutConstantsAndEnums.SmallShortcutSize);
+            MediumImage = new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutOutputSize);
+            SmallImage = new ShortcutItemImage(ShortcutConstantsAndEnums.SmallShortcutOutputSize);
         }
 
         public string BackgroundColor { get; set; }
         public string ForegroundText { get; set; }
         public ShortcutItemImage MediumImage { get; set; }
         public ShortcutItemImage SmallImage { get; set; }
+
 
         public bool ShowNameOnSquare150X150Logo
         {
@@ -89,7 +90,7 @@ namespace TileIconifier.Core.Shortcut.State
                         X = MediumImage.X,
                         Y = MediumImage.Y
                     }
-                    : new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutSize),
+                    : new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutOutputSize),
                 SmallImage = SmallImage != null
                     ? new ShortcutItemImage(new Size(SmallImage.Width, SmallImage.Height))
                     {
@@ -97,7 +98,7 @@ namespace TileIconifier.Core.Shortcut.State
                         X = SmallImage.X,
                         Y = SmallImage.Y
                     }
-                    : new ShortcutItemImage(ShortcutConstantsAndEnums.SmallShortcutSize)
+                    : new ShortcutItemImage(ShortcutConstantsAndEnums.SmallShortcutOutputSize)
             };
         }
     }

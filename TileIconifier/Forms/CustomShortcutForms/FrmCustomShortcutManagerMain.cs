@@ -43,7 +43,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
     public partial class FrmCustomShortcutManagerMain : SkinnableForm
     {
         private List<CustomShortcutListViewItem> _customShortcutsList;
-        public ShortcutItem GotoShortcutItem = null;
+        public ShortcutItem GotoShortcutItem;
 
         public FrmCustomShortcutManagerMain()
         {
@@ -65,7 +65,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             var smallImageList = new ImageList();
             for (var i = 0; i < _customShortcutsList.Count; i++)
             {
-                smallImageList.Images.Add(_customShortcutsList[i].CustomShortcut.ShortcutItem.MediumImage() ??
+                smallImageList.Images.Add(_customShortcutsList[i].CustomShortcut.ShortcutItem.Properties.CurrentState.MediumImage.CachedImage() ??
                                           (_customShortcutsList[i].CustomShortcut.ShortcutItem.StandardIcon ??
                                            Resources.QuestionMark));
                 _customShortcutsList[i].ImageIndex = i;

@@ -189,9 +189,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
             //Iconify a TileIconifier shortcut for this with default settings
             var newShortcutItem = customShortcut.ShortcutItem;
             newShortcutItem.Properties.CurrentState.MediumImage.SetImage(imageToUse,
-                ShortcutConstantsAndEnums.MediumShortcutSize);
+                ShortcutConstantsAndEnums.MediumShortcutDisplaySize);
             newShortcutItem.Properties.CurrentState.SmallImage.SetImage(imageToUse,
-                ShortcutConstantsAndEnums.SmallShortcutSize);
+                ShortcutConstantsAndEnums.SmallShortcutDisplaySize);
             var iconify = new TileIcon(newShortcutItem);
             iconify.RunIconify();
 
@@ -696,7 +696,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void GenerateOtherShortcut()
         {
-            GenerateFullShortcut(txtOtherTargetPath.Text, txtOtherShortcutArguments.Text, CustomShortcutType.Other, null);
+            GenerateFullShortcut(txtOtherTargetPath.Text, txtOtherShortcutArguments.Text, CustomShortcutType.Other);
         }
         #endregion
     }

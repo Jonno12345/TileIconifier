@@ -67,11 +67,11 @@ namespace TileIconifier.Core.Shortcut.State
             //defaults
             OldState = new ShortcutIconState
             {
-                BackgroundColor = "black",
+                BackgroundColor = ShortcutConstantsAndEnums.DefaultAccentColor ?? "black",
                 ForegroundText = "light",
                 ShowNameOnSquare150X150Logo = true,
-                MediumImage = new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutSize),
-                SmallImage = new ShortcutItemImage(ShortcutConstantsAndEnums.SmallShortcutSize)
+                MediumImage = new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutOutputSize),
+                SmallImage = new ShortcutItemImage(ShortcutConstantsAndEnums.SmallShortcutOutputSize)
             };
             CurrentState = OldState.Clone();
         }
@@ -103,7 +103,7 @@ namespace TileIconifier.Core.Shortcut.State
                             ForegroundText = b.Attribute("ForegroundText").Value,
                             ShowNameOnSquare150X150Logo = b.Attribute("ShowNameOnSquare150x150Logo").Value == "on",
                             MediumImage =
-                                mediumImage ?? new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutSize)
+                                mediumImage ?? new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutOutputSize)
                                 {
                                     Bytes =
                                         ImageUtils.LoadFileToByteArray(targetFolderPath +
@@ -112,7 +112,7 @@ namespace TileIconifier.Core.Shortcut.State
                                     Y = 0
                                 },
                             SmallImage =
-                                smallImage ?? new ShortcutItemImage(ShortcutConstantsAndEnums.SmallShortcutSize)
+                                smallImage ?? new ShortcutItemImage(ShortcutConstantsAndEnums.SmallShortcutOutputSize)
                                 {
                                     Bytes =
                                         ImageUtils.LoadFileToByteArray(targetFolderPath +

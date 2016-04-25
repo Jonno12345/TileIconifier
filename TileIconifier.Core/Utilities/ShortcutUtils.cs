@@ -53,15 +53,11 @@ namespace TileIconifier.Core.Utilities
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    if (line.StartsWith("URL="))
-                    {
-                        var splitLine = line.Split('=');
-                        if (splitLine.Length > 0)
-                        {
-                            url = splitLine[1];
-                            break;
-                        }
-                    }
+                    if (!line.StartsWith("URL=")) continue;
+                    var splitLine = line.Split('=');
+                    if (splitLine.Length <= 0) continue;
+                    url = splitLine[1];
+                    break;
                 }
             }
 
@@ -95,16 +91,16 @@ namespace TileIconifier.Core.Utilities
             var wsh = new WshShell();
             var shortcut = wsh.CreateShortcut(
                 shortcutPath) as IWshShortcut;
-            if (shortcut != null)
-            {
-                shortcut.Arguments = "";
-                shortcut.TargetPath = targetPath;
-                shortcut.WindowStyle = 1;
-                shortcut.Description = description;
-                shortcut.WorkingDirectory = workingDirectory ?? new FileInfo(targetPath).Directory?.FullName;
-                shortcut.IconLocation = iconPath ?? targetPath;
-                shortcut.Save();
-            }
+
+            if (shortcut == null) return;
+
+            shortcut.Arguments = "";
+            shortcut.TargetPath = targetPath;
+            shortcut.WindowStyle = 1;
+            shortcut.Description = description;
+            shortcut.WorkingDirectory = workingDirectory ?? new FileInfo(targetPath).Directory?.FullName;
+            shortcut.IconLocation = iconPath ?? targetPath;
+            shortcut.Save();
         }
 
         private static string ResolveMsiShortcut(string file)

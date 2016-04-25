@@ -30,9 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Windows.Forms;
-using TileIconifier.Controls;
 using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.TileIconify;

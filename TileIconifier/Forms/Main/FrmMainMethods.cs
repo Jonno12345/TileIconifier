@@ -170,10 +170,7 @@ namespace TileIconifier.Forms
 
         private TileIcon GenerateTileIcon()
         {
-            var mediumXyRatio = new XyRatio((double)ShortcutConstantsAndEnums.MediumShortcutSize.Width / iconifyPanel.MediumPictureBoxSize.Width, (double)ShortcutConstantsAndEnums.MediumShortcutSize.Height / iconifyPanel.MediumPictureBoxSize.Width);
-            var smallXyRatio = new XyRatio((double)ShortcutConstantsAndEnums.SmallShortcutSize.Width / iconifyPanel.SmallPictureBoxSize.Width, (double)ShortcutConstantsAndEnums.SmallShortcutSize.Height / iconifyPanel.SmallPictureBoxSize.Width);
-
-            return new TileIcon(CurrentShortcutItem, mediumXyRatio, smallXyRatio);
+            return new TileIcon(CurrentShortcutItem);
         }
     }
 }

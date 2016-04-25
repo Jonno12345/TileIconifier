@@ -30,6 +30,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using TileIconifier.Core.Utilities;
 
@@ -48,6 +49,9 @@ namespace TileIconifier.Core.Shortcut
         [XmlElement("X")] public int X;
 
         [XmlElement("Y")] public int Y;
+        
+        private Image _imageCache;
+        private byte[] _imageCacheBytes;
 
         public ShortcutItemImage()
         {
@@ -74,6 +78,20 @@ namespace TileIconifier.Core.Shortcut
             tempImage.Dispose();
             if (x != null) X = (int) x;
             if (y != null) Y = (int) y;
+        }
+
+        public Image CachedImage()
+        {
+            if (_imageCacheBytes == Bytes) return _imageCache;
+
+            if (_imageCacheBytes == Bytes &&
+                _imageCacheBytes.SequenceEqual(Bytes))
+                return _imageCache;
+
+            _imageCache = ImageUtils.ByteArrayToImage(Bytes);
+            _imageCacheBytes = Bytes?.ToArray();
+
+            return _imageCache;
         }
 
         public override bool Equals(object obj)

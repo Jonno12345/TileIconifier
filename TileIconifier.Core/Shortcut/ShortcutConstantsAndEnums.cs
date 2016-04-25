@@ -28,12 +28,38 @@
 #endregion
 
 using System.Drawing;
+using Microsoft.Win32;
+using TileIconifier.Core.TileIconify;
 
 namespace TileIconifier.Core.Shortcut
 {
     public static class ShortcutConstantsAndEnums
     {
-        public static Size MediumShortcutSize => new Size(300, 300);
-        public static Size SmallShortcutSize => new Size(150, 150);
+        public static Size MediumShortcutOutputSize => new Size(300, 300);
+        public static Size MediumShortcutDisplaySize => new Size(100, 100);
+        public static Size SmallShortcutOutputSize => new Size(150, 150);
+        public static Size SmallShortcutDisplaySize => new Size(50, 50);
+
+        public static XyRatio MediumXyRatio => new XyRatio((double)MediumShortcutOutputSize.Width / MediumShortcutDisplaySize.Width, (double)MediumShortcutOutputSize.Height / MediumShortcutDisplaySize.Height);
+        public static XyRatio SmallXyRatio => new XyRatio((double)SmallShortcutOutputSize.Width / SmallShortcutDisplaySize.Width, (double)SmallShortcutOutputSize.Height / SmallShortcutDisplaySize.Height);
+
+
+        public static string DefaultAccentColor
+        {
+            get
+            {
+                var value = Registry.CurrentUser.OpenSubKey(
+                    @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent")?
+                    .GetValue("AccentColorMenu");
+
+                var accentColor =
+                    ((int?) value)?.ToString("X2");
+
+                if (string.IsNullOrEmpty(accentColor) || accentColor.Length != 8) return null;
+                var returnString =
+                    $@"#{accentColor.Substring(6, 2)}{accentColor.Substring(4, 2)}{accentColor.Substring(2, 2)}";
+                return returnString;
+            }
+        }
     }
 }

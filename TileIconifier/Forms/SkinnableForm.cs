@@ -210,19 +210,5 @@ namespace TileIconifier.Forms
                 }
             }
         }
-
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SkinnableForm));
-            this.SuspendLayout();
-            // 
-            // SkinnableForm
-            // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "SkinnableForm";
-            this.ResumeLayout(false);
-
-        }
     }
 }
