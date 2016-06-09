@@ -140,7 +140,8 @@ namespace TileIconifier.Core.Custom
                     TargetPath.QuoteWrap().EscapeVba(),
                     TargetArguments.EscapeVba(),
                     ShortcutType,
-                    (int)WindowType
+                    (int)WindowType,
+                    $@"{new FileInfo(TargetPath).Directory?.FullName}\".EscapeVba()
                     ));
 
             ShortcutUtils.CreateLnkFile(ShortcutItem.ShortcutFileInfo.FullName, VbsFilePath,

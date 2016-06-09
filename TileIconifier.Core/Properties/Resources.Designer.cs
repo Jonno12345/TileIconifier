@@ -75,7 +75,8 @@ namespace TileIconifier.Core.Properties {
         ///targetArguments = &quot;{3}&quot;
         ///
         ///Set WshShell = WScript.CreateObject(&quot;WScript.Shell&quot;)
-        ///WshShell.Run targetPath &amp; &quot; &quot; &amp; targetArguments, {5}.
+        ///WshShell.CurrentDirectory = &quot;{6}&quot;
+        ///WshShell.Run targetPath &amp; &quot;  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string CustomShortcutVbsTemplate {
             get {

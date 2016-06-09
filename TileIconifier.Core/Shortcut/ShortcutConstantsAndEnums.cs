@@ -28,6 +28,7 @@
 #endregion
 
 using System.Drawing;
+using System.Management.Automation;
 using Microsoft.Win32;
 using TileIconifier.Core.TileIconify;
 
@@ -43,17 +44,23 @@ namespace TileIconifier.Core.Shortcut
         public static XyRatio MediumXyRatio => new XyRatio((double)MediumShortcutOutputSize.Width / MediumShortcutDisplaySize.Width, (double)MediumShortcutOutputSize.Height / MediumShortcutDisplaySize.Height);
         public static XyRatio SmallXyRatio => new XyRatio((double)SmallShortcutOutputSize.Width / SmallShortcutDisplaySize.Width, (double)SmallShortcutOutputSize.Height / SmallShortcutDisplaySize.Height);
 
+        public static int RawAccentColor
+        {
+            get
+            {
+                var o = Registry.CurrentUser.OpenSubKey(
+                    @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent")?
+                    .GetValue("AccentColorMenu");
+                return (int?) o ?? 0;
+            }
+        }
 
         public static string DefaultAccentColor
         {
             get
             {
-                var value = Registry.CurrentUser.OpenSubKey(
-                    @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent")?
-                    .GetValue("AccentColorMenu");
-
                 var accentColor =
-                    ((int?) value)?.ToString("X2");
+                    RawAccentColor.ToString("X2");
 
                 if (string.IsNullOrEmpty(accentColor) || accentColor.Length != 8) return null;
                 var returnString =

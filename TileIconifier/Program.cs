@@ -42,12 +42,10 @@ namespace TileIconifier
         public static bool IsAdministrator()
         {
             var identity = WindowsIdentity.GetCurrent();
-            if (identity != null)
-            {
-                var principal = new WindowsPrincipal(identity);
-                return principal.IsInRole(WindowsBuiltInRole.Administrator);
-            }
-            throw new UnableToDetectAdministratorException();
+            if (identity == null) throw new UnableToDetectAdministratorException();
+
+            var principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
         /// <summary>

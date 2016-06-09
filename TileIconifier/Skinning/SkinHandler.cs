@@ -40,10 +40,7 @@ namespace TileIconifier.Skinning
 
         public static event SkinChangedEventHandler SkinChanged;
 
-        public static BaseSkin GetCurrentSkin()
-        {
-            return _currentBaseSkin;
-        }
+        public static BaseSkin GetCurrentSkin() => _currentBaseSkin;
 
         public static void SetCurrentSkin(BaseSkin baseSkin)
         {

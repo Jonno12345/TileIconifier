@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -403,6 +404,8 @@ namespace TileIconifier.Controls
 
         private void btnColourPicker_Click(object sender, EventArgs e)
         {
+            clrDialog.CustomColors = new[] { ColorTranslator.ToOle(ColorUtils.HexToColor(ShortcutConstantsAndEnums.DefaultAccentColor)) };
+
             if (clrDialog.ShowDialog(this) == DialogResult.OK)
             {
                 txtBGColour.Text = ColorUtils.ColorToHex(clrDialog.Color);

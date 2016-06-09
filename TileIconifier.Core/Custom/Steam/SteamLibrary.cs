@@ -128,8 +128,9 @@ namespace TileIconifier.Core.Custom.Steam
 
         public void AddLibraryFolder(string libraryFolder)
         {
-            if (Directory.Exists(libraryFolder + "steamapps\\"))
-                _steamLibraryFolders.Add(libraryFolder + "steamapps\\");
+            var steamAppsPath = Path.Combine(libraryFolder, "steamapps");
+            if (Directory.Exists(steamAppsPath))
+                _steamLibraryFolders.Add(steamAppsPath);
             else
                 throw new SteamLibraryPathNotFoundException();
         }

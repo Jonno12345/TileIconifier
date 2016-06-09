@@ -494,6 +494,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                         @"Selected folder is invalid (valid folders should contain a subfolder named ""steamapps""), please try again or cancel.");
                 }
             }
+            SetUpSteam();
         }
         #endregion
         #region Chrome Methods
