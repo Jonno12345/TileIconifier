@@ -88,7 +88,8 @@ namespace TileIconifier.Core.Shortcut.State
                     {
                         Bytes = MediumImage.Bytes,
                         X = MediumImage.X,
-                        Y = MediumImage.Y
+                        Y = MediumImage.Y,
+                        Path = MediumImage.Path
                     }
                     : new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutOutputSize),
                 SmallImage = SmallImage != null
@@ -96,7 +97,8 @@ namespace TileIconifier.Core.Shortcut.State
                     {
                         Bytes = SmallImage.Bytes,
                         X = SmallImage.X,
-                        Y = SmallImage.Y
+                        Y = SmallImage.Y,
+                        Path = SmallImage.Path
                     }
                     : new ShortcutItemImage(ShortcutConstantsAndEnums.SmallShortcutOutputSize)
             };

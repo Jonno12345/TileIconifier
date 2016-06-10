@@ -74,25 +74,73 @@ namespace TileIconifier.Forms.Shared
             @"%windir%\system32\wucltux.dll"
         };
 
-        private Icon[] _icons;
-        //public Bitmap ReturnedBitmap;
-        public byte[] ReturnedBitmapBytes;
+        private readonly List<string> _iconExtractorFileTypes = new List<string>
+        {
+            ".ico",
+            ".exe",
+            ".dll"
+        };
 
-        public FrmIconSelector(string targetPath)
+        private readonly List<string> _supportedImageFileTypes = new List<string>
+        {
+            ".jpg",
+            ".png",
+            ".bmp"
+        };
+
+        private Icon[] _icons;
+
+        public byte[] ReturnedBitmapBytes;
+        public string ReturnedImagePath;
+
+        private FrmIconSelector(string targetPath)
         {
             InitializeComponent();
             SetUpCommonDllComboBox();
-            txtPathToExtractFrom.Text = targetPath;
+            SetUpTargetPath(targetPath);
             BuildListView();
         }
 
-        public static byte[] GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
+        public static IconSelectorResult GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
         {
             var iconSelector = new FrmIconSelector(defaultPathForIconExtraction);
             iconSelector.ShowDialog(owner);
             if (iconSelector.ReturnedBitmapBytes == null)
                 throw new UserCancellationException();
-            return iconSelector.ReturnedBitmapBytes;
+
+            return new IconSelectorResult
+            {
+                ImageBytes = iconSelector.ReturnedBitmapBytes,
+                ImagePath = iconSelector.ReturnedImagePath
+            };
+        }
+
+        private bool PathTypeIsForIconExtractor(string path)
+        {
+            return
+                _iconExtractorFileTypes.Any(
+                    s => string.Equals(Path.GetExtension(path), s, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        private bool PathTypeIsAnImageFile(string path)
+        {
+            return
+                _supportedImageFileTypes.Any(
+                    s => string.Equals(Path.GetExtension(path), s, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        private void SetUpTargetPath(string targetPath)
+        {
+            if (PathTypeIsForIconExtractor(targetPath))
+            {
+                txtPathToExtractFrom.Text = targetPath;
+                radIconFromTarget.Checked = true;
+            }
+            else if (PathTypeIsAnImageFile(targetPath))
+            {
+                txtImagePath.Text = targetPath;
+                radUseCustomImage.Checked = true;
+            }
         }
 
         private void SetUpCommonDllComboBox()
@@ -126,6 +174,7 @@ namespace TileIconifier.Forms.Shared
             lvwIcons.BeginUpdate();
             try
             {
+                //icon files don't need extraction
                 if (string.Equals(Path.GetExtension(targetPath), ".ico", StringComparison.InvariantCultureIgnoreCase))
                 {
                     _icons = new[] {new Icon(targetPath)};
@@ -216,6 +265,7 @@ namespace TileIconifier.Forms.Shared
                         return;
                     }
                     ReturnedBitmapBytes = GetLogoBytes();
+                    ReturnedImagePath = txtPathToExtractFrom.Text;
                 }
                 else
                 {
@@ -223,6 +273,7 @@ namespace TileIconifier.Forms.Shared
                     if (!File.Exists(imagePath))
                         throw new FileNotFoundException();
                     ReturnedBitmapBytes = ImageUtils.LoadFileToByteArray(imagePath);
+                    ReturnedImagePath = imagePath;
                 }
             }
             catch (FileNotFoundException ex)
@@ -303,18 +354,13 @@ namespace TileIconifier.Forms.Shared
 
         private void HandlePathSelection(string fileName)
         {
-            //need clean this up... actually using the filters from the file selector would be best.
-            if (string.Equals(Path.GetExtension(fileName), ".exe", StringComparison.InvariantCultureIgnoreCase) ||
-                string.Equals(Path.GetExtension(fileName), ".dll", StringComparison.InvariantCultureIgnoreCase) ||
-                string.Equals(Path.GetExtension(fileName), ".ico", StringComparison.InvariantCultureIgnoreCase))
+            if (PathTypeIsForIconExtractor(fileName))
             {
                 txtPathToExtractFrom.Text = opnFile.FileName;
                 radIconFromTarget.Checked = true;
                 BuildListView();
             }
-            else if (string.Equals(Path.GetExtension(fileName), ".jpg", StringComparison.InvariantCultureIgnoreCase) ||
-                     string.Equals(Path.GetExtension(fileName), ".png", StringComparison.InvariantCultureIgnoreCase) ||
-                     string.Equals(Path.GetExtension(fileName), ".bmp", StringComparison.InvariantCultureIgnoreCase))
+            else if (PathTypeIsAnImageFile(fileName))
             {
                 txtImagePath.Text = opnFile.FileName;
                 radUseCustomImage.Checked = true;
@@ -328,9 +374,42 @@ namespace TileIconifier.Forms.Shared
             BuildListView();
         }
 
+        private void txtImagePath_TextChanged(object sender, EventArgs e)
+        {
+            if (!File.Exists(txtImagePath.Text))
+            {
+                if (pctPreview.Image == null) return;
+                try
+                {
+                    pctPreview.Image.Dispose();
+                }
+                catch
+                {
+                    // ignored
+                }
+                pctPreview.Image = null;
+                return;
+            }
+
+            try
+            {
+                pctPreview.Image = ImageUtils.LoadFileToBitmap(txtImagePath.Text);
+            }
+            catch
+            {
+                MessageBox.Show(@"An error occurred trying to load this image file! Please try another.");
+            }
+        }
+
         private class IconListViewItem : ListViewItem
         {
             public Bitmap Bitmap { get; set; }
         }
+    }
+
+    public class IconSelectorResult
+    {
+        public byte[] ImageBytes { get; set; }
+        public string ImagePath { get; set; }
     }
 }

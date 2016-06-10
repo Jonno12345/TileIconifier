@@ -42,6 +42,8 @@ namespace TileIconifier.Core.Shortcut
     {
         [XmlElement("OriginalBytes")] public byte[] Bytes;
 
+        [XmlElement("OriginalPath")] public string Path;
+
         [XmlElement("Height")] public int Height;
 
         [XmlElement("Width")] public int Width;
@@ -49,6 +51,7 @@ namespace TileIconifier.Core.Shortcut
         [XmlElement("X")] public int X;
 
         [XmlElement("Y")] public int Y;
+
         
         private Image _imageCache;
         private byte[] _imageCacheBytes;

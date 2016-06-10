@@ -28,7 +28,6 @@
 #endregion
 
 using System.Drawing;
-using System.Management.Automation;
 using Microsoft.Win32;
 using TileIconifier.Core.TileIconify;
 

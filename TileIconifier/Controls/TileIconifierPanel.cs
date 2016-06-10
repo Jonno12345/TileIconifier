@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -164,10 +165,15 @@ namespace TileIconifier.Controls
 
         private void IconSet(object sender)
         {
-            byte[] imageBytes;
+            IconSelectorResult selectedImage;
             try
             {
-                imageBytes = FrmIconSelector.GetImage(this, CurrentShortcutItem.TargetFilePath);
+                var x = GetSenderPictureBoxToMetaData(sender);
+                var imagePath = x.ShortcutItemImage.Path;
+                if (string.IsNullOrEmpty(imagePath) || !File.Exists(imagePath))
+                    imagePath = CurrentShortcutItem.TargetFilePath;
+                selectedImage = FrmIconSelector.GetImage(this, imagePath);
+
             }
             catch (UserCancellationException)
             {
@@ -180,7 +186,8 @@ namespace TileIconifier.Controls
 
             foreach (var pictureBoxMetaData in pictureBoxMetaDataToUse)
             {
-                pictureBoxMetaData.ShortcutItemImage.SetImage(imageBytes, pictureBoxMetaData.Size);
+                pictureBoxMetaData.ShortcutItemImage.Path = selectedImage.ImagePath;
+                pictureBoxMetaData.ShortcutItemImage.SetImage(selectedImage.ImageBytes, pictureBoxMetaData.Size);
                 UpdatePictureBoxImage(pictureBoxMetaData.PannablePictureBox, pictureBoxMetaData.ShortcutItemImage);
                 pictureBoxMetaData.PannablePictureBox.ResetImage();
             }

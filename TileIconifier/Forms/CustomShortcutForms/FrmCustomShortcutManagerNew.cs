@@ -267,7 +267,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             try
             {
-                CurrentCache.SetIconBytes(FrmIconSelector.GetImage(this, CustomShortcutGetters.ExplorerPath));
+                CurrentCache.SetIconBytes(FrmIconSelector.GetImage(this, CustomShortcutGetters.ExplorerPath).ImageBytes);
                 pctCurrentIcon.Image = CurrentCache.GetIcon();
             }
             catch (UserCancellationException)
