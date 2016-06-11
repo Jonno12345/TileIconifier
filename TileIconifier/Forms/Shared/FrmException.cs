@@ -30,12 +30,19 @@
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using TileIconifier.Core.Utilities;
 
 namespace TileIconifier.Forms.Shared
 {
     public partial class FrmException : SkinnableForm
     {
         private readonly Exception _ex;
+
+        private string ExceptionString => $@"TileIconifier Version: v{UpdateUtils.CurrentVersion} - {(Environment.Is64BitProcess ? @"x64" : "x86")}
+OS Version: {Environment.OSVersion.Version} - {(Environment.Is64BitOperatingSystem ? @"x64" : "x86")}
+
+{_ex}
+";
 
         public FrmException(Exception ex)
         {
@@ -61,21 +68,20 @@ namespace TileIconifier.Forms.Shared
 
         private void FrmUnhandledExceptionLoad(object sender, EventArgs e)
         {
-            rtxtUnhandledException.Text = rtxtUnhandledException.Text.Replace("[@@EXCEPTIONSTACKTRACE@@]",
-                _ex.ToString());
+            rtxtUnhandledException.Text = rtxtUnhandledException.Text.Replace("[@@EXCEPTIONSTRING@@]",
+                ExceptionString);
         }
 
         private void rtxtUnhandledException_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                var contextMenu = new ContextMenu();
-                var menuItem = new MenuItem("Copy Information For Github Issue");
-                menuItem.Click += (o, ev) => Clipboard.SetData(DataFormats.Text, _ex.ToString());
-                contextMenu.MenuItems.Add(menuItem);
+            if (e.Button != MouseButtons.Right) return;
 
-                rtxtUnhandledException.ContextMenu = contextMenu;
-            }
+            var contextMenu = new ContextMenu();
+            var menuItem = new MenuItem("Copy Information For Github Issue");
+            menuItem.Click += (o, ev) => Clipboard.SetData(DataFormats.Text, ExceptionString);
+            contextMenu.MenuItems.Add(menuItem);
+
+            rtxtUnhandledException.ContextMenu = contextMenu;
         }
     }
 }

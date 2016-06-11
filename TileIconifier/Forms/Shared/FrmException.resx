@@ -130,7 +130,7 @@ Please could you raise an issue at https://github.com/Jonno12345/TileIconify/iss
 
 ######## COPY FROM HERE
 
-[@@EXCEPTIONSTACKTRACE@@]
+[@@EXCEPTIONSTRING@@]
 
 ######## TO HERE</value>
   </data>

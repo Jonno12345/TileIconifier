@@ -242,7 +242,7 @@ namespace TileIconifier.Controls.PictureBox
 
         private void pctBox_DoubleClick(object sender, EventArgs e)
         {
-            DoubleClick?.Invoke(sender, e);
+            DoubleClick?.Invoke(this, e);
         }
 
         private void PannablePictureBox_Load(object sender, EventArgs e)

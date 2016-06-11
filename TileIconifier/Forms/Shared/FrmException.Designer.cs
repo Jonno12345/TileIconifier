@@ -44,7 +44,7 @@
             this.rtxtUnhandledException.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtException_LinkClicked);
             this.rtxtUnhandledException.MouseUp += new System.Windows.Forms.MouseEventHandler(this.rtxtUnhandledException_MouseUp);
             // 
-            // FrmUnhandledException
+            // FrmException
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -53,7 +53,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmUnhandledException";
+            this.Name = "FrmException";
             this.Text = "Unhandled Exception!!!";
             this.Load += new System.EventHandler(this.FrmUnhandledExceptionLoad);
             this.ResumeLayout(false);
