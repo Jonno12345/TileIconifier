@@ -29,12 +29,14 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.TileIconify;
+using TileIconifier.Core.Utilities;
 using TileIconifier.Properties;
 using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
@@ -84,10 +86,10 @@ namespace TileIconifier.Forms
         {
             srtlstShortcuts.Items.Clear();
             srtlstShortcuts.Columns.Clear();
-            srtlstShortcuts.Columns.Add("Shortcut Name", srtlstShortcuts.Width / 7 * 4 - 10, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Custom?", srtlstShortcuts.Width / 7 - 2, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Iconified?", srtlstShortcuts.Width / 7 - 2, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Pinned?", srtlstShortcuts.Width / 7 - 4, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Shortcut Name", srtlstShortcuts.Width/7*4 - 10, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Is Custom?", srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Is Iconified?", srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Is Pinned?", srtlstShortcuts.Width/7 - 4, HorizontalAlignment.Left);
 
             var smallImageList = new ImageList();
             for (var i = 0; i < _shortcutsList.Count; i++)
@@ -170,7 +172,8 @@ namespace TileIconifier.Forms
         private void JumpToShortcutItem(ShortcutItem shortcutItem)
         {
             var shortcutListViewItem =
-                _shortcutsList.First(s => s.ShortcutItem.ShortcutFileInfo.FullName == shortcutItem.ShortcutFileInfo.FullName);
+                _shortcutsList.First(
+                    s => s.ShortcutItem.ShortcutFileInfo.FullName == shortcutItem.ShortcutFileInfo.FullName);
             var itemInListView = srtlstShortcuts.Items[srtlstShortcuts.Items.IndexOf(shortcutListViewItem)];
             itemInListView.Selected = true;
             itemInListView.EnsureVisible();
@@ -179,6 +182,49 @@ namespace TileIconifier.Forms
         private TileIcon GenerateTileIcon()
         {
             return new TileIcon(CurrentShortcutItem);
+        }
+
+        private async void CheckForUpdates(bool silentIfNoUpdateDetected)
+        {
+            try
+            {
+                var updateDetails = await UpdateUtils.CheckForUpdate();
+
+                if (updateDetails.UpdateAvailable)
+                {
+                    if (MessageBox.Show(
+                        $@"An update is available! Would you like to visit the releases page? (Your version: {
+                            updateDetails
+                                .CurrentVersion} - Latest version: {updateDetails.LatestVersion})",
+                        @"New version available!",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button1) == DialogResult.Yes
+                        )
+                    {
+                        Process.Start("https://github.com/Jonno12345/TileIconifier/releases");
+                    }
+                }
+                else if (!silentIfNoUpdateDetected)
+                {
+                    MessageBox.Show(@"You are already on the latest version!", @"Up-to-date");
+                }
+            }
+            catch
+            {
+                if (silentIfNoUpdateDetected) return;
+
+                if (MessageBox.Show(
+                    $@"An error occurred getting latest release information. Click Ok to visit the latest releases page to check manually. (Your version: {
+                        UpdateUtils
+                            .CurrentVersion})",
+                    @"Unable to check server!",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Exclamation) == DialogResult.OK)
+                {
+                    Process.Start("https://github.com/Jonno12345/TileIconifier/releases");
+                }
+            }
         }
     }
 }

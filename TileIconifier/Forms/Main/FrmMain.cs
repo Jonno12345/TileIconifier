@@ -65,6 +65,9 @@ namespace TileIconifier.Forms
             darkSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
             defaultSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
             iconifyPanel.OnIconifyPanelUpdate += (s, ev) => { UpdateFormControls(); };
+
+            CheckForUpdates(true);
+
             Show();
             StartFullUpdate();
         }
@@ -153,45 +156,9 @@ namespace TileIconifier.Forms
             StartFullUpdate();
         }
 
-        private async void checkForUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        private void checkForUpdateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var updateDetails = await UpdateUtils.CheckForUpdate();
-
-                if (updateDetails.UpdateAvailable)
-                {
-                    if (MessageBox.Show(
-                        $@"An update is available! Would you like to visit the releases page? (Your version: {
-                            updateDetails
-                                .CurrentVersion} - Latest version: {updateDetails.LatestVersion})",
-                        @"New version available!",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question,
-                        MessageBoxDefaultButton.Button1) == DialogResult.Yes
-                        )
-                    {
-                        Process.Start("https://github.com/Jonno12345/TileIconifier/releases");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(@"You are already on the latest version!", @"Up-to-date");
-                }
-            }
-            catch
-            {
-                if (MessageBox.Show(
-                    $@"An error occurred getting latest release information. Click Ok to visit the latest releases page to check manually. (Your version: {
-                        UpdateUtils
-                            .CurrentVersion})",
-                    @"Unable to check server!",
-                    MessageBoxButtons.OKCancel,
-                    MessageBoxIcon.Exclamation) == DialogResult.OK)
-                {
-                    Process.Start("https://github.com/Jonno12345/TileIconifier/releases");
-                }
-            }
+            CheckForUpdates(false);
         }
 
         private void SkinToolStripMenuClick(object sender, EventArgs e)
