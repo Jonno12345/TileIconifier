@@ -47,12 +47,22 @@ namespace TileIconifier.Core.Custom
         public static string QuoteWrap(this string input) => string.Format("{0}{1}{0}", "\"", input);
 
         /// <summary>
+        ///     Extension method to wrap a string with double quotes
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>Original string with " surrounding</returns>
+        public static string UnQuoteWrap(this string input)
+        {
+            return input.Trim('"');
+        }
+
+        /// <summary>
         ///     Quick and dirty extension method to remove any invalid characters and replace with a space
         /// </summary>
         /// <param name="input"></param>
         /// <returns>Cleaned string for paths/filenames</returns>
-        public static string CleanInvalidFilenameChars(this string input) => 
+        public static string CleanInvalidFilenameChars(this string input) =>
             string.Join("", input.Split(Path.GetInvalidFileNameChars(), StringSplitOptions.RemoveEmptyEntries))
-            .TrimEnd('.');
+                .TrimEnd('.');
     }
 }

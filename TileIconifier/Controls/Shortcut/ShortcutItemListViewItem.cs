@@ -47,6 +47,7 @@ namespace TileIconifier.Controls.Shortcut
         {
             SubItems.Clear();
             Text = Path.GetFileNameWithoutExtension(ShortcutItem.ShortcutFileInfo.Name);
+            SubItems.Add(ShortcutItem.IsTileIconifierCustomShortcut ? "✔" : "✘");
             SubItems.Add(ShortcutItem.IsIconified ? "✔" : "✘");
             var shortcutPinnedString = ShortcutItem.IsPinned == null ? "?" : ShortcutItem.IsPinned == true ? "✔" : "✘";
             SubItems.Add(shortcutPinnedString);

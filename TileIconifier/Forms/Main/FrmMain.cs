@@ -30,10 +30,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
+using TileIconifier.Core.Custom;
 using TileIconifier.Core.Shortcut;
-using TileIconifier.Core.TileIconify;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.CustomShortcutForms;
 using TileIconifier.Utilities;
@@ -85,14 +87,14 @@ namespace TileIconifier.Forms
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (!iconifyPanel.DoValidation())
-                return;
+            //if (!iconifyPanel.DoValidation())
+            //    return;
 
             if (MessageBox.Show(@"Are you sure you wish to remove iconification?", @"Confirm", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
-            TileIcon tileDeIconify = GenerateTileIcon();
+            var tileDeIconify = GenerateTileIcon();
             tileDeIconify.DeIconify();
             CurrentShortcutItem.Properties.ResetParameters();
             UpdateShortcut();
@@ -204,8 +206,66 @@ namespace TileIconifier.Forms
             if (srtlstShortcuts.SelectedItems.Count != 1)
                 return;
 
-            _currentShortcutListViewItem = (ShortcutItemListViewItem)srtlstShortcuts.SelectedItems[0];
+            _currentShortcutListViewItem = (ShortcutItemListViewItem) srtlstShortcuts.SelectedItems[0];
             UpdateShortcut();
+        }
+
+        private void btnBuildCustomShortcut_Click(object sender, EventArgs e)
+        {
+            var shortcutName = Path.GetFileNameWithoutExtension(CurrentShortcutItem.ShortcutFileInfo.Name);
+
+            if (CurrentShortcutItem.IsTileIconifierCustomShortcut) return;
+
+            if (
+                MessageBox.Show(
+                    $@"This will create a custom shortcut for {shortcutName.QuoteWrap()
+                        }. This is useful for some shortcuts that otherwise don't work (Such as MS Office / Firefox). Continue?",
+                    @"Create Custom Shortcut?", MessageBoxButtons.YesNo) != DialogResult.Yes) return;
+
+
+            var customShortcut =
+                new CustomShortcut(shortcutName, CurrentShortcutItem.TargetFilePath, "",
+                    CustomShortcutType.Other, WindowType.ActiveAndCurrent,
+                    CustomShortcutGetters.CustomShortcutAllUsersPath, null,
+                    CurrentShortcutItem.ShortcutFileInfo.Directory?.FullName);
+
+            customShortcut.BuildCustomShortcut();
+
+            StartFullUpdate();
+
+            JumpToShortcutItem(customShortcut.ShortcutItem);
+
+            //confirm to the user the shortcut has been created
+            MessageBox.Show(
+                $"A shortcut for {shortcutName.QuoteWrap()} has been created in your start menu under TileIconify. The item will need to be pinned manually.",
+                @"Shortcut created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //new CustomShortcut(Path.GetFileNameWithoutExtension(CurrentShortcutItem.ShortcutFileInfo.Name),
+            //    CurrentShortcutItem.TargetFilePath, "", CustomShortcutType.Other, 
+            //    WindowType.ActiveAndCurrent,
+            //    ShortcutUser.CurrentUser, string.Empty, CurrentShortcutItem.ShortcutFileInfo.Directory.FullName);
+        }
+
+        private void btnDeleteCustomShortcut_Click(object sender, EventArgs e)
+        {
+            if (
+    MessageBox.Show(
+        $"Are you sure you wish to delete the custom shortcut for {CurrentShortcutItem.ShortcutFileInfo.Name.QuoteWrap()}?",
+        @"Are you sure?",
+        MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            try
+            {
+                var customShortcut = CustomShortcut.Load(CurrentShortcutItem.TargetFilePath);
+                customShortcut.Delete();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Unable to clear up shortcuts." + ex);
+            }
+
+            StartFullUpdate();
         }
     }
 }

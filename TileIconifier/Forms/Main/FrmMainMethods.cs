@@ -30,6 +30,7 @@
 using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Shortcut;
@@ -83,7 +84,8 @@ namespace TileIconifier.Forms
         {
             srtlstShortcuts.Items.Clear();
             srtlstShortcuts.Columns.Clear();
-            srtlstShortcuts.Columns.Add("Shortcut Name", srtlstShortcuts.Width / 7 * 5 - 10, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Shortcut Name", srtlstShortcuts.Width / 7 * 4 - 10, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Is Custom?", srtlstShortcuts.Width / 7 - 2, HorizontalAlignment.Left);
             srtlstShortcuts.Columns.Add("Is Iconified?", srtlstShortcuts.Width / 7 - 2, HorizontalAlignment.Left);
             srtlstShortcuts.Columns.Add("Is Pinned?", srtlstShortcuts.Width / 7 - 4, HorizontalAlignment.Left);
 
@@ -142,6 +144,12 @@ namespace TileIconifier.Forms
 
             //only enable Iconify button if shortcut has unsaved changes
             btnIconify.Enabled = CurrentShortcutItem.Properties.HasUnsavedChanges;
+
+            //disable Build Custom Shortcut for items that are already custom shortcuts
+            btnBuildCustomShortcut.Enabled = !CurrentShortcutItem.IsTileIconifierCustomShortcut;
+
+            //disable Build Custom Shortcut for items that are already custom shortcuts
+            btnDeleteCustomShortcut.Enabled = CurrentShortcutItem.IsTileIconifierCustomShortcut;
 
             //update the column view
             _currentShortcutListViewItem.UpdateColumns();

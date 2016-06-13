@@ -30,13 +30,13 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TileIconifier.Controls.PictureBox;
 using TileIconifier.Core;
+using TileIconifier.Core.Custom;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.Shared;
@@ -121,15 +121,6 @@ namespace TileIconifier.Controls
             AddEventHandlers();
         }
 
-        private void UpdatePictureBoxImage(PannablePictureBox pannablePictureBox, ShortcutItemImage shortcutItemImage)
-        {
-            pannablePictureBox.SetImage(shortcutItemImage.CachedImage(),
-                shortcutItemImage.Width,
-                shortcutItemImage.Height,
-                shortcutItemImage.X,
-                shortcutItemImage.Y);
-        }
-
         public void SetPictureBoxesBackColor()
         {
             var color = GetPictureBoxesBackColor();
@@ -157,6 +148,15 @@ namespace TileIconifier.Controls
             SetPictureBoxesBackColor();
         }
 
+        private void UpdatePictureBoxImage(PannablePictureBox pannablePictureBox, ShortcutItemImage shortcutItemImage)
+        {
+            pannablePictureBox.SetImage(shortcutItemImage.CachedImage(),
+                shortcutItemImage.Width,
+                shortcutItemImage.Height,
+                shortcutItemImage.X,
+                shortcutItemImage.Y);
+        }
+
         private void RunUpdate()
         {
             UpdateControlsToShortcut();
@@ -168,12 +168,23 @@ namespace TileIconifier.Controls
             IconSelectorResult selectedImage;
             try
             {
-                var x = GetSenderPictureBoxToMetaData(sender);
-                var imagePath = x.ShortcutItemImage.Path;
+                var imagePath = GetSenderPictureBoxToMetaData(sender).ShortcutItemImage.Path;
+                //if we haven't got a valid file from previously, try and get the default icon
                 if (string.IsNullOrEmpty(imagePath) || !File.Exists(imagePath))
-                    imagePath = CurrentShortcutItem.TargetFilePath;
+                {
+                    //if it's a custom shortcut, try and get the target path from the VBS file
+                    if (CurrentShortcutItem.IsTileIconifierCustomShortcut)
+                    {
+                        var customShortcutExecutionTarget = CustomShortcut.Load(CurrentShortcutItem.TargetFilePath);
+                        imagePath = customShortcutExecutionTarget.TargetPath.UnQuoteWrap();
+                    }
+                    else
+                    {
+                        //otherwise we just use the target file path from the shortcut
+                        imagePath = CurrentShortcutItem.TargetFilePath;
+                    }
+                }
                 selectedImage = FrmIconSelector.GetImage(this, imagePath);
-
             }
             catch (UserCancellationException)
             {
@@ -182,7 +193,7 @@ namespace TileIconifier.Controls
 
             var pictureBoxMetaDataToUse = chkUseSameImg.Checked
                 ? _pannablePictureBoxMetaDatas
-                : new List<PannablePictureBoxMetaData> { GetSenderPictureBoxToMetaData(sender) };
+                : new List<PannablePictureBoxMetaData> {GetSenderPictureBoxToMetaData(sender)};
 
             foreach (var pictureBoxMetaData in pictureBoxMetaDataToUse)
             {
@@ -198,10 +209,10 @@ namespace TileIconifier.Controls
         private PannablePictureBoxMetaData GetSenderPictureBoxToMetaData(object sender)
         {
             PannablePictureBox senderPictureBox = null;
-            if (sender.GetType() == typeof(PannablePictureBoxControlPanel))
-                senderPictureBox = ((PannablePictureBoxControlPanel)sender).PannablePictureBox;
-            if (sender.GetType() == typeof(PannablePictureBox))
-                senderPictureBox = (PannablePictureBox)sender;
+            if (sender.GetType() == typeof (PannablePictureBoxControlPanel))
+                senderPictureBox = ((PannablePictureBoxControlPanel) sender).PannablePictureBox;
+            if (sender.GetType() == typeof (PannablePictureBox))
+                senderPictureBox = (PannablePictureBox) sender;
             if (senderPictureBox == null)
                 throw new InvalidCastException($@"Sender not valid type! Received {sender.GetType()}");
 
@@ -358,7 +369,7 @@ namespace TileIconifier.Controls
 
         private void panPctSmallIcon_Click(object sender, EventArgs e)
         {
-            if (((MouseEventArgs)e).Button != MouseButtons.Right)
+            if (((MouseEventArgs) e).Button != MouseButtons.Right)
                 return;
 
             var contextMenu = new ContextMenu();
@@ -368,12 +379,12 @@ namespace TileIconifier.Controls
             menuItem = new MenuItem("Center image",
                 (o, args) => { panPctSmallIcon.CenterImage(); });
             contextMenu.MenuItems.Add(menuItem);
-            contextMenu.Show(panPctSmallIcon, ((MouseEventArgs)e).Location);
+            contextMenu.Show(panPctSmallIcon, ((MouseEventArgs) e).Location);
         }
 
         private void panPctMediumIcon_Click(object sender, EventArgs e)
         {
-            if (((MouseEventArgs)e).Button != MouseButtons.Right)
+            if (((MouseEventArgs) e).Button != MouseButtons.Right)
                 return;
 
             var contextMenu = new ContextMenu();
@@ -383,13 +394,13 @@ namespace TileIconifier.Controls
             menuItem = new MenuItem("Center image",
                 (o, args) => { panPctMediumIcon.CenterImage(); });
             contextMenu.MenuItems.Add(menuItem);
-            contextMenu.Show(panPctMediumIcon, ((MouseEventArgs)e).Location);
+            contextMenu.Show(panPctMediumIcon, ((MouseEventArgs) e).Location);
         }
 
 
         private void PanPctMediumIcon_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
         {
-            var item = (PannablePictureBoxImage)sender;
+            var item = (PannablePictureBoxImage) sender;
             CurrentShortcutItem.Properties.CurrentState.MediumImage.X = item.X;
             CurrentShortcutItem.Properties.CurrentState.MediumImage.Y = item.Y;
             CurrentShortcutItem.Properties.CurrentState.MediumImage.Width = item.Width;
@@ -400,7 +411,7 @@ namespace TileIconifier.Controls
 
         private void PanPctSmallIcon_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
         {
-            var item = (PannablePictureBoxImage)sender;
+            var item = (PannablePictureBoxImage) sender;
             CurrentShortcutItem.Properties.CurrentState.SmallImage.X = item.X;
             CurrentShortcutItem.Properties.CurrentState.SmallImage.Y = item.Y;
             CurrentShortcutItem.Properties.CurrentState.SmallImage.Width = item.Width;
@@ -411,7 +422,8 @@ namespace TileIconifier.Controls
 
         private void btnColourPicker_Click(object sender, EventArgs e)
         {
-            clrDialog.CustomColors = new[] { ColorTranslator.ToOle(ColorUtils.HexToColor(ShortcutConstantsAndEnums.DefaultAccentColor)) };
+            clrDialog.CustomColors = new[]
+            {ColorTranslator.ToOle(ColorUtils.HexToColor(ShortcutConstantsAndEnums.DefaultAccentColor))};
 
             if (clrDialog.ShowDialog(this) == DialogResult.OK)
             {
