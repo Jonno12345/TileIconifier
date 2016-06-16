@@ -30,6 +30,8 @@ namespace TileIconifier.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.lblFilter = new System.Windows.Forms.Label();
             this.btnDeleteCustomShortcut = new System.Windows.Forms.Button();
             this.btnBuildCustomShortcut = new System.Windows.Forms.Button();
             this.iconifyPanel = new TileIconifier.Controls.TileIconifierPanel();
@@ -56,6 +58,25 @@ namespace TileIconifier.Forms
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // txtFilter
+            // 
+            this.txtFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtFilter.Location = new System.Drawing.Point(50, 27);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(455, 20);
+            this.txtFilter.TabIndex = 32;
+            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+            // 
+            // lblFilter
+            // 
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.Location = new System.Drawing.Point(12, 31);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(32, 13);
+            this.lblFilter.TabIndex = 31;
+            this.lblFilter.Text = "Filter:";
             // 
             // btnDeleteCustomShortcut
             // 
@@ -89,10 +110,10 @@ namespace TileIconifier.Forms
             // 
             this.srtlstShortcuts.FullRowSelect = true;
             this.srtlstShortcuts.HideSelection = false;
-            this.srtlstShortcuts.Location = new System.Drawing.Point(12, 23);
+            this.srtlstShortcuts.Location = new System.Drawing.Point(12, 53);
             this.srtlstShortcuts.MultiSelect = false;
             this.srtlstShortcuts.Name = "srtlstShortcuts";
-            this.srtlstShortcuts.Size = new System.Drawing.Size(493, 240);
+            this.srtlstShortcuts.Size = new System.Drawing.Size(493, 210);
             this.srtlstShortcuts.TabIndex = 27;
             this.srtlstShortcuts.UseCompatibleStateImageBehavior = false;
             this.srtlstShortcuts.View = System.Windows.Forms.View.Details;
@@ -101,7 +122,6 @@ namespace TileIconifier.Forms
             // lblExePath
             // 
             this.lblExePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblExePath.AutoSize = true;
             this.lblExePath.Location = new System.Drawing.Point(9, 309);
             this.lblExePath.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblExePath.Name = "lblExePath";
@@ -147,7 +167,6 @@ namespace TileIconifier.Forms
             // lblLnkPath
             // 
             this.lblLnkPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblLnkPath.AutoSize = true;
             this.lblLnkPath.Location = new System.Drawing.Point(9, 269);
             this.lblLnkPath.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLnkPath.Name = "lblLnkPath";
@@ -281,9 +300,10 @@ namespace TileIconifier.Forms
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(827, 407);
+            this.Controls.Add(this.txtFilter);
+            this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.btnDeleteCustomShortcut);
             this.Controls.Add(this.btnBuildCustomShortcut);
             this.Controls.Add(this.iconifyPanel);
@@ -334,6 +354,8 @@ namespace TileIconifier.Forms
         private TileIconifierPanel iconifyPanel;
         private System.Windows.Forms.Button btnBuildCustomShortcut;
         private System.Windows.Forms.Button btnDeleteCustomShortcut;
+        private System.Windows.Forms.Label lblFilter;
+        private System.Windows.Forms.TextBox txtFilter;
     }
 }
 

@@ -31,7 +31,6 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Shortcut;
@@ -74,6 +73,8 @@ namespace TileIconifier.Forms
                 _shortcutsList = ShortcutItemEnumeration.GetShortcuts(true)
                     .Select(s => new ShortcutItemListViewItem(s))
                     .ToList();
+
+                UpdateFilteredList();
             }
 
             if (srtlstShortcuts.InvokeRequired)
@@ -85,16 +86,11 @@ namespace TileIconifier.Forms
         private void BuildShortcutList()
         {
             srtlstShortcuts.Items.Clear();
-            srtlstShortcuts.Columns.Clear();
-            srtlstShortcuts.Columns.Add("Shortcut Name", srtlstShortcuts.Width/7*4 - 10, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Custom?", srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Iconified?", srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Pinned?", srtlstShortcuts.Width/7 - 4, HorizontalAlignment.Left);
 
             var smallImageList = new ImageList();
-            for (var i = 0; i < _shortcutsList.Count; i++)
+            for (var i = 0; i < _filteredList.Count; i++)
             {
-                var shortcutItem = _shortcutsList[i];
+                var shortcutItem = _filteredList[i];
                 srtlstShortcuts.Items.Add(shortcutItem);
                 smallImageList.Images.Add(shortcutItem.ShortcutItem.StandardIcon ??
                                           Resources.QuestionMark);
@@ -156,10 +152,13 @@ namespace TileIconifier.Forms
             //update the column view
             _currentShortcutListViewItem.UpdateColumns();
             var currentShortcutIndex = srtlstShortcuts.Items.IndexOf(_currentShortcutListViewItem);
-            srtlstShortcuts.RedrawItems(
-                currentShortcutIndex,
-                currentShortcutIndex,
-                false);
+            if (currentShortcutIndex >= 0)
+            {
+                srtlstShortcuts.RedrawItems(
+                    currentShortcutIndex,
+                    currentShortcutIndex,
+                    false);
+            }
         }
 
         private void UpdateShortcut()
@@ -171,6 +170,7 @@ namespace TileIconifier.Forms
 
         private void JumpToShortcutItem(ShortcutItem shortcutItem)
         {
+            UpdateFilteredList(true);
             var shortcutListViewItem =
                 _shortcutsList.First(
                     s => s.ShortcutItem.ShortcutFileInfo.FullName == shortcutItem.ShortcutFileInfo.FullName);
@@ -225,6 +225,21 @@ namespace TileIconifier.Forms
                     Process.Start("https://github.com/Jonno12345/TileIconifier/releases");
                 }
             }
+        }
+
+        private void UpdateFilteredList(bool resetTextBox = false)
+        {
+            if (resetTextBox)
+                txtFilter.Text = string.Empty;
+            _filteredList = _shortcutsList.Where(s => s.Text.ToUpper().Contains(txtFilter.Text.ToUpper())).ToList();
+        }
+
+        private void InitializeListboxColumns()
+        {
+            srtlstShortcuts.Columns.Add("Shortcut Name", srtlstShortcuts.Width/7*4 - 10, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Is Custom?", srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Is Iconified?", srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add("Is Pinned?", srtlstShortcuts.Width/7 - 4, HorizontalAlignment.Left);
         }
     }
 }

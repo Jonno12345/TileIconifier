@@ -35,7 +35,7 @@
             // 
             // radAllUsers
             // 
-            this.radAllUsers.AutoSize = true;
+            this.radAllUsers.AutoSize = false;
             this.radAllUsers.Checked = true;
             this.radAllUsers.Location = new System.Drawing.Point(6, 22);
             this.radAllUsers.Name = "radAllUsers";
@@ -47,7 +47,7 @@
             // 
             // lblHeader
             // 
-            this.lblHeader.AutoSize = true;
+            this.lblHeader.AutoSize = false;
             this.lblHeader.Location = new System.Drawing.Point(3, 0);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(68, 13);
@@ -56,7 +56,7 @@
             // 
             // radCurrentUser
             // 
-            this.radCurrentUser.AutoSize = true;
+            this.radCurrentUser.AutoSize = false;
             this.radCurrentUser.Location = new System.Drawing.Point(6, 45);
             this.radCurrentUser.Name = "radCurrentUser";
             this.radCurrentUser.Size = new System.Drawing.Size(84, 17);
@@ -67,7 +67,7 @@
             // AllOrCurrentUserRadios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.radCurrentUser);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.radAllUsers);

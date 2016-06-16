@@ -109,6 +109,9 @@
       <DependentUpon>AllOrCurrentUserRadios.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Custom\WindowsStoreShellMethod\WindowsStoreAppListViewItemGroup.cs" />
+    <Compile Include="Controls\Eyedropper\EyedropColorPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\PictureBox\PannablePictureBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,6 +132,7 @@
     <Compile Include="Controls\Custom\Chrome\ChromeAppListViewItem.cs" />
     <Compile Include="Controls\Custom\CustomShortcutListViewItem.cs" />
     <Compile Include="Controls\Custom\Steam\SteamGameListViewItem.cs" />
+    <Compile Include="Controls\Eyedropper\Util.cs" />
     <None Include="Controls\Custom\WindowsStorePREVIOUSProtocolMethod\WindowsStoreAppListViewItemGroup.cs" />
     <None Include="Controls\Custom\WindowsStorePREVIOUSProtocolMethod\WindowsStoreAppProtocolComboListItem.cs" />
     <Compile Include="Controls\TileIconifierPanel.cs">
@@ -314,6 +318,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+    <None Include="Resources\colorsquare.png" />
     <None Include="Resources\tiles2-shadow.png" />
     <None Include="Resources\tiles2_shadow_lyk_icon.ico" />
   </ItemGroup>

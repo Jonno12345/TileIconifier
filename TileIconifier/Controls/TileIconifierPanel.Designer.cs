@@ -1,4 +1,5 @@
-﻿using TileIconifier.Controls.PictureBox;
+﻿using TileIconifier.Controls.Eyedropper;
+using TileIconifier.Controls.PictureBox;
 
 namespace TileIconifier.Controls
 {
@@ -33,11 +34,11 @@ namespace TileIconifier.Controls
             this.pnlImages = new System.Windows.Forms.Panel();
             this.lblSmallIcon = new System.Windows.Forms.Label();
             this.lblMediumIcon = new System.Windows.Forms.Label();
-            this.panPctSmallIcon = new PictureBox.PannablePictureBox();
-            this.panPctMediumIcon = new PictureBox.PannablePictureBox();
+            this.panPctSmallIcon = new TileIconifier.Controls.PictureBox.PannablePictureBox();
+            this.panPctMediumIcon = new TileIconifier.Controls.PictureBox.PannablePictureBox();
             this.chkUseSameImg = new System.Windows.Forms.CheckBox();
-            this.pannablePictureBoxControlPanelMedium = new PannablePictureBoxControlPanel();
-            this.pannablePictureBoxControlPanelSmall = new PannablePictureBoxControlPanel();
+            this.pannablePictureBoxControlPanelMedium = new TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel();
+            this.pannablePictureBoxControlPanelSmall = new TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel();
             this.btnColourPicker = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblUnsaved = new System.Windows.Forms.Label();
@@ -50,6 +51,7 @@ namespace TileIconifier.Controls
             this.lblBGColour = new System.Windows.Forms.Label();
             this.txtBGColour = new System.Windows.Forms.TextBox();
             this.clrDialog = new System.Windows.Forms.ColorDialog();
+            this.eyedropperColorPicker = new TileIconifier.Controls.Eyedropper.EyedropColorPicker();
             this.pnlImages.SuspendLayout();
             this.pnlFGColour.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +72,6 @@ namespace TileIconifier.Controls
             // 
             // lblSmallIcon
             // 
-            this.lblSmallIcon.AutoSize = true;
             this.lblSmallIcon.Location = new System.Drawing.Point(180, 2);
             this.lblSmallIcon.Name = "lblSmallIcon";
             this.lblSmallIcon.Size = new System.Drawing.Size(58, 13);
@@ -79,7 +80,6 @@ namespace TileIconifier.Controls
             // 
             // lblMediumIcon
             // 
-            this.lblMediumIcon.AutoSize = true;
             this.lblMediumIcon.Location = new System.Drawing.Point(20, 2);
             this.lblMediumIcon.Name = "lblMediumIcon";
             this.lblMediumIcon.Size = new System.Drawing.Size(70, 13);
@@ -88,6 +88,7 @@ namespace TileIconifier.Controls
             // 
             // panPctSmallIcon
             // 
+            this.panPctSmallIcon.AssociatedSize = new System.Drawing.Size(0, 0);
             this.panPctSmallIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panPctSmallIcon.Location = new System.Drawing.Point(183, 42);
             this.panPctSmallIcon.Margin = new System.Windows.Forms.Padding(0);
@@ -99,6 +100,7 @@ namespace TileIconifier.Controls
             // 
             // panPctMediumIcon
             // 
+            this.panPctMediumIcon.AssociatedSize = new System.Drawing.Size(0, 0);
             this.panPctMediumIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panPctMediumIcon.Location = new System.Drawing.Point(5, 17);
             this.panPctMediumIcon.Margin = new System.Windows.Forms.Padding(0);
@@ -111,7 +113,6 @@ namespace TileIconifier.Controls
             // chkUseSameImg
             // 
             this.chkUseSameImg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkUseSameImg.AutoSize = true;
             this.chkUseSameImg.Checked = true;
             this.chkUseSameImg.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkUseSameImg.Location = new System.Drawing.Point(7, 187);
@@ -138,13 +139,13 @@ namespace TileIconifier.Controls
             // 
             // btnColourPicker
             // 
-            this.btnColourPicker.BackgroundImage = global::TileIconifier.Properties.Resources.Actions_color_picker_black_icon;
+            this.btnColourPicker.BackgroundImage = global::TileIconifier.Properties.Resources.colorsquare;
             this.btnColourPicker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnColourPicker.FlatAppearance.BorderSize = 0;
             this.btnColourPicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnColourPicker.Location = new System.Drawing.Point(201, 270);
+            this.btnColourPicker.Location = new System.Drawing.Point(200, 266);
             this.btnColourPicker.Name = "btnColourPicker";
-            this.btnColourPicker.Size = new System.Drawing.Size(23, 23);
+            this.btnColourPicker.Size = new System.Drawing.Size(27, 27);
             this.btnColourPicker.TabIndex = 39;
             this.btnColourPicker.UseVisualStyleBackColor = true;
             this.btnColourPicker.Click += new System.EventHandler(this.btnColourPicker_Click);
@@ -162,7 +163,6 @@ namespace TileIconifier.Controls
             // 
             // lblUnsaved
             // 
-            this.lblUnsaved.AutoSize = true;
             this.lblUnsaved.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnsaved.ForeColor = System.Drawing.Color.Red;
             this.lblUnsaved.Location = new System.Drawing.Point(3, 234);
@@ -187,7 +187,6 @@ namespace TileIconifier.Controls
             // 
             // radFGDark
             // 
-            this.radFGDark.AutoSize = true;
             this.radFGDark.Location = new System.Drawing.Point(58, 23);
             this.radFGDark.Margin = new System.Windows.Forms.Padding(2);
             this.radFGDark.Name = "radFGDark";
@@ -198,7 +197,6 @@ namespace TileIconifier.Controls
             // 
             // chkFGTxtEnabled
             // 
-            this.chkFGTxtEnabled.AutoSize = true;
             this.chkFGTxtEnabled.Checked = true;
             this.chkFGTxtEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFGTxtEnabled.Location = new System.Drawing.Point(184, 4);
@@ -212,7 +210,6 @@ namespace TileIconifier.Controls
             // 
             // lblFGText
             // 
-            this.lblFGText.AutoSize = true;
             this.lblFGText.Location = new System.Drawing.Point(1, 5);
             this.lblFGText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFGText.Name = "lblFGText";
@@ -222,7 +219,6 @@ namespace TileIconifier.Controls
             // 
             // radFGLight
             // 
-            this.radFGLight.AutoSize = true;
             this.radFGLight.Checked = true;
             this.radFGLight.Location = new System.Drawing.Point(8, 23);
             this.radFGLight.Margin = new System.Windows.Forms.Padding(2);
@@ -264,7 +260,6 @@ namespace TileIconifier.Controls
             // 
             // lblBGColour
             // 
-            this.lblBGColour.AutoSize = true;
             this.lblBGColour.Location = new System.Drawing.Point(3, 254);
             this.lblBGColour.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBGColour.Name = "lblBGColour";
@@ -283,10 +278,20 @@ namespace TileIconifier.Controls
             this.txtBGColour.Text = "#323232";
             this.txtBGColour.TextChanged += new System.EventHandler(this.txtBGColour_TextChanged);
             // 
+            // eyedropperColorPicker
+            // 
+            this.eyedropperColorPicker.Location = new System.Drawing.Point(236, 266);
+            this.eyedropperColorPicker.Name = "eyedropperColorPicker";
+            this.eyedropperColorPicker.SelectedColor = System.Drawing.Color.Empty;
+            this.eyedropperColorPicker.Size = new System.Drawing.Size(30, 30);
+            this.eyedropperColorPicker.TabIndex = 41;
+            this.eyedropperColorPicker.Zoom = 4;
+            this.eyedropperColorPicker.SelectedColorChanged += new System.EventHandler(this.eyedropperColorPicker_SelectedColorChanged);
+            // 
             // TileIconifierPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.eyedropperColorPicker);
             this.Controls.Add(this.pnlImages);
             this.Controls.Add(this.btnColourPicker);
             this.Controls.Add(this.btnReset);
@@ -299,9 +304,7 @@ namespace TileIconifier.Controls
             this.Size = new System.Drawing.Size(305, 351);
             this.Load += new System.EventHandler(this.TileIconifierPanel_Load);
             this.pnlImages.ResumeLayout(false);
-            this.pnlImages.PerformLayout();
             this.pnlFGColour.ResumeLayout(false);
-            this.pnlFGColour.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,5 +332,6 @@ namespace TileIconifier.Controls
         private System.Windows.Forms.Label lblBGColour;
         private System.Windows.Forms.TextBox txtBGColour;
         private System.Windows.Forms.ColorDialog clrDialog;
+        private EyedropColorPicker eyedropperColorPicker;
     }
 }

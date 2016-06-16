@@ -105,13 +105,13 @@ namespace TileIconifier.Core.Utilities
 
         private static string ResolveMsiShortcut(string file)
         {
-            var product = new StringBuilder(NativeMethods.MaxGuidLength + 1);
-            var feature = new StringBuilder(NativeMethods.MaxFeatureLength + 1);
-            var component = new StringBuilder(NativeMethods.MaxGuidLength + 1);
+            var product = new StringBuilder(NativeMethods.MAX_GUID_LENGTH + 1);
+            var feature = new StringBuilder(NativeMethods.MAX_FEATURE_LENGTH + 1);
+            var component = new StringBuilder(NativeMethods.MAX_GUID_LENGTH + 1);
 
             NativeMethods.MsiGetShortcutTarget(file, product, feature, component);
 
-            var pathLength = NativeMethods.MaxPathLength;
+            var pathLength = NativeMethods.MAX_PATH_LENGTH;
             var path = new StringBuilder(pathLength);
 
             var installState = NativeMethods.MsiGetComponentPath(product.ToString(), component.ToString(), path,
@@ -139,9 +139,9 @@ namespace TileIconifier.Core.Utilities
                 Default = 5*/
             }
 
-            public const int MaxFeatureLength = 38;
-            public const int MaxGuidLength = 38;
-            public const int MaxPathLength = 1024;
+            public const int MAX_FEATURE_LENGTH = 38;
+            public const int MAX_GUID_LENGTH = 38;
+            public const int MAX_PATH_LENGTH = 1024;
 
             [DllImport("msi.dll", CharSet = CharSet.Unicode)]
             public static extern uint MsiGetShortcutTarget(string targetFile, StringBuilder productCode,

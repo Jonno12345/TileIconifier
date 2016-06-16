@@ -56,7 +56,7 @@
             // lblPreview
             // 
             this.lblPreview.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblPreview.AutoSize = true;
+            this.lblPreview.AutoSize = false;
             this.lblPreview.Location = new System.Drawing.Point(13, 327);
             this.lblPreview.Name = "lblPreview";
             this.lblPreview.Size = new System.Drawing.Size(45, 13);
@@ -76,7 +76,7 @@
             // lblCommonDlls
             // 
             this.lblCommonDlls.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblCommonDlls.AutoSize = true;
+            this.lblCommonDlls.AutoSize = false;
             this.lblCommonDlls.Location = new System.Drawing.Point(10, 56);
             this.lblCommonDlls.Name = "lblCommonDlls";
             this.lblCommonDlls.Size = new System.Drawing.Size(100, 13);
@@ -150,7 +150,7 @@
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label1.AutoSize = true;
+            this.label1.AutoSize = false;
             this.label1.Location = new System.Drawing.Point(13, 304);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
@@ -169,7 +169,7 @@
             // radUseCustomImage
             // 
             this.radUseCustomImage.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.radUseCustomImage.AutoSize = true;
+            this.radUseCustomImage.AutoSize = false;
             this.radUseCustomImage.Location = new System.Drawing.Point(14, 281);
             this.radUseCustomImage.Name = "radUseCustomImage";
             this.radUseCustomImage.Size = new System.Drawing.Size(112, 17);
@@ -181,7 +181,7 @@
             // radIconFromTarget
             // 
             this.radIconFromTarget.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.radIconFromTarget.AutoSize = true;
+            this.radIconFromTarget.AutoSize = false;
             this.radIconFromTarget.Checked = true;
             this.radIconFromTarget.Location = new System.Drawing.Point(11, 21);
             this.radIconFromTarget.Name = "radIconFromTarget";
@@ -215,7 +215,7 @@
             // FrmIconSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(578, 401);
             this.Controls.Add(this.lblPreview);
             this.Controls.Add(this.pctPreview);

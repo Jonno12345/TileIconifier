@@ -260,8 +260,7 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (KeyValues)) return false;
-            return Equals((KeyValues) obj);
+            return obj is KeyValues && Equals((KeyValues) obj);
         }
 
         /// <summary>
@@ -510,7 +509,7 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
         /// <param name="line">Current Line to parse.</param>
         /// <param name="wasQuoted">True if Key have quotes " so is not a { or }.</param>
         /// <param name="wasComment">True if Current line is a comment.</param>
-        private static KeyValuePair<string, string> ReadToken(string line, ref bool wasQuoted, ref bool wasComment)
+        private static KeyValuePair<string, string> ReadToken(string line, out bool wasQuoted, out bool wasComment)
         {
             wasQuoted = false;
             wasComment = false;
@@ -624,11 +623,11 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
         private uint RetriveIndex(List<string> lines, string search, uint startIndex)
         {
             if (string.IsNullOrEmpty(search)) return 0;
-            var wasQuote = false;
-            var wasComment = false;
             for (var i = (int) startIndex; i < lines.Count; i++)
             {
-                var kvPair = ReadToken(lines[i], ref wasQuote, ref wasComment);
+                bool wasQuote;
+                bool wasComment;
+                var kvPair = ReadToken(lines[i], out wasQuote, out wasComment);
                 if (kvPair.Key == search && !wasComment && !wasQuote)
                     return (uint) i;
             }
@@ -663,14 +662,14 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
         private bool LoadFromList(List<string> stream, uint startPos, ref uint endPos)
         {
             if (stream == null) return false;
-            var wasQuoted = false;
-            var wasComment = false;
             string lastComment = null;
             var wasName = false;
             endPos = 0;
             for (var i = startPos; i < stream.Count; i++)
             {
-                var kvPair = ReadToken(stream[(int) i], ref wasQuoted, ref wasComment);
+                bool wasQuoted;
+                bool wasComment;
+                var kvPair = ReadToken(stream[(int) i], out wasQuoted, out wasComment);
                 if (string.IsNullOrEmpty(kvPair.Key)) continue;
                 endPos = i;
                 // Is the end of KeyValues Class?

@@ -47,6 +47,14 @@ namespace TileIconifier.Controls.PictureBox
         internal int MinHeight;
         internal int MinWidth;
 
+        public bool ShowTextOverlay = false;
+        public Color OverlayColor = Color.White;
+        public string TextOverlay;
+
+        public Point TextOverlayPoint;
+
+        private readonly Font _overlayFont = new Font(new FontFamily("Segoe UI"), 9f, FontStyle.Regular );
+
         public PannablePictureBoxImage PannablePictureBoxImage;
 
         public PannablePictureBox()
@@ -152,17 +160,7 @@ namespace TileIconifier.Controls.PictureBox
             if (e.Button != MouseButtons.Left)
                 return;
             _panning = true;
-            //if (PannablePictureBoxImage != null)
-            //{
-            //    if (_movingPoint.X + PannablePictureBoxImage.Width > pctBox.Width * 2)
-            //        _movingPoint.X = pctBox.Width * 2 - PannablePictureBoxImage.Width;
-            //    if (_movingPoint.X < -2 * pctBox.Width)
-            //        _movingPoint.X = -2 * pctBox.Width;
-            //    if (_movingPoint.Y + PannablePictureBoxImage.Height > pctBox.Height * 2)
-            //        _movingPoint.Y = pctBox.Height * 2 - PannablePictureBoxImage.Height;
-            //    if (_movingPoint.Y < -2 * pctBox.Height)
-            //        _movingPoint.Y = -2 * pctBox.Height;
-            //}
+
             pctBox.Invalidate();
             _startingPoint = new Point(e.Location.X - _movingPoint.X,
                 e.Location.Y - _movingPoint.Y);
@@ -182,15 +180,6 @@ namespace TileIconifier.Controls.PictureBox
             _movingPoint = new Point(e.Location.X - _startingPoint.X,
                 e.Location.Y - _startingPoint.Y);
 
-            //////enforce the width and height as a binding box
-            ////if (_movingPoint.X + PannablePictureBoxImage.Width > pctBox.Width)
-            ////    _movingPoint.X = pctBox.Width - PannablePictureBoxImage.Width;
-            ////if (_movingPoint.Y + PannablePictureBoxImage.Height > pctBox.Height)
-            ////    _movingPoint.Y = pctBox.Height - PannablePictureBoxImage.Height;
-            ////if (_movingPoint.X < 0)
-            ////    _movingPoint.X = 0;
-            ////if (_movingPoint.Y < 0)
-            ////    _movingPoint.Y = 0;
             if (_movingPoint.X + PannablePictureBoxImage.Width > MaxWidth*2)
                 _movingPoint.X = MaxWidth*2 - PannablePictureBoxImage.Width;
             if (_movingPoint.Y + PannablePictureBoxImage.Height > MaxHeight*2)
@@ -217,6 +206,11 @@ namespace TileIconifier.Controls.PictureBox
                 SetResolution(PannablePictureBoxImage.Image, PannablePictureBoxImage.Width,
                     PannablePictureBoxImage.Height), PannablePictureBoxImage.X, PannablePictureBoxImage.Y);
 
+            if (ShowTextOverlay)
+            {
+                DrawTextOverlay(e);
+            }
+
 #if DEBUG
             e.Graphics.DrawString(PannablePictureBoxImage.Width + ", " + PannablePictureBoxImage.Height, DefaultFont,
                 new SolidBrush(Color.Red), 0, 0);
@@ -226,6 +220,116 @@ namespace TileIconifier.Controls.PictureBox
             e.Graphics.DrawString(MinWidth + "_" + MaxWidth + ", " + MinHeight + "_" + MaxHeight, DefaultFont,
                 new SolidBrush(Color.Red), 0, 60);
 #endif
+        }
+
+        //not a fun mass of parsing. Attempts to closely match the label behaviour of the Windows 10 Start Menu. Haven't tested against Windows 8.1
+        //probably fails in some instances...
+        private void DrawTextOverlay(PaintEventArgs e)
+        {
+            try
+            {
+                //get the width of the text before any manipulation
+                var textWidth = e.Graphics.MeasureString(TextOverlay, _overlayFont).Width;
+                //maximum length for a string, without spaces, to fit on the initial line - TODO: Pass these values in if there is ever a new tile type available
+                const int maxSingleLineLength = 94;
+                //maximum length of a line before truncating with ellipsis
+                const int ellipsisLength = 91;
+
+                //function to loop through a line, removing a char at a time until the length satisfies the requirement
+                Func<string, int, string> getCharsToMaxLength = (inputString, length) =>
+                {
+                    var textChunk = inputString;
+                    do
+                    {
+                        textChunk = textChunk.Substring(0, textChunk.Length - 1);
+                    } while (e.Graphics.MeasureString(textChunk, _overlayFont).Width > length);
+                    return textChunk;
+                };
+
+                //if we have a space somewhere in the string and it's over the max single line length it will be split over two lines
+                if (textWidth >= maxSingleLineLength && TextOverlay.Contains(" "))
+                {
+                    //get the first chunk of data to process
+                    var firstChunk = getCharsToMaxLength(TextOverlay, maxSingleLineLength);
+
+                    string firstLine;
+                    string secondLine;
+
+                    //different handling whether there is a space in the first chunk or not. If there *is* a space, we will grab up until the last occurrance of a space character
+                    //anything after that space character is put on the second line
+                    //
+                    //if there isn't a space in the first line, the entire chunk can be made the first line. The second line will start from where the first space character after this chunk is
+                    //EXAMPLES
+                    //1- XXXXX XXX XXXXXXXXXXXXXXXXXXXXXXXXXX
+                    //This should place XXXXX XXX on line one, and XXXXXXXXXXXXXXXXXXXXXXXXXX on line two
+                    //
+                    //2- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX X
+                    //This should place XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX on line one, and X on line two
+                    if (firstChunk.Contains(" "))
+                    {
+                        var lastSpaceIndex = firstChunk.LastIndexOf(" ", StringComparison.Ordinal);
+                        firstLine = firstChunk.Substring(0, lastSpaceIndex).Trim();
+                        secondLine = TextOverlay.Substring(lastSpaceIndex, TextOverlay.Length - lastSpaceIndex).Trim();
+                    }
+                    else
+                    {
+                        firstLine = firstChunk;
+                        var tempSecondLine =
+                            TextOverlay.Substring(firstChunk.Length, TextOverlay.Length - firstChunk.Length).Trim();
+                        var firstSpaceIndex = tempSecondLine.IndexOf(" ", StringComparison.Ordinal);
+                        secondLine =
+                            tempSecondLine.Substring(firstSpaceIndex, tempSecondLine.Length - firstSpaceIndex).Trim();
+                    }
+
+                    //compare each line to the ellipsis length - if exceeds, truncate with ...
+                    //from previous examples above, we should now have:
+                    //1. XXXXX XXX
+                    //   XXXXXXXXXX...
+                    //
+                    //2. XXXXXXXXXX...
+                    //   X
+                    if (e.Graphics.MeasureString(firstLine, _overlayFont).Width > ellipsisLength)
+                        firstLine = getCharsToMaxLength(firstLine, ellipsisLength) + "...";
+                    if (e.Graphics.MeasureString(secondLine, _overlayFont).Width > ellipsisLength)
+                    {
+                        var tempSecondLine = getCharsToMaxLength(secondLine, ellipsisLength);
+
+                        if (tempSecondLine.Contains(" "))
+                        {
+                            //Another fun quirk - we only keep the parts of the second line that can be fully displayed?
+                            //Example:
+                            //XXXXXXXX XXXXXXXXXXX
+                            //becomes
+                            //XXXXXXXX...
+                            //NOT
+                            //XXXXXXXX X...
+                            var lastSpaceIndex = tempSecondLine.LastIndexOf(" ", StringComparison.Ordinal);
+                            secondLine = tempSecondLine.Substring(0, lastSpaceIndex).Trim() + "...";
+                        }
+                        else
+                        {
+                            secondLine = tempSecondLine + "...";
+                        }
+                    }
+
+                    //draw our lines, first line 16px higher than the default (?) TODO: 16 should really be passed in if new tile types ever become available
+                    e.Graphics.DrawString(firstLine, _overlayFont, new SolidBrush(OverlayColor),
+                        new PointF(TextOverlayPoint.X, TextOverlayPoint.Y - 16));
+                    e.Graphics.DrawString(secondLine, _overlayFont, new SolidBrush(OverlayColor), TextOverlayPoint);
+                }
+                else
+                {
+                    //if we have no spaces, it'll always be on a single line. Check if the line needs truncating and display in default position
+                    var renderLine = TextOverlay;
+                    if (e.Graphics.MeasureString(renderLine, _overlayFont).Width > ellipsisLength)
+                        renderLine = getCharsToMaxLength(renderLine, ellipsisLength) + "...";
+                    e.Graphics.DrawString(renderLine, _overlayFont, new SolidBrush(OverlayColor), TextOverlayPoint);
+                }
+            }
+            catch
+            {
+                //ignore a failure
+            }
         }
 
         private Image SetResolution(Image image, int width, int height)

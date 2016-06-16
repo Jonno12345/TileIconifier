@@ -42,9 +42,9 @@ namespace TileIconifier.Core.IconExtractor
 
         // Flags for LoadLibraryEx().
 
-        private const uint LoadLibraryAsDatafile = 0x00000002;
+        private const uint LOAD_LIBRARY_AS_DATAFILE = 0x00000002;
 
-        private const int MaxPath = 260;
+        private const int MAX_PATH = 260;
 
         // Resource types for EnumResourceNames().
 
@@ -119,7 +119,7 @@ namespace TileIconifier.Core.IconExtractor
             var hModule = IntPtr.Zero;
             try
             {
-                hModule = NativeMethods.LoadLibraryEx(fileName, IntPtr.Zero, LoadLibraryAsDatafile);
+                hModule = NativeMethods.LoadLibraryEx(fileName, IntPtr.Zero, LOAD_LIBRARY_AS_DATAFILE);
                 if (hModule == IntPtr.Zero)
                     throw new Win32Exception();
 
@@ -228,7 +228,7 @@ namespace TileIconifier.Core.IconExtractor
 
             string fileName;
             {
-                var buf = new StringBuilder(MaxPath);
+                var buf = new StringBuilder(MAX_PATH);
                 var len = NativeMethods.GetMappedFileName(
                     NativeMethods.GetCurrentProcess(), hModule, buf, buf.Capacity);
                 if (len == 0)
@@ -243,7 +243,7 @@ namespace TileIconifier.Core.IconExtractor
             for (var c = 'A'; c <= 'Z'; ++c)
             {
                 var drive = c + ":";
-                var buf = new StringBuilder(MaxPath);
+                var buf = new StringBuilder(MAX_PATH);
                 var len = NativeMethods.QueryDosDevice(drive, buf, buf.Capacity);
                 if (len == 0)
                     continue;

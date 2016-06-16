@@ -150,7 +150,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // radCustomFolder
             // 
-            this.radCustomFolder.AutoSize = true;
+            this.radCustomFolder.AutoSize = false;
             this.radCustomFolder.Location = new System.Drawing.Point(3, 40);
             this.radCustomFolder.Name = "radCustomFolder";
             this.radCustomFolder.Size = new System.Drawing.Size(114, 17);
@@ -160,7 +160,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // radSpecialFolder
             // 
-            this.radSpecialFolder.AutoSize = true;
+            this.radSpecialFolder.AutoSize = false;
             this.radSpecialFolder.Checked = true;
             this.radSpecialFolder.Location = new System.Drawing.Point(3, 7);
             this.radSpecialFolder.Name = "radSpecialFolder";
@@ -431,7 +431,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // lblOtherShortcutArguments
             // 
-            this.lblOtherShortcutArguments.AutoSize = true;
+            this.lblOtherShortcutArguments.AutoSize = false;
             this.lblOtherShortcutArguments.Location = new System.Drawing.Point(15, 41);
             this.lblOtherShortcutArguments.Name = "lblOtherShortcutArguments";
             this.lblOtherShortcutArguments.Size = new System.Drawing.Size(100, 13);
@@ -449,7 +449,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // lblOtherTargetPath
             // 
-            this.lblOtherTargetPath.AutoSize = true;
+            this.lblOtherTargetPath.AutoSize = false;
             this.lblOtherTargetPath.Location = new System.Drawing.Point(15, 15);
             this.lblOtherTargetPath.Name = "lblOtherTargetPath";
             this.lblOtherTargetPath.Size = new System.Drawing.Size(81, 13);
@@ -502,7 +502,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // lblShortcutName
             // 
             this.lblShortcutName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblShortcutName.AutoSize = true;
+            this.lblShortcutName.AutoSize = false;
             this.lblShortcutName.Location = new System.Drawing.Point(95, 283);
             this.lblShortcutName.Name = "lblShortcutName";
             this.lblShortcutName.Size = new System.Drawing.Size(81, 13);
@@ -523,7 +523,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // lblCurrentIcon
             // 
             this.lblCurrentIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblCurrentIcon.AutoSize = true;
+            this.lblCurrentIcon.AutoSize = false;
             this.lblCurrentIcon.Location = new System.Drawing.Point(12, 283);
             this.lblCurrentIcon.Name = "lblCurrentIcon";
             this.lblCurrentIcon.Size = new System.Drawing.Size(31, 13);
@@ -564,7 +564,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // FrmCustomShortcutManagerNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(652, 370);
             this.Controls.Add(this.radShortcutLocation);
             this.Controls.Add(this.txtShortcutName);

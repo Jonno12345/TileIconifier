@@ -29,14 +29,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Custom;
 using TileIconifier.Core.Shortcut;
-using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.CustomShortcutForms;
 using TileIconifier.Utilities;
 
@@ -46,6 +43,7 @@ namespace TileIconifier.Forms
     {
         private ShortcutItemListViewItem _currentShortcutListViewItem;
         private List<ShortcutItemListViewItem> _shortcutsList;
+        private List<ShortcutItemListViewItem> _filteredList;
 
         public FrmMain()
         {
@@ -67,6 +65,7 @@ namespace TileIconifier.Forms
             iconifyPanel.OnIconifyPanelUpdate += (s, ev) => { UpdateFormControls(); };
 
             CheckForUpdates(true);
+            InitializeListboxColumns();
 
             Show();
             StartFullUpdate();
@@ -233,6 +232,13 @@ namespace TileIconifier.Forms
             }
 
             StartFullUpdate();
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            UpdateFilteredList();
+            BuildShortcutList();
+            UpdateShortcut();
         }
     }
 }

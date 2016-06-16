@@ -122,7 +122,7 @@
             // 
             // lblPercent
             // 
-            this.lblPercent.AutoSize = true;
+            this.lblPercent.AutoSize = false;
             this.lblPercent.Location = new System.Drawing.Point(36, 131);
             this.lblPercent.Name = "lblPercent";
             this.lblPercent.Size = new System.Drawing.Size(30, 13);
@@ -133,7 +133,7 @@
             // PannablePictureBoxControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.lblPercent);
             this.Controls.Add(this.trkZoom);
             this.Controls.Add(this.btnCenter);
