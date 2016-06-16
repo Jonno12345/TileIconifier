@@ -17,7 +17,7 @@ Creates tiles for any Windows 8.1 (Largely untested) and Windows 10 (Build 10586
 **Basic tile creation usage:**
 
  - Find the shortcut you wish to modify in the list
- - Choose an image and move/resize it as required by clicking, dragging and scrolling to where required.
+ - Choose an image by clicking the 'Change Image' button or double clicking one of the logo boxes. Move/resize it as required by clicking, dragging and scrolling to where required.
  - Hit 'Tile Iconify!' to apply the changes
  - To restore, hit 'Remove Iconify'
 
