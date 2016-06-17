@@ -576,7 +576,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             var chromeApp = ((ChromeAppListViewItem)lstChromeAppItems.SelectedItems[0]).ChromeAppItem;
 
             GenerateFullShortcut(txtChromeExePath.Text, chromeApp.ChromeAppExecutionArgument,
-                CustomShortcutType.ChromeApp, chromeApp.IconPath);
+                CustomShortcutType.ChromeApp);
         }
 
         private void btnChromeExePathChange_Click(object sender, EventArgs e)

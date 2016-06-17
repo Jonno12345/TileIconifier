@@ -30,8 +30,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using Microsoft.Win32;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace TileIconifier.Core.Custom.Chrome
 {
@@ -63,18 +64,83 @@ namespace TileIconifier.Core.Custom.Chrome
             if (!Directory.Exists(appLibraryPath))
                 throw new DirectoryNotFoundException(appLibraryPath);
 
-            return (from chromeAppDir in new DirectoryInfo(appLibraryPath).GetDirectories()
-                let chromeAppId =
-                    Regex.Match(chromeAppDir.Name, @"_crx_([a-zA-Z0-9]{32})", RegexOptions.None).Groups[1].Value
-                let chromeIconPaths = chromeAppDir.GetFiles(@"*.ico")
-                from chromeIconPath in chromeIconPaths
-                where chromeIconPath != null && CustomShortcutGetters.ExcludedChromeAppIds.All(s => s != chromeAppId)
-                select new ChromeApp
+            var returnList = new List<ChromeApp>();
+            //loop through all extension app Id folders
+            foreach (var directory in new DirectoryInfo(appLibraryPath).GetDirectories())
+            {
+                //grab the versioned folder within this appId
+                var mainFolder = directory.GetDirectories().First();
+                //manifest file for app information extraction
+                var manifestJsonPath = Path.Combine(mainFolder.FullName, "manifest.json");
+                if (!File.Exists(manifestJsonPath))
+                    continue;
+
+                //get contents of the manifest
+                var manifestContents =
+                    JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(File.ReadAllText(manifestJsonPath));
+
+                //get the highest res icon
+                var largestRelativeLogoPath =
+                    ((JObject) manifestContents["icons"]).Properties().OrderBy(k => k.Name).First().Value;
+                //get absolute path instead of relative
+                var combinedLogoPath = Path.Combine(mainFolder.FullName, largestRelativeLogoPath.Value<string>());
+
+                string appName;
+                try
                 {
-                    AppId = chromeAppId,
-                    AppName = Path.GetFileNameWithoutExtension(chromeIconPath.Name),
-                    IconPath = chromeIconPath.FullName
-                }).ToList();
+                    //standard locales path (may not exist, if not, use non locale name from catch)
+                    var localePath = Path.Combine(mainFolder.FullName, "_locales");
+                    //get the default locale name (may not exist, if not, use non locale name from catch)
+                    var defaultLocale = manifestContents["default_locale"];
+                    //get the default locale absolute path (may not exist, if not, use non locale name from catch)
+                    var fullLocalePath = Path.Combine(localePath, defaultLocale);
+                    //the locale json file (may not exist, if not, use non locale name from catch)
+                    var messagesJsonPath = Path.Combine(fullLocalePath, "messages.json");
+                    //extract the locale strings (may not exist, if not, use non locale name from catch)
+                    Dictionary<string, object> messagesContents =
+                        JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(File.ReadAllText(messagesJsonPath));
+
+                    //appName is the first string where the key contains either APP or EXT, and NAME (seems to work. Again, if fail, default to the non-locale name)
+                    appName = ((JObject) messagesContents.First(p =>
+                        (p.Key.ToUpper().Contains("APP") || p.Key.ToUpper().Contains("EXT")) &&
+                        p.Key.ToUpper().Contains("NAME")).Value)["message"].Value<string>();
+                }
+                catch
+                {
+                    try
+                    {
+                        appName = manifestContents["name"];
+                    }
+                    catch
+                    {
+                        //couldn't get any name - skip this item.
+                        continue;
+                    }
+                }
+
+                returnList.Add(new ChromeApp {AppId = directory.Name, AppName = appName, IconPath = combinedLogoPath});
+            }
+            return returnList;
         }
+
+        //{
+
+        //public static List<ChromeApp> GetChromeAppItems(string appLibraryPath)
+        //    if (!Directory.Exists(appLibraryPath))
+        //        throw new DirectoryNotFoundException(appLibraryPath);
+
+        //    return (from chromeAppDir in new DirectoryInfo(appLibraryPath).GetDirectories()
+        //        let chromeAppId =
+        //            Regex.Match(chromeAppDir.Name, @"_crx_([a-zA-Z0-9]{32})", RegexOptions.None).Groups[1].Value
+        //        let chromeIconPaths = chromeAppDir.GetFiles(@"*.ico")
+        //        from chromeIconPath in chromeIconPaths
+        //        where chromeIconPath != null && CustomShortcutGetters.ExcludedChromeAppIds.All(s => s != chromeAppId)
+        //        select new ChromeApp
+        //        {
+        //            AppId = chromeAppId,
+        //            AppName = Path.GetFileNameWithoutExtension(chromeIconPath.Name),
+        //            IconPath = chromeIconPath.FullName
+        //        }).ToList();
+        //}
     }
 }

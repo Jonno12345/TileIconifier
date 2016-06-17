@@ -46,7 +46,7 @@ namespace TileIconifier.Core.Custom
         public static string ExplorerPath => Environment.ExpandEnvironmentVariables(@"%SYSTEMROOT%\explorer.exe");
 
         public static string GoogleAppLibraryPath =>
-            Environment.ExpandEnvironmentVariables(@"%localappdata%\Google\Chrome\User Data\Default\Web Applications");
+            Environment.ExpandEnvironmentVariables(@"%localappdata%\Google\Chrome\User Data\Default\Extensions");
 
         public static List<string> DefaultChromeInstallationPaths =>
             new List<string>
@@ -103,6 +103,7 @@ namespace TileIconifier.Core.Custom
             {"Folder Options", "{6DFD7C5C-2451-11d3-A299-00C04F8EF6AF}"},
             {"Font Settings", "{93412589-74D4-4E4E-AD0E-E0CB621440FD}"},
             {"Fonts", "{BD84B380-8CA2-1069-AB1D-08000948534}"},
+            {"Frequent folders", "{3936E9E4-D92C-4EEE-A85A-BC16D5EA0819}" },
             {"Games Explorer", "{ED228FDF-9EA8-4870-83b1-96b02CFE0D52}"},
             {"Get Programs", "{15eae92e-f17a-4431-9f28-805e482dafd4}"},
             {"Help and Support", "{2559a1f1-21d7-11d4-bdaf-00c04f60b9f0}"},
@@ -130,6 +131,7 @@ namespace TileIconifier.Core.Custom
             {"Notification Area Icons", "{05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}"},
             {"NVIDIA Control Panel (if installed)", "{0bbca823-e77d-419e-9a44-5adec2c8eeb0}"},
             {"Offline Files Folder", "{AFDB1F70-2A4C-11d2-9039-00C04F8EEB3E}"},
+            {"OneDrive", "{018D5C66-4533-4307-9B53-224DE2ED1FE6}" },
             {"Pen and Touch", "{F82DF8F7-8B9F-442E-A48C-818EA735FF9B}"},
             {"Performance Information and Tools (WEI)", "{78F3955E-3B90-4184-BD14-5397C15F1EFC}"},
             {"Personalization", "{ED834ED6-4B5A-4bfe-8F11-A626DCB6A921}"},
@@ -142,6 +144,7 @@ namespace TileIconifier.Core.Custom
             {"Printers", "{2227A280-3AEA-1069-A2DE-08002B30309D}"},
             {"Programs and Features", "{7b81be6a-ce2b-4676-a29e-eb907a5126c5}"},
             {"Public Folder", "{4336a54d-038b-4685-ab02-99bb52d3fb8b}"},
+            {"Quick Access", "{679f85cb-0220-4080-b29b-5540cc05aab6}" },
             {"Recent Places", "{22877a6d-37a1-461a-91b0-dbda5aaebc99}"},
             {"Recovery", "{9FE63AFD-59CF-4419-9775-ABCC3849F861}"},
             {"Recycle Bin", "{645FF040-5081-101B-9F08-00AA002F954E}"},
@@ -153,6 +156,7 @@ namespace TileIconifier.Core.Custom
             {"Search Apps", "{2559a1f8-21d7-11d4-bdaf-00c04f60b9f0}"},
             {"Search Files", "{2559a1f0-21d7-11d4-bdaf-00c04f60b9f0}"},
             {"Search Results", "{9343812e-1c37-4a49-a12e-4b2d810d956b}"},
+            {"Security and Maintenance", "{BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}" },
             {"Set Program Access and Defaults", "{2559a1f7-21d7-11d4-bdaf-00c04f60b9f0}"},
             {"Show Desktop", "{3080F90D-D7AD-11D9-BD98-0000947B0257}"},
             {"Sound", "{F2DDFC82-8F12-4CDD-B7DC-D4FE1425AA4D}"},

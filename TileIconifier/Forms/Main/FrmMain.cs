@@ -178,7 +178,7 @@ namespace TileIconifier.Forms
 
         private void btnBuildCustomShortcut_Click(object sender, EventArgs e)
         {
-            var shortcutName = Path.GetFileNameWithoutExtension(CurrentShortcutItem.ShortcutFileInfo.Name);
+            var shortcutName = txtQuickShortcutName.Text.CleanInvalidFilenameChars();
 
             if (CurrentShortcutItem.IsTileIconifierCustomShortcut) return;
 
