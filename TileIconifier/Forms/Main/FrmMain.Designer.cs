@@ -58,6 +58,7 @@ namespace TileIconifier.Forms
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtQuickShortcutName = new System.Windows.Forms.TextBox();
             this.lblCustomShortcutName = new System.Windows.Forms.Label();
+            this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,7 +195,8 @@ namespace TileIconifier.Forms
             this.preferencesToolStripMenuItem,
             this.skinToolStripMenuItem,
             this.aboutToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.donateToolStripMenuItem});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
             this.mnuMain.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
@@ -317,6 +319,13 @@ namespace TileIconifier.Forms
             this.lblCustomShortcutName.TabIndex = 34;
             this.lblCustomShortcutName.Text = "Custom Name";
             // 
+            // donateToolStripMenuItem
+            // 
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(57, 22);
+            this.donateToolStripMenuItem.Text = "Donate";
+            this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -379,6 +388,7 @@ namespace TileIconifier.Forms
         private System.Windows.Forms.TextBox txtFilter;
         private System.Windows.Forms.TextBox txtQuickShortcutName;
         private System.Windows.Forms.Label lblCustomShortcutName;
+        private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
     }
 }
 

@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Diagnostics;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Custom;
@@ -42,8 +42,8 @@ namespace TileIconifier.Forms
     public partial class FrmMain : SkinnableForm
     {
         private ShortcutItemListViewItem _currentShortcutListViewItem;
-        private List<ShortcutItemListViewItem> _shortcutsList;
         private List<ShortcutItemListViewItem> _filteredList;
+        private List<ShortcutItemListViewItem> _shortcutsList;
 
         public FrmMain()
         {
@@ -215,10 +215,10 @@ namespace TileIconifier.Forms
         private void btnDeleteCustomShortcut_Click(object sender, EventArgs e)
         {
             if (
-    MessageBox.Show(
-        $"Are you sure you wish to delete the custom shortcut for {CurrentShortcutItem.ShortcutFileInfo.Name.QuoteWrap()}?",
-        @"Are you sure?",
-        MessageBoxButtons.YesNo) == DialogResult.No)
+                MessageBox.Show(
+                    $"Are you sure you wish to delete the custom shortcut for {CurrentShortcutItem.ShortcutFileInfo.Name.QuoteWrap()}?",
+                    @"Are you sure?",
+                    MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
             try
@@ -239,6 +239,18 @@ namespace TileIconifier.Forms
             UpdateFilteredList();
             BuildShortcutList();
             UpdateShortcut();
+        }
+
+        private void donateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(this,
+                @"Donations for this application will NEVER be required but would be greatly appreciated. This application will ALWAYS be free, open source, and supported to the best of my ability. If you would like to help support me with this and future applications I would be very grateful!
+
+Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?",
+                @"Donation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                Process.Start("https://www.paypal.me/Jonno12345");
+            }
         }
     }
 }
