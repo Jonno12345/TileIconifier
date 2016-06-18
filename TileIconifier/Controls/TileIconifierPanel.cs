@@ -441,6 +441,7 @@ namespace TileIconifier.Controls
         {
             clrDialog.CustomColors = new[]
             {ColorTranslator.ToOle(ColorUtils.HexToColor(ShortcutConstantsAndEnums.DefaultAccentColor))};
+            clrDialog.Color = cmbColour.Text.ToLower() == "custom" ? ColorUtils.HexToColor(txtBGColour.Text) : Color.FromName(cmbColour.Text);
 
             if (clrDialog.ShowDialog(this) == DialogResult.OK)
             {

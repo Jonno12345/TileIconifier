@@ -148,10 +148,18 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void FullUpdate(object sender, DoWorkEventArgs e)
         {
-            SetUpExplorer();
-            SetUpSteam();
-            SetUpChrome();
-            SetUpWindowsStore();
+            try
+            {
+                SetUpExplorer();
+                SetUpSteam();
+                SetUpChrome();
+                SetUpWindowsStore();
+            }
+            catch (Exception ex)
+            {
+                var frmException = new FrmException(ex);
+                frmException.ShowDialog();
+            }
         }
 
         private void GenerateFullShortcut(

@@ -56,8 +56,6 @@ namespace TileIconifier.Forms
             this.darkSkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtQuickShortcutName = new System.Windows.Forms.TextBox();
-            this.lblCustomShortcutName = new System.Windows.Forms.Label();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -302,23 +300,6 @@ namespace TileIconifier.Forms
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
-            // txtQuickShortcutName
-            // 
-            this.txtQuickShortcutName.Location = new System.Drawing.Point(169, 375);
-            this.txtQuickShortcutName.Name = "txtQuickShortcutName";
-            this.txtQuickShortcutName.Size = new System.Drawing.Size(193, 20);
-            this.txtQuickShortcutName.TabIndex = 33;
-            // 
-            // lblCustomShortcutName
-            // 
-            this.lblCustomShortcutName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblCustomShortcutName.Location = new System.Drawing.Point(166, 356);
-            this.lblCustomShortcutName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCustomShortcutName.Name = "lblCustomShortcutName";
-            this.lblCustomShortcutName.Size = new System.Drawing.Size(76, 16);
-            this.lblCustomShortcutName.TabIndex = 34;
-            this.lblCustomShortcutName.Text = "Custom Name";
-            // 
             // donateToolStripMenuItem
             // 
             this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
@@ -330,8 +311,6 @@ namespace TileIconifier.Forms
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(827, 407);
-            this.Controls.Add(this.lblCustomShortcutName);
-            this.Controls.Add(this.txtQuickShortcutName);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.btnDeleteCustomShortcut);
@@ -386,8 +365,6 @@ namespace TileIconifier.Forms
         private System.Windows.Forms.Button btnDeleteCustomShortcut;
         private System.Windows.Forms.Label lblFilter;
         private System.Windows.Forms.TextBox txtFilter;
-        private System.Windows.Forms.TextBox txtQuickShortcutName;
-        private System.Windows.Forms.Label lblCustomShortcutName;
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
     }
 }

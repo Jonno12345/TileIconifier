@@ -112,6 +112,12 @@
     <Compile Include="Controls\Eyedropper\EyedropColorPicker.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\PictureBox\AlignForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\PictureBox\AlignForm.Designer.cs">
+      <DependentUpon>AlignForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PictureBox\PannablePictureBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,6 +146,12 @@
     </Compile>
     <Compile Include="Controls\TileIconifierPanel.Designer.cs">
       <DependentUpon>TileIconifierPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutConfirm.Designer.cs">
+      <DependentUpon>FrmCustomShortcutConfirm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerAbout.cs">
       <SubType>Form</SubType>
@@ -212,6 +224,9 @@
     <EmbeddedResource Include="Controls\AllOrCurrentUserRadios.resx">
       <DependentUpon>AllOrCurrentUserRadios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PictureBox\AlignForm.resx">
+      <DependentUpon>AlignForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\PictureBox\PannablePictureBox.resx">
       <DependentUpon>PannablePictureBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TileIconifierPanel.resx">
       <DependentUpon>TileIconifierPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutConfirm.resx">
+      <DependentUpon>FrmCustomShortcutConfirm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerAbout.resx">
       <DependentUpon>FrmCustomShortcutManagerAbout.cs</DependentUpon>
@@ -318,6 +336,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+    <None Include="Resources\AlignCenter.png" />
+    <None Include="Resources\NudgeUp.png" />
+    <None Include="Resources\NudgeRight.png" />
+    <None Include="Resources\NudgeLeft.png" />
+    <None Include="Resources\NudgeDown.png" />
+    <None Include="Resources\AlignYMiddle.png" />
+    <None Include="Resources\AlignXMiddle.png" />
+    <None Include="Resources\AlignTop.png" />
+    <None Include="Resources\AlignRight.png" />
+    <None Include="Resources\AlignLeft.png" />
+    <None Include="Resources\AlignBottom.png" />
     <None Include="Resources\colorsquare.png" />
     <None Include="Resources\tiles2-shadow.png" />
     <None Include="Resources\tiles2_shadow_lyk_icon.ico" />

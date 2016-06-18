@@ -35,7 +35,7 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.tmrEnlarge = new System.Windows.Forms.Timer(this.components);
             this.tmrShrink = new System.Windows.Forms.Timer(this.components);
-            this.btnCenter = new System.Windows.Forms.Button();
+            this.btnAlign = new System.Windows.Forms.Button();
             this.trkZoom = new System.Windows.Forms.TrackBar();
             this.lblPercent = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trkZoom)).BeginInit();
@@ -97,16 +97,16 @@
             this.tmrShrink.Interval = 50;
             this.tmrShrink.Tick += new System.EventHandler(this.tmrShrink_Tick);
             // 
-            // btnCenter
+            // btnAlign
             // 
-            this.btnCenter.BackgroundImage = global::TileIconifier.Properties.Resources.Translate;
-            this.btnCenter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCenter.Location = new System.Drawing.Point(106, 92);
-            this.btnCenter.Name = "btnCenter";
-            this.btnCenter.Size = new System.Drawing.Size(27, 28);
-            this.btnCenter.TabIndex = 4;
-            this.btnCenter.UseVisualStyleBackColor = true;
-            this.btnCenter.Click += new System.EventHandler(this.btnCenter_Click);
+            this.btnAlign.BackgroundImage = global::TileIconifier.Properties.Resources.Translate;
+            this.btnAlign.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAlign.Location = new System.Drawing.Point(106, 92);
+            this.btnAlign.Name = "btnAlign";
+            this.btnAlign.Size = new System.Drawing.Size(27, 28);
+            this.btnAlign.TabIndex = 4;
+            this.btnAlign.UseVisualStyleBackColor = true;
+            this.btnAlign.Click += new System.EventHandler(this.btnAlign_Click);
             // 
             // trkZoom
             // 
@@ -122,21 +122,19 @@
             // 
             // lblPercent
             // 
-            this.lblPercent.AutoSize = false;
-            this.lblPercent.Location = new System.Drawing.Point(36, 131);
+            this.lblPercent.Location = new System.Drawing.Point(25, 131);
             this.lblPercent.Name = "lblPercent";
-            this.lblPercent.Size = new System.Drawing.Size(30, 13);
+            this.lblPercent.Size = new System.Drawing.Size(50, 13);
             this.lblPercent.TabIndex = 6;
             this.lblPercent.Text = "xxx%";
             this.lblPercent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PannablePictureBoxControlPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.lblPercent);
             this.Controls.Add(this.trkZoom);
-            this.Controls.Add(this.btnCenter);
+            this.Controls.Add(this.btnAlign);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnOpenImage);
             this.Controls.Add(this.btnEnlarge);
@@ -158,7 +156,7 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Timer tmrEnlarge;
         private System.Windows.Forms.Timer tmrShrink;
-        private System.Windows.Forms.Button btnCenter;
+        private System.Windows.Forms.Button btnAlign;
         private System.Windows.Forms.TrackBar trkZoom;
         private System.Windows.Forms.Label lblPercent;
     }

@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Custom;
@@ -178,16 +179,17 @@ namespace TileIconifier.Forms
 
         private void btnBuildCustomShortcut_Click(object sender, EventArgs e)
         {
-            var shortcutName = txtQuickShortcutName.Text.CleanInvalidFilenameChars();
+            var shortcutName = Path.GetFileNameWithoutExtension(CurrentShortcutItem.ShortcutFileInfo.Name).CleanInvalidFilenameChars();
 
             if (CurrentShortcutItem.IsTileIconifierCustomShortcut) return;
 
-            if (
-                MessageBox.Show(
-                    $@"This will create a custom shortcut for {shortcutName.QuoteWrap()
-                        }. This is useful for some shortcuts that otherwise don't work (Such as MS Office / Firefox). Continue?",
-                    @"Create Custom Shortcut?", MessageBoxButtons.YesNo) != DialogResult.Yes) return;
+            var cloneConfirmation = new FrmCustomShortcutConfirm()
+            {
+                ShortcutName = shortcutName
+            };
+            if (cloneConfirmation.ShowDialog(this) != DialogResult.OK) return;
 
+            shortcutName = cloneConfirmation.ShortcutName;
 
             var customShortcut =
                 new CustomShortcut(shortcutName, CurrentShortcutItem.TargetFilePath, "",

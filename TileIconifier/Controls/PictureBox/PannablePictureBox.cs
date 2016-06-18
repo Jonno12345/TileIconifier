@@ -38,6 +38,7 @@ namespace TileIconifier.Controls.PictureBox
     [SkinIgnore]
     public partial class PannablePictureBox : UserControl
     {
+        private readonly Font _overlayFont = new Font(new FontFamily("Segoe UI"), 9f, FontStyle.Regular);
         private Point _movingPoint = Point.Empty;
         private bool _panning;
 
@@ -46,16 +47,14 @@ namespace TileIconifier.Controls.PictureBox
         internal int MaxWidth;
         internal int MinHeight;
         internal int MinWidth;
+        public Color OverlayColor = Color.White;
+
+        public PannablePictureBoxImage PannablePictureBoxImage;
 
         public bool ShowTextOverlay = false;
-        public Color OverlayColor = Color.White;
         public string TextOverlay;
 
         public Point TextOverlayPoint;
-
-        private readonly Font _overlayFont = new Font(new FontFamily("Segoe UI"), 9f, FontStyle.Regular );
-
-        public PannablePictureBoxImage PannablePictureBoxImage;
 
         public PannablePictureBox()
         {
@@ -130,6 +129,45 @@ namespace TileIconifier.Controls.PictureBox
             TriggerUpdate();
         }
 
+        public void AlignTop()
+        {
+            Align(y: 0);
+        }
+
+        public void AlignLeft()
+        {
+            Align(0);
+        }
+
+        public void AlignRight()
+        {
+            Align(pctBox.Width - PannablePictureBoxImage.Width);
+        }
+
+        public void AlignBottom()
+        {
+            Align(y: pctBox.Height - PannablePictureBoxImage.Height);
+        }
+
+        public void AlignXMiddle()
+        {
+            Align((pctBox.Width - PannablePictureBoxImage.Width)/2);
+        }
+
+        public void AlignYMiddle()
+        {
+            Align(y: (pctBox.Height - PannablePictureBoxImage.Height)/2);
+        }
+
+        public void Nudge(int? x = null, int? y = null)
+        {
+            if (x != null)
+                PannablePictureBoxImage.X += (int) x;
+            if (y != null)
+                PannablePictureBoxImage.Y += (int) y;
+            TriggerUpdate();
+        }
+
 
         internal decimal GetZoomPercentage()
         {
@@ -198,19 +236,22 @@ namespace TileIconifier.Controls.PictureBox
         private void pctBox_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(BackColor);
-            if (PannablePictureBoxImage.Image == null || PannablePictureBoxImage.Width < 1 ||
+            if (PannablePictureBoxImage.Width < 1 ||
                 PannablePictureBoxImage.Height < 1)
                 return;
 
-            e.Graphics.DrawImage(
-                SetResolution(PannablePictureBoxImage.Image, PannablePictureBoxImage.Width,
-                    PannablePictureBoxImage.Height), PannablePictureBoxImage.X, PannablePictureBoxImage.Y);
-
-            if (ShowTextOverlay)
+            if (PannablePictureBoxImage.Image != null)
             {
-                DrawTextOverlay(e);
-            }
+                e.Graphics.DrawImage(
+                    SetResolution(PannablePictureBoxImage.Image, PannablePictureBoxImage.Width,
+                        PannablePictureBoxImage.Height), PannablePictureBoxImage.X, PannablePictureBoxImage.Y);
 
+                if (ShowTextOverlay)
+                {
+                    DrawTextOverlay(e);
+                }
+
+                //debug mode overlay
 #if DEBUG
             e.Graphics.DrawString(PannablePictureBoxImage.Width + ", " + PannablePictureBoxImage.Height, DefaultFont,
                 new SolidBrush(Color.Red), 0, 0);
@@ -220,6 +261,16 @@ namespace TileIconifier.Controls.PictureBox
             e.Graphics.DrawString(MinWidth + "_" + MaxWidth + ", " + MinHeight + "_" + MaxHeight, DefaultFont,
                 new SolidBrush(Color.Red), 0, 60);
 #endif
+            }
+            else
+            {
+                e.Graphics.DrawString("Double", DefaultFont,
+                    new SolidBrush(Color.Red), 3, 3);
+                e.Graphics.DrawString("Click", DefaultFont,
+                    new SolidBrush(Color.Red), 3, 19);
+                e.Graphics.DrawString("Me!", DefaultFont,
+                    new SolidBrush(Color.Red), 3, 35);
+            }
         }
 
         //not a fun mass of parsing. Attempts to closely match the label behaviour of the Windows 10 Start Menu. Haven't tested against Windows 8.1
@@ -361,6 +412,16 @@ namespace TileIconifier.Controls.PictureBox
         {
             OnPannablePictureImagePropertyChange?.Invoke(PannablePictureBoxImage, null);
             if (invalidate) pctBox.Invalidate();
+        }
+
+        private void Align(int? x = null, int? y = null)
+        {
+            if (PannablePictureBoxImage.Image == null) return;
+            if (x != null)
+                PannablePictureBoxImage.X = (int) x;
+            if (y != null)
+                PannablePictureBoxImage.Y = (int) y;
+            TriggerUpdate();
         }
     }
 }

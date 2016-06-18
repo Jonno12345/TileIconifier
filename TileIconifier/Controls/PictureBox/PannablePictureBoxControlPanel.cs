@@ -28,6 +28,8 @@
 #endregion
 
 using System;
+using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace TileIconifier.Controls.PictureBox
@@ -76,8 +78,8 @@ namespace TileIconifier.Controls.PictureBox
             resetToolTip.SetToolTip(btnReset, "Reset");
             var changeImageToolTip = new ToolTip();
             changeImageToolTip.SetToolTip(btnOpenImage, "Change Image");
-            var centerImageToolTip = new ToolTip();
-            centerImageToolTip.SetToolTip(btnCenter, "Center Image");
+            var alignImageToolTip = new ToolTip();
+            alignImageToolTip.SetToolTip(btnAlign, "Align Image");
         }
 
         private void btnEnlarge_MouseDown(object sender, MouseEventArgs e)
@@ -122,9 +124,54 @@ namespace TileIconifier.Controls.PictureBox
             ChangeImageClick?.Invoke(this, null);
         }
 
-        private void btnCenter_Click(object sender, EventArgs e)
+        private void btnAlign_Click(object sender, EventArgs e)
         {
-            PannablePictureBox.CenterImage();
+            var alignForm = new AlignForm {Location = MousePosition};
+            alignForm.AlignFormClick += AlignFormClick;
+            alignForm.Show(this);
+        }
+
+        private void AlignFormClick(object sender, EventArgs eventArgs, AlignButtonClick alignButtonClick)
+        {
+            switch (alignButtonClick)
+            {
+                case AlignButtonClick.LeftAlign:
+                    PannablePictureBox.AlignLeft();
+                    break;
+                case AlignButtonClick.BottomAlign:
+                    PannablePictureBox.AlignBottom();
+                    break;
+                case AlignButtonClick.RightAlign:
+                    PannablePictureBox.AlignRight();
+                    break;
+                case AlignButtonClick.TopAlign:
+                    PannablePictureBox.AlignTop();
+                    break;
+                case AlignButtonClick.XAlign:
+                    PannablePictureBox.AlignXMiddle();
+                    break;
+                case AlignButtonClick.YAlign:
+                    PannablePictureBox.AlignYMiddle();
+                    break;
+                case AlignButtonClick.NudgeUp:
+                    PannablePictureBox.Nudge(y: -1);
+                    break;
+                case AlignButtonClick.NudgeDown:
+                    PannablePictureBox.Nudge(y: 1);
+                    break;
+                case AlignButtonClick.NudgeLeft:
+                    PannablePictureBox.Nudge(-1);
+                    break;
+                case AlignButtonClick.NudgeRight:
+                    PannablePictureBox.Nudge(1);
+                    break;
+                case AlignButtonClick.Center:
+                    PannablePictureBox.CenterImage();
+                    break;
+                case AlignButtonClick.Unknown:
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(alignButtonClick), alignButtonClick, null);
+            }
         }
 
         private void trkZoom_Scroll(object sender, EventArgs e)
@@ -136,7 +183,7 @@ namespace TileIconifier.Controls.PictureBox
         private void EnableControls()
         {
             trkZoom.Enabled = true;
-            btnCenter.Enabled = true;
+            btnAlign.Enabled = true;
             btnEnlarge.Enabled = true;
             btnReset.Enabled = true;
             btnShrink.Enabled = true;
@@ -147,7 +194,7 @@ namespace TileIconifier.Controls.PictureBox
             trkZoom.Value = 1;
             trkZoom.Enabled = false;
             lblPercent.Text = @"---%";
-            btnCenter.Enabled = false;
+            btnAlign.Enabled = false;
             btnEnlarge.Enabled = false;
             btnReset.Enabled = false;
             btnShrink.Enabled = false;
@@ -155,7 +202,7 @@ namespace TileIconifier.Controls.PictureBox
 
         private void UpdateZoomPercentage()
         {
-            lblPercent.Text = PannablePictureBox.GetZoomPercentage().ToString("F") + @"%";
+            lblPercent.Text = $@"{PannablePictureBox.GetZoomPercentage().ToString("F")}%";
         }
     }
 }

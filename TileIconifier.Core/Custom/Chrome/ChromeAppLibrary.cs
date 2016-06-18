@@ -68,8 +68,12 @@ namespace TileIconifier.Core.Custom.Chrome
             //loop through all extension app Id folders
             foreach (var directory in new DirectoryInfo(appLibraryPath).GetDirectories())
             {
+                var subDirectories = directory.GetDirectories();
+                if (!subDirectories.Any())
+                    continue;
+
                 //grab the versioned folder within this appId
-                var mainFolder = directory.GetDirectories().First();
+                var mainFolder = subDirectories.OrderByDescending(d => d.Name).First();
                 //manifest file for app information extraction
                 var manifestJsonPath = Path.Combine(mainFolder.FullName, "manifest.json");
                 if (!File.Exists(manifestJsonPath))

@@ -137,7 +137,6 @@ namespace TileIconifier.Forms
             };
             updateTextBox(txtLnkPath, CurrentShortcutItem.ShortcutFileInfo.FullName);
             updateTextBox(txtExePath, CurrentShortcutItem.TargetFilePath);
-            updateTextBox(txtQuickShortcutName, Path.GetFileNameWithoutExtension(CurrentShortcutItem.ShortcutFileInfo.Name));
 
             //only show remove if the icon is currently iconified
             btnRemove.Enabled = CurrentShortcutItem.IsIconified;
@@ -147,7 +146,6 @@ namespace TileIconifier.Forms
 
             //disable Build Custom Shortcut for items that are already custom shortcuts
             btnBuildCustomShortcut.Enabled = !CurrentShortcutItem.IsTileIconifierCustomShortcut;
-            txtQuickShortcutName.Enabled = !CurrentShortcutItem.IsTileIconifierCustomShortcut;
 
             //disable delete Custom Shortcut for items that are already custom shortcuts
             btnDeleteCustomShortcut.Enabled = CurrentShortcutItem.IsTileIconifierCustomShortcut;
