@@ -55,8 +55,7 @@
             // 
             // lblPreview
             // 
-            this.lblPreview.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblPreview.AutoSize = false;
+            this.lblPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblPreview.Location = new System.Drawing.Point(13, 327);
             this.lblPreview.Name = "lblPreview";
             this.lblPreview.Size = new System.Drawing.Size(45, 13);
@@ -65,7 +64,7 @@
             // 
             // pctPreview
             // 
-            this.pctPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pctPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pctPreview.Location = new System.Drawing.Point(79, 327);
             this.pctPreview.Name = "pctPreview";
             this.pctPreview.Size = new System.Drawing.Size(72, 64);
@@ -75,8 +74,8 @@
             // 
             // lblCommonDlls
             // 
-            this.lblCommonDlls.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblCommonDlls.AutoSize = false;
+            this.lblCommonDlls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCommonDlls.Location = new System.Drawing.Point(10, 56);
             this.lblCommonDlls.Name = "lblCommonDlls";
             this.lblCommonDlls.Size = new System.Drawing.Size(100, 13);
@@ -85,7 +84,8 @@
             // 
             // cmbCommonIconDlls
             // 
-            this.cmbCommonIconDlls.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbCommonIconDlls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCommonIconDlls.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCommonIconDlls.FormattingEnabled = true;
             this.cmbCommonIconDlls.Location = new System.Drawing.Point(119, 53);
@@ -96,7 +96,7 @@
             // 
             // btnBrowseIconPath
             // 
-            this.btnBrowseIconPath.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnBrowseIconPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBrowseIconPath.Location = new System.Drawing.Point(491, 14);
             this.btnBrowseIconPath.Name = "btnBrowseIconPath";
             this.btnBrowseIconPath.Size = new System.Drawing.Size(75, 33);
@@ -107,7 +107,8 @@
             // 
             // txtPathToExtractFrom
             // 
-            this.txtPathToExtractFrom.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtPathToExtractFrom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPathToExtractFrom.Location = new System.Drawing.Point(119, 21);
             this.txtPathToExtractFrom.Name = "txtPathToExtractFrom";
             this.txtPathToExtractFrom.ReadOnly = true;
@@ -116,7 +117,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Location = new System.Drawing.Point(491, 356);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 33);
@@ -127,7 +128,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.Location = new System.Drawing.Point(395, 356);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 33);
@@ -138,7 +139,7 @@
             // 
             // btnBrowseCustomImage
             // 
-            this.btnBrowseCustomImage.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnBrowseCustomImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBrowseCustomImage.Location = new System.Drawing.Point(491, 294);
             this.btnBrowseCustomImage.Name = "btnBrowseCustomImage";
             this.btnBrowseCustomImage.Size = new System.Drawing.Size(75, 33);
@@ -149,8 +150,8 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label1.AutoSize = false;
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Location = new System.Drawing.Point(13, 304);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
@@ -159,7 +160,8 @@
             // 
             // txtImagePath
             // 
-            this.txtImagePath.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtImagePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtImagePath.Location = new System.Drawing.Point(79, 301);
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.Size = new System.Drawing.Size(392, 20);
@@ -168,8 +170,8 @@
             // 
             // radUseCustomImage
             // 
-            this.radUseCustomImage.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.radUseCustomImage.AutoSize = false;
+            this.radUseCustomImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.radUseCustomImage.Location = new System.Drawing.Point(14, 281);
             this.radUseCustomImage.Name = "radUseCustomImage";
             this.radUseCustomImage.Size = new System.Drawing.Size(112, 17);
@@ -180,8 +182,8 @@
             // 
             // radIconFromTarget
             // 
-            this.radIconFromTarget.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.radIconFromTarget.AutoSize = false;
+            this.radIconFromTarget.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.radIconFromTarget.Checked = true;
             this.radIconFromTarget.Location = new System.Drawing.Point(11, 21);
             this.radIconFromTarget.Name = "radIconFromTarget";
@@ -214,7 +216,6 @@
             // 
             // FrmIconSelector
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(578, 401);
             this.Controls.Add(this.lblPreview);

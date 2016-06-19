@@ -85,6 +85,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstCustomShortcuts.FullRowSelect = true;
+            this.lstCustomShortcuts.HideSelection = false;
             this.lstCustomShortcuts.Location = new System.Drawing.Point(12, 27);
             this.lstCustomShortcuts.Name = "lstCustomShortcuts";
             this.lstCustomShortcuts.Size = new System.Drawing.Size(464, 246);
@@ -105,7 +106,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // FrmCustomShortcutManagerMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(623, 285);
             this.Controls.Add(this.btnGotoShortcut);
@@ -118,6 +118,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.Name = "FrmCustomShortcutManagerMain";
             this.Text = "Custom Shortcut Manager";
             this.Load += new System.EventHandler(this.frmCustomShortcutManagerMain_Load);
+            this.Resize += new System.EventHandler(this.FrmCustomShortcutManagerMain_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

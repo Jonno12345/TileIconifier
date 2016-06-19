@@ -237,6 +237,7 @@ namespace TileIconifier.Forms
 
         private void InitializeListboxColumns()
         {
+            srtlstShortcuts.Columns.Clear();
             srtlstShortcuts.Columns.Add("Shortcut Name", srtlstShortcuts.Width/7*4 - 10, HorizontalAlignment.Left);
             srtlstShortcuts.Columns.Add("Is Custom?", srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
             srtlstShortcuts.Columns.Add("Is Iconified?", srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);

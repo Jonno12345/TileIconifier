@@ -56,11 +56,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             var customShortcuts = LoadCustomShortcuts();
             _customShortcutsList = customShortcuts.Select(c => new CustomShortcutListViewItem(c)).ToList();
             lstCustomShortcuts.Clear();
-            lstCustomShortcuts.Columns.Clear();
 
-            lstCustomShortcuts.Columns.Add("Shortcut Name", lstCustomShortcuts.Width/4*2 - 2, HorizontalAlignment.Left);
-            lstCustomShortcuts.Columns.Add("Shortcut Type", lstCustomShortcuts.Width/4 - 1, HorizontalAlignment.Left);
-            lstCustomShortcuts.Columns.Add("Shortcut User", lstCustomShortcuts.Width/4 - 1, HorizontalAlignment.Left);
+            BuildListBoxColumns();
 
             var smallImageList = new ImageList();
             for (var i = 0; i < _customShortcutsList.Count; i++)
@@ -72,6 +69,16 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 lstCustomShortcuts.Items.Add(_customShortcutsList[i]);
             }
             lstCustomShortcuts.SmallImageList = smallImageList;
+        }
+
+        private void BuildListBoxColumns()
+        {
+            lstCustomShortcuts.Columns.Clear();
+
+            lstCustomShortcuts.Columns.Add("Shortcut Name", lstCustomShortcuts.Width / 4 * 2 - 2, HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add("Shortcut Type", lstCustomShortcuts.Width / 4 - 1, HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add("Shortcut User", lstCustomShortcuts.Width / 4 - 1, HorizontalAlignment.Left);
+
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -139,6 +146,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             GotoShortcutItem = ((CustomShortcutListViewItem) lstCustomShortcuts.SelectedItems[0]).CustomShortcut.ShortcutItem;
             Close();
+        }
+
+        private void FrmCustomShortcutManagerMain_Resize(object sender, EventArgs e)
+        {
+            BuildListBoxColumns();
         }
     }
 }

@@ -150,7 +150,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // radCustomFolder
             // 
-            this.radCustomFolder.AutoSize = false;
             this.radCustomFolder.Location = new System.Drawing.Point(3, 40);
             this.radCustomFolder.Name = "radCustomFolder";
             this.radCustomFolder.Size = new System.Drawing.Size(114, 17);
@@ -160,7 +159,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // radSpecialFolder
             // 
-            this.radSpecialFolder.AutoSize = false;
             this.radSpecialFolder.Checked = true;
             this.radSpecialFolder.Location = new System.Drawing.Point(3, 7);
             this.radSpecialFolder.Name = "radSpecialFolder";
@@ -293,6 +291,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstSteamGames.FullRowSelect = true;
+            this.lstSteamGames.HideSelection = false;
             this.lstSteamGames.Location = new System.Drawing.Point(6, 90);
             this.lstSteamGames.MultiSelect = false;
             this.lstSteamGames.Name = "lstSteamGames";
@@ -323,6 +322,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstChromeAppItems.FullRowSelect = true;
+            this.lstChromeAppItems.HideSelection = false;
             this.lstChromeAppItems.Location = new System.Drawing.Point(6, 63);
             this.lstChromeAppItems.MultiSelect = false;
             this.lstChromeAppItems.Name = "lstChromeAppItems";
@@ -406,6 +406,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstWindowsStoreApps.FullRowSelect = true;
+            this.lstWindowsStoreApps.HideSelection = false;
             this.lstWindowsStoreApps.Location = new System.Drawing.Point(7, 9);
             this.lstWindowsStoreApps.MultiSelect = false;
             this.lstWindowsStoreApps.Name = "lstWindowsStoreApps";
@@ -424,14 +425,13 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabOther.Controls.Add(this.txtOtherTargetPath);
             this.tabOther.Location = new System.Drawing.Point(4, 22);
             this.tabOther.Name = "tabOther";
-            this.tabOther.Size = new System.Drawing.Size(874, 299);
+            this.tabOther.Size = new System.Drawing.Size(622, 248);
             this.tabOther.TabIndex = 2;
             this.tabOther.Text = "Other";
             this.tabOther.UseVisualStyleBackColor = true;
             // 
             // lblOtherShortcutArguments
             // 
-            this.lblOtherShortcutArguments.AutoSize = false;
             this.lblOtherShortcutArguments.Location = new System.Drawing.Point(15, 41);
             this.lblOtherShortcutArguments.Name = "lblOtherShortcutArguments";
             this.lblOtherShortcutArguments.Size = new System.Drawing.Size(100, 13);
@@ -444,12 +444,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOtherShortcutArguments.Location = new System.Drawing.Point(121, 38);
             this.txtOtherShortcutArguments.Name = "txtOtherShortcutArguments";
-            this.txtOtherShortcutArguments.Size = new System.Drawing.Size(673, 20);
+            this.txtOtherShortcutArguments.Size = new System.Drawing.Size(421, 20);
             this.txtOtherShortcutArguments.TabIndex = 11;
             // 
             // lblOtherTargetPath
             // 
-            this.lblOtherTargetPath.AutoSize = false;
             this.lblOtherTargetPath.Location = new System.Drawing.Point(15, 15);
             this.lblOtherTargetPath.Name = "lblOtherTargetPath";
             this.lblOtherTargetPath.Size = new System.Drawing.Size(81, 13);
@@ -463,7 +462,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.btnOtherTargetBrowse.FlatAppearance.BorderSize = 0;
             this.btnOtherTargetBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOtherTargetBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOtherTargetBrowse.Location = new System.Drawing.Point(797, 8);
+            this.btnOtherTargetBrowse.Location = new System.Drawing.Point(545, 8);
             this.btnOtherTargetBrowse.Margin = new System.Windows.Forms.Padding(0);
             this.btnOtherTargetBrowse.Name = "btnOtherTargetBrowse";
             this.btnOtherTargetBrowse.Size = new System.Drawing.Size(68, 26);
@@ -478,7 +477,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOtherTargetPath.Location = new System.Drawing.Point(121, 12);
             this.txtOtherTargetPath.Name = "txtOtherTargetPath";
-            this.txtOtherTargetPath.Size = new System.Drawing.Size(673, 20);
+            this.txtOtherTargetPath.Size = new System.Drawing.Size(421, 20);
             this.txtOtherTargetPath.TabIndex = 0;
             // 
             // fldBrowser
@@ -502,7 +501,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // lblShortcutName
             // 
             this.lblShortcutName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblShortcutName.AutoSize = false;
             this.lblShortcutName.Location = new System.Drawing.Point(95, 283);
             this.lblShortcutName.Name = "lblShortcutName";
             this.lblShortcutName.Size = new System.Drawing.Size(81, 13);
@@ -523,7 +521,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // lblCurrentIcon
             // 
             this.lblCurrentIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblCurrentIcon.AutoSize = false;
             this.lblCurrentIcon.Location = new System.Drawing.Point(12, 283);
             this.lblCurrentIcon.Name = "lblCurrentIcon";
             this.lblCurrentIcon.Size = new System.Drawing.Size(31, 13);
@@ -563,7 +560,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // FrmCustomShortcutManagerNew
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(652, 370);
             this.Controls.Add(this.radShortcutLocation);
@@ -577,6 +573,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.Name = "FrmCustomShortcutManagerNew";
             this.Text = "New Custom Shortcut";
             this.Load += new System.EventHandler(this.FrmCustomShortcutManagerNew_Load);
+            this.Resize += new System.EventHandler(this.FrmCustomShortcutManagerNew_Resize);
             this.tabShortcutType.ResumeLayout(false);
             this.tabExplorer.ResumeLayout(false);
             this.pnlExplorer.ResumeLayout(false);

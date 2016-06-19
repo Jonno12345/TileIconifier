@@ -293,6 +293,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             //load the cache of the new tab
             LoadCache(CurrentCache);
+
+            RebuildAllListBoxColumns();
         }
 
         private void LoadCache(NewCustomShortcutFormCache cache)
@@ -430,12 +432,16 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private void SetUpSteamListBox()
         {
             lstSteamGames.Clear();
+            BuildSteamListBoxColumns();
+            lstSteamGames.Items.AddRange(_steamGames.OrderBy(s => s.SteamGameItem.GameName).ToArray<ListViewItem>());
+        }
+
+        private void BuildSteamListBoxColumns()
+        {
             lstSteamGames.Columns.Clear();
 
             lstSteamGames.Columns.Add("App Id", lstSteamGames.Width / 8, HorizontalAlignment.Left);
             lstSteamGames.Columns.Add("Game Name", lstSteamGames.Width / 8 * 7 + 3, HorizontalAlignment.Left);
-
-            lstSteamGames.Items.AddRange(_steamGames.OrderBy(s => s.SteamGameItem.GameName).ToArray<ListViewItem>());
         }
 
         private void LoadSteamGames()
@@ -557,14 +563,19 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             if (_chromeApps == null)
                 return;
-
             lstChromeAppItems.Clear();
+
+            BuildChromeListBoxColumns();
+
+            lstChromeAppItems.Items.AddRange(_chromeApps.OrderBy(a => a.ChromeAppItem.AppName).ToArray<ListViewItem>());
+        }
+
+        private void BuildChromeListBoxColumns()
+        { 
             lstChromeAppItems.Columns.Clear();
 
             lstChromeAppItems.Columns.Add("App Id", lstSteamGames.Width / 8 * 3, HorizontalAlignment.Left);
             lstChromeAppItems.Columns.Add("App Name", lstSteamGames.Width / 8 * 5 + 3, HorizontalAlignment.Left);
-
-            lstChromeAppItems.Items.AddRange(_chromeApps.OrderBy(a => a.ChromeAppItem.AppName).ToArray<ListViewItem>());
         }
 
         private void lstChromeAppItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -649,11 +660,15 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private void SetUpWindowsStoreListView()
         {
             lstWindowsStoreApps.Clear();
+            BuildWindowsStoreListBoxColumns();
+            lstWindowsStoreApps.Items.AddRange(_windowsStoreApps.OrderBy(w => w.Text).ToArray<ListViewItem>());
+        }
+
+        private void BuildWindowsStoreListBoxColumns()
+        {
             lstWindowsStoreApps.Columns.Clear();
 
             lstWindowsStoreApps.Columns.Add("Windows Store App", lstWindowsStoreApps.Width);
-
-            lstWindowsStoreApps.Items.AddRange(_windowsStoreApps.OrderBy(w => w.Text).ToArray<ListViewItem>());
         }
 
         private void lstWindowsStoreApps_SelectedIndexChanged(object sender, EventArgs e)
@@ -708,5 +723,17 @@ namespace TileIconifier.Forms.CustomShortcutForms
             GenerateFullShortcut(txtOtherTargetPath.Text, txtOtherShortcutArguments.Text, CustomShortcutType.Other);
         }
         #endregion
+
+        private void FrmCustomShortcutManagerNew_Resize(object sender, EventArgs e)
+        {
+            RebuildAllListBoxColumns();
+        }
+
+        private void RebuildAllListBoxColumns()
+        {
+            BuildChromeListBoxColumns();
+            BuildSteamListBoxColumns();
+            BuildWindowsStoreListBoxColumns();
+        }
     }
 }

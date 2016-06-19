@@ -90,9 +90,6 @@ namespace TileIconifier.Forms
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            //if (!iconifyPanel.DoValidation())
-            //    return;
-
             if (MessageBox.Show(@"Are you sure you wish to remove iconification?", @"Confirm", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
@@ -253,6 +250,11 @@ Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?"
             {
                 Process.Start("https://www.paypal.me/Jonno12345");
             }
+        }
+
+        private void FrmMain_Resize(object sender, EventArgs e)
+        {
+            InitializeListboxColumns();
         }
     }
 }

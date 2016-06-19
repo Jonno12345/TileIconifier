@@ -62,6 +62,8 @@ namespace TileIconifier.Forms
             // 
             // txtFilter
             // 
+            this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtFilter.Location = new System.Drawing.Point(50, 27);
@@ -81,6 +83,7 @@ namespace TileIconifier.Forms
             // 
             // btnDeleteCustomShortcut
             // 
+            this.btnDeleteCustomShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDeleteCustomShortcut.Location = new System.Drawing.Point(12, 379);
             this.btnDeleteCustomShortcut.Name = "btnDeleteCustomShortcut";
             this.btnDeleteCustomShortcut.Size = new System.Drawing.Size(149, 20);
@@ -91,6 +94,7 @@ namespace TileIconifier.Forms
             // 
             // btnBuildCustomShortcut
             // 
+            this.btnBuildCustomShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBuildCustomShortcut.Location = new System.Drawing.Point(11, 353);
             this.btnBuildCustomShortcut.Name = "btnBuildCustomShortcut";
             this.btnBuildCustomShortcut.Size = new System.Drawing.Size(150, 20);
@@ -101,6 +105,8 @@ namespace TileIconifier.Forms
             // 
             // iconifyPanel
             // 
+            this.iconifyPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.iconifyPanel.CurrentShortcutItem = null;
             this.iconifyPanel.Location = new System.Drawing.Point(516, 23);
             this.iconifyPanel.Name = "iconifyPanel";
@@ -109,6 +115,9 @@ namespace TileIconifier.Forms
             // 
             // srtlstShortcuts
             // 
+            this.srtlstShortcuts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.srtlstShortcuts.FullRowSelect = true;
             this.srtlstShortcuts.HideSelection = false;
             this.srtlstShortcuts.Location = new System.Drawing.Point(12, 53);
@@ -132,7 +141,8 @@ namespace TileIconifier.Forms
             // 
             // txtExePath
             // 
-            this.txtExePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtExePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtExePath.Location = new System.Drawing.Point(12, 324);
             this.txtExePath.Margin = new System.Windows.Forms.Padding(2);
             this.txtExePath.Name = "txtExePath";
@@ -143,7 +153,7 @@ namespace TileIconifier.Forms
             // btnRemove
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove.Location = new System.Drawing.Point(720, 375);
+            this.btnRemove.Location = new System.Drawing.Point(720, 379);
             this.btnRemove.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(96, 21);
@@ -177,7 +187,8 @@ namespace TileIconifier.Forms
             // 
             // txtLnkPath
             // 
-            this.txtLnkPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtLnkPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLnkPath.Location = new System.Drawing.Point(12, 285);
             this.txtLnkPath.Margin = new System.Windows.Forms.Padding(2);
             this.txtLnkPath.Name = "txtLnkPath";
@@ -324,13 +335,12 @@ namespace TileIconifier.Forms
             this.Controls.Add(this.lblLnkPath);
             this.Controls.Add(this.txtLnkPath);
             this.Controls.Add(this.mnuMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mnuMain;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximizeBox = false;
             this.Name = "FrmMain";
             this.Text = "Tile Iconifier";
             this.Load += new System.EventHandler(this.frmDropper_Load);
+            this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
             this.ResumeLayout(false);
