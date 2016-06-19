@@ -68,6 +68,9 @@ namespace TileIconifier.Core.Custom.Chrome
             //loop through all extension app Id folders
             foreach (var directory in new DirectoryInfo(appLibraryPath).GetDirectories())
             {
+                string combinedLogoPath;
+                string appName;
+
                 var subDirectories = directory.GetDirectories();
                 if (!subDirectories.Any())
                     continue;
@@ -80,16 +83,35 @@ namespace TileIconifier.Core.Custom.Chrome
                     continue;
 
                 //get contents of the manifest
-                var manifestContents =
-                    JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(File.ReadAllText(manifestJsonPath));
+                Dictionary<string, dynamic> manifestContents;
+                try
+                {
+                    manifestContents =
+                        JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(File.ReadAllText(manifestJsonPath));
+                }
+                catch
+                {
+                    // unable to read manifest file, skip
+                    continue;
+                }
 
-                //get the highest res icon
-                var largestRelativeLogoPath =
-                    ((JObject) manifestContents["icons"]).Properties().OrderBy(k => k.Name).First().Value;
-                //get absolute path instead of relative
-                var combinedLogoPath = Path.Combine(mainFolder.FullName, largestRelativeLogoPath.Value<string>());
+                try
+                {
+                    //get the highest res icon
+                    var largestRelativeLogoPath =
+                        ((JObject) manifestContents["icons"]).Properties().OrderBy(k => k.Name).First().Value;
+                    //get absolute path instead of relative
+                    combinedLogoPath = Path.Combine(mainFolder.FullName, largestRelativeLogoPath.Value<string>());
+                    //if the absolute path doesn't exist, leave as default
+                    if (!File.Exists(combinedLogoPath))
+                        combinedLogoPath = string.Empty;
+                }
+                catch
+                {
+                    //unable to get logo path, leave as default
+                    combinedLogoPath = string.Empty;
+                }
 
-                string appName;
                 try
                 {
                     //standard locales path (may not exist, if not, use non locale name from catch)
@@ -126,25 +148,5 @@ namespace TileIconifier.Core.Custom.Chrome
             }
             return returnList;
         }
-
-        //{
-
-        //public static List<ChromeApp> GetChromeAppItems(string appLibraryPath)
-        //    if (!Directory.Exists(appLibraryPath))
-        //        throw new DirectoryNotFoundException(appLibraryPath);
-
-        //    return (from chromeAppDir in new DirectoryInfo(appLibraryPath).GetDirectories()
-        //        let chromeAppId =
-        //            Regex.Match(chromeAppDir.Name, @"_crx_([a-zA-Z0-9]{32})", RegexOptions.None).Groups[1].Value
-        //        let chromeIconPaths = chromeAppDir.GetFiles(@"*.ico")
-        //        from chromeIconPath in chromeIconPaths
-        //        where chromeIconPath != null && CustomShortcutGetters.ExcludedChromeAppIds.All(s => s != chromeAppId)
-        //        select new ChromeApp
-        //        {
-        //            AppId = chromeAppId,
-        //            AppName = Path.GetFileNameWithoutExtension(chromeIconPath.Name),
-        //            IconPath = chromeIconPath.FullName
-        //        }).ToList();
-        //}
     }
 }
