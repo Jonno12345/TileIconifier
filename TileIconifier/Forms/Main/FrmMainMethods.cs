@@ -74,9 +74,9 @@ namespace TileIconifier.Forms
                 _shortcutsList = ShortcutItemEnumeration.GetShortcuts(true)
                     .Select(s => new ShortcutItemListViewItem(s))
                     .ToList();
-
-                UpdateFilteredList();
             }
+
+            UpdateFilteredList();
 
             if (srtlstShortcuts.InvokeRequired)
                 srtlstShortcuts.Invoke(new Action(BuildShortcutList));
