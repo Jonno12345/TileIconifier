@@ -33,7 +33,7 @@ using TileIconifier.Core.Custom;
 
 namespace TileIconifier.Forms.CustomShortcutForms
 {
-    public partial class FrmCustomShortcutConfirm : Form
+    public partial class FrmCustomShortcutConfirm : SkinnableForm
     {
         public string ShortcutName;
 

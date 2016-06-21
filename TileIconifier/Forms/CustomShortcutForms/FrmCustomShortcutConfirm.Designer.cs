@@ -74,10 +74,11 @@
             // 
             // lblCaption
             // 
+            this.lblCaption.AutoSize = true;
             this.lblCaption.Location = new System.Drawing.Point(12, 9);
             this.lblCaption.MaximumSize = new System.Drawing.Size(250, 0);
             this.lblCaption.Name = "lblCaption";
-            this.lblCaption.Size = new System.Drawing.Size(250, 97);
+            this.lblCaption.Size = new System.Drawing.Size(87, 13);
             this.lblCaption.TabIndex = 4;
             this.lblCaption.Text = "Placeholder Text";
             // 

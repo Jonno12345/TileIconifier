@@ -28,6 +28,7 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -154,5 +155,23 @@ namespace TileIconifier.Core.Shortcut
             => $"{VisualElementsPath}{Path.GetFileNameWithoutExtension(SmallIconName)}_Metadata.xml";
 
         #endregion
+    }
+
+    public class ShortcutItemEqualityComparer : IEqualityComparer<ShortcutItem>
+    {
+        public bool Equals(ShortcutItem x, ShortcutItem y)
+        {
+            if (x == null || y == null)
+                return false;
+            if (ReferenceEquals(x, y))
+                return true;
+
+            return x.ShortcutFileInfo.FullName == y.ShortcutFileInfo.FullName;
+        }
+
+        public int GetHashCode(ShortcutItem obj)
+        {
+            return 0;
+        }
     }
 }

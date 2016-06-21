@@ -337,6 +337,7 @@ namespace TileIconifier.Forms
             this.Controls.Add(this.mnuMain);
             this.MainMenuStrip = this.mnuMain;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(490, 400);
             this.Name = "FrmMain";
             this.Text = "Tile Iconifier";
             this.Load += new System.EventHandler(this.frmDropper_Load);

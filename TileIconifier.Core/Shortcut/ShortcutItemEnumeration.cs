@@ -113,6 +113,28 @@ namespace TileIconifier.Core.Shortcut
             return _shortcutsCache;
         }
 
+        public static List<DesktopApplicationTileRegexInfo> GrabRegexInfoFromXml(string startLayout)
+        {
+            var regexMatches = Regex.Matches(startLayout,
+                "<start:DesktopApplicationTile.*.*");
+
+            var returnList = new List<DesktopApplicationTileRegexInfo>();
+            foreach (Match regexMatch in regexMatches)
+            {
+                var regexLine = regexMatch.Groups[0].Value;
+                var desktopApplicationIdStrip = Regex.Match(regexLine, @"DesktopApplicationID=""(.*)""");
+                var desktopApplicationLinkPathStrip = Regex.Match(regexLine, @"DesktopApplicationLinkPath=""(.*)""");
+                var returnItem = new DesktopApplicationTileRegexInfo();
+                if (desktopApplicationIdStrip.Success)
+                    returnItem.DesktopApplicationId = desktopApplicationIdStrip.Groups[1].Value;
+                if (desktopApplicationLinkPathStrip.Success)
+                    returnItem.DesktopApplicationLinkPath = desktopApplicationLinkPathStrip.Groups[1].Value;
+                if (returnItem.IsValid)
+                    returnList.Add(returnItem);
+            }
+            return returnList;
+        }
+
 
         private static void GetPinnedStartMenuInformation()
         {
@@ -141,26 +163,58 @@ namespace TileIconifier.Core.Shortcut
         private static void MarkPinnedShortcuts(string tempFilePath)
         {
             var startLayout = File.ReadAllText(tempFilePath);
-            
-            var regexMatches = Regex.Matches(startLayout,
-                "<start:DesktopApplicationTile.*DesktopApplicationID=\"(.*)\".*");
+
+            var regexStrippedDesktopApplicationTiles =
+                GrabRegexInfoFromXml(startLayout);
 
             foreach (var shortcutItem in _shortcutsCache)
                 shortcutItem.IsPinned = false;
 
-            foreach (Match regexMatch in regexMatches)
+            foreach (var regexStrippedDesktopApplicationTile in regexStrippedDesktopApplicationTiles)
             {
                 try
                 {
-                    var groupData = regexMatch.Groups[1].Value;
-                    var x = _shortcutsCache.Where(s => s.AppId == groupData || Path.GetFullPath(s.TargetFilePath) == Path.GetFullPath(groupData));
-                    var shortcutId = x.First();
-                    shortcutId.IsPinned = true;
+                    var shortcutMatch = regexStrippedDesktopApplicationTile.FindShortcutMatch(_shortcutsCache);
+                    if (shortcutMatch != null)
+                        shortcutMatch.IsPinned = true;
                 }
                 catch
                 {
                     // ignored
                 }
+            }
+        }
+
+        public class DesktopApplicationTileRegexInfo
+        {
+            public string DesktopApplicationId { get; set; }
+            public string DesktopApplicationLinkPath { get; set; }
+
+            public bool IsValid
+                => !string.IsNullOrEmpty(DesktopApplicationId) || !string.IsNullOrEmpty(DesktopApplicationLinkPath);
+
+            public ShortcutItem FindShortcutMatch(List<ShortcutItem> shortcutsCache)
+            {
+                var matchingShortcutItems = new List<ShortcutItem>();
+
+                //add any items where the Link paths match
+                if (!string.IsNullOrEmpty(DesktopApplicationLinkPath))
+                    matchingShortcutItems.AddRange(
+                        _shortcutsCache.Where(
+                            s =>
+                                Path.GetFullPath(Environment.ExpandEnvironmentVariables(s.ShortcutFileInfo.FullName)) ==
+                                Path.GetFullPath(Environment.ExpandEnvironmentVariables(DesktopApplicationLinkPath))));
+
+                //add any items where the Id matches or Id matches the target path
+                if (!string.IsNullOrEmpty(DesktopApplicationId))
+                {
+                    matchingShortcutItems.AddRange(_shortcutsCache.Where(
+                        s => Path.GetFullPath(Environment.ExpandEnvironmentVariables(s.TargetFilePath)) ==
+                             Path.GetFullPath(Environment.ExpandEnvironmentVariables(DesktopApplicationId))));
+                    matchingShortcutItems.AddRange(shortcutsCache.Where(s => s.AppId == DesktopApplicationId));
+                }
+                
+                return matchingShortcutItems.Any() ? matchingShortcutItems.First() : null;
             }
         }
     }
