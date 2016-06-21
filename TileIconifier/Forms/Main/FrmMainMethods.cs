@@ -37,6 +37,7 @@ using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.TileIconify;
 using TileIconifier.Core.Utilities;
+using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
 using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
@@ -62,11 +63,12 @@ namespace TileIconifier.Forms
                     .ToList();
                 if (pinningException != null)
                 {
+                    FrmException.ShowExceptionHandler(pinningException);
                     MessageBox.Show(
-                        $"A problem occurred with PowerShell functionality. It has been disabled\r\n{pinningException}",
+                        $"A problem occurred with PowerShell functionality. It has been disabled.",
                         @"PowerShell failure", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
-                    getPinnedItemsRequiresPowershellToolStripMenuItem_Click(this, null);
+                    Invoke(new Action(() => getPinnedItemsRequiresPowershellToolStripMenuItem_Click(this, null)));
                 }
             }
             else

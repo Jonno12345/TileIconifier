@@ -281,26 +281,15 @@ namespace TileIconifier.Forms.Shared
                 MessageBox.Show(@"File could not be found: " + ex.FileName, @"File not found!", MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
             }
-
+            
             Close();
         }
 
         private byte[] GetLogoBytes()
         {
-            var splitIcons = IconUtil.Split(_icons[lvwIcons.SelectedItems[0].Index]);
-            byte[] byteArray;
-            using (var stream = new MemoryStream())
-            {
-                using (var bitmapLoad = Bitmap.FromHicon(splitIcons.OrderByDescending(k => k.Width)
-                    .ThenByDescending(k => k.Height)
-                    .First().Handle))
-                {
-                    bitmapLoad.Save(stream, ImageFormat.Png);
-
-                    byteArray = stream.ToArray();
-                }
-            }
-            return byteArray;
+            var item = lvwIcons.SelectedItems[0] as IconListViewItem;
+            
+            return ImageUtils.ImageToByteArray(item?.Bitmap);
         }
 
         private void lvwIcons_SelectedIndexChanged(object sender, EventArgs e)

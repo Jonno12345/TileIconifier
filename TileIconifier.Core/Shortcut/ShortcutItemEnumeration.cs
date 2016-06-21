@@ -141,7 +141,7 @@ namespace TileIconifier.Core.Shortcut
         private static void MarkPinnedShortcuts(string tempFilePath)
         {
             var startLayout = File.ReadAllText(tempFilePath);
-
+            
             var regexMatches = Regex.Matches(startLayout,
                 "<start:DesktopApplicationTile.*DesktopApplicationID=\"(.*)\".*");
 
@@ -153,8 +153,8 @@ namespace TileIconifier.Core.Shortcut
                 try
                 {
                     var groupData = regexMatch.Groups[1].Value;
-
-                    var shortcutId = _shortcutsCache.First(s => s.AppId == groupData);
+                    var x = _shortcutsCache.Where(s => s.AppId == groupData || Path.GetFullPath(s.TargetFilePath) == Path.GetFullPath(groupData));
+                    var shortcutId = x.First();
                     shortcutId.IsPinned = true;
                 }
                 catch

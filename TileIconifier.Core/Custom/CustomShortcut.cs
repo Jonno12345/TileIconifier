@@ -30,6 +30,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 using TileIconifier.Core.Properties;
 using TileIconifier.Core.Shortcut;
@@ -142,7 +143,7 @@ namespace TileIconifier.Core.Custom
                     ShortcutType,
                     (int)WindowType,
                     $@"{new FileInfo(TargetPath).Directory?.FullName}\".EscapeVba()
-                    ));
+                    ), Encoding.Unicode);
 
             ShortcutUtils.CreateLnkFile(ShortcutItem.ShortcutFileInfo.FullName, VbsFilePath,
                 ShortcutName + " shortcut created by TileIconifier",

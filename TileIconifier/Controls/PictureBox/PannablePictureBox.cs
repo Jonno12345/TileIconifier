@@ -282,7 +282,7 @@ namespace TileIconifier.Controls.PictureBox
                 //get the width of the text before any manipulation
                 var textWidth = e.Graphics.MeasureString(TextOverlay, _overlayFont).Width;
                 //maximum length for a string, without spaces, to fit on the initial line - TODO: Pass these values in if there is ever a new tile type available
-                const int maxSingleLineLength = 94;
+                const int maxSingleLineLength = 90;
                 //maximum length of a line before truncating with ellipsis
                 const int ellipsisLength = 91;
 

@@ -48,9 +48,7 @@ namespace TileIconifier.Controls.PictureBox
 
         public int Y { get; set; }
 
-        public Image Image { get; private set;
-            //set { _image = value; }
-        }
+        public Image Image { get; private set; }
 
         public event PannablePictureImageSet OnPannablePictureNewImageSet;
 
