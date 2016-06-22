@@ -151,9 +151,6 @@
     <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerNew.ru.resx">
       <DependentUpon>FrmCustomShortcutManagerNew.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main\FrmMain.aa.resx">
-      <DependentUpon>FrmMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\FrmMain.ru.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,8 +161,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings1.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Strings.ru.resx" />
+    <EmbeddedResource Include="Properties\Strings.ru.resx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="Controls\Custom\WindowsStorePREVIOUSProtocolMethod\WindowsStoreAppListViewItemGroup.cs" />
     <None Include="Controls\Custom\WindowsStorePREVIOUSProtocolMethod\WindowsStoreAppProtocolComboListItem.cs" />
     <Compile Include="Controls\TileIconifierPanel.cs">
@@ -246,6 +246,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Utilities\FormUtils.cs" />
     <Compile Include="Forms\Shared\FrmIconSelector.cs">

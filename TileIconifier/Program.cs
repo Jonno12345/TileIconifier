@@ -133,6 +133,7 @@ namespace TileIconifier
 
         private static void main_LanugageChangedEvent(object sender, string newCulture)
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(newCulture);
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(newCulture);
             _doNotExit = true;
             _fm.Close();
