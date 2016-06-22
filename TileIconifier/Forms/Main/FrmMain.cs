@@ -36,6 +36,8 @@ using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Custom;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Forms.CustomShortcutForms;
+using TileIconifier.Forms.Shared;
+using TileIconifier.Properties;
 using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms
@@ -63,6 +65,11 @@ namespace TileIconifier.Forms
         {
             darkSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
             defaultSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
+            englishToolStripMenuItem.Click += LanguageToolStripMenuClick;
+            russianToolStripMenuItem.Click += LanguageToolStripMenuClick;
+
+            SetCurrentLanguage();
+
             iconifyPanel.OnIconifyPanelUpdate += (s, ev) => { UpdateFormControls(); };
 
             CheckForUpdates(true);
@@ -90,7 +97,7 @@ namespace TileIconifier.Forms
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(@"Are you sure you wish to remove iconification?", @"Confirm", MessageBoxButtons.YesNo,
+            if (MessageBox.Show(@"Are you sure you wish to remove iconification?", Strings.Confirm, MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
@@ -118,8 +125,8 @@ namespace TileIconifier.Forms
             {
                 if (
                     MessageBox.Show(
-                        @"Note- This feature uses Powershell and may take slightly longer to refresh. Continue?",
-                        @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        Strings.UsesPowershell,
+                        Strings.Confirm, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = true;
                 }
@@ -202,21 +209,19 @@ namespace TileIconifier.Forms
 
             //confirm to the user the shortcut has been created
             MessageBox.Show(
-                $"A shortcut for {shortcutName.QuoteWrap()} has been created in your start menu under TileIconify. The item will need to be pinned manually.",
-                @"Shortcut created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //new CustomShortcut(Path.GetFileNameWithoutExtension(CurrentShortcutItem.ShortcutFileInfo.Name),
-            //    CurrentShortcutItem.TargetFilePath, "", CustomShortcutType.Other, 
-            //    WindowType.ActiveAndCurrent,
-            //    ShortcutUser.CurrentUser, string.Empty, CurrentShortcutItem.ShortcutFileInfo.Directory.FullName);
+                string.Format(
+                    Strings.ShortcutCreatedNeedsPinning,
+                    shortcutName.QuoteWrap()),
+                Strings.ShortcutCreated, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnDeleteCustomShortcut_Click(object sender, EventArgs e)
         {
             if (
                 MessageBox.Show(
-                    $"Are you sure you wish to delete the custom shortcut for {CurrentShortcutItem.ShortcutFileInfo.Name.QuoteWrap()}?",
-                    @"Are you sure?",
+                    string.Format(Strings.ConfirmDeleteCustomShortcut,
+                        Path.GetFileNameWithoutExtension(CurrentShortcutItem.ShortcutFileInfo.Name).QuoteWrap()),
+                    Strings.AreYouSure,
                     MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
@@ -227,7 +232,8 @@ namespace TileIconifier.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Unable to clear up shortcuts." + ex);
+                FrmException.ShowExceptionHandler(ex);
+                MessageBox.Show(Strings.UnableToClearShortcuts);
             }
 
             StartFullUpdate();

@@ -75,9 +75,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             lstCustomShortcuts.Columns.Clear();
 
-            lstCustomShortcuts.Columns.Add("Shortcut Name", lstCustomShortcuts.Width / 4 * 2 - 2, HorizontalAlignment.Left);
-            lstCustomShortcuts.Columns.Add("Shortcut Type", lstCustomShortcuts.Width / 4 - 1, HorizontalAlignment.Left);
-            lstCustomShortcuts.Columns.Add("Shortcut User", lstCustomShortcuts.Width / 4 - 1, HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add(Strings.ShortcutName, lstCustomShortcuts.Width / 4 * 2 - 2, HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add(Strings.ShortcutType, lstCustomShortcuts.Width / 4 - 1, HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add(Strings.ShortcutUser, lstCustomShortcuts.Width / 4 - 1, HorizontalAlignment.Left);
 
         }
 

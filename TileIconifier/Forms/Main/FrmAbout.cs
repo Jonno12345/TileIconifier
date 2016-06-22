@@ -54,6 +54,5 @@ namespace TileIconifier.Forms
             updateCurVer(rtxtAbout);
             updateCurVer(lblVersion);
         }
-        
     }
 }

@@ -28,16 +28,21 @@
 #endregion
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.TileIconify;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.Shared;
+using TileIconifier.Localization;
 using TileIconifier.Properties;
 using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
@@ -50,7 +55,7 @@ namespace TileIconifier.Forms
     {
         private void StartFullUpdate()
         {
-            FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, "Refreshing");
+            FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, Strings.Refreshing);
         }
 
         private void FullUpdate(object sender, DoWorkEventArgs e)
@@ -65,8 +70,8 @@ namespace TileIconifier.Forms
                 {
                     FrmException.ShowExceptionHandler(pinningException);
                     MessageBox.Show(
-                        $"A problem occurred with PowerShell functionality. It has been disabled.",
-                        @"PowerShell failure", MessageBoxButtons.OK,
+                        Strings.PowershellErrorFull,
+                        Strings.PowershellFailure, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     Invoke(new Action(() => getPinnedItemsRequiresPowershellToolStripMenuItem_Click(this, null)));
                 }
@@ -187,7 +192,7 @@ namespace TileIconifier.Forms
             return new TileIcon(CurrentShortcutItem);
         }
 
-        private async void CheckForUpdates(bool silentIfNoUpdateDetected)
+        private static async void CheckForUpdates(bool silentIfNoUpdateDetected)
         {
             try
             {
@@ -196,10 +201,10 @@ namespace TileIconifier.Forms
                 if (updateDetails.UpdateAvailable)
                 {
                     if (MessageBox.Show(
-                        $@"An update is available! Would you like to visit the releases page? (Your version: {
-                            updateDetails
-                                .CurrentVersion} - Latest version: {updateDetails.LatestVersion})",
-                        @"New version available!",
+                        String.Format(
+                            Strings.UpdateAvailableFull,
+                            updateDetails.CurrentVersion, updateDetails.LatestVersion),
+                        Strings.NewVersionAvailable,
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question,
                         MessageBoxDefaultButton.Button1) == DialogResult.Yes
@@ -210,7 +215,7 @@ namespace TileIconifier.Forms
                 }
                 else if (!silentIfNoUpdateDetected)
                 {
-                    MessageBox.Show(@"You are already on the latest version!", @"Up-to-date");
+                    MessageBox.Show(Strings.AlreadyLatest, Strings.UpToDate);
                 }
             }
             catch
@@ -218,10 +223,11 @@ namespace TileIconifier.Forms
                 if (silentIfNoUpdateDetected) return;
 
                 if (MessageBox.Show(
-                    $@"An error occurred getting latest release information. Click Ok to visit the latest releases page to check manually. (Your version: {
+                    string.Format(
+                        Strings.UpdateAvailableError,
                         UpdateUtils
-                            .CurrentVersion})",
-                    @"Unable to check server!",
+                            .CurrentVersion),
+                    Strings.UnableToCheckServer,
                     MessageBoxButtons.OKCancel,
                     MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
@@ -240,10 +246,43 @@ namespace TileIconifier.Forms
         private void InitializeListboxColumns()
         {
             srtlstShortcuts.Columns.Clear();
-            srtlstShortcuts.Columns.Add("Shortcut Name", srtlstShortcuts.Width/7*4 - 10, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Custom?", srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Iconified?", srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add("Is Pinned?", srtlstShortcuts.Width/7 - 4, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add(Strings.ShortcutName, srtlstShortcuts.Width/7*4 - 10, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add(Strings.IsCustom, srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add(Strings.IsIconified, srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add(Strings.IsPinned, srtlstShortcuts.Width/7 - 4, HorizontalAlignment.Left);
+        }
+
+        public event LocalizationEventHandler LanguageChangedEvent;
+
+        protected virtual void OnLanguageChangedEvent(string newculture)
+        {
+            LanguageChangedEvent?.Invoke(this, newculture);
+        }
+
+        private void LanguageToolStripMenuClick(object sender, EventArgs e)
+        {
+            var item = sender as ToolStripMenuItem;
+            CheckMenuItem(languageToolStripMenuItem, item);
+            UpdateLanguage(item?.Tag.ToString());
+        }
+
+        private void UpdateLanguage(string language)
+        {
+            if (!Thread.CurrentThread.CurrentUICulture.Equals(CultureInfo.GetCultureInfo(language)))
+            {
+                OnLanguageChangedEvent(language);
+            }
+        }
+
+        private void SetCurrentLanguage()
+        {
+            var currentLanguage = Thread.CurrentThread.CurrentUICulture.Name;
+            foreach (ToolStripMenuItem dropDownItem in languageToolStripMenuItem.DropDownItems.Cast<ToolStripMenuItem>().Where(dropDownItem => (string) dropDownItem.Tag == currentLanguage))
+            {
+                CheckMenuItem(languageToolStripMenuItem, dropDownItem);
+                return;
+            }
+            CheckMenuItem(languageToolStripMenuItem, englishToolStripMenuItem);
         }
     }
 }

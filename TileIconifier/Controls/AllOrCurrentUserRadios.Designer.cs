@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllOrCurrentUserRadios));
             this.radAllUsers = new System.Windows.Forms.RadioButton();
             this.lblHeader = new System.Windows.Forms.Label();
             this.radCurrentUser = new System.Windows.Forms.RadioButton();
@@ -35,46 +36,32 @@
             // 
             // radAllUsers
             // 
-            this.radAllUsers.AutoSize = false;
+            resources.ApplyResources(this.radAllUsers, "radAllUsers");
             this.radAllUsers.Checked = true;
-            this.radAllUsers.Location = new System.Drawing.Point(6, 22);
             this.radAllUsers.Name = "radAllUsers";
-            this.radAllUsers.Size = new System.Drawing.Size(66, 17);
-            this.radAllUsers.TabIndex = 0;
             this.radAllUsers.TabStop = true;
-            this.radAllUsers.Text = "All Users";
             this.radAllUsers.UseVisualStyleBackColor = true;
             // 
             // lblHeader
             // 
-            this.lblHeader.AutoSize = false;
-            this.lblHeader.Location = new System.Drawing.Point(3, 0);
+            resources.ApplyResources(this.lblHeader, "lblHeader");
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(68, 13);
-            this.lblHeader.TabIndex = 1;
-            this.lblHeader.Text = "Shortcut For:";
             // 
             // radCurrentUser
             // 
-            this.radCurrentUser.AutoSize = false;
-            this.radCurrentUser.Location = new System.Drawing.Point(6, 45);
+            resources.ApplyResources(this.radCurrentUser, "radCurrentUser");
             this.radCurrentUser.Name = "radCurrentUser";
-            this.radCurrentUser.Size = new System.Drawing.Size(84, 17);
-            this.radCurrentUser.TabIndex = 2;
-            this.radCurrentUser.Text = "Current User";
             this.radCurrentUser.UseVisualStyleBackColor = true;
             // 
             // AllOrCurrentUserRadios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.radCurrentUser);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.radAllUsers);
             this.Name = "AllOrCurrentUserRadios";
-            this.Size = new System.Drawing.Size(101, 66);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

@@ -143,7 +143,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private void FrmCustomShortcutManagerNew_Load(object sender, EventArgs e)
         {
             Show();
-            FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, "Loading");
+            FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, Strings.Loading);
         }
 
         private void FullUpdate(object sender, DoWorkEventArgs e)
@@ -205,7 +205,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             //confirm to the user the shortcut has been created
             MessageBox.Show(
-                $"A shortcut for {shortcutName.QuoteWrap()} has been created in your start menu under TileIconify. The item will need to be pinned manually.",
+                string.Format(
+                    Strings.ShortcutCreatedNeedsPinning,
+                    shortcutName.QuoteWrap()),
                 @"Shortcut created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -388,22 +390,22 @@ namespace TileIconifier.Forms.CustomShortcutForms
             try
             {
                 var steamInstallationPath = SteamLibrary.Instance.GetSteamInstallationFolder();
-                txtSteamInstallationPath.Text = $"Steam installation path: {steamInstallationPath}";
+                txtSteamInstallationPath.Text = $"{Strings.SteamInstallationPath}: {steamInstallationPath}";
             }
             catch (SteamInstallationPathNotFoundException)
             {
-                txtSteamInstallationPath.Text = @"Steam installation path not found!!!";
+                txtSteamInstallationPath.Text = Strings.SteamInstallationPathNotFound;
                 steamDetected = false;
             }
 
             try
             {
                 var steamExecutable = SteamLibrary.Instance.GetSteamExePath();
-                txtSteamExecutablePath.Text = $"Steam executable path: {steamExecutable}";
+                txtSteamExecutablePath.Text = $"{Strings.SteamExecutablePath}: {steamExecutable}";
             }
             catch (SteamExecutableNotFoundException)
             {
-                txtSteamExecutablePath.Text = @"Steam executable path not found!!!";
+                txtSteamExecutablePath.Text = Strings.SteamExecutablePathNotFound;
                 steamDetected = false;
             }
 
@@ -412,17 +414,17 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 var steamLibraryFolders = SteamLibrary.Instance.GetLibraryFolders();
                 if (steamLibraryFolders.Count > 0)
                 {
-                    txtSteamLibraryPaths.Text = $"Steam library folders: {string.Join("; ", steamLibraryFolders)}";
+                    txtSteamLibraryPaths.Text = $"{Strings.SteamLibraryFolders}: {string.Join("; ", steamLibraryFolders)}";
                 }
                 else
                 {
-                    txtSteamLibraryPaths.Text = @"Steam library paths not found!!!";
+                    txtSteamLibraryPaths.Text = Strings.SteamLibraryFoldersNotFound;
                     steamDetected = false;
                 }
             }
             catch
             {
-                txtSteamLibraryPaths.Text = @"Steam library paths not found!!!";
+                txtSteamLibraryPaths.Text = Strings.SteamLibraryFoldersNotFound;
                 steamDetected = false;
             }
 
@@ -440,8 +442,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             lstSteamGames.Columns.Clear();
 
-            lstSteamGames.Columns.Add("App Id", lstSteamGames.Width / 8, HorizontalAlignment.Left);
-            lstSteamGames.Columns.Add("Game Name", lstSteamGames.Width / 8 * 7 + 3, HorizontalAlignment.Left);
+            lstSteamGames.Columns.Add(Strings.AppId, lstSteamGames.Width / 7, HorizontalAlignment.Left);
+            lstSteamGames.Columns.Add(Strings.GameName, lstSteamGames.Width / 7 * 6 + 3, HorizontalAlignment.Left);
         }
 
         private void LoadSteamGames()
@@ -451,7 +453,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void btnInstallationChange_Click(object sender, EventArgs e)
         {
-            fldBrowser.Description = @"Select the folder containing your Steam installation";
+            fldBrowser.Description = Strings.SelectSteamInstallationPath;
             if (fldBrowser.ShowDialog(this) != DialogResult.OK)
                 return;
 
@@ -494,7 +496,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             while (!isValid)
             {
                 fldBrowser.Description =
-                    @"Select a folder containing your Steam library (This will be a folder containing a ""steamapps"" folder)";
+                    Strings.SelectSteamLibraryPath;
 
                 if (fldBrowser.ShowDialog(this) != DialogResult.OK) return;
                 try
@@ -505,7 +507,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 catch (SteamLibraryPathNotFoundException)
                 {
                     MessageBox.Show(this,
-                        @"Selected folder is invalid (valid folders should contain a subfolder named ""steamapps""), please try again or cancel.");
+                        Strings.InvalidSteamLibraryPath);
                 }
             }
             SetUpSteam();
@@ -574,8 +576,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
         { 
             lstChromeAppItems.Columns.Clear();
 
-            lstChromeAppItems.Columns.Add("App Id", lstSteamGames.Width / 8 * 3, HorizontalAlignment.Left);
-            lstChromeAppItems.Columns.Add("App Name", lstSteamGames.Width / 8 * 5 + 3, HorizontalAlignment.Left);
+            lstChromeAppItems.Columns.Add(Strings.AppId, lstSteamGames.Width / 8 * 3, HorizontalAlignment.Left);
+            lstChromeAppItems.Columns.Add(Strings.AppName, lstSteamGames.Width / 8 * 5 + 3, HorizontalAlignment.Left);
         }
 
         private void lstChromeAppItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -612,7 +614,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void btnChromeAppPathChange_Click(object sender, EventArgs e)
         {
-            fldBrowser.Description = @"Select your Chrome `Web Applications` folder";
+            fldBrowser.Description = Strings.ChromeExtensionsFolder;
             if (fldBrowser.ShowDialog(this) != DialogResult.OK)
                 return;
 
@@ -647,14 +649,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             {
                 _windowsStoreApps.Add(new WindowsStoreAppListViewItemGroup(windowsStoreApp));
             }
-
-            //foreach (
-            //    var windowsStoreAppProtocols in
-            //        allGroupedWindowsStoreApps.SelectMany(groupedWindowsStoreApps => groupedWindowsStoreApps))
-            //{
-            //    _windowsStoreApps.Add(new WindowsStoreAppListViewItemGroup(windowsStoreAppProtocols.Key,
-            //        windowsStoreAppProtocols.ToList()));
-            //}
         }
 
         private void SetUpWindowsStoreListView()
@@ -668,7 +662,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             lstWindowsStoreApps.Columns.Clear();
 
-            lstWindowsStoreApps.Columns.Add("Windows Store App", lstWindowsStoreApps.Width);
+            lstWindowsStoreApps.Columns.Add(Strings.AppName, lstWindowsStoreApps.Width);
         }
 
         private void lstWindowsStoreApps_SelectedIndexChanged(object sender, EventArgs e)

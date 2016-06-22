@@ -31,6 +31,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using TileIconifier.Core.Utilities;
+using TileIconifier.Properties;
 using TileIconifier.Skinning;
 
 namespace TileIconifier.Controls.PictureBox
@@ -264,11 +265,11 @@ namespace TileIconifier.Controls.PictureBox
             }
             else
             {
-                e.Graphics.DrawString("Double", DefaultFont,
+                e.Graphics.DrawString(Strings.PanPctLine1, DefaultFont,
                     new SolidBrush(Color.Red), 3, 3);
-                e.Graphics.DrawString("Click", DefaultFont,
+                e.Graphics.DrawString(Strings.PanPctLine2, DefaultFont,
                     new SolidBrush(Color.Red), 3, 19);
-                e.Graphics.DrawString("Me!", DefaultFont,
+                e.Graphics.DrawString(Strings.PanPctLine3, DefaultFont,
                     new SolidBrush(Color.Red), 3, 35);
             }
         }

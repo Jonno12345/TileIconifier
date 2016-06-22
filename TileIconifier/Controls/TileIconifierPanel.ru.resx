@@ -118,92 +118,95 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblHeader.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 13</value>
+  <data name="lblSmallIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 2</value>
   </data>
-  <data name="&gt;&gt;lblHeader.Name" xml:space="preserve">
-    <value>lblHeader</value>
+  <data name="lblSmallIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 13</value>
   </data>
-  <data name="&gt;&gt;radCurrentUser.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="lblSmallIcon.Text" xml:space="preserve">
+    <value>Маленькая иконка:</value>
   </data>
-  <data name="&gt;&gt;lblHeader.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="lblMediumIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 2</value>
   </data>
-  <data name="&gt;&gt;radAllUsers.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblMediumIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 13</value>
   </data>
-  <data name="radAllUsers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
+  <data name="lblMediumIcon.Text" xml:space="preserve">
+    <value>Средяя иконка:</value>
   </data>
-  <data name="&gt;&gt;radCurrentUser.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="chkUseSameImg.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.5pt</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="chkUseSameImg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 27</value>
   </data>
-  <data name="&gt;&gt;lblHeader.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="chkUseSameImg.Text" xml:space="preserve">
+    <value>Изменять среднее и маленькое изображение вместе</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>AllOrCurrentUserRadios</value>
+  <data name="btnReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>232, 230</value>
   </data>
-  <data name="&gt;&gt;radCurrentUser.Name" xml:space="preserve">
-    <value>radCurrentUser</value>
+  <data name="btnReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 20</value>
   </data>
-  <data name="&gt;&gt;radAllUsers.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="radAllUsers.Text" xml:space="preserve">
-    <value>All Users</value>
-  </data>
-  <data name="&gt;&gt;radAllUsers.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="btnReset.Text" xml:space="preserve">
+    <value>Сбросить</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="radAllUsers.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="radCurrentUser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
-  </data>
-  <data name="radCurrentUser.Text" xml:space="preserve">
-    <value>Current User</value>
-  </data>
-  <data name="lblHeader.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;radCurrentUser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radAllUsers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 22</value>
-  </data>
-  <data name="lblHeader.Text" xml:space="preserve">
-    <value>Shortcut For:</value>
-  </data>
-  <data name="radCurrentUser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 45</value>
-  </data>
-  <data name="&gt;&gt;radAllUsers.Name" xml:space="preserve">
-    <value>radAllUsers</value>
-  </data>
-  <data name="lblHeader.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="&gt;&gt;lblHeader.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radCurrentUser.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 66</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="lblUnsaved.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ru</value>
-  </metadata>
+  </data>
+  <data name="lblUnsaved.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Italic</value>
+  </data>
+  <data name="lblUnsaved.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 228</value>
+  </data>
+  <data name="lblUnsaved.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>250, 0</value>
+  </data>
+  <data name="lblUnsaved.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 26</value>
+  </data>
+  <data name="lblUnsaved.Text" xml:space="preserve">
+    <value>Этот ярлык содержит несохраненные изменения!</value>
+  </data>
+  <data name="radFGDark.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 23</value>
+  </data>
+  <data name="radFGDark.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 17</value>
+  </data>
+  <data name="radFGDark.Text" xml:space="preserve">
+    <value>Тёмный</value>
+  </data>
+  <data name="chkFGTxtEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 5</value>
+  </data>
+  <data name="chkFGTxtEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 16</value>
+  </data>
+  <data name="chkFGTxtEnabled.Text" xml:space="preserve">
+    <value>Включен</value>
+  </data>
+  <data name="lblFGText.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7.5pt</value>
+  </data>
+  <data name="lblFGText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 16</value>
+  </data>
+  <data name="lblFGText.Text" xml:space="preserve">
+    <value>Текст на тайле (только для средней иконки)</value>
+  </data>
+  <data name="radFGLight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 17</value>
+  </data>
+  <data name="radFGLight.Text" xml:space="preserve">
+    <value>Светлый</value>
+  </data>
+  <data name="lblBGColour.Text" xml:space="preserve">
+    <value>Цвет фона</value>
+  </data>
 </root>

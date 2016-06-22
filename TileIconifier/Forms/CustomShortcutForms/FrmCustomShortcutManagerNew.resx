@@ -117,16 +117,1096 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="fldBrowser.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>44, 26</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pctCurrentIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 50</value>
+  </data>
+  <data name="&gt;&gt;txtOtherShortcutArguments.Name" xml:space="preserve">
+    <value>txtOtherShortcutArguments</value>
+  </data>
+  <data name="tabWindowsStore.Text" xml:space="preserve">
+    <value>Windows Store</value>
+  </data>
+  <data name="&gt;&gt;lstSteamGames.Parent" xml:space="preserve">
+    <value>tabSteam</value>
+  </data>
+  <data name="&gt;&gt;pnlExplorer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtSteamLibraryPaths.Text" xml:space="preserve">
+    <value>txtSteamLibraryPaths</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblShortcutName.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;btnOtherTargetBrowse.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnExplorerBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 26</value>
+  </data>
+  <data name="radShortcutLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 66</value>
+  </data>
+  <data name="&gt;&gt;lblShortcutName.Name" xml:space="preserve">
+    <value>lblShortcutName</value>
+  </data>
+  <data name="&gt;&gt;txtChromeExePath.Parent" xml:space="preserve">
+    <value>tabChromeApps</value>
+  </data>
+  <data name="txtChromeExePath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="txtOtherShortcutArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;opnSteamExe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lstChromeAppItems.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="tabExplorer.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="btnSteamLibrariesPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>545, 60</value>
+  </data>
+  <data name="&gt;&gt;txtOtherShortcutArguments.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabOther.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pctCurrentIcon.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="lstChromeAppItems.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;txtSteamLibraryPaths.Name" xml:space="preserve">
+    <value>txtSteamLibraryPaths</value>
+  </data>
+  <data name="txtOtherShortcutArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;btnExplorerBrowse.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabShortcutType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="btnChromeAppPathChange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 26</value>
+  </data>
+  <data name="txtOtherTargetPath.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btnSteamExeChange.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;fldBrowser.Name" xml:space="preserve">
+    <value>fldBrowser</value>
+  </data>
+  <data name="btnChromeAppPathChange.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;btnSteamExeChange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabSteam.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnGenerateShortcut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lstSteamGames.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 90</value>
+  </data>
+  <data name="txtCustomFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>413, 20</value>
+  </data>
+  <data name="txtCustomFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="btnExplorerBrowse.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;btnSteamExeChange.Name" xml:space="preserve">
+    <value>btnSteamExeChange</value>
+  </data>
+  <data name="&gt;&gt;txtShortcutName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="lblCurrentIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="btnChromeAppPathChange.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="btnGenerateShortcut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>552, 308</value>
+  </data>
+  <data name="&gt;&gt;radSpecialFolder.Parent" xml:space="preserve">
+    <value>pnlExplorer</value>
+  </data>
+  <data name="btnOtherTargetBrowse.Text" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="&gt;&gt;btnOtherTargetBrowse.Name" xml:space="preserve">
+    <value>btnOtherTargetBrowse</value>
+  </data>
+  <data name="&gt;&gt;btnSteamLibrariesPath.Parent" xml:space="preserve">
+    <value>tabSteam</value>
+  </data>
+  <data name="lblShortcutName.Text" xml:space="preserve">
+    <value>Shortcut Name:</value>
+  </data>
+  <data name="radSpecialFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 7</value>
+  </data>
+  <data name="lblShortcutName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="&gt;&gt;tabExplorer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblShortcutName.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtChromeAppPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 20</value>
+  </data>
+  <data name="btnSteamExeChange.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnChromeAppPathChange.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="btnExplorerBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tabWindowsStore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>622, 248</value>
+  </data>
+  <data name="tabChromeApps.Text" xml:space="preserve">
+    <value>Chrome Apps</value>
+  </data>
+  <data name="radSpecialFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtSteamExecutablePath.Parent" xml:space="preserve">
+    <value>tabSteam</value>
+  </data>
+  <data name="txtSteamInstallationPath.Text" xml:space="preserve">
+    <value>txtSteamInstallationPath</value>
+  </data>
+  <data name="&gt;&gt;txtSteamExecutablePath.Name" xml:space="preserve">
+    <value>txtSteamExecutablePath</value>
+  </data>
+  <data name="radShortcutLocation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnChromeExePathChange.Text" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="lstChromeAppItems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 63</value>
+  </data>
+  <data name="&gt;&gt;cmbExplorerGuids.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtOtherShortcutArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 38</value>
+  </data>
+  <data name="lblOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 13</value>
+  </data>
+  <data name="&gt;&gt;txtOtherShortcutArguments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radCustomFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="txtShortcutName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 20</value>
+  </data>
+  <data name="&gt;&gt;tabShortcutType.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="btnOtherTargetBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 26</value>
+  </data>
+  <data name="txtChromeAppPath.Text" xml:space="preserve">
+    <value>txtChromeAppPath</value>
+  </data>
+  <data name="btnSteamLibrariesPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 26</value>
+  </data>
+  <data name="&gt;&gt;lstChromeAppItems.Name" xml:space="preserve">
+    <value>lstChromeAppItems</value>
+  </data>
+  <data name="&gt;&gt;txtChromeAppPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSteamExeChange.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;radShortcutLocation.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtChromeExePath.Name" xml:space="preserve">
+    <value>txtChromeExePath</value>
+  </data>
+  <data name="tabOther.Size" type="System.Drawing.Size, System.Drawing">
+    <value>622, 248</value>
+  </data>
+  <data name="&gt;&gt;btnChromeAppPathChange.Name" xml:space="preserve">
+    <value>btnChromeAppPathChange</value>
+  </data>
+  <data name="txtCustomFolder.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;tabWindowsStore.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtSteamInstallationPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 20</value>
+  </data>
+  <data name="&gt;&gt;btnExplorerBrowse.Parent" xml:space="preserve">
+    <value>pnlExplorer</value>
+  </data>
+  <data name="btnOtherTargetBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>545, 8</value>
+  </data>
+  <data name="btnSteamExeChange.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnGenerateShortcut.Text" xml:space="preserve">
+    <value>Generate Shortcut</value>
+  </data>
+  <data name="lblOtherTargetPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 15</value>
+  </data>
+  <data name="&gt;&gt;tabExplorer.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pnlExplorer.Name" xml:space="preserve">
+    <value>pnlExplorer</value>
+  </data>
+  <data name="&gt;&gt;lstSteamGames.Name" xml:space="preserve">
+    <value>lstSteamGames</value>
+  </data>
+  <data name="btnSteamLibrariesPath.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="btnSteamExeChange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 26</value>
+  </data>
+  <data name="&gt;&gt;lstSteamGames.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6017.24674, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="tabExplorer.Text" xml:space="preserve">
+    <value>Explorer</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6017.24674, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="lstSteamGames.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cmbExplorerGuids.Parent" xml:space="preserve">
+    <value>pnlExplorer</value>
+  </data>
+  <data name="&gt;&gt;txtSteamExecutablePath.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabChromeApps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>622, 248</value>
+  </data>
+  <data name="&gt;&gt;pctCurrentIcon.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tabOther.Name" xml:space="preserve">
+    <value>tabOther</value>
+  </data>
+  <data name="txtSteamInstallationPath.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="txtShortcutName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="txtChromeAppPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 38</value>
+  </data>
+  <data name="&gt;&gt;btnOtherTargetBrowse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSteamInstallationChange.Text" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="txtSteamLibraryPaths.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="tabSteam.Size" type="System.Drawing.Size, System.Drawing">
+    <value>622, 248</value>
+  </data>
+  <data name="&gt;&gt;lstChromeAppItems.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6017.24674, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tabSteam.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnSteamInstallationChange.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;pctCurrentIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pctCurrentIcon.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnSteamLibrariesPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabShortcutType.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabSteam.Parent" xml:space="preserve">
+    <value>tabShortcutType</value>
+  </data>
+  <data name="&gt;&gt;txtShortcutName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSteamExeChange.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnSteamInstallationChange.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;pnlExplorer.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtChromeExePath.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="btnSteamInstallationChange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;txtChromeAppPath.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lblCurrentIcon.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtSteamExecutablePath.Text" xml:space="preserve">
+    <value>txtSteamExecutablePath</value>
+  </data>
+  <data name="opnSteamExe.Title" xml:space="preserve">
+    <value>Please locate "steam.exe"...</value>
+  </data>
+  <data name="&gt;&gt;btnSteamLibrariesPath.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlExplorer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 72</value>
+  </data>
+  <data name="lblOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="btnSteamInstallationChange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>545, 8</value>
+  </data>
+  <data name="btnSteamLibrariesPath.Text" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="txtSteamLibraryPaths.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="radShortcutLocation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>391, 283</value>
+  </data>
+  <data name="&gt;&gt;txtSteamExecutablePath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtSteamLibraryPaths.Parent" xml:space="preserve">
+    <value>tabSteam</value>
+  </data>
+  <data name="&gt;&gt;btnExplorerBrowse.Name" xml:space="preserve">
+    <value>btnExplorerBrowse</value>
+  </data>
+  <data name="pctCurrentIcon.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="&gt;&gt;tabWindowsStore.Parent" xml:space="preserve">
+    <value>tabShortcutType</value>
+  </data>
+  <data name="btnOtherTargetBrowse.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="opnChromeExe.Filter" xml:space="preserve">
+    <value>chrome.exe|chrome.exe</value>
+  </data>
+  <data name="cmbExplorerGuids.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtSteamInstallationPath.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;btnSteamExeChange.Parent" xml:space="preserve">
+    <value>tabSteam</value>
+  </data>
+  <data name="txtOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>421, 20</value>
+  </data>
+  <data name="lblOtherTargetPath.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;radSpecialFolder.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnExplorerBrowse.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;lblOtherShortcutArguments.Parent" xml:space="preserve">
+    <value>tabOther</value>
+  </data>
+  <data name="lstWindowsStoreApps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>608, 226</value>
+  </data>
+  <data name="&gt;&gt;txtSteamInstallationPath.Parent" xml:space="preserve">
+    <value>tabSteam</value>
+  </data>
+  <data name="lblOtherShortcutArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 41</value>
+  </data>
+  <data name="tabExplorer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabShortcutType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>630, 274</value>
+  </data>
+  <data name="txtOtherTargetPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 12</value>
+  </data>
+  <data name="txtChromeExePath.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnSteamInstallationChange.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;txtCustomFolder.Name" xml:space="preserve">
+    <value>txtCustomFolder</value>
+  </data>
+  <data name="radCustomFolder.Text" xml:space="preserve">
+    <value>Use Custom Folder</value>
+  </data>
+  <data name="lblCurrentIcon.Text" xml:space="preserve">
+    <value>Icon:</value>
+  </data>
+  <data name="btnExplorerBrowse.Text" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="pctCurrentIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 299</value>
+  </data>
+  <data name="&gt;&gt;cmbExplorerGuids.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtSteamExecutablePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 20</value>
+  </data>
+  <data name="&gt;&gt;btnChromeAppPathChange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSteamInstallationChange.Parent" xml:space="preserve">
+    <value>tabSteam</value>
+  </data>
+  <data name="btnSteamLibrariesPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;fldBrowser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtSteamLibraryPaths.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="&gt;&gt;tabChromeApps.Name" xml:space="preserve">
+    <value>tabChromeApps</value>
+  </data>
+  <data name="txtSteamLibraryPaths.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>421, 20</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>668, 409</value>
+  </data>
+  <data name="&gt;&gt;lblOtherTargetPath.Name" xml:space="preserve">
+    <value>lblOtherTargetPath</value>
+  </data>
+  <data name="&gt;&gt;radCustomFolder.Parent" xml:space="preserve">
+    <value>pnlExplorer</value>
+  </data>
+  <data name="btnOtherTargetBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;opnChromeExe.Name" xml:space="preserve">
+    <value>opnChromeExe</value>
+  </data>
+  <data name="&gt;&gt;btnSteamInstallationChange.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtOtherTargetPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;tabSteam.Name" xml:space="preserve">
+    <value>tabSteam</value>
+  </data>
+  <data name="tabWindowsStore.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lstSteamGames.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;txtCustomFolder.Parent" xml:space="preserve">
+    <value>pnlExplorer</value>
+  </data>
+  <data name="tabSteam.Text" xml:space="preserve">
+    <value>Steam</value>
+  </data>
+  <data name="&gt;&gt;cmbExplorerGuids.Name" xml:space="preserve">
+    <value>cmbExplorerGuids</value>
+  </data>
+  <data name="radSpecialFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 17</value>
+  </data>
+  <data name="&gt;&gt;txtSteamInstallationPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtSteamExecutablePath.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tabShortcutType.Name" xml:space="preserve">
+    <value>tabShortcutType</value>
+  </data>
+  <data name="&gt;&gt;txtOtherTargetPath.Parent" xml:space="preserve">
+    <value>tabOther</value>
+  </data>
+  <data name="&gt;&gt;btnChromeExePathChange.Name" xml:space="preserve">
+    <value>btnChromeExePathChange</value>
+  </data>
+  <data name="&gt;&gt;lstWindowsStoreApps.Parent" xml:space="preserve">
+    <value>tabWindowsStore</value>
+  </data>
+  <data name="&gt;&gt;txtOtherTargetPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnChromeAppPathChange.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;radCustomFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radSpecialFolder.Text" xml:space="preserve">
+    <value>Use Special Folder</value>
+  </data>
+  <data name="&gt;&gt;lblOtherShortcutArguments.Name" xml:space="preserve">
+    <value>lblOtherShortcutArguments</value>
+  </data>
+  <data name="btnOtherTargetBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="lblShortcutName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>95, 283</value>
+  </data>
+  <data name="&gt;&gt;lblShortcutName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radShortcutLocation.Name" xml:space="preserve">
+    <value>radShortcutLocation</value>
+  </data>
+  <data name="&gt;&gt;txtCustomFolder.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;radShortcutLocation.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnChromeExePathChange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnChromeExePathChange.Parent" xml:space="preserve">
+    <value>tabChromeApps</value>
+  </data>
+  <data name="btnExplorerBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="txtChromeExePath.Text" xml:space="preserve">
+    <value>txtChromeExePath</value>
+  </data>
+  <data name="&gt;&gt;pctCurrentIcon.Name" xml:space="preserve">
+    <value>pctCurrentIcon</value>
+  </data>
+  <data name="txtChromeExePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 20</value>
+  </data>
+  <data name="opnOtherTarget.Filter" xml:space="preserve">
+    <value>All Files|*</value>
+  </data>
+  <data name="txtChromeAppPath.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;opnSteamExe.Name" xml:space="preserve">
+    <value>opnSteamExe</value>
+  </data>
+  <data name="radShortcutLocation.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="tabOther.Text" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="btnChromeExePathChange.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnOtherTargetBrowse.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;txtSteamInstallationPath.Name" xml:space="preserve">
+    <value>txtSteamInstallationPath</value>
+  </data>
+  <data name="btnChromeExePathChange.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;btnExplorerBrowse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtSteamLibraryPaths.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lstWindowsStoreApps.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnGenerateShortcut.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;opnChromeExe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabChromeApps.Parent" xml:space="preserve">
+    <value>tabShortcutType</value>
+  </data>
+  <data name="&gt;&gt;tabSteam.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtShortcutName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>98, 299</value>
+  </data>
+  <data name="btnChromeExePathChange.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;tabChromeApps.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lstSteamGames.Size" type="System.Drawing.Size, System.Drawing">
+    <value>607, 152</value>
+  </data>
+  <data name="&gt;&gt;btnSteamLibrariesPath.Name" xml:space="preserve">
+    <value>btnSteamLibrariesPath</value>
+  </data>
+  <data name="lblCurrentIcon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="&gt;&gt;btnChromeAppPathChange.Parent" xml:space="preserve">
+    <value>tabChromeApps</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmCustomShortcutManagerNew</value>
+  </data>
+  <data name="btnSteamLibrariesPath.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;lstWindowsStoreApps.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6017.24674, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="lblCurrentIcon.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;opnOtherTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtChromeExePath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="tabShortcutType.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnSteamInstallationChange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnGenerateShortcut.Name" xml:space="preserve">
+    <value>btnGenerateShortcut</value>
+  </data>
+  <data name="&gt;&gt;tabWindowsStore.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pnlExplorer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 33</value>
+  </data>
+  <data name="tabWindowsStore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="txtSteamLibraryPaths.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 64</value>
+  </data>
+  <data name="&gt;&gt;btnSteamInstallationChange.Name" xml:space="preserve">
+    <value>btnSteamInstallationChange</value>
+  </data>
+  <data name="&gt;&gt;tabExplorer.Name" xml:space="preserve">
+    <value>tabExplorer</value>
+  </data>
+  <data name="btnChromeExePathChange.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnSteamLibrariesPath.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="btnGenerateShortcut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;lstWindowsStoreApps.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabOther.Parent" xml:space="preserve">
+    <value>tabShortcutType</value>
+  </data>
+  <data name="lblCurrentIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 283</value>
+  </data>
+  <data name="radCustomFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 17</value>
+  </data>
+  <data name="btnExplorerBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>539, 36</value>
+  </data>
+  <data name="btnSteamInstallationChange.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;opnOtherTarget.Name" xml:space="preserve">
+    <value>opnOtherTarget</value>
+  </data>
+  <data name="lstWindowsStoreApps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 9</value>
+  </data>
+  <data name="tabOther.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="txtShortcutName.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="txtChromeExePath.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtCustomFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="txtChromeAppPath.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="txtSteamInstallationPath.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnSteamExeChange.Text" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="txtSteamExecutablePath.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="&gt;&gt;lblCurrentIcon.Name" xml:space="preserve">
+    <value>lblCurrentIcon</value>
+  </data>
+  <data name="&gt;&gt;txtChromeExePath.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="opnChromeExe.Title" xml:space="preserve">
+    <value>Please locate "chrome.exe"...</value>
+  </data>
+  <data name="&gt;&gt;txtOtherShortcutArguments.Parent" xml:space="preserve">
+    <value>tabOther</value>
+  </data>
+  <data name="&gt;&gt;txtChromeAppPath.Name" xml:space="preserve">
+    <value>txtChromeAppPath</value>
+  </data>
+  <data name="&gt;&gt;lblOtherTargetPath.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnOtherTargetBrowse.Parent" xml:space="preserve">
+    <value>tabOther</value>
+  </data>
+  <data name="&gt;&gt;lblOtherShortcutArguments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pnlExplorer.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="btnSteamLibrariesPath.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;lblOtherShortcutArguments.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabChromeApps.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabChromeApps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="&gt;&gt;txtShortcutName.Name" xml:space="preserve">
+    <value>txtShortcutName</value>
+  </data>
+  <data name="txtSteamExecutablePath.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtSteamExecutablePath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 38</value>
+  </data>
+  <data name="&gt;&gt;tabWindowsStore.Name" xml:space="preserve">
+    <value>tabWindowsStore</value>
+  </data>
+  <data name="&gt;&gt;tabOther.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnChromeExePathChange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 26</value>
+  </data>
+  <data name="btnChromeAppPathChange.Text" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="&gt;&gt;txtShortcutName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lblOtherTargetPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pctCurrentIcon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="btnChromeAppPathChange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>545, 34</value>
+  </data>
+  <data name="&gt;&gt;txtChromeAppPath.Parent" xml:space="preserve">
+    <value>tabChromeApps</value>
+  </data>
+  <data name="btnSteamExeChange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>545, 34</value>
+  </data>
+  <data name="tabChromeApps.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;radCustomFolder.Name" xml:space="preserve">
+    <value>radCustomFolder</value>
+  </data>
+  <data name="tabChromeApps.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;pnlExplorer.Parent" xml:space="preserve">
+    <value>tabExplorer</value>
+  </data>
+  <data name="&gt;&gt;lblCurrentIcon.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtOtherTargetPath.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnGenerateShortcut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 41</value>
+  </data>
+  <data name="btnChromeExePathChange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;lblShortcutName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="tabExplorer.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnGenerateShortcut.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtCustomFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 40</value>
+  </data>
+  <data name="&gt;&gt;txtSteamInstallationPath.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cmbExplorerGuids.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 7</value>
+  </data>
+  <data name="&gt;&gt;btnGenerateShortcut.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtCustomFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnChromeAppPathChange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="lblOtherTargetPath.Text" xml:space="preserve">
+    <value>Shortcut Target</value>
+  </data>
+  <data name="txtChromeAppPath.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtChromeAppPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="lstChromeAppItems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>607, 179</value>
+  </data>
+  <data name="opnSteamExe.Filter" xml:space="preserve">
+    <value>Steam.exe|Steam.exe</value>
+  </data>
+  <data name="tabShortcutType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 8</value>
+  </data>
+  <data name="lblShortcutName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>652, 370</value>
+  </data>
+  <data name="&gt;&gt;txtOtherTargetPath.Name" xml:space="preserve">
+    <value>txtOtherTargetPath</value>
+  </data>
+  <data name="&gt;&gt;lblCurrentIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblOtherShortcutArguments.Text" xml:space="preserve">
+    <value>Shortcut Arguments</value>
+  </data>
+  <data name="btnExplorerBrowse.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;lstChromeAppItems.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnChromeExePathChange.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>New Custom Shortcut</value>
+  </data>
+  <data name="&gt;&gt;radSpecialFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radShortcutLocation.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.AllOrCurrentUserRadios, TileIconifier, Version=2.2.6017.24674, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lstChromeAppItems.Parent" xml:space="preserve">
+    <value>tabChromeApps</value>
+  </data>
+  <data name="txtSteamLibraryPaths.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 20</value>
+  </data>
+  <data name="lstWindowsStoreApps.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="btnOtherTargetBrowse.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;lstWindowsStoreApps.Name" xml:space="preserve">
+    <value>lstWindowsStoreApps</value>
+  </data>
+  <data name="txtSteamInstallationPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="lblOtherShortcutArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;lstSteamGames.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;radSpecialFolder.Name" xml:space="preserve">
+    <value>radSpecialFolder</value>
+  </data>
+  <data name="&gt;&gt;radCustomFolder.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radCustomFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 40</value>
+  </data>
+  <data name="&gt;&gt;txtSteamLibraryPaths.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tabShortcutType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSteamInstallationChange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 26</value>
+  </data>
+  <data name="btnChromeExePathChange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>545, 8</value>
+  </data>
+  <data name="txtSteamExecutablePath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="tabSteam.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabSteam.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="btnSteamExeChange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;btnChromeAppPathChange.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmbExplorerGuids.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 21</value>
+  </data>
+  <data name="&gt;&gt;txtChromeExePath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtSteamInstallationPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="pnlExplorer.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabExplorer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>622, 248</value>
+  </data>
+  <data name="&gt;&gt;lblOtherTargetPath.Parent" xml:space="preserve">
+    <value>tabOther</value>
+  </data>
+  <data name="cmbExplorerGuids.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="tabOther.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabExplorer.Parent" xml:space="preserve">
+    <value>tabShortcutType</value>
+  </data>
   <metadata name="opnSteamExe.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>192, 26</value>
   </metadata>
   <metadata name="opnOtherTarget.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>318, 26</value>
   </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>ru</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="opnChromeExe.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>457, 26</value>
+  </metadata>
+  <metadata name="fldBrowser.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>44, 26</value>
   </metadata>
 </root>

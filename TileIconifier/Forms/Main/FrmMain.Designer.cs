@@ -30,6 +30,7 @@ namespace TileIconifier.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.txtFilter = new System.Windows.Forms.TextBox();
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnDeleteCustomShortcut = new System.Windows.Forms.Button();
@@ -56,148 +57,97 @@ namespace TileIconifier.Forms
             this.darkSkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtFilter
             // 
-            this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.txtFilter, "txtFilter");
             this.txtFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtFilter.Location = new System.Drawing.Point(50, 27);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(455, 20);
-            this.txtFilter.TabIndex = 32;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
             // lblFilter
             // 
-            this.lblFilter.AutoSize = true;
-            this.lblFilter.Location = new System.Drawing.Point(12, 31);
+            resources.ApplyResources(this.lblFilter, "lblFilter");
             this.lblFilter.Name = "lblFilter";
-            this.lblFilter.Size = new System.Drawing.Size(32, 13);
-            this.lblFilter.TabIndex = 31;
-            this.lblFilter.Text = "Filter:";
             // 
             // btnDeleteCustomShortcut
             // 
-            this.btnDeleteCustomShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDeleteCustomShortcut.Location = new System.Drawing.Point(12, 379);
+            resources.ApplyResources(this.btnDeleteCustomShortcut, "btnDeleteCustomShortcut");
             this.btnDeleteCustomShortcut.Name = "btnDeleteCustomShortcut";
-            this.btnDeleteCustomShortcut.Size = new System.Drawing.Size(149, 20);
-            this.btnDeleteCustomShortcut.TabIndex = 30;
-            this.btnDeleteCustomShortcut.Text = "Delete Custom Shortcut";
             this.btnDeleteCustomShortcut.UseVisualStyleBackColor = true;
             this.btnDeleteCustomShortcut.Click += new System.EventHandler(this.btnDeleteCustomShortcut_Click);
             // 
             // btnBuildCustomShortcut
             // 
-            this.btnBuildCustomShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnBuildCustomShortcut.Location = new System.Drawing.Point(11, 353);
+            resources.ApplyResources(this.btnBuildCustomShortcut, "btnBuildCustomShortcut");
             this.btnBuildCustomShortcut.Name = "btnBuildCustomShortcut";
-            this.btnBuildCustomShortcut.Size = new System.Drawing.Size(150, 20);
-            this.btnBuildCustomShortcut.TabIndex = 29;
-            this.btnBuildCustomShortcut.Text = "Quick Build Custom Shortcut";
             this.btnBuildCustomShortcut.UseVisualStyleBackColor = true;
             this.btnBuildCustomShortcut.Click += new System.EventHandler(this.btnBuildCustomShortcut_Click);
             // 
             // iconifyPanel
             // 
-            this.iconifyPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.iconifyPanel, "iconifyPanel");
             this.iconifyPanel.CurrentShortcutItem = null;
-            this.iconifyPanel.Location = new System.Drawing.Point(516, 23);
             this.iconifyPanel.Name = "iconifyPanel";
-            this.iconifyPanel.Size = new System.Drawing.Size(305, 351);
-            this.iconifyPanel.TabIndex = 28;
             // 
             // srtlstShortcuts
             // 
-            this.srtlstShortcuts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.srtlstShortcuts, "srtlstShortcuts");
             this.srtlstShortcuts.FullRowSelect = true;
             this.srtlstShortcuts.HideSelection = false;
-            this.srtlstShortcuts.Location = new System.Drawing.Point(12, 53);
             this.srtlstShortcuts.MultiSelect = false;
             this.srtlstShortcuts.Name = "srtlstShortcuts";
-            this.srtlstShortcuts.Size = new System.Drawing.Size(493, 210);
-            this.srtlstShortcuts.TabIndex = 27;
             this.srtlstShortcuts.UseCompatibleStateImageBehavior = false;
             this.srtlstShortcuts.View = System.Windows.Forms.View.Details;
             this.srtlstShortcuts.SelectedIndexChanged += new System.EventHandler(this.srtlstShortcuts_SelectedIndexChanged);
             // 
             // lblExePath
             // 
-            this.lblExePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblExePath.Location = new System.Drawing.Point(9, 309);
-            this.lblExePath.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            resources.ApplyResources(this.lblExePath, "lblExePath");
             this.lblExePath.Name = "lblExePath";
-            this.lblExePath.Size = new System.Drawing.Size(63, 13);
-            this.lblExePath.TabIndex = 14;
-            this.lblExePath.Text = "Target Path";
             // 
             // txtExePath
             // 
-            this.txtExePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtExePath.Location = new System.Drawing.Point(12, 324);
-            this.txtExePath.Margin = new System.Windows.Forms.Padding(2);
+            resources.ApplyResources(this.txtExePath, "txtExePath");
             this.txtExePath.Name = "txtExePath";
             this.txtExePath.ReadOnly = true;
-            this.txtExePath.Size = new System.Drawing.Size(494, 20);
-            this.txtExePath.TabIndex = 13;
             // 
             // btnRemove
             // 
-            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove.Location = new System.Drawing.Point(720, 379);
-            this.btnRemove.Margin = new System.Windows.Forms.Padding(2);
+            resources.ApplyResources(this.btnRemove, "btnRemove");
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(96, 21);
-            this.btnRemove.TabIndex = 9;
-            this.btnRemove.Text = "Remove Iconify";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnIconify
             // 
-            this.btnIconify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnIconify.Location = new System.Drawing.Point(521, 379);
-            this.btnIconify.Margin = new System.Windows.Forms.Padding(2);
+            resources.ApplyResources(this.btnIconify, "btnIconify");
             this.btnIconify.Name = "btnIconify";
-            this.btnIconify.Size = new System.Drawing.Size(86, 21);
-            this.btnIconify.TabIndex = 8;
             this.btnIconify.Tag = "";
-            this.btnIconify.Text = "Tile Iconify!";
             this.btnIconify.UseVisualStyleBackColor = true;
             this.btnIconify.Click += new System.EventHandler(this.btnIconify_Click);
             // 
             // lblLnkPath
             // 
-            this.lblLnkPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblLnkPath.Location = new System.Drawing.Point(9, 269);
-            this.lblLnkPath.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            resources.ApplyResources(this.lblLnkPath, "lblLnkPath");
             this.lblLnkPath.Name = "lblLnkPath";
-            this.lblLnkPath.Size = new System.Drawing.Size(53, 13);
-            this.lblLnkPath.TabIndex = 2;
-            this.lblLnkPath.Text = "LNK Path";
             // 
             // txtLnkPath
             // 
-            this.txtLnkPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLnkPath.Location = new System.Drawing.Point(12, 285);
-            this.txtLnkPath.Margin = new System.Windows.Forms.Padding(2);
+            resources.ApplyResources(this.txtLnkPath, "txtLnkPath");
             this.txtLnkPath.Name = "txtLnkPath";
             this.txtLnkPath.ReadOnly = true;
-            this.txtLnkPath.Size = new System.Drawing.Size(494, 20);
-            this.txtLnkPath.TabIndex = 1;
             // 
             // mnuMain
             // 
+            resources.ApplyResources(this.mnuMain, "mnuMain");
             this.mnuMain.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -205,31 +155,26 @@ namespace TileIconifier.Forms
             this.skinToolStripMenuItem,
             this.aboutToolStripMenuItem,
             this.helpToolStripMenuItem,
+            this.languageToolStripMenuItem,
             this.donateToolStripMenuItem});
-            this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.mnuMain.Size = new System.Drawing.Size(827, 24);
-            this.mnuMain.TabIndex = 15;
-            this.mnuMain.Text = "MainMenu";
             // 
             // fileToolStripMenuItem
             // 
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
-            this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
             // 
+            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // preferencesToolStripMenuItem
             // 
+            resources.ApplyResources(this.preferencesToolStripMenuItem, "preferencesToolStripMenuItem");
             this.preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customShortcutManagerToolStripMenuItem,
             this.toolStripSeparator1,
@@ -237,91 +182,99 @@ namespace TileIconifier.Forms
             this.refreshAllToolStripMenuItem,
             this.checkForUpdateToolStripMenuItem});
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(58, 22);
-            this.preferencesToolStripMenuItem.Text = "Utilities";
             // 
             // customShortcutManagerToolStripMenuItem
             // 
+            resources.ApplyResources(this.customShortcutManagerToolStripMenuItem, "customShortcutManagerToolStripMenuItem");
             this.customShortcutManagerToolStripMenuItem.Name = "customShortcutManagerToolStripMenuItem";
-            this.customShortcutManagerToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
-            this.customShortcutManagerToolStripMenuItem.Text = "Custom Shortcut Manager";
             this.customShortcutManagerToolStripMenuItem.Click += new System.EventHandler(this.customShortcutManagerToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(277, 6);
             // 
             // getPinnedItemsRequiresPowershellToolStripMenuItem
             // 
+            resources.ApplyResources(this.getPinnedItemsRequiresPowershellToolStripMenuItem, "getPinnedItemsRequiresPowershellToolStripMenuItem");
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.Name = "getPinnedItemsRequiresPowershellToolStripMenuItem";
-            this.getPinnedItemsRequiresPowershellToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
-            this.getPinnedItemsRequiresPowershellToolStripMenuItem.Text = "Get Pinned Items (Requires Powershell)";
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.Click += new System.EventHandler(this.getPinnedItemsRequiresPowershellToolStripMenuItem_Click);
             // 
             // refreshAllToolStripMenuItem
             // 
+            resources.ApplyResources(this.refreshAllToolStripMenuItem, "refreshAllToolStripMenuItem");
             this.refreshAllToolStripMenuItem.Name = "refreshAllToolStripMenuItem";
-            this.refreshAllToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
-            this.refreshAllToolStripMenuItem.Text = "Refresh All";
             this.refreshAllToolStripMenuItem.Click += new System.EventHandler(this.refreshAllToolStripMenuItem_Click);
             // 
             // checkForUpdateToolStripMenuItem
             // 
+            resources.ApplyResources(this.checkForUpdateToolStripMenuItem, "checkForUpdateToolStripMenuItem");
             this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
-            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
-            this.checkForUpdateToolStripMenuItem.Text = "Check For Updates";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
             // 
             // skinToolStripMenuItem
             // 
+            resources.ApplyResources(this.skinToolStripMenuItem, "skinToolStripMenuItem");
             this.skinToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.defaultSkinToolStripMenuItem,
             this.darkSkinToolStripMenuItem});
             this.skinToolStripMenuItem.Name = "skinToolStripMenuItem";
-            this.skinToolStripMenuItem.Size = new System.Drawing.Size(41, 22);
-            this.skinToolStripMenuItem.Text = "Skin";
             // 
             // defaultSkinToolStripMenuItem
             // 
+            resources.ApplyResources(this.defaultSkinToolStripMenuItem, "defaultSkinToolStripMenuItem");
             this.defaultSkinToolStripMenuItem.Checked = true;
             this.defaultSkinToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.defaultSkinToolStripMenuItem.Name = "defaultSkinToolStripMenuItem";
-            this.defaultSkinToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.defaultSkinToolStripMenuItem.Text = "Default Skin";
             // 
             // darkSkinToolStripMenuItem
             // 
+            resources.ApplyResources(this.darkSkinToolStripMenuItem, "darkSkinToolStripMenuItem");
             this.darkSkinToolStripMenuItem.Name = "darkSkinToolStripMenuItem";
-            this.darkSkinToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.darkSkinToolStripMenuItem.Text = "Dark Skin";
             // 
             // aboutToolStripMenuItem
             // 
+            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 22);
-            this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
-            this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
+            // languageToolStripMenuItem
+            // 
+            resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
+            this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.englishToolStripMenuItem,
+            this.russianToolStripMenuItem});
+            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            // 
+            // englishToolStripMenuItem
+            // 
+            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
+            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+            this.englishToolStripMenuItem.Tag = "en-US";
+            // 
+            // russianToolStripMenuItem
+            // 
+            resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
+            this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
+            this.russianToolStripMenuItem.Tag = "ru-RU";
             // 
             // donateToolStripMenuItem
             // 
+            resources.ApplyResources(this.donateToolStripMenuItem, "donateToolStripMenuItem");
             this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
-            this.donateToolStripMenuItem.Size = new System.Drawing.Size(57, 22);
-            this.donateToolStripMenuItem.Text = "Donate";
             this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(827, 407);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.btnDeleteCustomShortcut);
@@ -336,10 +289,7 @@ namespace TileIconifier.Forms
             this.Controls.Add(this.txtLnkPath);
             this.Controls.Add(this.mnuMain);
             this.MainMenuStrip = this.mnuMain;
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(490, 400);
             this.Name = "FrmMain";
-            this.Text = "Tile Iconifier";
             this.Load += new System.EventHandler(this.frmDropper_Load);
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.mnuMain.ResumeLayout(false);
@@ -377,6 +327,9 @@ namespace TileIconifier.Forms
         private System.Windows.Forms.Label lblFilter;
         private System.Windows.Forms.TextBox txtFilter;
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem russianToolStripMenuItem;
     }
 }
 

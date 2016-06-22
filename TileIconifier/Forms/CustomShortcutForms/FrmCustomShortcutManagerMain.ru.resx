@@ -117,93 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnCreateNewShortcut.Text" xml:space="preserve">
+    <value>Создать новый ярлык</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblHeader.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 13</value>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 20</value>
   </data>
-  <data name="&gt;&gt;lblHeader.Name" xml:space="preserve">
-    <value>lblHeader</value>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>О программе</value>
   </data>
-  <data name="&gt;&gt;radCurrentUser.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="btnDeleteCustomShortcut.Text" xml:space="preserve">
+    <value>Удалить пользовательский ярлык</value>
   </data>
-  <data name="&gt;&gt;lblHeader.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="btnGotoShortcut.Text" xml:space="preserve">
+    <value>Создать вырбанный ярлык</value>
   </data>
-  <data name="&gt;&gt;radAllUsers.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Менеджер пользовальских ярлыков</value>
   </data>
-  <data name="radAllUsers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
-  </data>
-  <data name="&gt;&gt;radCurrentUser.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblHeader.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>AllOrCurrentUserRadios</value>
-  </data>
-  <data name="&gt;&gt;radCurrentUser.Name" xml:space="preserve">
-    <value>radCurrentUser</value>
-  </data>
-  <data name="&gt;&gt;radAllUsers.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="radAllUsers.Text" xml:space="preserve">
-    <value>All Users</value>
-  </data>
-  <data name="&gt;&gt;radAllUsers.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="radAllUsers.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="radCurrentUser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
-  </data>
-  <data name="radCurrentUser.Text" xml:space="preserve">
-    <value>Current User</value>
-  </data>
-  <data name="lblHeader.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;radCurrentUser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radAllUsers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 22</value>
-  </data>
-  <data name="lblHeader.Text" xml:space="preserve">
-    <value>Shortcut For:</value>
-  </data>
-  <data name="radCurrentUser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 45</value>
-  </data>
-  <data name="&gt;&gt;radAllUsers.Name" xml:space="preserve">
-    <value>radAllUsers</value>
-  </data>
-  <data name="lblHeader.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="&gt;&gt;lblHeader.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radCurrentUser.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 66</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ru</value>
-  </metadata>
 </root>

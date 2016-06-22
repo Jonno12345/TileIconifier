@@ -81,17 +81,17 @@ namespace TileIconifier.Controls.PictureBox
         private void BuildTooltips()
         {
             var toolTip = new ToolTip();
-            toolTip.SetToolTip(btnTop, "Align Top");
-            toolTip.SetToolTip(btnBottom, "Align Bottom");
-            toolTip.SetToolTip(btnRight, "Align Right");
-            toolTip.SetToolTip(btnLeft, "Align Left");
-            toolTip.SetToolTip(btnXMiddle, "Align X Middle");
-            toolTip.SetToolTip(btnYMiddle, "Align Y Middle");
-            toolTip.SetToolTip(btnAlignCenter, "Align Centre");
-            toolTip.SetToolTip(btnNudgeLeft, "Nudge Left");
-            toolTip.SetToolTip(btnNudgeRight, "Nudge Right");
-            toolTip.SetToolTip(btnNudgeUp, "Nudge Up");
-            toolTip.SetToolTip(btnNudgeDown, "Nudge Down");
+            toolTip.SetToolTip(btnTop, Properties.Strings.AlignTop);
+            toolTip.SetToolTip(btnBottom, Properties.Strings.AlignBottom);
+            toolTip.SetToolTip(btnRight, Properties.Strings.AlignRight);
+            toolTip.SetToolTip(btnLeft, Properties.Strings.AlignLeft);
+            toolTip.SetToolTip(btnXMiddle, Properties.Strings.AlignXMiddle);
+            toolTip.SetToolTip(btnYMiddle, Properties.Strings.AlignYMiddle);
+            toolTip.SetToolTip(btnAlignCenter, Properties.Strings.AlignCentre);
+            toolTip.SetToolTip(btnNudgeLeft, Properties.Strings.NudgeLeft);
+            toolTip.SetToolTip(btnNudgeRight, Properties.Strings.NudgeRight);
+            toolTip.SetToolTip(btnNudgeUp, Properties.Strings.NudgeUp);
+            toolTip.SetToolTip(btnNudgeDown, Properties.Strings.NudgeDown);
         }
         
         private void tmrNudge_Tick(object sender, EventArgs e)

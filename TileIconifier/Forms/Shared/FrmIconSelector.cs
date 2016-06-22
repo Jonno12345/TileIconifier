@@ -38,6 +38,7 @@ using System.Windows.Forms;
 using TileIconifier.Core;
 using TileIconifier.Core.IconExtractor;
 using TileIconifier.Core.Utilities;
+using TileIconifier.Properties;
 
 namespace TileIconifier.Forms.Shared
 {
@@ -99,6 +100,12 @@ namespace TileIconifier.Forms.Shared
             SetUpCommonDllComboBox();
             SetUpTargetPath(targetPath);
             BuildListView();
+        }
+
+        private void SetUpLocalizedStrings()
+        {
+            btnOk.Text = Properties.Strings.Ok;
+            btnCancel.Text = Properties.Strings.Cancel;
         }
 
         public static IconSelectorResult GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
@@ -271,14 +278,14 @@ namespace TileIconifier.Forms.Shared
                 {
                     var imagePath = txtImagePath.Text;
                     if (!File.Exists(imagePath))
-                        throw new FileNotFoundException();
+                        throw new FileNotFoundException(Strings.FileCouldNotBeFound, imagePath);
                     ReturnedBitmapBytes = ImageUtils.LoadFileToByteArray(imagePath);
                     ReturnedImagePath = imagePath;
                 }
             }
             catch (FileNotFoundException ex)
             {
-                MessageBox.Show(@"File could not be found: " + ex.FileName, @"File not found!", MessageBoxButtons.OK,
+                MessageBox.Show($"{ex.Message}: {ex.FileName}", $"{Strings.FileCouldNotBeFound}", MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
             }
             
