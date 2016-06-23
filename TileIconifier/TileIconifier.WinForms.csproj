@@ -163,6 +163,9 @@
     <EmbeddedResource Include="Forms\Main\FrmAbout.ru.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\FrmHelp.ru.resx">
+      <DependentUpon>FrmHelp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\FrmMain.ru.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>

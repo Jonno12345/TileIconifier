@@ -341,4 +341,37 @@ Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?<
   <data name="ConfirmRemoveIconification" xml:space="preserve">
     <value>Are you sure you wish to remove iconification?</value>
   </data>
+  <data name="CentreImage" xml:space="preserve">
+    <value>Centre Image</value>
+  </data>
+  <data name="NoIconHasBeenSelected" xml:space="preserve">
+    <value>No icon has been selected!</value>
+  </data>
+  <data name="TargetPathIsEmpty" xml:space="preserve">
+    <value>Target path is empty!</value>
+  </data>
+  <data name="IssueWithImageSelected" xml:space="preserve">
+    <value>An issue occurred with the image selected. Please load the icon again or try another.</value>
+  </data>
+  <data name="IconError" xml:space="preserve">
+    <value>Icon error</value>
+  </data>
+  <data name="InvalidCharactersOrInvalidShortcutName" xml:space="preserve">
+    <value>Invalid characters or invalid shortcut name!</value>
+  </data>
+  <data name="SelectAFolder" xml:space="preserve">
+    <value>Select a folder</value>
+  </data>
+  <data name="ForegroundColourChangeExplain" xml:space="preserve">
+    <value>Foreground colour changes don't always instantly apply. If this change hasn't applied, try unpinning and repinning the shortcut.</value>
+  </data>
+  <data name="ForegroundColourChange" xml:space="preserve">
+    <value>Foreground Colour Change</value>
+  </data>
+  <data name="UnableToClearUpShortcuts" xml:space="preserve">
+    <value>Unable to clear up shortcuts.</value>
+  </data>
+  <data name="UnableToFindChromeInstallationPath" xml:space="preserve">
+    <value>Unable to find Chrome installation path!</value>
+  </data>
 </root>

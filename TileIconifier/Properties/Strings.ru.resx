@@ -327,6 +327,9 @@
   <data name="PleaseSelectAnIcon" xml:space="preserve">
     <value>Пожалуйста выберите иконку</value>
   </data>
+  <data name="CentreImage" xml:space="preserve">
+    <value>Выровнять по центру</value>
+  </data>
   <data name="ConfirmRemoveIconification" xml:space="preserve">
     <value>Вы уверены, что хотите удалить изменения плитки?</value>
   </data>
@@ -334,6 +337,36 @@
     <value>Пожертвование</value>
   </data>
   <data name="DonationNotification" xml:space="preserve">
-    <value>Пожертвования для этого приложения не требуется, однако будет принята с большой благодарностью. Это приложение всегда будет свободным, с открытым исходным кодом, и поддерживаться в меру моих возможностей. Если вы хотели бы помочь поддержать меня с этим и будущими приложениями, я был бы очень признателен! Перейти на страницу пожертвования (https://www.paypal.me/Jonno12345)?</value>
+    <value>Пожертвования для этого приложения не требуются, однако будут приняты с большой благодарностью. Это приложение всегда будет бесплатным, с открытым исходным кодом, и поддерживаться в меру моих возможностей. Если вы хотели бы помочь поддержать меня с этим и будущими приложениями, я был бы очень признателен! Перейти на страницу пожертвования (https://www.paypal.me/Jonno12345)?</value>
+  </data>
+  <data name="NoIconHasBeenSelected" xml:space="preserve">
+    <value>Иконка не была выбрана!</value>
+  </data>
+  <data name="TargetPathIsEmpty" xml:space="preserve">
+    <value>Конечная папка пустая!</value>
+  </data>
+  <data name="IssueWithImageSelected" xml:space="preserve">
+    <value>Возникла проблема с выбранным изображением. Пожалуйста, загрузите иконку снова или попробуйте другую.</value>
+  </data>
+  <data name="IconError" xml:space="preserve">
+    <value>Ошибка иконки</value>
+  </data>
+  <data name="InvalidCharactersOrInvalidShortcutName" xml:space="preserve">
+    <value>Недопустимые символы или недопустимое имя ярлыка!</value>
+  </data>
+  <data name="SelectAFolder" xml:space="preserve">
+    <value>Выбрать папку</value>
+  </data>
+  <data name="ForegroundColourChange" xml:space="preserve">
+    <value>Изменить внешний цвет</value>
+  </data>
+  <data name="ForegroundColourChangeExplain" xml:space="preserve">
+    <value>Внешний цвет меняется не всегда сразу. Если этого не произошло, попробуйте открепить и снова закрепить ярлык.</value>
+  </data>
+  <data name="UnableToClearUpShortcuts" xml:space="preserve">
+    <value>Не удалось очистить ярлыки.</value>
+  </data>
+  <data name="UnableToFindChromeInstallationPath" xml:space="preserve">
+    <value>Не удается найти путь установки Chrome!</value>
   </data>
 </root>

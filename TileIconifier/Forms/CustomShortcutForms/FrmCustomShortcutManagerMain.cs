@@ -121,8 +121,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             if (
                 MessageBox.Show(
-                    $"Are you sure you wish to delete the custom shortcut for {customShortcut.Text.QuoteWrap()}?",
-                    @"Are you sure?",
+                    string.Format(Strings.ConfirmDeleteCustomShortcut,
+                        customShortcut.Text.QuoteWrap()),
+                    Strings.AreYouSure,
                     MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
@@ -132,7 +133,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Unable to clear up shortcuts." + ex);
+                MessageBox.Show(Strings.UnableToClearUpShortcuts + ex);
             }
 
             //update our lists and refresh

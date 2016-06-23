@@ -41,6 +41,7 @@ using TileIconifier.Core.Custom;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.Shared;
+using TileIconifier.Properties;
 using TileIconifier.Skinning.Skins;
 
 namespace TileIconifier.Controls
@@ -390,10 +391,10 @@ namespace TileIconifier.Controls
                 return;
 
             var contextMenu = new ContextMenu();
-            var menuItem = new MenuItem("Change image...",
+            var menuItem = new MenuItem(Strings.ChangeImage,
                 (o, args) => { IconSet(panPctSmallIcon); });
             contextMenu.MenuItems.Add(menuItem);
-            menuItem = new MenuItem("Center image",
+            menuItem = new MenuItem(Strings.CentreImage,
                 (o, args) => { panPctSmallIcon.CenterImage(); });
             contextMenu.MenuItems.Add(menuItem);
             contextMenu.Show(panPctSmallIcon, ((MouseEventArgs)e).Location);

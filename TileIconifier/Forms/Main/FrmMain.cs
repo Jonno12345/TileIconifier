@@ -91,8 +91,8 @@ namespace TileIconifier.Forms
             UpdateShortcut();
             if (showForegroundColourWarning)
                 MessageBox.Show(
-                    @"Foreground colour changes don't always instantly apply. If this change hasn't applied, try unpinning and repinning the shortcut.",
-                    @"Foreground Colour Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Strings.ForegroundColourChangeExplain,
+                    Strings.ForegroundColourChange, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnRemove_Click(object sender, EventArgs e)

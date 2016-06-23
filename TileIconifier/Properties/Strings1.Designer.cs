@@ -187,6 +187,15 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Centre Image.
+        /// </summary>
+        internal static string CentreImage {
+            get {
+                return ResourceManager.GetString("CentreImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Image.
         /// </summary>
         internal static string ChangeImage {
@@ -270,11 +279,38 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Foreground Colour Change.
+        /// </summary>
+        internal static string ForegroundColourChange {
+            get {
+                return ResourceManager.GetString("ForegroundColourChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foreground colour changes don&apos;t always instantly apply. If this change hasn&apos;t applied, try unpinning and repinning the shortcut..
+        /// </summary>
+        internal static string ForegroundColourChangeExplain {
+            get {
+                return ResourceManager.GetString("ForegroundColourChangeExplain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game Name.
         /// </summary>
         internal static string GameName {
             get {
                 return ResourceManager.GetString("GameName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Icon error.
+        /// </summary>
+        internal static string IconError {
+            get {
+                return ResourceManager.GetString("IconError", resourceCulture);
             }
         }
         
@@ -293,6 +329,15 @@ namespace TileIconifier.Properties {
         internal static string IncorrectPlatformFull {
             get {
                 return ResourceManager.GetString("IncorrectPlatformFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid characters or invalid shortcut name!.
+        /// </summary>
+        internal static string InvalidCharactersOrInvalidShortcutName {
+            get {
+                return ResourceManager.GetString("InvalidCharactersOrInvalidShortcutName", resourceCulture);
             }
         }
         
@@ -333,6 +378,15 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An issue occurred with the image selected. Please load the icon again or try another..
+        /// </summary>
+        internal static string IssueWithImageSelected {
+            get {
+                return ResourceManager.GetString("IssueWithImageSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loading.
         /// </summary>
         internal static string Loading {
@@ -347,6 +401,15 @@ namespace TileIconifier.Properties {
         internal static string NewVersionAvailable {
             get {
                 return ResourceManager.GetString("NewVersionAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No icon has been selected!.
+        /// </summary>
+        internal static string NoIconHasBeenSelected {
+            get {
+                return ResourceManager.GetString("NoIconHasBeenSelected", resourceCulture);
             }
         }
         
@@ -495,6 +558,15 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a folder.
+        /// </summary>
+        internal static string SelectAFolder {
+            get {
+                return ResourceManager.GetString("SelectAFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select the folder containing your Steam installation.
         /// </summary>
         internal static string SelectSteamInstallationPath {
@@ -612,6 +684,15 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Target path is empty!.
+        /// </summary>
+        internal static string TargetPathIsEmpty {
+            get {
+                return ResourceManager.GetString("TargetPathIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to check server!.
         /// </summary>
         internal static string UnableToCheckServer {
@@ -626,6 +707,24 @@ namespace TileIconifier.Properties {
         internal static string UnableToClearShortcuts {
             get {
                 return ResourceManager.GetString("UnableToClearShortcuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to clear up shortcuts..
+        /// </summary>
+        internal static string UnableToClearUpShortcuts {
+            get {
+                return ResourceManager.GetString("UnableToClearUpShortcuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find Chrome installation path!.
+        /// </summary>
+        internal static string UnableToFindChromeInstallationPath {
+            get {
+                return ResourceManager.GetString("UnableToFindChromeInstallationPath", resourceCulture);
             }
         }
         

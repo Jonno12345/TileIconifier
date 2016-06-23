@@ -208,7 +208,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 string.Format(
                     Strings.ShortcutCreatedNeedsPinning,
                     shortcutName.QuoteWrap()),
-                @"Shortcut created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Strings.ShortcutCreated, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Hacked this in quickly - fix it up.
@@ -217,21 +217,21 @@ namespace TileIconifier.Forms.CustomShortcutForms
             //Check if there are invalid characters in the shortcut name
             if (txtShortcutName.Text != shortcutName || shortcutName.Length == 0)
             {
-                MessageBox.Show(@"Invalid characters or invalid shortcut name!", @"Invalid characters or shortcut name",
+                MessageBox.Show(Strings.InvalidCharactersOrInvalidShortcutName, Strings.InvalidCharactersOrInvalidShortcutName,
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 throw new ValidationFailureException();
             }
 
             if (targetPath.Length == 0)
             {
-                MessageBox.Show(@"Target path is empty!", @"Target path empty", MessageBoxButtons.OK,
+                MessageBox.Show(Strings.TargetPathIsEmpty, Strings.TargetPathIsEmpty, MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
                 throw new ValidationFailureException();
             }
 
             if (pctCurrentIcon.Image == null)
             {
-                MessageBox.Show(@"No icon has been selected!", Strings.PleaseSelectAnIcon, MessageBoxButtons.OK,
+                MessageBox.Show(Strings.NoIconHasBeenSelected, Strings.PleaseSelectAnIcon, MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
                 throw new ValidationFailureException();
             }
@@ -243,8 +243,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             catch
             {
                 MessageBox.Show(
-                    @"An issue occurred with the image selected. Please load the icon again or try another.",
-                    @"Icon error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    Strings.IssueWithImageSelected,
+                    Strings.IconError, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 throw new ValidationFailureException();
             }
         }
@@ -362,7 +362,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void btnExplorerBrowse_Click(object sender, EventArgs e)
         {
-            fldBrowser.Description = @"Select a folder";
+            fldBrowser.Description = Strings.SelectAFolder;
             if (fldBrowser.ShowDialog(this) != DialogResult.OK)
                 return;
 
@@ -555,9 +555,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
             {
                 txtChromeExePath.Text = ChromeAppLibrary.GetChromeInstallationPath();
             }
-            catch (Exception ex)
+            catch
             {
-                txtChromeExePath.Text = ex.Message;
+                txtChromeExePath.Text = Strings.UnableToFindChromeInstallationPath;
             }
         }
 
