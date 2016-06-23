@@ -154,19 +154,19 @@
     <value>Изменить изображение</value>
   </data>
   <data name="ChromeExtensionsFolder" xml:space="preserve">
-    <value>Выберите вашу папку 'Расширения' Chrome</value>
+    <value>Выберите папку 'Extensions' в папке с Chrome</value>
   </data>
   <data name="GameName" xml:space="preserve">
     <value>Название игры</value>
   </data>
   <data name="IsCustom" xml:space="preserve">
-    <value>Пользовательский</value>
+    <value>Пользовательский?</value>
   </data>
   <data name="IsIconified" xml:space="preserve">
-    <value>Изменён</value>
+    <value>Изменён?</value>
   </data>
   <data name="IsPinned" xml:space="preserve">
-    <value>Закреплён</value>
+    <value>Закреплён?</value>
   </data>
   <data name="NudgeDown" xml:space="preserve">
     <value>Сдвинуть вниз</value>
@@ -187,10 +187,10 @@
     <value>Имя ярлыка</value>
   </data>
   <data name="ShortcutType" xml:space="preserve">
-    <value>Тип ярлыка</value>
+    <value>Тип</value>
   </data>
   <data name="ShortcutUser" xml:space="preserve">
-    <value>Пользователь ярллыка</value>
+    <value>Пользователь</value>
   </data>
   <data name="ZoomIn" xml:space="preserve">
     <value>Приблизить</value>
@@ -199,16 +199,16 @@
     <value>Отдалить</value>
   </data>
   <data name="SteamExecutablePath" xml:space="preserve">
-    <value>Испольняемый файл Steam</value>
+    <value>Исполняемый файл Steam:</value>
   </data>
   <data name="SteamExecutablePathNotFound" xml:space="preserve">
-    <value>Испольняемый файл Steam не найден!!!</value>
+    <value>Исполняемый файл Steam не найден!!!</value>
   </data>
   <data name="SteamInstallationPath" xml:space="preserve">
-    <value>Путь установки Steam</value>
+    <value>Путь Steam</value>
   </data>
   <data name="SteamInstallationPathNotFound" xml:space="preserve">
-    <value>Путь установки Steam не найден!!!</value>
+    <value>Путь Steam не найден!!!</value>
   </data>
   <data name="SteamLibraryFolders" xml:space="preserve">
     <value>Библиотека Steam</value>
@@ -223,22 +223,22 @@
     <value>Файл не может быть найден</value>
   </data>
   <data name="InvalidSteamLibraryPath" xml:space="preserve">
-    <value>Выбранная папка является недействительной (действительная папка должна содержать подпапку "steamapp"), повторите попытку или отмените.</value>
+    <value>Выбранная папка пуста (папка должна содержать подпапку "steamapps"), повторите попытку или отмените.</value>
   </data>
   <data name="SelectSteamLibraryPath" xml:space="preserve">
-    <value>Выберите папку, содержащую библиотеку Steam (это будет папка, содержащая папку "steamapps")</value>
+    <value>Выберите папку с библиотекой Steam (это папка, содержащая папку "steamapps")</value>
   </data>
   <data name="AreYouSure" xml:space="preserve">
     <value>Вы уверены?</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>подтвердить</value>
+    <value>Подтвердить</value>
   </data>
   <data name="ConfirmDeleteCustomShortcut" xml:space="preserve">
     <value>Вы уверены, что хотите удалить пользовательский ярлык для {0}?</value>
   </data>
   <data name="QuickBuildExplanation" xml:space="preserve">
-    <value>Это создаст пользовательский ярлык с теми же параметрами, как {0}. Это полезно для плиток, которые не работают по умолчанию (например, Microsoft Office и Mozilla Firefox). Пожалуйста, подтвердите имя для нового ярлыка (такое же имя, как и у оригинала не является проблемой)</value>
+    <value>Это создаст пользовательский ярлык с теми же параметрами, как и у {0}. Это полезно для плиток, которые не работают по умолчанию (например, Microsoft Office и Mozilla Firefox). Пожалуйста, подтвердите имя для нового ярлыка (такое же имя, как и у оригинала не является проблемой)</value>
   </data>
   <data name="ShortcutCreated" xml:space="preserve">
     <value>Ярлык создан!</value>
@@ -262,7 +262,7 @@
     <value>Неправильная платформа</value>
   </data>
   <data name="IncorrectPlatformFull" xml:space="preserve">
-    <value>Вы запустили 32-битный процесс в 64-битной операционной системе. Некоторые функции, такие как PowerShell, могут работать некорректно.</value>
+    <value>Вы запустили 32-битную версию программы в 64-битной операционной системе. Некоторые функции, такие как PowerShell, могут работать некорректно.</value>
   </data>
   <data name="Loading" xml:space="preserve">
     <value>Загрузка</value>
@@ -292,10 +292,10 @@
     <value>Запустить от имени Администратора</value>
   </data>
   <data name="RunAsAdminFull" xml:space="preserve">
-    <value>Вы должны запустить это приложение от имени Администратора!</value>
+    <value>Вы должны запустить приложение от имени Администратора!</value>
   </data>
   <data name="UnableToCheckServer" xml:space="preserve">
-    <value>Не удалось проверить сервер!</value>
+    <value>Сервер недоступен!</value>
   </data>
   <data name="UpdateAvailableError" xml:space="preserve">
     <value>Произошла ошибка при получении информации о последней версии. Нажмите кнопку OK, чтобы перейти на страницу релизов, для проверки вручную. (Ваша версия: {0})</value>
@@ -304,7 +304,7 @@
     <value>Доступно обновление! Хотели бы вы посетить страницу релизов? (Ваша версия: {0} - Последняя версия: {1})</value>
   </data>
   <data name="UpToDate" xml:space="preserve">
-    <value>Обновить</value>
+    <value>Обновление</value>
   </data>
   <data name="VerifyAdmin" xml:space="preserve">
     <value>Проверить Администратора</value>
@@ -313,12 +313,15 @@
     <value>Произошла ошибка обнаружения администратора. Пожалуйста, убедитесь, что вы работаете в качестве администратора, или могут возникнуть проблемы.</value>
   </data>
   <data name="WindowsBefore81" xml:space="preserve">
-    <value>Ваша версия Windows ниже чем 8.1, изменения могут не придать ни какого эффекта.</value>
+    <value>Ваша версия Windows ниже чем 8.1, изменения не придадут ни какого эффекта.</value>
   </data>
   <data name="WindowsTooEarly" xml:space="preserve">
     <value>Версия Windows устарела</value>
   </data>
   <data name="WrongBuildWindows10" xml:space="preserve">
-    <value>Ваша сборка Windwos 10 не удовлетворяет требованиям программы, она должна не ниже 10586. Программа будет работать, но некоторые изменения не вступят в силу.</value>
+    <value>Ваша сборка Windows 10 не удовлетворяет требованиям программы, она должна быть не ниже 10586. Программа будет работать, но некоторые изменения не вступят в силу.</value>
+  </data>
+  <data name="ErrorLoadingImageFile" xml:space="preserve">
+    <value>Произошла ошибка при попытке загрузить это изображение! Пожалуйста, попробуйте другое.</value>
   </data>
 </root>

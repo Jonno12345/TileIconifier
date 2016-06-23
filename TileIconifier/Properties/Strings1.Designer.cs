@@ -223,6 +223,15 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred trying to load this image file! Please try another..
+        /// </summary>
+        internal static string ErrorLoadingImageFile {
+            get {
+                return ResourceManager.GetString("ErrorLoadingImageFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File could not be found.
         /// </summary>
         internal static string FileCouldNotBeFound {

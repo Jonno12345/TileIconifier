@@ -140,7 +140,7 @@
     <value>203, 20</value>
   </data>
   <data name="btnBuildCustomShortcut.Text" xml:space="preserve">
-    <value>Быстрое создание польз. ярлыка</value>
+    <value>Создать пользовательский ярлык</value>
   </data>
   <data name="lblExePath.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 13</value>
@@ -149,7 +149,7 @@
     <value>Расположение файла</value>
   </data>
   <data name="btnRemove.Text" xml:space="preserve">
-    <value>Удалить тайл</value>
+    <value>Удалить изменения</value>
   </data>
   <data name="btnIconify.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 21</value>
@@ -170,10 +170,10 @@
     <value>Файл</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 22</value>
+    <value>108, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>Выйти</value>
+    <value>Выход</value>
   </data>
   <data name="preferencesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 22</value>
@@ -182,46 +182,46 @@
     <value>Дополнительно</value>
   </data>
   <data name="customShortcutManagerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>393, 22</value>
+    <value>399, 22</value>
   </data>
   <data name="customShortcutManagerToolStripMenuItem.Text" xml:space="preserve">
     <value>Менеджер пользовальских ярлыков</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>390, 6</value>
+    <value>396, 6</value>
   </data>
   <data name="getPinnedItemsRequiresPowershellToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>393, 22</value>
+    <value>399, 22</value>
   </data>
   <data name="getPinnedItemsRequiresPowershellToolStripMenuItem.Text" xml:space="preserve">
-    <value>Получить закреплённые элементы (требуется Powershell)</value>
+    <value>Проверить закреплённые элементы (требуется Powershell)</value>
   </data>
   <data name="refreshAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>393, 22</value>
+    <value>399, 22</value>
   </data>
   <data name="refreshAllToolStripMenuItem.Text" xml:space="preserve">
-    <value>Обновить все</value>
+    <value>Обновить список</value>
   </data>
   <data name="checkForUpdateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>393, 22</value>
+    <value>399, 22</value>
   </data>
   <data name="checkForUpdateToolStripMenuItem.Text" xml:space="preserve">
     <value>Проверить обновления</value>
   </data>
   <data name="skinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
+    <value>50, 22</value>
   </data>
   <data name="skinToolStripMenuItem.Text" xml:space="preserve">
-    <value>Обложки</value>
+    <value>Темы</value>
   </data>
   <data name="defaultSkinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>118, 22</value>
   </data>
   <data name="defaultSkinToolStripMenuItem.Text" xml:space="preserve">
-    <value>По умолчанию (светлая)</value>
+    <value>Светлая</value>
   </data>
   <data name="darkSkinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>118, 22</value>
   </data>
   <data name="darkSkinToolStripMenuItem.Text" xml:space="preserve">
     <value>Тёмная</value>
@@ -239,10 +239,16 @@
     <value>Помощь</value>
   </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 22</value>
+    <value>46, 22</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>язык</value>
+    <value>Язык</value>
+  </data>
+  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="russianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
   </data>
   <data name="donateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 22</value>

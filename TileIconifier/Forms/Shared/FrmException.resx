@@ -126,7 +126,7 @@
     <value>Fill</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6017.26148, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6018.21287, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="rtxtUnhandledException.Text" xml:space="preserve">
     <value>Uh oh!! Something has gone horribly wrong! Sorry about that.

@@ -146,6 +146,54 @@
   <data name="pctCurrentIcon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="tabExplorer.Text" xml:space="preserve">
+    <value>Проводник</value>
+  </data>
+  <data name="tabChromeApps.Text" xml:space="preserve">
+    <value>Приложения Chrome</value>
+  </data>
+  <data name="tabWindowsStore.Text" xml:space="preserve">
+    <value>Магазин Windows</value>
+  </data>
+  <data name="lblOtherShortcutArguments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 13</value>
+  </data>
+  <data name="lblOtherShortcutArguments.Text" xml:space="preserve">
+    <value>Параметры запуска</value>
+  </data>
+  <data name="txtOtherShortcutArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 38</value>
+  </data>
+  <data name="txtOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>408, 20</value>
+  </data>
+  <data name="lblOtherTargetPath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lblOtherTargetPath.Text" xml:space="preserve">
+    <value>Путь</value>
+  </data>
+  <data name="btnOtherTargetBrowse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnOtherTargetBrowse.Text" xml:space="preserve">
+    <value>Обзор</value>
+  </data>
+  <data name="txtOtherTargetPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 12</value>
+  </data>
+  <data name="txtOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>408, 20</value>
+  </data>
+  <data name="tabOther.Text" xml:space="preserve">
+    <value>Свой ярлык</value>
+  </data>
   <data name="btnExplorerBrowse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -153,19 +201,19 @@
     <value>Обзор</value>
   </data>
   <data name="txtCustomFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>232, 40</value>
+    <value>211, 40</value>
   </data>
   <data name="txtCustomFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>304, 20</value>
+    <value>325, 20</value>
   </data>
   <data name="radCustomFolder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radCustomFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 17</value>
+    <value>202, 17</value>
   </data>
   <data name="radCustomFolder.Text" xml:space="preserve">
-    <value>Использовать пользовательскую папку</value>
+    <value>Использовать свою папку</value>
   </data>
   <data name="radSpecialFolder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -177,13 +225,10 @@
     <value>Использовать специальную папку</value>
   </data>
   <data name="cmbExplorerGuids.Location" type="System.Drawing.Point, System.Drawing">
-    <value>232, 7</value>
+    <value>211, 7</value>
   </data>
   <data name="cmbExplorerGuids.Size" type="System.Drawing.Size, System.Drawing">
-    <value>375, 21</value>
-  </data>
-  <data name="tabExplorer.Text" xml:space="preserve">
-    <value>Проводник</value>
+    <value>396, 21</value>
   </data>
   <data name="btnSteamLibrariesPath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -259,51 +304,6 @@
   </data>
   <data name="txtChromeExePath.Size" type="System.Drawing.Size, System.Drawing">
     <value>513, 20</value>
-  </data>
-  <data name="tabChromeApps.Text" xml:space="preserve">
-    <value>Приложения Chrome</value>
-  </data>
-  <data name="tabWindowsStore.Text" xml:space="preserve">
-    <value>Магазин Windows</value>
-  </data>
-  <data name="lblOtherShortcutArguments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 13</value>
-  </data>
-  <data name="lblOtherShortcutArguments.Text" xml:space="preserve">
-    <value>Параметры запуска ярлыка</value>
-  </data>
-  <data name="txtOtherShortcutArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 38</value>
-  </data>
-  <data name="txtOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>364, 20</value>
-  </data>
-  <data name="lblOtherTargetPath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
-  </data>
-  <data name="lblOtherTargetPath.Text" xml:space="preserve">
-    <value>Путь ярлыка</value>
-  </data>
-  <data name="btnOtherTargetBrowse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnOtherTargetBrowse.Text" xml:space="preserve">
-    <value>Обзор</value>
-  </data>
-  <data name="txtOtherTargetPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 12</value>
-  </data>
-  <data name="txtOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>364, 20</value>
-  </data>
-  <data name="tabOther.Text" xml:space="preserve">
-    <value>Другое</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

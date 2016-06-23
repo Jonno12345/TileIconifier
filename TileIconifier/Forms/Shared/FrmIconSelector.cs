@@ -393,7 +393,7 @@ namespace TileIconifier.Forms.Shared
             }
             catch
             {
-                MessageBox.Show(@"An error occurred trying to load this image file! Please try another.");
+                MessageBox.Show(Strings.ErrorLoadingImageFile);
             }
         }
 

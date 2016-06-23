@@ -324,4 +324,7 @@
   <data name="PowershellFailure" xml:space="preserve">
     <value>PowerShell failure</value>
   </data>
+  <data name="ErrorLoadingImageFile" xml:space="preserve">
+    <value>An error occurred trying to load this image file! Please try another.</value>
+  </data>
 </root>
