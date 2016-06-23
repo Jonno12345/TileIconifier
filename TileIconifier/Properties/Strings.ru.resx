@@ -160,13 +160,13 @@
     <value>Название игры</value>
   </data>
   <data name="IsCustom" xml:space="preserve">
-    <value>Пользовательский?</value>
+    <value>Пользовательский</value>
   </data>
   <data name="IsIconified" xml:space="preserve">
-    <value>Изменён?</value>
+    <value>Изменён</value>
   </data>
   <data name="IsPinned" xml:space="preserve">
-    <value>Закреплён?</value>
+    <value>Закреплён</value>
   </data>
   <data name="NudgeDown" xml:space="preserve">
     <value>Сдвинуть вниз</value>
@@ -205,10 +205,10 @@
     <value>Исполняемый файл Steam не найден!!!</value>
   </data>
   <data name="SteamInstallationPath" xml:space="preserve">
-    <value>Путь Steam</value>
+    <value>Расположение папки Steam</value>
   </data>
   <data name="SteamInstallationPathNotFound" xml:space="preserve">
-    <value>Путь Steam не найден!!!</value>
+    <value>Папка Steam не найдена!!!</value>
   </data>
   <data name="SteamLibraryFolders" xml:space="preserve">
     <value>Библиотека Steam</value>
@@ -238,7 +238,7 @@
     <value>Вы уверены, что хотите удалить пользовательский ярлык для {0}?</value>
   </data>
   <data name="QuickBuildExplanation" xml:space="preserve">
-    <value>Это создаст пользовательский ярлык с теми же параметрами, как и у {0}. Это полезно для плиток, которые не работают по умолчанию (например, Microsoft Office и Mozilla Firefox). Пожалуйста, подтвердите имя для нового ярлыка (такое же имя, как и у оригинала не является проблемой)</value>
+    <value>Это создаст пользовательский ярлык с теми же параметрами, как и у {0}. Это полезно для плиток, которые не работают по умолчанию (например, Microsoft Office и Mozilla Firefox). Пожалуйста, подтвердите имя для нового ярлыка (можно использовать имя как и у оригинала).</value>
   </data>
   <data name="ShortcutCreated" xml:space="preserve">
     <value>Ярлык создан!</value>
@@ -323,5 +323,17 @@
   </data>
   <data name="ErrorLoadingImageFile" xml:space="preserve">
     <value>Произошла ошибка при попытке загрузить это изображение! Пожалуйста, попробуйте другое.</value>
+  </data>
+  <data name="PleaseSelectAnIcon" xml:space="preserve">
+    <value>Пожалуйста выберите иконку</value>
+  </data>
+  <data name="ConfirmRemoveIconification" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить изменения плитки?</value>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>Пожертвование</value>
+  </data>
+  <data name="DonationNotification" xml:space="preserve">
+    <value>Пожертвования для этого приложения не требуется, однако будет принята с большой благодарностью. Это приложение всегда будет свободным, с открытым исходным кодом, и поддерживаться в меру моих возможностей. Если вы хотели бы помочь поддержать меня с этим и будущими приложениями, я был бы очень признателен! Перейти на страницу пожертвования (https://www.paypal.me/Jonno12345)?</value>
   </data>
 </root>

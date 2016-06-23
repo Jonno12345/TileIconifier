@@ -12,7 +12,10 @@ function CopyRequiredFiles( $sourceFolder, $destinationFolder)
 	}
 	New-Item -Force -ItemType directory -Path $destinationFolder
 	Copy-Item ($sourceFolder + "TileIconifier.exe") $destinationFolder
-	# Copy-Item ($sourceFolder + "System.Management.Automation.dll") $destinationFolder
+    # New-Item ($destinationFolder + "\ru") -type directory
+
+	Copy-Item ($sourceFolder + "ru") $destinationFolder -Recurse
+    # Copy-Item ($sourceFolder + "System.Management.Automation.dll") $destinationFolder
 	# Copy-Item ($sourceFolder + "Octokit.dll") $destinationFolder
 }
 

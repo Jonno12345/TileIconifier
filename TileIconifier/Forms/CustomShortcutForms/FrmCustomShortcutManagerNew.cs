@@ -231,7 +231,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             if (pctCurrentIcon.Image == null)
             {
-                MessageBox.Show(@"No icon has been selected!", @"Please select an icon", MessageBoxButtons.OK,
+                MessageBox.Show(@"No icon has been selected!", Strings.PleaseSelectAnIcon, MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
                 throw new ValidationFailureException();
             }

@@ -145,17 +145,32 @@
     <EmbeddedResource Include="Controls\TileIconifierPanel.ru.resx">
       <DependentUpon>TileIconifierPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutConfirm.aa.resx">
+      <DependentUpon>FrmCustomShortcutConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutConfirm.ru.resx">
+      <DependentUpon>FrmCustomShortcutConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerAbout.ru.resx">
+      <DependentUpon>FrmCustomShortcutManagerAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerMain.ru.resx">
       <DependentUpon>FrmCustomShortcutManagerMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerNew.ru.resx">
       <DependentUpon>FrmCustomShortcutManagerNew.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\FrmAbout.ru.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\FrmMain.ru.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Shared\FrmException.ru.resx">
       <DependentUpon>FrmException.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Shared\FrmIconSelector.ru.resx">
+      <DependentUpon>FrmIconSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>

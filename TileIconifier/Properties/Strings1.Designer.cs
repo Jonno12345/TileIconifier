@@ -223,6 +223,35 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you wish to remove iconification?.
+        /// </summary>
+        internal static string ConfirmRemoveIconification {
+            get {
+                return ResourceManager.GetString("ConfirmRemoveIconification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Donation.
+        /// </summary>
+        internal static string Donation {
+            get {
+                return ResourceManager.GetString("Donation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Donations for this application will NEVER be required but would be greatly appreciated. This application will ALWAYS be free, open source, and supported to the best of my ability. If you would like to help support me with this and future applications I would be very grateful!
+        ///
+        ///Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?.
+        /// </summary>
+        internal static string DonationNotification {
+            get {
+                return ResourceManager.GetString("DonationNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occurred trying to load this image file! Please try another..
         /// </summary>
         internal static string ErrorLoadingImageFile {
@@ -390,6 +419,15 @@ namespace TileIconifier.Properties {
         internal static string PanPctLine3 {
             get {
                 return ResourceManager.GetString("PanPctLine3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select an icon.
+        /// </summary>
+        internal static string PleaseSelectAnIcon {
+            get {
+                return ResourceManager.GetString("PleaseSelectAnIcon", resourceCulture);
             }
         }
         

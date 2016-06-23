@@ -327,4 +327,18 @@
   <data name="ErrorLoadingImageFile" xml:space="preserve">
     <value>An error occurred trying to load this image file! Please try another.</value>
   </data>
+  <data name="PleaseSelectAnIcon" xml:space="preserve">
+    <value>Please select an icon</value>
+  </data>
+  <data name="DonationNotification" xml:space="preserve">
+    <value>Donations for this application will NEVER be required but would be greatly appreciated. This application will ALWAYS be free, open source, and supported to the best of my ability. If you would like to help support me with this and future applications I would be very grateful!
+
+Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?</value>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>Donation</value>
+  </data>
+  <data name="ConfirmRemoveIconification" xml:space="preserve">
+    <value>Are you sure you wish to remove iconification?</value>
+  </data>
 </root>

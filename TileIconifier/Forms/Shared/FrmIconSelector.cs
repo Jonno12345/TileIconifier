@@ -102,12 +102,6 @@ namespace TileIconifier.Forms.Shared
             BuildListView();
         }
 
-        private void SetUpLocalizedStrings()
-        {
-            btnOk.Text = Properties.Strings.Ok;
-            btnCancel.Text = Properties.Strings.Cancel;
-        }
-
         public static IconSelectorResult GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
         {
             var iconSelector = new FrmIconSelector(defaultPathForIconExtraction);
@@ -267,7 +261,7 @@ namespace TileIconifier.Forms.Shared
                 {
                     if (lvwIcons.SelectedItems.Count != 1)
                     {
-                        MessageBox.Show(@"Please select an icon to use!", @"Select an icon", MessageBoxButtons.OK,
+                        MessageBox.Show(Strings.PleaseSelectAnIcon, Strings.PleaseSelectAnIcon, MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation);
                         return;
                     }

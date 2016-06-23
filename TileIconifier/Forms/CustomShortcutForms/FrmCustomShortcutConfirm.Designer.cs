@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomShortcutConfirm));
             this.txtCustomShortcutName = new System.Windows.Forms.TextBox();
             this.lblCustomShortcutName = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
@@ -37,56 +38,38 @@
             // 
             // txtCustomShortcutName
             // 
-            this.txtCustomShortcutName.Location = new System.Drawing.Point(12, 122);
+            resources.ApplyResources(this.txtCustomShortcutName, "txtCustomShortcutName");
             this.txtCustomShortcutName.Name = "txtCustomShortcutName";
-            this.txtCustomShortcutName.Size = new System.Drawing.Size(261, 20);
-            this.txtCustomShortcutName.TabIndex = 0;
             this.txtCustomShortcutName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomShortcutName_KeyDown);
             // 
             // lblCustomShortcutName
             // 
-            this.lblCustomShortcutName.AutoSize = true;
-            this.lblCustomShortcutName.Location = new System.Drawing.Point(9, 106);
+            resources.ApplyResources(this.lblCustomShortcutName, "lblCustomShortcutName");
             this.lblCustomShortcutName.Name = "lblCustomShortcutName";
-            this.lblCustomShortcutName.Size = new System.Drawing.Size(116, 13);
-            this.lblCustomShortcutName.TabIndex = 1;
-            this.lblCustomShortcutName.Text = "Custom Shortcut Name";
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(12, 148);
+            resources.ApplyResources(this.btnOk, "btnOk");
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 2;
-            this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(198, 148);
+            resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lblCaption
             // 
-            this.lblCaption.AutoSize = true;
-            this.lblCaption.Location = new System.Drawing.Point(12, 9);
-            this.lblCaption.MaximumSize = new System.Drawing.Size(250, 0);
+            resources.ApplyResources(this.lblCaption, "lblCaption");
             this.lblCaption.Name = "lblCaption";
-            this.lblCaption.Size = new System.Drawing.Size(87, 13);
-            this.lblCaption.TabIndex = 4;
-            this.lblCaption.Text = "Placeholder Text";
             // 
             // FrmCustomShortcutConfirm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 179);
             this.ControlBox = false;
             this.Controls.Add(this.lblCaption);
             this.Controls.Add(this.btnCancel);
@@ -95,7 +78,6 @@
             this.Controls.Add(this.txtCustomShortcutName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmCustomShortcutConfirm";
-            this.Text = "Clone As Custom Shortcut?";
             this.Load += new System.EventHandler(this.FrmCustomShortcutConfirm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

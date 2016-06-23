@@ -137,13 +137,13 @@
     <value>Средяя иконка:</value>
   </data>
   <data name="chkUseSameImg.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7.5pt</value>
+    <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="chkUseSameImg.Size" type="System.Drawing.Size, System.Drawing">
     <value>288, 27</value>
   </data>
   <data name="chkUseSameImg.Text" xml:space="preserve">
-    <value>Изменять среднее и маленькое изображение вместе</value>
+    <value>Изменять иконки вместе</value>
   </data>
   <data name="btnReset.Location" type="System.Drawing.Point, System.Drawing">
     <value>232, 230</value>

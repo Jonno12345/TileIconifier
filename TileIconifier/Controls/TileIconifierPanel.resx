@@ -138,7 +138,7 @@
     <value>3, 17</value>
   </data>
   <data name="&gt;&gt;panPctSmallIcon.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6017.29207, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6018.30824, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnColourPicker.Name" xml:space="preserve">
     <value>btnColourPicker</value>
@@ -149,11 +149,8 @@
   <data name="&gt;&gt;lblFGText.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txtBGColour.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelMedium.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6017.29207, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6018.30824, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtBGColour.Name" xml:space="preserve">
     <value>txtBGColour</value>
@@ -164,20 +161,17 @@
   <data name="lblMediumIcon.Text" xml:space="preserve">
     <value>Medium icon:</value>
   </data>
-  <data name="eyedropperColorPicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
   <data name="&gt;&gt;txtBGColour.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.Name" xml:space="preserve">
+    <value>pannablePictureBoxControlPanelSmall</value>
   </data>
   <data name="cmbColour.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 270</value>
   </data>
   <data name="cmbColour.Items5" xml:space="preserve">
     <value>red</value>
-  </data>
-  <data name="btnReset.Text" xml:space="preserve">
-    <value>Reset</value>
   </data>
   <data name="&gt;&gt;chkUseSameImg.Name" xml:space="preserve">
     <value>chkUseSameImg</value>
@@ -243,6 +237,9 @@
   <data name="lblUnsaved.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
   </data>
+  <data name="eyedropperColorPicker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>236, 266</value>
+  </data>
   <data name="cmbColour.Items3" xml:space="preserve">
     <value>white</value>
   </data>
@@ -254,6 +251,9 @@
   </data>
   <data name="radFGDark.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;pnlImages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="lblUnsaved.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt, style=Italic</value>
@@ -269,6 +269,9 @@
   </data>
   <data name="&gt;&gt;radFGLight.Parent" xml:space="preserve">
     <value>pnlFGColour</value>
+  </data>
+  <data name="lblBGColour.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 13</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.Parent" xml:space="preserve">
     <value>pnlImages</value>
@@ -295,7 +298,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6017.29207, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6018.30824, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panPctSmallIcon.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -310,13 +313,16 @@
     <value>Foreground Text (Medium Icon Only)</value>
   </data>
   <data name="&gt;&gt;panPctMediumIcon.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6017.29207, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6018.30824, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cmbColour.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
   </data>
-  <data name="&gt;&gt;pannablePictureBoxControlPanelMedium.Name" xml:space="preserve">
-    <value>pannablePictureBoxControlPanelMedium</value>
+  <data name="lblMediumIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 2</value>
+  </data>
+  <data name="pnlImages.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
   </data>
   <data name="pnlFGColour.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -345,6 +351,9 @@
   <data name="lblMediumIcon.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
   </data>
+  <data name="&gt;&gt;lblUnsaved.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="radFGLight.Text" xml:space="preserve">
     <value>Light</value>
   </data>
@@ -363,11 +372,11 @@
   <data name="radFGDark.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 17</value>
   </data>
-  <data name="chkFGTxtEnabled.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
   <data name="lblSmallIcon.Text" xml:space="preserve">
     <value>Small icon:</value>
+  </data>
+  <data name="&gt;&gt;lblMediumIcon.Name" xml:space="preserve">
+    <value>lblMediumIcon</value>
   </data>
   <data name="panPctMediumIcon.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 100</value>
@@ -399,23 +408,20 @@
   <data name="lblFGText.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 13</value>
   </data>
-  <data name="&gt;&gt;clrDialog.Name" xml:space="preserve">
-    <value>clrDialog</value>
-  </data>
   <data name="lblUnsaved.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
-  <data name="&gt;&gt;pnlImages.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;radFGDark.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="pnlImages.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
+  <data name="eyedropperColorPicker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
   </data>
   <data name="&gt;&gt;pnlImages.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="eyedropperColorPicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 266</value>
+  <data name="pannablePictureBoxControlPanelMedium.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 165</value>
   </data>
   <data name="lblBGColour.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -423,11 +429,11 @@
   <data name="radFGLight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
+  <data name="&gt;&gt;eyedropperColorPicker.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="txtBGColour.MaxLength" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="txtBGColour.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
   </data>
   <data name="chkUseSameImg.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -489,11 +495,8 @@
   <data name="panPctSmallIcon.Location" type="System.Drawing.Point, System.Drawing">
     <value>183, 42</value>
   </data>
-  <data name="eyedropperColorPicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="pnlImages.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="btnColourPicker.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="pnlFGColour.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -510,14 +513,8 @@
   <data name="cmbColour.Items2" xml:space="preserve">
     <value>gray</value>
   </data>
-  <data name="&gt;&gt;lblUnsaved.Name" xml:space="preserve">
-    <value>lblUnsaved</value>
-  </data>
   <data name="&gt;&gt;clrDialog.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblMediumIcon.Parent" xml:space="preserve">
-    <value>pnlImages</value>
   </data>
   <data name="&gt;&gt;lblMediumIcon.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -534,17 +531,20 @@
   <data name="lblUnsaved.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 234</value>
   </data>
+  <data name="&gt;&gt;radFGDark.Name" xml:space="preserve">
+    <value>radFGDark</value>
+  </data>
   <data name="lblBGColour.Text" xml:space="preserve">
     <value>Background Colour</value>
   </data>
-  <data name="pannablePictureBoxControlPanelMedium.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 165</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="lblUnsaved.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pnlImages.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="cmbColour.Items6" xml:space="preserve">
     <value>purple</value>
@@ -552,8 +552,11 @@
   <data name="&gt;&gt;cmbColour.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="&gt;&gt;lblSmallIcon.Name" xml:space="preserve">
+    <value>lblSmallIcon</value>
+  </data>
   <data name="&gt;&gt;eyedropperColorPicker.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.Eyedropper.EyedropColorPicker, TileIconifier, Version=2.2.6017.29207, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.Eyedropper.EyedropColorPicker, TileIconifier, Version=2.2.6018.30824, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cmbColour.Items14" xml:space="preserve">
     <value>teal</value>
@@ -570,8 +573,8 @@
   <data name="chkUseSameImg.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="&gt;&gt;radFGDark.Name" xml:space="preserve">
-    <value>radFGDark</value>
+  <data name="eyedropperColorPicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
   </data>
   <data name="pnlImages.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -597,8 +600,8 @@
   <data name="btnColourPicker.Size" type="System.Drawing.Size, System.Drawing">
     <value>27, 27</value>
   </data>
-  <data name="&gt;&gt;lblSmallIcon.Name" xml:space="preserve">
-    <value>lblSmallIcon</value>
+  <data name="&gt;&gt;lblMediumIcon.Parent" xml:space="preserve">
+    <value>pnlImages</value>
   </data>
   <data name="pannablePictureBoxControlPanelSmall.Location" type="System.Drawing.Point, System.Drawing">
     <value>154, 17</value>
@@ -606,11 +609,11 @@
   <data name="cmbColour.Items15" xml:space="preserve">
     <value>aqua</value>
   </data>
-  <data name="&gt;&gt;radFGDark.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="txtBGColour.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
   </data>
-  <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.Name" xml:space="preserve">
-    <value>pannablePictureBoxControlPanelSmall</value>
+  <data name="&gt;&gt;pannablePictureBoxControlPanelMedium.Name" xml:space="preserve">
+    <value>pannablePictureBoxControlPanelMedium</value>
   </data>
   <data name="radFGDark.Text" xml:space="preserve">
     <value>Dark</value>
@@ -657,23 +660,20 @@
   <data name="pannablePictureBoxControlPanelSmall.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 165</value>
   </data>
-  <data name="lblMediumIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 2</value>
+  <data name="&gt;&gt;txtBGColour.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="txtBGColour.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 270</value>
   </data>
-  <data name="&gt;&gt;eyedropperColorPicker.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="pnlImages.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="lblBGColour.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 13</value>
+  <data name="chkFGTxtEnabled.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="&gt;&gt;lblBGColour.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;chkFGTxtEnabled.Name" xml:space="preserve">
-    <value>chkFGTxtEnabled</value>
   </data>
   <data name="btnReset.Location" type="System.Drawing.Point, System.Drawing">
     <value>236, 230</value>
@@ -684,8 +684,8 @@
   <data name="radFGLight.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;pnlImages.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;chkFGTxtEnabled.Name" xml:space="preserve">
+    <value>chkFGTxtEnabled</value>
   </data>
   <data name="chkUseSameImg.Text" xml:space="preserve">
     <value>Change Medium and Small image together</value>
@@ -693,8 +693,8 @@
   <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;lblMediumIcon.Name" xml:space="preserve">
-    <value>lblMediumIcon</value>
+  <data name="btnReset.Text" xml:space="preserve">
+    <value>Reset</value>
   </data>
   <data name="chkUseSameImg.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 187</value>
@@ -705,8 +705,8 @@
   <data name="&gt;&gt;panPctSmallIcon.Parent" xml:space="preserve">
     <value>pnlImages</value>
   </data>
-  <data name="btnColourPicker.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="&gt;&gt;lblUnsaved.Name" xml:space="preserve">
+    <value>lblUnsaved</value>
   </data>
   <data name="lblBGColour.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 254</value>
@@ -714,11 +714,11 @@
   <data name="panPctMediumIcon.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 17</value>
   </data>
+  <data name="&gt;&gt;clrDialog.Name" xml:space="preserve">
+    <value>clrDialog</value>
+  </data>
   <data name="eyedropperColorPicker.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
-  </data>
-  <data name="&gt;&gt;lblUnsaved.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="txtBGColour.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

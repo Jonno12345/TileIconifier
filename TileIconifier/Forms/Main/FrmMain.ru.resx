@@ -148,6 +148,12 @@
   <data name="lblExePath.Text" xml:space="preserve">
     <value>Расположение файла</value>
   </data>
+  <data name="btnRemove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>699, 379</value>
+  </data>
+  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 21</value>
+  </data>
   <data name="btnRemove.Text" xml:space="preserve">
     <value>Удалить изменения</value>
   </data>
@@ -155,7 +161,7 @@
     <value>109, 21</value>
   </data>
   <data name="btnIconify.Text" xml:space="preserve">
-    <value>Изменить тайл!</value>
+    <value>Изменить плитку!</value>
   </data>
   <data name="lblLnkPath.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 13</value>
@@ -163,23 +169,17 @@
   <data name="lblLnkPath.Text" xml:space="preserve">
     <value>Расположение ярлыка</value>
   </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 22</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Файл</value>
-  </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>Выход</value>
   </data>
-  <data name="preferencesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 22</value>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 22</value>
   </data>
-  <data name="preferencesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Дополнительно</value>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Файл</value>
   </data>
   <data name="customShortcutManagerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>399, 22</value>
@@ -208,11 +208,11 @@
   <data name="checkForUpdateToolStripMenuItem.Text" xml:space="preserve">
     <value>Проверить обновления</value>
   </data>
-  <data name="skinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 22</value>
+  <data name="preferencesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 22</value>
   </data>
-  <data name="skinToolStripMenuItem.Text" xml:space="preserve">
-    <value>Темы</value>
+  <data name="preferencesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Дополнительно</value>
   </data>
   <data name="defaultSkinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 22</value>
@@ -226,6 +226,12 @@
   <data name="darkSkinToolStripMenuItem.Text" xml:space="preserve">
     <value>Тёмная</value>
   </data>
+  <data name="skinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 22</value>
+  </data>
+  <data name="skinToolStripMenuItem.Text" xml:space="preserve">
+    <value>Темы</value>
+  </data>
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 22</value>
   </data>
@@ -238,17 +244,17 @@
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>Помощь</value>
   </data>
+  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 22</value>
+  </data>
+  <data name="russianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 22</value>
+  </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 22</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
     <value>Язык</value>
-  </data>
-  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="russianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
   </data>
   <data name="donateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 22</value>

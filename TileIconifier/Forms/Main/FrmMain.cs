@@ -97,7 +97,7 @@ namespace TileIconifier.Forms
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(@"Are you sure you wish to remove iconification?", Strings.Confirm, MessageBoxButtons.YesNo,
+            if (MessageBox.Show(Strings.ConfirmRemoveIconification, Strings.Confirm, MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
@@ -249,10 +249,8 @@ namespace TileIconifier.Forms
         private void donateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(this,
-                @"Donations for this application will NEVER be required but would be greatly appreciated. This application will ALWAYS be free, open source, and supported to the best of my ability. If you would like to help support me with this and future applications I would be very grateful!
-
-Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?",
-                @"Donation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                Strings.DonationNotification,
+                Strings.Donation, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 Process.Start("https://www.paypal.me/Jonno12345");
             }
