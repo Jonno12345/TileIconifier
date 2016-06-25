@@ -114,7 +114,7 @@ namespace TileIconifier.Core.Shortcut
             get
             {
                 if (string.IsNullOrEmpty(_targetFilePath))
-                    _targetFilePath = ShortcutUtils.ResolveShortcut(ShortcutFileInfo.FullName);
+                    _targetFilePath = ShortcutUtils.GetTargetPath(ShortcutFileInfo.FullName);
                 return
                     Environment.ExpandEnvironmentVariables("%PATHEXT%").Split(';').Any(
                         e =>

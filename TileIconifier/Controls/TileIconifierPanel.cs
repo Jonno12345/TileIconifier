@@ -406,10 +406,10 @@ namespace TileIconifier.Controls
                 return;
 
             var contextMenu = new ContextMenu();
-            var menuItem = new MenuItem("Change image...",
+            var menuItem = new MenuItem(Strings.ChangeImage,
                 (o, args) => { IconSet(panPctMediumIcon); });
             contextMenu.MenuItems.Add(menuItem);
-            menuItem = new MenuItem("Center image",
+            menuItem = new MenuItem(Strings.CentreImage,
                 (o, args) => { panPctMediumIcon.CenterImage(); });
             contextMenu.MenuItems.Add(menuItem);
             contextMenu.Show(panPctMediumIcon, ((MouseEventArgs)e).Location);

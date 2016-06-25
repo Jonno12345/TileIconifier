@@ -29,13 +29,14 @@
 
 using System;
 using System.Collections.Generic;
+using TileIconifier.Core.Utilities;
 
 namespace TileIconifier.Core.Custom
 {
     public static class CustomShortcutGetters
     {
         public static string CustomShortcutVbsPath
-            => Environment.ExpandEnvironmentVariables(@"%PROGRAMDATA%\TileIconify\");
+            => IoUtils.ProgramDataPath;
 
         public static string CustomShortcutCurrentUserPath => Environment.ExpandEnvironmentVariables(
             @"%APPDATA%\Microsoft\Windows\Start Menu\Programs\TileIconify\Custom Shortcuts\");

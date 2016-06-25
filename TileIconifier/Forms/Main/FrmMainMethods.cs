@@ -38,6 +38,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
+using TileIconifier.Core;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.TileIconify;
 using TileIconifier.Core.Utilities;
@@ -55,7 +56,7 @@ namespace TileIconifier.Forms
     {
         private void StartFullUpdate()
         {
-            FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, Strings.Refreshing);
+            FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, Strings.Refreshing, true);
         }
 
         private void FullUpdate(object sender, DoWorkEventArgs e)
@@ -257,6 +258,8 @@ namespace TileIconifier.Forms
         protected virtual void OnLanguageChangedEvent(string newculture)
         {
             LanguageChangedEvent?.Invoke(this, newculture);
+            Config.Instance.LocaleToUse = newculture;
+            Config.Instance.SaveConfig();
         }
 
         private void LanguageToolStripMenuClick(object sender, EventArgs e)

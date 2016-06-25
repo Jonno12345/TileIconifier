@@ -117,16 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblTileIconifier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pctLogo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="rtxtAbout.Text" xml:space="preserve">
     <value>Простая утилита создания плиток для ваших ярлыков в Windows 8.1 и Windows 10 Сборки 10586 и выше.
 
@@ -134,6 +124,9 @@
 Логотип предоставлен @AdamDesrosiers разработчиком XDA.
 
 Источник доступен по ссылке https://github.com/Jonno12345/TileIconify
+
+Перевод:
+Русский - Zik (https://github.com/Zik)
 
 В программе используется библиотека IconExtractor разработанная Tsuda Kageyu, доступна по ссылке https://github.com/TsudaKageyu/IconExtractor в соответствии со следующим авторским правом:
 
@@ -143,7 +136,7 @@
 Исходный код Eyedropper (пипетка), изменённый jkristia @ доступен по ссылке http://www.codeproject.com/Articles/21965/Color-Picker-with-Color-Wheel-and-Eye-Dropper
 
 
-Текущая версия: [@@CURVER@@]
+Текущая версия: v[@@CURVER@@]
 
 This software is licenced as follows: 
 
@@ -616,8 +609,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         QmCC
 </value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+    <value>Inherit</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>О TileIconifier</value>

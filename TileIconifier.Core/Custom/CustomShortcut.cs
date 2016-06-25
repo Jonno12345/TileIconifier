@@ -134,6 +134,16 @@ namespace TileIconifier.Core.Custom
         {
             VbsFilePath = VbsFolderPath + ShortcutName + ".vbs";
 
+            var targetDir = "";
+            try
+            {
+                targetDir = $@"{new FileInfo(TargetPath).Directory?.FullName}\".EscapeVba();
+            }
+            catch
+            {
+                //ignore
+            }
+
             File.WriteAllText(VbsFilePath,
                 string.Format(Resources.CustomShortcutVbsTemplate,
                     ShortcutName.EscapeVba(),
@@ -142,7 +152,7 @@ namespace TileIconifier.Core.Custom
                     TargetArguments.EscapeVba(),
                     ShortcutType,
                     (int)WindowType,
-                    $@"{new FileInfo(TargetPath).Directory?.FullName}\".EscapeVba()
+                    targetDir
                     ), Encoding.Unicode);
 
             ShortcutUtils.CreateLnkFile(ShortcutItem.ShortcutFileInfo.FullName, VbsFilePath,

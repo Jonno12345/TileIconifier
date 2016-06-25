@@ -59,8 +59,8 @@ namespace TileIconifier
         [STAThread]
         private static void Main()
         {
-            //culture!
-            //Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ru-RU");
+            SetUpLanguageFromConfig();
+
             try
             {
                 if (!IsAdministrator())
@@ -92,6 +92,18 @@ namespace TileIconifier
                 _fm = new FrmMain();
                 _fm.LanguageChangedEvent += main_LanugageChangedEvent;
                 Application.Run(_fm);
+            }
+        }
+
+        private static void SetUpLanguageFromConfig()
+        {
+            try
+            {
+                main_LanugageChangedEvent(null, Config.Instance.LocaleToUse);
+            }
+            catch
+            {
+                //ignore
             }
         }
 
@@ -136,7 +148,7 @@ namespace TileIconifier
             Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(newCulture);
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(newCulture);
             _doNotExit = true;
-            _fm.Close();
+            _fm?.Close();
         }
     }
 }
