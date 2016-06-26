@@ -226,7 +226,7 @@
     <value>Выбранная папка пуста (папка должна содержать подпапку "steamapps"), повторите попытку или отмените.</value>
   </data>
   <data name="SelectSteamLibraryPath" xml:space="preserve">
-    <value>Выберите папку с библиотекой Steam (это папка, содержащая папку "steamapps")</value>
+    <value>Выберите папку с библиотекой Steam (это должна быть папка, содержащая папку "steamapps")</value>
   </data>
   <data name="AreYouSure" xml:space="preserve">
     <value>Вы уверены?</value>
@@ -238,7 +238,7 @@
     <value>Вы уверены, что хотите удалить пользовательский ярлык для {0}?</value>
   </data>
   <data name="QuickBuildExplanation" xml:space="preserve">
-    <value>Это создаст пользовательский ярлык с теми же параметрами, как и у {0}. Это полезно для плиток, которые не работают по умолчанию (например, Microsoft Office и Mozilla Firefox). Пожалуйста, подтвердите имя для нового ярлыка (можно использовать имя как и у оригинала).</value>
+    <value>Это создаст пользовательский ярлык с теми же параметрами, как и у {0}. Это пригодится для плиток, которые не работают по умолчанию (например, Microsoft Office и Mozilla Firefox). Пожалуйста, подтвердите имя для нового ярлыка (можно использовать имя как и у оригинала).</value>
   </data>
   <data name="ShortcutCreated" xml:space="preserve">
     <value>Ярлык создан!</value>
@@ -250,7 +250,7 @@
     <value>Не удалось очистить ярлыки.</value>
   </data>
   <data name="UsesPowershell" xml:space="preserve">
-    <value>Примечание - Эта функция использует PowerShell и может занять немного больше времени для обновления. Продолжить?</value>
+    <value>Примечание - Эта функция использует PowerShell и может занять немного больше времени для обновления списка. Продолжить?</value>
   </data>
   <data name="AlreadyLatest" xml:space="preserve">
     <value>У вас самая посленяя версия!</value>
@@ -343,7 +343,7 @@
     <value>Иконка не была выбрана!</value>
   </data>
   <data name="TargetPathIsEmpty" xml:space="preserve">
-    <value>Конечная папка пустая!</value>
+    <value>Конечная папка пуста!</value>
   </data>
   <data name="IssueWithImageSelected" xml:space="preserve">
     <value>Возникла проблема с выбранным изображением. Пожалуйста, загрузите иконку снова или попробуйте другую.</value>
@@ -352,21 +352,21 @@
     <value>Ошибка иконки</value>
   </data>
   <data name="InvalidCharactersOrInvalidShortcutName" xml:space="preserve">
-    <value>Недопустимые символы или недопустимое имя ярлыка!</value>
+    <value>Недопустимые символы или имя ярлыка!</value>
   </data>
   <data name="SelectAFolder" xml:space="preserve">
-    <value>Выбрать папку</value>
+    <value>Выберите папку</value>
   </data>
   <data name="ForegroundColourChange" xml:space="preserve">
     <value>Изменить внешний цвет</value>
   </data>
   <data name="ForegroundColourChangeExplain" xml:space="preserve">
-    <value>Внешний цвет меняется не всегда сразу. Если этого не произошло, попробуйте открепить и снова закрепить ярлык.</value>
+    <value>Внешний цвет меняется не всегда сразу. Если он не изменился, попробуйте открепить и снова закрепить ярлык.</value>
   </data>
   <data name="UnableToClearUpShortcuts" xml:space="preserve">
     <value>Не удалось очистить ярлыки.</value>
   </data>
   <data name="UnableToFindChromeInstallationPath" xml:space="preserve">
-    <value>Не удается найти путь установки Chrome!</value>
+    <value>Не удается найти путь установленного Chrome!</value>
   </data>
 </root>

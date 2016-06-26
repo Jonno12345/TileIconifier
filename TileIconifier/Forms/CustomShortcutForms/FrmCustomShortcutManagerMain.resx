@@ -124,21 +124,12 @@
   <data name="&gt;&gt;aboutToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lstCustomShortcuts.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
   <data name="&gt;&gt;lstCustomShortcuts.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnCreateNewShortcut.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 38</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Custom Shortcut Manager</value>
-  </data>
-  <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
-    <value>aboutToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;btnCreateNewShortcut.Name" xml:space="preserve">
     <value>btnCreateNewShortcut</value>
@@ -147,7 +138,7 @@
     <value>52, 20</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6018.21287, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6021.23420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnGotoShortcut.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -179,9 +170,6 @@
   <data name="&gt;&gt;btnDeleteCustomShortcut.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnDeleteCustomShortcut.Text" xml:space="preserve">
-    <value>Delete Custom Shortcut</value>
-  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>623, 285</value>
   </data>
@@ -195,7 +183,10 @@
     <value>3</value>
   </data>
   <data name="&gt;&gt;lstCustomShortcuts.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6018.21287, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6021.23420, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="btnCreateNewShortcut.Text" xml:space="preserve">
+    <value>Create New Shortcut</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnDeleteCustomShortcut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -222,11 +213,14 @@
   <data name="btnDeleteCustomShortcut.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="btnCreateNewShortcut.Text" xml:space="preserve">
-    <value>Create New Shortcut</value>
+  <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
+    <value>aboutToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;btnGotoShortcut.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="btnGotoShortcut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="btnDeleteCustomShortcut.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 38</value>
@@ -237,8 +231,11 @@
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>623, 24</value>
   </data>
-  <data name="&gt;&gt;btnCreateNewShortcut.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;btnGotoShortcut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnDeleteCustomShortcut.Text" xml:space="preserve">
+    <value>Delete Custom Shortcut</value>
   </data>
   <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -249,8 +246,11 @@
   <data name="&gt;&gt;btnDeleteCustomShortcut.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;btnGotoShortcut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lstCustomShortcuts.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="btnCreateNewShortcut.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -264,11 +264,11 @@
   <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
     <value>menuStrip1</value>
   </data>
-  <data name="btnGotoShortcut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Custom Shortcut Manager</value>
   </data>
-  <data name="btnCreateNewShortcut.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;btnCreateNewShortcut.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FrmCustomShortcutManagerMain</value>

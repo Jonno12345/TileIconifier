@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="rtxtAbout.Text" xml:space="preserve">
-    <value>Простая утилита создания плиток для ваших ярлыков в Windows 8.1 и Windows 10 Сборки 10586 и выше.
+    <value>Простая утилита, чтобы создавать плитки и предавать новый вид вашим ярлыкам для Windows 8.1 и Windows 10 сборки 10586 и выше.
 
 Создана Jonno @ Superuser - http://superuser.com/users/536125
 Логотип предоставлен @AdamDesrosiers разработчиком XDA.
@@ -608,10 +608,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         YoRJAAgxwiQAhBhhEgBCjDAJACFGmASAECNMAkCIESYBIMQIkwAQYoT9f7ftZAJhrfdEAAAAAElFTkSu
         QmCC
 </value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>О TileIconifier</value>

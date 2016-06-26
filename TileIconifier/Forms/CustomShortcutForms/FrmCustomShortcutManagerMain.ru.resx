@@ -122,10 +122,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 20</value>
+    <value>115, 20</value>
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>О программе</value>
+    <value>Об этой функции</value>
   </data>
   <data name="btnDeleteCustomShortcut.Text" xml:space="preserve">
     <value>Удалить выбранный ярлык</value>
