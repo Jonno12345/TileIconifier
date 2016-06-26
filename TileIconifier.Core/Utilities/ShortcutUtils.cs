@@ -27,11 +27,11 @@
 
 #endregion
 
-using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using IWshRuntimeLibrary;
+using TileIconifier.Core.Properties;
 using File = System.IO.File;
 
 namespace TileIconifier.Core.Utilities
@@ -107,7 +107,7 @@ namespace TileIconifier.Core.Utilities
 
         public static void CreateUrlFile(string path, string target)
         {
-            File.WriteAllText(path, string.Format(Properties.Resources.UrlFileTemplate, target));
+            File.WriteAllText(path, string.Format(Resources.UrlFileTemplate, target));
         }
 
         private static string ResolveMsiShortcut(string file)
