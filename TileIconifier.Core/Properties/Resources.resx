@@ -145,4 +145,8 @@ WshShell.Run targetPath &amp; " " &amp; targetArguments, {5}</value>
   <data name="SteamIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Steam.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="UrlFileTemplate" xml:space="preserve">
+    <value>[InternetShortcut]
+URL={0}</value>
+  </data>
 </root>

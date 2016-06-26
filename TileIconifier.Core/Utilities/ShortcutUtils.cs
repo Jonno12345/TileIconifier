@@ -32,6 +32,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using IWshRuntimeLibrary;
+using File = System.IO.File;
 
 namespace TileIconifier.Core.Utilities
 {
@@ -102,6 +103,11 @@ namespace TileIconifier.Core.Utilities
             shortcut.WorkingDirectory = workingDirectory ?? new FileInfo(targetPath).Directory?.FullName;
             shortcut.IconLocation = iconPath ?? targetPath;
             shortcut.Save();
+        }
+
+        public static void CreateUrlFile(string path, string target)
+        {
+            File.WriteAllText(path, string.Format(Properties.Resources.UrlFileTemplate, target));
         }
 
         private static string ResolveMsiShortcut(string file)

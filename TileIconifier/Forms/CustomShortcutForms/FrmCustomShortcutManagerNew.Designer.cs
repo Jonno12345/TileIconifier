@@ -71,6 +71,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.lblOtherTargetPath = new System.Windows.Forms.Label();
             this.btnOtherTargetBrowse = new System.Windows.Forms.Button();
             this.txtOtherTargetPath = new System.Windows.Forms.TextBox();
+            this.tabURI = new System.Windows.Forms.TabPage();
+            this.lblUriExplain = new System.Windows.Forms.Label();
+            this.lblUriString = new System.Windows.Forms.Label();
+            this.txtUriString = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pctCurrentIcon)).BeginInit();
             this.tabShortcutType.SuspendLayout();
             this.tabExplorer.SuspendLayout();
@@ -79,11 +83,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabChromeApps.SuspendLayout();
             this.tabWindowsStore.SuspendLayout();
             this.tabOther.SuspendLayout();
+            this.tabURI.SuspendLayout();
             this.SuspendLayout();
             // 
             // fldBrowser
             // 
-            resources.ApplyResources(this.fldBrowser, "fldBrowser");
             this.fldBrowser.ShowNewFolderButton = false;
             // 
             // opnSteamExe
@@ -143,6 +147,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabShortcutType.Controls.Add(this.tabSteam);
             this.tabShortcutType.Controls.Add(this.tabChromeApps);
             this.tabShortcutType.Controls.Add(this.tabWindowsStore);
+            this.tabShortcutType.Controls.Add(this.tabURI);
             this.tabShortcutType.Controls.Add(this.tabOther);
             this.tabShortcutType.Name = "tabShortcutType";
             this.tabShortcutType.SelectedIndex = 0;
@@ -150,8 +155,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabExplorer
             // 
-            resources.ApplyResources(this.tabExplorer, "tabExplorer");
             this.tabExplorer.Controls.Add(this.pnlExplorer);
+            resources.ApplyResources(this.tabExplorer, "tabExplorer");
             this.tabExplorer.Name = "tabExplorer";
             this.tabExplorer.UseVisualStyleBackColor = true;
             // 
@@ -187,8 +192,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // radSpecialFolder
             // 
-            resources.ApplyResources(this.radSpecialFolder, "radSpecialFolder");
             this.radSpecialFolder.Checked = true;
+            resources.ApplyResources(this.radSpecialFolder, "radSpecialFolder");
             this.radSpecialFolder.Name = "radSpecialFolder";
             this.radSpecialFolder.TabStop = true;
             this.radSpecialFolder.UseVisualStyleBackColor = true;
@@ -204,7 +209,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabSteam
             // 
-            resources.ApplyResources(this.tabSteam, "tabSteam");
             this.tabSteam.Controls.Add(this.btnSteamLibrariesPath);
             this.tabSteam.Controls.Add(this.btnSteamExeChange);
             this.tabSteam.Controls.Add(this.btnSteamInstallationChange);
@@ -212,6 +216,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabSteam.Controls.Add(this.txtSteamExecutablePath);
             this.tabSteam.Controls.Add(this.txtSteamLibraryPaths);
             this.tabSteam.Controls.Add(this.lstSteamGames);
+            resources.ApplyResources(this.tabSteam, "tabSteam");
             this.tabSteam.Name = "tabSteam";
             this.tabSteam.UseVisualStyleBackColor = true;
             // 
@@ -273,12 +278,12 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabChromeApps
             // 
-            resources.ApplyResources(this.tabChromeApps, "tabChromeApps");
             this.tabChromeApps.Controls.Add(this.lstChromeAppItems);
             this.tabChromeApps.Controls.Add(this.btnChromeAppPathChange);
             this.tabChromeApps.Controls.Add(this.txtChromeAppPath);
             this.tabChromeApps.Controls.Add(this.btnChromeExePathChange);
             this.tabChromeApps.Controls.Add(this.txtChromeExePath);
+            resources.ApplyResources(this.tabChromeApps, "tabChromeApps");
             this.tabChromeApps.Name = "tabChromeApps";
             this.tabChromeApps.UseVisualStyleBackColor = true;
             // 
@@ -325,8 +330,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabWindowsStore
             // 
-            resources.ApplyResources(this.tabWindowsStore, "tabWindowsStore");
             this.tabWindowsStore.Controls.Add(this.lstWindowsStoreApps);
+            resources.ApplyResources(this.tabWindowsStore, "tabWindowsStore");
             this.tabWindowsStore.Name = "tabWindowsStore";
             this.tabWindowsStore.UseVisualStyleBackColor = true;
             // 
@@ -343,12 +348,12 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabOther
             // 
-            resources.ApplyResources(this.tabOther, "tabOther");
             this.tabOther.Controls.Add(this.lblOtherShortcutArguments);
             this.tabOther.Controls.Add(this.txtOtherShortcutArguments);
             this.tabOther.Controls.Add(this.lblOtherTargetPath);
             this.tabOther.Controls.Add(this.btnOtherTargetBrowse);
             this.tabOther.Controls.Add(this.txtOtherTargetPath);
+            resources.ApplyResources(this.tabOther, "tabOther");
             this.tabOther.Name = "tabOther";
             this.tabOther.UseVisualStyleBackColor = true;
             // 
@@ -381,10 +386,34 @@ namespace TileIconifier.Forms.CustomShortcutForms
             resources.ApplyResources(this.txtOtherTargetPath, "txtOtherTargetPath");
             this.txtOtherTargetPath.Name = "txtOtherTargetPath";
             // 
+            // tabURI
+            // 
+            this.tabURI.Controls.Add(this.txtUriString);
+            this.tabURI.Controls.Add(this.lblUriString);
+            this.tabURI.Controls.Add(this.lblUriExplain);
+            resources.ApplyResources(this.tabURI, "tabURI");
+            this.tabURI.Name = "tabURI";
+            this.tabURI.UseVisualStyleBackColor = true;
+            // 
+            // lblUriExplain
+            // 
+            resources.ApplyResources(this.lblUriExplain, "lblUriExplain");
+            this.lblUriExplain.Name = "lblUriExplain";
+            // 
+            // lblUriString
+            // 
+            resources.ApplyResources(this.lblUriString, "lblUriString");
+            this.lblUriString.Name = "lblUriString";
+            // 
+            // txtUriString
+            // 
+            resources.ApplyResources(this.txtUriString, "txtUriString");
+            this.txtUriString.Name = "txtUriString";
+            // 
             // FrmCustomShortcutManagerNew
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.radShortcutLocation);
             this.Controls.Add(this.txtShortcutName);
             this.Controls.Add(this.lblShortcutName);
@@ -407,6 +436,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabWindowsStore.ResumeLayout(false);
             this.tabOther.ResumeLayout(false);
             this.tabOther.PerformLayout();
+            this.tabURI.ResumeLayout(false);
+            this.tabURI.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -454,5 +485,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private System.Windows.Forms.TabPage tabWindowsStore;
         private SortableListView lstWindowsStoreApps;
         private System.Windows.Forms.OpenFileDialog opnChromeExe;
+        private System.Windows.Forms.TabPage tabURI;
+        private System.Windows.Forms.TextBox txtUriString;
+        private System.Windows.Forms.Label lblUriString;
+        private System.Windows.Forms.Label lblUriExplain;
     }
 }
