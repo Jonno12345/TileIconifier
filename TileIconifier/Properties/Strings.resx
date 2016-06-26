@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlignBottom" xml:space="preserve">
+    <value>Align Bottom</value>
+  </data>
+  <data name="AlignCentre" xml:space="preserve">
+    <value>Align Centre</value>
+  </data>
+  <data name="AlignImage" xml:space="preserve">
+    <value>Align Image</value>
+  </data>
+  <data name="AlignLeft" xml:space="preserve">
+    <value>Align Left</value>
+  </data>
+  <data name="AlignRight" xml:space="preserve">
+    <value>Align Right</value>
+  </data>
+  <data name="AlignTop" xml:space="preserve">
+    <value>Align Top</value>
+  </data>
+  <data name="AlignXMiddle" xml:space="preserve">
+    <value>Align X Middle</value>
+  </data>
+  <data name="AlignYMiddle" xml:space="preserve">
+    <value>Align Y Middle</value>
+  </data>
+  <data name="AppId" xml:space="preserve">
+    <value>App Id</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>App Name</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ChangeImage" xml:space="preserve">
+    <value>Change Image</value>
+  </data>
+  <data name="GameName" xml:space="preserve">
+    <value>Game Name</value>
+  </data>
+  <data name="IsCustom" xml:space="preserve">
+    <value>Is Custom</value>
+  </data>
+  <data name="IsIconified" xml:space="preserve">
+    <value>Is Iconified</value>
+  </data>
+  <data name="IsPinned" xml:space="preserve">
+    <value>Is Pinned</value>
+  </data>
+  <data name="NudgeDown" xml:space="preserve">
+    <value>Nudge Down</value>
+  </data>
+  <data name="NudgeLeft" xml:space="preserve">
+    <value>Nudge Left</value>
+  </data>
+  <data name="NudgeRight" xml:space="preserve">
+    <value>Nudge Right</value>
+  </data>
+  <data name="NudgeUp" xml:space="preserve">
+    <value>Nudge Up</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="ShortcutName" xml:space="preserve">
+    <value>Shortcut Name</value>
+  </data>
+  <data name="ShortcutType" xml:space="preserve">
+    <value>Shortcut Type</value>
+  </data>
+  <data name="ShortcutUser" xml:space="preserve">
+    <value>Shortcut User</value>
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="ChromeExtensionsFolder" xml:space="preserve">
+    <value>Select your Chrome `Extensions` folder</value>
+  </data>
+  <data name="SteamExecutablePath" xml:space="preserve">
+    <value>Steam executable path</value>
+  </data>
+  <data name="SteamExecutablePathNotFound" xml:space="preserve">
+    <value>Steam executable path not found!!!</value>
+  </data>
+  <data name="SteamInstallationPath" xml:space="preserve">
+    <value>Steam installation path</value>
+  </data>
+  <data name="SteamInstallationPathNotFound" xml:space="preserve">
+    <value>Steam installation path not found!!!</value>
+  </data>
+  <data name="SteamLibraryFolders" xml:space="preserve">
+    <value>Steam library folders</value>
+  </data>
+  <data name="SteamLibraryFoldersNotFound" xml:space="preserve">
+    <value>Steam library paths not found!!!</value>
+  </data>
+  <data name="SelectSteamInstallationPath" xml:space="preserve">
+    <value>Select the folder containing your Steam installation</value>
+  </data>
+  <data name="FileCouldNotBeFound" xml:space="preserve">
+    <value>File could not be found</value>
+  </data>
+  <data name="InvalidSteamLibraryPath" xml:space="preserve">
+    <value>Selected folder is invalid (valid folders should contain a subfolder named "steamapps"), please try again or cancel.</value>
+  </data>
+  <data name="SelectSteamLibraryPath" xml:space="preserve">
+    <value>Select a folder containing your Steam library (This will be a folder containing a "steamapps" folder)</value>
+  </data>
+  <data name="QuickBuildExplanation" xml:space="preserve">
+    <value>This will create a custom shortcut with the same parameters as {0}. This is useful for tiles that don't work by default (Such as Microsoft Office and Mozilla Firefox). Please confirm the name for the new shortcut (The same name as the original is not a problem)</value>
+  </data>
+  <data name="ShortcutCreatedNeedsPinning" xml:space="preserve">
+    <value>A shortcut for {0} has been created in your start menu under TileIconify. The item will need to be pinned manually.</value>
+  </data>
+  <data name="UsesPowershell" xml:space="preserve">
+    <value>Note- This feature uses Powershell and may take slightly longer to refresh. Continue?</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ShortcutCreated" xml:space="preserve">
+    <value>Shortcut created!</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="ConfirmDeleteCustomShortcut" xml:space="preserve">
+    <value>Are you sure you wish to delete the custom shortcut for {0}?</value>
+  </data>
+  <data name="UnableToClearShortcuts" xml:space="preserve">
+    <value>Unable to clear up shortcuts.</value>
+  </data>
+  <data name="WindowsBefore81" xml:space="preserve">
+    <value>You are on a version of Windows earlier than 8.1, changes might not take any effect.</value>
+  </data>
+  <data name="WindowsTooEarly" xml:space="preserve">
+    <value>Windows version too early</value>
+  </data>
+  <data name="WrongBuildWindows10" xml:space="preserve">
+    <value>You are running Windows 10, but not on or above Build 10586. The program will run, but some changes may not take effect.</value>
+  </data>
+  <data name="BuildTooEarly" xml:space="preserve">
+    <value>Build Too Early</value>
+  </data>
+  <data name="IncorrectPlatformFull" xml:space="preserve">
+    <value>You are running as a 32-bit process within a 64-bit operating system. Certain functionality, such as powershell, may not work correctly.</value>
+  </data>
+  <data name="IncorrectPlatform" xml:space="preserve">
+    <value>Incorrect Platform</value>
+  </data>
+  <data name="RunAsAdminFull" xml:space="preserve">
+    <value>You must run this application as an Administrator!</value>
+  </data>
+  <data name="RunAsAdmin" xml:space="preserve">
+    <value>Run as Administrator</value>
+  </data>
+  <data name="VerifyAdminFull" xml:space="preserve">
+    <value>An error occurred detecting administrator state. Please verify you are running as an administrator, or issues may occur.</value>
+  </data>
+  <data name="VerifyAdmin" xml:space="preserve">
+    <value>Verify Administrator</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="PanPctLine1" xml:space="preserve">
+    <value>Double</value>
+  </data>
+  <data name="PanPctLine2" xml:space="preserve">
+    <value>Click</value>
+  </data>
+  <data name="PanPctLine3" xml:space="preserve">
+    <value>Me</value>
+  </data>
+  <data name="Refreshing" xml:space="preserve">
+    <value>Refreshing</value>
+  </data>
+  <data name="UpToDate" xml:space="preserve">
+    <value>Up to date</value>
+  </data>
+  <data name="AlreadyLatest" xml:space="preserve">
+    <value>You are already on the latest version!</value>
+  </data>
+  <data name="UpdateAvailableFull" xml:space="preserve">
+    <value>An update is available! Would you like to visit the releases page? (Your version: {0} - Latest version: {1})</value>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>New version available!</value>
+  </data>
+  <data name="UpdateAvailableError" xml:space="preserve">
+    <value>An error occurred getting latest release information. Click Ok to visit the latest releases page to check manually. (Your version: {0})</value>
+  </data>
+  <data name="UnableToCheckServer" xml:space="preserve">
+    <value>Unable to check server!</value>
+  </data>
+  <data name="PowershellErrorFull" xml:space="preserve">
+    <value>A problem occurred with PowerShell functionality. It has been disabled.</value>
+  </data>
+  <data name="PowershellFailure" xml:space="preserve">
+    <value>PowerShell failure</value>
+  </data>
+  <data name="ErrorLoadingImageFile" xml:space="preserve">
+    <value>An error occurred trying to load this image file! Please try another.</value>
+  </data>
+  <data name="PleaseSelectAnIcon" xml:space="preserve">
+    <value>Please select an icon</value>
+  </data>
+  <data name="DonationNotification" xml:space="preserve">
+    <value>Donations for this application will NEVER be required but would be greatly appreciated. This application will ALWAYS be free, open source, and supported to the best of my ability. If you would like to help support me with this and future applications I would be very grateful!
+
+Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?</value>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>Donation</value>
+  </data>
+  <data name="ConfirmRemoveIconification" xml:space="preserve">
+    <value>Are you sure you wish to remove iconification?</value>
+  </data>
+  <data name="CentreImage" xml:space="preserve">
+    <value>Centre Image</value>
+  </data>
+  <data name="NoIconHasBeenSelected" xml:space="preserve">
+    <value>No icon has been selected!</value>
+  </data>
+  <data name="TargetPathIsEmpty" xml:space="preserve">
+    <value>Target path is empty!</value>
+  </data>
+  <data name="IssueWithImageSelected" xml:space="preserve">
+    <value>An issue occurred with the image selected. Please load the icon again or try another.</value>
+  </data>
+  <data name="IconError" xml:space="preserve">
+    <value>Icon error</value>
+  </data>
+  <data name="InvalidCharactersOrInvalidShortcutName" xml:space="preserve">
+    <value>Invalid characters or invalid shortcut name!</value>
+  </data>
+  <data name="SelectAFolder" xml:space="preserve">
+    <value>Select a folder</value>
+  </data>
+  <data name="ForegroundColourChangeExplain" xml:space="preserve">
+    <value>Foreground colour changes don't always instantly apply. If this change hasn't applied, try unpinning and repinning the shortcut.</value>
+  </data>
+  <data name="ForegroundColourChange" xml:space="preserve">
+    <value>Foreground Colour Change</value>
+  </data>
+  <data name="UnableToClearUpShortcuts" xml:space="preserve">
+    <value>Unable to clear up shortcuts.</value>
+  </data>
+  <data name="UnableToFindChromeInstallationPath" xml:space="preserve">
+    <value>Unable to find Chrome installation path!</value>
+  </data>
+</root>

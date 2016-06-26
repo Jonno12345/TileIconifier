@@ -48,7 +48,7 @@ namespace TileIconifier.Forms.Shared
 
         public void WorkCompleted()
         {
-            Close();
+            Invoke(new Action(Close));
         }
 
         /// <summary>

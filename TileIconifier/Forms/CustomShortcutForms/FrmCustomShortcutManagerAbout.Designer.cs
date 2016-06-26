@@ -34,26 +34,20 @@
             // 
             // rtxtHelp
             // 
-            this.rtxtHelp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtHelp.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.rtxtHelp, "rtxtHelp");
             this.rtxtHelp.Name = "rtxtHelp";
             this.rtxtHelp.ReadOnly = true;
-            this.rtxtHelp.Size = new System.Drawing.Size(637, 238);
-            this.rtxtHelp.TabIndex = 1;
-            this.rtxtHelp.Text = resources.GetString("rtxtHelp.Text");
             this.rtxtHelp.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtHelp_LinkClicked);
             // 
             // FrmCustomShortcutManagerHelp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(637, 238);
             this.Controls.Add(this.rtxtHelp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCustomShortcutManagerHelp";
-            this.Text = "Custom Shortcut Manager - About";
             this.Load += new System.EventHandler(this.frmHelp_Load);
             this.ResumeLayout(false);
 

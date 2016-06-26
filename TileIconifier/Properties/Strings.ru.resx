@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlignBottom" xml:space="preserve">
+    <value>Выровнять по нижнему краю</value>
+  </data>
+  <data name="AlignCentre" xml:space="preserve">
+    <value>Выровнять по центру</value>
+  </data>
+  <data name="AlignImage" xml:space="preserve">
+    <value>Выровнять изображение</value>
+  </data>
+  <data name="AlignLeft" xml:space="preserve">
+    <value>Выровнять по левому краю</value>
+  </data>
+  <data name="AlignRight" xml:space="preserve">
+    <value>Выровнять по правому краю</value>
+  </data>
+  <data name="AlignTop" xml:space="preserve">
+    <value>Выровнять по верхнему краю</value>
+  </data>
+  <data name="AlignXMiddle" xml:space="preserve">
+    <value>Выровнять по центру оси-X</value>
+  </data>
+  <data name="AlignYMiddle" xml:space="preserve">
+    <value>Выровнять по центру оси-Y</value>
+  </data>
+  <data name="AppId" xml:space="preserve">
+    <value>ID приложения</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Название приложения</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="ChangeImage" xml:space="preserve">
+    <value>Изменить изображение</value>
+  </data>
+  <data name="ChromeExtensionsFolder" xml:space="preserve">
+    <value>Выберите папку 'Extensions' в папке с Chrome</value>
+  </data>
+  <data name="GameName" xml:space="preserve">
+    <value>Название игры</value>
+  </data>
+  <data name="IsCustom" xml:space="preserve">
+    <value>Пользовательский</value>
+  </data>
+  <data name="IsIconified" xml:space="preserve">
+    <value>Изменён</value>
+  </data>
+  <data name="IsPinned" xml:space="preserve">
+    <value>Закреплён</value>
+  </data>
+  <data name="NudgeDown" xml:space="preserve">
+    <value>Сдвинуть вниз</value>
+  </data>
+  <data name="NudgeLeft" xml:space="preserve">
+    <value>Сдвинуть влево</value>
+  </data>
+  <data name="NudgeRight" xml:space="preserve">
+    <value>Сдвинуть вправо</value>
+  </data>
+  <data name="NudgeUp" xml:space="preserve">
+    <value>Сдвинуть вверх</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="ShortcutName" xml:space="preserve">
+    <value>Имя ярлыка</value>
+  </data>
+  <data name="ShortcutType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="ShortcutUser" xml:space="preserve">
+    <value>Пользователь</value>
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>Приблизить</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>Отдалить</value>
+  </data>
+  <data name="SteamExecutablePath" xml:space="preserve">
+    <value>Исполняемый файл Steam:</value>
+  </data>
+  <data name="SteamExecutablePathNotFound" xml:space="preserve">
+    <value>Исполняемый файл Steam не найден!!!</value>
+  </data>
+  <data name="SteamInstallationPath" xml:space="preserve">
+    <value>Расположение папки Steam</value>
+  </data>
+  <data name="SteamInstallationPathNotFound" xml:space="preserve">
+    <value>Папка Steam не найдена!!!</value>
+  </data>
+  <data name="SteamLibraryFolders" xml:space="preserve">
+    <value>Библиотека Steam</value>
+  </data>
+  <data name="SteamLibraryFoldersNotFound" xml:space="preserve">
+    <value>Библиотека Steam не найдена!!!</value>
+  </data>
+  <data name="SelectSteamInstallationPath" xml:space="preserve">
+    <value>Выберите папку, содержащую Steam</value>
+  </data>
+  <data name="FileCouldNotBeFound" xml:space="preserve">
+    <value>Файл не может быть найден</value>
+  </data>
+  <data name="InvalidSteamLibraryPath" xml:space="preserve">
+    <value>Выбранная папка пуста (папка должна содержать подпапку "steamapps"), повторите попытку или отмените.</value>
+  </data>
+  <data name="SelectSteamLibraryPath" xml:space="preserve">
+    <value>Выберите папку с библиотекой Steam (это должна быть папка, содержащая папку "steamapps")</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Вы уверены?</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Подтвердить</value>
+  </data>
+  <data name="ConfirmDeleteCustomShortcut" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить пользовательский ярлык для {0}?</value>
+  </data>
+  <data name="QuickBuildExplanation" xml:space="preserve">
+    <value>Это создаст пользовательский ярлык с теми же параметрами, как и у {0}. Это пригодится для плиток, которые не работают по умолчанию (например, Microsoft Office и Mozilla Firefox). Пожалуйста, подтвердите имя для нового ярлыка (можно использовать имя как и у оригинала).</value>
+  </data>
+  <data name="ShortcutCreated" xml:space="preserve">
+    <value>Ярлык создан!</value>
+  </data>
+  <data name="ShortcutCreatedNeedsPinning" xml:space="preserve">
+    <value>Ярлык для {0} был создан в меню Пуск, в папке TileIconify. Он должен быть закреплён вручную.</value>
+  </data>
+  <data name="UnableToClearShortcuts" xml:space="preserve">
+    <value>Не удалось очистить ярлыки.</value>
+  </data>
+  <data name="UsesPowershell" xml:space="preserve">
+    <value>Примечание - Эта функция использует PowerShell и может занять немного больше времени для обновления списка. Продолжить?</value>
+  </data>
+  <data name="AlreadyLatest" xml:space="preserve">
+    <value>У вас самая посленяя версия!</value>
+  </data>
+  <data name="BuildTooEarly" xml:space="preserve">
+    <value>Сборка устарела</value>
+  </data>
+  <data name="IncorrectPlatform" xml:space="preserve">
+    <value>Неправильная платформа</value>
+  </data>
+  <data name="IncorrectPlatformFull" xml:space="preserve">
+    <value>Вы запустили 32-битную версию программы в 64-битной операционной системе. Некоторые функции, такие как PowerShell, могут работать некорректно.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Загрузка</value>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>Доступна новая версия!</value>
+  </data>
+  <data name="PanPctLine1" xml:space="preserve">
+    <value>Дважды</value>
+  </data>
+  <data name="PanPctLine2" xml:space="preserve">
+    <value>кликни</value>
+  </data>
+  <data name="PanPctLine3" xml:space="preserve">
+    <value>меня</value>
+  </data>
+  <data name="PowershellErrorFull" xml:space="preserve">
+    <value>Возникла проблема с функциональностью PowerShell. Он был отключен.</value>
+  </data>
+  <data name="PowershellFailure" xml:space="preserve">
+    <value>Ошибка PowerShell</value>
+  </data>
+  <data name="Refreshing" xml:space="preserve">
+    <value>Обновление</value>
+  </data>
+  <data name="RunAsAdmin" xml:space="preserve">
+    <value>Запустить от имени Администратора</value>
+  </data>
+  <data name="RunAsAdminFull" xml:space="preserve">
+    <value>Вы должны запустить приложение от имени Администратора!</value>
+  </data>
+  <data name="UnableToCheckServer" xml:space="preserve">
+    <value>Сервер недоступен!</value>
+  </data>
+  <data name="UpdateAvailableError" xml:space="preserve">
+    <value>Произошла ошибка при получении информации о последней версии. Нажмите кнопку OK, чтобы перейти на страницу релизов, для проверки вручную. (Ваша версия: {0})</value>
+  </data>
+  <data name="UpdateAvailableFull" xml:space="preserve">
+    <value>Доступно обновление! Хотели бы вы посетить страницу релизов? (Ваша версия: {0} - Последняя версия: {1})</value>
+  </data>
+  <data name="UpToDate" xml:space="preserve">
+    <value>Обновление</value>
+  </data>
+  <data name="VerifyAdmin" xml:space="preserve">
+    <value>Проверить Администратора</value>
+  </data>
+  <data name="VerifyAdminFull" xml:space="preserve">
+    <value>Произошла ошибка обнаружения администратора. Пожалуйста, убедитесь, что вы работаете в качестве администратора, или могут возникнуть проблемы.</value>
+  </data>
+  <data name="WindowsBefore81" xml:space="preserve">
+    <value>Ваша версия Windows ниже чем 8.1, изменения не придадут ни какого эффекта.</value>
+  </data>
+  <data name="WindowsTooEarly" xml:space="preserve">
+    <value>Версия Windows устарела</value>
+  </data>
+  <data name="WrongBuildWindows10" xml:space="preserve">
+    <value>Ваша сборка Windows 10 не удовлетворяет требованиям программы, она должна быть не ниже 10586. Программа будет работать, но некоторые изменения не вступят в силу.</value>
+  </data>
+  <data name="ErrorLoadingImageFile" xml:space="preserve">
+    <value>Произошла ошибка при попытке загрузить это изображение! Пожалуйста, попробуйте другое.</value>
+  </data>
+  <data name="PleaseSelectAnIcon" xml:space="preserve">
+    <value>Пожалуйста выберите иконку</value>
+  </data>
+  <data name="CentreImage" xml:space="preserve">
+    <value>Выровнять по центру</value>
+  </data>
+  <data name="ConfirmRemoveIconification" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить изменения плитки?</value>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>Пожертвование</value>
+  </data>
+  <data name="DonationNotification" xml:space="preserve">
+    <value>Пожертвования для этого приложения не требуются, однако будут приняты с большой благодарностью. Это приложение всегда будет бесплатным, с открытым исходным кодом, и поддерживаться в меру моих возможностей. Если вы хотели бы помочь поддержать меня с этим и будущими приложениями, я был бы очень признателен! Перейти на страницу пожертвования (https://www.paypal.me/Jonno12345)?</value>
+  </data>
+  <data name="NoIconHasBeenSelected" xml:space="preserve">
+    <value>Иконка не была выбрана!</value>
+  </data>
+  <data name="TargetPathIsEmpty" xml:space="preserve">
+    <value>Конечная папка пуста!</value>
+  </data>
+  <data name="IssueWithImageSelected" xml:space="preserve">
+    <value>Возникла проблема с выбранным изображением. Пожалуйста, загрузите иконку снова или попробуйте другую.</value>
+  </data>
+  <data name="IconError" xml:space="preserve">
+    <value>Ошибка иконки</value>
+  </data>
+  <data name="InvalidCharactersOrInvalidShortcutName" xml:space="preserve">
+    <value>Недопустимые символы или имя ярлыка!</value>
+  </data>
+  <data name="SelectAFolder" xml:space="preserve">
+    <value>Выберите папку</value>
+  </data>
+  <data name="ForegroundColourChange" xml:space="preserve">
+    <value>Изменить внешний цвет</value>
+  </data>
+  <data name="ForegroundColourChangeExplain" xml:space="preserve">
+    <value>Внешний цвет меняется не всегда сразу. Если он не изменился, попробуйте открепить и снова закрепить ярлык.</value>
+  </data>
+  <data name="UnableToClearUpShortcuts" xml:space="preserve">
+    <value>Не удалось очистить ярлыки.</value>
+  </data>
+  <data name="UnableToFindChromeInstallationPath" xml:space="preserve">
+    <value>Не удается найти путь установленного Chrome!</value>
+  </data>
+</root>

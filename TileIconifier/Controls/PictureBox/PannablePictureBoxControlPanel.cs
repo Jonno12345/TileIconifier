@@ -71,15 +71,15 @@ namespace TileIconifier.Controls.PictureBox
         private void PannablePictureBoxControlPanel_Load(object sender, EventArgs e)
         {
             var shrinkToolTip = new ToolTip();
-            shrinkToolTip.SetToolTip(btnShrink, "Zoom Out");
+            shrinkToolTip.SetToolTip(btnShrink, Properties.Strings.ZoomOut);
             var enlargeToolTip = new ToolTip();
-            enlargeToolTip.SetToolTip(btnEnlarge, "Zoom In");
+            enlargeToolTip.SetToolTip(btnEnlarge, Properties.Strings.ZoomIn);
             var resetToolTip = new ToolTip();
-            resetToolTip.SetToolTip(btnReset, "Reset");
+            resetToolTip.SetToolTip(btnReset, Properties.Strings.Reset);
             var changeImageToolTip = new ToolTip();
-            changeImageToolTip.SetToolTip(btnOpenImage, "Change Image");
+            changeImageToolTip.SetToolTip(btnOpenImage, Properties.Strings.ChangeImage);
             var alignImageToolTip = new ToolTip();
-            alignImageToolTip.SetToolTip(btnAlign, "Align Image");
+            alignImageToolTip.SetToolTip(btnAlign, Properties.Strings.AlignImage);
         }
 
         private void btnEnlarge_MouseDown(object sender, MouseEventArgs e)

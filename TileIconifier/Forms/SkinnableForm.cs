@@ -46,7 +46,26 @@ namespace TileIconifier.Forms
         {
             SkinHandler.SkinChanged += ApplySkin;
             Load += OnLoad;
-            Icon = Properties.Resources.tiles2_shadow_lyk_icon;
+            Move += RedrawAllButtons;
+            Resize += RedrawAllButtons;
+        }
+
+        private void RedrawAllButtons(object sender, EventArgs e)
+        {
+            RedrawButtons(Controls);
+        }
+
+        private static void RedrawButtons(IEnumerable controls)
+        {
+            foreach (Control control in controls)
+            {
+                if (control.GetType() == typeof(Button))
+                {
+                    control.Refresh();
+                }
+                if (control.Controls.Count > 0)
+                    RedrawButtons(control.Controls);
+            }
         }
 
         protected virtual void ApplySkin(object sender, EventArgs e)
@@ -79,6 +98,8 @@ namespace TileIconifier.Forms
             AddControlEvents(Controls);
 
             ApplySkin(this, null);
+            Icon = Properties.Resources.tiles2_shadow_lyk_icon;
+
         }
 
         private void AddControlEvents(IEnumerable baseControl)
@@ -95,7 +116,6 @@ namespace TileIconifier.Forms
                         button.Paint += ButtonOnPaint;
                         button.EnabledChanged += ButtonOnEnabledChanged;
                     }
-                    continue;
                 }
                 if (control.GetType() == typeof (SortableListView))
                 {
@@ -118,11 +138,8 @@ namespace TileIconifier.Forms
 
         private void ApplyControlSkins(IEnumerable baseControls)
         {
-            foreach (Control control in baseControls)
+            foreach (var control in baseControls.Cast<Control>().Where(control => control.GetType().GetCustomAttributes(typeof (SkinIgnore), true).Length == 0))
             {
-                if (control.GetType().GetCustomAttributes(typeof (SkinIgnore), true).Length != 0)
-                    continue;
-
                 control.BackColor = CurrentBaseSkin.BackColor;
                 if (control.GetType() == typeof (SortableListView))
                     control.BackColor = CurrentBaseSkin.SortableListViewBackColor;

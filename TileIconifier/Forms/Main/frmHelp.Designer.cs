@@ -34,26 +34,20 @@
             // 
             // rtxtAbout
             // 
-            this.rtxtAbout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtAbout.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.rtxtAbout, "rtxtAbout");
             this.rtxtAbout.Name = "rtxtAbout";
             this.rtxtAbout.ReadOnly = true;
-            this.rtxtAbout.Size = new System.Drawing.Size(660, 327);
-            this.rtxtAbout.TabIndex = 2;
-            this.rtxtAbout.Text = resources.GetString("rtxtAbout.Text");
             this.rtxtAbout.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtAbout_LinkClicked);
             // 
             // FrmHelp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(660, 327);
             this.Controls.Add(this.rtxtAbout);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmHelp";
-            this.Text = "Help";
             this.ResumeLayout(false);
 
         }

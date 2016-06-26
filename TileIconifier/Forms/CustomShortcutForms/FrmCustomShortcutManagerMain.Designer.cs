@@ -30,6 +30,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomShortcutManagerMain));
             this.btnCreateNewShortcut = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,82 +42,59 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // btnCreateNewShortcut
             // 
-            this.btnCreateNewShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateNewShortcut.Location = new System.Drawing.Point(482, 27);
+            resources.ApplyResources(this.btnCreateNewShortcut, "btnCreateNewShortcut");
             this.btnCreateNewShortcut.Name = "btnCreateNewShortcut";
-            this.btnCreateNewShortcut.Size = new System.Drawing.Size(131, 38);
-            this.btnCreateNewShortcut.TabIndex = 1;
-            this.btnCreateNewShortcut.Text = "Create New Shortcut";
             this.btnCreateNewShortcut.UseVisualStyleBackColor = true;
             this.btnCreateNewShortcut.Click += new System.EventHandler(this.btnCreateNewShortcut_Click);
             // 
             // menuStrip1
             // 
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(623, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // aboutToolStripMenuItem
             // 
+            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // btnDeleteCustomShortcut
             // 
-            this.btnDeleteCustomShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeleteCustomShortcut.Location = new System.Drawing.Point(482, 114);
+            resources.ApplyResources(this.btnDeleteCustomShortcut, "btnDeleteCustomShortcut");
             this.btnDeleteCustomShortcut.Name = "btnDeleteCustomShortcut";
-            this.btnDeleteCustomShortcut.Size = new System.Drawing.Size(131, 38);
-            this.btnDeleteCustomShortcut.TabIndex = 3;
-            this.btnDeleteCustomShortcut.Text = "Delete Custom Shortcut";
             this.btnDeleteCustomShortcut.UseVisualStyleBackColor = true;
             this.btnDeleteCustomShortcut.Click += new System.EventHandler(this.btnDeleteCustomShortcut_Click);
             // 
             // lstCustomShortcuts
             // 
-            this.lstCustomShortcuts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.lstCustomShortcuts, "lstCustomShortcuts");
             this.lstCustomShortcuts.FullRowSelect = true;
             this.lstCustomShortcuts.HideSelection = false;
-            this.lstCustomShortcuts.Location = new System.Drawing.Point(12, 27);
             this.lstCustomShortcuts.Name = "lstCustomShortcuts";
-            this.lstCustomShortcuts.Size = new System.Drawing.Size(464, 246);
-            this.lstCustomShortcuts.TabIndex = 5;
             this.lstCustomShortcuts.UseCompatibleStateImageBehavior = false;
             this.lstCustomShortcuts.View = System.Windows.Forms.View.Details;
             // 
             // btnGotoShortcut
             // 
-            this.btnGotoShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGotoShortcut.Location = new System.Drawing.Point(482, 70);
+            resources.ApplyResources(this.btnGotoShortcut, "btnGotoShortcut");
             this.btnGotoShortcut.Name = "btnGotoShortcut";
-            this.btnGotoShortcut.Size = new System.Drawing.Size(131, 38);
-            this.btnGotoShortcut.TabIndex = 6;
-            this.btnGotoShortcut.Text = "Goto Selected Shortcut";
             this.btnGotoShortcut.UseVisualStyleBackColor = true;
             this.btnGotoShortcut.Click += new System.EventHandler(this.btnGotoShortcut_Click);
             // 
             // FrmCustomShortcutManagerMain
             // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(623, 285);
             this.Controls.Add(this.btnGotoShortcut);
             this.Controls.Add(this.lstCustomShortcuts);
             this.Controls.Add(this.btnDeleteCustomShortcut);
             this.Controls.Add(this.btnCreateNewShortcut);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(501, 159);
             this.Name = "FrmCustomShortcutManagerMain";
-            this.Text = "Custom Shortcut Manager";
             this.Load += new System.EventHandler(this.frmCustomShortcutManagerMain_Load);
             this.Resize += new System.EventHandler(this.FrmCustomShortcutManagerMain_Resize);
             this.menuStrip1.ResumeLayout(false);

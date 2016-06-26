@@ -75,9 +75,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             lstCustomShortcuts.Columns.Clear();
 
-            lstCustomShortcuts.Columns.Add("Shortcut Name", lstCustomShortcuts.Width / 4 * 2 - 2, HorizontalAlignment.Left);
-            lstCustomShortcuts.Columns.Add("Shortcut Type", lstCustomShortcuts.Width / 4 - 1, HorizontalAlignment.Left);
-            lstCustomShortcuts.Columns.Add("Shortcut User", lstCustomShortcuts.Width / 4 - 1, HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add(Strings.ShortcutName, lstCustomShortcuts.Width / 4 * 2 - 2, HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add(Strings.ShortcutType, lstCustomShortcuts.Width / 4 - 1, HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add(Strings.ShortcutUser, lstCustomShortcuts.Width / 4 - 1, HorizontalAlignment.Left);
 
         }
 
@@ -121,8 +121,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             if (
                 MessageBox.Show(
-                    $"Are you sure you wish to delete the custom shortcut for {customShortcut.Text.QuoteWrap()}?",
-                    @"Are you sure?",
+                    string.Format(Strings.ConfirmDeleteCustomShortcut,
+                        customShortcut.Text.QuoteWrap()),
+                    Strings.AreYouSure,
                     MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
@@ -132,7 +133,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Unable to clear up shortcuts." + ex);
+                MessageBox.Show(Strings.UnableToClearUpShortcuts + ex);
             }
 
             //update our lists and refresh

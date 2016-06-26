@@ -30,6 +30,7 @@
 using System;
 using System.Windows.Forms;
 using TileIconifier.Core.Custom;
+using TileIconifier.Properties;
 
 namespace TileIconifier.Forms.CustomShortcutForms
 {
@@ -46,8 +47,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             txtCustomShortcutName.Text = ShortcutName;
             lblCaption.Text =
-                $@"This will create a custom shortcut with the same parameters as {ShortcutName.QuoteWrap()
-                    }. This is useful for tiles that don't work by default (Such as Microsoft Office and Mozilla Firefox). Please confirm the name for the new shortcut (The same name as the original is not a problem)";
+                string.Format(
+                    Strings.QuickBuildExplanation,
+                    ShortcutName.QuoteWrap());
         }
 
         private void btnOk_Click(object sender, EventArgs e)

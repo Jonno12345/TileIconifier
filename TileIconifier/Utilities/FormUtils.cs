@@ -28,6 +28,7 @@
 #endregion
 
 using System.ComponentModel;
+using System.Threading;
 using System.Windows.Forms;
 using TileIconifier.Forms.Shared;
 
@@ -45,16 +46,16 @@ namespace TileIconifier.Utilities
         }
 
         public static void DoBackgroundWorkWithSplash(IWin32Window sender, DoWorkEventHandler workToDo,
-            string splashText)
+            string splashText, bool singleThreadApartment = false)
         {
             var loadingSplash = new FrmLoadingSplash {StartPosition = FormStartPosition.CenterParent};
             loadingSplash.SetTitle(splashText);
+            
+            var thread = new Thread(() => { workToDo(null, null); loadingSplash.WorkCompleted(); });
+            if(singleThreadApartment)
+                thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
 
-            var updateThread = new BackgroundWorker();
-            updateThread.DoWork += workToDo;
-            updateThread.RunWorkerCompleted += (o, e) => { loadingSplash.WorkCompleted(); };
-
-            updateThread.RunWorkerAsync();
             loadingSplash.ShowDialog(sender);
         }
     }

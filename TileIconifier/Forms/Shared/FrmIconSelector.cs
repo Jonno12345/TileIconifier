@@ -38,6 +38,7 @@ using System.Windows.Forms;
 using TileIconifier.Core;
 using TileIconifier.Core.IconExtractor;
 using TileIconifier.Core.Utilities;
+using TileIconifier.Properties;
 
 namespace TileIconifier.Forms.Shared
 {
@@ -260,7 +261,7 @@ namespace TileIconifier.Forms.Shared
                 {
                     if (lvwIcons.SelectedItems.Count != 1)
                     {
-                        MessageBox.Show(@"Please select an icon to use!", @"Select an icon", MessageBoxButtons.OK,
+                        MessageBox.Show(Strings.PleaseSelectAnIcon, Strings.PleaseSelectAnIcon, MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation);
                         return;
                     }
@@ -271,14 +272,14 @@ namespace TileIconifier.Forms.Shared
                 {
                     var imagePath = txtImagePath.Text;
                     if (!File.Exists(imagePath))
-                        throw new FileNotFoundException();
+                        throw new FileNotFoundException(Strings.FileCouldNotBeFound, imagePath);
                     ReturnedBitmapBytes = ImageUtils.LoadFileToByteArray(imagePath);
                     ReturnedImagePath = imagePath;
                 }
             }
             catch (FileNotFoundException ex)
             {
-                MessageBox.Show(@"File could not be found: " + ex.FileName, @"File not found!", MessageBoxButtons.OK,
+                MessageBox.Show($"{ex.Message}: {ex.FileName}", $"{Strings.FileCouldNotBeFound}", MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
             }
             
@@ -386,7 +387,7 @@ namespace TileIconifier.Forms.Shared
             }
             catch
             {
-                MessageBox.Show(@"An error occurred trying to load this image file! Please try another.");
+                MessageBox.Show(Strings.ErrorLoadingImageFile);
             }
         }
 

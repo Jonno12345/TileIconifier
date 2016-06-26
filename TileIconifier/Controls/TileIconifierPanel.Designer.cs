@@ -31,10 +31,15 @@ namespace TileIconifier.Controls
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TileIconifierPanel));
             this.pnlImages = new System.Windows.Forms.Panel();
             this.lblSmallIcon = new System.Windows.Forms.Label();
             this.lblMediumIcon = new System.Windows.Forms.Label();
+            this.panPctSmallIcon = new TileIconifier.Controls.PictureBox.PannablePictureBox();
+            this.panPctMediumIcon = new TileIconifier.Controls.PictureBox.PannablePictureBox();
             this.chkUseSameImg = new System.Windows.Forms.CheckBox();
+            this.pannablePictureBoxControlPanelMedium = new TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel();
+            this.pannablePictureBoxControlPanelSmall = new TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel();
             this.btnColourPicker = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblUnsaved = new System.Windows.Forms.Label();
@@ -48,18 +53,13 @@ namespace TileIconifier.Controls
             this.txtBGColour = new System.Windows.Forms.TextBox();
             this.clrDialog = new System.Windows.Forms.ColorDialog();
             this.eyedropperColorPicker = new TileIconifier.Controls.Eyedropper.EyedropColorPicker();
-            this.panPctSmallIcon = new TileIconifier.Controls.PictureBox.PannablePictureBox();
-            this.panPctMediumIcon = new TileIconifier.Controls.PictureBox.PannablePictureBox();
-            this.pannablePictureBoxControlPanelMedium = new TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel();
-            this.pannablePictureBoxControlPanelSmall = new TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel();
             this.pnlImages.SuspendLayout();
             this.pnlFGColour.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlImages
             // 
-            this.pnlImages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.pnlImages, "pnlImages");
             this.pnlImages.Controls.Add(this.lblSmallIcon);
             this.pnlImages.Controls.Add(this.lblMediumIcon);
             this.pnlImages.Controls.Add(this.panPctSmallIcon);
@@ -67,247 +67,161 @@ namespace TileIconifier.Controls
             this.pnlImages.Controls.Add(this.chkUseSameImg);
             this.pnlImages.Controls.Add(this.pannablePictureBoxControlPanelMedium);
             this.pnlImages.Controls.Add(this.pannablePictureBoxControlPanelSmall);
-            this.pnlImages.Location = new System.Drawing.Point(3, 3);
             this.pnlImages.Name = "pnlImages";
-            this.pnlImages.Size = new System.Drawing.Size(297, 216);
-            this.pnlImages.TabIndex = 40;
             // 
             // lblSmallIcon
             // 
-            this.lblSmallIcon.Location = new System.Drawing.Point(180, 2);
+            resources.ApplyResources(this.lblSmallIcon, "lblSmallIcon");
             this.lblSmallIcon.Name = "lblSmallIcon";
-            this.lblSmallIcon.Size = new System.Drawing.Size(58, 13);
-            this.lblSmallIcon.TabIndex = 34;
-            this.lblSmallIcon.Text = "Small icon:";
             // 
             // lblMediumIcon
             // 
-            this.lblMediumIcon.Location = new System.Drawing.Point(20, 2);
+            resources.ApplyResources(this.lblMediumIcon, "lblMediumIcon");
             this.lblMediumIcon.Name = "lblMediumIcon";
-            this.lblMediumIcon.Size = new System.Drawing.Size(70, 13);
-            this.lblMediumIcon.TabIndex = 33;
-            this.lblMediumIcon.Text = "Medium icon:";
-            // 
-            // chkUseSameImg
-            // 
-            this.chkUseSameImg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkUseSameImg.Checked = true;
-            this.chkUseSameImg.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkUseSameImg.Location = new System.Drawing.Point(7, 187);
-            this.chkUseSameImg.Margin = new System.Windows.Forms.Padding(2);
-            this.chkUseSameImg.Name = "chkUseSameImg";
-            this.chkUseSameImg.Size = new System.Drawing.Size(225, 17);
-            this.chkUseSameImg.TabIndex = 22;
-            this.chkUseSameImg.Text = "Change Medium and Small image together";
-            this.chkUseSameImg.UseVisualStyleBackColor = true;
-            // 
-            // btnColourPicker
-            // 
-            this.btnColourPicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnColourPicker.BackgroundImage = global::TileIconifier.Properties.Resources.colorsquare;
-            this.btnColourPicker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnColourPicker.FlatAppearance.BorderSize = 0;
-            this.btnColourPicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnColourPicker.Location = new System.Drawing.Point(200, 266);
-            this.btnColourPicker.Name = "btnColourPicker";
-            this.btnColourPicker.Size = new System.Drawing.Size(27, 27);
-            this.btnColourPicker.TabIndex = 39;
-            this.btnColourPicker.UseVisualStyleBackColor = true;
-            this.btnColourPicker.Click += new System.EventHandler(this.btnColourPicker_Click);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReset.Location = new System.Drawing.Point(236, 230);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(2);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(64, 20);
-            this.btnReset.TabIndex = 38;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // lblUnsaved
-            // 
-            this.lblUnsaved.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUnsaved.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnsaved.ForeColor = System.Drawing.Color.Red;
-            this.lblUnsaved.Location = new System.Drawing.Point(3, 234);
-            this.lblUnsaved.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUnsaved.Name = "lblUnsaved";
-            this.lblUnsaved.Size = new System.Drawing.Size(179, 13);
-            this.lblUnsaved.TabIndex = 37;
-            this.lblUnsaved.Text = "This shortcut has unsaved changes!";
-            this.lblUnsaved.Visible = false;
-            // 
-            // pnlFGColour
-            // 
-            this.pnlFGColour.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlFGColour.Controls.Add(this.radFGDark);
-            this.pnlFGColour.Controls.Add(this.chkFGTxtEnabled);
-            this.pnlFGColour.Controls.Add(this.lblFGText);
-            this.pnlFGColour.Controls.Add(this.radFGLight);
-            this.pnlFGColour.Location = new System.Drawing.Point(6, 304);
-            this.pnlFGColour.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlFGColour.Name = "pnlFGColour";
-            this.pnlFGColour.Size = new System.Drawing.Size(294, 45);
-            this.pnlFGColour.TabIndex = 36;
-            // 
-            // radFGDark
-            // 
-            this.radFGDark.Location = new System.Drawing.Point(58, 23);
-            this.radFGDark.Margin = new System.Windows.Forms.Padding(2);
-            this.radFGDark.Name = "radFGDark";
-            this.radFGDark.Size = new System.Drawing.Size(48, 17);
-            this.radFGDark.TabIndex = 8;
-            this.radFGDark.Text = "Dark";
-            this.radFGDark.UseVisualStyleBackColor = true;
-            // 
-            // chkFGTxtEnabled
-            // 
-            this.chkFGTxtEnabled.Checked = true;
-            this.chkFGTxtEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFGTxtEnabled.Location = new System.Drawing.Point(184, 4);
-            this.chkFGTxtEnabled.Margin = new System.Windows.Forms.Padding(2);
-            this.chkFGTxtEnabled.Name = "chkFGTxtEnabled";
-            this.chkFGTxtEnabled.Size = new System.Drawing.Size(65, 17);
-            this.chkFGTxtEnabled.TabIndex = 7;
-            this.chkFGTxtEnabled.Text = "Enabled";
-            this.chkFGTxtEnabled.UseVisualStyleBackColor = true;
-            this.chkFGTxtEnabled.CheckedChanged += new System.EventHandler(this.chkFGTxtEnabled_CheckedChanged);
-            // 
-            // lblFGText
-            // 
-            this.lblFGText.Location = new System.Drawing.Point(1, 5);
-            this.lblFGText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblFGText.Name = "lblFGText";
-            this.lblFGText.Size = new System.Drawing.Size(179, 13);
-            this.lblFGText.TabIndex = 6;
-            this.lblFGText.Text = "Foreground Text (Medium Icon Only)";
-            // 
-            // radFGLight
-            // 
-            this.radFGLight.Checked = true;
-            this.radFGLight.Location = new System.Drawing.Point(8, 23);
-            this.radFGLight.Margin = new System.Windows.Forms.Padding(2);
-            this.radFGLight.Name = "radFGLight";
-            this.radFGLight.Size = new System.Drawing.Size(48, 17);
-            this.radFGLight.TabIndex = 0;
-            this.radFGLight.TabStop = true;
-            this.radFGLight.Text = "Light";
-            this.radFGLight.UseVisualStyleBackColor = true;
-            this.radFGLight.CheckedChanged += new System.EventHandler(this.radFGLight_CheckedChanged);
-            // 
-            // cmbColour
-            // 
-            this.cmbColour.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbColour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbColour.FormattingEnabled = true;
-            this.cmbColour.Items.AddRange(new object[] {
-            "black",
-            "silver",
-            "gray",
-            "white",
-            "maroon",
-            "red",
-            "purple",
-            "fuchsia",
-            "green",
-            "lime",
-            "olive",
-            "yellow",
-            "navy",
-            "blue",
-            "teal",
-            "aqua",
-            "Custom"});
-            this.cmbColour.Location = new System.Drawing.Point(6, 270);
-            this.cmbColour.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbColour.Name = "cmbColour";
-            this.cmbColour.Size = new System.Drawing.Size(111, 21);
-            this.cmbColour.TabIndex = 35;
-            // 
-            // lblBGColour
-            // 
-            this.lblBGColour.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBGColour.Location = new System.Drawing.Point(3, 254);
-            this.lblBGColour.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBGColour.Name = "lblBGColour";
-            this.lblBGColour.Size = new System.Drawing.Size(98, 13);
-            this.lblBGColour.TabIndex = 34;
-            this.lblBGColour.Text = "Background Colour";
-            // 
-            // txtBGColour
-            // 
-            this.txtBGColour.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBGColour.Location = new System.Drawing.Point(121, 270);
-            this.txtBGColour.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBGColour.MaxLength = 7;
-            this.txtBGColour.Name = "txtBGColour";
-            this.txtBGColour.Size = new System.Drawing.Size(74, 20);
-            this.txtBGColour.TabIndex = 33;
-            this.txtBGColour.Text = "#323232";
-            this.txtBGColour.TextChanged += new System.EventHandler(this.txtBGColour_TextChanged);
-            // 
-            // eyedropperColorPicker
-            // 
-            this.eyedropperColorPicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.eyedropperColorPicker.Location = new System.Drawing.Point(236, 266);
-            this.eyedropperColorPicker.Name = "eyedropperColorPicker";
-            this.eyedropperColorPicker.SelectedColor = System.Drawing.Color.Empty;
-            this.eyedropperColorPicker.Size = new System.Drawing.Size(30, 30);
-            this.eyedropperColorPicker.TabIndex = 41;
-            this.eyedropperColorPicker.Zoom = 4;
-            this.eyedropperColorPicker.SelectedColorChanged += new System.EventHandler(this.eyedropperColorPicker_SelectedColorChanged);
             // 
             // panPctSmallIcon
             // 
+            resources.ApplyResources(this.panPctSmallIcon, "panPctSmallIcon");
             this.panPctSmallIcon.AssociatedSize = new System.Drawing.Size(0, 0);
             this.panPctSmallIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panPctSmallIcon.Location = new System.Drawing.Point(183, 42);
-            this.panPctSmallIcon.Margin = new System.Windows.Forms.Padding(0);
             this.panPctSmallIcon.Name = "panPctSmallIcon";
-            this.panPctSmallIcon.Size = new System.Drawing.Size(50, 50);
-            this.panPctSmallIcon.TabIndex = 30;
             this.panPctSmallIcon.Click += new System.EventHandler(this.panPctSmallIcon_Click);
             this.panPctSmallIcon.DoubleClick += new System.EventHandler(this.panPctSmallIcon_DoubleClick);
             // 
             // panPctMediumIcon
             // 
+            resources.ApplyResources(this.panPctMediumIcon, "panPctMediumIcon");
             this.panPctMediumIcon.AssociatedSize = new System.Drawing.Size(0, 0);
             this.panPctMediumIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panPctMediumIcon.Location = new System.Drawing.Point(5, 17);
-            this.panPctMediumIcon.Margin = new System.Windows.Forms.Padding(0);
             this.panPctMediumIcon.Name = "panPctMediumIcon";
-            this.panPctMediumIcon.Size = new System.Drawing.Size(100, 100);
-            this.panPctMediumIcon.TabIndex = 29;
             this.panPctMediumIcon.Click += new System.EventHandler(this.panPctMediumIcon_Click);
             this.panPctMediumIcon.DoubleClick += new System.EventHandler(this.panPctMediumIcon_DoubleClick);
             // 
+            // chkUseSameImg
+            // 
+            resources.ApplyResources(this.chkUseSameImg, "chkUseSameImg");
+            this.chkUseSameImg.Checked = true;
+            this.chkUseSameImg.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkUseSameImg.Name = "chkUseSameImg";
+            this.chkUseSameImg.UseVisualStyleBackColor = true;
+            // 
             // pannablePictureBoxControlPanelMedium
             // 
-            this.pannablePictureBoxControlPanelMedium.Location = new System.Drawing.Point(3, 17);
+            resources.ApplyResources(this.pannablePictureBoxControlPanelMedium, "pannablePictureBoxControlPanelMedium");
             this.pannablePictureBoxControlPanelMedium.Name = "pannablePictureBoxControlPanelMedium";
-            this.pannablePictureBoxControlPanelMedium.Size = new System.Drawing.Size(145, 165);
-            this.pannablePictureBoxControlPanelMedium.TabIndex = 31;
             // 
             // pannablePictureBoxControlPanelSmall
             // 
-            this.pannablePictureBoxControlPanelSmall.Location = new System.Drawing.Point(154, 17);
+            resources.ApplyResources(this.pannablePictureBoxControlPanelSmall, "pannablePictureBoxControlPanelSmall");
             this.pannablePictureBoxControlPanelSmall.Name = "pannablePictureBoxControlPanelSmall";
-            this.pannablePictureBoxControlPanelSmall.Size = new System.Drawing.Size(140, 165);
-            this.pannablePictureBoxControlPanelSmall.TabIndex = 32;
+            // 
+            // btnColourPicker
+            // 
+            resources.ApplyResources(this.btnColourPicker, "btnColourPicker");
+            this.btnColourPicker.BackgroundImage = global::TileIconifier.Properties.Resources.colorsquare;
+            this.btnColourPicker.FlatAppearance.BorderSize = 0;
+            this.btnColourPicker.Name = "btnColourPicker";
+            this.btnColourPicker.UseVisualStyleBackColor = true;
+            this.btnColourPicker.Click += new System.EventHandler(this.btnColourPicker_Click);
+            // 
+            // btnReset
+            // 
+            resources.ApplyResources(this.btnReset, "btnReset");
+            this.btnReset.Name = "btnReset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // lblUnsaved
+            // 
+            resources.ApplyResources(this.lblUnsaved, "lblUnsaved");
+            this.lblUnsaved.ForeColor = System.Drawing.Color.Red;
+            this.lblUnsaved.Name = "lblUnsaved";
+            // 
+            // pnlFGColour
+            // 
+            resources.ApplyResources(this.pnlFGColour, "pnlFGColour");
+            this.pnlFGColour.Controls.Add(this.radFGDark);
+            this.pnlFGColour.Controls.Add(this.chkFGTxtEnabled);
+            this.pnlFGColour.Controls.Add(this.lblFGText);
+            this.pnlFGColour.Controls.Add(this.radFGLight);
+            this.pnlFGColour.Name = "pnlFGColour";
+            // 
+            // radFGDark
+            // 
+            resources.ApplyResources(this.radFGDark, "radFGDark");
+            this.radFGDark.Name = "radFGDark";
+            this.radFGDark.UseVisualStyleBackColor = true;
+            // 
+            // chkFGTxtEnabled
+            // 
+            resources.ApplyResources(this.chkFGTxtEnabled, "chkFGTxtEnabled");
+            this.chkFGTxtEnabled.Checked = true;
+            this.chkFGTxtEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkFGTxtEnabled.Name = "chkFGTxtEnabled";
+            this.chkFGTxtEnabled.UseVisualStyleBackColor = true;
+            this.chkFGTxtEnabled.CheckedChanged += new System.EventHandler(this.chkFGTxtEnabled_CheckedChanged);
+            // 
+            // lblFGText
+            // 
+            resources.ApplyResources(this.lblFGText, "lblFGText");
+            this.lblFGText.Name = "lblFGText";
+            // 
+            // radFGLight
+            // 
+            resources.ApplyResources(this.radFGLight, "radFGLight");
+            this.radFGLight.Checked = true;
+            this.radFGLight.Name = "radFGLight";
+            this.radFGLight.TabStop = true;
+            this.radFGLight.UseVisualStyleBackColor = true;
+            this.radFGLight.CheckedChanged += new System.EventHandler(this.radFGLight_CheckedChanged);
+            // 
+            // cmbColour
+            // 
+            resources.ApplyResources(this.cmbColour, "cmbColour");
+            this.cmbColour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbColour.FormattingEnabled = true;
+            this.cmbColour.Items.AddRange(new object[] {
+            resources.GetString("cmbColour.Items"),
+            resources.GetString("cmbColour.Items1"),
+            resources.GetString("cmbColour.Items2"),
+            resources.GetString("cmbColour.Items3"),
+            resources.GetString("cmbColour.Items4"),
+            resources.GetString("cmbColour.Items5"),
+            resources.GetString("cmbColour.Items6"),
+            resources.GetString("cmbColour.Items7"),
+            resources.GetString("cmbColour.Items8"),
+            resources.GetString("cmbColour.Items9"),
+            resources.GetString("cmbColour.Items10"),
+            resources.GetString("cmbColour.Items11"),
+            resources.GetString("cmbColour.Items12"),
+            resources.GetString("cmbColour.Items13"),
+            resources.GetString("cmbColour.Items14"),
+            resources.GetString("cmbColour.Items15"),
+            resources.GetString("cmbColour.Items16")});
+            this.cmbColour.Name = "cmbColour";
+            // 
+            // lblBGColour
+            // 
+            resources.ApplyResources(this.lblBGColour, "lblBGColour");
+            this.lblBGColour.Name = "lblBGColour";
+            // 
+            // txtBGColour
+            // 
+            resources.ApplyResources(this.txtBGColour, "txtBGColour");
+            this.txtBGColour.Name = "txtBGColour";
+            this.txtBGColour.TextChanged += new System.EventHandler(this.txtBGColour_TextChanged);
+            // 
+            // eyedropperColorPicker
+            // 
+            resources.ApplyResources(this.eyedropperColorPicker, "eyedropperColorPicker");
+            this.eyedropperColorPicker.Name = "eyedropperColorPicker";
+            this.eyedropperColorPicker.SelectedColor = System.Drawing.Color.Empty;
+            this.eyedropperColorPicker.Zoom = 4;
+            this.eyedropperColorPicker.SelectedColorChanged += new System.EventHandler(this.eyedropperColorPicker_SelectedColorChanged);
             // 
             // TileIconifierPanel
             // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.eyedropperColorPicker);
             this.Controls.Add(this.pnlImages);
@@ -319,7 +233,6 @@ namespace TileIconifier.Controls
             this.Controls.Add(this.lblBGColour);
             this.Controls.Add(this.txtBGColour);
             this.Name = "TileIconifierPanel";
-            this.Size = new System.Drawing.Size(305, 351);
             this.Load += new System.EventHandler(this.TileIconifierPanel_Load);
             this.pnlImages.ResumeLayout(false);
             this.pnlFGColour.ResumeLayout(false);

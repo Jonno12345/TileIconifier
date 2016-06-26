@@ -27,6 +27,7 @@
 
 #endregion
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -56,7 +57,7 @@ namespace TileIconifier.Core.Custom.Chrome
                     return defaultChromeInstallationPath;
             }
 
-            throw new FileNotFoundException(@"Unable to find Chrome installation path!");
+            throw new FileNotFoundException();
         }
 
         public static List<ChromeApp> GetChromeAppItems(string appLibraryPath)

@@ -27,6 +27,7 @@
 
 #endregion
 
+using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -116,6 +117,7 @@ namespace TileIconifier.Core.Utilities
 
             var installState = NativeMethods.MsiGetComponentPath(product.ToString(), component.ToString(), path,
                 ref pathLength);
+
             return installState == NativeMethods.InstallState.Local ? path.ToString() : null;
         }
 
