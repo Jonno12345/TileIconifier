@@ -182,17 +182,16 @@ namespace TileIconifier.Forms.CustomShortcutForms
             )
         {
             var shortcutName = txtShortcutName.Text.CleanInvalidFilenameChars();
-            byte[] imageToUse;
 
             try
             {
-                ValidateFields(shortcutName, targetPath, out imageToUse);
+                ValidateFields(shortcutName, targetPath);
             }
             catch (ValidationFailureException)
             {
                 return;
             }
-
+            
             //build our new custom shortcut
             var customShortcut = new CustomShortcut(shortcutName, targetPath, targetArguments, shortcutType, windowType,
                 radShortcutLocation.PathSelection(), basicShortcutIcon, workingFolder);
@@ -205,7 +204,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
 
             //Iconify a TileIconifier shortcut for this with default settings
-            BuildIconifiedTile(imageToUse, customShortcut);
+            BuildIconifiedTile(ImageUtils.ImageToByteArray(pctCurrentIcon.Image), customShortcut);
 
             //confirm to the user the shortcut has been created
             ConfirmToUser(shortcutName);
@@ -221,7 +220,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         }
 
         //Hacked this in quickly - fix it up.
-        private void ValidateFields(string shortcutName, string targetPath, out byte[] imageToUse)
+        private void ValidateFields(string shortcutName, string targetPath)
         {
             //Check if there are invalid characters in the shortcut name
             if (txtShortcutName.Text != shortcutName || shortcutName.Length == 0)
@@ -247,7 +246,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             try
             {
-                imageToUse = ImageUtils.ImageToByteArray(pctCurrentIcon.Image);
+                ImageUtils.ImageToByteArray(pctCurrentIcon.Image);
             }
             catch
             {
@@ -710,11 +709,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             var shortcutName = txtShortcutName.Text.CleanInvalidFilenameChars();
             var uriString = txtUriString.Text;
-            byte[] imageToUse;
 
             try
             {
-                ValidateFields(shortcutName, uriString, out imageToUse);
+                ValidateFields(shortcutName, uriString);
             }
             catch (ValidationFailureException)
             {
@@ -730,9 +728,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             customShortcut.TargetPath = urlGenerationPath;
             customShortcut.BuildCustomShortcut(pctCurrentIcon.Image);
-
-
-            BuildIconifiedTile(imageToUse, customShortcut);
+            
+            BuildIconifiedTile(ImageUtils.ImageToByteArray(pctCurrentIcon.Image), customShortcut);
 
             //confirm to the user the shortcut has been created
             ConfirmToUser(shortcutName);
