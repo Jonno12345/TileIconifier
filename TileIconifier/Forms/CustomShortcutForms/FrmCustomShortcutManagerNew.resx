@@ -133,9 +133,6 @@
   <data name="&gt;&gt;lblUriExplain.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;cmbExplorerGuids.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;lstSteamGames.Parent" xml:space="preserve">
     <value>tabSteam</value>
   </data>
@@ -146,9 +143,6 @@
     <value>txtSteamLibraryPaths</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnGenerateShortcut.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
   <data name="lblShortcutName.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
   </data>
@@ -189,8 +183,8 @@
   <data name="tabExplorer.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="btnSteamLibrariesPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>545, 60</value>
+  <data name="&gt;&gt;radSpecialFolder.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;txtOtherShortcutArguments.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -260,6 +254,9 @@
   </data>
   <data name="lstSteamGames.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 90</value>
+  </data>
+  <data name="&gt;&gt;txtShortcutName.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;txtUriString.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -351,9 +348,6 @@
   <data name="txtSteamInstallationPath.Text" xml:space="preserve">
     <value>txtSteamInstallationPath</value>
   </data>
-  <data name="btnExplorerBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
   <data name="pctCurrentIcon.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
@@ -363,8 +357,8 @@
   <data name="lblUriString.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tabOther.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;cmbExplorerGuids.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="txtOtherShortcutArguments.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 38</value>
@@ -468,13 +462,13 @@ mailto:test@example.com</value>
     <value>68, 26</value>
   </data>
   <data name="&gt;&gt;lstSteamGames.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6022.30488, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6022.34193, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tabExplorer.Text" xml:space="preserve">
     <value>Explorer</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6022.30488, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6022.34193, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cmbExplorerGuids.Parent" xml:space="preserve">
     <value>pnlExplorer</value>
@@ -487,6 +481,9 @@ mailto:test@example.com</value>
   </data>
   <data name="&gt;&gt;pctCurrentIcon.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="opnOtherTarget.Filter" xml:space="preserve">
+    <value>All Files|*</value>
   </data>
   <data name="&gt;&gt;tabOther.Name" xml:space="preserve">
     <value>tabOther</value>
@@ -518,9 +515,6 @@ mailto:test@example.com</value>
   <data name="&gt;&gt;tabSteam.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="txtChromeExePath.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
   <data name="lblUriString.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 109</value>
   </data>
@@ -529,9 +523,6 @@ mailto:test@example.com</value>
   </data>
   <data name="lblCurrentIcon.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 13</value>
-  </data>
-  <data name="&gt;&gt;pctCurrentIcon.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="&gt;&gt;btnSteamLibrariesPath.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -557,8 +548,8 @@ mailto:test@example.com</value>
   <data name="&gt;&gt;pnlExplorer.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="txtOtherTargetPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 12</value>
+  <data name="txtChromeExePath.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
   </data>
   <data name="btnSteamInstallationChange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -574,9 +565,6 @@ mailto:test@example.com</value>
   </data>
   <data name="opnSteamExe.Title" xml:space="preserve">
     <value>Please locate "steam.exe"...</value>
-  </data>
-  <data name="btnSteamInstallationChange.Text" xml:space="preserve">
-    <value>Change</value>
   </data>
   <data name="&gt;&gt;btnSteamLibrariesPath.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -595,6 +583,9 @@ mailto:test@example.com</value>
   </data>
   <data name="txtSteamLibraryPaths.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="lstChromeAppItems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 63</value>
   </data>
   <data name="radShortcutLocation.Location" type="System.Drawing.Point, System.Drawing">
     <value>391, 283</value>
@@ -644,8 +635,8 @@ mailto:test@example.com</value>
   <data name="lblOtherTargetPath.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="&gt;&gt;radSpecialFolder.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="btnGenerateShortcut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 41</value>
   </data>
   <data name="btnExplorerBrowse.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -667,6 +658,9 @@ mailto:test@example.com</value>
   </data>
   <data name="tabShortcutType.Size" type="System.Drawing.Size, System.Drawing">
     <value>630, 274</value>
+  </data>
+  <data name="txtOtherTargetPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 12</value>
   </data>
   <data name="&gt;&gt;lblUriString.Parent" xml:space="preserve">
     <value>tabURI</value>
@@ -690,7 +684,7 @@ mailto:test@example.com</value>
     <value>Browse</value>
   </data>
   <data name="&gt;&gt;lstChromeAppItems.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6022.30488, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6022.34193, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="pctCurrentIcon.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 299</value>
@@ -727,6 +721,9 @@ mailto:test@example.com</value>
   </data>
   <data name="&gt;&gt;lblOtherTargetPath.Name" xml:space="preserve">
     <value>lblOtherTargetPath</value>
+  </data>
+  <data name="btnSteamLibrariesPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>545, 60</value>
   </data>
   <data name="&gt;&gt;radCustomFolder.Parent" xml:space="preserve">
     <value>pnlExplorer</value>
@@ -1243,14 +1240,8 @@ mailto:test@example.com</value>
   <data name="&gt;&gt;txtOtherTargetPath.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="txtChromeExePath.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Horizontal</value>
-  </data>
   <data name="&gt;&gt;lblUriExplain.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radCustomFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radSpecialFolder.Text" xml:space="preserve">
     <value>Use Special Folder</value>
@@ -1282,8 +1273,8 @@ mailto:test@example.com</value>
   <data name="&gt;&gt;btnChromeExePathChange.Parent" xml:space="preserve">
     <value>tabChromeApps</value>
   </data>
-  <data name="lstChromeAppItems.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 63</value>
+  <data name="btnExplorerBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="txtChromeExePath.Text" xml:space="preserve">
     <value>txtChromeExePath</value>
@@ -1297,8 +1288,8 @@ mailto:test@example.com</value>
   <data name="txtChromeExePath.Size" type="System.Drawing.Size, System.Drawing">
     <value>536, 20</value>
   </data>
-  <data name="opnOtherTarget.Filter" xml:space="preserve">
-    <value>All Files|*</value>
+  <data name="&gt;&gt;radCustomFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="txtChromeAppPath.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1339,8 +1330,8 @@ mailto:test@example.com</value>
   <data name="lstWindowsStoreApps.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="lstChromeAppItems.Size" type="System.Drawing.Size, System.Drawing">
-    <value>607, 179</value>
+  <data name="btnGenerateShortcut.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
   </data>
   <data name="&gt;&gt;opnChromeExe.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1348,8 +1339,8 @@ mailto:test@example.com</value>
   <data name="txtUriString.Size" type="System.Drawing.Size, System.Drawing">
     <value>525, 20</value>
   </data>
-  <data name="&gt;&gt;tabSteam.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pctCurrentIcon.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="txtShortcutName.Location" type="System.Drawing.Point, System.Drawing">
     <value>98, 299</value>
@@ -1376,7 +1367,7 @@ mailto:test@example.com</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;lstWindowsStoreApps.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6022.30488, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6022.34193, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="txtChromeExePath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1471,8 +1462,8 @@ mailto:test@example.com</value>
   <data name="txtSteamExecutablePath.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Horizontal</value>
   </data>
-  <data name="&gt;&gt;lblCurrentIcon.Name" xml:space="preserve">
-    <value>lblCurrentIcon</value>
+  <data name="&gt;&gt;btnOtherTargetBrowse.Parent" xml:space="preserve">
+    <value>tabOther</value>
   </data>
   <data name="&gt;&gt;txtChromeExePath.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -1488,9 +1479,6 @@ mailto:test@example.com</value>
   </data>
   <data name="&gt;&gt;lblOtherTargetPath.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="&gt;&gt;btnOtherTargetBrowse.Parent" xml:space="preserve">
-    <value>tabOther</value>
   </data>
   <data name="&gt;&gt;lblOtherShortcutArguments.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1513,8 +1501,8 @@ mailto:test@example.com</value>
   <data name="&gt;&gt;txtShortcutName.Name" xml:space="preserve">
     <value>txtShortcutName</value>
   </data>
-  <data name="txtSteamExecutablePath.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="btnSteamInstallationChange.Text" xml:space="preserve">
+    <value>Change</value>
   </data>
   <data name="&gt;&gt;opnSteamExe.Name" xml:space="preserve">
     <value>opnSteamExe</value>
@@ -1531,8 +1519,8 @@ mailto:test@example.com</value>
   <data name="btnChromeAppPathChange.Text" xml:space="preserve">
     <value>Change</value>
   </data>
-  <data name="&gt;&gt;txtShortcutName.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="btnOtherTargetBrowse.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
   <data name="&gt;&gt;lblOtherTargetPath.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1567,8 +1555,8 @@ mailto:test@example.com</value>
   <data name="&gt;&gt;txtOtherTargetPath.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="btnGenerateShortcut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 41</value>
+  <data name="txtSteamExecutablePath.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="btnChromeExePathChange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1612,6 +1600,9 @@ mailto:test@example.com</value>
   <data name="txtChromeAppPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="lstChromeAppItems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>607, 179</value>
+  </data>
   <data name="opnSteamExe.Filter" xml:space="preserve">
     <value>Steam.exe|Steam.exe</value>
   </data>
@@ -1621,14 +1612,17 @@ mailto:test@example.com</value>
   <data name="tabShortcutType.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 8</value>
   </data>
+  <data name="&gt;&gt;lblCurrentIcon.Name" xml:space="preserve">
+    <value>lblCurrentIcon</value>
+  </data>
   <data name="lblShortcutName.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>652, 370</value>
   </data>
-  <data name="&gt;&gt;tabWindowsStore.Name" xml:space="preserve">
-    <value>tabWindowsStore</value>
+  <data name="txtChromeExePath.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;txtOtherTargetPath.Name" xml:space="preserve">
     <value>txtOtherTargetPath</value>
@@ -1648,6 +1642,9 @@ mailto:test@example.com</value>
   <data name="&gt;&gt;btnChromeExePathChange.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;tabSteam.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>New Custom Shortcut</value>
   </data>
@@ -1655,7 +1652,7 @@ mailto:test@example.com</value>
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radShortcutLocation.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.AllOrCurrentUserRadios, TileIconifier, Version=2.2.6022.30488, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.AllOrCurrentUserRadios, TileIconifier, Version=2.2.6022.34193, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lstChromeAppItems.Parent" xml:space="preserve">
     <value>tabChromeApps</value>
@@ -1669,8 +1666,8 @@ mailto:test@example.com</value>
   <data name="lblUriExplain.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 15</value>
   </data>
-  <data name="btnOtherTargetBrowse.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
+  <data name="tabOther.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
   <data name="&gt;&gt;lstWindowsStoreApps.Name" xml:space="preserve">
     <value>lstWindowsStoreApps</value>
@@ -1728,6 +1725,9 @@ mailto:test@example.com</value>
   </data>
   <data name="&gt;&gt;txtChromeExePath.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabWindowsStore.Name" xml:space="preserve">
+    <value>tabWindowsStore</value>
   </data>
   <data name="lblUriExplain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

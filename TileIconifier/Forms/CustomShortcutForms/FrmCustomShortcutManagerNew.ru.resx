@@ -279,13 +279,13 @@
     <value>Путь URI:</value>
   </data>
   <data name="lblUriExplain.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>600, 0</value>
+    <value>615, 0</value>
   </data>
   <data name="lblUriExplain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>591, 91</value>
+    <value>610, 91</value>
   </data>
   <data name="lblUriExplain.Text" xml:space="preserve">
-    <value>Используйте это, чтобы создать пользовательский ярлык для любого пути URI. Это включает в себя веб-адреса, которые вы хотите открыть в браузере по умолчанию.
+    <value>Используйте этот раздел, чтобы создать пользовательский ярлык для любого пути URI. Под этим подразумеваются веб-адреса, которые вы хотите открыть в браузере по умолчанию.
 
 Например:
 https://www.google.com
@@ -296,7 +296,7 @@ mailto:test@example.com</value>
     <value>NoControl</value>
   </data>
   <data name="lblOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 13</value>
+    <value>113, 13</value>
   </data>
   <data name="lblOtherShortcutArguments.Text" xml:space="preserve">
     <value>Параметры запуска</value>
