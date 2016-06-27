@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -282,14 +281,14 @@ namespace TileIconifier.Forms.Shared
                 MessageBox.Show($"{ex.Message}: {ex.FileName}", $"{Strings.FileCouldNotBeFound}", MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
             }
-            
+
             Close();
         }
 
         private byte[] GetLogoBytes()
         {
             var item = lvwIcons.SelectedItems[0] as IconListViewItem;
-            
+
             return ImageUtils.ImageToByteArray(item?.Bitmap);
         }
 

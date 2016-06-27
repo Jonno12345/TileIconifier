@@ -113,5 +113,15 @@ namespace TileIconifier.Core.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [InternetShortcut]
+        ///URL={0}.
+        /// </summary>
+        internal static string UrlFileTemplate {
+            get {
+                return ResourceManager.GetString("UrlFileTemplate", resourceCulture);
+            }
+        }
     }
 }

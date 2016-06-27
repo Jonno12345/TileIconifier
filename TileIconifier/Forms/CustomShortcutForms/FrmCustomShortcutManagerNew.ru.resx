@@ -266,11 +266,37 @@
   <data name="tabWindowsStore.Text" xml:space="preserve">
     <value>Магазин Windows</value>
   </data>
+  <data name="txtUriString.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 113</value>
+  </data>
+  <data name="lblUriString.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 116</value>
+  </data>
+  <data name="lblUriString.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="lblUriString.Text" xml:space="preserve">
+    <value>Путь URI:</value>
+  </data>
+  <data name="lblUriExplain.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>615, 0</value>
+  </data>
+  <data name="lblUriExplain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 91</value>
+  </data>
+  <data name="lblUriExplain.Text" xml:space="preserve">
+    <value>Используйте этот раздел, чтобы создать пользовательский ярлык для любого пути URI. Под этим подразумеваются веб-адреса, которые вы хотите открыть в браузере по умолчанию.
+
+Например:
+https://www.google.com
+spotify:trackId
+mailto:test@example.com</value>
+  </data>
   <data name="lblOtherShortcutArguments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 13</value>
+    <value>113, 13</value>
   </data>
   <data name="lblOtherShortcutArguments.Text" xml:space="preserve">
     <value>Параметры запуска</value>

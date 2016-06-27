@@ -87,6 +87,12 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private List<WindowsStoreAppListViewItemGroup> _windowsStoreApps;
 
         //*********************************************************************
+        // URI RELATED FIELDS
+        //*********************************************************************
+
+        private readonly NewCustomShortcutFormCache _uriCache = new NewCustomShortcutFormCache();
+
+        //*********************************************************************
         // GENERAL FIELDS
         //*********************************************************************
 
@@ -117,6 +123,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
                     return _windowsStoreCache;
                 if (_previousTabPage == tabChromeApps)
                     return _chromeCache;
+                if (_previousTabPage == tabURI)
+                    return _uriCache;
                 return null;
             }
         }
@@ -136,6 +144,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
                     return _windowsStoreCache;
                 if (currentTab == tabChromeApps)
                     return _chromeCache;
+                if (currentTab == tabURI)
+                    return _uriCache;
                 return null;
             }
         }
@@ -172,17 +182,16 @@ namespace TileIconifier.Forms.CustomShortcutForms
             )
         {
             var shortcutName = txtShortcutName.Text.CleanInvalidFilenameChars();
-            byte[] imageToUse;
 
             try
             {
-                ValidateFields(shortcutName, targetPath, out imageToUse);
+                ValidateFields(shortcutName, targetPath);
             }
             catch (ValidationFailureException)
             {
                 return;
             }
-
+            
             //build our new custom shortcut
             var customShortcut = new CustomShortcut(shortcutName, targetPath, targetArguments, shortcutType, windowType,
                 radShortcutLocation.PathSelection(), basicShortcutIcon, workingFolder);
@@ -195,24 +204,23 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
 
             //Iconify a TileIconifier shortcut for this with default settings
-            var newShortcutItem = customShortcut.ShortcutItem;
-            newShortcutItem.Properties.CurrentState.MediumImage.SetImage(imageToUse,
-                ShortcutConstantsAndEnums.MediumShortcutDisplaySize);
-            newShortcutItem.Properties.CurrentState.SmallImage.SetImage(imageToUse,
-                ShortcutConstantsAndEnums.SmallShortcutDisplaySize);
-            var iconify = new TileIcon(newShortcutItem);
-            iconify.RunIconify();
+            BuildIconifiedTile(ImageUtils.ImageToByteArray(pctCurrentIcon.Image), customShortcut);
 
             //confirm to the user the shortcut has been created
+            ConfirmToUser(shortcutName);
+        }
+
+        private static void ConfirmToUser(string shortcutName)
+        {
             MessageBox.Show(
-                string.Format(
-                    Strings.ShortcutCreatedNeedsPinning,
-                    shortcutName.QuoteWrap()),
-                Strings.ShortcutCreated, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string.Format(
+                                Strings.ShortcutCreatedNeedsPinning,
+                                shortcutName.QuoteWrap()),
+                            Strings.ShortcutCreated, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Hacked this in quickly - fix it up.
-        private void ValidateFields(string shortcutName, string targetPath, out byte[] imageToUse)
+        private void ValidateFields(string shortcutName, string targetPath)
         {
             //Check if there are invalid characters in the shortcut name
             if (txtShortcutName.Text != shortcutName || shortcutName.Length == 0)
@@ -238,7 +246,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             try
             {
-                imageToUse = ImageUtils.ImageToByteArray(pctCurrentIcon.Image);
+                ImageUtils.ImageToByteArray(pctCurrentIcon.Image);
             }
             catch
             {
@@ -266,6 +274,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
             else if (tabShortcutType.SelectedTab == tabWindowsStore)
             {
                 GenerateWindowsStoreAppShortcut();
+            }
+            else if (tabShortcutType.SelectedTab == tabURI)
+            {
+                GenerateUriShortcut();
             }
             else if (tabShortcutType.SelectedTab == tabOther)
             {
@@ -686,6 +698,57 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 CustomShortcutType.WindowsStoreApp, windowType: WindowType.Hidden);
         }
         #endregion
+
+
+        #region URI Shortcut Methods
+        //*********************************************************************
+        // URI RELATED METHODS
+        //*********************************************************************
+
+        private void GenerateUriShortcut()
+        {
+            var shortcutName = txtShortcutName.Text.CleanInvalidFilenameChars();
+            var uriString = txtUriString.Text;
+
+            try
+            {
+                ValidateFields(shortcutName, uriString);
+            }
+            catch (ValidationFailureException)
+            {
+                return;
+            }
+
+            //build our new custom shortcut
+            var customShortcut = new CustomShortcut(shortcutName, string.Empty, string.Empty, CustomShortcutType.Uri, WindowType.ActiveAndCurrent,
+                radShortcutLocation.PathSelection());
+
+            var urlGenerationPath = $"{customShortcut.VbsFolderPath}{shortcutName}.url";
+            ShortcutUtils.CreateUrlFile(urlGenerationPath, uriString);
+
+            customShortcut.TargetPath = urlGenerationPath;
+            customShortcut.BuildCustomShortcut(pctCurrentIcon.Image);
+            
+            BuildIconifiedTile(ImageUtils.ImageToByteArray(pctCurrentIcon.Image), customShortcut);
+
+            //confirm to the user the shortcut has been created
+            ConfirmToUser(shortcutName);
+        }
+
+        private static void BuildIconifiedTile(byte[] imageToUse, CustomShortcut customShortcut)
+        {
+
+            //Iconify a TileIconifier shortcut for this with default settings
+            var newShortcutItem = customShortcut.ShortcutItem;
+            newShortcutItem.Properties.CurrentState.MediumImage.SetImage(imageToUse,
+                ShortcutConstantsAndEnums.MediumShortcutDisplaySize);
+            newShortcutItem.Properties.CurrentState.SmallImage.SetImage(imageToUse,
+                ShortcutConstantsAndEnums.SmallShortcutDisplaySize);
+            var iconify = new TileIcon(newShortcutItem);
+            iconify.RunIconify();
+        }
+        #endregion
+
 
         #region Other Shortcut Methods
         //*********************************************************************

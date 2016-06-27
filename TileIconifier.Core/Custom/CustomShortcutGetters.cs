@@ -195,7 +195,8 @@ namespace TileIconifier.Core.Custom
         Steam = 1,
         Other = 2,
         ChromeApp = 3,
-        WindowsStoreApp = 4
+        WindowsStoreApp = 4,
+        Uri = 5
     }
 
     public enum ShortcutUser

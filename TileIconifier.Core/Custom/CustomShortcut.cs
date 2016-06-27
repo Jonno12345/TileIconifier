@@ -94,9 +94,9 @@ namespace TileIconifier.Core.Custom
 
         public ShortcutItem ShortcutItem { get; set; }
         private string VbsFilePath { get; set; }
-        private string VbsFolderPath { get; }
+        public string VbsFolderPath { get; }
         public string ShortcutName { get; }
-        public string TargetPath { get; }
+        public string TargetPath { get; set; }
         private string TargetArguments { get; }
         private string WorkingFolder { get; }
         public CustomShortcutType ShortcutType { get; }

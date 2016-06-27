@@ -137,6 +137,9 @@
   <data name="lblLnkPath.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 13</value>
   </data>
+  <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;btnBuildCustomShortcut.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
@@ -167,6 +170,9 @@
   <data name="skinToolStripMenuItem.Text" xml:space="preserve">
     <value>Skin</value>
   </data>
+  <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
+    <value>aboutToolStripMenuItem</value>
+  </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 22</value>
   </data>
@@ -182,14 +188,14 @@
   <data name="lblExePath.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
   </data>
-  <data name="btnRemove.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
   <data name="lblExePath.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 309</value>
   </data>
   <data name="&gt;&gt;btnIconify.ZOrder" xml:space="preserve">
     <value>9</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>490, 400</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="srtlstShortcuts.TabIndex" type="System.Int32, mscorlib">
@@ -201,14 +207,17 @@
   <data name="donateToolStripMenuItem.Text" xml:space="preserve">
     <value>Donate</value>
   </data>
-  <data name="&gt;&gt;refreshAllToolStripMenuItem.Name" xml:space="preserve">
-    <value>refreshAllToolStripMenuItem</value>
+  <data name="customShortcutManagerToolStripMenuItem.Text" xml:space="preserve">
+    <value>Custom Shortcut Manager</value>
   </data>
   <data name="&gt;&gt;srtlstShortcuts.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="preferencesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 22</value>
+  </data>
+  <data name="defaultSkinToolStripMenuItem.Text" xml:space="preserve">
+    <value>Default Skin</value>
   </data>
   <data name="&gt;&gt;lblExePath.Name" xml:space="preserve">
     <value>lblExePath</value>
@@ -251,9 +260,6 @@
   </data>
   <data name="donateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 22</value>
-  </data>
-  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 21</value>
   </data>
   <data name="btnDeleteCustomShortcut.Text" xml:space="preserve">
     <value>Delete Custom Shortcut</value>
@@ -455,8 +461,8 @@
   <data name="&gt;&gt;refreshAllToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnDeleteCustomShortcut.Name" xml:space="preserve">
-    <value>btnDeleteCustomShortcut</value>
+  <data name="btnDeleteCustomShortcut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 20</value>
   </data>
   <data name="iconifyPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>516, 23</value>
@@ -467,23 +473,23 @@
   <data name="btnRemove.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="lblLnkPath.Text" xml:space="preserve">
+    <value>LNK Path</value>
+  </data>
   <data name="&gt;&gt;lblLnkPath.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="&gt;&gt;skinToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;btnBuildCustomShortcut.Name" xml:space="preserve">
     <value>btnBuildCustomShortcut</value>
-  </data>
-  <data name="&gt;&gt;btnDeleteCustomShortcut.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
   </data>
   <data name="lblFilter.Text" xml:space="preserve">
     <value>Filter:</value>
-  </data>
-  <data name="txtLnkPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>494, 20</value>
   </data>
   <data name="mnuMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -494,11 +500,8 @@
   <data name="&gt;&gt;exitToolStripMenuItem.Name" xml:space="preserve">
     <value>exitToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;btnRemove.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="btnIconify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 21</value>
+  <data name="&gt;&gt;btnDeleteCustomShortcut.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;donateToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -513,7 +516,7 @@
     <value>Remove Iconify</value>
   </data>
   <data name="&gt;&gt;srtlstShortcuts.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6018.30824, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6021.35858, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="txtExePath.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 324</value>
@@ -526,9 +529,6 @@
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FrmMain</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>827, 407</value>
   </data>
   <data name="getPinnedItemsRequiresPowershellToolStripMenuItem.Text" xml:space="preserve">
     <value>Get Pinned Items (Requires Powershell)</value>
@@ -548,8 +548,14 @@
   <data name="&gt;&gt;btnBuildCustomShortcut.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;customShortcutManagerToolStripMenuItem.Name" xml:space="preserve">
+    <value>customShortcutManagerToolStripMenuItem</value>
+  </data>
   <data name="&gt;&gt;checkForUpdateToolStripMenuItem.Name" xml:space="preserve">
     <value>checkForUpdateToolStripMenuItem</value>
+  </data>
+  <data name="lblFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 13</value>
   </data>
   <data name="lblLnkPath.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -560,8 +566,8 @@
   <data name="btnIconify.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnBuildCustomShortcut.Text" xml:space="preserve">
-    <value>Quick Build Custom Shortcut</value>
+  <data name="&gt;&gt;lblFilter.Name" xml:space="preserve">
+    <value>lblFilter</value>
   </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 22</value>
@@ -574,6 +580,9 @@
   </data>
   <data name="&gt;&gt;txtExePath.Name" xml:space="preserve">
     <value>txtExePath</value>
+  </data>
+  <data name="&gt;&gt;preferencesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;srtlstShortcuts.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -603,7 +612,7 @@
     <value>11, 353</value>
   </data>
   <data name="&gt;&gt;iconifyPanel.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.TileIconifierPanel, TileIconifier, Version=2.2.6018.30824, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.TileIconifierPanel, TileIconifier, Version=2.2.6021.35858, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="defaultSkinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 22</value>
@@ -613,6 +622,9 @@
   </data>
   <data name="&gt;&gt;txtFilter.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtFilter.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="preferencesToolStripMenuItem.Text" xml:space="preserve">
     <value>Utilities</value>
@@ -626,14 +638,14 @@
   <data name="iconifyPanel.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
   </data>
-  <data name="&gt;&gt;checkForUpdateToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkForUpdateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 22</value>
+  <data name="&gt;&gt;btnRemove.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;btnIconify.Name" xml:space="preserve">
     <value>btnIconify</value>
+  </data>
+  <data name="&gt;&gt;englishToolStripMenuItem.Name" xml:space="preserve">
+    <value>englishToolStripMenuItem</value>
   </data>
   <data name="lblExePath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -649,9 +661,6 @@
   </data>
   <data name="btnRemove.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
-  </data>
-  <data name="&gt;&gt;lblFilter.Name" xml:space="preserve">
-    <value>lblFilter</value>
   </data>
   <data name="btnIconify.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -689,9 +698,6 @@
   <data name="&gt;&gt;btnIconify.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;iconifyPanel.Name" xml:space="preserve">
-    <value>iconifyPanel</value>
-  </data>
   <data name="btnBuildCustomShortcut.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
@@ -707,9 +713,6 @@
   <data name="&gt;&gt;lblFilter.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="iconifyPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Right</value>
-  </data>
   <data name="lblExePath.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
   </data>
@@ -718,6 +721,9 @@
   </data>
   <data name="&gt;&gt;donateToolStripMenuItem.Name" xml:space="preserve">
     <value>donateToolStripMenuItem</value>
+  </data>
+  <data name="btnBuildCustomShortcut.Text" xml:space="preserve">
+    <value>Quick Build Custom Shortcut</value>
   </data>
   <data name="&gt;&gt;txtLnkPath.Parent" xml:space="preserve">
     <value>$this</value>
@@ -732,13 +738,10 @@
     <value>defaultSkinToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6018.30824, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6021.35858, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;defaultSkinToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnBuildCustomShortcut.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="&gt;&gt;lblExePath.Parent" xml:space="preserve">
     <value>$this</value>
@@ -752,14 +755,14 @@
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>277, 6</value>
   </data>
-  <data name="btnDeleteCustomShortcut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 20</value>
+  <data name="txtLnkPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>494, 20</value>
   </data>
-  <data name="lblLnkPath.Text" xml:space="preserve">
-    <value>LNK Path</value>
+  <data name="btnRemove.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
-  <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
-    <value>aboutToolStripMenuItem</value>
+  <data name="iconifyPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
   </data>
   <data name="&gt;&gt;mnuMain.Name" xml:space="preserve">
     <value>mnuMain</value>
@@ -767,17 +770,17 @@
   <data name="btnRemove.Location" type="System.Drawing.Point, System.Drawing">
     <value>720, 379</value>
   </data>
-  <data name="customShortcutManagerToolStripMenuItem.Text" xml:space="preserve">
-    <value>Custom Shortcut Manager</value>
-  </data>
   <data name="btnIconify.Text" xml:space="preserve">
     <value>Tile Iconify!</value>
   </data>
-  <data name="&gt;&gt;englishToolStripMenuItem.Name" xml:space="preserve">
-    <value>englishToolStripMenuItem</value>
+  <data name="&gt;&gt;checkForUpdateToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuMain.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 1, 0, 1</value>
+  </data>
+  <data name="&gt;&gt;txtExePath.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -790,9 +793,6 @@
   </data>
   <data name="&gt;&gt;lblLnkPath.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;txtFilter.Name" xml:space="preserve">
-    <value>txtFilter</value>
   </data>
   <data name="darkSkinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 22</value>
@@ -809,20 +809,20 @@
   <data name="&gt;&gt;btnIconify.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="btnBuildCustomShortcut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;txtFilter.Name" xml:space="preserve">
+    <value>txtFilter</value>
   </data>
-  <data name="defaultSkinToolStripMenuItem.Text" xml:space="preserve">
-    <value>Default Skin</value>
+  <data name="&gt;&gt;btnDeleteCustomShortcut.Name" xml:space="preserve">
+    <value>btnDeleteCustomShortcut</value>
   </data>
-  <data name="&gt;&gt;txtExePath.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;btnBuildCustomShortcut.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>827, 407</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
-    <value>toolStripSeparator1</value>
+  <data name="checkForUpdateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>280, 22</value>
   </data>
   <data name="lblFilter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -830,11 +830,11 @@
   <data name="&gt;&gt;preferencesToolStripMenuItem.Name" xml:space="preserve">
     <value>preferencesToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;skinToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnBuildCustomShortcut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;txtFilter.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;iconifyPanel.Name" xml:space="preserve">
+    <value>iconifyPanel</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 22</value>
@@ -844,6 +844,9 @@
   </data>
   <data name="btnIconify.Location" type="System.Drawing.Point, System.Drawing">
     <value>521, 379</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
   </data>
   <data name="lblFilter.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -860,8 +863,8 @@
   <data name="txtExePath.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="&gt;&gt;customShortcutManagerToolStripMenuItem.Name" xml:space="preserve">
-    <value>customShortcutManagerToolStripMenuItem</value>
+  <data name="&gt;&gt;refreshAllToolStripMenuItem.Name" xml:space="preserve">
+    <value>refreshAllToolStripMenuItem</value>
   </data>
   <data name="lblLnkPath.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -872,26 +875,20 @@
   <data name="&gt;&gt;languageToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lblFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 13</value>
+  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 21</value>
   </data>
   <data name="txtLnkPath.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;preferencesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>490, 400</value>
+  <data name="btnIconify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 21</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ru</value>
   </metadata>
   <metadata name="mnuMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
