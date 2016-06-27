@@ -213,7 +213,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private static void ConfirmToUser(string shortcutName)
         {
             MessageBox.Show(
-                            string.Format(
+                    string.Format(
                                 Strings.ShortcutCreatedNeedsPinning,
                                 shortcutName.QuoteWrap()),
                             Strings.ShortcutCreated, MessageBoxButtons.OK, MessageBoxIcon.Information);
