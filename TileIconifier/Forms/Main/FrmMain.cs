@@ -34,6 +34,7 @@ using System.IO;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Custom;
+using TileIconifier.Core.Custom.Builder;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Forms.CustomShortcutForms;
 using TileIconifier.Forms.Shared;
@@ -195,13 +196,12 @@ namespace TileIconifier.Forms
 
             shortcutName = cloneConfirmation.ShortcutName;
 
-            var customShortcut =
-                new CustomShortcut(shortcutName, CurrentShortcutItem.TargetFilePath, "",
-                    CustomShortcutType.Other, WindowType.ActiveAndCurrent,
-                    CustomShortcutGetters.CustomShortcutAllUsersPath, null,
-                    CurrentShortcutItem.ShortcutFileInfo.Directory?.FullName);
+            var parameters = new GenerateCustomShortcutParams(CurrentShortcutItem.TargetFilePath, string.Empty, CustomShortcutGetters.CustomShortcutCurrentUserPath)
+            {
+                WorkingFolder = CurrentShortcutItem.ShortcutFileInfo.Directory?.FullName
+            };
 
-            customShortcut.BuildCustomShortcut();
+            var customShortcut = new OtherCustomShortcutBuilder(parameters).GenerateCustomShortcut(shortcutName);
 
             StartFullUpdate();
 
