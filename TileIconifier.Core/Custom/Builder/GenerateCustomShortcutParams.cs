@@ -40,7 +40,7 @@ namespace TileIconifier.Core.Custom.Builder
             ShortcutArguments = shortcutArguments;
             ShortcutRootPath = shortcutRootPath;
         }
-        
+
         public string ShortcutTarget { get; }
 
         public string ShortcutArguments { get; }

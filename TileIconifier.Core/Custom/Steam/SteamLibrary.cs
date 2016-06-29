@@ -38,7 +38,6 @@ namespace TileIconifier.Core.Custom.Steam
 {
     public class SteamLibrary
     {
-
         private static SteamLibrary _instance;
 
         private readonly string[] _defaultInstallationPaths =
