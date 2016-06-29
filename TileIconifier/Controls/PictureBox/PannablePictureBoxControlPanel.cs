@@ -130,9 +130,9 @@ namespace TileIconifier.Controls.PictureBox
             alignForm.Show(this);
         }
 
-        private void AlignFormClick(object sender, EventArgs eventArgs, AlignButtonClick alignButtonClick)
+        private void AlignFormClick(object sender, AlignFormEventArgs eventArgs)
         {
-            switch (alignButtonClick)
+            switch (eventArgs.AlignButtonClicked)
             {
                 case AlignButtonClick.LeftAlign:
                     PannablePictureBox.AlignLeft();
@@ -169,7 +169,7 @@ namespace TileIconifier.Controls.PictureBox
                     break;
                 case AlignButtonClick.Unknown:
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(alignButtonClick), alignButtonClick, null);
+                    throw new ArgumentOutOfRangeException(nameof(eventArgs.AlignButtonClicked), eventArgs.AlignButtonClicked, null);
             }
         }
 

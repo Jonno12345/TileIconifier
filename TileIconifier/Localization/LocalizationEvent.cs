@@ -27,7 +27,19 @@
 
 #endregion
 
+using System;
+using System.Threading;
+
 namespace TileIconifier.Localization
 {
-    public delegate void LocalizationEventHandler(object sender, string newCulture);
+    public delegate void LocalizationEventHandler(object sender, LocalizationEventArgs e);
+
+    public class LocalizationEventArgs : EventArgs
+    {
+        public string Culture { get; set; }
+        public LocalizationEventArgs(string selectedCulture)
+        {
+            Culture = selectedCulture;
+        }
+    }
 }

@@ -33,7 +33,17 @@ using TileIconifier.Properties;
 
 namespace TileIconifier.Controls.PictureBox
 {
-    public delegate void AlignFormEventArgs(object sender, EventArgs eventArgs, AlignButtonClick alignButtonClick);
+    public class AlignFormEventArgs : EventArgs
+    {
+        public AlignButtonClick AlignButtonClicked { get; set; }
+
+        public AlignFormEventArgs(AlignButtonClick alignButtonClick)
+        {
+            AlignButtonClicked = alignButtonClick;
+        }
+    }
+
+    public delegate void AlignFormEvent(object sender, AlignFormEventArgs e);
 
     public partial class AlignForm : Form
     {
@@ -45,11 +55,11 @@ namespace TileIconifier.Controls.PictureBox
             Deactivate += (sender, args) => Close();
         }
 
-        public event AlignFormEventArgs AlignFormClick;
+        public event AlignFormEvent AlignFormClick;
 
         protected virtual void OnAlignFormClick(AlignButtonClick alignbuttonclick)
         {
-            AlignFormClick?.Invoke(this, EventArgs.Empty, alignbuttonclick);
+            AlignFormClick?.Invoke(this, new AlignFormEventArgs(alignbuttonclick));
         }
 
         private void AlignForm_Load(object sender, EventArgs e)

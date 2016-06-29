@@ -53,10 +53,10 @@ namespace TileIconifier.Forms
     {
         public event LocalizationEventHandler LanguageChangedEvent;
 
-        protected virtual void OnLanguageChangedEvent(string newculture)
+        protected virtual void OnLanguageChangedEvent(string newCulture)
         {
-            LanguageChangedEvent?.Invoke(this, newculture);
-            Config.Instance.LocaleToUse = newculture;
+            LanguageChangedEvent?.Invoke(this, new LocalizationEventArgs(newCulture));
+            Config.Instance.LocaleToUse = newCulture;
             Config.Instance.SaveConfig();
         }
 
