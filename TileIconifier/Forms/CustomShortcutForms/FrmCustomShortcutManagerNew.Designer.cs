@@ -75,6 +75,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.lblOtherTargetPath = new System.Windows.Forms.Label();
             this.btnOtherTargetBrowse = new System.Windows.Forms.Button();
             this.txtOtherTargetPath = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pctCurrentIcon)).BeginInit();
             this.tabShortcutType.SuspendLayout();
             this.tabExplorer.SuspendLayout();
@@ -84,11 +86,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabWindowsStore.SuspendLayout();
             this.tabURI.SuspendLayout();
             this.tabOther.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // fldBrowser
             // 
-            resources.ApplyResources(this.fldBrowser, "fldBrowser");
             this.fldBrowser.ShowNewFolderButton = false;
             // 
             // opnSteamExe
@@ -156,8 +158,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabExplorer
             // 
-            resources.ApplyResources(this.tabExplorer, "tabExplorer");
             this.tabExplorer.Controls.Add(this.pnlExplorer);
+            resources.ApplyResources(this.tabExplorer, "tabExplorer");
             this.tabExplorer.Name = "tabExplorer";
             this.tabExplorer.UseVisualStyleBackColor = true;
             // 
@@ -193,8 +195,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // radSpecialFolder
             // 
-            resources.ApplyResources(this.radSpecialFolder, "radSpecialFolder");
             this.radSpecialFolder.Checked = true;
+            resources.ApplyResources(this.radSpecialFolder, "radSpecialFolder");
             this.radSpecialFolder.Name = "radSpecialFolder";
             this.radSpecialFolder.TabStop = true;
             this.radSpecialFolder.UseVisualStyleBackColor = true;
@@ -210,7 +212,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabSteam
             // 
-            resources.ApplyResources(this.tabSteam, "tabSteam");
             this.tabSteam.Controls.Add(this.btnSteamLibrariesPath);
             this.tabSteam.Controls.Add(this.btnSteamExeChange);
             this.tabSteam.Controls.Add(this.btnSteamInstallationChange);
@@ -218,6 +219,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabSteam.Controls.Add(this.txtSteamExecutablePath);
             this.tabSteam.Controls.Add(this.txtSteamLibraryPaths);
             this.tabSteam.Controls.Add(this.lstSteamGames);
+            resources.ApplyResources(this.tabSteam, "tabSteam");
             this.tabSteam.Name = "tabSteam";
             this.tabSteam.UseVisualStyleBackColor = true;
             // 
@@ -279,12 +281,12 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabChromeApps
             // 
-            resources.ApplyResources(this.tabChromeApps, "tabChromeApps");
             this.tabChromeApps.Controls.Add(this.lstChromeAppItems);
             this.tabChromeApps.Controls.Add(this.btnChromeAppPathChange);
             this.tabChromeApps.Controls.Add(this.txtChromeAppPath);
             this.tabChromeApps.Controls.Add(this.btnChromeExePathChange);
             this.tabChromeApps.Controls.Add(this.txtChromeExePath);
+            resources.ApplyResources(this.tabChromeApps, "tabChromeApps");
             this.tabChromeApps.Name = "tabChromeApps";
             this.tabChromeApps.UseVisualStyleBackColor = true;
             // 
@@ -331,8 +333,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabWindowsStore
             // 
-            resources.ApplyResources(this.tabWindowsStore, "tabWindowsStore");
             this.tabWindowsStore.Controls.Add(this.lstWindowsStoreApps);
+            resources.ApplyResources(this.tabWindowsStore, "tabWindowsStore");
             this.tabWindowsStore.Name = "tabWindowsStore";
             this.tabWindowsStore.UseVisualStyleBackColor = true;
             // 
@@ -349,10 +351,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabURI
             // 
-            resources.ApplyResources(this.tabURI, "tabURI");
             this.tabURI.Controls.Add(this.txtUriString);
             this.tabURI.Controls.Add(this.lblUriString);
             this.tabURI.Controls.Add(this.lblUriExplain);
+            resources.ApplyResources(this.tabURI, "tabURI");
             this.tabURI.Name = "tabURI";
             this.tabURI.UseVisualStyleBackColor = true;
             // 
@@ -373,12 +375,12 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabOther
             // 
-            resources.ApplyResources(this.tabOther, "tabOther");
             this.tabOther.Controls.Add(this.lblOtherShortcutArguments);
             this.tabOther.Controls.Add(this.txtOtherShortcutArguments);
             this.tabOther.Controls.Add(this.lblOtherTargetPath);
             this.tabOther.Controls.Add(this.btnOtherTargetBrowse);
             this.tabOther.Controls.Add(this.txtOtherTargetPath);
+            resources.ApplyResources(this.tabOther, "tabOther");
             this.tabOther.Name = "tabOther";
             this.tabOther.UseVisualStyleBackColor = true;
             // 
@@ -411,10 +413,23 @@ namespace TileIconifier.Forms.CustomShortcutForms
             resources.ApplyResources(this.txtOtherTargetPath, "txtOtherTargetPath");
             this.txtOtherTargetPath.Name = "txtOtherTargetPath";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Name = "menuStrip1";
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            resources.ApplyResources(this.refreshToolStripMenuItem, "refreshToolStripMenuItem");
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
             // FrmCustomShortcutManagerNew
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.radShortcutLocation);
             this.Controls.Add(this.txtShortcutName);
             this.Controls.Add(this.lblShortcutName);
@@ -422,6 +437,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.Controls.Add(this.lblCurrentIcon);
             this.Controls.Add(this.pctCurrentIcon);
             this.Controls.Add(this.tabShortcutType);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmCustomShortcutManagerNew";
             this.Load += new System.EventHandler(this.FrmCustomShortcutManagerNew_Load);
             this.Resize += new System.EventHandler(this.FrmCustomShortcutManagerNew_Resize);
@@ -439,6 +456,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabURI.PerformLayout();
             this.tabOther.ResumeLayout(false);
             this.tabOther.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -490,5 +509,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private System.Windows.Forms.TextBox txtUriString;
         private System.Windows.Forms.Label lblUriString;
         private System.Windows.Forms.Label lblUriExplain;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }

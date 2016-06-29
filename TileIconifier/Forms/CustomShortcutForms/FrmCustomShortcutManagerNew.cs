@@ -28,7 +28,6 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -40,7 +39,6 @@ using TileIconifier.Core;
 using TileIconifier.Core.Custom;
 using TileIconifier.Core.Custom.Chrome;
 using TileIconifier.Core.Custom.Steam;
-using TileIconifier.Core.Custom.WindowsStoreShellMethod;
 using TileIconifier.Core.IconExtractor;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.TileIconify;
@@ -53,49 +51,12 @@ namespace TileIconifier.Forms.CustomShortcutForms
 {
     public partial class FrmCustomShortcutManagerNew : SkinnableForm
     {
-        //*********************************************************************
-        // CHROME RELATED FIELDS
-        //*********************************************************************
-
         private readonly NewCustomShortcutFormCache _chromeCache = new NewCustomShortcutFormCache();
-        private List<ChromeAppListViewItem> _chromeApps;
-
-        //*********************************************************************
-        // EXPLORER RELATED FIELDS
-        //*********************************************************************
-
         private readonly NewCustomShortcutFormCache _explorerCache = new NewCustomShortcutFormCache();
-
-        //*********************************************************************
-        // OTHER RELATED FIELDS
-        //*********************************************************************
-
         private readonly NewCustomShortcutFormCache _otherCache = new NewCustomShortcutFormCache();
-
-        //*********************************************************************
-        // STEAM RELATED FIELDS
-        //*********************************************************************
-
         private readonly NewCustomShortcutFormCache _steamCache = new NewCustomShortcutFormCache();
-        private List<SteamGameListViewItem> _steamGames;
-
-        //*********************************************************************
-        // WINDOWS STORE RELATED FIELDS
-        //*********************************************************************
-
-        private readonly NewCustomShortcutFormCache _windowsStoreCache = new NewCustomShortcutFormCache();
-        private List<WindowsStoreAppListViewItemGroup> _windowsStoreApps;
-
-        //*********************************************************************
-        // URI RELATED FIELDS
-        //*********************************************************************
-
         private readonly NewCustomShortcutFormCache _uriCache = new NewCustomShortcutFormCache();
-
-        //*********************************************************************
-        // GENERAL FIELDS
-        //*********************************************************************
-
+        private readonly NewCustomShortcutFormCache _windowsStoreCache = new NewCustomShortcutFormCache();
         private TabPage _previousTabPage;
 
 
@@ -154,22 +115,45 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             Show();
             FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, Strings.Loading);
+            LoadCache(CurrentCache);
         }
 
         private void FullUpdate(object sender, DoWorkEventArgs e)
         {
-            try
+            RefreshLibraries();
+            PopulateAllTabs();
+        }
+
+        private void FullUpdateForceRefresh(object sender, DoWorkEventArgs e)
+        {
+            RefreshLibraries(true);
+            PopulateAllTabs();
+        }
+
+        private static void RefreshLibraries(bool force = false)
+        {
+            SteamGameListViewItemLibrary.RefreshList(force);
+            ChromeAppListViewItemLibrary.RefreshList(force);
+            WindowsStoreAppListViewItemLibrary.RefreshList(force);
+        }
+
+        private void PopulateAllTabs()
+        {
+            Invoke(new Action(() =>
             {
-                SetUpExplorer();
-                SetUpSteam();
-                SetUpChrome();
-                SetUpWindowsStore();
-            }
-            catch (Exception ex)
-            {
-                var frmException = new FrmException(ex);
-                frmException.ShowDialog();
-            }
+                try
+                {
+                    SetUpExplorer();
+                    SetUpSteam();
+                    SetUpChrome();
+                    SetUpWindowsStore();
+                }
+                catch (Exception ex)
+                {
+                    var frmException = new FrmException(ex);
+                    frmException.ShowDialog();
+                }
+            }));
         }
 
         private void GenerateFullShortcut(
@@ -191,7 +175,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             {
                 return;
             }
-            
+
             //build our new custom shortcut
             var customShortcut = new CustomShortcut(shortcutName, targetPath, targetArguments, shortcutType, windowType,
                 radShortcutLocation.PathSelection(), basicShortcutIcon, workingFolder);
@@ -213,10 +197,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private static void ConfirmToUser(string shortcutName)
         {
             MessageBox.Show(
-                    string.Format(
-                                Strings.ShortcutCreatedNeedsPinning,
-                                shortcutName.QuoteWrap()),
-                            Strings.ShortcutCreated, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string.Format(
+                    Strings.ShortcutCreatedNeedsPinning,
+                    shortcutName.QuoteWrap()),
+                Strings.ShortcutCreated, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Hacked this in quickly - fix it up.
@@ -225,7 +209,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             //Check if there are invalid characters in the shortcut name
             if (txtShortcutName.Text != shortcutName || shortcutName.Length == 0)
             {
-                MessageBox.Show(Strings.InvalidCharactersOrInvalidShortcutName, Strings.InvalidCharactersOrInvalidShortcutName,
+                MessageBox.Show(Strings.InvalidCharactersOrInvalidShortcutName,
+                    Strings.InvalidCharactersOrInvalidShortcutName,
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 throw new ValidationFailureException();
             }
@@ -324,28 +309,42 @@ namespace TileIconifier.Forms.CustomShortcutForms
             cache.AllOrCurrentUser = radShortcutLocation.GetCheckedRadio();
         }
 
-        private void UpdatedCacheIcon(byte[] bytesIn)
+        private void UpdateCacheIcon(byte[] bytesIn)
         {
             CurrentCache.SetIconBytes(bytesIn);
             pctCurrentIcon.Image = CurrentCache.GetIcon();
         }
 
+        private void FrmCustomShortcutManagerNew_Resize(object sender, EventArgs e)
+        {
+            RebuildAllListBoxColumns();
+        }
+
+        private void RebuildAllListBoxColumns()
+        {
+            BuildChromeListBoxColumns();
+            BuildSteamListBoxColumns();
+            BuildWindowsStoreListBoxColumns();
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtils.DoBackgroundWorkWithSplash(this, FullUpdateForceRefresh, Strings.Loading);
+        }
+
         #region Explorer Methods
+
         //*********************************************************************
         // EXPLORER RELATED METHODS
         //*********************************************************************
-
-        //TODO - Explorer stuff to it's own class
+        
         private void SetUpExplorer()
         {
-            Invoke(new Action(() =>
-            {
-                cmbExplorerGuids.DisplayMember = "Key";
-                cmbExplorerGuids.ValueMember = "Value";
-                cmbExplorerGuids.DataSource = new BindingSource(CustomShortcutGetters.ExplorerGuids, null);
-                CurrentCache.SetIconBytes(ImageUtils.ImageToByteArray(Resources.ExplorerIco.ToBitmap()));
-                pctCurrentIcon.Image = CurrentCache.GetIcon();
-            }));
+            if (cmbExplorerGuids.DataSource != null) return;
+            cmbExplorerGuids.DisplayMember = "Key";
+            cmbExplorerGuids.ValueMember = "Value";
+            cmbExplorerGuids.DataSource = new BindingSource(CustomShortcutGetters.ExplorerGuids, null);
+            _explorerCache.SetIconBytes(ImageUtils.ImageToByteArray(Resources.ExplorerIco.ToBitmap()));
         }
 
         private void radSpecialFolder_CheckedChanged(object sender, EventArgs e)
@@ -382,85 +381,33 @@ namespace TileIconifier.Forms.CustomShortcutForms
             radCustomFolder.Checked = true;
         }
 
-
         #endregion
+
         #region Steam Methods
+
         //*********************************************************************
         // STEAM RELATED METHODS
         //*********************************************************************
 
         private void SetUpSteam()
         {
-            if (!TestSteamDetection()) return;
-            LoadSteamGames();
-            SetUpSteamListBox();
-        }
+            txtSteamLibraryPaths.Text = SteamGameListViewItemLibrary.SteamLibraryPathsResolvedString();
+            txtSteamExecutablePath.Text = SteamGameListViewItemLibrary.SteamExecutablePathResolvedString();
+            txtSteamInstallationPath.Text = SteamGameListViewItemLibrary.SteamInstallationPathResolvedString();
 
-        private bool TestSteamDetection()
-        {
-            var steamDetected = true;
-            try
-            {
-                var steamInstallationPath = SteamLibrary.Instance.GetSteamInstallationFolder();
-                txtSteamInstallationPath.Text = $"{Strings.SteamInstallationPath}: {steamInstallationPath}";
-            }
-            catch (SteamInstallationPathNotFoundException)
-            {
-                txtSteamInstallationPath.Text = Strings.SteamInstallationPathNotFound;
-                steamDetected = false;
-            }
-
-            try
-            {
-                var steamExecutable = SteamLibrary.Instance.GetSteamExePath();
-                txtSteamExecutablePath.Text = $"{Strings.SteamExecutablePath}: {steamExecutable}";
-            }
-            catch (SteamExecutableNotFoundException)
-            {
-                txtSteamExecutablePath.Text = Strings.SteamExecutablePathNotFound;
-                steamDetected = false;
-            }
-
-            try
-            {
-                var steamLibraryFolders = SteamLibrary.Instance.GetLibraryFolders();
-                if (steamLibraryFolders.Count > 0)
-                {
-                    txtSteamLibraryPaths.Text = $"{Strings.SteamLibraryFolders}: {string.Join("; ", steamLibraryFolders)}";
-                }
-                else
-                {
-                    txtSteamLibraryPaths.Text = Strings.SteamLibraryFoldersNotFound;
-                    steamDetected = false;
-                }
-            }
-            catch
-            {
-                txtSteamLibraryPaths.Text = Strings.SteamLibraryFoldersNotFound;
-                steamDetected = false;
-            }
-
-            return steamDetected;
-        }
-
-        private void SetUpSteamListBox()
-        {
             lstSteamGames.Clear();
             BuildSteamListBoxColumns();
-            lstSteamGames.Items.AddRange(_steamGames.OrderBy(s => s.SteamGameItem.GameName).ToArray<ListViewItem>());
+            lstSteamGames.Items.AddRange(
+                SteamGameListViewItemLibrary.SteamGameListViewItems.OrderBy(s => s.SteamGameItem.GameName)
+                    .ToArray<ListViewItem>());
         }
-
+        
         private void BuildSteamListBoxColumns()
         {
             lstSteamGames.Columns.Clear();
 
             lstSteamGames.Columns.Add(Strings.AppId, lstSteamGames.Width / 7, HorizontalAlignment.Left);
             lstSteamGames.Columns.Add(Strings.GameName, lstSteamGames.Width / 7 * 6 + 3, HorizontalAlignment.Left);
-        }
-
-        private void LoadSteamGames()
-        {
-            _steamGames = SteamLibrary.Instance.GetAllSteamGames().Select(s => new SteamGameListViewItem(s)).ToList();
         }
 
         private void btnInstallationChange_Click(object sender, EventArgs e)
@@ -488,7 +435,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 return;
 
             var steamGame = ((SteamGameListViewItem)lstSteamGames.SelectedItems[0]).SteamGameItem;
-            UpdatedCacheIcon(steamGame.IconAsBytes);
+            UpdateCacheIcon(steamGame.IconAsBytes);
             txtShortcutName.Text = steamGame.GameName.CleanInvalidFilenameChars();
         }
 
@@ -524,8 +471,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
             }
             SetUpSteam();
         }
+
         #endregion
+
         #region Chrome Methods
+
         //*********************************************************************
         // CHROME RELATED METHODS
         //*********************************************************************
@@ -535,7 +485,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             PopulateChromeInstallationPath();
             PopulateGoogleAppLibraryPath();
 
-            PopulateChromeAppList();
             SetUpChromeListView();
         }
 
@@ -543,7 +492,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             try
             {
-                txtChromeAppPath.Text = CustomShortcutGetters.GoogleAppLibraryPath;
+                txtChromeAppPath.Text = ChromeAppLibrary.AppLibraryPath;
             }
             catch (Exception ex)
             {
@@ -551,21 +500,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
             }
         }
 
-        private void PopulateChromeAppList()
-        {
-            if (!Directory.Exists(txtChromeAppPath.Text))
-                return;
-            _chromeApps =
-                ChromeAppLibrary.GetChromeAppItems(txtChromeAppPath.Text)
-                    .Select(c => new ChromeAppListViewItem(c))
-                    .ToList();
-        }
-
         private void PopulateChromeInstallationPath()
         {
             try
             {
-                txtChromeExePath.Text = ChromeAppLibrary.GetChromeInstallationPath();
+                txtChromeExePath.Text = ChromeAppLibrary.ChromeInstallationPath;
             }
             catch
             {
@@ -575,17 +514,17 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void SetUpChromeListView()
         {
-            if (_chromeApps == null)
-                return;
             lstChromeAppItems.Clear();
 
             BuildChromeListBoxColumns();
 
-            lstChromeAppItems.Items.AddRange(_chromeApps.OrderBy(a => a.ChromeAppItem.AppName).ToArray<ListViewItem>());
+            lstChromeAppItems.Items.AddRange(
+                ChromeAppListViewItemLibrary.ChromeAppListViewItems.OrderBy(a => a.ChromeAppItem.AppName)
+                    .ToArray<ListViewItem>());
         }
 
         private void BuildChromeListBoxColumns()
-        { 
+        {
             lstChromeAppItems.Columns.Clear();
 
             lstChromeAppItems.Columns.Add(Strings.AppId, lstSteamGames.Width / 8 * 3, HorizontalAlignment.Left);
@@ -598,7 +537,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 return;
 
             var chromeApp = ((ChromeAppListViewItem)lstChromeAppItems.SelectedItems[0]).ChromeAppItem;
-            UpdatedCacheIcon(chromeApp.IconAsBytes);
+            UpdateCacheIcon(chromeApp.IconAsBytes);
             txtShortcutName.Text = chromeApp.AppName.CleanInvalidFilenameChars();
         }
 
@@ -620,8 +559,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             if (opnChromeExe.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            txtChromeExePath.Text = opnChromeExe.FileName;
-            SetUpChrome();
+            ChromeAppLibrary.ChromeInstallationPath = opnChromeExe.FileName;
+            PopulateChromeInstallationPath();
         }
 
         private void btnChromeAppPathChange_Click(object sender, EventArgs e)
@@ -630,10 +569,14 @@ namespace TileIconifier.Forms.CustomShortcutForms
             if (fldBrowser.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            txtChromeAppPath.Text = fldBrowser.SelectedPath;
+            ChromeAppLibrary.AppLibraryPath = fldBrowser.SelectedPath;
+            PopulateGoogleAppLibraryPath();
         }
+
         #endregion
+
         #region Windows Store Methods
+
         //*********************************************************************
         // WINDOWS STORE RELATED METHODS
         //*********************************************************************
@@ -643,7 +586,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             try
             {
-                GetWindowsStoreApps();
                 SetUpWindowsStoreListView();
             }
             catch (WindowsStoreRegistryKeyNotFoundException)
@@ -652,22 +594,13 @@ namespace TileIconifier.Forms.CustomShortcutForms
             }
         }
 
-        private void GetWindowsStoreApps()
-        {
-            _windowsStoreApps = new List<WindowsStoreAppListViewItemGroup>();
-            var windowsStoreApps = WindowsStoreLibrary.GetAppKeysFromRegistry();
-
-            foreach (var windowsStoreApp in windowsStoreApps)
-            {
-                _windowsStoreApps.Add(new WindowsStoreAppListViewItemGroup(windowsStoreApp));
-            }
-        }
-
         private void SetUpWindowsStoreListView()
         {
             lstWindowsStoreApps.Clear();
             BuildWindowsStoreListBoxColumns();
-            lstWindowsStoreApps.Items.AddRange(_windowsStoreApps.OrderBy(w => w.Text).ToArray<ListViewItem>());
+            lstWindowsStoreApps.Items.AddRange(
+                WindowsStoreAppListViewItemLibrary.WindowsStoreAppListViewItemGroups.OrderBy(w => w.Text)
+                    .ToArray<ListViewItem>());
         }
 
         private void BuildWindowsStoreListBoxColumns()
@@ -684,7 +617,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             var windowsStoreAppListViewItem = (WindowsStoreAppListViewItemGroup)lstWindowsStoreApps.SelectedItems[0];
 
             txtShortcutName.Text = windowsStoreAppListViewItem.Text;
-            UpdatedCacheIcon(ImageUtils.LoadFileToByteArray(windowsStoreAppListViewItem.WindowsStoreApp.LogoPath));
+            UpdateCacheIcon(ImageUtils.LoadFileToByteArray(windowsStoreAppListViewItem.WindowsStoreApp.LogoPath));
         }
 
         private void GenerateWindowsStoreAppShortcut()
@@ -697,10 +630,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
             GenerateFullShortcut("explorer.exe", $@"shell:AppsFolder\{selectedItem.WindowsStoreApp.AppUserModelId}",
                 CustomShortcutType.WindowsStoreApp, windowType: WindowType.Hidden);
         }
+
         #endregion
 
-
         #region URI Shortcut Methods
+
         //*********************************************************************
         // URI RELATED METHODS
         //*********************************************************************
@@ -720,7 +654,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             }
 
             //build our new custom shortcut
-            var customShortcut = new CustomShortcut(shortcutName, string.Empty, string.Empty, CustomShortcutType.Uri, WindowType.ActiveAndCurrent,
+            var customShortcut = new CustomShortcut(shortcutName, string.Empty, string.Empty, CustomShortcutType.Uri,
+                WindowType.ActiveAndCurrent,
                 radShortcutLocation.PathSelection());
 
             var urlGenerationPath = $"{customShortcut.VbsFolderPath}{shortcutName}.url";
@@ -728,7 +663,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             customShortcut.TargetPath = urlGenerationPath;
             customShortcut.BuildCustomShortcut(pctCurrentIcon.Image);
-            
+
             BuildIconifiedTile(ImageUtils.ImageToByteArray(pctCurrentIcon.Image), customShortcut);
 
             //confirm to the user the shortcut has been created
@@ -737,7 +672,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private static void BuildIconifiedTile(byte[] imageToUse, CustomShortcut customShortcut)
         {
-
             //Iconify a TileIconifier shortcut for this with default settings
             var newShortcutItem = customShortcut.ShortcutItem;
             newShortcutItem.Properties.CurrentState.MediumImage.SetImage(imageToUse,
@@ -747,10 +681,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
             var iconify = new TileIcon(newShortcutItem);
             iconify.RunIconify();
         }
+
         #endregion
 
-
         #region Other Shortcut Methods
+
         //*********************************************************************
         // OTHER RELATED METHODS
         //*********************************************************************
@@ -766,7 +701,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             try
             {
-                UpdatedCacheIcon(
+                UpdateCacheIcon(
                     ImageUtils.ImageToByteArray(new IconExtractor(filePath).GetIcon(0).ToBitmap()));
             }
             catch
@@ -779,18 +714,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             GenerateFullShortcut(txtOtherTargetPath.Text, txtOtherShortcutArguments.Text, CustomShortcutType.Other);
         }
+
         #endregion
-
-        private void FrmCustomShortcutManagerNew_Resize(object sender, EventArgs e)
-        {
-            RebuildAllListBoxColumns();
-        }
-
-        private void RebuildAllListBoxColumns()
-        {
-            BuildChromeListBoxColumns();
-            BuildSteamListBoxColumns();
-            BuildWindowsStoreListBoxColumns();
-        }
     }
 }

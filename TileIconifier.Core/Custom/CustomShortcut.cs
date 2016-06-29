@@ -42,24 +42,8 @@ namespace TileIconifier.Core.Custom
     {
         private string _basicShortcutIcon;
 
-        public CustomShortcut(
-            string shortcutName,
-            string shortcutPath,
-            string targetPath,
-            string targetArguments,
-            CustomShortcutType shortcutType,
-            string basicShortcutIcon = null,
-            string vbsFilePath = null,
-            string vbsFolderPath = null)
+        private CustomShortcut()
         {
-            ShortcutName = shortcutName.CleanInvalidFilenameChars();
-            ShortcutItem = new ShortcutItem(shortcutPath);
-            TargetPath = targetPath;
-            TargetArguments = targetArguments;
-            ShortcutType = shortcutType;
-            BasicShortcutIcon = basicShortcutIcon;
-            VbsFilePath = vbsFilePath;
-            VbsFolderPath = vbsFolderPath;
         }
 
         public CustomShortcut(
@@ -94,12 +78,12 @@ namespace TileIconifier.Core.Custom
 
         public ShortcutItem ShortcutItem { get; set; }
         private string VbsFilePath { get; set; }
-        public string VbsFolderPath { get; }
-        public string ShortcutName { get; }
+        public string VbsFolderPath { get; private set; }
+        public string ShortcutName { get; private set; }
         public string TargetPath { get; set; }
-        private string TargetArguments { get; }
+        private string TargetArguments { get; set; }
         private string WorkingFolder { get; }
-        public CustomShortcutType ShortcutType { get; }
+        public CustomShortcutType ShortcutType { get; private set; }
         public WindowType WindowType { get; set; }
 
         private string BasicShortcutIcon
@@ -151,7 +135,7 @@ namespace TileIconifier.Core.Custom
                     TargetPath.QuoteWrap().EscapeVba(),
                     TargetArguments.EscapeVba(),
                     ShortcutType,
-                    (int)WindowType,
+                    (int) WindowType,
                     targetDir
                     ), Encoding.Unicode);
 
@@ -206,15 +190,19 @@ namespace TileIconifier.Core.Custom
                 throw new InvalidCustomShortcutException();
 
             var directoryInfo = new FileInfo(vbsFilePath).Directory;
-            if (directoryInfo != null)
-                return new CustomShortcut(regexMatch.Groups[2].Value.UnescapeVba(),
-                    regexMatch.Groups[3].Value.UnescapeVba(), regexMatch.Groups[4].Value.UnescapeVba(),
-                    regexMatch.Groups[5].Value.UnescapeVba(),
-                    (CustomShortcutType)Enum.Parse(typeof(CustomShortcutType), regexMatch.Groups[1].Value, true),
-                    vbsFilePath: vbsFilePath,
-                    vbsFolderPath: directoryInfo.FullName + "\\");
+            if (directoryInfo == null) throw new DirectoryNotFoundException();
 
-            throw new DirectoryNotFoundException();
+            return new CustomShortcut
+            {
+                ShortcutName = regexMatch.Groups[2].Value.UnescapeVba(),
+                ShortcutItem = new ShortcutItem(regexMatch.Groups[3].Value.UnescapeVba()),
+                TargetPath = regexMatch.Groups[4].Value.UnescapeVba(),
+                TargetArguments = regexMatch.Groups[5].Value.UnescapeVba(),
+                ShortcutType =
+                    (CustomShortcutType) Enum.Parse(typeof (CustomShortcutType), regexMatch.Groups[1].Value, true),
+                VbsFilePath = vbsFilePath,
+                VbsFolderPath = directoryInfo.FullName + "\\"
+            };
         }
     }
 }
