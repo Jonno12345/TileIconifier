@@ -9,6 +9,7 @@ Creates tiles for any Windows 8.1 (Largely untested) and Windows 10 (Build 10586
  - Create custom shortcuts to Steam games, Chrome apps, Windows Store apps and explorer shortcuts, or any other shortcut target you wish using custom VBS script launchers. 
  - Extract icons from the software EXE/DLL, without using any other external program.
  - Move and resize the image to where you want it within the tile, allowing more customisation than simply a full sized image.
+ - Support Languages: English, Russian (happy to add other languages if anyone can help with translation).
 
 --------------
 
