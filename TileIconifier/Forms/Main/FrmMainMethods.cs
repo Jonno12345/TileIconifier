@@ -51,6 +51,15 @@ namespace TileIconifier.Forms
 {
     public partial class FrmMain
     {
+        public event LocalizationEventHandler LanguageChangedEvent;
+
+        protected virtual void OnLanguageChangedEvent(string newculture)
+        {
+            LanguageChangedEvent?.Invoke(this, newculture);
+            Config.Instance.LocaleToUse = newculture;
+            Config.Instance.SaveConfig();
+        }
+
         private void StartFullUpdate()
         {
             FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, Strings.Refreshing, true);
@@ -199,7 +208,7 @@ namespace TileIconifier.Forms
                 if (updateDetails.UpdateAvailable)
                 {
                     if (MessageBox.Show(
-                        String.Format(
+                        string.Format(
                             Strings.UpdateAvailableFull,
                             updateDetails.CurrentVersion, updateDetails.LatestVersion),
                         Strings.NewVersionAvailable,
@@ -250,15 +259,6 @@ namespace TileIconifier.Forms
             srtlstShortcuts.Columns.Add(Strings.IsPinned, srtlstShortcuts.Width/7 - 4, HorizontalAlignment.Left);
         }
 
-        public event LocalizationEventHandler LanguageChangedEvent;
-
-        protected virtual void OnLanguageChangedEvent(string newculture)
-        {
-            LanguageChangedEvent?.Invoke(this, newculture);
-            Config.Instance.LocaleToUse = newculture;
-            Config.Instance.SaveConfig();
-        }
-
         private void LanguageToolStripMenuClick(object sender, EventArgs e)
         {
             var item = sender as ToolStripMenuItem;
@@ -277,7 +277,10 @@ namespace TileIconifier.Forms
         private void SetCurrentLanguage()
         {
             var currentLanguage = Thread.CurrentThread.CurrentUICulture.Name;
-            foreach (ToolStripMenuItem dropDownItem in languageToolStripMenuItem.DropDownItems.Cast<ToolStripMenuItem>().Where(dropDownItem => (string) dropDownItem.Tag == currentLanguage))
+            foreach (
+                var dropDownItem in
+                    languageToolStripMenuItem.DropDownItems.Cast<ToolStripMenuItem>()
+                        .Where(dropDownItem => (string) dropDownItem.Tag == currentLanguage))
             {
                 CheckMenuItem(languageToolStripMenuItem, dropDownItem);
                 return;

@@ -29,6 +29,7 @@
 
 using System;
 using System.Windows.Forms;
+using TileIconifier.Properties;
 
 namespace TileIconifier.Controls.PictureBox
 {
@@ -69,15 +70,15 @@ namespace TileIconifier.Controls.PictureBox
         private void PannablePictureBoxControlPanel_Load(object sender, EventArgs e)
         {
             var shrinkToolTip = new ToolTip();
-            shrinkToolTip.SetToolTip(btnShrink, Properties.Strings.ZoomOut);
+            shrinkToolTip.SetToolTip(btnShrink, Strings.ZoomOut);
             var enlargeToolTip = new ToolTip();
-            enlargeToolTip.SetToolTip(btnEnlarge, Properties.Strings.ZoomIn);
+            enlargeToolTip.SetToolTip(btnEnlarge, Strings.ZoomIn);
             var resetToolTip = new ToolTip();
-            resetToolTip.SetToolTip(btnReset, Properties.Strings.Reset);
+            resetToolTip.SetToolTip(btnReset, Strings.Reset);
             var changeImageToolTip = new ToolTip();
-            changeImageToolTip.SetToolTip(btnOpenImage, Properties.Strings.ChangeImage);
+            changeImageToolTip.SetToolTip(btnOpenImage, Strings.ChangeImage);
             var alignImageToolTip = new ToolTip();
-            alignImageToolTip.SetToolTip(btnAlign, Properties.Strings.AlignImage);
+            alignImageToolTip.SetToolTip(btnAlign, Strings.AlignImage);
         }
 
         private void btnEnlarge_MouseDown(object sender, MouseEventArgs e)

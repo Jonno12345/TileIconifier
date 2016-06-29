@@ -184,11 +184,12 @@ namespace TileIconifier.Forms
 
         private void btnBuildCustomShortcut_Click(object sender, EventArgs e)
         {
-            var shortcutName = Path.GetFileNameWithoutExtension(CurrentShortcutItem.ShortcutFileInfo.Name).CleanInvalidFilenameChars();
+            var shortcutName =
+                Path.GetFileNameWithoutExtension(CurrentShortcutItem.ShortcutFileInfo.Name).CleanInvalidFilenameChars();
 
             if (CurrentShortcutItem.IsTileIconifierCustomShortcut) return;
 
-            var cloneConfirmation = new FrmCustomShortcutConfirm()
+            var cloneConfirmation = new FrmCustomShortcutConfirm
             {
                 ShortcutName = shortcutName
             };
@@ -196,7 +197,8 @@ namespace TileIconifier.Forms
 
             shortcutName = cloneConfirmation.ShortcutName;
 
-            var parameters = new GenerateCustomShortcutParams(CurrentShortcutItem.TargetFilePath, string.Empty, CustomShortcutGetters.CustomShortcutCurrentUserPath)
+            var parameters = new GenerateCustomShortcutParams(CurrentShortcutItem.TargetFilePath, string.Empty,
+                CustomShortcutGetters.CustomShortcutCurrentUserPath)
             {
                 WorkingFolder = CurrentShortcutItem.ShortcutFileInfo.Directory?.FullName
             };
