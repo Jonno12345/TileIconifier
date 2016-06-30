@@ -27,19 +27,32 @@
 
 #endregion
 
-using System;
-using System.Threading;
+using System.Drawing;
 
-namespace TileIconifier.Localization
+namespace TileIconifier.Core.Custom.Builder
 {
-    public delegate void LocalizationEventHandler(object sender, LocalizationEventArgs e);
-
-    public class LocalizationEventArgs : EventArgs
+    public class GenerateCustomShortcutParams
     {
-        public string Culture { get; set; }
-        public LocalizationEventArgs(string selectedCulture)
+        public GenerateCustomShortcutParams(string shortcutTarget, string shortcutArguments,
+            string shortcutRootPath)
         {
-            Culture = selectedCulture;
+            ShortcutTarget = shortcutTarget;
+            ShortcutArguments = shortcutArguments;
+            ShortcutRootPath = shortcutRootPath;
         }
+
+        public string ShortcutTarget { get; }
+
+        public string ShortcutArguments { get; }
+
+        public string ShortcutRootPath { get; }
+
+        public Image Image { get; set; } = null;
+
+        public string IconPath { get; set; } = null;
+
+        public string WorkingFolder { get; set; } = null;
+
+        public WindowType WindowType { get; set; } = WindowType.ActiveAndDisplayed;
     }
 }

@@ -62,9 +62,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
             var smallImageList = new ImageList();
             for (var i = 0; i < _customShortcutsList.Count; i++)
             {
-                smallImageList.Images.Add(_customShortcutsList[i].CustomShortcut.ShortcutItem.Properties.CurrentState.MediumImage.CachedImage() ??
-                                          (_customShortcutsList[i].CustomShortcut.ShortcutItem.StandardIcon ??
-                                           Resources.QuestionMark));
+                smallImageList.Images.Add(
+                    _customShortcutsList[i].CustomShortcut.ShortcutItem.Properties.CurrentState.MediumImage.CachedImage() ??
+                    (_customShortcutsList[i].CustomShortcut.ShortcutItem.StandardIcon ??
+                     Resources.QuestionMark));
                 _customShortcutsList[i].ImageIndex = i;
                 lstCustomShortcuts.Items.Add(_customShortcutsList[i]);
             }
@@ -75,10 +76,12 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             lstCustomShortcuts.Columns.Clear();
 
-            lstCustomShortcuts.Columns.Add(Strings.ShortcutName, lstCustomShortcuts.Width / 4 * 2 - 2, HorizontalAlignment.Left);
-            lstCustomShortcuts.Columns.Add(Strings.ShortcutType, lstCustomShortcuts.Width / 4 - 1, HorizontalAlignment.Left);
-            lstCustomShortcuts.Columns.Add(Strings.ShortcutUser, lstCustomShortcuts.Width / 4 - 1, HorizontalAlignment.Left);
-
+            lstCustomShortcuts.Columns.Add(Strings.ShortcutName, lstCustomShortcuts.Width/4*2 - 2,
+                HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add(Strings.ShortcutType, lstCustomShortcuts.Width/4 - 1,
+                HorizontalAlignment.Left);
+            lstCustomShortcuts.Columns.Add(Strings.ShortcutUser, lstCustomShortcuts.Width/4 - 1,
+                HorizontalAlignment.Left);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -145,7 +148,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             if (lstCustomShortcuts.SelectedItems.Count == 0)
                 return;
 
-            GotoShortcutItem = ((CustomShortcutListViewItem) lstCustomShortcuts.SelectedItems[0]).CustomShortcut.ShortcutItem;
+            GotoShortcutItem =
+                ((CustomShortcutListViewItem) lstCustomShortcuts.SelectedItems[0]).CustomShortcut.ShortcutItem;
             Close();
         }
 

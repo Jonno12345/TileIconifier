@@ -254,13 +254,13 @@ namespace TileIconifier.Controls.PictureBox
 
                 //debug mode overlay
 #if DEBUG
-            e.Graphics.DrawString(PannablePictureBoxImage.Width + ", " + PannablePictureBoxImage.Height, DefaultFont,
-                new SolidBrush(Color.Red), 0, 0);
-            e.Graphics.DrawString(PannablePictureBoxImage.X + ", " + PannablePictureBoxImage.Y, DefaultFont,
-                new SolidBrush(Color.Red), 0, 20);
-            e.Graphics.DrawString(pctBox.Width + ", " + pctBox.Height, DefaultFont, new SolidBrush(Color.Red), 0, 40);
-            e.Graphics.DrawString(MinWidth + "_" + MaxWidth + ", " + MinHeight + "_" + MaxHeight, DefaultFont,
-                new SolidBrush(Color.Red), 0, 60);
+                e.Graphics.DrawString(PannablePictureBoxImage.Width + ", " + PannablePictureBoxImage.Height, DefaultFont,
+                    new SolidBrush(Color.Red), 0, 0);
+                e.Graphics.DrawString(PannablePictureBoxImage.X + ", " + PannablePictureBoxImage.Y, DefaultFont,
+                    new SolidBrush(Color.Red), 0, 20);
+                e.Graphics.DrawString(pctBox.Width + ", " + pctBox.Height, DefaultFont, new SolidBrush(Color.Red), 0, 40);
+                e.Graphics.DrawString(MinWidth + "_" + MaxWidth + ", " + MinHeight + "_" + MaxHeight, DefaultFont,
+                    new SolidBrush(Color.Red), 0, 60);
 #endif
             }
             else

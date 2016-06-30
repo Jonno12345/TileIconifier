@@ -41,13 +41,6 @@ namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
 {
     public static class WindowsStoreLibrary
     {
-        private static string ExtractStringFromPriFile(string resourcePath)
-        {
-            var stringOut = new StringBuilder(1024);
-            NativeMethods.SHLoadIndirectString(resourcePath, stringOut, stringOut.Capacity, IntPtr.Zero);
-            return stringOut.ToString();
-        }
-
         public static List<WindowsStoreApp> GetAppKeysFromRegistry()
         {
             //This whole method is horrible... I'm suspicious there's a proper function for this (see PackageManager.FindPackagesForUser() 
@@ -87,6 +80,13 @@ namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
                 storeApps.Add(storeApp);
             }
             return storeApps;
+        }
+
+        private static string ExtractStringFromPriFile(string resourcePath)
+        {
+            var stringOut = new StringBuilder(1024);
+            NativeMethods.SHLoadIndirectString(resourcePath, stringOut, stringOut.Capacity, IntPtr.Zero);
+            return stringOut.ToString();
         }
 
         private static string GetIconPath(string iconTag)

@@ -29,10 +29,21 @@
 
 using System;
 using System.Windows.Forms;
+using TileIconifier.Properties;
 
 namespace TileIconifier.Controls.PictureBox
 {
-    public delegate void AlignFormEventArgs(object sender, EventArgs eventArgs, AlignButtonClick alignButtonClick);
+    public class AlignFormEventArgs : EventArgs
+    {
+        public AlignButtonClick AlignButtonClicked { get; set; }
+
+        public AlignFormEventArgs(AlignButtonClick alignButtonClick)
+        {
+            AlignButtonClicked = alignButtonClick;
+        }
+    }
+
+    public delegate void AlignFormEvent(object sender, AlignFormEventArgs e);
 
     public partial class AlignForm : Form
     {
@@ -44,11 +55,11 @@ namespace TileIconifier.Controls.PictureBox
             Deactivate += (sender, args) => Close();
         }
 
-        public event AlignFormEventArgs AlignFormClick;
+        public event AlignFormEvent AlignFormClick;
 
         protected virtual void OnAlignFormClick(AlignButtonClick alignbuttonclick)
         {
-            AlignFormClick?.Invoke(this, EventArgs.Empty, alignbuttonclick);
+            AlignFormClick?.Invoke(this, new AlignFormEventArgs(alignbuttonclick));
         }
 
         private void AlignForm_Load(object sender, EventArgs e)
@@ -67,7 +78,7 @@ namespace TileIconifier.Controls.PictureBox
             btnXMiddle.Click += (sender, args) => OnAlignFormClick(AlignButtonClick.XAlign);
             btnYMiddle.Click += (sender, args) => OnAlignFormClick(AlignButtonClick.YAlign);
             btnAlignCenter.Click += (sender, args) => OnAlignFormClick(AlignButtonClick.Center);
-            
+
             btnNudgeLeft.MouseDown += (sender, args) => TimerDown(AlignButtonClick.NudgeLeft);
             btnNudgeDown.MouseDown += (sender, args) => TimerDown(AlignButtonClick.NudgeDown);
             btnNudgeUp.MouseDown += (sender, args) => TimerDown(AlignButtonClick.NudgeUp);
@@ -81,19 +92,19 @@ namespace TileIconifier.Controls.PictureBox
         private void BuildTooltips()
         {
             var toolTip = new ToolTip();
-            toolTip.SetToolTip(btnTop, Properties.Strings.AlignTop);
-            toolTip.SetToolTip(btnBottom, Properties.Strings.AlignBottom);
-            toolTip.SetToolTip(btnRight, Properties.Strings.AlignRight);
-            toolTip.SetToolTip(btnLeft, Properties.Strings.AlignLeft);
-            toolTip.SetToolTip(btnXMiddle, Properties.Strings.AlignXMiddle);
-            toolTip.SetToolTip(btnYMiddle, Properties.Strings.AlignYMiddle);
-            toolTip.SetToolTip(btnAlignCenter, Properties.Strings.AlignCentre);
-            toolTip.SetToolTip(btnNudgeLeft, Properties.Strings.NudgeLeft);
-            toolTip.SetToolTip(btnNudgeRight, Properties.Strings.NudgeRight);
-            toolTip.SetToolTip(btnNudgeUp, Properties.Strings.NudgeUp);
-            toolTip.SetToolTip(btnNudgeDown, Properties.Strings.NudgeDown);
+            toolTip.SetToolTip(btnTop, Strings.AlignTop);
+            toolTip.SetToolTip(btnBottom, Strings.AlignBottom);
+            toolTip.SetToolTip(btnRight, Strings.AlignRight);
+            toolTip.SetToolTip(btnLeft, Strings.AlignLeft);
+            toolTip.SetToolTip(btnXMiddle, Strings.AlignXMiddle);
+            toolTip.SetToolTip(btnYMiddle, Strings.AlignYMiddle);
+            toolTip.SetToolTip(btnAlignCenter, Strings.AlignCentre);
+            toolTip.SetToolTip(btnNudgeLeft, Strings.NudgeLeft);
+            toolTip.SetToolTip(btnNudgeRight, Strings.NudgeRight);
+            toolTip.SetToolTip(btnNudgeUp, Strings.NudgeUp);
+            toolTip.SetToolTip(btnNudgeDown, Strings.NudgeDown);
         }
-        
+
         private void tmrNudge_Tick(object sender, EventArgs e)
         {
             if (_timerClick == AlignButtonClick.Unknown)

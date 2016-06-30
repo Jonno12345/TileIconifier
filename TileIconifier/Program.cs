@@ -35,6 +35,7 @@ using System.Windows.Forms;
 using TileIconifier.Core;
 using TileIconifier.Forms;
 using TileIconifier.Forms.Shared;
+using TileIconifier.Localization;
 using TileIconifier.Properties;
 
 namespace TileIconifier
@@ -90,7 +91,7 @@ namespace TileIconifier
             {
                 _doNotExit = false;
                 _fm = new FrmMain();
-                _fm.LanguageChangedEvent += main_LanugageChangedEvent;
+                _fm.LanguageChangedEvent += main_LanguageChangedEvent;
                 Application.Run(_fm);
             }
         }
@@ -99,7 +100,7 @@ namespace TileIconifier
         {
             try
             {
-                main_LanugageChangedEvent(null, Config.Instance.LocaleToUse);
+                main_LanguageChangedEvent(null, new LocalizationEventArgs(Config.Instance.LocaleToUse));
             }
             catch
             {
@@ -143,8 +144,9 @@ namespace TileIconifier
             FrmException.ShowExceptionHandler(e.ExceptionObject as Exception);
         }
 
-        private static void main_LanugageChangedEvent(object sender, string newCulture)
+        private static void main_LanguageChangedEvent(object sender, LocalizationEventArgs eventArgs)
         {
+            var newCulture = eventArgs.Culture;
             Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(newCulture);
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(newCulture);
             _doNotExit = true;

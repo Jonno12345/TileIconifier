@@ -38,9 +38,6 @@ namespace TileIconifier.Core.Custom.Steam
 {
     public class SteamLibrary
     {
-        /// <summary>
-        ///     Singleton class instantiator
-        /// </summary>
         private static SteamLibrary _instance;
 
         private readonly string[] _defaultInstallationPaths =
@@ -138,6 +135,9 @@ namespace TileIconifier.Core.Custom.Steam
         public List<SteamGame> GetAllSteamGames()
         {
             var steamGames = new List<SteamGame>();
+
+            if (!_steamLibraryFolders.Any())
+                return steamGames;
 
             foreach (
                 var acfFile in

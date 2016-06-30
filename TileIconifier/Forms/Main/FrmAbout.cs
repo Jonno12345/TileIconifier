@@ -50,7 +50,9 @@ namespace TileIconifier.Forms
 
         private void frmAbout_Load(object sender, EventArgs e)
         {
-            var updateCurVer = new Action<Control>(control => control.Text = control.Text.Replace("[@@CURVER@@]", UpdateUtils.CurrentVersion));
+            var updateCurVer =
+                new Action<Control>(
+                    control => control.Text = control.Text.Replace("[@@CURVER@@]", UpdateUtils.CurrentVersion));
             updateCurVer(rtxtAbout);
             updateCurVer(lblVersion);
         }

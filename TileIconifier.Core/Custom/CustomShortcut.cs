@@ -28,11 +28,8 @@
 #endregion
 
 using System;
-using System.Drawing;
 using System.IO;
-using System.Text;
 using System.Text.RegularExpressions;
-using TileIconifier.Core.Properties;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.Utilities;
 
@@ -42,27 +39,11 @@ namespace TileIconifier.Core.Custom
     {
         private string _basicShortcutIcon;
 
-        public CustomShortcut(
-            string shortcutName,
-            string shortcutPath,
-            string targetPath,
-            string targetArguments,
-            CustomShortcutType shortcutType,
-            string basicShortcutIcon = null,
-            string vbsFilePath = null,
-            string vbsFolderPath = null)
+        private CustomShortcut()
         {
-            ShortcutName = shortcutName.CleanInvalidFilenameChars();
-            ShortcutItem = new ShortcutItem(shortcutPath);
-            TargetPath = targetPath;
-            TargetArguments = targetArguments;
-            ShortcutType = shortcutType;
-            BasicShortcutIcon = basicShortcutIcon;
-            VbsFilePath = vbsFilePath;
-            VbsFolderPath = vbsFolderPath;
         }
 
-        public CustomShortcut(
+        internal CustomShortcut(
             string shortcutName,
             string targetPath,
             string targetArguments,
@@ -92,74 +73,20 @@ namespace TileIconifier.Core.Custom
             if (basicIconToUse != null && File.Exists(basicIconToUse)) BasicShortcutIcon = basicIconToUse;
         }
 
-        public ShortcutItem ShortcutItem { get; set; }
-        private string VbsFilePath { get; set; }
-        public string VbsFolderPath { get; }
-        public string ShortcutName { get; }
-        public string TargetPath { get; set; }
-        private string TargetArguments { get; }
-        private string WorkingFolder { get; }
-        public CustomShortcutType ShortcutType { get; }
-        public WindowType WindowType { get; set; }
+        public ShortcutItem ShortcutItem { get; internal set; }
+        public string VbsFilePath { get; internal set; }
+        public string VbsFolderPath { get; internal set; }
+        public string ShortcutName { get; internal set; }
+        public string TargetPath { get; internal set; }
+        public string TargetArguments { get; internal set; }
+        public string WorkingFolder { get; internal set; }
+        public CustomShortcutType ShortcutType { get; internal set; }
+        public WindowType WindowType { get; internal set; }
 
-        private string BasicShortcutIcon
+        internal string BasicShortcutIcon
         {
             get { return !string.IsNullOrEmpty(_basicShortcutIcon) ? _basicShortcutIcon : TargetPath; }
             set { _basicShortcutIcon = value; }
-        }
-
-        /// <summary>
-        ///     Create a custom shortcut and save its icon alongside it
-        /// </summary>
-        /// <param name="basicIconTouse"></param>
-        public void BuildCustomShortcut(Image basicIconTouse)
-        {
-            BasicShortcutIcon = VbsFolderPath + ShortcutName + ".ico";
-            try
-            {
-                using (var iconWriter = new FileStream(BasicShortcutIcon, FileMode.Create))
-                {
-                    ImageUtils.ConvertToIcon(basicIconTouse, iconWriter);
-                }
-            }
-            catch
-            {
-                BasicShortcutIcon = null;
-            }
-
-            BuildCustomShortcut();
-        }
-
-        public void BuildCustomShortcut()
-        {
-            VbsFilePath = VbsFolderPath + ShortcutName + ".vbs";
-
-            var targetDir = "";
-            try
-            {
-                targetDir = $@"{new FileInfo(TargetPath).Directory?.FullName}\".EscapeVba();
-            }
-            catch
-            {
-                //ignore
-            }
-
-            File.WriteAllText(VbsFilePath,
-                string.Format(Resources.CustomShortcutVbsTemplate,
-                    ShortcutName.EscapeVba(),
-                    ShortcutItem.ShortcutFileInfo.FullName.EscapeVba(),
-                    TargetPath.QuoteWrap().EscapeVba(),
-                    TargetArguments.EscapeVba(),
-                    ShortcutType,
-                    (int)WindowType,
-                    targetDir
-                    ), Encoding.Unicode);
-
-            ShortcutUtils.CreateLnkFile(ShortcutItem.ShortcutFileInfo.FullName, VbsFilePath,
-                ShortcutName + " shortcut created by TileIconifier",
-                iconPath: BasicShortcutIcon,
-                workingDirectory: WorkingFolder
-                );
         }
 
         public void Delete()
@@ -206,15 +133,19 @@ namespace TileIconifier.Core.Custom
                 throw new InvalidCustomShortcutException();
 
             var directoryInfo = new FileInfo(vbsFilePath).Directory;
-            if (directoryInfo != null)
-                return new CustomShortcut(regexMatch.Groups[2].Value.UnescapeVba(),
-                    regexMatch.Groups[3].Value.UnescapeVba(), regexMatch.Groups[4].Value.UnescapeVba(),
-                    regexMatch.Groups[5].Value.UnescapeVba(),
-                    (CustomShortcutType)Enum.Parse(typeof(CustomShortcutType), regexMatch.Groups[1].Value, true),
-                    vbsFilePath: vbsFilePath,
-                    vbsFolderPath: directoryInfo.FullName + "\\");
+            if (directoryInfo == null) throw new DirectoryNotFoundException();
 
-            throw new DirectoryNotFoundException();
+            return new CustomShortcut
+            {
+                ShortcutName = regexMatch.Groups[2].Value.UnescapeVba(),
+                ShortcutItem = new ShortcutItem(regexMatch.Groups[3].Value.UnescapeVba()),
+                TargetPath = regexMatch.Groups[4].Value.UnescapeVba(),
+                TargetArguments = regexMatch.Groups[5].Value.UnescapeVba(),
+                ShortcutType =
+                    (CustomShortcutType) Enum.Parse(typeof (CustomShortcutType), regexMatch.Groups[1].Value, true),
+                VbsFilePath = vbsFilePath,
+                VbsFolderPath = directoryInfo.FullName + "\\"
+            };
         }
     }
 }

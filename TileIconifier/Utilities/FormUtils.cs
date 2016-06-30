@@ -50,9 +50,13 @@ namespace TileIconifier.Utilities
         {
             var loadingSplash = new FrmLoadingSplash {StartPosition = FormStartPosition.CenterParent};
             loadingSplash.SetTitle(splashText);
-            
-            var thread = new Thread(() => { workToDo(null, null); loadingSplash.WorkCompleted(); });
-            if(singleThreadApartment)
+
+            var thread = new Thread(() =>
+            {
+                workToDo(null, null);
+                loadingSplash.WorkCompleted();
+            });
+            if (singleThreadApartment)
                 thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
 

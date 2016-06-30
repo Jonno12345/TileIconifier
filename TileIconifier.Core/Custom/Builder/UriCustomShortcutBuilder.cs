@@ -27,22 +27,41 @@
 
 #endregion
 
-using TileIconifier.Core.Custom.WindowsStore;
+using TileIconifier.Core.Utilities;
 
-namespace TileIconifier.Custom.WindowsStore.Controls
+namespace TileIconifier.Core.Custom.Builder
 {
-    public class WindowsStoreAppProtocolComboListItem
+    public class UriCustomShortcutBuilder : BaseCustomShortcutBuilder
     {
-        public WindowsStoreAppProtocolComboListItem(WindowsStoreAppProtocol windowsStoreAppProtocol)
+        public UriCustomShortcutBuilder(GenerateCustomShortcutParams generateParameters) : base(generateParameters)
         {
-            WindowsStoreAppProtocol = windowsStoreAppProtocol;
         }
 
-        public WindowsStoreAppProtocol WindowsStoreAppProtocol { get; }
+        protected override CustomShortcutType ShortcutType { get; } = CustomShortcutType.Uri;
 
-        public override string ToString()
+        public override CustomShortcut GenerateCustomShortcut(string shortcutName)
         {
-            return WindowsStoreAppProtocol.ProtocolId;
+            var customShortcut =
+                new CustomShortcut(shortcutName,
+                    Parameters.ShortcutTarget,
+                    string.Empty,
+                    ShortcutType,
+                    Parameters.WindowType,
+                    Parameters.ShortcutRootPath,
+                    Parameters.IconPath);
+
+
+            var urlGenerationPath = $"{customShortcut.VbsFolderPath}{shortcutName}.url";
+            ShortcutUtils.CreateUrlFile(urlGenerationPath, Parameters.ShortcutTarget);
+
+            customShortcut.TargetPath = urlGenerationPath;
+
+            if (string.IsNullOrEmpty(Parameters.IconPath))
+                Build(customShortcut, Parameters.Image);
+            else
+                Build(customShortcut);
+
+            return customShortcut;
         }
     }
 }

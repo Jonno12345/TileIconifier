@@ -31,7 +31,7 @@ using System.Collections.Generic;
 
 namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
 {
-    public class WindowsStoreApp :IEqualityComparer<WindowsStoreApp>
+    public class WindowsStoreApp : IEqualityComparer<WindowsStoreApp>
     {
         public WindowsStoreApp(string displayName, string logoPath, string appUserModelId)
         {

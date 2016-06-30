@@ -213,7 +213,7 @@ namespace TileIconifier.Core.Shortcut
                              Path.GetFullPath(Environment.ExpandEnvironmentVariables(DesktopApplicationId))));
                     matchingShortcutItems.AddRange(shortcutsCache.Where(s => s.AppId == DesktopApplicationId));
                 }
-                
+
                 return matchingShortcutItems.Any() ? matchingShortcutItems.First() : null;
             }
         }

@@ -33,6 +33,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using TileIconifier.Controls;
+using TileIconifier.Properties;
 using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
 
@@ -48,24 +49,6 @@ namespace TileIconifier.Forms
             Load += OnLoad;
             Move += RedrawAllButtons;
             Resize += RedrawAllButtons;
-        }
-
-        private void RedrawAllButtons(object sender, EventArgs e)
-        {
-            RedrawButtons(Controls);
-        }
-
-        private static void RedrawButtons(IEnumerable controls)
-        {
-            foreach (Control control in controls)
-            {
-                if (control.GetType() == typeof(Button))
-                {
-                    control.Refresh();
-                }
-                if (control.Controls.Count > 0)
-                    RedrawButtons(control.Controls);
-            }
         }
 
         protected virtual void ApplySkin(object sender, EventArgs e)
@@ -93,13 +76,30 @@ namespace TileIconifier.Forms
             base.Dispose(disposing);
         }
 
+        private void RedrawAllButtons(object sender, EventArgs e)
+        {
+            RedrawButtons(Controls);
+        }
+
+        private static void RedrawButtons(IEnumerable controls)
+        {
+            foreach (Control control in controls)
+            {
+                if (control.GetType() == typeof (Button))
+                {
+                    control.Refresh();
+                }
+                if (control.Controls.Count > 0)
+                    RedrawButtons(control.Controls);
+            }
+        }
+
         private void OnLoad(object sender, EventArgs eventArgs)
         {
             AddControlEvents(Controls);
 
             ApplySkin(this, null);
-            Icon = Properties.Resources.tiles2_shadow_lyk_icon;
-
+            Icon = Resources.tiles2_shadow_lyk_icon;
         }
 
         private void AddControlEvents(IEnumerable baseControl)
@@ -138,7 +138,10 @@ namespace TileIconifier.Forms
 
         private void ApplyControlSkins(IEnumerable baseControls)
         {
-            foreach (var control in baseControls.Cast<Control>().Where(control => control.GetType().GetCustomAttributes(typeof (SkinIgnore), true).Length == 0))
+            foreach (
+                var control in
+                    baseControls.Cast<Control>()
+                        .Where(control => control.GetType().GetCustomAttributes(typeof (SkinIgnore), true).Length == 0))
             {
                 control.BackColor = CurrentBaseSkin.BackColor;
                 if (control.GetType() == typeof (SortableListView))

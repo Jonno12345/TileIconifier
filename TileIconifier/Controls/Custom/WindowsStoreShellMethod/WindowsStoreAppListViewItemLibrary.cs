@@ -27,28 +27,33 @@
 
 #endregion
 
-using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Windows.Forms;
-using TileIconifier.Core.Custom.WindowsStore;
+using System.Linq;
+using TileIconifier.Core.Custom.WindowsStoreShellMethod;
 
-namespace TileIconifier.Custom.WindowsStore.Controls
+namespace TileIconifier.Controls.Custom.WindowsStoreShellMethod
 {
-    [Serializable]
-    public class WindowsStoreAppListViewItemGroup : ListViewItem
+    internal class WindowsStoreAppListViewItemLibrary
     {
-        protected WindowsStoreAppListViewItemGroup(SerializationInfo info, StreamingContext context)
-            : base(info, context)
+        private static List<WindowsStoreAppListViewItemGroup> _windowsStoreAppListViewItemGroups =
+            new List<WindowsStoreAppListViewItemGroup>();
+
+        public static List<WindowsStoreAppListViewItemGroup> WindowsStoreAppListViewItemGroups
         {
+            get
+            {
+                RefreshList();
+                return _windowsStoreAppListViewItemGroups;
+            }
         }
 
-        public WindowsStoreAppListViewItemGroup(string name, List<WindowsStoreAppProtocol> windowsStoreAppProtocols)
+        public static void RefreshList(bool force = false)
         {
-            WindowsStoreAppProtocols = windowsStoreAppProtocols;
-            Text = name;
+            if (force || !_windowsStoreAppListViewItemGroups.Any())
+                _windowsStoreAppListViewItemGroups =
+                    WindowsStoreLibrary.GetAppKeysFromRegistry()
+                        .Select(windowsStoreApp => new WindowsStoreAppListViewItemGroup(windowsStoreApp))
+                        .ToList();
         }
-
-        public List<WindowsStoreAppProtocol> WindowsStoreAppProtocols { get; }
     }
 }

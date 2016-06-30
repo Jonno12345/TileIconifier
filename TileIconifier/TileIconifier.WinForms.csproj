@@ -108,7 +108,10 @@
     <Compile Include="Controls\AllOrCurrentUserRadios.Designer.cs">
       <DependentUpon>AllOrCurrentUserRadios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Custom\Chrome\ChromeAppListViewItemLibrary.cs" />
+    <Compile Include="Controls\Custom\Steam\SteamGameListViewItemLibrary.cs" />
     <Compile Include="Controls\Custom\WindowsStoreShellMethod\WindowsStoreAppListViewItemGroup.cs" />
+    <Compile Include="Controls\Custom\WindowsStoreShellMethod\WindowsStoreAppListViewItemLibrary.cs" />
     <Compile Include="Controls\Eyedropper\EyedropColorPicker.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -184,8 +187,6 @@
     <EmbeddedResource Include="Properties\Strings.ru.resx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <None Include="Controls\Custom\WindowsStorePREVIOUSProtocolMethod\WindowsStoreAppListViewItemGroup.cs" />
-    <None Include="Controls\Custom\WindowsStorePREVIOUSProtocolMethod\WindowsStoreAppProtocolComboListItem.cs" />
     <Compile Include="Controls\TileIconifierPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

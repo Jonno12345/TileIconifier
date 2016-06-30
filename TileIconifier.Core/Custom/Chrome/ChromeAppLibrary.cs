@@ -38,6 +38,9 @@ namespace TileIconifier.Core.Custom.Chrome
 {
     public class ChromeAppLibrary
     {
+        public static string AppLibraryPath { get; set; } = CustomShortcutGetters.GoogleAppLibraryPath;
+        public static string ChromeInstallationPath { get; set; } = GetChromeInstallationPath();
+
         public static string GetChromeInstallationPath()
         {
             try
@@ -59,14 +62,14 @@ namespace TileIconifier.Core.Custom.Chrome
             throw new FileNotFoundException();
         }
 
-        public static List<ChromeApp> GetChromeAppItems(string appLibraryPath)
+        public static List<ChromeApp> GetChromeAppItems()
         {
-            if (!Directory.Exists(appLibraryPath))
-                throw new DirectoryNotFoundException(appLibraryPath);
+            if (!Directory.Exists(AppLibraryPath))
+                throw new DirectoryNotFoundException(AppLibraryPath);
 
             var returnList = new List<ChromeApp>();
             //loop through all extension app Id folders
-            foreach (var directory in new DirectoryInfo(appLibraryPath).GetDirectories())
+            foreach (var directory in new DirectoryInfo(AppLibraryPath).GetDirectories())
             {
                 string combinedLogoPath;
                 string appName;

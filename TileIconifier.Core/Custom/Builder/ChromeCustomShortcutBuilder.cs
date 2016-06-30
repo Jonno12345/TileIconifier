@@ -27,19 +27,14 @@
 
 #endregion
 
-using System;
-using System.Threading;
-
-namespace TileIconifier.Localization
+namespace TileIconifier.Core.Custom.Builder
 {
-    public delegate void LocalizationEventHandler(object sender, LocalizationEventArgs e);
-
-    public class LocalizationEventArgs : EventArgs
+    public class ChromeCustomShortcutBuilder : BaseCustomShortcutBuilder
     {
-        public string Culture { get; set; }
-        public LocalizationEventArgs(string selectedCulture)
+        public ChromeCustomShortcutBuilder(GenerateCustomShortcutParams generateParameters) : base(generateParameters)
         {
-            Culture = selectedCulture;
         }
+
+        protected override CustomShortcutType ShortcutType { get; } = CustomShortcutType.ChromeApp;
     }
 }

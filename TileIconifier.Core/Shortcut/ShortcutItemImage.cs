@@ -40,21 +40,19 @@ namespace TileIconifier.Core.Shortcut
     [XmlRoot("ShortcutItemImage")]
     public class ShortcutItemImage
     {
+        private Image _imageCache;
+        private byte[] _imageCacheBytes;
         [XmlElement("OriginalBytes")] public byte[] Bytes;
 
         [XmlElement("OriginalPath")] public string Path;
-
         [XmlElement("Height")] public int Height;
+
 
         [XmlElement("Width")] public int Width;
 
         [XmlElement("X")] public int X;
 
         [XmlElement("Y")] public int Y;
-
-        
-        private Image _imageCache;
-        private byte[] _imageCacheBytes;
 
         public ShortcutItemImage()
         {
@@ -116,12 +114,6 @@ namespace TileIconifier.Core.Shortcut
                    Height == other.Height;
         }
 
-        protected bool Equals(ShortcutItemImage other)
-        {
-            return Equals(Bytes, other.Bytes) && X == other.X && Y == other.Y && Width == other.Width &&
-                   Height == other.Height;
-        }
-
         public override int GetHashCode()
         {
             // Getting hash codes from volatile variables doesn't seem a good move... //TODO Find an immutable way?
@@ -149,6 +141,12 @@ namespace TileIconifier.Core.Shortcut
             {
                 return (ShortcutItemImage) x.Deserialize(fs);
             }
+        }
+
+        protected bool Equals(ShortcutItemImage other)
+        {
+            return Equals(Bytes, other.Bytes) && X == other.X && Y == other.Y && Width == other.Width &&
+                   Height == other.Height;
         }
     }
 }

@@ -27,19 +27,30 @@
 
 #endregion
 
-using System;
-using System.Threading;
+using System.Collections.Generic;
+using System.Linq;
+using TileIconifier.Core.Custom.Chrome;
 
-namespace TileIconifier.Localization
+namespace TileIconifier.Controls.Custom.Chrome
 {
-    public delegate void LocalizationEventHandler(object sender, LocalizationEventArgs e);
-
-    public class LocalizationEventArgs : EventArgs
+    internal class ChromeAppListViewItemLibrary
     {
-        public string Culture { get; set; }
-        public LocalizationEventArgs(string selectedCulture)
+        private static List<ChromeAppListViewItem> _chromeAppListViewItems = new List<ChromeAppListViewItem>();
+
+        public static List<ChromeAppListViewItem> ChromeAppListViewItems
         {
-            Culture = selectedCulture;
+            get
+            {
+                RefreshList();
+                return _chromeAppListViewItems;
+            }
+        }
+
+        public static void RefreshList(bool force = false)
+        {
+            if (force || !_chromeAppListViewItems.Any())
+                _chromeAppListViewItems = ChromeAppLibrary.GetChromeAppItems().Select(c => new ChromeAppListViewItem(c))
+                    .ToList();
         }
     }
 }

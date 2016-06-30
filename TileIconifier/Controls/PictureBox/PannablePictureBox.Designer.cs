@@ -16,6 +16,7 @@
             if (disposing && (components != null))
             {
                 components.Dispose();
+                _overlayFont.Dispose();
             }
             base.Dispose(disposing);
         }

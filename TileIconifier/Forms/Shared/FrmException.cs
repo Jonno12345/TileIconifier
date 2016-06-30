@@ -38,17 +38,21 @@ namespace TileIconifier.Forms.Shared
     {
         private readonly Exception _ex;
 
-        private string ExceptionString => $@"TileIconifier Version: v{UpdateUtils.CurrentVersion} - {(Environment.Is64BitProcess ? @"x64" : "x86")}
-OS Version: {Environment.OSVersion.Version} - {(Environment.Is64BitOperatingSystem ? @"x64" : "x86")}
-
-{_ex}
-";
-
         public FrmException(Exception ex)
         {
             InitializeComponent();
             _ex = ex;
         }
+
+        private string ExceptionString
+            =>
+                $@"TileIconifier Version: v{UpdateUtils.CurrentVersion} - {(Environment.Is64BitProcess ? @"x64" : "x86")
+                    }
+OS Version: {Environment.OSVersion.Version} - {
+                    (Environment.Is64BitOperatingSystem ? @"x64" : "x86")}
+
+{_ex}
+";
 
         public static void ShowExceptionHandler(Exception ex)
         {

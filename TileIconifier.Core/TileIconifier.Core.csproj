@@ -61,6 +61,14 @@
   <ItemGroup>
     <Compile Include="Config.cs" />
     <Compile Include="CustomExceptions.cs" />
+    <Compile Include="Custom\Builder\BaseCustomShortcutBuilder.cs" />
+    <Compile Include="Custom\Builder\ChromeCustomShortcutBuilder.cs" />
+    <Compile Include="Custom\Builder\ExplorerCustomShortcutBuilder.cs" />
+    <Compile Include="Custom\Builder\GenerateCustomShortcutParams.cs" />
+    <Compile Include="Custom\Builder\OtherCustomShortcutBuilder.cs" />
+    <Compile Include="Custom\Builder\SteamCustomShortcutBuilder.cs" />
+    <Compile Include="Custom\Builder\UriCustomShortcutBuilder.cs" />
+    <Compile Include="Custom\Builder\WindowsStoreAppCustomShortcutBuilder.cs" />
     <Compile Include="Custom\Chrome\ChromeApp.cs" />
     <Compile Include="Custom\Chrome\ChromeAppLibrary.cs" />
     <Compile Include="Custom\CustomShortcut.cs" />
