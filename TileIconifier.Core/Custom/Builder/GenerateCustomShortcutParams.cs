@@ -41,11 +41,11 @@ namespace TileIconifier.Core.Custom.Builder
             ShortcutRootPath = shortcutRootPath;
         }
 
-        public string ShortcutTarget { get; }
+        public string ShortcutTarget { get; internal set; }
 
-        public string ShortcutArguments { get; }
+        public string ShortcutArguments { get; internal set; }
 
-        public string ShortcutRootPath { get; }
+        public string ShortcutRootPath { get; internal set; }
 
         public Image Image { get; set; } = null;
 

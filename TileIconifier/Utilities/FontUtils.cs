@@ -27,16 +27,36 @@
 
 #endregion
 
-using TileIconifier.Core.Utilities;
+using System.Drawing;
+using Microsoft.Win32;
 
-namespace TileIconifier.Core.Custom.WindowsStore
+namespace TileIconifier.Utilities
 {
-    public class WindowsStoreAppProtocol
+    public static class FontUtils
     {
-        public string ProtocolId { get; set; }
-        public string DisplayName { get; set; }
-        public string LogoPath { get; set; }
+        public static FontFamily GetSystemFontFamily()
+        {
+            var returnFontFamily = FontFamily.GenericSansSerif;
+            try
+            {
+                returnFontFamily = new FontFamily("Segoe UI");
+            }
+            catch
+            {
+                try
+                {
+                    var fontFamily = (string)Registry.GetValue(
+                        @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontSubstitutes", "Segoe UI",
+                        null);
+                    returnFontFamily = new FontFamily(fontFamily);
+                }
+                catch
+                {
+                    //ignore
+                }
+            }
 
-        public byte[] LogoBytes => !string.IsNullOrEmpty(LogoPath) ? ImageUtils.LoadFileToByteArray(LogoPath) : null;
+            return returnFontFamily;
+        }
     }
 }

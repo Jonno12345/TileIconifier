@@ -33,13 +33,14 @@ using System.Windows.Forms;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Properties;
 using TileIconifier.Skinning;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls.PictureBox
 {
     [SkinIgnore]
     public partial class PannablePictureBox : UserControl
     {
-        private readonly Font _overlayFont = new Font(new FontFamily("Segoe UI"), 9f, FontStyle.Regular);
+        private readonly Font _overlayFont = new Font(FontUtils.GetSystemFontFamily(), 9f, FontStyle.Regular);
         private Point _movingPoint = Point.Empty;
         private bool _panning;
 

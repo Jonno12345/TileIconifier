@@ -32,16 +32,17 @@ using System.Drawing;
 
 namespace TileIconifier.Core.Shortcut.State
 {
-    public class ShortcutIconState : IEquatable<ShortcutIconState>
+    public class ShortcutItemState : IEquatable<ShortcutItemState>
     {
         private string _showNameOnSquare150X150Logo;
 
-        public ShortcutIconState()
+        public ShortcutItemState()
         {
             MediumImage = new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutOutputSize);
             SmallImage = new ShortcutItemImage(ShortcutConstantsAndEnums.SmallShortcutOutputSize);
         }
 
+        public bool UseSystemAccentColor { get; set; }
         public string BackgroundColor { get; set; }
         public string ForegroundText { get; set; }
         public ShortcutItemImage MediumImage { get; set; }
@@ -54,7 +55,7 @@ namespace TileIconifier.Core.Shortcut.State
             set { _showNameOnSquare150X150Logo = value ? "on" : "off"; }
         }
 
-        public bool Equals(ShortcutIconState other)
+        public bool Equals(ShortcutItemState other)
         {
             if (ReferenceEquals(this, other))
                 return true;
@@ -63,26 +64,28 @@ namespace TileIconifier.Core.Shortcut.State
                    && ForegroundText == other.ForegroundText
                    && ShowNameOnSquare150X150Logo == other.ShowNameOnSquare150X150Logo
                    && MediumImage.Equals(other.MediumImage)
-                   && SmallImage.Equals(other.SmallImage);
+                   && SmallImage.Equals(other.SmallImage)
+                   && UseSystemAccentColor == other.UseSystemAccentColor;
         }
 
-        public bool MediumImageBytesEqual(ShortcutIconState other)
+        public bool MediumImageBytesEqual(ShortcutItemState other)
         {
             return MediumImage.Equals(other.MediumImage);
         }
 
-        public bool SmallImageBytesEqual(ShortcutIconState other)
+        public bool SmallImageBytesEqual(ShortcutItemState other)
         {
             return SmallImage.Equals(other.SmallImage);
         }
 
-        public ShortcutIconState Clone()
+        public ShortcutItemState Clone()
         {
-            return new ShortcutIconState
+            return new ShortcutItemState
             {
                 BackgroundColor = BackgroundColor,
                 ForegroundText = ForegroundText,
                 ShowNameOnSquare150X150Logo = ShowNameOnSquare150X150Logo,
+                UseSystemAccentColor = UseSystemAccentColor,
                 MediumImage = MediumImage != null
                     ? new ShortcutItemImage(new Size(MediumImage.Width, MediumImage.Height))
                     {

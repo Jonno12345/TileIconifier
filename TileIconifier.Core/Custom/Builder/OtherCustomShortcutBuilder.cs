@@ -35,6 +35,15 @@ namespace TileIconifier.Core.Custom.Builder
         {
         }
 
+        public override CustomShortcut GenerateCustomShortcut(string shortcutName)
+        {
+            //vbs will throw an error if the shortcut target is wrapped in quotes - cleanse user input
+            Parameters.ShortcutTarget = Parameters.ShortcutTarget.UnQuoteWrap();
+
+            //run standard generation
+            return base.GenerateCustomShortcut(shortcutName);
+        }
+
         protected override CustomShortcutType ShortcutType { get; } = CustomShortcutType.Other;
     }
 }

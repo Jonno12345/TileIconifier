@@ -36,8 +36,8 @@ namespace TileIconifier.Core.Shortcut.State
 {
     public class ShortcutItemStateController
     {
-        private ShortcutIconState OldState { get; set; }
-        public ShortcutIconState CurrentState { get; set; }
+        private ShortcutItemState OldState { get; set; }
+        public ShortcutItemState CurrentState { get; set; }
 
         public bool HasUnsavedChanges => !CurrentState.Equals(OldState);
         public bool ForegroundTextColourChanged => CurrentState.ForegroundText != OldState.ForegroundText;
@@ -65,7 +65,7 @@ namespace TileIconifier.Core.Shortcut.State
         public void ResetParameters()
         {
             //defaults
-            OldState = new ShortcutIconState
+            OldState = new ShortcutItemState
             {
                 BackgroundColor = ShortcutConstantsAndEnums.DefaultAccentColor ?? "black",
                 ForegroundText = "light",
@@ -97,7 +97,7 @@ namespace TileIconifier.Core.Shortcut.State
                     }
 
                     var parameters = from b in xmlDoc.Descendants("VisualElements")
-                        select new ShortcutIconState
+                        select new ShortcutItemState
                         {
                             BackgroundColor = b.Attribute("BackgroundColor").Value,
                             ForegroundText = b.Attribute("ForegroundText").Value,

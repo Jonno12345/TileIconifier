@@ -115,9 +115,7 @@
     <Compile Include="Controls\Eyedropper\EyedropColorPicker.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\PictureBox\AlignForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Controls\PictureBox\AlignForm.cs" />
     <Compile Include="Controls\PictureBox\AlignForm.Designer.cs">
       <DependentUpon>AlignForm.cs</DependentUpon>
     </Compile>
@@ -267,6 +265,7 @@
       <DependentUpon>Strings.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Utilities\FontUtils.cs" />
     <Compile Include="Utilities\FormUtils.cs" />
     <Compile Include="Forms\Shared\FrmIconSelector.cs">
       <SubType>Form</SubType>
@@ -302,6 +301,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerNew.resx">
       <DependentUpon>FrmCustomShortcutManagerNew.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Shared\FrmException.resx">
       <DependentUpon>FrmException.cs</DependentUpon>
