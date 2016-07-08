@@ -74,13 +74,52 @@ namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
                 where !string.IsNullOrEmpty(appPackageDisplayName) && !string.IsNullOrEmpty(appPackageApplicationKey)
                 select new WindowsStoreApp(appPackageDisplayName, appPackageIconPath, appPackageApplicationKey)
                 into storeApp
-                where !storeApps.Contains(storeApp, storeApp)
+                where !storeApps.Contains(storeApp, new WindowsStoreAppEqualityComparer())
                 select storeApp)
             {
                 storeApps.Add(storeApp);
             }
+            try
+            {
+                GetAppKeysFromAlternateRegistryPath(storeApps);
+            }
+            catch
+            {
+                //ignore
+            }
             return storeApps;
         }
+
+        private static void GetAppKeysFromAlternateRegistryPath(List<WindowsStoreApp> storeApps)
+        {
+            var rootKey =
+                Registry.ClassesRoot.OpenSubKey("Extensions\\ContractId\\Windows.Launch\\PackageId\\");
+
+            if (rootKey == null) return;
+
+            var appPackages = rootKey.GetSubKeyNames();
+
+            foreach (var tempStoreApp in from appPackage in appPackages
+                let mainKey = rootKey.OpenSubKey(appPackage)
+                let activatableClassIdKey = mainKey?.OpenSubKey("ActivatableClassId")
+                where activatableClassIdKey != null
+                let subKeys = activatableClassIdKey.GetSubKeyNames()
+                where subKeys.Any()
+                let workingKey = activatableClassIdKey.OpenSubKey(subKeys[0])
+                where workingKey != null
+                let iconPath = GetIconPath((string) workingKey.GetValue("Icon"))
+                let displayName = GetDisplayName((string) workingKey.GetValue("DisplayName"))
+                let executionPath = GetExecutionPathFromName(appPackage) + "!" + subKeys[0]
+                where !string.IsNullOrEmpty(executionPath) && !string.IsNullOrEmpty(displayName)
+                select new WindowsStoreApp(displayName, iconPath, executionPath)
+                into tempStoreApp
+                where !storeApps.Contains(tempStoreApp, new WindowsStoreAppEqualityComparer())
+                select tempStoreApp)
+            {
+                storeApps.Add(tempStoreApp);
+            }
+        }
+
 
         private static string ExtractStringFromPriFile(string resourcePath)
         {
@@ -159,6 +198,13 @@ namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
             var resourceTag = displayName;
             displayName = ExtractStringFromPriFile(resourceTag);
             return displayName;
+        }
+
+        private static string GetExecutionPathFromName(string name)
+        {
+            var regexPattern = @"^(.*?\..*?)_.*_(.*)$";
+            var regexMatch = Regex.Match(name, regexPattern, RegexOptions.Singleline);
+            return !regexMatch.Success ? string.Empty : $@"{regexMatch.Groups[1].Value}_{regexMatch.Groups[2].Value}";
         }
     }
 }

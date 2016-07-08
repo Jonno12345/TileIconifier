@@ -31,7 +31,7 @@ using System.Collections.Generic;
 
 namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
 {
-    public class WindowsStoreApp : IEqualityComparer<WindowsStoreApp>
+    public class WindowsStoreApp
     {
         public WindowsStoreApp(string displayName, string logoPath, string appUserModelId)
         {
@@ -44,6 +44,10 @@ namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
         public string LogoPath { get; }
         public string AppUserModelId { get; }
 
+    }
+
+    public class WindowsStoreAppEqualityComparer : IEqualityComparer<WindowsStoreApp>
+    {
         public bool Equals(WindowsStoreApp x, WindowsStoreApp y)
         {
             if (x == null || y == null)
@@ -56,13 +60,13 @@ namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
                 return true;
 
             return x.DisplayName == y.DisplayName &&
-                   x.LogoPath == y.LogoPath &&
+                   //x.LogoPath == y.LogoPath &&
                    x.AppUserModelId == y.AppUserModelId;
         }
 
         public int GetHashCode(WindowsStoreApp obj)
         {
-            return DisplayName.GetHashCode() ^ LogoPath.GetHashCode() ^ AppUserModelId.GetHashCode();
+            return obj.GetHashCode() ^ obj.GetHashCode() ^ obj.GetHashCode();
         }
     }
 }
