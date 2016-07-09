@@ -62,12 +62,30 @@ namespace TileIconifier.Core.Custom.Chrome
             throw new FileNotFoundException();
         }
 
+        public static bool ChromeInstallationPathExists()
+        {
+            try
+            {
+                return File.Exists(ChromeInstallationPath);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool ChromeAppLibraryPathExists()
+        {
+            return Directory.Exists(AppLibraryPath);
+        }
+
         public static List<ChromeApp> GetChromeAppItems()
         {
-            if (!Directory.Exists(AppLibraryPath))
-                throw new DirectoryNotFoundException(AppLibraryPath);
-
             var returnList = new List<ChromeApp>();
+            if (!ChromeAppLibraryPathExists())
+            {
+                return returnList;
+            }
             //loop through all extension app Id folders
             foreach (var directory in new DirectoryInfo(AppLibraryPath).GetDirectories())
             {

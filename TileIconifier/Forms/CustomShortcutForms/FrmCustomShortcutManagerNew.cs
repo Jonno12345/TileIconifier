@@ -171,12 +171,24 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 return;
             }
 
-            var customShortcut = baseCustomShortcutBuilder.GenerateCustomShortcut(shortcutName);
+            try
+            {
+                var customShortcut = baseCustomShortcutBuilder.GenerateCustomShortcut(shortcutName);
 
-            BuildIconifiedTile(ImageUtils.ImageToByteArray(pctCurrentIcon.Image), customShortcut);
+                BuildIconifiedTile(ImageUtils.ImageToByteArray(pctCurrentIcon.Image), customShortcut);
 
-            //confirm to the user the shortcut has been created
-            ConfirmToUser(shortcutName);
+                //confirm to the user the shortcut has been created
+                ConfirmToUser(shortcutName);
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show(ex.Message, Strings.FileCouldNotBeFound,
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            catch (Exception ex)
+            {
+                FrmException.ShowExceptionHandler(ex);
+            }
         }
 
         private GenerateCustomShortcutParams GenerateParams(string shortcutTarget, string shortcutArguments,
@@ -521,26 +533,16 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void PopulateGoogleAppLibraryPath()
         {
-            try
-            {
-                txtChromeAppPath.Text = ChromeAppLibrary.AppLibraryPath;
-            }
-            catch (Exception ex)
-            {
-                txtChromeAppPath.Text = ex.Message;
-            }
+            txtChromeAppPath.Text = ChromeAppLibrary.ChromeAppLibraryPathExists()
+                ? ChromeAppLibrary.AppLibraryPath
+                : $"Path not found: {ChromeAppLibrary.AppLibraryPath}";
         }
 
         private void PopulateChromeInstallationPath()
         {
-            try
-            {
-                txtChromeExePath.Text = ChromeAppLibrary.ChromeInstallationPath;
-            }
-            catch
-            {
-                txtChromeExePath.Text = Strings.UnableToFindChromeInstallationPath;
-            }
+            txtChromeExePath.Text = ChromeAppLibrary.ChromeInstallationPathExists()
+                ? ChromeAppLibrary.ChromeInstallationPath
+                : Strings.UnableToFindChromeInstallationPath;
         }
 
         private void SetUpChromeListView()

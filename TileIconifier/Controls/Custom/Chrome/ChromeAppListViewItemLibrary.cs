@@ -48,9 +48,24 @@ namespace TileIconifier.Controls.Custom.Chrome
 
         public static void RefreshList(bool force = false)
         {
-            if (force || !_chromeAppListViewItems.Any())
-                _chromeAppListViewItems = ChromeAppLibrary.GetChromeAppItems().Select(c => new ChromeAppListViewItem(c))
-                    .ToList();
+            try
+            {
+                if (!ChromeAppLibrary.ChromeAppLibraryPathExists() || !ChromeAppLibrary.ChromeInstallationPathExists())
+                {
+                    return;
+                }
+
+                if (force || !_chromeAppListViewItems.Any())
+                {
+                    _chromeAppListViewItems =
+                        ChromeAppLibrary.GetChromeAppItems().Select(c => new ChromeAppListViewItem(c))
+                            .ToList();
+                }
+            }
+            catch
+            {
+                //ignore
+            }
         }
     }
 }

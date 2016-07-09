@@ -27,12 +27,26 @@
 
 #endregion
 
+using System;
+using System.IO;
+
 namespace TileIconifier.Core.Custom.Builder
 {
     public class ChromeCustomShortcutBuilder : BaseCustomShortcutBuilder
     {
         public ChromeCustomShortcutBuilder(GenerateCustomShortcutParams generateParameters) : base(generateParameters)
         {
+            
+        }
+
+        public override CustomShortcut GenerateCustomShortcut(string shortcutName)
+        {
+            if (!File.Exists(Parameters.ShortcutTarget))
+            {
+                throw new FileNotFoundException(Parameters.ShortcutTarget);
+            }
+
+            return base.GenerateCustomShortcut(shortcutName);
         }
 
         protected override CustomShortcutType ShortcutType { get; } = CustomShortcutType.ChromeApp;
