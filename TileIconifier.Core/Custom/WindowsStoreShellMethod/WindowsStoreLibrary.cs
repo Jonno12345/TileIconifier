@@ -139,8 +139,13 @@ namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
 
             Func<string, string> getLogoPath = p =>
             {
-                var folderPaths = new DirectoryInfo(Environment.ExpandEnvironmentVariables(
-                    $@"{p}")).GetDirectories($@"{iconPathRegex.Groups[1].Value}*");
+                var expandedPath = Environment.ExpandEnvironmentVariables($@"{p}");
+                if (!Directory.Exists(expandedPath))
+                {
+                    return string.Empty;
+                }
+
+                var folderPaths = new DirectoryInfo(expandedPath).GetDirectories($@"{iconPathRegex.Groups[1].Value}*");
 
                 var imageNameWithoutExtension = Path.GetFileNameWithoutExtension(iconPathRegex.Groups[2].Value);
 

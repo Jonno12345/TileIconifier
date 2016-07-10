@@ -535,7 +535,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             txtChromeAppPath.Text = ChromeAppLibrary.ChromeAppLibraryPathExists()
                 ? ChromeAppLibrary.AppLibraryPath
-                : $"Path not found: {ChromeAppLibrary.AppLibraryPath}";
+                : $"{Strings.PathNotFound}: {ChromeAppLibrary.AppLibraryPath}";
         }
 
         private void PopulateChromeInstallationPath()

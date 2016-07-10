@@ -374,4 +374,7 @@ Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?<
   <data name="UnableToFindChromeInstallationPath" xml:space="preserve">
     <value>Unable to find Chrome installation path!</value>
   </data>
+  <data name="PathNotFound" xml:space="preserve">
+    <value>Path not found</value>
+  </data>
 </root>
