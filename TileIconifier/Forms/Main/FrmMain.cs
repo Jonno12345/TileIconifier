@@ -47,7 +47,6 @@ namespace TileIconifier.Forms
     {
         private ShortcutItemListViewItem _currentShortcutListViewItem;
         private List<ShortcutItemListViewItem> _filteredList;
-        private List<ShortcutItemListViewItem> _shortcutsList;
 
         public FrmMain()
         {
@@ -60,6 +59,7 @@ namespace TileIconifier.Forms
         {
             base.ApplySkin(sender, e);
             iconifyPanel.UpdateSkinColors(CurrentBaseSkin);
+            lblBadShortcutWarning.ForeColor = CurrentBaseSkin.ErrorColor;
         }
 
         private void frmDropper_Load(object sender, EventArgs e)
@@ -70,6 +70,7 @@ namespace TileIconifier.Forms
             russianToolStripMenuItem.Click += LanguageToolStripMenuClick;
 
             SetCurrentLanguage();
+            CheckPowershellPinningFromConfig();
 
             iconifyPanel.OnIconifyPanelUpdate += (s, ev) => { UpdateFormControls(); };
 
@@ -83,24 +84,31 @@ namespace TileIconifier.Forms
         private void btnIconify_Click(object sender, EventArgs e)
         {
             if (!iconifyPanel.DoValidation())
+            {
                 return;
+            }
 
             var showForegroundColourWarning = CurrentShortcutItem.Properties.ForegroundTextColourChanged;
             var tileIconify = GenerateTileIcon();
             tileIconify.RunIconify();
             CurrentShortcutItem.Properties.CommitChanges();
             UpdateShortcut();
+
             if (showForegroundColourWarning)
+            {
                 MessageBox.Show(
                     Strings.ForegroundColourChangeExplain,
                     Strings.ForegroundColourChange, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(Strings.ConfirmRemoveIconification, Strings.Confirm, MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) != DialogResult.Yes)
+            {
                 return;
+            }
 
             var tileDeIconify = GenerateTileIcon();
             tileDeIconify.DeIconify();
@@ -118,9 +126,13 @@ namespace TileIconifier.Forms
             if (getPinnedItemsRequiresPowershellToolStripMenuItem.Checked)
             {
                 if (InvokeRequired)
-                    Invoke(new Action(() => { getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = false; }));
+                {
+                    Invoke(new Action(() => { UpdatePowershellPinning(false); }));
+                }
                 else
-                    getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = false;
+                {
+                    UpdatePowershellPinning(false);
+                }
             }
             else
             {
@@ -129,7 +141,7 @@ namespace TileIconifier.Forms
                         Strings.UsesPowershell,
                         Strings.Confirm, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = true;
+                    UpdatePowershellPinning(true);
                 }
             }
             StartFullUpdate();
@@ -152,7 +164,9 @@ namespace TileIconifier.Forms
                 customShortcutManager.ShowDialog(this);
                 StartFullUpdate();
                 if (customShortcutManager.GotoShortcutItem != null)
+                {
                     JumpToShortcutItem(customShortcutManager.GotoShortcutItem);
+                }
             }
         }
 
@@ -176,7 +190,9 @@ namespace TileIconifier.Forms
         private void srtlstShortcuts_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (srtlstShortcuts.SelectedItems.Count != 1)
+            {
                 return;
+            }
 
             _currentShortcutListViewItem = (ShortcutItemListViewItem) srtlstShortcuts.SelectedItems[0];
             UpdateShortcut();
@@ -187,13 +203,20 @@ namespace TileIconifier.Forms
             var shortcutName =
                 Path.GetFileNameWithoutExtension(CurrentShortcutItem.ShortcutFileInfo.Name).CleanInvalidFilenameChars();
 
-            if (CurrentShortcutItem.IsTileIconifierCustomShortcut) return;
+            if (CurrentShortcutItem.IsTileIconifierCustomShortcut)
+            {
+                return;
+            }
 
             var cloneConfirmation = new FrmCustomShortcutConfirm
             {
                 ShortcutName = shortcutName
             };
-            if (cloneConfirmation.ShowDialog(this) != DialogResult.OK) return;
+
+            if (cloneConfirmation.ShowDialog(this) != DialogResult.OK)
+            {
+                return;
+            }
 
             shortcutName = cloneConfirmation.ShortcutName;
 
@@ -225,7 +248,9 @@ namespace TileIconifier.Forms
                         Path.GetFileNameWithoutExtension(CurrentShortcutItem.ShortcutFileInfo.Name).QuoteWrap()),
                     Strings.AreYouSure,
                     MessageBoxButtons.YesNo) == DialogResult.No)
+            {
                 return;
+            }
 
             try
             {

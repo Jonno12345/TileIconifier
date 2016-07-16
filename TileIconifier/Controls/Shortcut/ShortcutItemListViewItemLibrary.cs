@@ -27,44 +27,46 @@
 
 #endregion
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using TileIconifier.Core.Custom.Chrome;
+using TileIconifier.Core.Shortcut;
 
-namespace TileIconifier.Controls.Custom.Chrome
+namespace TileIconifier.Controls.Shortcut
 {
-    internal class ChromeAppListViewItemLibrary
+    internal class ShortcutItemListViewItemLibrary
     {
-        private static List<ChromeAppListViewItem> _chromeAppListViewItems = new List<ChromeAppListViewItem>();
+        private static List<ShortcutItemListViewItem> _shortcutsList = new List<ShortcutItemListViewItem>();
 
-        public static List<ChromeAppListViewItem> Items
+        public static List<ShortcutItemListViewItem> Items
         {
             get
             {
                 RefreshList();
-                return _chromeAppListViewItems;
+                return _shortcutsList;
             }
         }
 
-        public static void RefreshList(bool force = false)
+        public static void RefreshList(bool force = false, bool includePinned = false)
         {
-            try
-            {
-                if (!ChromeAppLibrary.ChromeAppLibraryPathExists() || !ChromeAppLibrary.ChromeInstallationPathExists())
-                {
-                    return;
-                }
+            if (!force && _shortcutsList.Any()) return;
 
-                if (force || !_chromeAppListViewItems.Any())
+            if (includePinned)
+            {
+                Exception pinningException;
+                _shortcutsList = ShortcutItemEnumeration.TryGetShortcutsWithPinning(out pinningException, true)
+                    .Select(s => new ShortcutItemListViewItem(s))
+                    .ToList();
+                if (pinningException != null)
                 {
-                    _chromeAppListViewItems =
-                        ChromeAppLibrary.GetChromeAppItems().Select(c => new ChromeAppListViewItem(c))
-                            .ToList();
+                    throw pinningException;
                 }
             }
-            catch
+            else
             {
-                //ignore
+                _shortcutsList = ShortcutItemEnumeration.GetShortcuts(true)
+                    .Select(s => new ShortcutItemListViewItem(s))
+                    .ToList();
             }
         }
     }

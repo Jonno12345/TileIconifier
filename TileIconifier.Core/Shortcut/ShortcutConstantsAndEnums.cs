@@ -27,6 +27,7 @@
 
 #endregion
 
+using System.Collections.Generic;
 using System.Drawing;
 using Microsoft.Win32;
 using TileIconifier.Core.TileIconify;
@@ -68,11 +69,24 @@ namespace TileIconifier.Core.Shortcut
                 var accentColor =
                     RawAccentColor.ToString("X2");
 
-                if (string.IsNullOrEmpty(accentColor) || accentColor.Length != 8) return null;
+                if (string.IsNullOrEmpty(accentColor) || accentColor.Length != 8)
+                {
+                    return null;
+                }
                 var returnString =
                     $@"#{accentColor.Substring(6, 2)}{accentColor.Substring(4, 2)}{accentColor.Substring(2, 2)}";
                 return returnString;
             }
         }
+
+        public static List<string> KnownShortcutTargetsWithIssues { get; } = new List<string>
+        {
+            "winword.exe",
+            "excel.exe",
+            "powerpnt.exe",
+            "firefox.exe",
+            "thunderbird.exe",
+            "OUTLOOK.EXE"
+        };
     }
 }

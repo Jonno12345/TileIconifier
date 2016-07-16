@@ -61,6 +61,7 @@ namespace TileIconifier.Forms
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblBadShortcutWarning = new System.Windows.Forms.Label();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,6 +148,7 @@ namespace TileIconifier.Forms
             // 
             // mnuMain
             // 
+            resources.ApplyResources(this.mnuMain, "mnuMain");
             this.mnuMain.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -156,24 +158,24 @@ namespace TileIconifier.Forms
             this.helpToolStripMenuItem,
             this.languageToolStripMenuItem,
             this.donateToolStripMenuItem});
-            resources.ApplyResources(this.mnuMain, "mnuMain");
             this.mnuMain.Name = "mnuMain";
             // 
             // fileToolStripMenuItem
             // 
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // exitToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // preferencesToolStripMenuItem
             // 
+            resources.ApplyResources(this.preferencesToolStripMenuItem, "preferencesToolStripMenuItem");
             this.preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customShortcutManagerToolStripMenuItem,
             this.toolStripSeparator1,
@@ -181,100 +183,106 @@ namespace TileIconifier.Forms
             this.refreshAllToolStripMenuItem,
             this.checkForUpdateToolStripMenuItem});
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            resources.ApplyResources(this.preferencesToolStripMenuItem, "preferencesToolStripMenuItem");
             // 
             // customShortcutManagerToolStripMenuItem
             // 
-            this.customShortcutManagerToolStripMenuItem.Name = "customShortcutManagerToolStripMenuItem";
             resources.ApplyResources(this.customShortcutManagerToolStripMenuItem, "customShortcutManagerToolStripMenuItem");
+            this.customShortcutManagerToolStripMenuItem.Name = "customShortcutManagerToolStripMenuItem";
             this.customShortcutManagerToolStripMenuItem.Click += new System.EventHandler(this.customShortcutManagerToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
             // 
             // getPinnedItemsRequiresPowershellToolStripMenuItem
             // 
+            resources.ApplyResources(this.getPinnedItemsRequiresPowershellToolStripMenuItem, "getPinnedItemsRequiresPowershellToolStripMenuItem");
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.Name = "getPinnedItemsRequiresPowershellToolStripMenuItem";
-            resources.ApplyResources(this.getPinnedItemsRequiresPowershellToolStripMenuItem, "getPinnedItemsRequiresPowershellToolStripMenuItem");
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.Click += new System.EventHandler(this.getPinnedItemsRequiresPowershellToolStripMenuItem_Click);
             // 
             // refreshAllToolStripMenuItem
             // 
-            this.refreshAllToolStripMenuItem.Name = "refreshAllToolStripMenuItem";
             resources.ApplyResources(this.refreshAllToolStripMenuItem, "refreshAllToolStripMenuItem");
+            this.refreshAllToolStripMenuItem.Name = "refreshAllToolStripMenuItem";
             this.refreshAllToolStripMenuItem.Click += new System.EventHandler(this.refreshAllToolStripMenuItem_Click);
             // 
             // checkForUpdateToolStripMenuItem
             // 
-            this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
             resources.ApplyResources(this.checkForUpdateToolStripMenuItem, "checkForUpdateToolStripMenuItem");
+            this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
             // 
             // skinToolStripMenuItem
             // 
+            resources.ApplyResources(this.skinToolStripMenuItem, "skinToolStripMenuItem");
             this.skinToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.defaultSkinToolStripMenuItem,
             this.darkSkinToolStripMenuItem});
             this.skinToolStripMenuItem.Name = "skinToolStripMenuItem";
-            resources.ApplyResources(this.skinToolStripMenuItem, "skinToolStripMenuItem");
             // 
             // defaultSkinToolStripMenuItem
             // 
+            resources.ApplyResources(this.defaultSkinToolStripMenuItem, "defaultSkinToolStripMenuItem");
             this.defaultSkinToolStripMenuItem.Checked = true;
             this.defaultSkinToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.defaultSkinToolStripMenuItem.Name = "defaultSkinToolStripMenuItem";
-            resources.ApplyResources(this.defaultSkinToolStripMenuItem, "defaultSkinToolStripMenuItem");
             // 
             // darkSkinToolStripMenuItem
             // 
-            this.darkSkinToolStripMenuItem.Name = "darkSkinToolStripMenuItem";
             resources.ApplyResources(this.darkSkinToolStripMenuItem, "darkSkinToolStripMenuItem");
+            this.darkSkinToolStripMenuItem.Name = "darkSkinToolStripMenuItem";
             // 
             // aboutToolStripMenuItem
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // languageToolStripMenuItem
             // 
+            resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
             this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
             this.russianToolStripMenuItem});
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
             // 
             // englishToolStripMenuItem
             // 
-            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
+            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             this.englishToolStripMenuItem.Tag = "en-US";
             // 
             // russianToolStripMenuItem
             // 
-            this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
             resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
+            this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
             this.russianToolStripMenuItem.Tag = "ru-RU";
             // 
             // donateToolStripMenuItem
             // 
-            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
             resources.ApplyResources(this.donateToolStripMenuItem, "donateToolStripMenuItem");
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
             this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
+            // 
+            // lblBadShortcutWarning
+            // 
+            resources.ApplyResources(this.lblBadShortcutWarning, "lblBadShortcutWarning");
+            this.lblBadShortcutWarning.ForeColor = System.Drawing.Color.Red;
+            this.lblBadShortcutWarning.Name = "lblBadShortcutWarning";
             // 
             // FrmMain
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.lblBadShortcutWarning);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.btnDeleteCustomShortcut);
@@ -330,6 +338,7 @@ namespace TileIconifier.Forms
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem russianToolStripMenuItem;
+        private System.Windows.Forms.Label lblBadShortcutWarning;
     }
 }
 

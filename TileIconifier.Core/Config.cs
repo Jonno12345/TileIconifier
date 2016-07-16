@@ -56,6 +56,7 @@ namespace TileIconifier.Core
         public static Config Instance => _instance ?? (_instance = LoadConfig(ConfigFilePath));
 
         public string LocaleToUse { get; set; }
+        public bool GetPinnedItems { get; set; }
 
 
         public void SaveConfig()

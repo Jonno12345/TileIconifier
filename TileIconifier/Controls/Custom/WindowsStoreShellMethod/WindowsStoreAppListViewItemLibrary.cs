@@ -38,7 +38,7 @@ namespace TileIconifier.Controls.Custom.WindowsStoreShellMethod
         private static List<WindowsStoreAppListViewItemGroup> _windowsStoreAppListViewItemGroups =
             new List<WindowsStoreAppListViewItemGroup>();
 
-        public static List<WindowsStoreAppListViewItemGroup> WindowsStoreAppListViewItemGroups
+        public static List<WindowsStoreAppListViewItemGroup> Items
         {
             get
             {

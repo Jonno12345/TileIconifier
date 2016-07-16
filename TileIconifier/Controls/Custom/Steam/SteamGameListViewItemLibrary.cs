@@ -38,7 +38,7 @@ namespace TileIconifier.Controls.Custom.Steam
     {
         private static List<SteamGameListViewItem> _steamGameListViewItems = new List<SteamGameListViewItem>();
 
-        public static List<SteamGameListViewItem> SteamGameListViewItems
+        public static List<SteamGameListViewItem> Items
         {
             get
             {

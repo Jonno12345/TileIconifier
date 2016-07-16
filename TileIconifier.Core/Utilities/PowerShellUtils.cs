@@ -47,7 +47,9 @@ namespace TileIconifier.Core.Utilities
             }
 
             if (!File.Exists(outputPath))
+            {
                 throw new PowershellException();
+            }
         }
 
         public static void MarryAppIDs(List<ShortcutItem> shortcutsList)

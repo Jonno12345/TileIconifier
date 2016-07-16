@@ -244,12 +244,6 @@
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>Помощь</value>
   </data>
-  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 22</value>
-  </data>
-  <data name="russianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 22</value>
-  </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 22</value>
   </data>
@@ -261,6 +255,18 @@
   </data>
   <data name="donateToolStripMenuItem.Text" xml:space="preserve">
     <value>Пожертвовать</value>
+  </data>
+  <data name="lblBadShortcutWarning.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 348</value>
+  </data>
+  <data name="lblBadShortcutWarning.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>300, 0</value>
+  </data>
+  <data name="lblBadShortcutWarning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 54</value>
+  </data>
+  <data name="lblBadShortcutWarning.Text" xml:space="preserve">
+    <value>Плитка этого ярлыка может быть некорректна! Создайте пользовательский ярлык, если это так.</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -69,13 +69,13 @@ namespace TileIconifier.Forms
         {
             if (getPinnedItemsRequiresPowershellToolStripMenuItem.Checked)
             {
-                Exception pinningException;
-                _shortcutsList = ShortcutItemEnumeration.TryGetShortcutsWithPinning(out pinningException, true)
-                    .Select(s => new ShortcutItemListViewItem(s))
-                    .ToList();
-                if (pinningException != null)
+                try
                 {
-                    FrmException.ShowExceptionHandler(pinningException);
+                    ShortcutItemListViewItemLibrary.RefreshList(true, true);
+                }
+                catch (Exception ex)
+                {
+                    FrmException.ShowExceptionHandler(ex);
                     MessageBox.Show(
                         Strings.PowershellErrorFull,
                         Strings.PowershellFailure, MessageBoxButtons.OK,
@@ -85,17 +85,19 @@ namespace TileIconifier.Forms
             }
             else
             {
-                _shortcutsList = ShortcutItemEnumeration.GetShortcuts(true)
-                    .Select(s => new ShortcutItemListViewItem(s))
-                    .ToList();
+                ShortcutItemListViewItemLibrary.RefreshList(true);
             }
 
             UpdateFilteredList();
 
             if (srtlstShortcuts.InvokeRequired)
+            {
                 srtlstShortcuts.Invoke(new Action(BuildShortcutList));
+            }
             else
+            {
                 BuildShortcutList();
+            }
         }
 
         private void BuildShortcutList()
@@ -114,9 +116,22 @@ namespace TileIconifier.Forms
             srtlstShortcuts.SmallImageList = smallImageList;
 
             if (srtlstShortcuts.Items.Count > 0)
+            {
                 srtlstShortcuts.Items[0].Selected = true;
+            }
         }
 
+        private void CheckPowershellPinningFromConfig()
+        {
+            getPinnedItemsRequiresPowershellToolStripMenuItem.Checked = Config.Instance.GetPinnedItems;
+        }
+
+        private void UpdatePowershellPinning(bool value)
+        {
+            Config.Instance.GetPinnedItems = value;
+            Config.Instance.SaveConfig();
+            CheckPowershellPinningFromConfig();
+        }
 
         private static void CheckMenuItem(ToolStripDropDownItem mnu,
             ToolStripMenuItem checkedItem)
@@ -136,7 +151,10 @@ namespace TileIconifier.Forms
                 SkinHandler.SetCurrentSkin(new BaseSkin());
                 return;
             }
-            if (!darkSkinToolStripMenuItem.Checked) return;
+            if (!darkSkinToolStripMenuItem.Checked)
+            {
+                return;
+            }
             SkinHandler.SetCurrentSkin(new DarkSkin());
         }
 
@@ -164,6 +182,8 @@ namespace TileIconifier.Forms
             //disable delete Custom Shortcut for items that are already custom shortcuts
             btnDeleteCustomShortcut.Enabled = CurrentShortcutItem.IsTileIconifierCustomShortcut;
 
+            lblBadShortcutWarning.Visible = NotifyIncompatibleShortcut();
+
             //update the column view
             _currentShortcutListViewItem.UpdateColumns();
             var currentShortcutIndex = srtlstShortcuts.Items.IndexOf(_currentShortcutListViewItem);
@@ -187,7 +207,7 @@ namespace TileIconifier.Forms
         {
             UpdateFilteredList(true);
             var shortcutListViewItem =
-                _shortcutsList.First(
+                ShortcutItemListViewItemLibrary.Items.First(
                     s => s.ShortcutItem.ShortcutFileInfo.FullName == shortcutItem.ShortcutFileInfo.FullName);
             var itemInListView = srtlstShortcuts.Items[srtlstShortcuts.Items.IndexOf(shortcutListViewItem)];
             itemInListView.Selected = true;
@@ -227,7 +247,10 @@ namespace TileIconifier.Forms
             }
             catch
             {
-                if (silentIfNoUpdateDetected) return;
+                if (silentIfNoUpdateDetected)
+                {
+                    return;
+                }
 
                 if (MessageBox.Show(
                     string.Format(
@@ -246,8 +269,12 @@ namespace TileIconifier.Forms
         private void UpdateFilteredList(bool resetTextBox = false)
         {
             if (resetTextBox)
+            {
                 txtFilter.Text = string.Empty;
-            _filteredList = _shortcutsList.Where(s => s.Text.ToUpper().Contains(txtFilter.Text.ToUpper())).ToList();
+            }
+            _filteredList =
+                ShortcutItemListViewItemLibrary.Items.Where(s => s.Text.ToUpper().Contains(txtFilter.Text.ToUpper()))
+                    .ToList();
         }
 
         private void InitializeListboxColumns()
@@ -286,6 +313,13 @@ namespace TileIconifier.Forms
                 return;
             }
             CheckMenuItem(languageToolStripMenuItem, englishToolStripMenuItem);
+        }
+
+        private bool NotifyIncompatibleShortcut()
+        {
+            return !_currentShortcutListViewItem.ShortcutItem.IsTileIconifierCustomShortcut
+                   && ShortcutConstantsAndEnums.KnownShortcutTargetsWithIssues.Any(s =>
+                       _currentShortcutListViewItem.ShortcutItem.TargetFilePath.ToUpper().EndsWith(s.ToUpper()));
         }
     }
 }

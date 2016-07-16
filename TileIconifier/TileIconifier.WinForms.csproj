@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="Controls\PictureBox\PannablePictureBoxImage.cs" />
     <Compile Include="Controls\PictureBox\PannablePictureBoxMetaData.cs" />
+    <Compile Include="Controls\Shortcut\ShortcutItemListViewItemLibrary.cs" />
     <Compile Include="Controls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -145,9 +146,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TileIconifierPanel.ru.resx">
       <DependentUpon>TileIconifierPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutConfirm.aa.resx">
-      <DependentUpon>FrmCustomShortcutConfirm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutConfirm.ru.resx">
       <DependentUpon>FrmCustomShortcutConfirm.cs</DependentUpon>
