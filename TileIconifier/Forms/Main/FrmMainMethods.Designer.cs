@@ -47,7 +47,7 @@ using TileIconifier.Skinning.Skins;
 using TileIconifier.Skinning.Skins.Dark;
 using TileIconifier.Utilities;
 
-namespace TileIconifier.Forms
+namespace TileIconifier.Forms.Main
 {
     public partial class FrmMain
     {

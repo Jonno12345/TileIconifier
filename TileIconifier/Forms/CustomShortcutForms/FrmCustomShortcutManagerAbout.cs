@@ -43,9 +43,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void rtxtHelp_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            using (Process.Start(e.LinkText))
-            {
-            }
+            Process.Start(e.LinkText);
         }
 
         private void frmHelp_Load(object sender, EventArgs e)

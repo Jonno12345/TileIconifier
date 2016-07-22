@@ -38,6 +38,7 @@ using TileIconifier.Core;
 using TileIconifier.Core.IconExtractor;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Properties;
+using static System.String;
 
 namespace TileIconifier.Forms.Shared
 {
@@ -83,6 +84,7 @@ namespace TileIconifier.Forms.Shared
 
         private readonly List<string> _supportedImageFileTypes = new List<string>
         {
+            ".jpeg",
             ".jpg",
             ".png",
             ".bmp"
@@ -96,6 +98,7 @@ namespace TileIconifier.Forms.Shared
         private FrmIconSelector(string targetPath)
         {
             InitializeComponent();
+            SetUpOpenFileDialog();
             SetUpCommonDllComboBox();
             SetUpTargetPath(targetPath);
             BuildListView();
@@ -106,13 +109,26 @@ namespace TileIconifier.Forms.Shared
             var iconSelector = new FrmIconSelector(defaultPathForIconExtraction);
             iconSelector.ShowDialog(owner);
             if (iconSelector.ReturnedBitmapBytes == null)
+            {
                 throw new UserCancellationException();
+            }
 
             return new IconSelectorResult
             {
                 ImageBytes = iconSelector.ReturnedBitmapBytes,
                 ImagePath = iconSelector.ReturnedImagePath
             };
+        }
+
+        private void SetUpOpenFileDialog()
+        {
+            //Image Files (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png|Programs, ICO's and Libraries (*.exe, *.dll, *.ico)|*.exe;*.dll;*.ico
+            opnFile.Filter =
+                $@"Image Files|*{
+                    Join(";*", _supportedImageFileTypes)
+                    }|Programs, ICO's and Libraries|*{
+                    Join(";*", _iconExtractorFileTypes)
+                    }";
         }
 
         private bool PathTypeIsForIconExtractor(string path)
@@ -149,7 +165,9 @@ namespace TileIconifier.Forms.Shared
             {
                 _commonIconDlls.Remove(commonIconDll);
                 if (File.Exists(Environment.ExpandEnvironmentVariables(commonIconDll)))
+                {
                     _commonIconDlls.Add(Environment.ExpandEnvironmentVariables(commonIconDll));
+                }
             }
             _commonIconDlls.Insert(0, "");
 
@@ -169,7 +187,9 @@ namespace TileIconifier.Forms.Shared
             //validate the path exists
             var targetPath = txtPathToExtractFrom.Text;
             if (!File.Exists(targetPath))
+            {
                 return;
+            }
 
             lvwIcons.BeginUpdate();
             try
@@ -271,7 +291,9 @@ namespace TileIconifier.Forms.Shared
                 {
                     var imagePath = txtImagePath.Text;
                     if (!File.Exists(imagePath))
+                    {
                         throw new FileNotFoundException(Strings.FileCouldNotBeFound, imagePath);
+                    }
                     ReturnedBitmapBytes = ImageUtils.LoadFileToByteArray(imagePath);
                     ReturnedImagePath = imagePath;
                 }
@@ -305,13 +327,15 @@ namespace TileIconifier.Forms.Shared
         private void btnBrowseCustomImage_Click(object sender, EventArgs e)
         {
             SetOpenFileDialogPaths(
-                string.IsNullOrEmpty(txtImagePath.Text)
+                IsNullOrEmpty(txtImagePath.Text)
                     ? Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Pictures\")
                     : txtImagePath.Text);
 
             opnFile.FilterIndex = 1;
             if (opnFile.ShowDialog(this) != DialogResult.OK)
+            {
                 return;
+            }
 
             HandlePathSelection(opnFile.FileName);
         }
@@ -322,7 +346,9 @@ namespace TileIconifier.Forms.Shared
 
             opnFile.FilterIndex = 2;
             if (opnFile.ShowDialog(this) != DialogResult.OK)
+            {
                 return;
+            }
 
             HandlePathSelection(opnFile.FileName);
         }
@@ -359,7 +385,9 @@ namespace TileIconifier.Forms.Shared
         private void cmbCommonIconDlls_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbCommonIconDlls.SelectedIndex >= 0)
+            {
                 txtPathToExtractFrom.Text = cmbCommonIconDlls.SelectedValue.ToString();
+            }
             BuildListView();
         }
 
@@ -367,7 +395,10 @@ namespace TileIconifier.Forms.Shared
         {
             if (!File.Exists(txtImagePath.Text))
             {
-                if (pctPreview.Image == null) return;
+                if (pctPreview.Image == null)
+                {
+                    return;
+                }
                 try
                 {
                     pctPreview.Image.Dispose();

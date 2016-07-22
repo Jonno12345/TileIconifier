@@ -1,6 +1,6 @@
 ﻿using TileIconifier.Controls;
 
-namespace TileIconifier.Forms
+namespace TileIconifier.Forms.Main
 {
     partial class FrmMain
     {

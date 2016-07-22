@@ -41,7 +41,7 @@ using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
 using TileIconifier.Utilities;
 
-namespace TileIconifier.Forms
+namespace TileIconifier.Forms.Main
 {
     public partial class FrmMain : SkinnableForm
     {

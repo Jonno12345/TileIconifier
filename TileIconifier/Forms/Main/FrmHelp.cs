@@ -30,7 +30,7 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace TileIconifier.Forms
+namespace TileIconifier.Forms.Main
 {
     public partial class FrmHelp : SkinnableForm
     {
@@ -41,9 +41,7 @@ namespace TileIconifier.Forms
 
         private void rtxtAbout_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            using (Process.Start(e.LinkText))
-            {
-            }
+            Process.Start(e.LinkText);
         }
     }
 }

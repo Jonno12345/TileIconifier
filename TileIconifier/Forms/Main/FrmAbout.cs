@@ -32,7 +32,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using TileIconifier.Core.Utilities;
 
-namespace TileIconifier.Forms
+namespace TileIconifier.Forms.Main
 {
     public partial class FrmAbout : SkinnableForm
     {
@@ -43,9 +43,7 @@ namespace TileIconifier.Forms
 
         private void rtxtAbout_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            using (Process.Start(e.LinkText))
-            {
-            }
+            Process.Start(e.LinkText);
         }
 
         private void frmAbout_Load(object sender, EventArgs e)

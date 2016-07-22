@@ -213,7 +213,13 @@
     <Compile Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerNew.Designer.cs">
       <DependentUpon>FrmCustomShortcutManagerNew.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main\FrmMainMethods.cs">
+    <Compile Include="Forms\Main\FrmBatchShortcut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\FrmBatchShortcut.Designer.cs">
+      <DependentUpon>FrmBatchShortcut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\FrmMainMethods.Designer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Shared\FrmException.cs">
