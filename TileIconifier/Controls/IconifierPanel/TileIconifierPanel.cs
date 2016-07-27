@@ -32,19 +32,16 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using TileIconifier.Controls.Eyedropper;
 using TileIconifier.Controls.PictureBox;
 using TileIconifier.Core;
 using TileIconifier.Core.Custom;
 using TileIconifier.Core.Shortcut;
-using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
 using TileIconifier.Skinning.Skins;
 
-namespace TileIconifier.Controls
+namespace TileIconifier.Controls.IconifierPanel
 {
     public partial class TileIconifierPanel : UserControl
     {
@@ -52,6 +49,7 @@ namespace TileIconifier.Controls
             new List<PannablePictureBoxMetaData>();
 
         private BaseSkin _currentBaseSkin;
+        private ShortcutItem _currentShortcutItem;
 
         public TileIconifierPanel()
         {
@@ -59,7 +57,15 @@ namespace TileIconifier.Controls
             AddEventHandlers();
         }
 
-        public ShortcutItem CurrentShortcutItem { get; set; }
+        public ShortcutItem CurrentShortcutItem
+        {
+            get { return _currentShortcutItem; }
+            set
+            {
+                _currentShortcutItem = value;
+                colorPanel.CurrentShortcutItem = value;
+            }
+        }
 
         public Size MediumPictureBoxSize => panPctMediumIcon.Size;
         public Size SmallPictureBoxSize => panPctSmallIcon.Size;
@@ -70,6 +76,7 @@ namespace TileIconifier.Controls
         {
             //disable event handlers whilst updating things programatically
             RemoveEventHandlers();
+            colorPanel.RemoveEventHandlers();
 
             //check if unsaved once per update
             var hasUnsavedChanges = CurrentShortcutItem.Properties.HasUnsavedChanges;
@@ -94,40 +101,20 @@ namespace TileIconifier.Controls
             lblUnsaved.Visible = hasUnsavedChanges;
             btnReset.Enabled = hasUnsavedChanges;
 
-            //reset the combo box - choose actual colour, or custom if none of the combobox items
-            if (cmbColour.Items.Contains(CurrentShortcutItem.Properties.CurrentState.BackgroundColor))
-            {
-                cmbColour.SelectedItem = CurrentShortcutItem.Properties.CurrentState.BackgroundColor;
-                txtBGColour.Enabled = false;
-            }
-            else
-            {
-                cmbColour.Text = @"Custom";
-                txtBGColour.Enabled = true;
-                txtBGColour.Text = CurrentShortcutItem.Properties.CurrentState.BackgroundColor;
-            }
-
-            //set the foreground text checkbox based on value stored for this shortcut
-            chkFGTxtEnabled.Checked = CurrentShortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo;
-
-            //enable radio buttons if the foreground text is enabled
-            radFGDark.Enabled = chkFGTxtEnabled.Checked;
-            radFGLight.Enabled = chkFGTxtEnabled.Checked;
-
-            //set the radio buttons based on the current shortcuts selection
-            radFGDark.Checked = CurrentShortcutItem.Properties.CurrentState.ForegroundText == "dark";
-            radFGLight.Checked = CurrentShortcutItem.Properties.CurrentState.ForegroundText == "light";
+            //update color panel
+            colorPanel.UpdateControlsToCurrentShortcut();
 
             //reset any validation failures
             ResetValidation();
 
             //re-add the event handlers now we've finished updating
             AddEventHandlers();
+            colorPanel.AddEventHandlers();
         }
 
         public void SetPictureBoxesBackColor()
         {
-            var color = GetPictureBoxesBackColor();
+            var color = colorPanel.GetPictureBoxesBackColor();
             Action<PannablePictureBox> setBackColor = b =>
             {
                 b.BackColor = b.PannablePictureBoxImage.Image == null ? _currentBaseSkin.BackColor : color;
@@ -142,7 +129,7 @@ namespace TileIconifier.Controls
         {
             ResetValidation();
 
-            return ValidateColour();
+            return ValidateControls();
         }
 
         public void UpdateSkinColors(BaseSkin currentBaseSkin)
@@ -223,11 +210,17 @@ namespace TileIconifier.Controls
         {
             PannablePictureBox senderPictureBox = null;
             if (sender.GetType() == typeof (PannablePictureBoxControlPanel))
+            {
                 senderPictureBox = ((PannablePictureBoxControlPanel) sender).PannablePictureBox;
+            }
             if (sender.GetType() == typeof (PannablePictureBox))
+            {
                 senderPictureBox = (PannablePictureBox) sender;
+            }
             if (senderPictureBox == null)
+            {
                 throw new InvalidCastException($@"Sender not valid type! Received {sender.GetType()}");
+            }
 
             return _pannablePictureBoxMetaDatas.Single(p => p.PannablePictureBox == senderPictureBox);
         }
@@ -271,64 +264,14 @@ namespace TileIconifier.Controls
             RunUpdate();
         }
 
-        private void radFGLight_CheckedChanged(object sender, EventArgs e)
-        {
-            CurrentShortcutItem.Properties.CurrentState.ForegroundText = radFGLight.Checked ? "light" : "dark";
-
-            RunUpdate();
-        }
-
-        private void txtBGColour_TextChanged(object sender, EventArgs e)
-        {
-            var textBox = sender as TextBox;
-            if (textBox != null && textBox.Text.Length != textBox.MaxLength)
-                return;
-
-
-            CurrentShortcutItem.Properties.CurrentState.BackgroundColor = txtBGColour.Text;
-            RunUpdate();
-        }
-
-        private void chkFGTxtEnabled_CheckedChanged(object sender, EventArgs e)
-        {
-            radFGDark.Enabled = chkFGTxtEnabled.Checked;
-            radFGLight.Enabled = chkFGTxtEnabled.Checked;
-            CurrentShortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo = chkFGTxtEnabled.Checked;
-            RunUpdate();
-        }
-
-        private void cmbColour_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtBGColour.Enabled = cmbColour.Text == @"Custom";
-            CurrentShortcutItem.Properties.CurrentState.BackgroundColor = cmbColour.Text == @"Custom"
-                ? txtBGColour.Text
-                : cmbColour.Text;
-            RunUpdate();
-        }
-
-        private Color GetPictureBoxesBackColor()
-        {
-            if (!string.Equals(cmbColour.Text, "custom", StringComparison.InvariantCultureIgnoreCase))
-                return Color.FromName(cmbColour.Text);
-            try
-            {
-                if (txtBGColour.Text.Length == txtBGColour.MaxLength)
-                    return ColorUtils.HexToColor(txtBGColour.Text);
-            }
-            catch
-            {
-                // ignored
-            }
-            return _currentBaseSkin.BackColor;
-        }
-
         private void ResetValidation()
         {
-            txtBGColour.BackColor = _currentBaseSkin.BackColor;
+            //TODO
+            colorPanel.ResetValidation();
             SetPictureBoxesBackColor();
         }
 
-        private bool ValidateColour()
+        private bool ValidateControls()
         {
             var valid = true;
 
@@ -338,35 +281,38 @@ namespace TileIconifier.Controls
                 valid = false;
             };
 
-            if (cmbColour.Text == @"Custom" && !Regex.Match(txtBGColour.Text, @"^#[0-9a-fA-F]{6}$").Success)
-                controlInvalid(txtBGColour);
-
             if (CurrentShortcutItem.Properties.CurrentState.MediumImage.Bytes == null)
+            {
                 controlInvalid(panPctMediumIcon);
+            }
 
             if (CurrentShortcutItem.Properties.CurrentState.SmallImage.Bytes == null)
+            {
                 controlInvalid(panPctSmallIcon);
+            }
 
-            return valid;
+            var colorPanelValid = colorPanel.ValidateControls();
+
+            return valid && colorPanelValid;
         }
 
+        //TODO
         private void AddEventHandlers()
         {
-            txtBGColour.TextChanged += txtBGColour_TextChanged;
-            cmbColour.SelectedIndexChanged += cmbColour_SelectedIndexChanged;
-            chkFGTxtEnabled.CheckedChanged += chkFGTxtEnabled_CheckedChanged;
-            radFGLight.CheckedChanged += radFGLight_CheckedChanged;
+            colorPanel.OnUpdate += ColorPanelOnOnUpdate;
             panPctMediumIcon.OnPannablePictureImagePropertyChange +=
                 PanPctMediumIcon_OnPannablePictureImagePropertyChange;
             panPctSmallIcon.OnPannablePictureImagePropertyChange += PanPctSmallIcon_OnPannablePictureImagePropertyChange;
         }
 
+        private void ColorPanelOnOnUpdate(object sender, EventArgs eventArgs)
+        {
+            RunUpdate();
+        }
+
         private void RemoveEventHandlers()
         {
-            txtBGColour.TextChanged -= txtBGColour_TextChanged;
-            cmbColour.SelectedIndexChanged -= cmbColour_SelectedIndexChanged;
-            chkFGTxtEnabled.CheckedChanged -= chkFGTxtEnabled_CheckedChanged;
-            radFGLight.CheckedChanged -= radFGLight_CheckedChanged;
+            colorPanel.OnUpdate -= ColorPanelOnOnUpdate;
             panPctMediumIcon.OnPannablePictureImagePropertyChange -=
                 PanPctMediumIcon_OnPannablePictureImagePropertyChange;
             panPctSmallIcon.OnPannablePictureImagePropertyChange -= PanPctSmallIcon_OnPannablePictureImagePropertyChange;
@@ -385,7 +331,9 @@ namespace TileIconifier.Controls
         private void panPctSmallIcon_Click(object sender, EventArgs e)
         {
             if (((MouseEventArgs) e).Button != MouseButtons.Right)
+            {
                 return;
+            }
 
             var contextMenu = new ContextMenu();
             var menuItem = new MenuItem(Strings.ChangeImage,
@@ -400,7 +348,9 @@ namespace TileIconifier.Controls
         private void panPctMediumIcon_Click(object sender, EventArgs e)
         {
             if (((MouseEventArgs) e).Button != MouseButtons.Right)
+            {
                 return;
+            }
 
             var contextMenu = new ContextMenu();
             var menuItem = new MenuItem(Strings.ChangeImage,
@@ -433,26 +383,6 @@ namespace TileIconifier.Controls
             CurrentShortcutItem.Properties.CurrentState.SmallImage.Height = item.Height;
 
             RunUpdate();
-        }
-
-        private void btnColourPicker_Click(object sender, EventArgs e)
-        {
-            clrDialog.CustomColors = new[]
-            {ColorTranslator.ToOle(ColorUtils.HexToColor(ShortcutConstantsAndEnums.DefaultAccentColor))};
-            clrDialog.Color = cmbColour.Text.ToLower() == "custom"
-                ? ColorUtils.HexToColor(txtBGColour.Text)
-                : Color.FromName(cmbColour.Text);
-
-            if (clrDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                txtBGColour.Text = ColorUtils.ColorToHex(clrDialog.Color);
-            }
-        }
-
-        private void eyedropperColorPicker_SelectedColorChanged(object sender, EventArgs e)
-        {
-            var eyedropper = (EyedropColorPicker) sender;
-            txtBGColour.Text = ColorUtils.ColorToHex(eyedropper.SelectedColor);
         }
     }
 }

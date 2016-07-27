@@ -1,4 +1,5 @@
 ﻿using TileIconifier.Controls;
+using TileIconifier.Controls.IconifierPanel;
 
 namespace TileIconifier.Forms.Main
 {
@@ -35,7 +36,7 @@ namespace TileIconifier.Forms.Main
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnDeleteCustomShortcut = new System.Windows.Forms.Button();
             this.btnBuildCustomShortcut = new System.Windows.Forms.Button();
-            this.iconifyPanel = new TileIconifier.Controls.TileIconifierPanel();
+            this.iconifyPanel = new TileIconifierPanel();
             this.srtlstShortcuts = new TileIconifier.Controls.SortableListView();
             this.lblExePath = new System.Windows.Forms.Label();
             this.txtExePath = new System.Windows.Forms.TextBox();
