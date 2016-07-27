@@ -38,8 +38,6 @@ namespace TileIconifier.Core.Custom.Steam
 {
     public class SteamLibrary
     {
-        private static SteamLibrary _instance;
-
         private readonly string[] _defaultInstallationPaths =
         {
             Environment.ExpandEnvironmentVariables(@"%programfiles(x86)%\Steam\"),
@@ -55,7 +53,7 @@ namespace TileIconifier.Core.Custom.Steam
         {
         }
 
-        public static SteamLibrary Instance => _instance ?? (_instance = new SteamLibrary());
+        public static SteamLibrary Instance { get; } = new SteamLibrary();
 
         public ShortcutItem SteamShortcutItem => _steamShortcutItem ??
                                                  (_steamShortcutItem =

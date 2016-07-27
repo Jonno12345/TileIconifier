@@ -36,27 +36,26 @@ namespace TileIconifier.Controls.Shortcut
 {
     internal class ShortcutItemListViewItemLibrary
     {
-        private static List<ShortcutItemListViewItem> _shortcutsList = new List<ShortcutItemListViewItem>();
+        private static List<ShortcutItem> _shortcutItems = new List<ShortcutItem>();
 
-        public static List<ShortcutItemListViewItem> Items
+        public static List<ShortcutItemListViewItem> LibraryAsListViewItems
         {
             get
             {
-                RefreshList();
-                return _shortcutsList;
+                RefreshList(false);
+                return _shortcutItems.Select(s => new ShortcutItemListViewItem(s))
+                    .ToList();
             }
         }
 
-        public static void RefreshList(bool force = false, bool includePinned = false)
+        public static void RefreshList(bool force = true, bool includePinned = false)
         {
-            if (!force && _shortcutsList.Any()) return;
+            if (!force && _shortcutItems.Any()) return;
 
             if (includePinned)
             {
                 Exception pinningException;
-                _shortcutsList = ShortcutItemEnumeration.TryGetShortcutsWithPinning(out pinningException, true)
-                    .Select(s => new ShortcutItemListViewItem(s))
-                    .ToList();
+                _shortcutItems = ShortcutItemEnumeration.TryGetShortcutsWithPinning(out pinningException, true);
                 if (pinningException != null)
                 {
                     throw pinningException;
@@ -64,9 +63,7 @@ namespace TileIconifier.Controls.Shortcut
             }
             else
             {
-                _shortcutsList = ShortcutItemEnumeration.GetShortcuts(true)
-                    .Select(s => new ShortcutItemListViewItem(s))
-                    .ToList();
+                _shortcutItems = ShortcutItemEnumeration.GetShortcuts(true);
             }
         }
     }

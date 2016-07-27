@@ -207,7 +207,7 @@ namespace TileIconifier.Forms.Main
         {
             UpdateFilteredList(true);
             var shortcutListViewItem =
-                ShortcutItemListViewItemLibrary.Items.First(
+                ShortcutItemListViewItemLibrary.LibraryAsListViewItems.First(
                     s => s.ShortcutItem.ShortcutFileInfo.FullName == shortcutItem.ShortcutFileInfo.FullName);
             var itemInListView = srtlstShortcuts.Items[srtlstShortcuts.Items.IndexOf(shortcutListViewItem)];
             itemInListView.Selected = true;
@@ -273,7 +273,7 @@ namespace TileIconifier.Forms.Main
                 txtFilter.Text = string.Empty;
             }
             _filteredList =
-                ShortcutItemListViewItemLibrary.Items.Where(s => s.Text.ToUpper().Contains(txtFilter.Text.ToUpper()))
+                ShortcutItemListViewItemLibrary.LibraryAsListViewItems.Where(s => s.Text.ToUpper().Contains(txtFilter.Text.ToUpper()))
                     .ToList();
         }
 

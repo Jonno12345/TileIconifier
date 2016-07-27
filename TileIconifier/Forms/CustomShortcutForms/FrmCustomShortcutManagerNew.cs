@@ -438,7 +438,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             lstSteamGames.Clear();
             BuildSteamListBoxColumns();
             lstSteamGames.Items.AddRange(
-                SteamGameListViewItemLibrary.Items.OrderBy(s => s.SteamGameItem.GameName)
+                SteamGameListViewItemLibrary.LibraryAsListViewItems.OrderBy(s => s.SteamGameItem.GameName)
                     .ToArray<ListViewItem>());
         }
 
@@ -552,7 +552,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             BuildChromeListBoxColumns();
 
             lstChromeAppItems.Items.AddRange(
-                ChromeAppListViewItemLibrary.Items.OrderBy(a => a.ChromeAppItem.AppName)
+                ChromeAppListViewItemLibrary.LibraryAsListViewItems.OrderBy(a => a.ChromeAppItem.AppName)
                     .ToArray<ListViewItem>());
         }
 
@@ -634,7 +634,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             lstWindowsStoreApps.Clear();
             BuildWindowsStoreListBoxColumns();
             lstWindowsStoreApps.Items.AddRange(
-                WindowsStoreAppListViewItemLibrary.Items.OrderBy(w => w.Text)
+                WindowsStoreAppListViewItemLibrary.LibraryAsListViewItems.OrderBy(w => w.Text)
                     .ToArray<ListViewItem>());
         }
 

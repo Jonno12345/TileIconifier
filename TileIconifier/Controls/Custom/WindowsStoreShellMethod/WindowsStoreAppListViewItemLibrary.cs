@@ -35,25 +35,24 @@ namespace TileIconifier.Controls.Custom.WindowsStoreShellMethod
 {
     internal class WindowsStoreAppListViewItemLibrary
     {
-        private static List<WindowsStoreAppListViewItemGroup> _windowsStoreAppListViewItemGroups =
-            new List<WindowsStoreAppListViewItemGroup>();
+        private static List<WindowsStoreApp> _windowsStoreApps = new List<WindowsStoreApp>(); 
 
-        public static List<WindowsStoreAppListViewItemGroup> Items
+        public static List<WindowsStoreAppListViewItemGroup> LibraryAsListViewItems
         {
             get
             {
-                RefreshList();
-                return _windowsStoreAppListViewItemGroups;
+                RefreshList(false);
+                return _windowsStoreApps
+                        .Select(windowsStoreApp => new WindowsStoreAppListViewItemGroup(windowsStoreApp))
+                        .ToList();
             }
         }
 
-        public static void RefreshList(bool force = false)
+        public static void RefreshList(bool force = true)
         {
-            if (force || !_windowsStoreAppListViewItemGroups.Any())
-                _windowsStoreAppListViewItemGroups =
-                    WindowsStoreLibrary.GetAppKeysFromRegistry()
-                        .Select(windowsStoreApp => new WindowsStoreAppListViewItemGroup(windowsStoreApp))
-                        .ToList();
+            if (force || !_windowsStoreApps.Any())
+                _windowsStoreApps =
+                    WindowsStoreLibrary.GetAppKeysFromRegistry();
         }
     }
 }

@@ -57,7 +57,8 @@ namespace TileIconifier.Core.IconExtractor
         private byte[][] _iconData; // Binary data of each icon.
 
         /// <summary>
-        ///     Initializes a new instance of the IconExtractor class from the specified file name.
+        ///     Initializes a new instance
+        ///  of the IconExtractor class from the specified file name.
         /// </summary>
         /// <param name="fileName">The file to extract icons from.</param>
         public IconExtractor(string fileName)

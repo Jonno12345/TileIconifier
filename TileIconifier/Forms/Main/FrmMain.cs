@@ -287,5 +287,10 @@ namespace TileIconifier.Forms.Main
         {
             InitializeListboxColumns();
         }
+
+        private void mnuBatchOperations_Click(object sender, EventArgs e)
+        {
+            FormUtils.ShowCenteredDialogForm<FrmBatchShortcut>(this);
+        }
     }
 }

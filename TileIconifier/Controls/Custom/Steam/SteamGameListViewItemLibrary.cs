@@ -36,22 +36,22 @@ namespace TileIconifier.Controls.Custom.Steam
 {
     internal class SteamGameListViewItemLibrary
     {
-        private static List<SteamGameListViewItem> _steamGameListViewItems = new List<SteamGameListViewItem>();
+        private static List<SteamGame> _steamGames = new List<SteamGame>(); 
 
-        public static List<SteamGameListViewItem> Items
+        public static List<SteamGameListViewItem> LibraryAsListViewItems
         {
             get
             {
-                RefreshList();
-                return _steamGameListViewItems;
+                RefreshList(false);
+                return _steamGames.Select(s => new SteamGameListViewItem(s)).ToList();
             }
         }
 
-        public static void RefreshList(bool force = false)
+        public static void RefreshList(bool force = true)
         {
-            if (force || !_steamGameListViewItems.Any())
-                _steamGameListViewItems =
-                    SteamLibrary.Instance.GetAllSteamGames().Select(s => new SteamGameListViewItem(s)).ToList();
+            if (force || !_steamGames.Any())
+                _steamGames =
+                    SteamLibrary.Instance.GetAllSteamGames();
         }
 
         public static string SteamInstallationPathResolvedString()

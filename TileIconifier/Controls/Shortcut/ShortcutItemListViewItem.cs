@@ -35,6 +35,11 @@ namespace TileIconifier.Controls.Shortcut
 {
     internal class ShortcutItemListViewItem : ListViewItem
     {
+        public ShortcutItemListViewItem()
+        {
+            
+        }
+
         public ShortcutItemListViewItem(ShortcutItem shortcutItem)
         {
             ShortcutItem = shortcutItem;

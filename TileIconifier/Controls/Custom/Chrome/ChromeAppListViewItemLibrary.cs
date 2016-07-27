@@ -35,18 +35,19 @@ namespace TileIconifier.Controls.Custom.Chrome
 {
     internal class ChromeAppListViewItemLibrary
     {
-        private static List<ChromeAppListViewItem> _chromeAppListViewItems = new List<ChromeAppListViewItem>();
+        private static List<ChromeApp> _chromeApps =  new List<ChromeApp>();
 
-        public static List<ChromeAppListViewItem> Items
+        public static List<ChromeAppListViewItem> LibraryAsListViewItems
         {
             get
             {
-                RefreshList();
-                return _chromeAppListViewItems;
+                RefreshList(false);
+                return _chromeApps.Select(c => new ChromeAppListViewItem(c))
+                            .ToList();
             }
         }
 
-        public static void RefreshList(bool force = false)
+        public static void RefreshList(bool force = true)
         {
             try
             {
@@ -55,11 +56,9 @@ namespace TileIconifier.Controls.Custom.Chrome
                     return;
                 }
 
-                if (force || !_chromeAppListViewItems.Any())
+                if (force || !_chromeApps.Any())
                 {
-                    _chromeAppListViewItems =
-                        ChromeAppLibrary.GetChromeAppItems().Select(c => new ChromeAppListViewItem(c))
-                            .ToList();
+                    _chromeApps = ChromeAppLibrary.GetChromeAppItems();
                 }
             }
             catch

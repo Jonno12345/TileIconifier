@@ -38,23 +38,27 @@ namespace TileIconifier.Core
     [Serializable]
     public class Config
     {
-        private static Config _instance;
+        public static readonly Config Instance;
+
+        static Config()
+        {
+            Instance = LoadConfig(ConfigFilePath);
+        }
 
         [NonSerialized] public string LoadedConfigFilePath;
 
-        public Config()
+        private Config()
         {
         }
 
-        public Config(string filePath)
+        private Config(string filePath)
         {
             LoadedConfigFilePath = filePath;
         }
 
-        public static string ConfigFileName => "TileIconifierConfig.xml";
-        public static string ConfigFilePath => Path.Combine(IoUtils.ProgramDataPath, ConfigFileName);
-        public static Config Instance => _instance ?? (_instance = LoadConfig(ConfigFilePath));
-
+        private static string ConfigFileName => "TileIconifierConfig.xml";
+        private static string ConfigFilePath => Path.Combine(IoUtils.ProgramDataPath, ConfigFileName);
+        
         public string LocaleToUse { get; set; }
         public bool GetPinnedItems { get; set; }
 
