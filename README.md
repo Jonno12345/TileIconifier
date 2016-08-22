@@ -38,7 +38,7 @@ Creates tiles for any Windows 8.1 (Largely untested) and Windows 10 (Build 10586
 
 ## Frequently Asked Questions:
 
-**Can you add Wide and Large tiles?**
+**Can you add Wide and Large tiles, or transparency?**
 
 Unfortunately these options are only available for Live tiles, not standard LNK files with a VisualManifest, which is how this utility works. Unless Microsoft add support for it, this feature cannot be added in the near future.
 
