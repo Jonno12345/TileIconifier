@@ -33,3 +33,15 @@ Creates tiles for any Windows 8.1 (Largely untested) and Windows 10 (Build 10586
  - Choose the shortcut name and which users it should be available to.
  - Generate the shortcut item. It will be Iconified using the icon chosen, but you can amend this as required back in the main page.
  - Finally, navigate through your Start Menu to 'All Apps' -> 'TileIconify'. From here, you can pin your new shortcuts to your Start Menu
+
+--------------
+
+## Frequently Asked Questions:
+
+**Can you add Wide and Large tiles?**
+
+Unfortunately these options are only available for Live tiles, not standard LNK files with a VisualManifest, which is how this utility works. Unless Microsoft add support for it, this feature cannot be added in the near future.
+
+**Microsoft Office/Mozilla Firefox/Other shortcuts aren't working, can these be tiled?**
+
+There is some mechanism I have yet to understand overriding these from being tiled. The easiest way to resolve this is to go to your shortcut within TileIconifier and click 'Quick Build Custom Shortcut'. This will create a second shortcut with the same parameters that can be tiled, which you will then find in your start menu under 'TileIconify'. 
