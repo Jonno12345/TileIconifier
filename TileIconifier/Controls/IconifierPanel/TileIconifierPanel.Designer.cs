@@ -118,7 +118,6 @@ namespace TileIconifier.Controls.IconifierPanel
             // 
             // colorPanel
             // 
-            this.colorPanel.CurrentShortcutItem = null;
             resources.ApplyResources(this.colorPanel, "colorPanel");
             this.colorPanel.Name = "colorPanel";
             // 

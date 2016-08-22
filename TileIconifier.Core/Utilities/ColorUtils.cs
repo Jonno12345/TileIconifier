@@ -27,6 +27,8 @@
 
 #endregion
 
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace TileIconifier.Core.Utilities
@@ -40,7 +42,20 @@ namespace TileIconifier.Core.Utilities
 
         public static Color HexToColor(string h)
         {
-            return ColorTranslator.FromHtml(h);
+            try
+            {
+                return ColorTranslator.FromHtml(h);
+            }
+            catch
+            {
+                return Color.Empty;
+            }
+        }
+
+        public static Color HexOrNameToColor(string h)
+        {
+            var tryColorFromName = Color.FromName(h);
+            return tryColorFromName.IsKnownColor ? tryColorFromName : HexToColor(h);
         }
     }
 }

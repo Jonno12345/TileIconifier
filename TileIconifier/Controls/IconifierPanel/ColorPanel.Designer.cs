@@ -114,24 +114,6 @@
             resources.ApplyResources(this.cmbColour, "cmbColour");
             this.cmbColour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbColour.FormattingEnabled = true;
-            this.cmbColour.Items.AddRange(new object[] {
-            resources.GetString("cmbColour.Items"),
-            resources.GetString("cmbColour.Items1"),
-            resources.GetString("cmbColour.Items2"),
-            resources.GetString("cmbColour.Items3"),
-            resources.GetString("cmbColour.Items4"),
-            resources.GetString("cmbColour.Items5"),
-            resources.GetString("cmbColour.Items6"),
-            resources.GetString("cmbColour.Items7"),
-            resources.GetString("cmbColour.Items8"),
-            resources.GetString("cmbColour.Items9"),
-            resources.GetString("cmbColour.Items10"),
-            resources.GetString("cmbColour.Items11"),
-            resources.GetString("cmbColour.Items12"),
-            resources.GetString("cmbColour.Items13"),
-            resources.GetString("cmbColour.Items14"),
-            resources.GetString("cmbColour.Items15"),
-            resources.GetString("cmbColour.Items16")});
             this.cmbColour.Name = "cmbColour";
             // 
             // lblBGColour
@@ -150,6 +132,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "ColorPanel";
+            this.Load += new System.EventHandler(this.ColorPanel_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlFGColour.ResumeLayout(false);

@@ -37,6 +37,7 @@ using TileIconifier.Controls.PictureBox;
 using TileIconifier.Core;
 using TileIconifier.Core.Custom;
 using TileIconifier.Core.Shortcut;
+using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
 using TileIconifier.Skinning.Skins;
@@ -49,7 +50,6 @@ namespace TileIconifier.Controls.IconifierPanel
             new List<PannablePictureBoxMetaData>();
 
         private BaseSkin _currentBaseSkin;
-        private ShortcutItem _currentShortcutItem;
 
         public TileIconifierPanel()
         {
@@ -57,15 +57,7 @@ namespace TileIconifier.Controls.IconifierPanel
             AddEventHandlers();
         }
 
-        public ShortcutItem CurrentShortcutItem
-        {
-            get { return _currentShortcutItem; }
-            set
-            {
-                _currentShortcutItem = value;
-                colorPanel.CurrentShortcutItem = value;
-            }
-        }
+        public ShortcutItem CurrentShortcutItem { get; set; }
 
         public Size MediumPictureBoxSize => panPctMediumIcon.Size;
         public Size SmallPictureBoxSize => panPctSmallIcon.Size;
@@ -76,15 +68,19 @@ namespace TileIconifier.Controls.IconifierPanel
         {
             //disable event handlers whilst updating things programatically
             RemoveEventHandlers();
-            colorPanel.RemoveEventHandlers();
 
             //check if unsaved once per update
             var hasUnsavedChanges = CurrentShortcutItem.Properties.HasUnsavedChanges;
 
+            //update color panel
+            UpdateColorPanelControlsToCurrentShortcut();
+            
             //update the picture boxes to show the relevant images
             UpdatePictureBoxImage(panPctMediumIcon, CurrentShortcutItem.Properties.CurrentState.MediumImage);
             UpdatePictureBoxImage(panPctSmallIcon, CurrentShortcutItem.Properties.CurrentState.SmallImage);
             UpdatePictureBoxOverlay(panPctMediumIcon, CurrentShortcutItem);
+
+            UpdatePictureBoxBackColors();
 
 
             //set the associatedShortcutItemImages for each picturebox
@@ -101,23 +97,33 @@ namespace TileIconifier.Controls.IconifierPanel
             lblUnsaved.Visible = hasUnsavedChanges;
             btnReset.Enabled = hasUnsavedChanges;
 
-            //update color panel
-            colorPanel.UpdateControlsToCurrentShortcut();
-
             //reset any validation failures
             ResetValidation();
 
             //re-add the event handlers now we've finished updating
             AddEventHandlers();
-            colorPanel.AddEventHandlers();
         }
 
-        public void SetPictureBoxesBackColor()
+        private void UpdatePictureBoxBackColors()
         {
-            var color = colorPanel.GetPictureBoxesBackColor();
+            var result = colorPanel.GetColorPanelResult();
+            if (result != null)
+            {
+                SetPictureBoxesBackColor(result.BackgroundColor);
+            }
+            else
+            {
+                SetPictureBoxesBackColor();
+            }
+        }
+
+        public void SetPictureBoxesBackColor(Color? color = null)
+        {
             Action<PannablePictureBox> setBackColor = b =>
             {
-                b.BackColor = b.PannablePictureBoxImage.Image == null ? _currentBaseSkin.BackColor : color;
+                b.BackColor = b.PannablePictureBoxImage.Image == null
+                    ? _currentBaseSkin.BackColor
+                    : color ?? _currentBaseSkin.BackColor;
                 b.Refresh();
             };
             setBackColor(panPctMediumIcon);
@@ -137,6 +143,14 @@ namespace TileIconifier.Controls.IconifierPanel
             _currentBaseSkin = currentBaseSkin;
             lblUnsaved.ForeColor = _currentBaseSkin.ErrorColor;
             SetPictureBoxesBackColor();
+        }
+
+        private void UpdateColorPanelControlsToCurrentShortcut()
+        {
+            colorPanel.SetBackgroundColor(
+                ColorUtils.HexOrNameToColor(CurrentShortcutItem.Properties.CurrentState.BackgroundColor));
+            colorPanel.SetForegroundColorRadio(CurrentShortcutItem.Properties.CurrentState.ForegroundText == "light");
+            colorPanel.SetForegroundTextShow(CurrentShortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo);
         }
 
         private void UpdatePictureBoxOverlay(PannablePictureBox pannablePictureBox, ShortcutItem currentShortcutItem)
@@ -268,7 +282,6 @@ namespace TileIconifier.Controls.IconifierPanel
         {
             //TODO
             colorPanel.ResetValidation();
-            SetPictureBoxesBackColor();
         }
 
         private bool ValidateControls()
@@ -299,20 +312,34 @@ namespace TileIconifier.Controls.IconifierPanel
         //TODO
         private void AddEventHandlers()
         {
-            colorPanel.OnUpdate += ColorPanelOnOnUpdate;
+            colorPanel.OnUpdate += ColorPanelOnUpdate;
             panPctMediumIcon.OnPannablePictureImagePropertyChange +=
                 PanPctMediumIcon_OnPannablePictureImagePropertyChange;
             panPctSmallIcon.OnPannablePictureImagePropertyChange += PanPctSmallIcon_OnPannablePictureImagePropertyChange;
         }
 
-        private void ColorPanelOnOnUpdate(object sender, EventArgs eventArgs)
+        private void ColorPanelOnUpdate(object sender, EventArgs eventArgs)
         {
+            UpdateFromColorPanel((ColorPanel)sender);
             RunUpdate();
+        }
+
+        private void UpdateFromColorPanel(ColorPanel usedColorPanel)
+        {
+            var result = usedColorPanel.GetColorPanelResult();
+            if (result == null)
+            {
+                return;
+            }
+
+            CurrentShortcutItem.Properties.CurrentState.BackgroundColor = ColorUtils.ColorToHex(result.BackgroundColor);
+            CurrentShortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo = result.DisplayForegroundText;
+            CurrentShortcutItem.Properties.CurrentState.ForegroundText = result.ForegroundColor;
         }
 
         private void RemoveEventHandlers()
         {
-            colorPanel.OnUpdate -= ColorPanelOnOnUpdate;
+            colorPanel.OnUpdate -= ColorPanelOnUpdate;
             panPctMediumIcon.OnPannablePictureImagePropertyChange -=
                 PanPctMediumIcon_OnPannablePictureImagePropertyChange;
             panPctSmallIcon.OnPannablePictureImagePropertyChange -= PanPctSmallIcon_OnPannablePictureImagePropertyChange;

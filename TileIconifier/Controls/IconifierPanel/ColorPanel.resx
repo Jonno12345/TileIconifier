@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmbColour.Items10" xml:space="preserve">
-    <value>olive</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblFGText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="cmbColour.Items16" xml:space="preserve">
     <value>Custom</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnColourPicker.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -172,6 +172,9 @@
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ColorPanel</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
   <data name="&gt;&gt;chkFGTxtEnabled.Parent" xml:space="preserve">
     <value>pnlFGColour</value>
@@ -246,8 +249,8 @@
   <data name="&gt;&gt;clrDialog.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radFGDark.Text" xml:space="preserve">
-    <value>Dark</value>
+  <data name="cmbColour.Items10" xml:space="preserve">
+    <value>olive</value>
   </data>
   <data name="chkFGTxtEnabled.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -268,7 +271,7 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;eyedropperColorPicker.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.Eyedropper.EyedropColorPicker, TileIconifier, Version=2.2.6053.1634, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.Eyedropper.EyedropColorPicker, TileIconifier, Version=2.2.6078.21106, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>305, 107</value>
@@ -369,8 +372,8 @@
   <data name="&gt;&gt;lblFGText.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lblFGText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
+  <data name="cmbColour.Items2" xml:space="preserve">
+    <value>gray</value>
   </data>
   <data name="&gt;&gt;cmbColour.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -380,9 +383,6 @@
   </data>
   <data name="pnlFGColour.TabIndex" type="System.Int32, mscorlib">
     <value>51</value>
-  </data>
-  <data name="cmbColour.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 19</value>
   </data>
   <data name="cmbColour.Items8" xml:space="preserve">
     <value>green</value>
@@ -426,8 +426,8 @@
   <data name="cmbColour.Items11" xml:space="preserve">
     <value>yellow</value>
   </data>
-  <data name="cmbColour.Items2" xml:space="preserve">
-    <value>gray</value>
+  <data name="radFGDark.Text" xml:space="preserve">
+    <value>Dark</value>
   </data>
   <data name="&gt;&gt;lblBGColour.Name" xml:space="preserve">
     <value>lblBGColour</value>
@@ -435,8 +435,8 @@
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="btnColourPicker.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
+  <data name="cmbColour.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 19</value>
   </data>
   <data name="&gt;&gt;cmbColour.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -447,8 +447,8 @@
   <data name="&gt;&gt;chkFGTxtEnabled.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="txtBGColour.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 19</value>
   </data>
   <data name="&gt;&gt;lblFGText.Parent" xml:space="preserve">
     <value>pnlFGColour</value>
@@ -486,8 +486,8 @@
   <data name="cmbColour.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="txtBGColour.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 19</value>
+  <data name="btnColourPicker.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
   </data>
   <data name="radFGDark.Location" type="System.Drawing.Point, System.Drawing">
     <value>58, 23</value>
