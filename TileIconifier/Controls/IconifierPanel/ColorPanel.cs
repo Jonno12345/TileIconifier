@@ -29,17 +29,37 @@
 
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TileIconifier.Controls.Eyedropper;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.Utilities;
+using TileIconifier.Skinning;
 
 namespace TileIconifier.Controls.IconifierPanel
 {
     public partial class ColorPanel : UserControl
     {
-        public event EventHandler OnUpdate;
+        private readonly Color[] _dropDownColors =
+        {
+            Color.Black,
+            Color.Silver,
+            Color.Gray,
+            Color.White,
+            Color.Maroon,
+            Color.Red,
+            Color.Purple,
+            Color.Fuchsia,
+            Color.Green,
+            Color.Lime,
+            Color.Olive,
+            Color.Yellow,
+            Color.Navy,
+            Color.Blue,
+            Color.Teal,
+            Color.Aqua
+        };
 
         public ColorPanel()
         {
@@ -47,114 +67,75 @@ namespace TileIconifier.Controls.IconifierPanel
             AddEventHandlers();
         }
 
-        public ShortcutItem CurrentShortcutItem { get; set; }
+        public event EventHandler ColorUpdate;
 
-        private void eyedropperColorPicker_SelectedColorChanged(object sender, EventArgs e)
+        /// <summary>
+        ///     Validate and get the output from ColorPanel. Returns null if validation fails
+        /// </summary>
+        /// <returns>null or new ColorPanelResult</returns>
+        public ColorPanelResult GetColorPanelResult()
         {
-            var eyedropper = (EyedropColorPicker) sender;
-            txtBGColour.Text = ColorUtils.ColorToHex(eyedropper.SelectedColor);
-        }
-
-        private void txtBGColour_TextChanged(object sender, EventArgs e)
-        {
-            var textBox = sender as TextBox;
-            if (textBox != null && textBox.Text.Length != textBox.MaxLength)
+            var validateControls = ValidateControls();
+            //validation failure - return null
+            if (!validateControls)
             {
-                return;
+                return null;
             }
 
-            CurrentShortcutItem.Properties.CurrentState.BackgroundColor = txtBGColour.Text;
-            RunFullUpdate();
-        }
-
-        private void cmbColour_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtBGColour.Enabled = cmbColour.Text == @"Custom";
-            CurrentShortcutItem.Properties.CurrentState.BackgroundColor = cmbColour.Text == @"Custom"
-                ? txtBGColour.Text
-                : cmbColour.Text;
-            RunFullUpdate();
-        }
-
-        private void chkFGTxtEnabled_CheckedChanged(object sender, EventArgs e)
-        {
-            radFGDark.Enabled = chkFGTxtEnabled.Checked;
-            radFGLight.Enabled = chkFGTxtEnabled.Checked;
-            CurrentShortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo = chkFGTxtEnabled.Checked;
-            RunFullUpdate();
-        }
-
-        private void radFGLight_CheckedChanged(object sender, EventArgs e)
-        {
-            CurrentShortcutItem.Properties.CurrentState.ForegroundText = radFGLight.Checked ? "light" : "dark";
-
-            RunFullUpdate();
-        }
-
-        public Color GetPictureBoxesBackColor()
-        {
-            if (!string.Equals(cmbColour.Text, "custom", StringComparison.InvariantCultureIgnoreCase))
-                return Color.FromName(cmbColour.Text);
-            try
+            return new ColorPanelResult
             {
-                if (txtBGColour.Text.Length == txtBGColour.MaxLength)
-                    return ColorUtils.HexToColor(txtBGColour.Text);
-            }
-            catch
-            {
-                // ignored
-            }
-            return Skinning.SkinHandler.GetCurrentSkin().BackColor;
+                BackgroundColor = GetBackgroundColor(),
+                DisplayForegroundText = chkFGTxtEnabled.Checked,
+                ForegroundColor = radFGLight.Checked ? "light" : "dark"
+            };
         }
 
-        private void RunFullUpdate()
+        public void SetBackgroundColor(Color color)
         {
-            UpdateControlsToCurrentShortcut();
-            OnUpdate?.Invoke(this, null);
-        }
-
-        public void UpdateControlsToCurrentShortcut()
-        {
-            //reset the combo box - choose actual colour, or custom if none of the combobox items
-            if (cmbColour.Items.Contains(CurrentShortcutItem.Properties.CurrentState.BackgroundColor))
+            RemoveEventHandlers();
+            //reset the combo box -choose actual color, or custom if none of the combobox items match
+            var matchingColor = _dropDownColors.FirstOrDefault(c => color.ToArgb() == c.ToArgb());
+            if (matchingColor != Color.Empty)
             {
-                cmbColour.SelectedItem = CurrentShortcutItem.Properties.CurrentState.BackgroundColor;
+                //if we've selected a custom color, don't reset to the name, it's not as user friendly
+                if (cmbColour.Text == @"Custom")
+                {
+                    AddEventHandlers();
+                    return;
+                }
+                cmbColour.SelectedItem = matchingColor.Name.ToLower();
                 txtBGColour.Enabled = false;
             }
             else
             {
                 cmbColour.Text = @"Custom";
                 txtBGColour.Enabled = true;
-                txtBGColour.Text = CurrentShortcutItem.Properties.CurrentState.BackgroundColor;
+                txtBGColour.Text = ColorUtils.ColorToHex(color);
             }
-
-            //set the foreground text checkbox based on value stored for this shortcut
-            chkFGTxtEnabled.Checked = CurrentShortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo;
-
-            //enable radio buttons if the foreground text is enabled
-            radFGDark.Enabled = chkFGTxtEnabled.Checked;
-            radFGLight.Enabled = chkFGTxtEnabled.Checked;
-
-            //set the radio buttons based on the current shortcuts selection
-            radFGDark.Checked = CurrentShortcutItem.Properties.CurrentState.ForegroundText == "dark";
-            radFGLight.Checked = CurrentShortcutItem.Properties.CurrentState.ForegroundText == "light";
+            AddEventHandlers();
         }
 
-        private void btnColourPicker_Click(object sender, EventArgs e)
+        public void SetForegroundTextShow(bool b)
         {
-            clrDialog.CustomColors = new[]
-{ColorTranslator.ToOle(ColorUtils.HexToColor(ShortcutConstantsAndEnums.DefaultAccentColor))};
-            clrDialog.Color = cmbColour.Text.ToLower() == "custom"
-                ? ColorUtils.HexToColor(txtBGColour.Text)
-                : Color.FromName(cmbColour.Text);
+            RemoveEventHandlers();
+            //set the foreground text checkbox based on value stored for this shortcut
+            chkFGTxtEnabled.Checked = b;
 
-            if (clrDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                txtBGColour.Text = ColorUtils.ColorToHex(clrDialog.Color);
-            }
+            radFGDark.Enabled = b;
+            radFGLight.Enabled = b;
+            AddEventHandlers();
         }
 
-        public void RemoveEventHandlers()
+        public void SetForegroundColorRadio(bool light)
+        {
+            RemoveEventHandlers();
+            //set the radio buttons based on the current shortcuts selection
+            radFGDark.Checked = !light;
+            radFGLight.Checked = light;
+            AddEventHandlers();
+        }
+
+        private void RemoveEventHandlers()
         {
             txtBGColour.TextChanged -= txtBGColour_TextChanged;
             cmbColour.SelectedIndexChanged -= cmbColour_SelectedIndexChanged;
@@ -162,7 +143,7 @@ namespace TileIconifier.Controls.IconifierPanel
             radFGLight.CheckedChanged -= radFGLight_CheckedChanged;
         }
 
-        public void AddEventHandlers()
+        private void AddEventHandlers()
         {
             txtBGColour.TextChanged += txtBGColour_TextChanged;
             cmbColour.SelectedIndexChanged += cmbColour_SelectedIndexChanged;
@@ -176,10 +157,11 @@ namespace TileIconifier.Controls.IconifierPanel
 
             Action<Control> controlInvalid = c =>
             {
-                c.BackColor = Color.Red;
+                c.BackColor = SkinHandler.GetCurrentSkin().ErrorColor;
                 valid = false;
             };
 
+            //if a custom color has been specified, check it's valid hex
             if (cmbColour.Text == @"Custom" && !Regex.Match(txtBGColour.Text, @"^#[0-9a-fA-F]{6}$").Success)
             {
                 controlInvalid(txtBGColour);
@@ -190,7 +172,86 @@ namespace TileIconifier.Controls.IconifierPanel
 
         public void ResetValidation()
         {
-            txtBGColour.BackColor = Skinning.SkinHandler.GetCurrentSkin().BackColor;
+            txtBGColour.BackColor = SkinHandler.GetCurrentSkin().BackColor;
         }
+
+        private void eyedropperColorPicker_SelectedColorChanged(object sender, EventArgs e)
+        {
+            var eyedropper = (EyedropColorPicker) sender;
+            txtBGColour.Text = ColorUtils.ColorToHex(eyedropper.SelectedColor);
+        }
+
+        private void txtBGColour_TextChanged(object sender, EventArgs e)
+        {
+            var textBox = (TextBox) sender;
+            //if the textbox isn't filled it's definitely not a valid color, don't fire event
+            if (textBox != null && textBox.Text.Length != textBox.MaxLength)
+            {
+                return;
+            }
+
+            cmbColour.Text = @"Custom";
+            RunFullUpdate();
+        }
+
+        private void cmbColour_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtBGColour.Enabled = cmbColour.Text == @"Custom";
+            RunFullUpdate();
+        }
+
+        private Color GetBackgroundColor()
+        {
+            return cmbColour.Text == @"Custom"
+                ? ColorUtils.HexToColor(txtBGColour.Text)
+                : Color.FromName(cmbColour.Text);
+        }
+
+        private void chkFGTxtEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            radFGDark.Enabled = chkFGTxtEnabled.Checked;
+            radFGLight.Enabled = chkFGTxtEnabled.Checked;
+            RunFullUpdate();
+        }
+
+        private void radFGLight_CheckedChanged(object sender, EventArgs e)
+        {
+            RunFullUpdate();
+        }
+
+        private void RunFullUpdate()
+        {
+            ColorUpdate?.Invoke(this, null);
+        }
+
+        private void btnColourPicker_Click(object sender, EventArgs e)
+        {
+            clrDialog.CustomColors = new[]
+            {
+                ColorTranslator.ToOle(ColorUtils.HexToColor(ShortcutConstantsAndEnums.DefaultAccentColor))
+            };
+
+            clrDialog.Color = cmbColour.Text.ToLower() == @"custom"
+                ? ColorUtils.HexToColor(txtBGColour.Text)
+                : Color.FromName(cmbColour.Text);
+
+            if (clrDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                txtBGColour.Text = ColorUtils.ColorToHex(clrDialog.Color);
+            }
+        }
+
+        private void ColorPanel_Load(object sender, EventArgs e)
+        {
+            cmbColour.Items.AddRange(_dropDownColors.Select(c => c.Name.ToLower()).ToArray<object>());
+            cmbColour.Items.Add("Custom");
+        }
+    }
+
+    public class ColorPanelResult
+    {
+        public Color BackgroundColor;
+        public bool DisplayForegroundText;
+        public string ForegroundColor;
     }
 }
