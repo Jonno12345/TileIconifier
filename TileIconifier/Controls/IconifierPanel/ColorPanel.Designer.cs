@@ -47,13 +47,13 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.eyedropperColorPicker);
             this.panel1.Controls.Add(this.btnColourPicker);
             this.panel1.Controls.Add(this.pnlFGColour);
             this.panel1.Controls.Add(this.cmbColour);
             this.panel1.Controls.Add(this.lblBGColour);
             this.panel1.Controls.Add(this.txtBGColour);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // eyedropperColorPicker
@@ -84,9 +84,9 @@
             // 
             // chkFGTxtEnabled
             // 
-            resources.ApplyResources(this.chkFGTxtEnabled, "chkFGTxtEnabled");
             this.chkFGTxtEnabled.Checked = true;
             this.chkFGTxtEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
+            resources.ApplyResources(this.chkFGTxtEnabled, "chkFGTxtEnabled");
             this.chkFGTxtEnabled.Name = "chkFGTxtEnabled";
             this.chkFGTxtEnabled.UseVisualStyleBackColor = true;
             // 
@@ -103,8 +103,8 @@
             // 
             // radFGLight
             // 
-            resources.ApplyResources(this.radFGLight, "radFGLight");
             this.radFGLight.Checked = true;
+            resources.ApplyResources(this.radFGLight, "radFGLight");
             this.radFGLight.Name = "radFGLight";
             this.radFGLight.TabStop = true;
             this.radFGLight.UseVisualStyleBackColor = true;

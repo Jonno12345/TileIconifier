@@ -99,5 +99,15 @@ namespace TileIconifier.Forms.Main
                 item.Checked = checkedState;
             }
         }
+
+        private void colorPanel_ColorUpdate(object sender, EventArgs e)
+        {
+            var result = colorPanel.GetColorPanelResult();
+            if (result == null)
+            {
+                return;
+            }
+            pictureBox1.BackColor = result.BackgroundColor;
+        }
     }
 }

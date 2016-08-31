@@ -32,6 +32,9 @@
             this.lstIconifiedItems = new TileIconifier.Controls.SortableListView();
             this.btnSelectAll = new System.Windows.Forms.Button();
             this.btnSelectNone = new System.Windows.Forms.Button();
+            this.colorPanel = new TileIconifier.Controls.IconifierPanel.ColorPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstIconifiedItems
@@ -65,18 +68,38 @@
             this.btnSelectNone.UseVisualStyleBackColor = true;
             this.btnSelectNone.Click += new System.EventHandler(this.btnSelectNone_Click);
             // 
+            // colorPanel
+            // 
+            this.colorPanel.Location = new System.Drawing.Point(450, 79);
+            this.colorPanel.MaximumSize = new System.Drawing.Size(310, 111);
+            this.colorPanel.Name = "colorPanel";
+            this.colorPanel.Size = new System.Drawing.Size(273, 107);
+            this.colorPanel.TabIndex = 3;
+            this.colorPanel.ColorUpdate += new System.EventHandler(this.colorPanel_ColorUpdate);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(450, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(68, 61);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmBatchShortcut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 380);
+            this.ClientSize = new System.Drawing.Size(991, 380);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.colorPanel);
             this.Controls.Add(this.btnSelectNone);
             this.Controls.Add(this.btnSelectAll);
             this.Controls.Add(this.lstIconifiedItems);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmBatchShortcut";
-            this.Text = "FrmBatchShortcut";
+            this.Text = "Batch Shortcut Operations";
             this.Load += new System.EventHandler(this.FrmBatchShortcut_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -86,5 +109,7 @@
         private Controls.SortableListView lstIconifiedItems;
         private System.Windows.Forms.Button btnSelectAll;
         private System.Windows.Forms.Button btnSelectNone;
+        private Controls.IconifierPanel.ColorPanel colorPanel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

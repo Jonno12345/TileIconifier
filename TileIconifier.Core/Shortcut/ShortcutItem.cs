@@ -64,6 +64,8 @@ namespace TileIconifier.Core.Shortcut
         public bool IsTileIconifierCustomShortcut => new DirectoryInfo(TargetFolderPath).Parent?.FullName + "\\" ==
                                                      CustomShortcutGetters.CustomShortcutVbsPath;
 
+        public CustomShortcut CustomShortcut => !IsTileIconifierCustomShortcut ? null : CustomShortcut.Load(TargetFilePath);
+
         public ShortcutUser ShortcutUser
         {
             get

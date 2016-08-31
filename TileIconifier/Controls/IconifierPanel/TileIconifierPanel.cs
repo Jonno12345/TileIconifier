@@ -312,13 +312,13 @@ namespace TileIconifier.Controls.IconifierPanel
         //TODO
         private void AddEventHandlers()
         {
-            colorPanel.OnUpdate += ColorPanelOnUpdate;
+            colorPanel.ColorUpdate += ColorPanelColorUpdate;
             panPctMediumIcon.OnPannablePictureImagePropertyChange +=
                 PanPctMediumIcon_OnPannablePictureImagePropertyChange;
             panPctSmallIcon.OnPannablePictureImagePropertyChange += PanPctSmallIcon_OnPannablePictureImagePropertyChange;
         }
 
-        private void ColorPanelOnUpdate(object sender, EventArgs eventArgs)
+        private void ColorPanelColorUpdate(object sender, EventArgs eventArgs)
         {
             UpdateFromColorPanel((ColorPanel)sender);
             RunUpdate();
@@ -339,7 +339,7 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void RemoveEventHandlers()
         {
-            colorPanel.OnUpdate -= ColorPanelOnUpdate;
+            colorPanel.ColorUpdate -= ColorPanelColorUpdate;
             panPctMediumIcon.OnPannablePictureImagePropertyChange -=
                 PanPctMediumIcon_OnPannablePictureImagePropertyChange;
             panPctSmallIcon.OnPannablePictureImagePropertyChange -= PanPctSmallIcon_OnPannablePictureImagePropertyChange;

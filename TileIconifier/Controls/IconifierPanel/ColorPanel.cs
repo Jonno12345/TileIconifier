@@ -76,7 +76,7 @@ namespace TileIconifier.Controls.IconifierPanel
         public ColorPanelResult GetColorPanelResult()
         {
             var validateControls = ValidateControls();
-            //validation failure - return null
+            //a validation failure should return a null value instead of a valid ColorPanelResult
             if (!validateControls)
             {
                 return null;
@@ -97,7 +97,7 @@ namespace TileIconifier.Controls.IconifierPanel
             var matchingColor = _dropDownColors.FirstOrDefault(c => color.ToArgb() == c.ToArgb());
             if (matchingColor != Color.Empty)
             {
-                //if we've selected a custom color, don't reset to the name, it's not as user friendly
+                //if we've selected a custom color, don't reset to the color name, it's not as user friendly
                 if (cmbColour.Text == @"Custom")
                 {
                     AddEventHandlers();
@@ -118,21 +118,46 @@ namespace TileIconifier.Controls.IconifierPanel
         public void SetForegroundTextShow(bool b)
         {
             RemoveEventHandlers();
-            //set the foreground text checkbox based on value stored for this shortcut
+            
             chkFGTxtEnabled.Checked = b;
-
             radFGDark.Enabled = b;
             radFGLight.Enabled = b;
+
             AddEventHandlers();
         }
 
         public void SetForegroundColorRadio(bool light)
         {
             RemoveEventHandlers();
-            //set the radio buttons based on the current shortcuts selection
+
             radFGDark.Checked = !light;
             radFGLight.Checked = light;
+
             AddEventHandlers();
+        }
+
+        public bool ValidateControls()
+        {
+            var valid = true;
+
+            Action<Control> controlInvalid = c =>
+            {
+                c.BackColor = SkinHandler.GetCurrentSkin().ErrorColor;
+                valid = false;
+            };
+
+            //if a custom color has been specified, check it's valid hex REGEX
+            if (cmbColour.Text == @"Custom" && !Regex.Match(txtBGColour.Text, @"^#[0-9a-fA-F]{6}$").Success)
+            {
+                controlInvalid(txtBGColour);
+            }
+
+            return valid;
+        }
+
+        public void ResetValidation()
+        {
+            txtBGColour.BackColor = SkinHandler.GetCurrentSkin().BackColor;
         }
 
         private void RemoveEventHandlers()
@@ -149,30 +174,6 @@ namespace TileIconifier.Controls.IconifierPanel
             cmbColour.SelectedIndexChanged += cmbColour_SelectedIndexChanged;
             chkFGTxtEnabled.CheckedChanged += chkFGTxtEnabled_CheckedChanged;
             radFGLight.CheckedChanged += radFGLight_CheckedChanged;
-        }
-
-        public bool ValidateControls()
-        {
-            var valid = true;
-
-            Action<Control> controlInvalid = c =>
-            {
-                c.BackColor = SkinHandler.GetCurrentSkin().ErrorColor;
-                valid = false;
-            };
-
-            //if a custom color has been specified, check it's valid hex
-            if (cmbColour.Text == @"Custom" && !Regex.Match(txtBGColour.Text, @"^#[0-9a-fA-F]{6}$").Success)
-            {
-                controlInvalid(txtBGColour);
-            }
-
-            return valid;
-        }
-
-        public void ResetValidation()
-        {
-            txtBGColour.BackColor = SkinHandler.GetCurrentSkin().BackColor;
         }
 
         private void eyedropperColorPicker_SelectedColorChanged(object sender, EventArgs e)
