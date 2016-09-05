@@ -207,7 +207,7 @@ namespace TileIconifier.Forms.Main
         {
             UpdateFilteredList(true);
             var shortcutListViewItem =
-                ShortcutItemListViewItemLibrary.LibraryAsListViewItems.First(
+                srtlstShortcuts.Items.Cast<ShortcutItemListViewItem>().First(
                     s => s.ShortcutItem.ShortcutFileInfo.FullName == shortcutItem.ShortcutFileInfo.FullName);
             var itemInListView = srtlstShortcuts.Items[srtlstShortcuts.Items.IndexOf(shortcutListViewItem)];
             itemInListView.Selected = true;
