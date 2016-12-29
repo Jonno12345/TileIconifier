@@ -130,7 +130,9 @@ namespace TileIconifier.Core.Custom
                 RegexOptions.Singleline);
 
             if (!regexMatch.Success)
+            {
                 throw new InvalidCustomShortcutException();
+            }
 
             var directoryInfo = new FileInfo(vbsFilePath).Directory;
             if (directoryInfo == null) throw new DirectoryNotFoundException();

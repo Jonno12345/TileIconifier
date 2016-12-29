@@ -31,7 +31,7 @@ using System;
 using System.Windows.Forms;
 using TileIconifier.Properties;
 
-namespace TileIconifier.Controls.PictureBox
+namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {
     public class AlignFormEventArgs : EventArgs
     {

@@ -88,11 +88,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             FormUtils.ShowCenteredDialogForm<FrmCustomShortcutManagerHelp>(this);
         }
-
-        private void frmCustomShortcutManagerMain_Load(object sender, EventArgs e)
-        {
-        }
-
+        
         private static IEnumerable<CustomShortcut> LoadCustomShortcuts()
         {
             if (!Directory.Exists(CustomShortcutGetters.CustomShortcutVbsPath))
@@ -101,8 +97,18 @@ namespace TileIconifier.Forms.CustomShortcutForms
             //get all VBS files built by TileIconifier
             return new DirectoryInfo(CustomShortcutGetters.CustomShortcutVbsPath)
                 .GetFiles("*.vbs", SearchOption.AllDirectories)
-                .Select(vbsFile => CustomShortcut.Load(vbsFile.FullName))
-                .Where(customShortcut => customShortcut.ShortcutItem.ShortcutUser != ShortcutUser.Unknown)
+                .Select(vbsFile =>
+                {
+                    try
+                    {
+                        return CustomShortcut.Load(vbsFile.FullName);
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                })
+                .Where(customShortcut => customShortcut != null && customShortcut.ShortcutItem.ShortcutUser != ShortcutUser.Unknown)
                 .ToList();
         }
 

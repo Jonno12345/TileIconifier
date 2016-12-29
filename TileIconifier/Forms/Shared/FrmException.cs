@@ -50,6 +50,7 @@ namespace TileIconifier.Forms.Shared
                     }
 OS Version: {Environment.OSVersion.Version} - {
                     (Environment.Is64BitOperatingSystem ? @"x64" : "x86")}
+Administrator?: {(SystemUtils.IsAdministrator() ? "Yes" : "No")}
 
 {_ex}
 ";
@@ -65,7 +66,7 @@ OS Version: {Environment.OSVersion.Version} - {
 
         private void rtxtException_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            Process.Start(e.LinkText);
+            UrlUtils.OpenUrlInBrowser(e.LinkText);
         }
 
         private void FrmUnhandledExceptionLoad(object sender, EventArgs e)

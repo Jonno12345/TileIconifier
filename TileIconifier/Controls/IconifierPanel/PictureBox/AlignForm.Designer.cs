@@ -1,4 +1,4 @@
-﻿namespace TileIconifier.Controls.PictureBox
+﻿namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {
     partial class AlignForm
     {

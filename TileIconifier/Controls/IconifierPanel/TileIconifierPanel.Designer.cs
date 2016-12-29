@@ -1,4 +1,4 @@
-﻿using TileIconifier.Controls.PictureBox;
+﻿using TileIconifier.Controls.IconifierPanel.PictureBox;
 
 namespace TileIconifier.Controls.IconifierPanel
 {
@@ -34,11 +34,11 @@ namespace TileIconifier.Controls.IconifierPanel
             this.pnlImages = new System.Windows.Forms.Panel();
             this.lblSmallIcon = new System.Windows.Forms.Label();
             this.lblMediumIcon = new System.Windows.Forms.Label();
-            this.panPctSmallIcon = new TileIconifier.Controls.PictureBox.PannablePictureBox();
-            this.panPctMediumIcon = new TileIconifier.Controls.PictureBox.PannablePictureBox();
+            this.panPctSmallIcon = new PannablePictureBox();
+            this.panPctMediumIcon = new PannablePictureBox();
             this.chkUseSameImg = new System.Windows.Forms.CheckBox();
-            this.pannablePictureBoxControlPanelMedium = new TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel();
-            this.pannablePictureBoxControlPanelSmall = new TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel();
+            this.pannablePictureBoxControlPanelMedium = new PannablePictureBoxControlPanel();
+            this.pannablePictureBoxControlPanelSmall = new PannablePictureBoxControlPanel();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblUnsaved = new System.Windows.Forms.Label();
             this.colorPanel = new TileIconifier.Controls.IconifierPanel.ColorPanel();

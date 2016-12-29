@@ -33,7 +33,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using TileIconifier.Controls.PictureBox;
+using TileIconifier.Controls.IconifierPanel.PictureBox;
 using TileIconifier.Core;
 using TileIconifier.Core.Custom;
 using TileIconifier.Core.Shortcut;
@@ -117,13 +117,13 @@ namespace TileIconifier.Controls.IconifierPanel
             }
         }
 
-        public void SetPictureBoxesBackColor(Color? color = null)
+        public void SetPictureBoxesBackColor(string color = null)
         {
             Action<PannablePictureBox> setBackColor = b =>
             {
                 b.BackColor = b.PannablePictureBoxImage.Image == null
                     ? _currentBaseSkin.BackColor
-                    : color ?? _currentBaseSkin.BackColor;
+                    : color == null ? _currentBaseSkin.BackColor : ColorUtils.HexOrNameToColor(color);
                 b.Refresh();
             };
             setBackColor(panPctMediumIcon);
@@ -148,7 +148,7 @@ namespace TileIconifier.Controls.IconifierPanel
         private void UpdateColorPanelControlsToCurrentShortcut()
         {
             colorPanel.SetBackgroundColor(
-                ColorUtils.HexOrNameToColor(CurrentShortcutItem.Properties.CurrentState.BackgroundColor));
+                CurrentShortcutItem.Properties.CurrentState.BackgroundColor);
             colorPanel.SetForegroundColorRadio(CurrentShortcutItem.Properties.CurrentState.ForegroundText == "light");
             colorPanel.SetForegroundTextShow(CurrentShortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo);
         }
@@ -189,8 +189,16 @@ namespace TileIconifier.Controls.IconifierPanel
                     //if it's a custom shortcut, try and get the target path from the VBS file
                     if (CurrentShortcutItem.IsTileIconifierCustomShortcut)
                     {
-                        var customShortcutExecutionTarget = CustomShortcut.Load(CurrentShortcutItem.TargetFilePath);
-                        imagePath = customShortcutExecutionTarget.TargetPath.UnQuoteWrap();
+                        try
+                        {
+                            var customShortcutExecutionTarget = CustomShortcut.Load(CurrentShortcutItem.TargetFilePath);
+                            imagePath = customShortcutExecutionTarget.TargetPath.UnQuoteWrap();
+                        }
+                        catch (InvalidCustomShortcutException)
+                        {
+                            //corrupted custom shortcut?
+                            imagePath = CurrentShortcutItem.TargetFilePath;
+                        }
                     }
                     else
                     {
@@ -332,7 +340,7 @@ namespace TileIconifier.Controls.IconifierPanel
                 return;
             }
 
-            CurrentShortcutItem.Properties.CurrentState.BackgroundColor = ColorUtils.ColorToHex(result.BackgroundColor);
+            CurrentShortcutItem.Properties.CurrentState.BackgroundColor = result.BackgroundColor;
             CurrentShortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo = result.DisplayForegroundText;
             CurrentShortcutItem.Properties.CurrentState.ForegroundText = result.ForegroundColor;
         }

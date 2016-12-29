@@ -1,21 +1,47 @@
-﻿using System;
+﻿#region LICENCE
+
+// /*
+//         The MIT License (MIT)
+// 
+//         Copyright (c) 2016 Johnathon M
+// 
+//         Permission is hereby granted, free of charge, to any person obtaining a copy
+//         of this software and associated documentation files (the "Software"), to deal
+//         in the Software without restriction, including without limitation the rights
+//         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//         copies of the Software, and to permit persons to whom the Software is
+//         furnished to do so, subject to the following conditions:
+// 
+//         The above copyright notice and this permission notice shall be included in
+//         all copies or substantial portions of the Software.
+// 
+//         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//         THE SOFTWARE.
+// 
+// */
+
+#endregion
+
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TileIconifier.Core.Shortcut;
 
 namespace TileIconifier.Core.Backup
 {
-    class BackupManager
+    internal class BackupManager
     {
-        private List<ShortcutItem> _shortcutItems = new List<ShortcutItem>();
-        
+        private readonly List<ShortcutItem> _shortcutItemsToBackUp = new List<ShortcutItem>();
+
         public void AddShortcutsToBackup(List<ShortcutItem> shortcutItems)
         {
             foreach (var shortcutItem in shortcutItems.Where(shortcutItem => shortcutItem.IsIconified))
             {
-                _shortcutItems.Add(shortcutItem);
+                _shortcutItemsToBackUp.Add(shortcutItem);
             }
         }
     }

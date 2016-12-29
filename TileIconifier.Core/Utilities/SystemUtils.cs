@@ -27,32 +27,22 @@
 
 #endregion
 
-using System;
-using System.Diagnostics;
-using System.Windows.Forms;
-using TileIconifier.Core.Utilities;
+using System.Security.Principal;
 
-namespace TileIconifier.Forms.Main
+namespace TileIconifier.Core.Utilities
 {
-    public partial class FrmAbout : SkinnableForm
+    public class SystemUtils
     {
-        public FrmAbout()
+        public static bool IsAdministrator()
         {
-            InitializeComponent();
-        }
+            var identity = WindowsIdentity.GetCurrent();
+            if (identity == null)
+            {
+                throw new UnableToDetectAdministratorException();
+            }
 
-        private void rtxtAbout_LinkClicked(object sender, LinkClickedEventArgs e)
-        {
-            UrlUtils.OpenUrlInBrowser(e.LinkText);
-        }
-
-        private void frmAbout_Load(object sender, EventArgs e)
-        {
-            var updateCurVer =
-                new Action<Control>(
-                    control => control.Text = control.Text.Replace("[@@CURVER@@]", UpdateUtils.CurrentVersion));
-            updateCurVer(rtxtAbout);
-            updateCurVer(lblVersion);
+            var principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
     }
 }

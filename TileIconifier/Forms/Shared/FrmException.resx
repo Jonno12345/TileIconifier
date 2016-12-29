@@ -126,7 +126,7 @@
     <value>Fill</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6021.23420, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6118.21506, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="rtxtUnhandledException.Text" xml:space="preserve">
     <value>Uh oh!! Something has gone horribly wrong! Sorry about that.
@@ -175,8 +175,5 @@ Please could you raise an issue at https://github.com/Jonno12345/TileIconify/iss
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ru</value>
   </metadata>
 </root>

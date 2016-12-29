@@ -35,7 +35,7 @@ using TileIconifier.Properties;
 using TileIconifier.Skinning;
 using TileIconifier.Utilities;
 
-namespace TileIconifier.Controls.PictureBox
+namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {
     [SkinIgnore]
     public partial class PannablePictureBox : UserControl

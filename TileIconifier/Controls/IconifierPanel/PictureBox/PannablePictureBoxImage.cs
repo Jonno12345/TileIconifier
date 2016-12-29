@@ -30,7 +30,7 @@
 using System;
 using System.Drawing;
 
-namespace TileIconifier.Controls.PictureBox
+namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {
     public class PannablePictureBoxImage
     {

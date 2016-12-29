@@ -33,6 +33,7 @@ using System.Security.Principal;
 using System.Threading;
 using System.Windows.Forms;
 using TileIconifier.Core;
+using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.Main;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Localization;
@@ -45,15 +46,6 @@ namespace TileIconifier
         private static bool _doNotExit = true;
         private static FrmMain _fm;
 
-        public static bool IsAdministrator()
-        {
-            var identity = WindowsIdentity.GetCurrent();
-            if (identity == null) throw new UnableToDetectAdministratorException();
-
-            var principal = new WindowsPrincipal(identity);
-            return principal.IsInRole(WindowsBuiltInRole.Administrator);
-        }
-
         /// <summary>
         ///     The main entry point for the application.
         /// </summary>
@@ -64,7 +56,7 @@ namespace TileIconifier
 
             try
             {
-                if (!IsAdministrator())
+                if (!SystemUtils.IsAdministrator())
                 {
                     MessageBox.Show(Strings.RunAsAdminFull,
                         @"TileIconifier - " + Strings.RunAsAdmin, MessageBoxButtons.OK, MessageBoxIcon.Stop);

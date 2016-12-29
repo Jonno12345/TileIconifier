@@ -27,7 +27,6 @@
 
 #endregion
 
-using System;
 using System.IO;
 
 namespace TileIconifier.Core.Custom.Builder

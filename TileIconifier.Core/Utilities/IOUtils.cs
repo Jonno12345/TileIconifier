@@ -28,11 +28,51 @@
 #endregion
 
 using System;
+using System.IO;
 
 namespace TileIconifier.Core.Utilities
 {
     internal class IoUtils
     {
         public static string ProgramDataPath => Environment.ExpandEnvironmentVariables(@"%PROGRAMDATA%\TileIconify\");
+
+        public static void ForceDelete(string filePath)
+        {
+            if (!File.Exists(filePath))
+            {
+                return;
+            }
+            File.SetAttributes(filePath, FileAttributes.Normal);
+            File.Delete(filePath);
+        }
+    }
+
+    /// <summary>
+    /// Reverts attributes to normal and restores on disposal - prevents Access Denied on readonly/hidden files
+    /// </summary>
+    internal class AttributeRetention : IDisposable
+    {
+        private readonly string _filePath;
+        private readonly FileAttributes _storedFileAttributes;
+
+        public AttributeRetention(string filePath)
+        {
+            _filePath = filePath;
+            if (!File.Exists(_filePath))
+            {
+                return;
+            }
+
+            _storedFileAttributes = File.GetAttributes(_filePath);
+            File.SetAttributes(_filePath, FileAttributes.Normal);
+        }
+
+        public void Dispose()
+        {
+            if (File.Exists(_filePath))
+            {
+                File.SetAttributes(_filePath, _storedFileAttributes);
+            }
+        }
     }
 }

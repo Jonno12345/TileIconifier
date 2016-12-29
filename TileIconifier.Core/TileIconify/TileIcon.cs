@@ -78,27 +78,42 @@ namespace TileIconifier.Core.TileIconify
                         )));
 
             if (!Directory.Exists(_shortcutItem.VisualElementsPath))
+            {
                 Directory.CreateDirectory(_shortcutItem.VisualElementsPath);
+            }
 
-            xDoc.Save(_shortcutItem.VisualElementManifestPath);
+            using (new AttributeRetention(_shortcutItem.VisualElementManifestPath))
+            {
+                xDoc.Save(_shortcutItem.VisualElementManifestPath);
+            }
         }
 
         private void DeleteFilesAndFolders()
         {
             if (Directory.Exists(_shortcutItem.VisualElementsPath))
+            {
                 Directory.Delete(_shortcutItem.VisualElementsPath, true);
+            }
 
             var manifestPath =
                 $"{_shortcutItem.TargetFolderPath}\\{Path.GetFileNameWithoutExtension(_shortcutItem.TargetFilePath)}.VisualElementsManifest.xml";
 
             if (File.Exists(manifestPath))
+            {
                 File.Delete(manifestPath);
+            }
         }
 
         private void SaveMetadata()
         {
-            _shortcutItem.Properties.SaveMediumIconMetadata(_shortcutItem.MediumImageResizeMetadataPath);
-            _shortcutItem.Properties.SaveSmallIconMetadata(_shortcutItem.SmallImageResizeMetadataPath);
+            using (new AttributeRetention(_shortcutItem.MediumImageResizeMetadataPath))
+            {
+                _shortcutItem.Properties.SaveMediumIconMetadata(_shortcutItem.MediumImageResizeMetadataPath);
+            }
+            using (new AttributeRetention(_shortcutItem.SmallImageResizeMetadataPath))
+            {
+                _shortcutItem.Properties.SaveSmallIconMetadata(_shortcutItem.SmallImageResizeMetadataPath);
+            }
         }
 
         private void SaveIcons()
@@ -118,15 +133,16 @@ namespace TileIconifier.Core.TileIconify
             BuildIcon(fullIconPath, outputSize.Width,
                 outputSize.Height,
                 shortcutItemImage.Bytes,
-                (int) Math.Round(shortcutItemImage.Width*xyRatio.X, 0),
-                (int) Math.Round(shortcutItemImage.Height*xyRatio.Y, 0),
-                (int) Math.Round(shortcutItemImage.X*xyRatio.X, 0),
-                (int) Math.Round(shortcutItemImage.Y*xyRatio.Y, 0));
+                (int)Math.Round(shortcutItemImage.Width * xyRatio.X, 0),
+                (int)Math.Round(shortcutItemImage.Height * xyRatio.Y, 0),
+                (int)Math.Round(shortcutItemImage.X * xyRatio.X, 0),
+                (int)Math.Round(shortcutItemImage.Y * xyRatio.Y, 0));
         }
 
         private static void BuildIcon(string filePath, int width, int height, byte[] imageBytes, int imageWidth,
             int imageHeight, int imageX, int imageY)
         {
+            IoUtils.ForceDelete(filePath);
             using (var fs = new FileStream(filePath, FileMode.Create))
             {
                 var outputBitmap = new Bitmap(width, height);

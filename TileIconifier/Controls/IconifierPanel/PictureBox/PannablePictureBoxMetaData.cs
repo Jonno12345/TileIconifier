@@ -30,7 +30,7 @@
 using System.Drawing;
 using TileIconifier.Core.Shortcut;
 
-namespace TileIconifier.Controls.PictureBox
+namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {
     public class PannablePictureBoxMetaData
     {

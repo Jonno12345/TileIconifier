@@ -28,9 +28,9 @@
 #endregion
 
 using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 using TileIconifier.Core.Custom;
+using TileIconifier.Core.Utilities;
 
 namespace TileIconifier.Forms.CustomShortcutForms
 {
@@ -43,7 +43,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         private void rtxtHelp_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            Process.Start(e.LinkText);
+            UrlUtils.OpenUrlInBrowser(e.LinkText);
         }
 
         private void frmHelp_Load(object sender, EventArgs e)

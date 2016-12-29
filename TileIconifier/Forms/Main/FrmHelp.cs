@@ -27,8 +27,8 @@
 
 #endregion
 
-using System.Diagnostics;
 using System.Windows.Forms;
+using TileIconifier.Core.Utilities;
 
 namespace TileIconifier.Forms.Main
 {
@@ -41,7 +41,7 @@ namespace TileIconifier.Forms.Main
 
         private void rtxtAbout_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            Process.Start(e.LinkText);
+            UrlUtils.OpenUrlInBrowser(e.LinkText);
         }
     }
 }

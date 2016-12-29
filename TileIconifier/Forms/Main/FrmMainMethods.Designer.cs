@@ -237,7 +237,7 @@ namespace TileIconifier.Forms.Main
                         MessageBoxDefaultButton.Button1) == DialogResult.Yes
                         )
                     {
-                        Process.Start("https://github.com/Jonno12345/TileIconifier/releases");
+                        UrlUtils.OpenUrlInBrowser("https://github.com/Jonno12345/TileIconifier/releases");
                     }
                 }
                 else if (!silentIfNoUpdateDetected)
@@ -261,7 +261,7 @@ namespace TileIconifier.Forms.Main
                     MessageBoxButtons.OKCancel,
                     MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
-                    Process.Start("https://github.com/Jonno12345/TileIconifier/releases");
+                    UrlUtils.OpenUrlInBrowser("https://github.com/Jonno12345/TileIconifier/releases");
                 }
             }
         }

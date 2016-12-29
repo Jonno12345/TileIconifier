@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backup\BackupManager.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="CustomExceptions.cs" />
     <Compile Include="Custom\Builder\BaseCustomShortcutBuilder.cs" />
@@ -106,7 +107,9 @@
     <Compile Include="Utilities\IOUtils.cs" />
     <Compile Include="Utilities\PowerShellUtils.cs" />
     <Compile Include="Utilities\ShortcutUtils.cs" />
+    <Compile Include="Utilities\SystemUtils.cs" />
     <Compile Include="Utilities\UpdateUtils.cs" />
+    <Compile Include="Utilities\UrlUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

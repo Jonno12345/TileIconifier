@@ -107,7 +107,7 @@ namespace TileIconifier.Forms.Main
             {
                 return;
             }
-            pictureBox1.BackColor = result.BackgroundColor;
+            //pictureBox1.BackColor = result.BackgroundColor;
         }
     }
 }

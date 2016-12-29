@@ -27,32 +27,22 @@
 
 #endregion
 
-using System;
 using System.Diagnostics;
-using System.Windows.Forms;
-using TileIconifier.Core.Utilities;
 
-namespace TileIconifier.Forms.Main
+namespace TileIconifier.Core.Utilities
 {
-    public partial class FrmAbout : SkinnableForm
+    public class UrlUtils
     {
-        public FrmAbout()
+        public static void OpenUrlInBrowser(string url)
         {
-            InitializeComponent();
-        }
-
-        private void rtxtAbout_LinkClicked(object sender, LinkClickedEventArgs e)
-        {
-            UrlUtils.OpenUrlInBrowser(e.LinkText);
-        }
-
-        private void frmAbout_Load(object sender, EventArgs e)
-        {
-            var updateCurVer =
-                new Action<Control>(
-                    control => control.Text = control.Text.Replace("[@@CURVER@@]", UpdateUtils.CurrentVersion));
-            updateCurVer(rtxtAbout);
-            updateCurVer(lblVersion);
+            try
+            {
+                Process.Start("explorer.exe", url);
+            }
+            catch
+            {
+                Process.Start("iexplore.exe", url);
+            }
         }
     }
 }

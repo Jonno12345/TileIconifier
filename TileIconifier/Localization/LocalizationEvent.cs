@@ -28,7 +28,6 @@
 #endregion
 
 using System;
-using System.Threading;
 
 namespace TileIconifier.Localization
 {

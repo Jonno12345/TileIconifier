@@ -36,6 +36,7 @@ using TileIconifier.Controls.Shortcut;
 using TileIconifier.Core.Custom;
 using TileIconifier.Core.Custom.Builder;
 using TileIconifier.Core.Shortcut;
+using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.CustomShortcutForms;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
@@ -279,7 +280,7 @@ namespace TileIconifier.Forms.Main
                 Strings.DonationNotification,
                 Strings.Donation, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
-                Process.Start("https://www.paypal.me/Jonno12345");
+                UrlUtils.OpenUrlInBrowser("https://www.paypal.me/Jonno12345");
             }
         }
 

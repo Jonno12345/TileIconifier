@@ -90,19 +90,13 @@ namespace TileIconifier.Controls.IconifierPanel
             };
         }
 
-        public void SetBackgroundColor(Color color)
+        public void SetBackgroundColor(string color)
         {
             RemoveEventHandlers();
             //reset the combo box -choose actual color, or custom if none of the combobox items match
-            var matchingColor = _dropDownColors.FirstOrDefault(c => color.ToArgb() == c.ToArgb());
+            var matchingColor = _dropDownColors.FirstOrDefault(c => string.Equals(c.Name, color, StringComparison.InvariantCultureIgnoreCase));
             if (matchingColor != Color.Empty)
             {
-                //if we've selected a custom color, don't reset to the color name, it's not as user friendly
-                if (cmbColour.Text == @"Custom")
-                {
-                    AddEventHandlers();
-                    return;
-                }
                 cmbColour.SelectedItem = matchingColor.Name.ToLower();
                 txtBGColour.Enabled = false;
             }
@@ -110,7 +104,7 @@ namespace TileIconifier.Controls.IconifierPanel
             {
                 cmbColour.Text = @"Custom";
                 txtBGColour.Enabled = true;
-                txtBGColour.Text = ColorUtils.ColorToHex(color);
+                txtBGColour.Text = color;
             }
             AddEventHandlers();
         }
@@ -201,11 +195,11 @@ namespace TileIconifier.Controls.IconifierPanel
             RunFullUpdate();
         }
 
-        private Color GetBackgroundColor()
+        private string GetBackgroundColor()
         {
             return cmbColour.Text == @"Custom"
-                ? ColorUtils.HexToColor(txtBGColour.Text)
-                : Color.FromName(cmbColour.Text);
+                ? txtBGColour.Text
+                : cmbColour.Text;
         }
 
         private void chkFGTxtEnabled_CheckedChanged(object sender, EventArgs e)
@@ -251,7 +245,7 @@ namespace TileIconifier.Controls.IconifierPanel
 
     public class ColorPanelResult
     {
-        public Color BackgroundColor;
+        public string BackgroundColor;
         public bool DisplayForegroundText;
         public string ForegroundColor;
     }
