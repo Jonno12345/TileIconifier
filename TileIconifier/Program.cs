@@ -29,7 +29,6 @@
 
 using System;
 using System.Globalization;
-using System.Security.Principal;
 using System.Threading;
 using System.Windows.Forms;
 using TileIconifier.Core;

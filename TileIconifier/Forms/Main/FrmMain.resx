@@ -250,7 +250,7 @@
     <value>iconifyPanel</value>
   </data>
   <data name="&gt;&gt;iconifyPanel.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.TileIconifierPanel, TileIconifier, Version=2.2.6049.40095, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.TileIconifierPanel, TileIconifier, Version=2.2.6217.23154, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconifyPanel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -274,7 +274,7 @@
     <value>srtlstShortcuts</value>
   </data>
   <data name="&gt;&gt;srtlstShortcuts.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6049.40095, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6217.23154, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;srtlstShortcuts.Parent" xml:space="preserve">
     <value>$this</value>
@@ -854,6 +854,12 @@
   <data name="&gt;&gt;customShortcutManagerToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;mnuBatchOperations.Name" xml:space="preserve">
+    <value>mnuBatchOperations</value>
+  </data>
+  <data name="&gt;&gt;mnuBatchOperations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
   </data>
@@ -932,16 +938,10 @@
   <data name="&gt;&gt;donateToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;mnuBatchOperations.Name" xml:space="preserve">
-    <value>mnuBatchOperations</value>
-  </data>
-  <data name="&gt;&gt;mnuBatchOperations.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FrmMain</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6049.40095, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6217.23154, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

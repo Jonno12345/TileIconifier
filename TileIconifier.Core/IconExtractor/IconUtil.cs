@@ -36,7 +36,7 @@ namespace TileIconifier.Core.IconExtractor
 {
     public static class IconUtil
     {
-        private static readonly GetIconDataDelegate IconDataDelegate;
+        private static readonly GetIconDataDelegate _iconDataDelegate;
 
         static IconUtil()
         {
@@ -51,7 +51,7 @@ namespace TileIconifier.Core.IconExtractor
             if (fi != null) gen.Emit(OpCodes.Ldfld, fi);
             gen.Emit(OpCodes.Ret);
 
-            IconDataDelegate = (GetIconDataDelegate) dm.CreateDelegate(typeof (GetIconDataDelegate));
+            _iconDataDelegate = (GetIconDataDelegate) dm.CreateDelegate(typeof (GetIconDataDelegate));
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace TileIconifier.Core.IconExtractor
 
         private static byte[] GetIconData(Icon icon)
         {
-            var data = IconDataDelegate(icon);
+            var data = _iconDataDelegate(icon);
             if (data != null)
             {
                 return data;

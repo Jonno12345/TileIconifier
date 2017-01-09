@@ -70,6 +70,17 @@ namespace TileIconifier.Core
 
         public void SaveConfig(string filePath)
         {
+            if (string.IsNullOrEmpty(filePath))
+            {
+                return;
+            }
+
+            var dirPath = Path.GetDirectoryName(filePath);
+            if (dirPath != null && !Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+            }
+
             using (var xmlFile = new FileStream(filePath, FileMode.Create))
             {
                 var xmlSerializer = new XmlSerializer(typeof (Config));

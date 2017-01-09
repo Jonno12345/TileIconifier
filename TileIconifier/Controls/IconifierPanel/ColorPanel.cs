@@ -240,6 +240,7 @@ namespace TileIconifier.Controls.IconifierPanel
         {
             cmbColour.Items.AddRange(_dropDownColors.Select(c => c.Name.ToLower()).ToArray<object>());
             cmbColour.Items.Add("Custom");
+            cmbColour.SelectedItem = "Custom";
         }
     }
 

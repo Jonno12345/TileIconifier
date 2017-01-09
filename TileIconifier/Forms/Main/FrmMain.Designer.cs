@@ -36,7 +36,7 @@ namespace TileIconifier.Forms.Main
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnDeleteCustomShortcut = new System.Windows.Forms.Button();
             this.btnBuildCustomShortcut = new System.Windows.Forms.Button();
-            this.iconifyPanel = new TileIconifierPanel();
+            this.iconifyPanel = new TileIconifier.Controls.IconifierPanel.TileIconifierPanel();
             this.srtlstShortcuts = new TileIconifier.Controls.SortableListView();
             this.lblExePath = new System.Windows.Forms.Label();
             this.txtExePath = new System.Windows.Forms.TextBox();
@@ -49,6 +49,7 @@ namespace TileIconifier.Forms.Main
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customShortcutManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBatchOperations = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.getPinnedItemsRequiresPowershellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,6 @@ namespace TileIconifier.Forms.Main
             this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblBadShortcutWarning = new System.Windows.Forms.Label();
-            this.mnuBatchOperations = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -193,6 +193,12 @@ namespace TileIconifier.Forms.Main
             resources.ApplyResources(this.customShortcutManagerToolStripMenuItem, "customShortcutManagerToolStripMenuItem");
             this.customShortcutManagerToolStripMenuItem.Click += new System.EventHandler(this.customShortcutManagerToolStripMenuItem_Click);
             // 
+            // mnuBatchOperations
+            // 
+            this.mnuBatchOperations.Name = "mnuBatchOperations";
+            resources.ApplyResources(this.mnuBatchOperations, "mnuBatchOperations");
+            this.mnuBatchOperations.Click += new System.EventHandler(this.mnuBatchOperations_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -280,12 +286,6 @@ namespace TileIconifier.Forms.Main
             resources.ApplyResources(this.lblBadShortcutWarning, "lblBadShortcutWarning");
             this.lblBadShortcutWarning.ForeColor = System.Drawing.Color.Red;
             this.lblBadShortcutWarning.Name = "lblBadShortcutWarning";
-            // 
-            // mnuBatchOperations
-            // 
-            this.mnuBatchOperations.Name = "mnuBatchOperations";
-            resources.ApplyResources(this.mnuBatchOperations, "mnuBatchOperations");
-            this.mnuBatchOperations.Click += new System.EventHandler(this.mnuBatchOperations_Click);
             // 
             // FrmMain
             // 

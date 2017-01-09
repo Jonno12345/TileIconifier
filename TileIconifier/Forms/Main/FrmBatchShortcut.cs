@@ -3,7 +3,7 @@
 // /*
 //         The MIT License (MIT)
 // 
-//         Copyright (c) 2016 Johnathon M
+//         Copyright (c) 2017 Johnathon M
 // 
 //         Permission is hereby granted, free of charge, to any person obtaining a copy
 //         of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
+using TileIconifier.Core.Shortcut;
+using TileIconifier.Core.TileIconify;
+using TileIconifier.Core.Utilities;
 using TileIconifier.Properties;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms.Main
 {
@@ -49,6 +53,7 @@ namespace TileIconifier.Forms.Main
         {
             GetIconifiedShortcuts();
             UpdateListViewBox();
+            colorPanel_ColorUpdate(this, null);
         }
 
         private void GetIconifiedShortcuts()
@@ -107,7 +112,137 @@ namespace TileIconifier.Forms.Main
             {
                 return;
             }
-            //pictureBox1.BackColor = result.BackgroundColor;
+            pctColorPreview.BackColor = ColorUtils.HexOrNameToColor(result.BackgroundColor);
+        }
+
+        private void btnBatchAmendBackgroundColor_Click(object sender, EventArgs e)
+        {
+            var colorPanelResult = colorPanel.GetColorPanelResult();
+            if (colorPanelResult == null)
+            {
+                MessageBox.Show(Strings.SelectValidColor);
+                return;
+            }
+
+            if (RunBulkAction(item =>
+            {
+                item.Properties.CurrentState.BackgroundColor = colorPanelResult.BackgroundColor;
+
+                new TileIcon(item).RunIconify();
+            }))
+            {
+                MessageBox.Show(Strings.Completed, Strings.Completed);
+            }
+        }
+
+        private List<ShortcutItem> ValidateListSelection()
+        {
+            //one more validation that the items are already iconified.
+            var selectedItems = lstIconifiedItems.CheckedItems.Cast<ShortcutItemListViewItem>()
+                .Where(s => s.ShortcutItem.IsIconified)
+                .Select(s => s.ShortcutItem)
+                .ToList();
+
+            if (!selectedItems.Any())
+            {
+                MessageBox.Show(this, Strings.NoItemsHaveBeenSelected);
+                return null;
+            }
+
+            if (
+                MessageBox.Show(this,
+                    string.Format(
+                        "You have selected {0} shortcut(s) to be amended. Are you sure you wish to continue?",
+                        selectedItems.Count),
+                    Strings.Confirm,
+                    MessageBoxButtons.YesNo) != DialogResult.Yes)
+            {
+                return null;
+            }
+
+            return selectedItems;
+        }
+
+        private bool RunBulkAction(Action<ShortcutItem> bulkAction)
+        {
+            var batchSelection = ValidateListSelection();
+            if (batchSelection == null)
+            {
+                return false;
+            }
+
+            FormUtils.DoBackgroundWorkWithSplash(this, (sender, args) =>
+            {
+                foreach (var shortcutItem in batchSelection)
+                {
+                    bulkAction(shortcutItem);
+                }
+            }, "Running batch operations");
+            return true;
+        }
+
+        private void lstIconifiedItems_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right)
+            {
+                return;
+            }
+
+            var contextMenu = new ContextMenu();
+            var menuItem = new MenuItem("Get Background Color",
+                (o, args) =>
+                {
+                    var item = lstIconifiedItems.GetItemAt(e.X, e.Y) as ShortcutItemListViewItem;
+                    if (item == null)
+                    {
+                        return;
+                    }
+                    var shortcutItem = item.ShortcutItem;
+                    colorPanel.SetBackgroundColor(shortcutItem.Properties.CurrentState.BackgroundColor);
+                    colorPanel_ColorUpdate(this, null);
+                });
+            contextMenu.MenuItems.Add(menuItem);
+            contextMenu.Show(lstIconifiedItems, e.Location);
+        }
+
+        private void btnAmendForegroundText_Click(object sender, EventArgs e)
+        {
+            var colorPanelResult = colorPanel.GetColorPanelResult();
+            if (colorPanelResult == null)
+            {
+                MessageBox.Show(Strings.SelectValidColor);
+                return;
+            }
+
+            if (RunBulkAction(item =>
+            {
+                item.Properties.CurrentState.ShowNameOnSquare150X150Logo = colorPanelResult.DisplayForegroundText;
+
+                new TileIcon(item).RunIconify();
+            }))
+            {
+                MessageBox.Show(Strings.Completed, Strings.Completed);
+            }
+        }
+
+        private void btnAmendForegroundColor_Click(object sender, EventArgs e)
+        {
+            var colorPanelResult = colorPanel.GetColorPanelResult();
+            if (colorPanelResult == null)
+            {
+                MessageBox.Show(Strings.SelectValidColor);
+                return;
+            }
+
+            if (RunBulkAction(item =>
+            {
+                item.Properties.CurrentState.ForegroundText = colorPanelResult.ForegroundColor;
+
+                new TileIcon(item).RunIconify();
+            }))
+            {
+                MessageBox.Show(Strings.Completed, Strings.Completed);
+            }
         }
     }
 }

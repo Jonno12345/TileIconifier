@@ -60,9 +60,9 @@ namespace TileIconifier.Core.Shortcut.State
             if (ReferenceEquals(this, other))
                 return true;
 
-            return BackgroundColor == other.BackgroundColor
-                   && ForegroundText == other.ForegroundText
-                   && ShowNameOnSquare150X150Logo == other.ShowNameOnSquare150X150Logo
+            return BackgroundColor == other?.BackgroundColor
+                   && ForegroundText == other?.ForegroundText
+                   && ShowNameOnSquare150X150Logo == other?.ShowNameOnSquare150X150Logo
                    && MediumImage.Equals(other.MediumImage)
                    && SmallImage.Equals(other.SmallImage)
                    && UseSystemAccentColor == other.UseSystemAccentColor;

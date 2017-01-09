@@ -66,6 +66,11 @@ namespace TileIconifier.Controls.IconifierPanel
 
         public void UpdateControlsToShortcut()
         {
+            if (CurrentShortcutItem == null)
+            {
+                return;
+            }
+
             //disable event handlers whilst updating things programatically
             RemoveEventHandlers();
 
@@ -335,7 +340,7 @@ namespace TileIconifier.Controls.IconifierPanel
         private void UpdateFromColorPanel(ColorPanel usedColorPanel)
         {
             var result = usedColorPanel.GetColorPanelResult();
-            if (result == null)
+            if (result == null || CurrentShortcutItem == null)
             {
                 return;
             }

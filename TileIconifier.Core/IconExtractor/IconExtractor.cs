@@ -48,8 +48,8 @@ namespace TileIconifier.Core.IconExtractor
 
         // Resource types for EnumResourceNames().
 
-        private static readonly IntPtr RtIcon = (IntPtr) 3;
-        private static readonly IntPtr RtGroupIcon = (IntPtr) 14;
+        private static readonly IntPtr _rtIcon = (IntPtr) 3;
+        private static readonly IntPtr _rtGroupIcon = (IntPtr) 14;
 
         ////////////////////////////////////////////////////////////////////////
         // Fields
@@ -137,7 +137,7 @@ namespace TileIconifier.Core.IconExtractor
 
                     // RT_GROUP_ICON resource consists of a GRPICONDIR and GRPICONDIRENTRY's.
 
-                    var dir = GetDataFromResource(hModule, RtGroupIcon, name);
+                    var dir = GetDataFromResource(hModule, _rtGroupIcon, name);
 
                     // Calculate the size of an entire .icon file.
 
@@ -159,7 +159,7 @@ namespace TileIconifier.Core.IconExtractor
                             // Load the picture.
 
                             var id = BitConverter.ToUInt16(dir, 6 + 14*i + 12); // GRPICONDIRENTRY.nID
-                            var pic = GetDataFromResource(hModule, RtIcon, (IntPtr) id);
+                            var pic = GetDataFromResource(hModule, _rtIcon, (IntPtr) id);
 
                             // Copy GRPICONDIRENTRY to ICONDIRENTRY.
 
@@ -182,7 +182,7 @@ namespace TileIconifier.Core.IconExtractor
 
                     return true;
                 };
-                NativeMethods.EnumResourceNames(hModule, RtGroupIcon, callback, IntPtr.Zero);
+                NativeMethods.EnumResourceNames(hModule, _rtGroupIcon, callback, IntPtr.Zero);
 
                 _iconData = tmpData.ToArray();
             }

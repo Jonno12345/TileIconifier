@@ -44,11 +44,13 @@ namespace TileIconifier.Core.Shortcut.State
 
         public void SaveMediumIconMetadata(string filePath)
         {
+            IoUtils.ForceDelete(filePath);
             CurrentState.MediumImage.Save(filePath);
         }
 
         public void SaveSmallIconMetadata(string filePath)
         {
+            IoUtils.ForceDelete(filePath);
             CurrentState.SmallImage.Save(filePath);
         }
 
@@ -99,15 +101,15 @@ namespace TileIconifier.Core.Shortcut.State
                     var parameters = from b in xmlDoc.Descendants("VisualElements")
                         select new ShortcutItemState
                         {
-                            BackgroundColor = b.Attribute("BackgroundColor").Value,
-                            ForegroundText = b.Attribute("ForegroundText").Value,
-                            ShowNameOnSquare150X150Logo = b.Attribute("ShowNameOnSquare150x150Logo").Value == "on",
+                            BackgroundColor = b.Attribute("BackgroundColor")?.Value,
+                            ForegroundText = b.Attribute("ForegroundText")?.Value,
+                            ShowNameOnSquare150X150Logo = b.Attribute("ShowNameOnSquare150x150Logo")?.Value == "on",
                             MediumImage =
                                 mediumImage ?? new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutOutputSize)
                                 {
                                     Bytes =
                                         ImageUtils.LoadFileToByteArray(targetFolderPath +
-                                                                       b.Attribute("Square150x150Logo").Value),
+                                                                       b.Attribute("Square150x150Logo")?.Value),
                                     X = 0,
                                     Y = 0
                                 },
@@ -116,7 +118,7 @@ namespace TileIconifier.Core.Shortcut.State
                                 {
                                     Bytes =
                                         ImageUtils.LoadFileToByteArray(targetFolderPath +
-                                                                       b.Attribute("Square70x70Logo").Value),
+                                                                       b.Attribute("Square70x70Logo")?.Value),
                                     X = 0,
                                     Y = 0
                                 }

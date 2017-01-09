@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
@@ -92,7 +91,6 @@ namespace TileIconifier.Forms.Main
             var showForegroundColourWarning = CurrentShortcutItem.Properties.ForegroundTextColourChanged;
             var tileIconify = GenerateTileIcon();
             tileIconify.RunIconify();
-            CurrentShortcutItem.Properties.CommitChanges();
             UpdateShortcut();
 
             if (showForegroundColourWarning)

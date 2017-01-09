@@ -45,34 +45,24 @@ namespace TileIconifier.Core.Utilities
             File.SetAttributes(filePath, FileAttributes.Normal);
             File.Delete(filePath);
         }
-    }
 
-    /// <summary>
-    /// Reverts attributes to normal and restores on disposal - prevents Access Denied on readonly/hidden files
-    /// </summary>
-    internal class AttributeRetention : IDisposable
-    {
-        private readonly string _filePath;
-        private readonly FileAttributes _storedFileAttributes;
-
-        public AttributeRetention(string filePath)
+        public static void FileActionRetainingAttributes(string filePath, Action action, bool fileMustExist = false)
         {
-            _filePath = filePath;
-            if (!File.Exists(_filePath))
+            if (!File.Exists(filePath))
             {
+                if (fileMustExist)
+                {
+                    throw new FileNotFoundException();
+                }
                 return;
             }
 
-            _storedFileAttributes = File.GetAttributes(_filePath);
-            File.SetAttributes(_filePath, FileAttributes.Normal);
-        }
+            var storedFileAttributes = File.GetAttributes(filePath);
+            File.SetAttributes(filePath, FileAttributes.Normal);
 
-        public void Dispose()
-        {
-            if (File.Exists(_filePath))
-            {
-                File.SetAttributes(_filePath, _storedFileAttributes);
-            }
+            action();
+
+            File.SetAttributes(filePath, storedFileAttributes);
         }
     }
 }

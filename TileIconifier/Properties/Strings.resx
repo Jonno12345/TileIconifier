@@ -377,4 +377,13 @@ Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?<
   <data name="PathNotFound" xml:space="preserve">
     <value>Path not found</value>
   </data>
+  <data name="NoItemsHaveBeenSelected" xml:space="preserve">
+    <value>No items have been selected!</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="SelectValidColor" xml:space="preserve">
+    <value>Please select a valid color!</value>
+  </data>
 </root>

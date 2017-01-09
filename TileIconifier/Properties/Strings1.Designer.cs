@@ -214,6 +214,15 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        internal static string Completed {
+            get {
+                return ResourceManager.GetString("Completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string Confirm {
@@ -414,6 +423,15 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No items have been selected!.
+        /// </summary>
+        internal static string NoItemsHaveBeenSelected {
+            get {
+                return ResourceManager.GetString("NoItemsHaveBeenSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nudge Down.
         /// </summary>
         internal static string NudgeDown {
@@ -590,6 +608,15 @@ namespace TileIconifier.Properties {
         internal static string SelectSteamLibraryPath {
             get {
                 return ResourceManager.GetString("SelectSteamLibraryPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a valid color!.
+        /// </summary>
+        internal static string SelectValidColor {
+            get {
+                return ResourceManager.GetString("SelectValidColor", resourceCulture);
             }
         }
         

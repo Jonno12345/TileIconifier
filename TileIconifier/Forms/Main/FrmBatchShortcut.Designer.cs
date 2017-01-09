@@ -29,34 +29,34 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBatchShortcut));
-            this.lstIconifiedItems = new TileIconifier.Controls.SortableListView();
-            this.btnSelectAll = new System.Windows.Forms.Button();
+            this.btnBatchAmendBackgroundColor = new System.Windows.Forms.Button();
+            this.pctColorPreview = new System.Windows.Forms.PictureBox();
             this.btnSelectNone = new System.Windows.Forms.Button();
+            this.btnSelectAll = new System.Windows.Forms.Button();
             this.colorPanel = new TileIconifier.Controls.IconifierPanel.ColorPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.lstIconifiedItems = new TileIconifier.Controls.SortableListView();
+            this.btnAmendForegroundColor = new System.Windows.Forms.Button();
+            this.btnAmendForegroundText = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pctColorPreview)).BeginInit();
             this.SuspendLayout();
             // 
-            // lstIconifiedItems
+            // btnBatchAmendBackgroundColor
             // 
-            this.lstIconifiedItems.CheckBoxes = true;
-            this.lstIconifiedItems.HideSelection = false;
-            this.lstIconifiedItems.Location = new System.Drawing.Point(12, 12);
-            this.lstIconifiedItems.Name = "lstIconifiedItems";
-            this.lstIconifiedItems.Size = new System.Drawing.Size(432, 275);
-            this.lstIconifiedItems.TabIndex = 0;
-            this.lstIconifiedItems.UseCompatibleStateImageBehavior = false;
-            this.lstIconifiedItems.View = System.Windows.Forms.View.Details;
+            this.btnBatchAmendBackgroundColor.Location = new System.Drawing.Point(12, 433);
+            this.btnBatchAmendBackgroundColor.Name = "btnBatchAmendBackgroundColor";
+            this.btnBatchAmendBackgroundColor.Size = new System.Drawing.Size(86, 49);
+            this.btnBatchAmendBackgroundColor.TabIndex = 0;
+            this.btnBatchAmendBackgroundColor.Text = "Amend Background Colors";
+            this.btnBatchAmendBackgroundColor.UseVisualStyleBackColor = true;
+            this.btnBatchAmendBackgroundColor.Click += new System.EventHandler(this.btnBatchAmendBackgroundColor_Click);
             // 
-            // btnSelectAll
+            // pctColorPreview
             // 
-            this.btnSelectAll.Location = new System.Drawing.Point(12, 293);
-            this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(78, 28);
-            this.btnSelectAll.TabIndex = 1;
-            this.btnSelectAll.Text = "Select All";
-            this.btnSelectAll.UseVisualStyleBackColor = true;
-            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
+            this.pctColorPreview.Location = new System.Drawing.Point(12, 327);
+            this.pctColorPreview.Name = "pctColorPreview";
+            this.pctColorPreview.Size = new System.Drawing.Size(68, 61);
+            this.pctColorPreview.TabIndex = 4;
+            this.pctColorPreview.TabStop = false;
             // 
             // btnSelectNone
             // 
@@ -68,29 +68,66 @@
             this.btnSelectNone.UseVisualStyleBackColor = true;
             this.btnSelectNone.Click += new System.EventHandler(this.btnSelectNone_Click);
             // 
+            // btnSelectAll
+            // 
+            this.btnSelectAll.Location = new System.Drawing.Point(12, 293);
+            this.btnSelectAll.Name = "btnSelectAll";
+            this.btnSelectAll.Size = new System.Drawing.Size(78, 28);
+            this.btnSelectAll.TabIndex = 1;
+            this.btnSelectAll.Text = "Select All";
+            this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
+            // 
             // colorPanel
             // 
-            this.colorPanel.Location = new System.Drawing.Point(450, 79);
+            this.colorPanel.Location = new System.Drawing.Point(86, 327);
             this.colorPanel.MaximumSize = new System.Drawing.Size(310, 111);
             this.colorPanel.Name = "colorPanel";
             this.colorPanel.Size = new System.Drawing.Size(273, 107);
             this.colorPanel.TabIndex = 3;
             this.colorPanel.ColorUpdate += new System.EventHandler(this.colorPanel_ColorUpdate);
             // 
-            // pictureBox1
+            // lstIconifiedItems
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(450, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(68, 61);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.lstIconifiedItems.CheckBoxes = true;
+            this.lstIconifiedItems.HideSelection = false;
+            this.lstIconifiedItems.Location = new System.Drawing.Point(12, 12);
+            this.lstIconifiedItems.Name = "lstIconifiedItems";
+            this.lstIconifiedItems.Size = new System.Drawing.Size(347, 275);
+            this.lstIconifiedItems.TabIndex = 0;
+            this.lstIconifiedItems.UseCompatibleStateImageBehavior = false;
+            this.lstIconifiedItems.View = System.Windows.Forms.View.Details;
+            this.lstIconifiedItems.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstIconifiedItems_MouseClick);
+            // 
+            // btnAmendForegroundColor
+            // 
+            this.btnAmendForegroundColor.Location = new System.Drawing.Point(272, 433);
+            this.btnAmendForegroundColor.Name = "btnAmendForegroundColor";
+            this.btnAmendForegroundColor.Size = new System.Drawing.Size(86, 49);
+            this.btnAmendForegroundColor.TabIndex = 5;
+            this.btnAmendForegroundColor.Text = "Amend Foreground Color";
+            this.btnAmendForegroundColor.UseVisualStyleBackColor = true;
+            this.btnAmendForegroundColor.Click += new System.EventHandler(this.btnAmendForegroundColor_Click);
+            // 
+            // btnAmendForegroundText
+            // 
+            this.btnAmendForegroundText.Location = new System.Drawing.Point(142, 433);
+            this.btnAmendForegroundText.Name = "btnAmendForegroundText";
+            this.btnAmendForegroundText.Size = new System.Drawing.Size(86, 49);
+            this.btnAmendForegroundText.TabIndex = 6;
+            this.btnAmendForegroundText.Text = "Amend Foreground Text";
+            this.btnAmendForegroundText.UseVisualStyleBackColor = true;
+            this.btnAmendForegroundText.Click += new System.EventHandler(this.btnAmendForegroundText_Click);
             // 
             // FrmBatchShortcut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 380);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(372, 494);
+            this.Controls.Add(this.btnAmendForegroundText);
+            this.Controls.Add(this.btnAmendForegroundColor);
+            this.Controls.Add(this.btnBatchAmendBackgroundColor);
+            this.Controls.Add(this.pctColorPreview);
             this.Controls.Add(this.colorPanel);
             this.Controls.Add(this.btnSelectNone);
             this.Controls.Add(this.btnSelectAll);
@@ -99,7 +136,7 @@
             this.Name = "FrmBatchShortcut";
             this.Text = "Batch Shortcut Operations";
             this.Load += new System.EventHandler(this.FrmBatchShortcut_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctColorPreview)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -110,6 +147,9 @@
         private System.Windows.Forms.Button btnSelectAll;
         private System.Windows.Forms.Button btnSelectNone;
         private Controls.IconifierPanel.ColorPanel colorPanel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pctColorPreview;
+        private System.Windows.Forms.Button btnBatchAmendBackgroundColor;
+        private System.Windows.Forms.Button btnAmendForegroundColor;
+        private System.Windows.Forms.Button btnAmendForegroundText;
     }
 }

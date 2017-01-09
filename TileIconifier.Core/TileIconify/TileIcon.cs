@@ -52,6 +52,7 @@ namespace TileIconifier.Core.TileIconify
             BuildFilesAndFolders();
             SaveMetadata();
             SaveIcons();
+            _shortcutItem.Properties.CommitChanges();
             RebuildLnkInStartMenu();
         }
 
@@ -82,10 +83,9 @@ namespace TileIconifier.Core.TileIconify
                 Directory.CreateDirectory(_shortcutItem.VisualElementsPath);
             }
 
-            using (new AttributeRetention(_shortcutItem.VisualElementManifestPath))
-            {
-                xDoc.Save(_shortcutItem.VisualElementManifestPath);
-            }
+            IoUtils.FileActionRetainingAttributes(_shortcutItem.VisualElementManifestPath,
+                () => xDoc.Save(_shortcutItem.VisualElementManifestPath));
+
         }
 
         private void DeleteFilesAndFolders()
@@ -106,14 +106,8 @@ namespace TileIconifier.Core.TileIconify
 
         private void SaveMetadata()
         {
-            using (new AttributeRetention(_shortcutItem.MediumImageResizeMetadataPath))
-            {
-                _shortcutItem.Properties.SaveMediumIconMetadata(_shortcutItem.MediumImageResizeMetadataPath);
-            }
-            using (new AttributeRetention(_shortcutItem.SmallImageResizeMetadataPath))
-            {
-                _shortcutItem.Properties.SaveSmallIconMetadata(_shortcutItem.SmallImageResizeMetadataPath);
-            }
+            _shortcutItem.Properties.SaveMediumIconMetadata(_shortcutItem.MediumImageResizeMetadataPath);
+            _shortcutItem.Properties.SaveSmallIconMetadata(_shortcutItem.SmallImageResizeMetadataPath);
         }
 
         private void SaveIcons()
