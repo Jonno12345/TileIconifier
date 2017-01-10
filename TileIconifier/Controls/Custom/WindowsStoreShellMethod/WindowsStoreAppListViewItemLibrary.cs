@@ -51,8 +51,10 @@ namespace TileIconifier.Controls.Custom.WindowsStoreShellMethod
         public static void RefreshList(bool force = true)
         {
             if (force || !_windowsStoreApps.Any())
+            {
                 _windowsStoreApps =
                     WindowsStoreLibrary.GetAppKeysFromRegistry();
+            }
         }
     }
 }

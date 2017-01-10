@@ -54,6 +54,7 @@ namespace TileIconifier.Core.Utilities
                 {
                     throw new FileNotFoundException();
                 }
+                action();
                 return;
             }
 

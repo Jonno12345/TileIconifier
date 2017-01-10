@@ -633,9 +633,17 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             lstWindowsStoreApps.Clear();
             BuildWindowsStoreListBoxColumns();
-            lstWindowsStoreApps.Items.AddRange(
-                WindowsStoreAppListViewItemLibrary.LibraryAsListViewItems.OrderBy(w => w.Text)
-                    .ToArray<ListViewItem>());
+            try
+            {
+                lstWindowsStoreApps.Items.AddRange(
+                    WindowsStoreAppListViewItemLibrary.LibraryAsListViewItems.OrderBy(w => w.Text)
+                        .ToArray<ListViewItem>());
+            }
+            catch (Exception ex)
+            {
+                FrmException.ShowExceptionHandler(ex);
+            }
+
         }
 
         private void BuildWindowsStoreListBoxColumns()
