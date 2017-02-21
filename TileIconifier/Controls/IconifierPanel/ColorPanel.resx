@@ -136,7 +136,7 @@
     <value>eyedropperColorPicker</value>
   </data>
   <data name="&gt;&gt;eyedropperColorPicker.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.Eyedropper.EyedropColorPicker, TileIconifier, Version=2.2.6078.41399, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.Eyedropper.EyedropColorPicker, TileIconifier, Version=2.2.6255.41296, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;eyedropperColorPicker.Parent" xml:space="preserve">
     <value>panel1</value>

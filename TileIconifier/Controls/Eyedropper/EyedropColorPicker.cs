@@ -6,6 +6,7 @@
 
     - Image for eyedropper altered
     - Border removed
+    - Added support for DPI scaling
 
     - Changed some variable names and cleaned up to fit with coding practices throughout this solution
 */
@@ -26,7 +27,7 @@ namespace TileIconifier.Controls.Eyedropper
         private bool _iscapturing;
 
         private Bitmap _mSnapshot;
-        private float _mZoom = 4;
+        private float _mZoom = 6;
 
         public EyedropColorPicker()
         {
@@ -34,8 +35,9 @@ namespace TileIconifier.Controls.Eyedropper
             var eyedropperIcon = new Bitmap(Resources.Actions_color_picker_black_icon);
             _mIcon = ImageUtils.ResizeImage(eyedropperIcon, 20, 20);
             eyedropperIcon.Dispose();
-        }
 
+        }
+        
         public int Zoom
         {
             get { return (int) _mZoom; }
@@ -74,22 +76,22 @@ namespace TileIconifier.Controls.Eyedropper
             {
                 var center = Util.Center(r);
                 var centerrect = new Rectangle(Util.Point(center), new Size(0, 0));
-                centerrect.X -= Zoom/2 - 1;
-                centerrect.Y -= Zoom/2 - 1;
+                centerrect.X -= Zoom/2 - 2;
+                centerrect.Y -= Zoom/2 - 2 ;
                 centerrect.Width = Zoom;
                 centerrect.Height = Zoom;
                 e.Graphics.DrawRectangle(Pens.Black, centerrect);
             }
             else
             {
-                const int offset = 3;
+                int offset = (int)((r.Width - _mIcon.Width) / 2);
 
                 e.Graphics.FillRectangle(SystemBrushes.Control, new Rectangle(new Point(0, 0), Size));
                 e.Graphics.DrawImage(_mIcon, offset, offset);
             }
             //
-            //draws a border - removed for now.
-            //
+            ////draws a border - removed for now.
+
             //var rr = ClientRectangle;
             //Pen pen = new Pen(BackColor, 3);
             //rr.Inflate(-1, -1);
@@ -100,6 +102,7 @@ namespace TileIconifier.Controls.Eyedropper
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
+
             if ((e.Button & MouseButtons.Left) != MouseButtons.Left) return;
             Cursor = Cursors.Cross;
             _iscapturing = true;
@@ -127,6 +130,7 @@ namespace TileIconifier.Controls.Eyedropper
         {
             _mSnapshot?.Dispose();
             var r = ImageRect;
+
             var w = (int) Math.Floor(r.Width/Zoom);
             var h = (int) Math.Floor(r.Height/Zoom);
             _mSnapshot = new Bitmap(w, h);
@@ -135,16 +139,20 @@ namespace TileIconifier.Controls.Eyedropper
         private void GetSnapshot()
         {
             var p = MousePosition;
-            p.X -= _mSnapshot.Width/2;
-            p.Y -= _mSnapshot.Height/2;
 
+            var scaling = Util.GetScalingFactor();
+            p.X = (int)(p.X * scaling);
+            p.Y = (int)(p.Y * scaling);
+            p.X -= (int)(_mSnapshot.Width * scaling)/2;
+            p.Y -= (int)(_mSnapshot.Height * scaling)/2;
+            
             using (var dc = Graphics.FromImage(_mSnapshot))
             {
                 dc.CopyFromScreen(p, new Point(0, 0), _mSnapshot.Size);
                 Refresh(); //Invalidate();
 
                 var center = Util.Center(new RectangleF(0, 0, _mSnapshot.Size.Width, _mSnapshot.Size.Height));
-                var c = _mSnapshot.GetPixel((int) Math.Round(center.X), (int) Math.Round(center.Y));
+                var c = _mSnapshot.GetPixel((int) Math.Ceiling(center.X), (int) Math.Ceiling(center.Y));
                 if (c == SelectedColor) return;
                 SelectedColor = c;
                 SelectedColorChanged?.Invoke(this, null);

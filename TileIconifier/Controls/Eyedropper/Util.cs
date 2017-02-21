@@ -148,10 +148,31 @@ namespace TileIconifier.Controls.Eyedropper
                 pc2.Dispose();
                 pc3.Dispose();
         }
-    }
 
+        public static float GetScalingFactor()
+        {
+            var g = Graphics.FromHwnd(IntPtr.Zero);
+            var desktop = g.GetHdc();
+            float logicalScreenHeight = NativeMethods.GetDeviceCaps(desktop, (int)NativeMethods.DeviceCap.Vertres);
+            float physicalScreenHeight = NativeMethods.GetDeviceCaps(desktop, (int)NativeMethods.DeviceCap.Desktopvertres);
+
+            return physicalScreenHeight / logicalScreenHeight;
+        }
+    }
+    
     internal class NativeMethods
     {
+        [DllImport("gdi32.dll", SetLastError = true)]
+        public static extern Int32 GetDeviceCaps(IntPtr hdc, Int32 capindex);
+
+        public enum DeviceCap
+        {
+            Vertres = 10,
+            Desktopvertres = 117,
+
+            // http://pinvoke.net/default.aspx/gdi32/GetDeviceCaps.html
+        }
+        
         public const int WM_KEYDOWN = 0x0100;
         public const int WM_KEYUP = 0x0101;
         public const int WM_CHAR = 0x0102;

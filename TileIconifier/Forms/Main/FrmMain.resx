@@ -250,7 +250,7 @@
     <value>iconifyPanel</value>
   </data>
   <data name="&gt;&gt;iconifyPanel.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.TileIconifierPanel, TileIconifier, Version=2.2.6217.23154, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.TileIconifierPanel, TileIconifier, Version=2.2.6255.41650, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconifyPanel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -274,7 +274,7 @@
     <value>srtlstShortcuts</value>
   </data>
   <data name="&gt;&gt;srtlstShortcuts.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6217.23154, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6255.41650, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;srtlstShortcuts.Parent" xml:space="preserve">
     <value>$this</value>
@@ -942,6 +942,6 @@
     <value>FrmMain</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6217.23154, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6255.41650, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

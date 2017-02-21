@@ -151,9 +151,7 @@ namespace TileIconifier.Forms.Main
 
             if (
                 MessageBox.Show(this,
-                    string.Format(
-                        "You have selected {0} shortcut(s) to be amended. Are you sure you wish to continue?",
-                        selectedItems.Count),
+                    $"You have selected {selectedItems.Count} shortcut(s) to be amended. Are you sure you wish to continue?",
                     Strings.Confirm,
                     MessageBoxButtons.YesNo) != DialogResult.Yes)
             {
