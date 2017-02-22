@@ -132,8 +132,8 @@
             // 
             // radIconFromTarget
             // 
-            resources.ApplyResources(this.radIconFromTarget, "radIconFromTarget");
             this.radIconFromTarget.Checked = true;
+            resources.ApplyResources(this.radIconFromTarget, "radIconFromTarget");
             this.radIconFromTarget.Name = "radIconFromTarget";
             this.radIconFromTarget.TabStop = true;
             this.radIconFromTarget.UseVisualStyleBackColor = true;
@@ -155,8 +155,8 @@
             // 
             // FrmIconSelector
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.lblPreview);
             this.Controls.Add(this.pctPreview);
             this.Controls.Add(this.lblCommonDlls);
