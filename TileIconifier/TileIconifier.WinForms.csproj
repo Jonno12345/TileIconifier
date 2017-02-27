@@ -140,6 +140,15 @@
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxImage.cs" />
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxMetaData.cs" />
     <Compile Include="Controls\Shortcut\ShortcutItemListViewItemLibrary.cs" />
+    <Compile Include="Controls\SkinnableButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinnableCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinnableRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>

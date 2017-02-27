@@ -242,8 +242,8 @@ namespace TileIconifier.Forms.Shared
 
             e.Graphics.FillRectangle(
                 e.Item.Selected
-                    ? new SolidBrush(CurrentBaseSkin.HighlightColor)
-                    : new SolidBrush(CurrentBaseSkin.BackColor), e.Bounds);
+                    ? new SolidBrush(FormSkin.HighlightColor)
+                    : new SolidBrush(FormSkin.BackColor), e.Bounds);
 
             var w = (int) Math.Ceiling(lvwIcons.TileSize.Width*0.8);
             var h = (int) Math.Ceiling(lvwIcons.TileSize.Height*0.8);

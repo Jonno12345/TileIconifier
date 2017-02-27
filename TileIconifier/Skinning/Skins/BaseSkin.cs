@@ -28,6 +28,7 @@
 #endregion
 
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace TileIconifier.Skinning.Skins
 {
@@ -45,5 +46,45 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color ErrorColor => Color.Red;
 
         public virtual Font Font => new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+
+        public virtual FlatStyle ButtonFlatStyle
+        {
+            get
+            {
+                return FlatStyle.Standard;
+            }
+        }
+
+        public virtual Color ButtonForeColor
+        {
+            get
+            {
+                return SystemColors.ControlText;
+            }
+        }
+
+        public virtual Color ButtonBackColor
+        {
+            get
+            {
+                return SystemColors.Control;
+            }
+        }
+
+        public virtual Color ButtonForeColorDisabled
+        {
+            get
+            {
+                return SystemColors.GrayText;
+            }
+        }
+
+        public virtual Color ButtonFlatBorderColor
+        {
+            get
+            {
+                return Color.Empty;
+            }
+        }
     }
 }

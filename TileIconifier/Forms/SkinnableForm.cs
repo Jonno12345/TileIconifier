@@ -41,194 +41,131 @@ namespace TileIconifier.Forms
 {
     public class SkinnableForm : Form
     {
-        protected BaseSkin CurrentBaseSkin = SkinHandler.GetCurrentSkin();
-
-        public SkinnableForm()
+        private BaseSkin formSkin = SkinHandler.GetCurrentSkin();
+        public BaseSkin FormSkin
         {
-            SkinHandler.SkinChanged += ApplySkin;
-            Load += OnLoad;
-            Move += RedrawAllButtons;
-            Resize += RedrawAllButtons;
-        }
-
-        protected virtual void ApplySkin(object sender, EventArgs e)
-        {
-            CurrentBaseSkin = SkinHandler.GetCurrentSkin();
-            ApplyControlSkins(Controls);
-
-            BackColor = CurrentBaseSkin.BackColor;
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            get { return formSkin; }
+            set
             {
-                try
+                if (formSkin != value)
                 {
-                    SkinHandler.SkinChanged -= ApplySkin;
+                    formSkin = value;
+                    OnSkinChanged(EventArgs.Empty);
                 }
-                catch
-                {
-                    // ignored
-                }
-            }
-
-            base.Dispose(disposing);
-        }
-
-        private void RedrawAllButtons(object sender, EventArgs e)
-        {
-            RedrawButtons(Controls);
-        }
-
-        private static void RedrawButtons(IEnumerable controls)
-        {
-            foreach (Control control in controls)
-            {
-                if (control.GetType() == typeof (Button))
-                {
-                    control.Refresh();
-                }
-                if (control.Controls.Count > 0)
-                    RedrawButtons(control.Controls);
             }
         }
 
-        private void OnLoad(object sender, EventArgs eventArgs)
+        protected virtual void OnSkinChanged(EventArgs e)
         {
-            AddControlEvents(Controls);
+            if (FormSkin != null)
+                ApplyFormSkin();
+        }        
 
-            ApplySkin(this, null);
+        protected override void OnControlAdded(ControlEventArgs e)
+        {
+            base.OnControlAdded(e);
+
+            //Apply the skin to any control newly added to the form.
+            if (FormSkin != null)
+                ApplyControlSkin(e.Control);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
             Icon = Resources.tiles2_shadow_lyk_icon;
+
+            SkinHandler.SkinChanged += SkinHandler_SkinChanged;
         }
 
-        private void AddControlEvents(IEnumerable baseControl)
+        protected override void OnFormClosed(FormClosedEventArgs e)
         {
-            foreach (Control control in baseControl)
-            {
-                if (control.GetType() == typeof (Button))
-                {
-                    var button = control as Button;
-                    if (button != null)
-                    {
-                        button.Tag = button.Text;
-                        button.Text = string.Empty;
-                        button.Paint += ButtonOnPaint;
-                        button.EnabledChanged += ButtonOnEnabledChanged;
-                    }
+            base.OnFormClosed(e);
+
+            //FormClosed is a good place to remove an handler that was added when Load, because
+            //if the form is ever shown again, it will raise the Load event, which will add the
+            //handler back (even if the form was just hidden).
+            SkinHandler.SkinChanged -= SkinHandler_SkinChanged;
+        }
+
+        private void SkinHandler_SkinChanged(object sender, EventArgs e)
+        {
+            FormSkin = SkinHandler.GetCurrentSkin();
+        }
+
+        /// <summary>
+        /// Applies the skin on the form and each of its child controls.
+        /// </summary>
+        private void ApplyFormSkin()
+        {
+            ForeColor = FormSkin.ForeColor;
+            BackColor = FormSkin.BackColor;
+
+            foreach (Control c in Controls)
+                ApplyControlSkin(c);
+        }
+
+        /// <summary>
+        /// Applies the skin on the specified control.
+        /// </summary>
+        /// <param name="control"></param>
+        private void ApplyControlSkin(Control control)
+        {
+            Type t = control.GetType();
+            if (t == typeof(SkinnableButton))
+            {   //Button
+                SkinnableButton btn = (SkinnableButton)control;
+                btn.FlatStyle = FormSkin.ButtonFlatStyle;
+                btn.ForeColor = FormSkin.ButtonForeColor;
+                btn.BackColor = FormSkin.ButtonBackColor;
+                btn.ForeColorDisabled = FormSkin.ButtonForeColorDisabled;
+                btn.FlatAppearance.BorderColor = FormSkin.ButtonFlatBorderColor;
+            }
+            else if (t == typeof(SkinnableCheckBox))
+            {   //Checkbox
+                SkinnableCheckBox chk = (SkinnableCheckBox)control;
+                
+                //A checkbox can have the appearance of a button, so we apply the skin accordingly.
+                if (chk.Appearance == Appearance.Button)
+                {   chk.ForeColor = FormSkin.ButtonForeColor;
+                    chk.BackColor = FormSkin.ButtonBackColor;
+                    chk.ForeColorDisabled = FormSkin.ButtonForeColorDisabled;
+                    chk.FlatAppearance.BorderColor = FormSkin.ButtonFlatBorderColor;
                 }
-                if (control.GetType() == typeof (SortableListView))
+                //else
+                //{
+                //    //We treat the checkbox like a label, which means that we don't need
+                //    //to set any color since they are ambiant.
+                //}
+
+                //Button and Checkboxes have this property in common, which we apply in both cases.
+                chk.FlatStyle = FormSkin.ButtonFlatStyle;                
+            }
+            else if (t == typeof(SkinnableRadioButton))
+            {
+                SkinnableRadioButton rbt = (SkinnableRadioButton)control;
+
+                //A radiobutton can have the appearance of a button, so we apply the skin accordingly.
+                if (rbt.Appearance == Appearance.Button)
                 {
-                    var listView = control as ListView;
-                    if (listView != null)
-                    {
-                        listView.OwnerDraw = true;
-                        listView.DrawColumnHeader += ListViewOnDrawColumnHeader;
-                        listView.DrawItem += ListViewOnDrawItem;
-                        listView.Invalidate(true);
-                        listView.Refresh();
-                        listView.Sort();
-                    }
+                    rbt.ForeColor = FormSkin.ButtonForeColor;
+                    rbt.BackColor = FormSkin.ButtonBackColor;
+                    rbt.ForeColorDisabled = FormSkin.ButtonForeColorDisabled;
+                    rbt.FlatAppearance.BorderColor = FormSkin.ButtonFlatBorderColor;
                 }
+                //else
+                //{
+                //    //We treat the checkbox like a label, which means that we don't need
+                //    //to set any color since they are ambiant.
+                //}
 
-                if (control.Controls.Count > 0)
-                    AddControlEvents(control.Controls);
+                //Button and RadioButtons have this property in common, which we apply in both cases.
+                rbt.FlatStyle = FormSkin.ButtonFlatStyle;
             }
-        }
-
-        private void ApplyControlSkins(IEnumerable baseControls)
-        {
-            foreach (
-                var control in
-                    baseControls.Cast<Control>()
-                        .Where(control => control.GetType().GetCustomAttributes(typeof (SkinIgnore), true).Length == 0))
-            {
-                control.BackColor = CurrentBaseSkin.BackColor;
-                if (control.GetType() == typeof (SortableListView))
-                    control.BackColor = CurrentBaseSkin.SortableListViewBackColor;
-
-                control.ForeColor = CurrentBaseSkin.ForeColor;
-                //control.Font = CurrentBaseSkin.Font;
-
-                if (control.GetType() == typeof (Button))
-                    ButtonOnEnabledChanged(control, null);
-
-                if (control.GetType() == typeof (MenuStrip))
-                    ApplyToolStripMenuItemSkins((control as MenuStrip)?.Items);
-
-                control.Refresh();
-
-                if (control.Controls.Count <= 0) continue;
-
-                ApplyControlSkins(control.Controls);
-            }
-        }
-
-        private void ApplyToolStripMenuItemSkins(IEnumerable menuItems)
-        {
-            foreach (var toolStripMenuItem in from object menuItem in menuItems
-                where menuItem.GetType() == typeof (ToolStripMenuItem)
-                select menuItem as ToolStripMenuItem)
-            {
-                toolStripMenuItem.BackColor = CurrentBaseSkin.BackColor;
-
-                toolStripMenuItem.ForeColor = CurrentBaseSkin.ForeColor;
-                toolStripMenuItem.Font = CurrentBaseSkin.Font;
-
-                if (toolStripMenuItem.DropDownItems.Count <= 0) continue;
-
-                ApplyToolStripMenuItemSkins(toolStripMenuItem.DropDownItems);
-            }
-        }
-
-        private static void ListViewOnDrawItem(object sender, DrawListViewItemEventArgs e)
-        {
-            e.DrawDefault = true;
-        }
-
-        private void ListViewOnDrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
-        {
-            e.DrawBackground();
-            e.Graphics.FillRectangle(new SolidBrush(CurrentBaseSkin.BackColor), e.Bounds);
-            e.Graphics.DrawLine(new Pen(CurrentBaseSkin.ForeColor, 1), e.Bounds.Left, e.Bounds.Bottom - 2,
-                e.Bounds.Right,
-                e.Bounds.Bottom - 2);
-            e.Graphics.DrawLine(new Pen(CurrentBaseSkin.ForeColor, 1), e.Bounds.Left - 1, e.Bounds.Bottom - 2,
-                e.Bounds.Left - 1,
-                0);
-
-            using (var sf = new StringFormat
-            {
-                Alignment = StringAlignment.Near,
-                LineAlignment = StringAlignment.Center
-            })
-                e.Graphics.DrawString(e.Header.Text, CurrentBaseSkin.Font, new SolidBrush(CurrentBaseSkin.ForeColor),
-                    e.Bounds, sf);
-        }
-
-        private void ButtonOnEnabledChanged(object sender, EventArgs eventArgs)
-        {
-            var btn = sender as Button;
-            if (btn == null) return;
-            btn.ForeColor = btn.Enabled ? CurrentBaseSkin.ForeColor : CurrentBaseSkin.DisabledForeColor;
-            btn.BackColor = btn.Enabled ? CurrentBaseSkin.BackColor : CurrentBaseSkin.DisabledBackColor;
-        }
-
-        private void ButtonOnPaint(object sender, PaintEventArgs e)
-        {
-            var btn = (Button) sender;
-
-            using (var drawBrush = new SolidBrush(btn.ForeColor))
-            {
-                using (var sf = new StringFormat
-                {
-                    Alignment = StringAlignment.Center,
-                    LineAlignment = StringAlignment.Center
-                })
-                {
-                    e.Graphics.DrawString(btn.Tag?.ToString(), btn.Font, drawBrush, e.ClipRectangle, sf);
-                }
-            }
+            else if (control.Controls.Count > 0) //Recursive loop that applies the skin to controls inside controls.
+                foreach (Control c in control.Controls)
+                    ApplyControlSkin(c);
         }
     }
 }

@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorPanel));
             this.panel1 = new System.Windows.Forms.Panel();
             this.eyedropperColorPicker = new TileIconifier.Controls.Eyedropper.EyedropColorPicker();
-            this.btnColourPicker = new System.Windows.Forms.Button();
+            this.btnColourPicker = new TileIconifier.Controls.SkinnableButton();
             this.pnlFGColour = new System.Windows.Forms.Panel();
-            this.chkFGTxtEnabled = new System.Windows.Forms.CheckBox();
-            this.radFGDark = new System.Windows.Forms.RadioButton();
+            this.chkFGTxtEnabled = new TileIconifier.Controls.SkinnableCheckBox();
+            this.radFGDark = new TileIconifier.Controls.SkinnableRadioButton();
             this.lblFGText = new System.Windows.Forms.Label();
-            this.radFGLight = new System.Windows.Forms.RadioButton();
+            this.radFGLight = new TileIconifier.Controls.SkinnableRadioButton();
             this.cmbColour = new System.Windows.Forms.ComboBox();
             this.lblBGColour = new System.Windows.Forms.Label();
             this.txtBGColour = new System.Windows.Forms.TextBox();
@@ -143,12 +143,12 @@
 
         private System.Windows.Forms.Panel panel1;
         private Eyedropper.EyedropColorPicker eyedropperColorPicker;
-        private System.Windows.Forms.Button btnColourPicker;
+        private TileIconifier.Controls.SkinnableButton btnColourPicker;
         private System.Windows.Forms.Panel pnlFGColour;
-        private System.Windows.Forms.RadioButton radFGDark;
-        private System.Windows.Forms.CheckBox chkFGTxtEnabled;
+        private TileIconifier.Controls.SkinnableRadioButton radFGDark;
+        private TileIconifier.Controls.SkinnableCheckBox chkFGTxtEnabled;
         private System.Windows.Forms.Label lblFGText;
-        private System.Windows.Forms.RadioButton radFGLight;
+        private TileIconifier.Controls.SkinnableRadioButton radFGLight;
         private System.Windows.Forms.ComboBox cmbColour;
         private System.Windows.Forms.Label lblBGColour;
         private System.Windows.Forms.TextBox txtBGColour;

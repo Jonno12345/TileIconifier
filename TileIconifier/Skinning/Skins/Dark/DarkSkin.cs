@@ -28,6 +28,7 @@
 #endregion
 
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace TileIconifier.Skinning.Skins.Dark
 {
@@ -35,9 +36,49 @@ namespace TileIconifier.Skinning.Skins.Dark
     {
         public override Color BackColor => ColorTranslator.FromHtml("#323232");
         public override Color ForeColor => ColorTranslator.FromHtml("#E3E3E3");
-        public override Color DisabledForeColor => Color.LightGray;
+        //public override Color DisabledForeColor => Color.LightGray;
         public override Color DisabledBackColor => Color.DarkGray;
 
         public override Color SortableListViewBackColor => Color.Black;
+
+        public override FlatStyle ButtonFlatStyle
+        {
+            get
+            {
+                return FlatStyle.Flat;
+            }
+        }
+
+        public override Color ButtonForeColor
+        {
+            get
+            {
+                return Color.White;
+            }
+        }
+
+        public override Color ButtonBackColor
+        {
+            get
+            {
+                return Color.FromArgb(70, 70, 70);
+            }
+        }
+
+        public override Color ButtonForeColorDisabled
+        {
+            get
+            {
+                return Color.Gray;
+            }
+        }
+
+        public override Color ButtonFlatBorderColor
+        {
+            get
+            {
+                return Color.FromArgb(90, 90, 90);
+            }
+        }
     }
 }
