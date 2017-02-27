@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls
 {
@@ -54,16 +55,13 @@ namespace TileIconifier.Controls
 
             //We paint the disabled text on top of the base class drawing using 
             //the ForeColorDisabled color that we have implemented ourselves.
-            //Very rudimentary implementation. Properties like TextAlign are ignored.
+            //Very rudimentary implementation. Some properties may be ignored.
             if (!Enabled)
             {
-                Rectangle contentRect = Rectangle.FromLTRB(
-                    ClientRectangle.Left + Padding.Left,
-                    ClientRectangle.Top + Padding.Top,
-                    ClientRectangle.Right - Padding.Right,
-                    ClientRectangle.Bottom - Padding.Bottom);
+                Rectangle contentRect = ButtonUtils.CreatePaddedRectangle(ClientRectangle, Padding);
+                TextFormatFlags flags = ButtonUtils.ConvertToTextFormatFlags(TextAlign);
 
-                TextRenderer.DrawText(pevent.Graphics, Text, Font, contentRect, ForeColorDisabled);
+                TextRenderer.DrawText(pevent.Graphics, Text, Font, contentRect, ForeColorDisabled, flags);
             }                
         }
     }

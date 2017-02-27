@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using TileIconifier.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Drawing;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls
 {
@@ -72,12 +73,10 @@ namespace TileIconifier.Controls
                 const int inCheckAreaAndTextAreaSpacing = 2;
 
                 Size checkAreaSize = GetCheckSize(pevent) + new Size(inGlyphPadding, inGlyphPadding);
+                Rectangle textRect = ButtonUtils.GetGlyphButtonTextRect(checkAreaSize, ClientRectangle, inCheckAreaAndTextAreaSpacing);
+                TextFormatFlags flags = ButtonUtils.ConvertToTextFormatFlags(TextAlign);
 
-                Point textRectLocation = new Point(ClientRectangle.X + checkAreaSize.Width + inCheckAreaAndTextAreaSpacing, ClientRectangle.Y);
-                Size textRectSize = new Size(ClientRectangle.Width - checkAreaSize.Width - inCheckAreaAndTextAreaSpacing, ClientRectangle.Height);
-                Rectangle textRect = new Rectangle(textRectLocation, textRectSize);
-
-                TextRenderer.DrawText(pevent.Graphics, Text, Font, textRect, ForeColorDisabled, TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
+                TextRenderer.DrawText(pevent.Graphics, Text, Font, textRect, ForeColorDisabled, flags);
             }
         }
 

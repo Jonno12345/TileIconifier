@@ -293,6 +293,7 @@
       <DependentUpon>Strings.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Utilities\ButtonUtils.cs" />
     <Compile Include="Utilities\FontUtils.cs" />
     <Compile Include="Utilities\FormUtils.cs" />
     <Compile Include="Forms\Shared\FrmIconSelector.cs">
