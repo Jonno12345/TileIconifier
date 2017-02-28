@@ -47,6 +47,9 @@ namespace TileIconifier.Skinning.Skins
 
         public virtual Font Font => new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
 
+        public virtual ToolStripSystemRendererEx ToolStripRenderer { get; } = new ToolStripSystemRendererEx();
+
+        #region "Button"
         public virtual FlatStyle ButtonFlatStyle
         {
             get
@@ -86,5 +89,48 @@ namespace TileIconifier.Skinning.Skins
                 return Color.Empty;
             }
         }
+        #endregion
+
+        #region "TextBox"
+        public virtual BorderStyle TextBoxBorderStyle
+        {
+            get
+            {
+                return BorderStyle.Fixed3D;
+            }
+        }
+
+        public virtual Color TextBoxBackColor
+        {
+            get
+            {
+                return SystemColors.Window;
+            }
+        }
+
+        public virtual Color TextBoxForeColor
+        {
+            get
+            {
+                return SystemColors.WindowText;
+            }
+        }
+
+        public virtual Color TextBoxBackColorReadOnly
+        {
+            get
+            {
+                return SystemColors.Control;
+            }
+        }
+
+        public virtual Color TextBoxBorderColor
+        {
+            get
+            {
+                return Color.Empty;
+            }
+        }
+        #endregion
     }
 }

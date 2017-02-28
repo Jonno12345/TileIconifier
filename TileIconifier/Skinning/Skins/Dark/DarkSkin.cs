@@ -41,6 +41,10 @@ namespace TileIconifier.Skinning.Skins.Dark
 
         public override Color SortableListViewBackColor => Color.Black;
 
+        public override ToolStripSystemRendererEx ToolStripRenderer { get; } =
+            new ToolStripSystemRendererEx(new ToolStripDarkColorScheme());
+
+        #region "Button, CheckBoxes and RadioButtons"
         public override FlatStyle ButtonFlatStyle
         {
             get
@@ -80,5 +84,48 @@ namespace TileIconifier.Skinning.Skins.Dark
                 return Color.FromArgb(90, 90, 90);
             }
         }
+        #endregion "Button"
+
+        #region "TextBox"
+        public override BorderStyle TextBoxBorderStyle
+        {
+            get
+            {
+                return BorderStyle.FixedSingle;
+            }
+        }
+
+        public override Color TextBoxBackColor
+        {
+            get
+            {
+                return Color.FromArgb(30, 30, 30);
+            }
+        }
+
+        public override Color TextBoxForeColor
+        {
+            get
+            {
+                return Color.White;
+            }
+        }
+
+        public override Color TextBoxBackColorReadOnly
+        {
+            get
+            {
+                return Color.FromArgb(50, 50, 50);
+            }
+        }
+
+        public override Color TextBoxBorderColor
+        {
+            get
+            {
+                return Color.Gray;
+            }
+        }
+        #endregion
     }
 }

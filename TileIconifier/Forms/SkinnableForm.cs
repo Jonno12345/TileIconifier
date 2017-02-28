@@ -163,6 +163,32 @@ namespace TileIconifier.Forms
                 //Button and RadioButtons have this property in common, which we apply in both cases.
                 rbt.FlatStyle = FormSkin.ButtonFlatStyle;
             }
+            else if (t == typeof(SkinnableTextBox))
+            {
+                SkinnableTextBox txt = (SkinnableTextBox)control;
+                txt.BorderStyle = FormSkin.TextBoxBorderStyle;
+                txt.BorderColor = FormSkin.TextBoxBorderColor;
+                txt.ForeColor = FormSkin.TextBoxForeColor;
+                if (txt.ReadOnly)
+                {
+                    txt.BackColor = FormSkin.TextBoxBackColorReadOnly;
+                }
+                else
+                {
+                    txt.BackColor = FormSkin.TextBoxBackColor;
+                }
+            }
+            else if (t ==typeof(SortableListView))
+            {
+                SortableListView lvw = (SortableListView)control;
+                lvw.BackColor = Color.Black;
+                lvw.ForeColor = Color.White;
+            }
+            else if (t.IsSubclassOf(typeof(ToolStrip)))
+            {
+                ToolStrip toolstrip = ((ToolStrip)control);
+                toolstrip.Renderer = FormSkin.ToolStripRenderer;
+            }
             else if (control.Controls.Count > 0) //Recursive loop that applies the skin to controls inside controls.
                 foreach (Control c in control.Controls)
                     ApplyControlSkin(c);

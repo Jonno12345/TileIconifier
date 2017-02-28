@@ -66,14 +66,14 @@ namespace TileIconifier.Utilities
         /// <summary>
         /// Returns a rectangle where the text can be drawn on a RadioButton or a CheckBox.
         /// </summary>
-        /// <param name="pGlyphAreaSize"></param>
+        /// <param name="pCheckAreaSize"></param>
         /// <param name="pClientRect"></param>
         /// <param name="pSpacing">Spacing between the glyph and the text.</param>
         /// <returns></returns>
-        internal static Rectangle GetGlyphButtonTextRect(Size pGlyphAreaSize, Rectangle pClientRect, int pSpacing)
+        internal static Rectangle GetGlyphButtonTextRect(Size pCheckAreaSize, Rectangle pClientRect, int pSpacing)
         {
-            Point textRectLocation = new Point(pClientRect.X + pGlyphAreaSize.Width + pSpacing, pClientRect.Y);
-            Size textRectSize = new Size(pClientRect.Width - pGlyphAreaSize.Width - pSpacing, pClientRect.Height);
+            Point textRectLocation = new Point(pClientRect.X + pCheckAreaSize.Width + pSpacing, pClientRect.Y);
+            Size textRectSize = new Size(pClientRect.Width - pCheckAreaSize.Width - pSpacing, pClientRect.Height);
             Rectangle textRect = new Rectangle(textRectLocation, textRectSize);
 
             return textRect;

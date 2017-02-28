@@ -149,6 +149,9 @@
     <Compile Include="Controls\SkinnableRadioButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\SkinnableTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -293,6 +296,10 @@
       <DependentUpon>Strings.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Skinning\Skins\Dark\ToolStripDarkColorScheme.cs" />
+    <Compile Include="Skinning\Skins\ToolStripSystemColorScheme.cs" />
+    <Compile Include="Skinning\SystemColorTable.cs" />
+    <Compile Include="Skinning\ToolStripSystemRendererEx.cs" />
     <Compile Include="Utilities\ButtonUtils.cs" />
     <Compile Include="Utilities\FontUtils.cs" />
     <Compile Include="Utilities\FormUtils.cs" />
