@@ -9,7 +9,7 @@ using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls
 {
-    class SkinnableButton : Button
+    class SkinnableButton : Button, ISkinnableButton
     {
         private bool boBasePainting = false;  
 

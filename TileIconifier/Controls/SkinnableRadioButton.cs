@@ -11,7 +11,7 @@ using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls
 {
-    class SkinnableRadioButton : RadioButton
+    class SkinnableRadioButton : RadioButton, ISkinnableCheckableButton
     {
         private bool boBasePainting;
 
@@ -66,7 +66,7 @@ namespace TileIconifier.Controls
 
             //We paint the disabled text on top of the base class drawing using 
             //the ForeColorDisabled color that we have implemented ourselves.
-            //Very rudimentary implementation. Properties like TextAlign are ignored.
+            //Very rudimentary implementation. Some properties like RightToLeft are ignored.
             if (!Enabled)
             {
                 const int inGlyphPadding = 1;

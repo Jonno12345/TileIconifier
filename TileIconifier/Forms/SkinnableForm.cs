@@ -113,56 +113,31 @@ namespace TileIconifier.Forms
         private void ApplyControlSkin(Control control)
         {
             Type t = control.GetType();
-            if (t == typeof(SkinnableButton))
-            {   //Button
-                SkinnableButton btn = (SkinnableButton)control;
-                btn.FlatStyle = FormSkin.ButtonFlatStyle;
-                btn.ForeColor = FormSkin.ButtonForeColor;
-                btn.BackColor = FormSkin.ButtonBackColor;
-                btn.ForeColorDisabled = FormSkin.ButtonForeColorDisabled;
-                btn.FlatAppearance.BorderColor = FormSkin.ButtonFlatBorderColor;
-            }
-            else if (t == typeof(SkinnableCheckBox))
-            {   //Checkbox
-                SkinnableCheckBox chk = (SkinnableCheckBox)control;
-                
-                //A checkbox can have the appearance of a button, so we apply the skin accordingly.
-                if (chk.Appearance == Appearance.Button)
-                {   chk.ForeColor = FormSkin.ButtonForeColor;
-                    chk.BackColor = FormSkin.ButtonBackColor;
-                    chk.ForeColorDisabled = FormSkin.ButtonForeColorDisabled;
-                    chk.FlatAppearance.BorderColor = FormSkin.ButtonFlatBorderColor;
-                }
-                //else
-                //{
-                //    //We treat the checkbox like a label, which means that we don't need
-                //    //to set any color since they are ambiant.
-                //}
-
-                //Button and Checkboxes have this property in common, which we apply in both cases.
-                chk.FlatStyle = FormSkin.ButtonFlatStyle;                
-            }
-            else if (t == typeof(SkinnableRadioButton))
-            {
-                SkinnableRadioButton rbt = (SkinnableRadioButton)control;
-
-                //A radiobutton can have the appearance of a button, so we apply the skin accordingly.
-                if (rbt.Appearance == Appearance.Button)
+            if (typeof(ISkinnableCheckableButton).IsAssignableFrom(t))
+            {   //ChechBox or RadioButton
+                ISkinnableCheckableButton checkableCtrl = (ISkinnableCheckableButton)control;
+                if (checkableCtrl.Appearance == Appearance.Button)
                 {
-                    rbt.ForeColor = FormSkin.ButtonForeColor;
-                    rbt.BackColor = FormSkin.ButtonBackColor;
-                    rbt.ForeColorDisabled = FormSkin.ButtonForeColorDisabled;
-                    rbt.FlatAppearance.BorderColor = FormSkin.ButtonFlatBorderColor;
+                    ApplyButtonSkin(checkableCtrl);
                 }
-                //else
-                //{
-                //    //We treat the checkbox like a label, which means that we don't need
-                //    //to set any color since they are ambiant.
-                //}
-
-                //Button and RadioButtons have this property in common, which we apply in both cases.
-                rbt.FlatStyle = FormSkin.ButtonFlatStyle;
+                else
+                {
+                    //We treat checkboxes and radiobutton like labels (their Fore/Back/Disabled colors
+                    //are ambiant) so there is no need to apply any skin properties manually. The
+                    //only exception is FlatStyle, which is not ambiant and specific to Buttons/Checkboxes, etc.
+                    checkableCtrl.FlatStyle = FormSkin.ButtonFlatStyle;
+                }
+                
             }
+            else if (t == typeof(SkinnableButton))
+            {   //Button
+                //We MUST evaluate this condition AFTER typeof(ISkinnableCheckableButton).IsAssignableFrom(t)
+                //because ISkinnableCheckableButton descends from ISkinnableButton, so we would otherwise
+                //be unable to differenciate Buttons from Checkboxes and RadioButtons, because this condition would
+                //be always true and the other would not be evaluated.
+                ISkinnableButton btn = (ISkinnableButton)control;
+                ApplyButtonSkin(btn);                         
+            }            
             else if (t == typeof(SkinnableTextBox))
             {
                 SkinnableTextBox txt = (SkinnableTextBox)control;
@@ -208,6 +183,15 @@ namespace TileIconifier.Forms
             else if (control.Controls.Count > 0) //Recursive loop that applies the skin to controls inside controls.
                 foreach (Control c in control.Controls)
                     ApplyControlSkin(c);
+        }
+
+        private void ApplyButtonSkin(ISkinnableButton pButton)
+        {
+            pButton.FlatStyle = FormSkin.ButtonFlatStyle;
+            pButton.ForeColor = FormSkin.ButtonForeColor;
+            pButton.BackColor = FormSkin.ButtonBackColor;
+            pButton.ForeColorDisabled = FormSkin.ButtonForeColorDisabled;
+            pButton.FlatAppearance.BorderColor = FormSkin.ButtonFlatBorderColor;
         }
     }
 }
