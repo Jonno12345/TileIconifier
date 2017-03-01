@@ -12,6 +12,7 @@ namespace TileIconifier.Skinning.Skins
         #region "Default colors"
         public static Color DefaultMenuBarBackColor { get { return SystemColors.MenuBar; } }
         public static Color DefaultPopupBackColor { get { return SystemColors.Menu; } }
+        public static Color DefaultMenuBarBorderColor { get { return SystemColors.ControlDark; } }
         public static Color DefaultPopupBorderColor { get { return SystemColors.ControlDark; } }
         public static Color DefaultHighlightBackColor { get { return SystemColors.Highlight; } }
         public static Color DefaultHighlightForeColor { get { return SystemColors.HighlightText; } }
@@ -22,6 +23,7 @@ namespace TileIconifier.Skinning.Skins
 
         public virtual Color MenuBarBackColor { get { return DefaultMenuBarBackColor; } }
         public virtual Color PopupBackColor { get { return DefaultPopupBackColor; } }
+        public virtual Color MenuBarBorderColor { get { return DefaultMenuBarBorderColor; } }
         public virtual Color PopupBorderColor { get { return DefaultPopupBorderColor; } }
         public virtual Color HighlightBackColor { get { return DefaultHighlightBackColor; } }
         public virtual Color HighlightForeColor { get { return DefaultHighlightForeColor; } }

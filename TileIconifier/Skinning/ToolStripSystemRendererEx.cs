@@ -187,16 +187,17 @@ namespace TileIconifier.Skinning
         private void DrawBorderInternal(ToolStripRenderEventArgs e)
         {
             Rectangle bounds = e.AffectedBounds;
-
-            //Pourquoi ne pas utiliser la propriété e.Toolstrip.IsDropDown? Serait mieux pcq propriété peut être mise en cache si on la redemande.
-            if (e.ToolStrip is ToolStripDropDown)
+            
+            if (e.ToolStrip.IsDropDown)
             {
-                //Paint the border for the window depending on whether or not flat menus are enabled.
-                if (SystemInformation.IsFlatMenuEnabled)
+                //Popup menu
+                if (colorTable.PopupBorderColor != ToolStripSystemColorScheme.DefaultPopupBorderColor || SystemInformation.IsFlatMenuEnabled)
                 {
                     bounds.Width -= 1;
                     bounds.Height -= 1;
-                    e.Graphics.DrawRectangle(SystemPens.ControlDark, bounds);
+                    using (SolidBrush b = new SolidBrush(colorTable.PopupBorderColor))
+                    using (Pen p = new Pen(b))
+                        e.Graphics.DrawRectangle(p, bounds);
                 }
                 else
                 {
@@ -205,7 +206,25 @@ namespace TileIconifier.Skinning
             }
             else
             {
-                base.OnRenderToolStripBorder(e);
+                //Menu bar
+                if (colorTable.MenuBarBorderColor != ToolStripSystemColorScheme.DefaultMenuBarBorderColor)
+                {
+                    //Draws a border with the suer-defined color. In this case, we just draw a plain line
+                    //the the sake of simplicity.
+                    Point borderBegins = new Point(e.AffectedBounds.X, e.AffectedBounds.Y + e.AffectedBounds.Height - 1);
+                    Point borderEnds = new Point(e.AffectedBounds.X + e.AffectedBounds.Width, borderBegins.Y);
+
+                    using (SolidBrush b = new SolidBrush(colorTable.MenuBarBorderColor))
+                    using (Pen p = new Pen(b))
+                        e.Graphics.DrawLine(p, borderBegins, borderEnds);                        
+                }
+                else if (colorTable.MenuBarBackColor != ToolStripSystemColorScheme.DefaultMenuBarBackColor || !ToolStripManager.VisualStylesEnabled)
+                {
+                    //We let the base class handle the border drawing with the system colors. We only do this if 
+                    //the menu bar background is not painted with visual styles, because the menu bar background 
+                    //visual style image already includes the border.
+                    base.OnRenderToolStripBorder(e);
+                }                    
             }
         }        
 

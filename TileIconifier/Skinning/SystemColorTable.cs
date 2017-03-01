@@ -43,6 +43,7 @@ namespace TileIconifier.Skinning
 
         internal Color MenuBarBackColor { get { return Scheme.MenuBarBackColor; } }
         internal Color PopupBackColor { get { return Scheme.PopupBackColor; } }
+        internal Color MenuBarBorderColor { get { return Scheme.MenuBarBorderColor; } }
         internal Color PopupBorderColor { get { return Scheme.PopupBorderColor; } }
         internal Color HighlightBackColor { get { return Scheme.HighlightBackColor; } }
         internal Color HighlightForeColor { get { return Scheme.HighlightForeColor; } }
