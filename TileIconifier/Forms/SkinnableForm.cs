@@ -165,6 +165,9 @@ namespace TileIconifier.Forms
                 lvw.BackColor = FormSkin.ListViewBackColor;
                 lvw.ForeColor = FormSkin.ListViewForeColor;
                 lvw.BorderStyle = FormSkin.ListViewBorderStyle;
+                lvw.BorderColor = FormSkin.ListViewBorderColor;
+                lvw.BorderFocusedColor = FormSkin.ListViewBorderFocusedColor;
+                lvw.BorderDisabledColor = FormSkin.ListViewBorderDisabledColor;
             }
             else if (t == typeof(SkinnableComboBox))
             {

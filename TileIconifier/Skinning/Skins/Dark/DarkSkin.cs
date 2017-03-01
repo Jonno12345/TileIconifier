@@ -82,7 +82,7 @@ namespace TileIconifier.Skinning.Skins.Dark
         public override Color TextBoxReadOnlyBackColor { get { return MediumBackColor; } }
         public override Color TextBoxBorderColor { get { return LowBorderColor; } }
         public override Color TextBoxBorderFocusedColor { get { return FocusedBorderColor; } }
-        public override Color TextBoxBorderDisabledColor { get { return LowDisabledForeColor; } }
+        public override Color TextBoxBorderDisabledColor { get { return LowDisabledForeColor; } } //
         #endregion
 
         #region "ListView"
@@ -92,6 +92,9 @@ namespace TileIconifier.Skinning.Skins.Dark
         public override Color ListViewForeColor { get { return LowForeColor; } }
         public override Color ListViewHeaderBackColor { get { return MediumBackColor; } }
         public override Color ListViewHeaderForeColor { get { return MediumForeColor; } }
+        public override Color ListViewBorderColor { get { return LowBorderColor; } }
+        public override Color ListViewBorderFocusedColor { get { return FocusedBorderColor; } }
+        public override Color ListViewBorderDisabledColor { get { return LowDisabledForeColor; } } //
         #endregion
 
         #region "ComboBox"

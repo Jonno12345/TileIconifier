@@ -14,7 +14,7 @@ namespace TileIconifier.Controls
 
     class SkinnableTextBox : TextBox
     {
-        const int WM_PAINT = 0xF;  //This constant is duplicated in SkinnableListView. We should find a better place for it to avoid duplicate          
+        const int WM_PAINT = 0xF;  //Find a better place for this constant.          
 
         Color borderColor = Color.Empty;
         [DefaultValue(typeof(Color), "")]
@@ -26,7 +26,10 @@ namespace TileIconifier.Controls
                 if (borderColor != value)
                 {
                     borderColor = value;
-                    Invalidate();
+                    if (BorderStyle == BorderStyle.FixedSingle)
+                    {
+                        Invalidate();
+                    }                        
                 }                
             }
         }
@@ -41,7 +44,10 @@ namespace TileIconifier.Controls
                 if (borderFocusedColor != value)
                 {
                     borderFocusedColor = value;
-                    Invalidate();
+                    if (BorderStyle == BorderStyle.FixedSingle)
+                    {
+                        Invalidate();
+                    }
                 }
             }
         }
@@ -56,7 +62,10 @@ namespace TileIconifier.Controls
                 if (borderDisabledColor != value)
                 {
                     borderDisabledColor = value;
-                    Invalidate();
+                    if (BorderStyle == BorderStyle.FixedSingle)
+                    {
+                        Invalidate();
+                    }
                 }
             }
         }

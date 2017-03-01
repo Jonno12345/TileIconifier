@@ -74,6 +74,9 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color ListViewForeColor { get { return SystemColors.WindowText; } }
         public virtual Color ListViewHeaderBackColor { get { return SystemColors.Control; } } //not used
         public virtual Color ListViewHeaderForeColor { get { return SystemColors.ControlText; } } //not used
+        public virtual Color ListViewBorderColor { get { return Color.Empty; } } //not used
+        public virtual Color ListViewBorderFocusedColor { get { return Color.Empty; } } //not used
+        public virtual Color ListViewBorderDisabledColor { get { return Color.Empty; } } //not used
         #endregion
 
         #region "ComboBox"
