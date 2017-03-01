@@ -101,6 +101,7 @@ namespace TileIconifier.Forms
         {
             ForeColor = FormSkin.ForeColor;
             BackColor = FormSkin.BackColor;
+            Font = FormSkin.Font;
 
             foreach (Control c in Controls)
                 ApplyControlSkin(c);

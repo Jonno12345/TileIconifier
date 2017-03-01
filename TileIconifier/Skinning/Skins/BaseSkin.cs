@@ -34,20 +34,17 @@ namespace TileIconifier.Skinning.Skins
 {
     public class BaseSkin
     {
-        public virtual Color BackColor => SystemColors.Control;
-        public virtual Color ForeColor => SystemColors.ControlText;
-        public virtual Color DisabledForeColor => SystemColors.GrayText;
-        public virtual Color DisabledBackColor => Color.LightGray;
+        #region "Basic properties"
+        public virtual Color BackColor { get { return SystemColors.Control; } }
+        public virtual Color ForeColor { get { return SystemColors.ControlText; } }
+        public virtual Color DisabledForeColor { get { return SystemColors.GrayText; } }
+        public virtual Color HighlightBackColor { get { return SystemColors.Highlight; } }
+        public virtual Color ErrorForeColor { get { return Color.Red; } }
 
-        public virtual Color HighlightColor => SystemColors.Highlight;
-
-        public virtual Color SortableListViewBackColor => Color.White;
-
-        public virtual Color ErrorColor => Color.Red;
-
-        public virtual Font Font => new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-
+        //These objects are potentially more expensive to create, se we cache them.
+        public virtual Font Font { get; } = SystemFonts.DialogFont;
         public virtual ToolStripSystemRendererEx ToolStripRenderer { get; } = new ToolStripSystemRendererEx();
+        #endregion
 
         #region "Button"
         public virtual FlatStyle ButtonFlatStyle { get { return FlatStyle.Standard; } }

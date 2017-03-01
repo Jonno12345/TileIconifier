@@ -34,15 +34,17 @@ namespace TileIconifier.Skinning.Skins.Dark
 {
     public class DarkSkin : BaseSkin
     {
-        public override Color BackColor => ColorTranslator.FromHtml("#323232");
-        public override Color ForeColor => ColorTranslator.FromHtml("#E3E3E3");
-        //public override Color DisabledForeColor => Color.LightGray;
-        public override Color DisabledBackColor => Color.DarkGray;
+        #region "Basic properties"
+        public override Color BackColor { get { return SystemColors.Control; } }
+        public override Color ForeColor { get { return SystemColors.ControlText; } }
+        public override Color DisabledForeColor { get { return SystemColors.GrayText; } }
+        public override Color HighlightBackColor { get { return SystemColors.Highlight; } }
+        public override Color ErrorForeColor { get { return Color.Red; } }
 
-        public override Color SortableListViewBackColor => Color.Black;
-
-        public override ToolStripSystemRendererEx ToolStripRenderer { get; } =
-            new ToolStripSystemRendererEx(new ToolStripDarkColorScheme());
+        //These objects are potentially more expensive to create, se we cache them.
+        public override Font Font { get; } = SystemFonts.DialogFont;
+        public override ToolStripSystemRendererEx ToolStripRenderer { get; } = new ToolStripSystemRendererEx(new ToolStripDarkColorScheme());
+        #endregion
 
         #region "Button"
         public override FlatStyle ButtonFlatStyle { get { return FlatStyle.Standard; } }

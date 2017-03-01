@@ -67,7 +67,7 @@ namespace TileIconifier.Forms.Main
         private void ApplySkin()
         {
             iconifyPanel.UpdateSkinColors(FormSkin);
-            lblBadShortcutWarning.ForeColor = FormSkin.ErrorColor;
+            lblBadShortcutWarning.ForeColor = FormSkin.ErrorForeColor;
         }
 
         private void frmDropper_Load(object sender, EventArgs e)
