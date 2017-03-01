@@ -188,6 +188,18 @@ namespace TileIconifier.Forms
                 lvw.ForeColor = FormSkin.ListViewForeColor;
                 lvw.BorderStyle = FormSkin.ListViewBorderStyle;
             }
+            else if (t == typeof(SkinnableComboBox))
+            {
+                SkinnableComboBox cbo = (SkinnableComboBox)control;
+                cbo.FlatStyle = FormSkin.ComboBoxFlatStyle;
+                cbo.BackColor = FormSkin.ComboBoxBackColor;
+                cbo.ForeColor = FormSkin.ComboBoxForeColor;
+                cbo.FlatButtonBackColor = FormSkin.ComboBoxButtonBackColor;
+                cbo.FlatButtonForeColor = FormSkin.ComboboxButtonForeColor;
+                cbo.FlatButtonDisabledForeColor = FormSkin.ComboBoxDisabledForeColor;
+                cbo.FlatButtonBorderColor = FormSkin.ComboBoxButtonBorderColor;
+                cbo.FlatButtonBorderFocusedColor = FormSkin.ComboBoxButtonBorderFocusedColor;
+            }
             else if (t.IsSubclassOf(typeof(ToolStrip)))
             {
                 ToolStrip toolstrip = ((ToolStrip)control);

@@ -37,7 +37,7 @@
             this.radFGDark = new TileIconifier.Controls.SkinnableRadioButton();
             this.lblFGText = new System.Windows.Forms.Label();
             this.radFGLight = new TileIconifier.Controls.SkinnableRadioButton();
-            this.cmbColour = new System.Windows.Forms.ComboBox();
+            this.cmbColour = new TileIconifier.Controls.SkinnableComboBox();
             this.lblBGColour = new System.Windows.Forms.Label();
             this.txtBGColour = new System.Windows.Forms.TextBox();
             this.clrDialog = new System.Windows.Forms.ColorDialog();
@@ -149,7 +149,7 @@
         private TileIconifier.Controls.SkinnableCheckBox chkFGTxtEnabled;
         private System.Windows.Forms.Label lblFGText;
         private TileIconifier.Controls.SkinnableRadioButton radFGLight;
-        private System.Windows.Forms.ComboBox cmbColour;
+        private TileIconifier.Controls.SkinnableComboBox cmbColour;
         private System.Windows.Forms.Label lblBGColour;
         private System.Windows.Forms.TextBox txtBGColour;
         private System.Windows.Forms.ColorDialog clrDialog;

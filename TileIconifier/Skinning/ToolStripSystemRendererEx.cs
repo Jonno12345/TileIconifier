@@ -222,7 +222,7 @@ namespace TileIconifier.Skinning
                 {
                     //We let the base class handle the border drawing with the system colors. We only do this if 
                     //the menu bar background is not painted with visual styles, because the menu bar background 
-                    //visual style image already includes the border.
+                    //visual style image that is painted elsewhere already includes the border.
                     base.OnRenderToolStripBorder(e);
                 }                    
             }

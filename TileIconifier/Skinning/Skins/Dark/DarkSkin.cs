@@ -178,5 +178,70 @@ namespace TileIconifier.Skinning.Skins.Dark
         }
         #endregion
 
+        #region "ComboBox"
+        public override FlatStyle ComboBoxFlatStyle
+        {
+            get
+            {
+                return FlatStyle.Flat;
+            }
+        }
+
+        public override Color ComboBoxBackColor
+        {
+            get
+            {
+                return Color.FromArgb(20, 20, 20);
+            }
+        }
+
+        public override Color ComboBoxForeColor
+        {
+            get
+            {
+                return Color.FromArgb(200, 200, 200);
+            }
+        }
+
+        public override Color ComboBoxButtonBackColor
+        {
+            get
+            {
+                return Color.FromArgb(60, 60, 60);
+            }
+        }
+
+        public override Color ComboboxButtonForeColor
+        {
+            get
+            {
+                return Color.FromArgb(200, 200, 200);
+            }
+        }
+
+        public override Color ComboBoxDisabledForeColor
+        {
+            get
+            {
+                return Color.FromArgb(60, 60, 60);
+            }
+        }
+
+        public override Color ComboBoxButtonBorderColor
+        {
+            get
+            {
+                return Color.FromArgb(70, 70, 70);
+            }
+        }
+
+        public override Color ComboBoxButtonBorderFocusedColor
+        {
+            get
+            {
+                return Color.DarkBlue;
+            }
+        }
+        #endregion
     }
 }

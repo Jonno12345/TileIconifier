@@ -182,5 +182,71 @@ namespace TileIconifier.Skinning.Skins
             }
         }
         #endregion
+
+        #region "ComboBox"
+        public virtual FlatStyle ComboBoxFlatStyle
+        {
+            get
+            {
+                return FlatStyle.Standard;
+            }
+        }
+
+        public virtual Color ComboBoxBackColor
+        {
+            get
+            {
+                return SystemColors.Window;
+            }
+        }
+
+        public virtual Color ComboBoxForeColor
+        {
+            get
+            {
+                return SystemColors.WindowText;
+            }
+        }
+
+        public virtual Color ComboBoxButtonBackColor
+        {
+            get
+            {
+                return SystemColors.Control; //not used
+            }
+        }
+
+        public virtual Color ComboboxButtonForeColor
+        {
+            get
+            {
+                return SystemColors.ControlText; //not used
+            }
+        }
+
+        public virtual Color ComboBoxDisabledForeColor
+        {
+            get
+            {
+                return SystemColors.GrayText; //not used
+            }
+        }
+
+        public virtual Color ComboBoxButtonBorderColor
+        {
+            get
+            {
+                return SystemColors.ControlDark; //not used
+            }
+        }
+
+        public virtual Color ComboBoxButtonBorderFocusedColor
+        {
+            get
+            {
+                return SystemColors.Highlight; //not used
+            }            
+        }
+        #endregion
     }
 }
