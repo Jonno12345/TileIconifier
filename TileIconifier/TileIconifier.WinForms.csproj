@@ -146,6 +146,9 @@
     <Compile Include="Controls\SkinnableCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\SkinnableListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\SkinnableRadioButton.cs">
       <SubType>Component</SubType>
     </Compile>

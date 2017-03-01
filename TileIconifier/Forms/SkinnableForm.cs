@@ -178,11 +178,15 @@ namespace TileIconifier.Forms
                     txt.BackColor = FormSkin.TextBoxBackColor;
                 }
             }
-            else if (t ==typeof(SortableListView))
+            else if (t.IsSubclassOf(typeof(SkinnableListView)))
             {
-                SortableListView lvw = (SortableListView)control;
-                lvw.BackColor = Color.Black;
-                lvw.ForeColor = Color.White;
+                SkinnableListView lvw = (SkinnableListView)control;
+                lvw.HeadersUseVisualStyleColors = FormSkin.ListViewHeadersUseVisualStyleColors;
+                lvw.HeaderBackColor = FormSkin.ListViewHeaderBackColor;
+                lvw.HeaderForeColor = FormSkin.ListViewHeaderForeColor;                
+                lvw.BackColor = FormSkin.ListViewBackColor;
+                lvw.ForeColor = FormSkin.ListViewForeColor;
+                lvw.BorderStyle = FormSkin.ListViewBorderStyle;
             }
             else if (t.IsSubclassOf(typeof(ToolStrip)))
             {

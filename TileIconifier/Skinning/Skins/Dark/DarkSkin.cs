@@ -127,5 +127,56 @@ namespace TileIconifier.Skinning.Skins.Dark
             }
         }
         #endregion
+
+        #region "ListView"
+        public override bool ListViewHeadersUseVisualStyleColors
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public override BorderStyle ListViewBorderStyle
+        {
+            get
+            {
+                return BorderStyle.FixedSingle;
+            }
+        }
+
+        public override Color ListViewBackColor
+        {
+            get
+            {
+                return Color.FromArgb(20, 20, 20);
+            }
+        }
+
+        public override Color ListViewForeColor
+        {
+            get
+            {
+                return Color.FromArgb(230,230,230);
+            }
+        }
+
+        public override Color ListViewHeaderBackColor
+        {
+            get
+            {
+                return Color.FromArgb(50, 50, 50);
+            }
+        }
+
+        public override Color ListViewHeaderForeColor
+        {
+            get
+            {
+                return Color.FromArgb(230,230,230);
+            }
+        }
+        #endregion
+
     }
 }

@@ -32,7 +32,7 @@ using System.Windows.Forms;
 
 namespace TileIconifier.Controls
 {
-    internal class SortableListView : ListView
+    internal class SortableListView : SkinnableListView
     {
         protected int SortColumn;
 

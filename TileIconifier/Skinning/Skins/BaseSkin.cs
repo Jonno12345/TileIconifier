@@ -132,5 +132,55 @@ namespace TileIconifier.Skinning.Skins
             }
         }
         #endregion
+
+        #region "ListView"
+        public virtual bool ListViewHeadersUseVisualStyleColors
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public virtual BorderStyle ListViewBorderStyle
+        {
+            get
+            {
+                return BorderStyle.Fixed3D;
+            }
+        }
+
+        public virtual Color ListViewBackColor
+        {
+            get
+            {
+                return SystemColors.Window;
+            }
+        }
+
+        public virtual Color ListViewForeColor
+        {
+            get
+            {
+                return SystemColors.WindowText;
+            }
+        }
+
+        public virtual Color ListViewHeaderBackColor
+        {
+            get
+            {
+                return SystemColors.Control;
+            }
+        }
+
+        public virtual Color ListViewHeaderForeColor
+        {
+            get
+            {
+                return SystemColors.ControlText;
+            }
+        }
+        #endregion
     }
 }
