@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace TileIconifier.Controls
 {
-    //Borrowed from there : http://stackoverflow.com/a/38405319
+    //Inspired from there : http://stackoverflow.com/a/38405319
 
     class SkinnableTextBox : TextBox
     {
-        const int WM_PAINT = 0xF;
-        const uint RDW_INVALIDATE = 0x1;
-        const uint RDW_IUPDATENOW = 0x100;
-        const uint RDW_FRAME = 0x400;
-        [DllImport("user32.dll")]
-        static extern IntPtr GetWindowDC(IntPtr hWnd);
-        [DllImport("user32.dll")]
-        static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);        
+        const int WM_PAINT = 0xF;  //This constant is duplicated in SkinnableListView. We should find a better place for it to avoid duplicate          
 
         Color borderColor = Color.Empty;
         [DefaultValue(typeof(Color), "")]
@@ -71,33 +64,37 @@ namespace TileIconifier.Controls
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
-            if (m.Msg == WM_PAINT && BorderStyle == BorderStyle.FixedSingle)
-            {
-                Color bColor;
-                if (!Enabled && !BorderDisabledColor.IsEmpty)
-                {
-                    bColor = BorderDisabledColor;
-                }
-                else if (Focused && !BorderFocusedColor.IsEmpty)
-                {
-                    bColor = BorderFocusedColor;
-                }
-                else if (!BorderColor.IsEmpty)
-                {
-                    bColor = BorderColor;
-                }
-                else
-                {
-                    return;
-                }
-                
-                var hdc = GetWindowDC(this.Handle);
-                using (var g = Graphics.FromHdcInternal(hdc))
-                using (var p = new Pen(bColor))
-                    g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
 
-                ReleaseDC(this.Handle, hdc);
+            //The paint event is not fired, so we must listen for the paint Windows message ourselves.
+            if (m.Msg == WM_PAINT && BorderStyle == BorderStyle.FixedSingle)
+            {                
+                PaintUserBorder();
             }
+        }
+
+        private void PaintUserBorder()
+        {
+            Color bColor;
+            if (!Enabled && !BorderDisabledColor.IsEmpty)
+            {
+                bColor = BorderDisabledColor;
+            }
+            else if (Focused && !BorderFocusedColor.IsEmpty)
+            {
+                bColor = BorderFocusedColor;
+            }
+            else if (!BorderColor.IsEmpty)
+            {
+                bColor = BorderColor;
+            }
+            else
+            {
+                return;
+            }
+
+            using (Graphics g = CreateGraphics())
+            using (Pen p = new Pen(bColor))
+                g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
         }
     }
 }
