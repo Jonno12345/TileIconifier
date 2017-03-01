@@ -34,10 +34,13 @@ namespace TileIconifier.Skinning.Skins.Dark
 {
     public class DarkSkin : BaseSkin
     {
+        #region "Common colors"
+        //These colors are applied to various controls.
+        //Simplifies skinning for similar UI elements.
         private Color LowBackColor = Color.FromArgb(20, 20, 20);
         private Color LowForeColor = Color.FromArgb(240, 240, 240);
         private Color LowDisabledForeColor = Color.FromArgb(130, 130, 130);
-        private Color LowBorderColor = Color.FromArgb(40, 40, 40);
+        private Color LowBorderColor = Color.FromArgb(70, 70, 70);
 
         private Color MediumBackColor = Color.FromArgb(50, 50, 50);
         private Color MediumForeColor = Color.FromArgb(240, 240, 240);
@@ -50,7 +53,7 @@ namespace TileIconifier.Skinning.Skins.Dark
         private Color HighBorderColor = Color.FromArgb(90, 90, 90);
 
         private Color FocusedBorderColor = SystemColors.Highlight;
-
+        #endregion
 
         #region "Basic properties"
         public override Color BackColor { get { return MediumBackColor; } }
@@ -59,7 +62,7 @@ namespace TileIconifier.Skinning.Skins.Dark
         public override Color HighlightBackColor { get { return FocusedBorderColor; } }
         public override Color ErrorForeColor { get { return Color.Red; } }
 
-        //These objects are potentially more expensive to create, se we cache them.
+        //These objects are potentially more expensive to create, so we cache them.
         public override Font Font { get; } = new Font("Segoe UI", 8);
         public override ToolStripSystemRendererEx ToolStripRenderer { get; } = new ToolStripSystemRendererEx(new ToolStripDarkColorScheme());
         #endregion
@@ -78,6 +81,8 @@ namespace TileIconifier.Skinning.Skins.Dark
         public override Color TextBoxForeColor { get { return LowForeColor; } }
         public override Color TextBoxReadOnlyBackColor { get { return MediumBackColor; } }
         public override Color TextBoxBorderColor { get { return LowBorderColor; } }
+        public override Color TextBoxBorderFocusedColor { get { return FocusedBorderColor; } }
+        public override Color TextBoxBorderDisabledColor { get { return LowDisabledForeColor; } }
         #endregion
 
         #region "ListView"
@@ -93,11 +98,11 @@ namespace TileIconifier.Skinning.Skins.Dark
         public override FlatStyle ComboBoxFlatStyle { get { return FlatStyle.Flat; } }
         public override Color ComboBoxBackColor { get { return LowBackColor; } }
         public override Color ComboBoxForeColor { get { return LowForeColor; } }
-        public override Color ComboBoxButtonBackColor { get { return MediumBackColor; } } //not used
-        public override Color ComboboxButtonForeColor { get { return MediumForeColor; } } //not used
-        public override Color ComboBoxDisabledForeColor { get { return MediumDisabledForeColor; } } //not used
-        public override Color ComboBoxButtonBorderColor { get { return MediumBorderColor; } } //not used
-        public override Color ComboBoxButtonBorderFocusedColor { get { return FocusedBorderColor; } } //not used
+        public override Color ComboBoxButtonBackColor { get { return MediumBackColor; } }
+        public override Color ComboboxButtonForeColor { get { return MediumForeColor; } }
+        public override Color ComboBoxDisabledForeColor { get { return MediumDisabledForeColor; } }
+        public override Color ComboBoxButtonBorderColor { get { return MediumBorderColor; } }
+        public override Color ComboBoxButtonBorderFocusedColor { get { return FocusedBorderColor; } }
         #endregion
     }
 }

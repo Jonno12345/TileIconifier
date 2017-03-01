@@ -144,6 +144,8 @@ namespace TileIconifier.Forms
                 SkinnableTextBox txt = (SkinnableTextBox)control;
                 txt.BorderStyle = FormSkin.TextBoxBorderStyle;
                 txt.BorderColor = FormSkin.TextBoxBorderColor;
+                txt.BorderFocusedColor = FormSkin.TextBoxBorderFocusedColor;
+                txt.BorderDisabledColor = FormSkin.TextBoxBorderDisabledColor;
                 txt.ForeColor = FormSkin.TextBoxForeColor;
                 if (txt.ReadOnly)
                 {

@@ -46,6 +46,9 @@ namespace TileIconifier.Skinning.Skins
         public virtual ToolStripSystemRendererEx ToolStripRenderer { get; } = new ToolStripSystemRendererEx();
         #endregion
 
+        //"not used" means that the given color is not actually used by the control, because
+        //it is not applicable based on the control's FlatStyle, BorderStyle or HeaderUseVisualStyleColors property.
+
         #region "Button"
         public virtual FlatStyle ButtonFlatStyle { get { return FlatStyle.Standard; } }
         public virtual Color ButtonForeColor { get { return SystemColors.ControlText; } }
@@ -60,6 +63,8 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color TextBoxForeColor { get { return SystemColors.WindowText; } }
         public virtual Color TextBoxReadOnlyBackColor { get { return SystemColors.Control; } }
         public virtual Color TextBoxBorderColor { get { return Color.Empty; } } //not used
+        public virtual Color TextBoxBorderFocusedColor { get { return Color.Empty; } } //not used
+        public virtual Color TextBoxBorderDisabledColor { get { return Color.Empty; } } //not used
         #endregion
 
         #region "ListView"
