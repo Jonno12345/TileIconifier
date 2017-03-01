@@ -45,7 +45,7 @@ namespace TileIconifier.Controls
         /// <summary>
         /// Gets or set the foreground color of the button when it is disabled.
         /// </summary>
-        public Color ForeColorDisabled { get; set; } 
+        public Color DisabledForeColor { get; set; } 
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
@@ -61,7 +61,7 @@ namespace TileIconifier.Controls
                 Rectangle contentRect = ButtonUtils.CreatePaddedRectangle(ClientRectangle, Padding);
                 TextFormatFlags flags = ButtonUtils.ConvertToTextFormatFlags(TextAlign);
 
-                TextRenderer.DrawText(pevent.Graphics, Text, Font, contentRect, ForeColorDisabled, flags);
+                TextRenderer.DrawText(pevent.Graphics, Text, Font, contentRect, DisabledForeColor, flags);
             }                
         }
     }

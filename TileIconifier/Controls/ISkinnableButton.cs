@@ -12,7 +12,7 @@ namespace TileIconifier.Controls
     {
         Color ForeColor { get; set; }
         Color BackColor { get; set; }
-        Color ForeColorDisabled { get; set; }
+        Color DisabledForeColor { get; set; }
         FlatStyle FlatStyle { get; set; }
         FlatButtonAppearance FlatAppearance { get; }
     }

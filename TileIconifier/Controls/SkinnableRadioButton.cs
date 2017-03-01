@@ -33,7 +33,7 @@ namespace TileIconifier.Controls
         /// <summary>
         /// Gets or set the foreground color of the button when it is disabled.
         /// </summary>
-        public Color ForeColorDisabled
+        public Color DisabledForeColor
         {
             get
             {
@@ -76,7 +76,7 @@ namespace TileIconifier.Controls
                 Rectangle textRect = ButtonUtils.GetGlyphButtonTextRect(checkAreaSize, ClientRectangle, inCheckAreaAndTextAreaSpacing);
                 TextFormatFlags flags = ButtonUtils.ConvertToTextFormatFlags(TextAlign);
 
-                TextRenderer.DrawText(pevent.Graphics, Text, Font, textRect, ForeColorDisabled, flags);
+                TextRenderer.DrawText(pevent.Graphics, Text, Font, textRect, DisabledForeColor, flags);
             }
         }
 

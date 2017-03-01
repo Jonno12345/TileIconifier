@@ -50,203 +50,39 @@ namespace TileIconifier.Skinning.Skins
         public virtual ToolStripSystemRendererEx ToolStripRenderer { get; } = new ToolStripSystemRendererEx();
 
         #region "Button"
-        public virtual FlatStyle ButtonFlatStyle
-        {
-            get
-            {
-                return FlatStyle.Standard;
-            }
-        }
-
-        public virtual Color ButtonForeColor
-        {
-            get
-            {
-                return SystemColors.ControlText;
-            }
-        }
-
-        public virtual Color ButtonBackColor
-        {
-            get
-            {
-                return SystemColors.Control;
-            }
-        }
-
-        public virtual Color ButtonForeColorDisabled
-        {
-            get
-            {
-                return SystemColors.GrayText;
-            }
-        }
-
-        public virtual Color ButtonFlatBorderColor
-        {
-            get
-            {
-                return Color.Empty;
-            }
-        }
+        public virtual FlatStyle ButtonFlatStyle { get { return FlatStyle.Standard; } }
+        public virtual Color ButtonForeColor { get { return SystemColors.ControlText; } }
+        public virtual Color ButtonBackColor { get { return SystemColors.Control; } }
+        public virtual Color ButtonDisabledForeColor { get { return SystemColors.GrayText; } }
+        public virtual Color ButtonFlatBorderColor { get { return Color.Empty; } } //not used
         #endregion
 
         #region "TextBox"
-        public virtual BorderStyle TextBoxBorderStyle
-        {
-            get
-            {
-                return BorderStyle.Fixed3D;
-            }
-        }
-
-        public virtual Color TextBoxBackColor
-        {
-            get
-            {
-                return SystemColors.Window;
-            }
-        }
-
-        public virtual Color TextBoxForeColor
-        {
-            get
-            {
-                return SystemColors.WindowText;
-            }
-        }
-
-        public virtual Color TextBoxBackColorReadOnly
-        {
-            get
-            {
-                return SystemColors.Control;
-            }
-        }
-
-        public virtual Color TextBoxBorderColor
-        {
-            get
-            {
-                return Color.Empty;
-            }
-        }
+        public virtual BorderStyle TextBoxBorderStyle { get { return BorderStyle.Fixed3D; } }
+        public virtual Color TextBoxBackColor { get { return SystemColors.Window; } }
+        public virtual Color TextBoxForeColor { get { return SystemColors.WindowText; } }
+        public virtual Color TextBoxReadOnlyBackColor { get { return SystemColors.Control; } }
+        public virtual Color TextBoxBorderColor { get { return Color.Empty; } } //not used
         #endregion
 
         #region "ListView"
-        public virtual bool ListViewHeadersUseVisualStyleColors
-        {
-            get
-            {
-                return true;
-            }
-        }
-
-        public virtual BorderStyle ListViewBorderStyle
-        {
-            get
-            {
-                return BorderStyle.Fixed3D;
-            }
-        }
-
-        public virtual Color ListViewBackColor
-        {
-            get
-            {
-                return SystemColors.Window;
-            }
-        }
-
-        public virtual Color ListViewForeColor
-        {
-            get
-            {
-                return SystemColors.WindowText;
-            }
-        }
-
-        public virtual Color ListViewHeaderBackColor
-        {
-            get
-            {
-                return SystemColors.Control;
-            }
-        }
-
-        public virtual Color ListViewHeaderForeColor
-        {
-            get
-            {
-                return SystemColors.ControlText;
-            }
-        }
+        public virtual bool ListViewHeadersUseVisualStyleColors { get { return true; } }
+        public virtual BorderStyle ListViewBorderStyle { get { return BorderStyle.Fixed3D; } }
+        public virtual Color ListViewBackColor { get { return SystemColors.Window; } }
+        public virtual Color ListViewForeColor { get { return SystemColors.WindowText; } }
+        public virtual Color ListViewHeaderBackColor { get { return SystemColors.Control; } } //not used
+        public virtual Color ListViewHeaderForeColor { get { return SystemColors.ControlText; } } //not used
         #endregion
 
         #region "ComboBox"
-        public virtual FlatStyle ComboBoxFlatStyle
-        {
-            get
-            {
-                return FlatStyle.Standard;
-            }
-        }
-
-        public virtual Color ComboBoxBackColor
-        {
-            get
-            {
-                return SystemColors.Window;
-            }
-        }
-
-        public virtual Color ComboBoxForeColor
-        {
-            get
-            {
-                return SystemColors.WindowText;
-            }
-        }
-
-        public virtual Color ComboBoxButtonBackColor
-        {
-            get
-            {
-                return SystemColors.Control; //not used
-            }
-        }
-
-        public virtual Color ComboboxButtonForeColor
-        {
-            get
-            {
-                return SystemColors.ControlText; //not used
-            }
-        }
-
-        public virtual Color ComboBoxDisabledForeColor
-        {
-            get
-            {
-                return SystemColors.GrayText; //not used
-            }
-        }
-
-        public virtual Color ComboBoxButtonBorderColor
-        {
-            get
-            {
-                return SystemColors.ControlDark; //not used
-            }
-        }
-
-        public virtual Color ComboBoxButtonBorderFocusedColor
-        {
-            get
-            {
-                return SystemColors.Highlight; //not used
-            }            
-        }
+        public virtual FlatStyle ComboBoxFlatStyle { get { return FlatStyle.Standard; } }
+        public virtual Color ComboBoxBackColor { get { return SystemColors.Window; } }
+        public virtual Color ComboBoxForeColor { get { return SystemColors.WindowText; } }
+        public virtual Color ComboBoxButtonBackColor { get { return SystemColors.Control; } } //not used
+        public virtual Color ComboboxButtonForeColor { get { return SystemColors.ControlText; } } //not used
+        public virtual Color ComboBoxDisabledForeColor { get { return SystemColors.GrayText; } } //not used
+        public virtual Color ComboBoxButtonBorderColor { get { return SystemColors.ControlDark; } } //not used
+        public virtual Color ComboBoxButtonBorderFocusedColor { get { return SystemColors.Highlight; } } //not used
         #endregion
     }
 }

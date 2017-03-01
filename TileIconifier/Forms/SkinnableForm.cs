@@ -146,7 +146,7 @@ namespace TileIconifier.Forms
                 txt.ForeColor = FormSkin.TextBoxForeColor;
                 if (txt.ReadOnly)
                 {
-                    txt.BackColor = FormSkin.TextBoxBackColorReadOnly;
+                    txt.BackColor = FormSkin.TextBoxReadOnlyBackColor;
                 }
                 else
                 {
@@ -185,12 +185,18 @@ namespace TileIconifier.Forms
                     ApplyControlSkin(c);
         }
 
+
+        /// <summary>
+        /// Applies the part of the FormSkin that defines the appearance 
+        /// of a button on the specified control.
+        /// </summary>
+        /// <param name="pButton"></param>
         private void ApplyButtonSkin(ISkinnableButton pButton)
         {
             pButton.FlatStyle = FormSkin.ButtonFlatStyle;
             pButton.ForeColor = FormSkin.ButtonForeColor;
             pButton.BackColor = FormSkin.ButtonBackColor;
-            pButton.ForeColorDisabled = FormSkin.ButtonForeColorDisabled;
+            pButton.DisabledForeColor = FormSkin.ButtonDisabledForeColor;
             pButton.FlatAppearance.BorderColor = FormSkin.ButtonFlatBorderColor;
         }
     }
