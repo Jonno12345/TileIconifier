@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnShrink = new System.Windows.Forms.Button();
-            this.btnEnlarge = new System.Windows.Forms.Button();
-            this.btnOpenImage = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
+            this.btnShrink = new TileIconifier.Controls.SkinnableButton();
+            this.btnEnlarge = new TileIconifier.Controls.SkinnableButton();
+            this.btnOpenImage = new TileIconifier.Controls.SkinnableButton();
+            this.btnReset = new TileIconifier.Controls.SkinnableButton();
             this.tmrEnlarge = new System.Windows.Forms.Timer(this.components);
             this.tmrShrink = new System.Windows.Forms.Timer(this.components);
-            this.btnAlign = new System.Windows.Forms.Button();
+            this.btnAlign = new TileIconifier.Controls.SkinnableButton();
             this.trkZoom = new System.Windows.Forms.TrackBar();
             this.lblPercent = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trkZoom)).BeginInit();
@@ -150,13 +150,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnShrink;
-        private System.Windows.Forms.Button btnEnlarge;
-        private System.Windows.Forms.Button btnOpenImage;
-        private System.Windows.Forms.Button btnReset;
+        private TileIconifier.Controls.SkinnableButton btnShrink;
+        private TileIconifier.Controls.SkinnableButton btnEnlarge;
+        private TileIconifier.Controls.SkinnableButton btnOpenImage;
+        private TileIconifier.Controls.SkinnableButton btnReset;
         private System.Windows.Forms.Timer tmrEnlarge;
         private System.Windows.Forms.Timer tmrShrink;
-        private System.Windows.Forms.Button btnAlign;
+        private TileIconifier.Controls.SkinnableButton btnAlign;
         private System.Windows.Forms.TrackBar trkZoom;
         private System.Windows.Forms.Label lblPercent;
     }

@@ -39,7 +39,7 @@
             this.radFGLight = new TileIconifier.Controls.SkinnableRadioButton();
             this.cmbColour = new TileIconifier.Controls.SkinnableComboBox();
             this.lblBGColour = new System.Windows.Forms.Label();
-            this.txtBGColour = new System.Windows.Forms.TextBox();
+            this.txtBGColour = new TileIconifier.Controls.SkinnableTextBox();
             this.clrDialog = new System.Windows.Forms.ColorDialog();
             this.panel1.SuspendLayout();
             this.pnlFGColour.SuspendLayout();
@@ -151,7 +151,7 @@
         private TileIconifier.Controls.SkinnableRadioButton radFGLight;
         private TileIconifier.Controls.SkinnableComboBox cmbColour;
         private System.Windows.Forms.Label lblBGColour;
-        private System.Windows.Forms.TextBox txtBGColour;
+        private TileIconifier.Controls.SkinnableTextBox txtBGColour;
         private System.Windows.Forms.ColorDialog clrDialog;
     }
 }

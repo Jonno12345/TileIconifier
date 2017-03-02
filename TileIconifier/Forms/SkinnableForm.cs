@@ -75,8 +75,8 @@ namespace TileIconifier.Forms
             base.OnLoad(e);
 
             Icon = Resources.tiles2_shadow_lyk_icon;
-
             SkinHandler.SkinChanged += SkinHandler_SkinChanged;
+            ApplyFormSkin();
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
