@@ -143,18 +143,12 @@ namespace TileIconifier.Forms
             {
                 SkinnableTextBox txt = (SkinnableTextBox)control;
                 txt.BorderStyle = FormSkin.TextBoxBorderStyle;
+                txt.BackColor = FormSkin.TextBoxBackColor;
+                txt.ReadOnlyBackColor = FormSkin.TextBoxReadOnlyBackColor;
                 txt.BorderColor = FormSkin.TextBoxBorderColor;
                 txt.BorderFocusedColor = FormSkin.TextBoxBorderFocusedColor;
                 txt.BorderDisabledColor = FormSkin.TextBoxBorderDisabledColor;
-                txt.ForeColor = FormSkin.TextBoxForeColor;
-                if (txt.ReadOnly)
-                {
-                    txt.BackColor = FormSkin.TextBoxReadOnlyBackColor;
-                }
-                else
-                {
-                    txt.BackColor = FormSkin.TextBoxBackColor;
-                }
+                txt.ForeColor = FormSkin.TextBoxForeColor;                
             }
             else if (t.IsSubclassOf(typeof(SkinnableListView)))
             {

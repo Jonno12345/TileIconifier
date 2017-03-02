@@ -16,7 +16,44 @@ namespace TileIconifier.Controls
     {
         const int WM_PAINT = 0xF;  //Find a better place for this constant.          
 
-        Color borderColor = Color.Empty;
+        #region "Properties"
+        private Color backColor = SystemColors.Window;
+        [DefaultValue(typeof(Color), nameof(SystemColors.Window))]
+        public new Color BackColor
+        {
+            get { return backColor; }
+            set
+            {
+                if (backColor != value)
+                {
+                    backColor = value;
+                    if (!ReadOnly)
+                    {
+                        base.BackColor = value;
+                    }
+                }                
+            }
+        }
+
+        private Color readOnlyBackColor = SystemColors.Control;
+        [DefaultValue(typeof(Color), nameof(SystemColors.Control))]
+        public Color ReadOnlyBackColor
+        {
+            get { return readOnlyBackColor; }
+            set
+            {
+                if (readOnlyBackColor != value)
+                {
+                    readOnlyBackColor = value;  
+                    if (ReadOnly)
+                    {
+                        base.BackColor = ReadOnlyBackColor;
+                    }
+                }
+            }
+        }
+
+        private Color borderColor = Color.Empty;
         [DefaultValue(typeof(Color), "")]
         public Color BorderColor
         {
@@ -34,7 +71,7 @@ namespace TileIconifier.Controls
             }
         }
 
-        Color borderFocusedColor = Color.Empty;
+        private Color borderFocusedColor = Color.Empty;
         [DefaultValue(typeof(Color), "")]
         public Color BorderFocusedColor
         {
@@ -52,7 +89,7 @@ namespace TileIconifier.Controls
             }
         }
 
-        Color borderDisabledColor = Color.Empty;
+        private Color borderDisabledColor = Color.Empty;
         [DefaultValue(typeof(Color), "")]
         public Color BorderDisabledColor
         {
@@ -67,6 +104,24 @@ namespace TileIconifier.Controls
                         Invalidate();
                     }
                 }
+            }
+        }
+        #endregion
+
+        protected override void OnReadOnlyChanged(EventArgs e)
+        {
+            base.OnReadOnlyChanged(e);
+
+            //We use the base class property to change the actual color. 
+            //This classe's BackColor property stores the not-read-only-BackColor 
+            //value independently from the actual (current) Background color.
+            if (ReadOnly)
+            {
+                base.BackColor = ReadOnlyBackColor;
+            }
+            else
+            {
+                base.BackColor = BackColor;
             }
         }
 
