@@ -50,7 +50,7 @@ using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms.CustomShortcutForms
 {
-    public partial class FrmCustomShortcutManagerNew : SkinnableForm
+    public partial class FrmCustomShortcutManagerNew : Form
     {
         private readonly NewCustomShortcutFormCache _chromeCache = new NewCustomShortcutFormCache();
         private readonly NewCustomShortcutFormCache _explorerCache = new NewCustomShortcutFormCache();
