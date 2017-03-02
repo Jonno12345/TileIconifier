@@ -58,7 +58,10 @@ namespace TileIconifier.Forms
         protected virtual void OnSkinChanged(EventArgs e)
         {
             if (FormSkin != null)
+            {
                 ApplyFormSkin();
+                ApplyAllControlsSkin();
+            }
         }        
 
         protected override void OnControlAdded(ControlEventArgs e)
@@ -76,6 +79,10 @@ namespace TileIconifier.Forms
 
             Icon = Resources.tiles2_shadow_lyk_icon;
             SkinHandler.SkinChanged += SkinHandler_SkinChanged;
+            
+            //We only apply the skin on the form, not on its controls
+            //because control skins are applied when controls are added
+            //to the form.
             ApplyFormSkin();
         }
 
@@ -95,14 +102,20 @@ namespace TileIconifier.Forms
         }
 
         /// <summary>
-        /// Applies the skin on the form and each of its child controls.
+        /// Applies the skin on the form only.
         /// </summary>
         private void ApplyFormSkin()
         {
             ForeColor = FormSkin.ForeColor;
             BackColor = FormSkin.BackColor;
-            Font = FormSkin.Font;
+            Font = FormSkin.Font;            
+        }
 
+        /// <summary>
+        /// Applies the skin on all controls inside the form.
+        /// </summary>
+        private void ApplyAllControlsSkin()
+        {
             foreach (Control c in Controls)
                 ApplyControlSkin(c);
         }
