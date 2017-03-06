@@ -194,9 +194,8 @@ namespace TileIconifier.Skinning
                 if (colorTable.PopupBorderColor != ToolStripSystemColorScheme.DefaultPopupBorderColor || SystemInformation.IsFlatMenuEnabled)
                 {
                     bounds.Width -= 1;
-                    bounds.Height -= 1;
-                    using (SolidBrush b = new SolidBrush(colorTable.PopupBorderColor))
-                    using (Pen p = new Pen(b))
+                    bounds.Height -= 1;                    
+                    using (Pen p = new Pen(colorTable.PopupBorderColor))
                         e.Graphics.DrawRectangle(p, bounds);
                 }
                 else
@@ -213,9 +212,8 @@ namespace TileIconifier.Skinning
                     //the the sake of simplicity.
                     Point borderBegins = new Point(e.AffectedBounds.X, e.AffectedBounds.Y + e.AffectedBounds.Height - 1);
                     Point borderEnds = new Point(e.AffectedBounds.X + e.AffectedBounds.Width, borderBegins.Y);
-
-                    using (SolidBrush b = new SolidBrush(colorTable.MenuBarBorderColor))
-                    using (Pen p = new Pen(b))
+                                        
+                    using (Pen p = new Pen(colorTable.MenuBarBorderColor))
                         e.Graphics.DrawLine(p, borderBegins, borderEnds);                        
                 }
                 else if (colorTable.MenuBarBackColor != ToolStripSystemColorScheme.DefaultMenuBarBackColor || !ToolStripManager.VisualStylesEnabled)
@@ -257,9 +255,8 @@ namespace TileIconifier.Skinning
             int inY = (pRect.Height / 2) - 1;
             Point sepBegins = new Point(inLATTERAL_PADDING, inY);
             Point sepEnds = new Point(pRect.Width - inLATTERAL_PADDING, inY);
-
-            using (SolidBrush b = new SolidBrush(colorTable.PopupForeColor))
-            using (Pen p = new Pen(b))
+            
+            using (Pen p = new Pen(colorTable.PopupForeColor))
                 pGraphics.DrawLine(p, sepBegins, sepEnds);
         }
         #endregion

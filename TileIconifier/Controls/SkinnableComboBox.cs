@@ -196,9 +196,8 @@ namespace TileIconifier.Controls
             //Compensation needed when drawing a rectangle with GDI+
             bounds.Width--;
             bounds.Height--;
-
-            using (SolidBrush b = new SolidBrush(borderColor))
-            using (Pen p = new Pen(b))
+           
+            using (Pen p = new Pen(borderColor))
                 e.Graphics.DrawRectangle(p, bounds);
 
             //Background
