@@ -11,8 +11,7 @@ namespace TileIconifier.Controls
 {
     class SkinnableComboBox : ComboBox
     {
-        private const TextFormatFlags DEFAULT_TEXT_FLAGS = TextFormatFlags.Default | TextFormatFlags.VerticalCenter;
-        private const int inFLAT_BUTTON_WIDTH = 20;
+        private const TextFormatFlags DEFAULT_TEXT_FLAGS = TextFormatFlags.Default | TextFormatFlags.VerticalCenter;        
 
         private Font glyphFont = new Font("Marlett", 10);
 
@@ -185,6 +184,7 @@ namespace TileIconifier.Controls
                 return;
 
             Rectangle bounds = ClientRectangle;
+            int inGlyphAreaWidth = SystemInformation.HorizontalScrollBarThumbWidth;
 
             //Border
             Color borderColor;
@@ -217,9 +217,9 @@ namespace TileIconifier.Controls
             //Same thing for the textColor.
             if (RightToLeft == RightToLeft.Yes)
             {
-                bounds.X += inFLAT_BUTTON_WIDTH;
+                bounds.X += inGlyphAreaWidth;
             }
-            bounds.Width -= inFLAT_BUTTON_WIDTH;
+            bounds.Width -= inGlyphAreaWidth;
 
             Color textColor;
             if (Enabled)
@@ -240,18 +240,19 @@ namespace TileIconifier.Controls
 
             //Glyph button
             Rectangle buttonRect = new Rectangle();
-            buttonRect.Width = inFLAT_BUTTON_WIDTH;
+            buttonRect.Width = inGlyphAreaWidth;
             buttonRect.Height = bounds.Height;
             buttonRect.Y = bounds.Y;
+            TextFormatFlags glyphFlags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;
             if (RightToLeft == RightToLeft.Yes)
             {
-                buttonRect.X = bounds.X - inFLAT_BUTTON_WIDTH;
+                buttonRect.X = bounds.X - inGlyphAreaWidth;
             }
             else
             {
                 buttonRect.X = bounds.X + bounds.Width;
             }
-            TextRenderer.DrawText(e.Graphics, "u", glyphFont, buttonRect, textColor);
+            TextRenderer.DrawText(e.Graphics, "u", glyphFont, buttonRect, textColor, glyphFlags);
         }
 
         protected override void OnDrawItem(DrawItemEventArgs e)
