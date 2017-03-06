@@ -126,59 +126,72 @@ namespace TileIconifier.Forms
         /// <param name="control"></param>
         private void ApplyControlSkin(Control control)
         {
-            Type t = control.GetType();
-            if (typeof(ISkinnableCheckableButton).IsAssignableFrom(t))
-            {   //ChechBox or RadioButton
-                ISkinnableCheckableButton checkableCtrl = (ISkinnableCheckableButton)control;
-                if (checkableCtrl.Appearance == Appearance.Button)
+            //Maybe not the most efficient way to do this. Something to think about.
+
+            //Checkbox or RadioButton
+            ISkinnableCheckableButton checkableBtn = control as ISkinnableCheckableButton;
+            if (checkableBtn != null)
+            {                   
+                if (checkableBtn.Appearance == Appearance.Button)
                 {
-                    ApplyButtonSkin(checkableCtrl);
+                    ApplyButtonSkin(checkableBtn);
                 }
                 else
                 {
                     //We treat checkboxes and radiobutton like labels (their Fore/Back/Disabled colors
                     //are ambiant) so there is no need to apply any skin properties manually. The
-                    //only exception is FlatStyle, which is not ambiant and specific to Buttons/Checkboxes, etc.
-                    checkableCtrl.FlatStyle = FormSkin.ButtonFlatStyle;
+                    //only exception is FlatStyle, which is not ambiant and specific to ISkinnableButton.
+                    checkableBtn.FlatStyle = FormSkin.ButtonFlatStyle;
                 }
-                
+                return;
             }
-            else if (t == typeof(SkinnableButton))
-            {   //Button
-                //We MUST evaluate this condition AFTER typeof(ISkinnableCheckableButton).IsAssignableFrom(t)
+
+            //Button
+            ISkinnableButton btn = control as ISkinnableButton;
+            if (btn != null)
+            {
+                //We MUST evaluate this condition AFTER ISkinnableCheckableButton
                 //because ISkinnableCheckableButton descends from ISkinnableButton, so we would otherwise
                 //be unable to differenciate Buttons from Checkboxes and RadioButtons, because this condition would
                 //be always true and the other would not be evaluated.
-                ISkinnableButton btn = (ISkinnableButton)control;
-                ApplyButtonSkin(btn);                         
-            }            
-            else if (t == typeof(SkinnableTextBox))
+                ApplyButtonSkin(btn);
+                return;
+            }
+
+            //TextBox
+            SkinnableTextBox txt = control as SkinnableTextBox;
+            if (txt != null)
             {
-                SkinnableTextBox txt = (SkinnableTextBox)control;
                 txt.BorderStyle = FormSkin.TextBoxBorderStyle;
                 txt.BackColor = FormSkin.TextBoxBackColor;
                 txt.ReadOnlyBackColor = FormSkin.TextBoxReadOnlyBackColor;
                 txt.BorderColor = FormSkin.TextBoxBorderColor;
                 txt.BorderFocusedColor = FormSkin.TextBoxBorderFocusedColor;
                 txt.BorderDisabledColor = FormSkin.TextBoxBorderDisabledColor;
-                txt.ForeColor = FormSkin.TextBoxForeColor;                
+                txt.ForeColor = FormSkin.TextBoxForeColor;
+                return;
             }
-            else if (t.IsSubclassOf(typeof(SkinnableListView)))
+
+            //ListView
+            SkinnableListView lvw = control as SkinnableListView;
+            if (lvw != null)
             {
-                SkinnableListView lvw = (SkinnableListView)control;
                 lvw.HeadersUseVisualStyleColors = FormSkin.ListViewHeadersUseVisualStyleColors;
                 lvw.HeaderBackColor = FormSkin.ListViewHeaderBackColor;
-                lvw.HeaderForeColor = FormSkin.ListViewHeaderForeColor;                
+                lvw.HeaderForeColor = FormSkin.ListViewHeaderForeColor;
                 lvw.BackColor = FormSkin.ListViewBackColor;
                 lvw.ForeColor = FormSkin.ListViewForeColor;
                 lvw.BorderStyle = FormSkin.ListViewBorderStyle;
                 lvw.BorderColor = FormSkin.ListViewBorderColor;
                 lvw.BorderFocusedColor = FormSkin.ListViewBorderFocusedColor;
                 lvw.BorderDisabledColor = FormSkin.ListViewBorderDisabledColor;
+                return;
             }
-            else if (t == typeof(SkinnableComboBox))
+
+            //ComboBox
+            SkinnableComboBox cbo = control as SkinnableComboBox;
+            if (cbo != null)
             {
-                SkinnableComboBox cbo = (SkinnableComboBox)control;
                 cbo.FlatStyle = FormSkin.ComboBoxFlatStyle;
                 cbo.BackColor = FormSkin.ComboBoxBackColor;
                 cbo.ForeColor = FormSkin.ComboBoxForeColor;
@@ -187,13 +200,21 @@ namespace TileIconifier.Forms
                 cbo.FlatButtonDisabledForeColor = FormSkin.ComboBoxDisabledForeColor;
                 cbo.FlatButtonBorderColor = FormSkin.ComboBoxButtonBorderColor;
                 cbo.FlatButtonBorderFocusedColor = FormSkin.ComboBoxButtonBorderFocusedColor;
+                return;
             }
-            else if (t.IsSubclassOf(typeof(ToolStrip)))
+
+            //ToolStrip
+            ToolStrip tsp = control as ToolStrip;
+            if (tsp != null)
             {
-                ToolStrip toolstrip = ((ToolStrip)control);
-                toolstrip.Renderer = FormSkin.ToolStripRenderer;
+                tsp.Renderer = FormSkin.ToolStripRenderer;
+                return;
             }
-            else if (control.Controls.Count > 0) //Recursive loop that applies the skin to controls inside controls.
+
+            //Recursive loop that applies the skin to controls inside controls. At this
+            //point, the control is not a button, a listview, etc. so it is likely to be just
+            //a container that contains more controls.
+            if (control.Controls.Count > 0)
                 foreach (Control c in control.Controls)
                     ApplyControlSkin(c);
         }
