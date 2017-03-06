@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomShortcutManagerHelp));
-            this.rtxtHelp = new System.Windows.Forms.RichTextBox();
+            this.rtxtHelp = new TileIconifier.Controls.SkinnableRichTextBox();
             this.SuspendLayout();
             // 
             // rtxtHelp
@@ -55,6 +55,6 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox rtxtHelp;
+        private TileIconifier.Controls.SkinnableRichTextBox rtxtHelp;
     }
 }

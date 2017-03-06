@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHelp));
-            this.rtxtAbout = new System.Windows.Forms.RichTextBox();
+            this.rtxtAbout = new TileIconifier.Controls.SkinnableRichTextBox();
             this.SuspendLayout();
             // 
             // rtxtAbout
@@ -54,6 +54,6 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox rtxtAbout;
+        private TileIconifier.Controls.SkinnableRichTextBox rtxtAbout;
     }
 }

@@ -172,6 +172,19 @@ namespace TileIconifier.Forms
                 return;
             }
 
+            SkinnableRichTextBox rtb = control as SkinnableRichTextBox;
+            if (rtb != null)
+            {
+                //For the sake of simplicity, rich text boxes use the same skin
+                //properties as regular textboxes. However, rich text boxes do
+                //not support all the text box properties yet (BorderColor, etc.)
+                rtb.BorderStyle = FormSkin.TextBoxBorderStyle;
+                rtb.BackColor = FormSkin.TextBoxBackColor;
+                rtb.ReadOnlyBackColor = FormSkin.TextBoxReadOnlyBackColor;
+                rtb.ForeColor = FormSkin.TextBoxForeColor;
+                return;
+            }
+
             //ListView
             SkinnableListView lvw = control as SkinnableListView;
             if (lvw != null)

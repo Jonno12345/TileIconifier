@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmException));
-            this.rtxtUnhandledException = new System.Windows.Forms.RichTextBox();
+            this.rtxtUnhandledException = new TileIconifier.Controls.SkinnableRichTextBox();
             this.SuspendLayout();
             // 
             // rtxtUnhandledException
@@ -56,6 +56,6 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox rtxtUnhandledException;
+        private TileIconifier.Controls.SkinnableRichTextBox rtxtUnhandledException;
     }
 }
