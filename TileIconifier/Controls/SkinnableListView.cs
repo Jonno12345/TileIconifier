@@ -76,16 +76,16 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color headerBackColor = SystemColors.Control;
+        private Color flatHeaderBackColor = SystemColors.Control;
         [DefaultValue(typeof(Color), "Control")]
-        public Color HeaderBackColor
+        public Color FlatHeaderBackColor
         {
-            get { return headerBackColor; }
+            get { return flatHeaderBackColor; }
             set
             {
-                if (headerBackColor != value)
+                if (flatHeaderBackColor != value)
                 {
-                    headerBackColor = value;
+                    flatHeaderBackColor = value;
                     if (FlatStyle == FlatStyle.Flat)
                     {
                         Invalidate();
@@ -94,16 +94,16 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color headerForeColor = SystemColors.ControlText;
+        private Color flatHeaderForeColor = SystemColors.ControlText;
         [DefaultValue(typeof(Color), "ControlText")]
-        public Color HeaderForeColor
+        public Color FlatHeaderForeColor
         {
-            get { return headerForeColor; }
+            get { return flatHeaderForeColor; }
             set
             {
-                if (headerForeColor != value)
+                if (flatHeaderForeColor != value)
                 {
-                    headerForeColor = value;
+                    flatHeaderForeColor = value;
                     if (FlatStyle == FlatStyle.Flat)
                     {
                         Invalidate();
@@ -112,15 +112,15 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color borderColor;
-        public Color BorderColor
+        private Color flatBorderColor;
+        public Color FlatBorderColor
         {
-            get { return borderColor; }
+            get { return flatBorderColor; }
             set
             {
-                if (borderColor != value)
+                if (flatBorderColor != value)
                 {
-                    borderColor = value;
+                    flatBorderColor = value;
                     {
                         if (FlatStyle == FlatStyle.Flat)
                         {
@@ -131,16 +131,16 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color borderFocusedColor = Color.Empty;
+        private Color flatBorderFocusedColor = Color.Empty;
         [DefaultValue(typeof(Color), "")]
-        public Color BorderFocusedColor
+        public Color FlatBorderFocusedColor
         {
-            get { return borderFocusedColor; }
+            get { return flatBorderFocusedColor; }
             set
             {
-                if (borderFocusedColor != value)
+                if (flatBorderFocusedColor != value)
                 {
-                    borderFocusedColor = value;
+                    flatBorderFocusedColor = value;
                     if (FlatStyle == FlatStyle.Flat)
                     {
                         Invalidate();
@@ -149,16 +149,16 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color borderDisabledColor = Color.Empty;
+        private Color flatBorderDisabledColor = Color.Empty;
         [DefaultValue(typeof(Color), "")]
-        public Color BorderDisabledColor
+        public Color FlatBorderDisabledColor
         {
-            get { return borderDisabledColor; }
+            get { return flatBorderDisabledColor; }
             set
             {
-                if (borderDisabledColor != value)
+                if (flatBorderDisabledColor != value)
                 {
-                    borderDisabledColor = value;
+                    flatBorderDisabledColor = value;
                     if (FlatStyle == FlatStyle.Flat)
                     {
                         Invalidate();
@@ -173,7 +173,7 @@ namespace TileIconifier.Controls
             
             if (FlatStyle == FlatStyle.Flat)
             {
-                using (SolidBrush b = new SolidBrush(HeaderBackColor))
+                using (SolidBrush b = new SolidBrush(FlatHeaderBackColor))
                     e.Graphics.FillRectangle(b, e.Bounds);
 
                 TextFormatFlags flags = 
@@ -182,7 +182,7 @@ namespace TileIconifier.Controls
                     TextFormatFlags.EndEllipsis |
                     ConvertToTextFormatFlags(e.Header.TextAlign);
 
-                TextRenderer.DrawText(e.Graphics, e.Header.Text, Font, e.Bounds, HeaderForeColor, flags);
+                TextRenderer.DrawText(e.Graphics, e.Header.Text, Font, e.Bounds, FlatHeaderForeColor, flags);
             }
             else
             {
@@ -218,17 +218,17 @@ namespace TileIconifier.Controls
         private void DrawUserBorder()
         {
             Color bColor;
-            if (!Enabled && !BorderDisabledColor.IsEmpty)
+            if (!Enabled && !FlatBorderDisabledColor.IsEmpty)
             {
-                bColor = BorderDisabledColor;
+                bColor = FlatBorderDisabledColor;
             }
-            else if (Focused && !BorderFocusedColor.IsEmpty)
+            else if (Focused && !FlatBorderFocusedColor.IsEmpty)
             {
-                bColor = BorderFocusedColor;
+                bColor = FlatBorderFocusedColor;
             }
-            else if (!BorderColor.IsEmpty)
+            else if (!FlatBorderColor.IsEmpty)
             {
-                bColor = BorderColor;
+                bColor = FlatBorderColor;
             }
             else
             {

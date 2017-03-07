@@ -165,7 +165,7 @@
             // 
             resources.ApplyResources(this.lvwIcons, "lvwIcons");
             this.lvwIcons.BackColor = System.Drawing.SystemColors.Window;
-            this.lvwIcons.BorderColor = System.Drawing.Color.Empty;
+            this.lvwIcons.FlatBorderColor = System.Drawing.Color.Empty;
             this.lvwIcons.DrawStandardItems = false;
             this.lvwIcons.ForeColor = System.Drawing.SystemColors.WindowText;
             this.lvwIcons.MultiSelect = false;

@@ -190,13 +190,13 @@ namespace TileIconifier.Forms
             if (lvw != null)
             {
                 lvw.FlatStyle = FormSkin.ListViewFlatStyle;
-                lvw.HeaderBackColor = FormSkin.ListViewHeaderBackColor;
-                lvw.HeaderForeColor = FormSkin.ListViewHeaderForeColor;
+                lvw.FlatHeaderBackColor = FormSkin.ListViewHeaderBackColor;
+                lvw.FlatHeaderForeColor = FormSkin.ListViewHeaderForeColor;
                 lvw.BackColor = FormSkin.ListViewBackColor;
                 lvw.ForeColor = FormSkin.ListViewForeColor;                
-                lvw.BorderColor = FormSkin.ListViewBorderColor;
-                lvw.BorderFocusedColor = FormSkin.ListViewBorderFocusedColor;
-                lvw.BorderDisabledColor = FormSkin.ListViewBorderDisabledColor;
+                lvw.FlatBorderColor = FormSkin.ListViewBorderColor;
+                lvw.FlatBorderFocusedColor = FormSkin.ListViewBorderFocusedColor;
+                lvw.FlatBorderDisabledColor = FormSkin.ListViewBorderDisabledColor;
                 return;
             }
 
