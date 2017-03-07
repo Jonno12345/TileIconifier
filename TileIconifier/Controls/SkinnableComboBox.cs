@@ -11,7 +11,7 @@ namespace TileIconifier.Controls
 {
     class SkinnableComboBox : ComboBox
     {
-        private const TextFormatFlags DEFAULT_TEXT_FLAGS = TextFormatFlags.Default | TextFormatFlags.VerticalCenter;        
+        private const TextFormatFlags DEFAULT_TEXT_FLAGS = TextFormatFlags.VerticalCenter;        
 
         private Font glyphFont = new Font("Marlett", 10);
 
@@ -54,10 +54,7 @@ namespace TileIconifier.Controls
         private Color flatButtonBackColor = SystemColors.Control;
         public Color FlatButtonBackColor
         {
-            get
-            {
-                return flatButtonBackColor;
-            }
+            get { return flatButtonBackColor; }
             set
             {
                 if (flatButtonBackColor != value)
@@ -75,10 +72,7 @@ namespace TileIconifier.Controls
         private Color flatButtonForeColor = SystemColors.ControlText;
         public Color FlatButtonForeColor
         {
-            get
-            {
-                return flatButtonForeColor;
-            }
+            get { return flatButtonForeColor; }
             set
             {
                 if (flatButtonForeColor != value)
@@ -96,10 +90,7 @@ namespace TileIconifier.Controls
         private Color flatButtonDisabledForeColor = SystemColors.GrayText;
         public Color FlatButtonDisabledForeColor
         {
-            get
-            {
-                return flatButtonDisabledForeColor;
-            }
+            get { return flatButtonDisabledForeColor; }
             set
             {
                 if (flatButtonDisabledForeColor != value)
@@ -117,10 +108,7 @@ namespace TileIconifier.Controls
         private Color flatButtonBorderColor = SystemColors.ControlDark;
         public Color FlatButtonBorderColor
         {
-            get
-            {
-                return flatButtonBorderColor;
-            }
+            get { return flatButtonBorderColor; }
             set
             {
                 if (flatButtonBorderColor != value)
@@ -138,10 +126,7 @@ namespace TileIconifier.Controls
         private Color flatButtonBorderFocusedColor = SystemColors.Highlight;
         public Color FlatButtonBorderFocusedColor
         {
-            get
-            {
-                return flatButtonBorderFocusedColor;
-            }
+            get { return flatButtonBorderFocusedColor; }
             set
             {
                 if (flatButtonBorderFocusedColor != value)
@@ -187,12 +172,7 @@ namespace TileIconifier.Controls
             int inGlyphAreaWidth = SystemInformation.HorizontalScrollBarThumbWidth;
 
             //Border
-            Color borderColor;
-            if (Focused)
-                borderColor = FlatButtonBorderFocusedColor;
-            else
-                borderColor = FlatButtonBorderColor;
-
+            Color borderColor = (Focused) ? FlatButtonBorderFocusedColor : FlatButtonBorderColor;
             //Compensation needed when drawing a rectangle with GDI+
             bounds.Width--;
             bounds.Height--;
@@ -211,6 +191,7 @@ namespace TileIconifier.Controls
                 e.Graphics.FillRectangle(b, bounds);
 
             //Selected item text
+            Color textColor = (Enabled) ? FlatButtonForeColor : FlatButtonDisabledForeColor;
             //We need to calculate the text bounds even when we don't draw text, 
             //because we use that rectangle for the glyphRect.
             //Same thing for the textColor.
@@ -218,22 +199,10 @@ namespace TileIconifier.Controls
             {
                 bounds.X += inGlyphAreaWidth;
             }
-            bounds.Width -= inGlyphAreaWidth;
-
-            Color textColor;
-            if (Enabled)
-            {
-                textColor = FlatButtonForeColor;
-            }
-            else
-            {
-                textColor = FlatButtonDisabledForeColor;
-            }
-
+            bounds.Width -= inGlyphAreaWidth; 
             if (SelectedIndex >= 0 && SelectedIndex < Items.Count)
             {
-                string stText = GetItemText(Items[SelectedIndex]);
-                
+                string stText = GetItemText(Items[SelectedIndex]);                
                 TextRenderer.DrawText(e.Graphics, stText, Font, bounds, textColor, TextFlags);
             }
 
@@ -269,18 +238,9 @@ namespace TileIconifier.Controls
             if (inIndex >= 0 & inIndex < Items.Count)
             {
                 string stItemText;
-                Color colTextColor;
-
+                Color colTextColor = (e.State.HasFlag(DrawItemState.Selected)) ? SystemColors.HighlightText : ForeColor;
                 stItemText = GetItemText(Items[inIndex]);
-
-                if (e.State.HasFlag(DrawItemState.Selected))
-                {
-                    colTextColor = SystemColors.HighlightText;
-                }
-                else
-                {
-                    colTextColor = ForeColor;
-                }
+                
                 TextRenderer.DrawText(e.Graphics, stItemText, Font, e.Bounds, colTextColor, TextFlags);
             }
         }

@@ -38,7 +38,7 @@ namespace TileIconifier.Controls
             get
             {
                 //If the checkbox has the appearance of a checkbox, we treat its
-                //text like a label. Therefore, we want this property to be Ambiant. UNTESTED
+                //text like a label. Therefore, we want this property to be Ambiant.
                 if (foreColorDisabled.IsEmpty && Appearance != Appearance.Button)
                 {
                     SkinnableForm frm = TopLevelControl as SkinnableForm;

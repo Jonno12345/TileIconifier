@@ -24,10 +24,7 @@ namespace TileIconifier.Controls
         private bool headersUseVisualStyleColors = true;
         public bool HeadersUseVisualStyleColors
         {
-            get
-            {
-                return headersUseVisualStyleColors;
-            }
+            get { return headersUseVisualStyleColors; }
             set
             {
                 headersUseVisualStyleColors = value;
@@ -39,10 +36,7 @@ namespace TileIconifier.Controls
         [DefaultValue(typeof(Color), "Control")]
         public Color HeaderBackColor
         {
-            get
-            {
-                return headerBackColor;
-            }
+            get { return headerBackColor; }
             set
             {
                 if (headerBackColor != value)
@@ -60,10 +54,7 @@ namespace TileIconifier.Controls
         [DefaultValue(typeof(Color), "ControlText")]
         public Color HeaderForeColor
         {
-            get
-            {
-                return headerForeColor;
-            }
+            get { return headerForeColor; }
             set
             {
                 if (headerForeColor != value)
@@ -80,10 +71,7 @@ namespace TileIconifier.Controls
         private Color borderColor;
         public Color BorderColor
         {
-            get
-            {
-                return borderColor;
-            }
+            get { return borderColor; }
             set
             {
                 if (borderColor != value)

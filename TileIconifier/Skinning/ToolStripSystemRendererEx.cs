@@ -47,7 +47,7 @@ namespace TileIconifier.Skinning
 
         #region "Misc helpers"
         /// <summary>
-        /// Retourne le Visual Style Element d'un popup menu item avec le state approprié.
+        /// Returns the Visual Style Element of a popup menu item with the appropriate state.
         /// </summary>
         /// <param name="ItemSelected"></param>
         /// <param name="ItemEnabled"></param>
@@ -102,7 +102,7 @@ namespace TileIconifier.Skinning
 
         private VisualStyleElement GetMenuBarItemVSElement(bool pItemSelected, bool pItemEnabled, bool pItemPushed)
         {
-            int inState = 0;
+            int inState;
 
             if (pItemPushed)
             {
@@ -544,7 +544,6 @@ namespace TileIconifier.Skinning
                     else
                     {
                         bounds.X -= 2;
-
                         bounds.Width = dropDownMenu.Width - bounds.X - dropDownMenu.ImageScalingSize.Width;
                     }
                 }
