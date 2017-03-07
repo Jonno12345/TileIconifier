@@ -51,15 +51,23 @@ namespace TileIconifier.Forms.Main
         public FrmMain()
         {
             InitializeComponent();
+
+            ApplySkin();
         }
 
         private ShortcutItem CurrentShortcutItem => _currentShortcutListViewItem.ShortcutItem;
 
-        protected override void ApplySkin(object sender, EventArgs e)
+        protected override void OnSkinChanged(EventArgs e)
         {
-            base.ApplySkin(sender, e);
-            iconifyPanel.UpdateSkinColors(CurrentBaseSkin);
-            lblBadShortcutWarning.ForeColor = CurrentBaseSkin.ErrorColor;
+            base.OnSkinChanged(e);
+
+            ApplySkin();
+        }
+
+        private void ApplySkin()
+        {
+            iconifyPanel.UpdateSkinColors(FormSkin);
+            lblBadShortcutWarning.ForeColor = FormSkin.ErrorForeColor;
         }
 
         private void frmDropper_Load(object sender, EventArgs e)

@@ -32,7 +32,7 @@
             this.lblVersion = new System.Windows.Forms.Label();
             this.lblTileIconifier = new System.Windows.Forms.Label();
             this.pctLogo = new System.Windows.Forms.PictureBox();
-            this.rtxtAbout = new System.Windows.Forms.RichTextBox();
+            this.rtxtAbout = new TileIconifier.Controls.SkinnableRichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +80,7 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox rtxtAbout;
+        private TileIconifier.Controls.SkinnableRichTextBox rtxtAbout;
         private System.Windows.Forms.PictureBox pctLogo;
         private System.Windows.Forms.Label lblTileIconifier;
         private System.Windows.Forms.Label lblVersion;

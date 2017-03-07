@@ -35,17 +35,17 @@
             this.lblPreview = new System.Windows.Forms.Label();
             this.pctPreview = new System.Windows.Forms.PictureBox();
             this.lblCommonDlls = new System.Windows.Forms.Label();
-            this.cmbCommonIconDlls = new System.Windows.Forms.ComboBox();
-            this.btnBrowseIconPath = new System.Windows.Forms.Button();
-            this.txtPathToExtractFrom = new System.Windows.Forms.TextBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnBrowseCustomImage = new System.Windows.Forms.Button();
+            this.cmbCommonIconDlls = new TileIconifier.Controls.SkinnableComboBox();
+            this.btnBrowseIconPath = new TileIconifier.Controls.SkinnableButton();
+            this.txtPathToExtractFrom = new TileIconifier.Controls.SkinnableTextBox();
+            this.btnCancel = new TileIconifier.Controls.SkinnableButton();
+            this.btnOk = new TileIconifier.Controls.SkinnableButton();
+            this.btnBrowseCustomImage = new TileIconifier.Controls.SkinnableButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtImagePath = new System.Windows.Forms.TextBox();
-            this.radUseCustomImage = new System.Windows.Forms.RadioButton();
-            this.radIconFromTarget = new System.Windows.Forms.RadioButton();
-            this.lvwIcons = new System.Windows.Forms.ListView();
+            this.txtImagePath = new TileIconifier.Controls.SkinnableTextBox();
+            this.radUseCustomImage = new TileIconifier.Controls.SkinnableRadioButton();
+            this.radIconFromTarget = new TileIconifier.Controls.SkinnableRadioButton();
+            this.lvwIcons = new TileIconifier.Controls.SkinnableListView();
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +73,14 @@
             // cmbCommonIconDlls
             // 
             resources.ApplyResources(this.cmbCommonIconDlls, "cmbCommonIconDlls");
+            this.cmbCommonIconDlls.BackColor = System.Drawing.SystemColors.Window;
             this.cmbCommonIconDlls.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCommonIconDlls.FlatButtonBackColor = System.Drawing.SystemColors.Control;
+            this.cmbCommonIconDlls.FlatButtonBorderColor = System.Drawing.SystemColors.ControlDark;
+            this.cmbCommonIconDlls.FlatButtonBorderFocusedColor = System.Drawing.SystemColors.Highlight;
+            this.cmbCommonIconDlls.FlatButtonDisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.cmbCommonIconDlls.FlatButtonForeColor = System.Drawing.SystemColors.ControlText;
+            this.cmbCommonIconDlls.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cmbCommonIconDlls.FormattingEnabled = true;
             this.cmbCommonIconDlls.Name = "cmbCommonIconDlls";
             this.cmbCommonIconDlls.SelectedIndexChanged += new System.EventHandler(this.cmbCommonIconDlls_SelectedIndexChanged);
@@ -81,6 +88,9 @@
             // btnBrowseIconPath
             // 
             resources.ApplyResources(this.btnBrowseIconPath, "btnBrowseIconPath");
+            this.btnBrowseIconPath.BackColor = System.Drawing.SystemColors.Control;
+            this.btnBrowseIconPath.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.btnBrowseIconPath.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBrowseIconPath.Name = "btnBrowseIconPath";
             this.btnBrowseIconPath.UseVisualStyleBackColor = true;
             this.btnBrowseIconPath.Click += new System.EventHandler(this.btnBrowseIconPath_Click);
@@ -88,12 +98,16 @@
             // txtPathToExtractFrom
             // 
             resources.ApplyResources(this.txtPathToExtractFrom, "txtPathToExtractFrom");
+            this.txtPathToExtractFrom.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtPathToExtractFrom.Name = "txtPathToExtractFrom";
             this.txtPathToExtractFrom.ReadOnly = true;
             // 
             // btnCancel
             // 
             resources.ApplyResources(this.btnCancel, "btnCancel");
+            this.btnCancel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCancel.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -101,6 +115,9 @@
             // btnOk
             // 
             resources.ApplyResources(this.btnOk, "btnOk");
+            this.btnOk.BackColor = System.Drawing.SystemColors.Control;
+            this.btnOk.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.btnOk.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnOk.Name = "btnOk";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -108,6 +125,9 @@
             // btnBrowseCustomImage
             // 
             resources.ApplyResources(this.btnBrowseCustomImage, "btnBrowseCustomImage");
+            this.btnBrowseCustomImage.BackColor = System.Drawing.SystemColors.Control;
+            this.btnBrowseCustomImage.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.btnBrowseCustomImage.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBrowseCustomImage.Name = "btnBrowseCustomImage";
             this.btnBrowseCustomImage.UseVisualStyleBackColor = true;
             this.btnBrowseCustomImage.Click += new System.EventHandler(this.btnBrowseCustomImage_Click);
@@ -120,12 +140,14 @@
             // txtImagePath
             // 
             resources.ApplyResources(this.txtImagePath, "txtImagePath");
+            this.txtImagePath.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.TextChanged += new System.EventHandler(this.txtImagePath_TextChanged);
             // 
             // radUseCustomImage
             // 
             resources.ApplyResources(this.radUseCustomImage, "radUseCustomImage");
+            this.radUseCustomImage.DisabledForeColor = System.Drawing.Color.Empty;
             this.radUseCustomImage.Name = "radUseCustomImage";
             this.radUseCustomImage.TabStop = true;
             this.radUseCustomImage.UseVisualStyleBackColor = true;
@@ -141,10 +163,12 @@
             // lvwIcons
             // 
             resources.ApplyResources(this.lvwIcons, "lvwIcons");
-            this.lvwIcons.BackColor = System.Drawing.SystemColors.Control;
+            this.lvwIcons.BackColor = System.Drawing.SystemColors.Window;
+            this.lvwIcons.FlatBorderColor = System.Drawing.Color.Empty;
+            this.lvwIcons.DrawStandardItems = false;
+            this.lvwIcons.ForeColor = System.Drawing.SystemColors.WindowText;
             this.lvwIcons.MultiSelect = false;
             this.lvwIcons.Name = "lvwIcons";
-            this.lvwIcons.OwnerDraw = true;
             this.lvwIcons.TileSize = new System.Drawing.Size(50, 50);
             this.lvwIcons.UseCompatibleStateImageBehavior = false;
             this.lvwIcons.View = System.Windows.Forms.View.Tile;
@@ -171,6 +195,7 @@
             this.Controls.Add(this.radUseCustomImage);
             this.Controls.Add(this.radIconFromTarget);
             this.Controls.Add(this.lvwIcons);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "FrmIconSelector";
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).EndInit();
             this.ResumeLayout(false);
@@ -180,18 +205,18 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView lvwIcons;
-        private System.Windows.Forms.RadioButton radIconFromTarget;
-        private System.Windows.Forms.RadioButton radUseCustomImage;
-        private System.Windows.Forms.TextBox txtImagePath;
+        private TileIconifier.Controls.SkinnableListView lvwIcons;
+        private TileIconifier.Controls.SkinnableRadioButton radIconFromTarget;
+        private TileIconifier.Controls.SkinnableRadioButton radUseCustomImage;
+        private TileIconifier.Controls.SkinnableTextBox txtImagePath;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnBrowseCustomImage;
-        private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button btnCancel;
+        private TileIconifier.Controls.SkinnableButton btnBrowseCustomImage;
+        private TileIconifier.Controls.SkinnableButton btnOk;
+        private TileIconifier.Controls.SkinnableButton btnCancel;
         private System.Windows.Forms.OpenFileDialog opnFile;
-        private System.Windows.Forms.TextBox txtPathToExtractFrom;
-        private System.Windows.Forms.Button btnBrowseIconPath;
-        private System.Windows.Forms.ComboBox cmbCommonIconDlls;
+        private TileIconifier.Controls.SkinnableTextBox txtPathToExtractFrom;
+        private TileIconifier.Controls.SkinnableButton btnBrowseIconPath;
+        private TileIconifier.Controls.SkinnableComboBox cmbCommonIconDlls;
         private System.Windows.Forms.Label lblCommonDlls;
         private System.Windows.Forms.Label lblPreview;
         private System.Windows.Forms.PictureBox pctPreview;

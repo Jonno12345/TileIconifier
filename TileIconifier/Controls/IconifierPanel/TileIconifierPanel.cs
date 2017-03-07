@@ -146,7 +146,7 @@ namespace TileIconifier.Controls.IconifierPanel
         public void UpdateSkinColors(BaseSkin currentBaseSkin)
         {
             _currentBaseSkin = currentBaseSkin;
-            lblUnsaved.ForeColor = _currentBaseSkin.ErrorColor;
+            lblUnsaved.ForeColor = _currentBaseSkin.ErrorForeColor;
             SetPictureBoxesBackColor();
         }
 

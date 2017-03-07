@@ -31,12 +31,12 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomShortcutManagerMain));
-            this.btnCreateNewShortcut = new System.Windows.Forms.Button();
+            this.btnCreateNewShortcut = new TileIconifier.Controls.SkinnableButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDeleteCustomShortcut = new System.Windows.Forms.Button();
+            this.btnDeleteCustomShortcut = new TileIconifier.Controls.SkinnableButton();
             this.lstCustomShortcuts = new TileIconifier.Controls.SortableListView();
-            this.btnGotoShortcut = new System.Windows.Forms.Button();
+            this.btnGotoShortcut = new TileIconifier.Controls.SkinnableButton();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,11 +104,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
         }
 
         #endregion
-        private System.Windows.Forms.Button btnCreateNewShortcut;
+        private TileIconifier.Controls.SkinnableButton btnCreateNewShortcut;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.Button btnDeleteCustomShortcut;
+        private TileIconifier.Controls.SkinnableButton btnDeleteCustomShortcut;
         private SortableListView lstCustomShortcuts;
-        private System.Windows.Forms.Button btnGotoShortcut;
+        private TileIconifier.Controls.SkinnableButton btnGotoShortcut;
     }
 }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomShortcutConfirm));
-            this.txtCustomShortcutName = new System.Windows.Forms.TextBox();
+            this.txtCustomShortcutName = new TileIconifier.Controls.SkinnableTextBox();
             this.lblCustomShortcutName = new System.Windows.Forms.Label();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnOk = new TileIconifier.Controls.SkinnableButton();
+            this.btnCancel = new TileIconifier.Controls.SkinnableButton();
             this.lblCaption = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -86,10 +86,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtCustomShortcutName;
+        private TileIconifier.Controls.SkinnableTextBox txtCustomShortcutName;
         private System.Windows.Forms.Label lblCustomShortcutName;
-        private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button btnCancel;
+        private TileIconifier.Controls.SkinnableButton btnOk;
+        private TileIconifier.Controls.SkinnableButton btnCancel;
         private System.Windows.Forms.Label lblCaption;
     }
 }

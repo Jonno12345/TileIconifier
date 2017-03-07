@@ -270,8 +270,8 @@
   <data name="&gt;&gt;txtPathToExtractFrom.Name" xml:space="preserve">
     <value>txtPathToExtractFrom</value>
   </data>
-  <data name="&gt;&gt;txtPathToExtractFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="radUseCustomImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 281</value>
   </data>
   <data name="&gt;&gt;txtPathToExtractFrom.Parent" xml:space="preserve">
     <value>$this</value>

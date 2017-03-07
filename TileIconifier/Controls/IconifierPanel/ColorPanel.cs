@@ -136,7 +136,7 @@ namespace TileIconifier.Controls.IconifierPanel
 
             Action<Control> controlInvalid = c =>
             {
-                c.BackColor = SkinHandler.GetCurrentSkin().ErrorColor;
+                c.BackColor = SkinHandler.GetCurrentSkin().ErrorForeColor;
                 valid = false;
             };
 
