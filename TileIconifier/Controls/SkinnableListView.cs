@@ -12,13 +12,6 @@ namespace TileIconifier.Controls
 {
     class SkinnableListView : ListView
     {
-        const int WM_PAINT = 0xF;  //Find a better place for this constant.  
-
-        [DllImport("user32.dll")]
-        static extern IntPtr GetWindowDC(IntPtr hWnd);
-        [DllImport("user32.dll")]
-        static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
-
         #region "Properties"
         [DefaultValue(true)]
         private bool headersUseVisualStyleColors = true;
@@ -161,7 +154,7 @@ namespace TileIconifier.Controls
         {
             base.WndProc(ref m);
 
-            if (m.Msg == WM_PAINT && BorderStyle == BorderStyle.FixedSingle)
+            if (m.Msg == NativeMethods.WM_PAINT && BorderStyle == BorderStyle.FixedSingle)
             {
                 DrawUserBorder();
             }                
@@ -193,11 +186,11 @@ namespace TileIconifier.Controls
             //The graphics obtained with this.CreateGraphics only works for 
             //the content area (drawings on it end up under the header, scrollbars, etc)
             //and drawing on it gets buggy when scrolling so we must use a native function.
-            var hdc = GetWindowDC(this.Handle);
+            var hdc = NativeMethods.GetWindowDC(this.Handle);
             using (var g = Graphics.FromHdcInternal(hdc))
             using (var p = new Pen(bColor))
                 g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
-            ReleaseDC(this.Handle, hdc);
+            NativeMethods.ReleaseDC(Handle, hdc);
         }
 
         private TextFormatFlags ConvertToTextFormatFlags(HorizontalAlignment pHoriAlign)

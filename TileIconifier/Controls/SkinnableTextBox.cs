@@ -13,9 +13,7 @@ namespace TileIconifier.Controls
     //Inspired from there : http://stackoverflow.com/a/38405319
 
     class SkinnableTextBox : TextBox
-    {
-        const int WM_PAINT = 0xF;  //Find a better place for this constant.          
-
+    {   
         #region "Properties"
         private Color backColor = SystemColors.Window;
         [DefaultValue(typeof(Color), nameof(SystemColors.Window))]
@@ -130,7 +128,7 @@ namespace TileIconifier.Controls
             base.WndProc(ref m);
 
             //The paint event is not fired, so we must listen for the paint Windows message ourselves.
-            if (m.Msg == WM_PAINT && BorderStyle == BorderStyle.FixedSingle)
+            if (m.Msg == NativeMethods.WM_PAINT && BorderStyle == BorderStyle.FixedSingle)
             {                
                 PaintUserBorder();
             }
@@ -156,9 +154,11 @@ namespace TileIconifier.Controls
                 return;
             }
 
-            using (Graphics g = CreateGraphics())
+            IntPtr hdc = NativeMethods.GetWindowDC(Handle);
+            using (Graphics g = Graphics.FromHdcInternal(hdc))
             using (Pen p = new Pen(bColor))
                 g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
+            NativeMethods.ReleaseDC(Handle, hdc);
         }
     }
 }
