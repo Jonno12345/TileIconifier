@@ -189,12 +189,11 @@ namespace TileIconifier.Forms
             SkinnableListView lvw = control as SkinnableListView;
             if (lvw != null)
             {
-                lvw.HeadersUseVisualStyleColors = FormSkin.ListViewHeadersUseVisualStyleColors;
+                lvw.FlatStyle = FormSkin.ListViewFlatStyle;
                 lvw.HeaderBackColor = FormSkin.ListViewHeaderBackColor;
                 lvw.HeaderForeColor = FormSkin.ListViewHeaderForeColor;
                 lvw.BackColor = FormSkin.ListViewBackColor;
-                lvw.ForeColor = FormSkin.ListViewForeColor;
-                lvw.BorderStyle = FormSkin.ListViewBorderStyle;
+                lvw.ForeColor = FormSkin.ListViewForeColor;                
                 lvw.BorderColor = FormSkin.ListViewBorderColor;
                 lvw.BorderFocusedColor = FormSkin.ListViewBorderFocusedColor;
                 lvw.BorderDisabledColor = FormSkin.ListViewBorderDisabledColor;

@@ -67,9 +67,8 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color TextBoxBorderDisabledColor { get { return Color.Empty; } } //not used
         #endregion
 
-        #region "ListView"
-        public virtual bool ListViewHeadersUseVisualStyleColors { get { return true; } }
-        public virtual BorderStyle ListViewBorderStyle { get { return BorderStyle.Fixed3D; } }
+        #region "ListView"        
+        public virtual FlatStyle ListViewFlatStyle { get { return FlatStyle.Standard; } }
         public virtual Color ListViewBackColor { get { return SystemColors.Window; } }
         public virtual Color ListViewForeColor { get { return SystemColors.WindowText; } }
         public virtual Color ListViewHeaderBackColor { get { return SystemColors.Control; } } //not used

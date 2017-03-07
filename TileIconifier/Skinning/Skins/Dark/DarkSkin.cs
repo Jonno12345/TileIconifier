@@ -78,9 +78,8 @@ namespace TileIconifier.Skinning.Skins.Dark
         public override Color TextBoxBorderDisabledColor { get { return CommonDisabledForeColor; } } //
         #endregion
 
-        #region "ListView"
-        public override bool ListViewHeadersUseVisualStyleColors { get { return false; } }
-        public override BorderStyle ListViewBorderStyle { get { return BorderStyle.FixedSingle; } }
+        #region "ListView"        
+        public override FlatStyle ListViewFlatStyle { get { return FlatStyle.Flat; } }
         public override Color ListViewBackColor { get { return LowBackColor; } }
         public override Color ListViewForeColor { get { return CommonForeColor; } }
         public override Color ListViewHeaderBackColor { get { return MediumBackColor; } }

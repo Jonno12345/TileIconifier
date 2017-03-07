@@ -134,8 +134,8 @@
   <data name="&gt;&gt;btnBrowseCustomImage.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="btnBrowseCustomImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 33</value>
+  <data name="&gt;&gt;lblPreview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -143,21 +143,20 @@
   <data name="&gt;&gt;lvwIcons.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblPreview.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
   <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
     <value>395, 356</value>
   </data>
-  <data name="txtPathToExtractFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 20</value>
+  <data name="radUseCustomImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 17</value>
   </data>
   <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
     <value>btnCancel</value>
   </data>
-  <data name="&gt;&gt;btnOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtPathToExtractFrom.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6275.24978, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pctPreview.Name" xml:space="preserve">
+    <value>pctPreview</value>
   </data>
   <data name="btnBrowseIconPath.Text" xml:space="preserve">
     <value>Browse</value>
@@ -165,26 +164,30 @@
   <data name="&gt;&gt;txtImagePath.Name" xml:space="preserve">
     <value>txtImagePath</value>
   </data>
+  <data name="btnBrowseCustomImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 33</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnBrowseIconPath.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6275.24978, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;opnFile.Name" xml:space="preserve">
+    <value>opnFile</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FrmIconSelector</value>
   </data>
-  <data name="radIconFromTarget.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 21</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
-  </data>
-  <data name="&gt;&gt;lblCommonDlls.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtPathToExtractFrom.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -195,23 +198,23 @@
   <data name="&gt;&gt;btnBrowseIconPath.Name" xml:space="preserve">
     <value>btnBrowseIconPath</value>
   </data>
-  <data name="&gt;&gt;txtImagePath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 327</value>
   </data>
-  <data name="&gt;&gt;lvwIcons.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="radUseCustomImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 281</value>
   </data>
-  <data name="&gt;&gt;txtPathToExtractFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lvwIcons.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="btnBrowseIconPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>491, 14</value>
   </data>
   <data name="btnBrowseCustomImage.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="lvwIcons.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;radUseCustomImage.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="&gt;&gt;btnBrowseIconPath.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -219,11 +222,14 @@
   <data name="&gt;&gt;lvwIcons.Name" xml:space="preserve">
     <value>lvwIcons</value>
   </data>
+  <data name="&gt;&gt;radIconFromTarget.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6275.24978, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="btnBrowseIconPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>9</value>
@@ -234,152 +240,17 @@
   <data name="&gt;&gt;lblPreview.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="lvwIcons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 89</value>
+  </data>
+  <data name="btnOk.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="radIconFromTarget.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
-  </data>
-  <data name="&gt;&gt;txtPathToExtractFrom.Name" xml:space="preserve">
-    <value>txtPathToExtractFrom</value>
-  </data>
-  <data name="lblPreview.Text" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <data name="&gt;&gt;opnFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmbCommonIconDlls.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cmbCommonIconDlls.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;radUseCustomImage.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="cmbCommonIconDlls.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 53</value>
-  </data>
-  <data name="cmbCommonIconDlls.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;cmbCommonIconDlls.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="pctPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 327</value>
-  </data>
-  <data name="btnOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="txtImagePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>392, 20</value>
-  </data>
-  <data name="&gt;&gt;txtImagePath.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;lblPreview.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="opnFile.Filter" xml:space="preserve">
-    <value>Image Files (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png|Programs, ICO's and Libraries (*.exe, *.dll, *.ico)|*.exe;*.dll;*.ico</value>
-  </data>
-  <data name="&gt;&gt;pctPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPreview.Name" xml:space="preserve">
-    <value>lblPreview</value>
-  </data>
-  <data name="lblCommonDlls.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 56</value>
-  </data>
-  <data name="radUseCustomImage.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;radUseCustomImage.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;radUseCustomImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lvwIcons.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;pctPreview.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblCommonDlls.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="btnBrowseIconPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>491, 14</value>
-  </data>
-  <data name="&gt;&gt;pctPreview.Name" xml:space="preserve">
-    <value>pctPreview</value>
-  </data>
-  <data name="btnBrowseCustomImage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnBrowseIconPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 33</value>
-  </data>
-  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>491, 356</value>
-  </data>
-  <data name="txtImagePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 301</value>
-  </data>
-  <data name="&gt;&gt;btnBrowseIconPath.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="radIconFromTarget.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 33</value>
-  </data>
-  <data name="&gt;&gt;lblPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="cmbCommonIconDlls.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 21</value>
-  </data>
-  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;btnOk.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;radIconFromTarget.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="pctPreview.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="txtImagePath.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="lblCommonDlls.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
-  </data>
-  <data name="&gt;&gt;cmbCommonIconDlls.Name" xml:space="preserve">
-    <value>cmbCommonIconDlls</value>
-  </data>
-  <data name="pctPreview.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="btnCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="btnOk.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -839,86 +710,230 @@
         QmCC
 </value>
   </data>
+  <data name="&gt;&gt;txtPathToExtractFrom.Name" xml:space="preserve">
+    <value>txtPathToExtractFrom</value>
+  </data>
+  <data name="lblPreview.Text" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="&gt;&gt;opnFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtImagePath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6275.24978, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtImagePath.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6275.24978, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="radUseCustomImage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;cmbCommonIconDlls.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;radUseCustomImage.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="cmbCommonIconDlls.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 53</value>
+  </data>
+  <data name="cmbCommonIconDlls.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="pctPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 64</value>
+  </data>
+  <data name="pctPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 327</value>
+  </data>
+  <data name="btnOk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="lvwIcons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>552, 184</value>
+  </data>
+  <data name="txtImagePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 20</value>
+  </data>
+  <data name="&gt;&gt;txtImagePath.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;lblPreview.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="opnFile.Filter" xml:space="preserve">
+    <value>Image Files (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png|Programs, ICO's and Libraries (*.exe, *.dll, *.ico)|*.exe;*.dll;*.ico</value>
+  </data>
   <data name="&gt;&gt;txtImagePath.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="lvwIcons.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="&gt;&gt;lblPreview.Name" xml:space="preserve">
+    <value>lblPreview</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="radUseCustomImage.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="cmbCommonIconDlls.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;lvwIcons.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableListView, TileIconifier, Version=2.2.6275.24978, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="lvwIcons.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;pctPreview.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCommonDlls.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="btnBrowseCustomImage.Text" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="&gt;&gt;lblCommonDlls.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnBrowseCustomImage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnBrowseIconPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 33</value>
+  </data>
+  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>491, 356</value>
+  </data>
+  <data name="&gt;&gt;btnOk.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="radIconFromTarget.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 33</value>
+  </data>
+  <data name="lvwIcons.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="cmbCommonIconDlls.Size" type="System.Drawing.Size, System.Drawing">
+    <value>351, 21</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="txtPathToExtractFrom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>351, 20</value>
+  </data>
+  <data name="&gt;&gt;radIconFromTarget.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="pctPreview.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="txtPathToExtractFrom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtImagePath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 301</value>
+  </data>
+  <data name="&gt;&gt;cmbCommonIconDlls.Name" xml:space="preserve">
+    <value>cmbCommonIconDlls</value>
+  </data>
+  <data name="txtImagePath.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnOk.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;lvwIcons.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseCustomImage.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pctPreview.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="btnOk.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="lblCommonDlls.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
   </data>
-  <data name="pctPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 64</value>
-  </data>
-  <data name="lvwIcons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 184</value>
-  </data>
-  <data name="&gt;&gt;radIconFromTarget.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="pctPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
   </data>
   <data name="radIconFromTarget.Text" xml:space="preserve">
     <value>Extract an icon</value>
   </data>
+  <data name="&gt;&gt;radIconFromTarget.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pctPreview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 304</value>
   </data>
-  <data name="txtPathToExtractFrom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;lblCommonDlls.Name" xml:space="preserve">
-    <value>lblCommonDlls</value>
+  <data name="&gt;&gt;btnBrowseIconPath.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="pctPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="&gt;&gt;btnBrowseCustomImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6275.24978, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnBrowseIconPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6275.24978, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="radUseCustomImage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
+  <data name="&gt;&gt;btnOk.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6275.24978, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="lvwIcons.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 89</value>
-  </data>
-  <data name="txtImagePath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="cmbCommonIconDlls.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 33</value>
-  </data>
-  <data name="&gt;&gt;btnBrowseCustomImage.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;txtPathToExtractFrom.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblCommonDlls.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;cmbCommonIconDlls.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableComboBox, TileIconifier, Version=2.2.6275.24978, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnOk.Name" xml:space="preserve">
     <value>btnOk</value>
   </data>
-  <data name="radUseCustomImage.Text" xml:space="preserve">
-    <value>Use custom image</value>
+  <data name="&gt;&gt;lblCommonDlls.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtPathToExtractFrom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 21</value>
+  </data>
+  <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 33</value>
+  </data>
+  <data name="lblCommonDlls.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 56</value>
+  </data>
+  <data name="&gt;&gt;txtPathToExtractFrom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCommonDlls.Name" xml:space="preserve">
+    <value>lblCommonDlls</value>
   </data>
   <data name="btnBrowseCustomImage.Location" type="System.Drawing.Point, System.Drawing">
     <value>491, 294</value>
   </data>
-  <data name="&gt;&gt;radIconFromTarget.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
   </data>
   <data name="txtPathToExtractFrom.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
-  <data name="radUseCustomImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 17</value>
+  <data name="lblPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Icon Selector</value>
@@ -926,41 +941,29 @@
   <data name="&gt;&gt;radIconFromTarget.Name" xml:space="preserve">
     <value>radIconFromTarget</value>
   </data>
-  <data name="lblPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 327</value>
-  </data>
   <data name="&gt;&gt;btnBrowseCustomImage.Name" xml:space="preserve">
     <value>btnBrowseCustomImage</value>
   </data>
   <data name="radIconFromTarget.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 17</value>
   </data>
-  <data name="txtPathToExtractFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 21</value>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
   </data>
-  <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+  <data name="radUseCustomImage.Text" xml:space="preserve">
+    <value>Use custom image</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6047.43045, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;radUseCustomImage.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6275.24978, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="lblPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
-  </data>
-  <data name="radUseCustomImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 281</value>
-  </data>
-  <data name="btnBrowseCustomImage.Text" xml:space="preserve">
-    <value>Browse</value>
-  </data>
-  <data name="&gt;&gt;opnFile.Name" xml:space="preserve">
-    <value>opnFile</value>
+  <data name="radIconFromTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 21</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lvwIcons.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="&gt;&gt;cmbCommonIconDlls.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="lblCommonDlls.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -971,13 +974,10 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>89</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ru</value>
-  </metadata>
   <metadata name="opnFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>89</value>
   </metadata>
 </root>

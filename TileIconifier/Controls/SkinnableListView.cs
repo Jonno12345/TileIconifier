@@ -12,16 +12,67 @@ namespace TileIconifier.Controls
 {
     class SkinnableListView : ListView
     {
-        #region "Properties"
-        [DefaultValue(true)]
-        private bool headersUseVisualStyleColors = true;
-        public bool HeadersUseVisualStyleColors
+        public SkinnableListView()
         {
-            get { return headersUseVisualStyleColors; }
+            base.OwnerDraw = true;
+        }
+        #region "Properties"
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [Obsolete("Use the FlatStyle property instead.")]
+        [DefaultValue(true)]
+        public new bool OwnerDraw
+        {
+            get { return base.OwnerDraw; }
+            set { base.OwnerDraw = value; }
+        }
+
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [Obsolete("Use the FlatStyle property instead.")]
+        public new BorderStyle BorderStyle
+        {
+            get { return base.BorderStyle; }
+            set { base.BorderStyle = value; }
+        }
+        
+        private FlatStyle flatStyle = FlatStyle.Standard;
+        [DefaultValue(FlatStyle.Standard)]
+        public FlatStyle FlatStyle
+        {
+            get { return flatStyle; }
             set
             {
-                headersUseVisualStyleColors = value;
-                OwnerDraw = !value;
+                if (flatStyle != value)
+                {                    
+                    switch (value)
+                    {
+                        case FlatStyle.Standard:                            
+                            base.BorderStyle = BorderStyle.Fixed3D;                            
+                            break;
+                        case FlatStyle.Flat:                            
+                            base.BorderStyle = BorderStyle.FixedSingle;
+                            break;
+                        default:
+                            throw new InvalidEnumArgumentException("Only the Standard and Flat FlatStyle are supported by this control.");
+                    }
+                    flatStyle = value;
+                }
+            }
+        }
+                
+        private bool drawStandardItems = true;
+        [DefaultValue(true)]
+        public bool DrawStandardItems
+        {
+            get { return drawStandardItems; }
+            set
+            {
+                if (drawStandardItems != value)
+                {
+                    drawStandardItems = value;
+                    Invalidate();
+                }
             }
         }
 
@@ -35,7 +86,7 @@ namespace TileIconifier.Controls
                 if (headerBackColor != value)
                 {
                     headerBackColor = value;
-                    if (HeadersUseVisualStyleColors)
+                    if (FlatStyle == FlatStyle.Flat)
                     {
                         Invalidate();
                     }
@@ -53,7 +104,7 @@ namespace TileIconifier.Controls
                 if (headerForeColor != value)
                 {
                     headerForeColor = value;
-                    if (HeadersUseVisualStyleColors)
+                    if (FlatStyle == FlatStyle.Flat)
                     {
                         Invalidate();
                     }
@@ -71,7 +122,7 @@ namespace TileIconifier.Controls
                 {
                     borderColor = value;
                     {
-                        if (BorderStyle == BorderStyle.FixedSingle)
+                        if (FlatStyle == FlatStyle.Flat)
                         {
                             Invalidate();
                         }
@@ -90,7 +141,7 @@ namespace TileIconifier.Controls
                 if (borderFocusedColor != value)
                 {
                     borderFocusedColor = value;
-                    if (BorderStyle == BorderStyle.FixedSingle)
+                    if (FlatStyle == FlatStyle.Flat)
                     {
                         Invalidate();
                     }
@@ -108,7 +159,7 @@ namespace TileIconifier.Controls
                 if (borderDisabledColor != value)
                 {
                     borderDisabledColor = value;
-                    if (BorderStyle == BorderStyle.FixedSingle)
+                    if (FlatStyle == FlatStyle.Flat)
                     {
                         Invalidate();
                     }
@@ -120,7 +171,7 @@ namespace TileIconifier.Controls
         {
             base.OnDrawColumnHeader(e);
             
-            if (!HeadersUseVisualStyleColors)
+            if (FlatStyle == FlatStyle.Flat)
             {
                 using (SolidBrush b = new SolidBrush(HeaderBackColor))
                     e.Graphics.FillRectangle(b, e.Bounds);
@@ -133,13 +184,17 @@ namespace TileIconifier.Controls
 
                 TextRenderer.DrawText(e.Graphics, e.Header.Text, Font, e.Bounds, HeaderForeColor, flags);
             }
+            else
+            {
+                e.DrawDefault = true;
+            }
         }
 
         protected override void OnDrawItem(DrawListViewItemEventArgs e)
         {
             base.OnDrawItem(e);
 
-            e.DrawDefault = true;
+            e.DrawDefault = DrawStandardItems;
         }
 
         protected override void OnDrawSubItem(DrawListViewSubItemEventArgs e)
@@ -147,14 +202,14 @@ namespace TileIconifier.Controls
             base.OnDrawSubItem(e);
 
             //Maybe not needed since we already set DrawDefault to true in OnDrawItem. To verify one day...
-            e.DrawDefault = true;           
+            e.DrawDefault = DrawStandardItems;           
         }
 
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
 
-            if (m.Msg == NativeMethods.WM_PAINT && BorderStyle == BorderStyle.FixedSingle)
+            if (m.Msg == NativeMethods.WM_PAINT && FlatStyle == FlatStyle.Flat)
             {
                 DrawUserBorder();
             }                
