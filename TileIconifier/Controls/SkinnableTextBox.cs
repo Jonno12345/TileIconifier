@@ -45,7 +45,7 @@ namespace TileIconifier.Controls
                     readOnlyBackColor = value;  
                     if (ReadOnly)
                     {
-                        base.BackColor = ReadOnlyBackColor;
+                        base.BackColor = value;
                     }
                 }
             }

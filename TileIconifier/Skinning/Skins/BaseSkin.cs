@@ -32,6 +32,9 @@ using System.Windows.Forms;
 
 namespace TileIconifier.Skinning.Skins
 {
+    /// <summary>
+    /// Skin for a <see cref="Forms.SkinnableForm"/> that uses the default appearance for controls.
+    /// </summary>
     public class BaseSkin
     {
         #region "Basic properties"
@@ -47,7 +50,7 @@ namespace TileIconifier.Skinning.Skins
         #endregion
 
         //"not used" means that the given color is not actually used by the control, because
-        //it is not applicable based on the control's FlatStyle, BorderStyle or HeaderUseVisualStyleColors property.
+        //it is not applicable based on the control's FlatStyle or BorderStyle property.
 
         #region "Button"
         public virtual FlatStyle ButtonFlatStyle { get { return FlatStyle.Standard; } }

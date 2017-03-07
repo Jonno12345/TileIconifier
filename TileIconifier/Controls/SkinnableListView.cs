@@ -176,8 +176,7 @@ namespace TileIconifier.Controls
                 using (SolidBrush b = new SolidBrush(FlatHeaderBackColor))
                     e.Graphics.FillRectangle(b, e.Bounds);
 
-                TextFormatFlags flags = 
-                    TextFormatFlags.Default |
+                TextFormatFlags flags =                     
                     TextFormatFlags.VerticalCenter |
                     TextFormatFlags.EndEllipsis |
                     ConvertToTextFormatFlags(e.Header.TextAlign);
@@ -201,7 +200,7 @@ namespace TileIconifier.Controls
         {
             base.OnDrawSubItem(e);
 
-            //Maybe not needed since we already set DrawDefault to true in OnDrawItem. To verify one day...
+            //Maybe not needed since we already set DrawDefault in OnDrawItem. To verify one day...
             e.DrawDefault = DrawStandardItems;           
         }
 
@@ -237,10 +236,7 @@ namespace TileIconifier.Controls
                 //otherwise, the previous color gets stuck. 
                 bColor = SystemColors.WindowFrame;
             }
-
-            //The graphics obtained with this.CreateGraphics only works for 
-            //the content area (drawings on it end up under the header, scrollbars, etc)
-            //and drawing on it gets buggy when scrolling so we must use a native function.
+            
             var hdc = NativeMethods.GetWindowDC(this.Handle);
             using (var g = Graphics.FromHdcInternal(hdc))
             using (var p = new Pen(bColor))

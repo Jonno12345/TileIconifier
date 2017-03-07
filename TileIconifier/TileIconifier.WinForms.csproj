@@ -310,7 +310,7 @@
     </Compile>
     <Compile Include="Skinning\Skins\Dark\ToolStripDarkColorScheme.cs" />
     <Compile Include="Skinning\Skins\ToolStripSystemColorScheme.cs" />
-    <Compile Include="Skinning\SystemColorTable.cs" />
+    <Compile Include="Skinning\ToolStripSystemColorTable.cs" />
     <Compile Include="Skinning\ToolStripSystemRendererEx.cs" />
     <Compile Include="Utilities\ButtonUtils.cs" />
     <Compile Include="Utilities\FontUtils.cs" />

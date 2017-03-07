@@ -9,7 +9,10 @@ using TileIconifier.Skinning.Skins;
 
 namespace TileIconifier.Skinning
 {
-    class SystemColorTable
+    /// <summary>
+    /// Provides the colors internally used by a <see cref="ToolStripSystemRendererEx"/>.
+    /// </summary>
+    internal class ToolStripSystemColorTable
     {
         private ToolStripSystemColorScheme userScheme;
         private ToolStripSystemColorScheme hcScheme;
@@ -30,12 +33,12 @@ namespace TileIconifier.Skinning
         }
 
         #region "Contructors"
-        internal SystemColorTable()
+        internal ToolStripSystemColorTable()
         {
             
         }
 
-        internal SystemColorTable(ToolStripSystemColorScheme pSysColorScheme)
+        internal ToolStripSystemColorTable(ToolStripSystemColorScheme pSysColorScheme)
         {
             userScheme = pSysColorScheme;
         }

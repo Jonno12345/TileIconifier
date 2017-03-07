@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace TileIconifier.Skinning.Skins
 {
+    /// <summary>
+    /// Provides a basic and overridable color scheme for a <see cref="ToolStripSystemRendererEx"/>.
+    /// </summary>
     public class ToolStripSystemColorScheme
     {
         #region "Default colors"

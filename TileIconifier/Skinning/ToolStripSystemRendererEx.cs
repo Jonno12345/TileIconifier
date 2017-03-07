@@ -18,18 +18,18 @@ namespace TileIconifier.Skinning
 
         private string vsClass = stSTANDARD_VS_CLASS;
         private VisualStyleRenderer vsRenderer;
-        private SystemColorTable colorTable;
+        private ToolStripSystemColorTable colorTable;
         private delegate void drawClassicElement(Graphics pGraphics, Color pColor, Rectangle pRect);
 
         #region "Constructors"
         public ToolStripSystemRendererEx()
         {
-            colorTable = new SystemColorTable();
+            colorTable = new ToolStripSystemColorTable();
         }
 
         public ToolStripSystemRendererEx(ToolStripSystemColorScheme pScheme)
         {
-            colorTable = new SystemColorTable(pScheme);
+            colorTable = new ToolStripSystemColorTable(pScheme);
         }
         #endregion
 
