@@ -37,29 +37,22 @@ namespace TileIconifier.Skinning.Skins.Dark
         #region "Common colors"
         //These colors are applied to various controls.
         //Simplifies skinning for similar UI elements.
-        private Color LowBackColor = Color.FromArgb(20, 20, 20);
-        private Color LowForeColor = Color.FromArgb(240, 240, 240);
-        private Color LowDisabledForeColor = Color.FromArgb(130, 130, 130);
-        private Color LowBorderColor = Color.FromArgb(70, 70, 70);
+        private readonly Color CommonForeColor = Color.FromArgb(240, 240, 240);
+        private readonly Color CommonDisabledForeColor = Color.FromArgb(130, 130, 130);
+        private readonly Color CommonBorderColor = Color.FromArgb(70, 70, 70);
+        private readonly Color CommonFocusedBorderColor = SystemColors.Highlight;        
 
-        private Color MediumBackColor = Color.FromArgb(50, 50, 50);
-        private Color MediumForeColor = Color.FromArgb(240, 240, 240);
-        private Color MediumDisabledForeColor = Color.FromArgb(140, 140, 140);
-        private Color MediumBorderColor = Color.FromArgb(70, 70, 70);
-
-        private Color HighBackColor = Color.FromArgb(70, 70, 70);
-        private Color HighForeColor = Color.FromArgb(240, 240, 240);
-        private Color HighDisabledForeColor = Color.FromArgb(150, 150, 150);
-        private Color HighBorderColor = Color.FromArgb(90, 90, 90);
-
-        private Color FocusedBorderColor = SystemColors.Highlight;
+        private readonly Color LowBackColor = Color.FromArgb(20, 20, 20);
+        private readonly Color MediumBackColor = Color.FromArgb(50, 50, 50);
+        private readonly Color HighBackColor = Color.FromArgb(70, 70, 70);
+        private readonly Color HighBorderColor = Color.FromArgb(90, 90, 90);
         #endregion
 
         #region "Basic properties"
         public override Color BackColor { get { return MediumBackColor; } }
-        public override Color ForeColor { get { return MediumForeColor; } }
-        public override Color DisabledForeColor { get { return MediumDisabledForeColor; } }
-        public override Color HighlightBackColor { get { return FocusedBorderColor; } }
+        public override Color ForeColor { get { return CommonForeColor; } }
+        public override Color DisabledForeColor { get { return CommonDisabledForeColor; } }
+        public override Color HighlightBackColor { get { return CommonFocusedBorderColor; } }
         public override Color ErrorForeColor { get { return Color.Red; } }
 
         //These objects are potentially more expensive to create, so we cache them.
@@ -69,43 +62,43 @@ namespace TileIconifier.Skinning.Skins.Dark
 
         #region "Button"
         public override FlatStyle ButtonFlatStyle { get { return FlatStyle.Flat; } }
-        public override Color ButtonForeColor { get { return HighForeColor; } }
+        public override Color ButtonForeColor { get { return CommonForeColor; } }
         public override Color ButtonBackColor { get { return HighBackColor; } }
-        public override Color ButtonDisabledForeColor { get { return HighDisabledForeColor; } }
+        public override Color ButtonDisabledForeColor { get { return CommonDisabledForeColor; } }
         public override Color ButtonFlatBorderColor { get { return HighBorderColor; } }
         #endregion
 
         #region "TextBox"
         public override BorderStyle TextBoxBorderStyle { get { return BorderStyle.FixedSingle; } }
         public override Color TextBoxBackColor { get { return LowBackColor; } }
-        public override Color TextBoxForeColor { get { return LowForeColor; } }
+        public override Color TextBoxForeColor { get { return CommonForeColor; } }
         public override Color TextBoxReadOnlyBackColor { get { return MediumBackColor; } }
-        public override Color TextBoxBorderColor { get { return LowBorderColor; } }
-        public override Color TextBoxBorderFocusedColor { get { return FocusedBorderColor; } }
-        public override Color TextBoxBorderDisabledColor { get { return LowDisabledForeColor; } } //
+        public override Color TextBoxBorderColor { get { return CommonBorderColor; } }
+        public override Color TextBoxBorderFocusedColor { get { return CommonFocusedBorderColor; } }
+        public override Color TextBoxBorderDisabledColor { get { return CommonDisabledForeColor; } } //
         #endregion
 
         #region "ListView"
         public override bool ListViewHeadersUseVisualStyleColors { get { return false; } }
         public override BorderStyle ListViewBorderStyle { get { return BorderStyle.FixedSingle; } }
         public override Color ListViewBackColor { get { return LowBackColor; } }
-        public override Color ListViewForeColor { get { return LowForeColor; } }
+        public override Color ListViewForeColor { get { return CommonForeColor; } }
         public override Color ListViewHeaderBackColor { get { return MediumBackColor; } }
-        public override Color ListViewHeaderForeColor { get { return MediumForeColor; } }
-        public override Color ListViewBorderColor { get { return LowBorderColor; } }
-        public override Color ListViewBorderFocusedColor { get { return FocusedBorderColor; } }
-        public override Color ListViewBorderDisabledColor { get { return LowDisabledForeColor; } } //
+        public override Color ListViewHeaderForeColor { get { return CommonForeColor; } }
+        public override Color ListViewBorderColor { get { return CommonBorderColor; } }
+        public override Color ListViewBorderFocusedColor { get { return CommonFocusedBorderColor; } }
+        public override Color ListViewBorderDisabledColor { get { return CommonDisabledForeColor; } } //
         #endregion
 
         #region "ComboBox"
         public override FlatStyle ComboBoxFlatStyle { get { return FlatStyle.Flat; } }
         public override Color ComboBoxBackColor { get { return LowBackColor; } }
-        public override Color ComboBoxForeColor { get { return LowForeColor; } }
+        public override Color ComboBoxForeColor { get { return CommonForeColor; } }
         public override Color ComboBoxButtonBackColor { get { return MediumBackColor; } }
-        public override Color ComboboxButtonForeColor { get { return MediumForeColor; } }
-        public override Color ComboBoxDisabledForeColor { get { return MediumDisabledForeColor; } }
-        public override Color ComboBoxButtonBorderColor { get { return MediumBorderColor; } }
-        public override Color ComboBoxButtonBorderFocusedColor { get { return FocusedBorderColor; } }
+        public override Color ComboboxButtonForeColor { get { return CommonForeColor; } }
+        public override Color ComboBoxDisabledForeColor { get { return CommonDisabledForeColor; } }
+        public override Color ComboBoxButtonBorderColor { get { return CommonBorderColor; } }
+        public override Color ComboBoxButtonBorderFocusedColor { get { return CommonFocusedBorderColor; } }
         #endregion
     }
 }
