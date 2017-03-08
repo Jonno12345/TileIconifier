@@ -46,7 +46,11 @@
             this.radUseCustomImage = new TileIconifier.Controls.SkinnableRadioButton();
             this.radIconFromTarget = new TileIconifier.Controls.SkinnableRadioButton();
             this.lvwIcons = new TileIconifier.Controls.SkinnableListView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // opnFile
@@ -140,6 +144,7 @@
             // txtImagePath
             // 
             resources.ApplyResources(this.txtImagePath, "txtImagePath");
+            this.tableLayoutPanel2.SetColumnSpan(this.txtImagePath, 2);
             this.txtImagePath.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.TextChanged += new System.EventHandler(this.txtImagePath_TextChanged);
@@ -147,6 +152,7 @@
             // radUseCustomImage
             // 
             resources.ApplyResources(this.radUseCustomImage, "radUseCustomImage");
+            this.tableLayoutPanel1.SetColumnSpan(this.radUseCustomImage, 2);
             this.radUseCustomImage.DisabledForeColor = System.Drawing.Color.Empty;
             this.radUseCustomImage.Name = "radUseCustomImage";
             this.radUseCustomImage.TabStop = true;
@@ -154,18 +160,20 @@
             // 
             // radIconFromTarget
             // 
-            this.radIconFromTarget.Checked = true;
             resources.ApplyResources(this.radIconFromTarget, "radIconFromTarget");
+            this.radIconFromTarget.Checked = true;
+            this.radIconFromTarget.DisabledForeColor = System.Drawing.Color.Empty;
             this.radIconFromTarget.Name = "radIconFromTarget";
             this.radIconFromTarget.TabStop = true;
             this.radIconFromTarget.UseVisualStyleBackColor = true;
             // 
             // lvwIcons
             // 
-            resources.ApplyResources(this.lvwIcons, "lvwIcons");
             this.lvwIcons.BackColor = System.Drawing.SystemColors.Window;
-            this.lvwIcons.FlatBorderColor = System.Drawing.Color.Empty;
+            this.tableLayoutPanel1.SetColumnSpan(this.lvwIcons, 3);
+            resources.ApplyResources(this.lvwIcons, "lvwIcons");
             this.lvwIcons.DrawStandardItems = false;
+            this.lvwIcons.FlatBorderColor = System.Drawing.Color.Empty;
             this.lvwIcons.ForeColor = System.Drawing.SystemColors.WindowText;
             this.lvwIcons.MultiSelect = false;
             this.lvwIcons.Name = "lvwIcons";
@@ -177,29 +185,46 @@
             this.lvwIcons.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvwIcons_MouseClick);
             this.lvwIcons.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvwIcons_MouseDoubleClick);
             // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.radIconFromTarget, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnCancel, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.txtPathToExtractFrom, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnBrowseIconPath, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cmbCommonIconDlls, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblCommonDlls, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnBrowseCustomImage, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lvwIcons, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.radUseCustomImage, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 4);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // tableLayoutPanel2
+            // 
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnOk, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblPreview, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txtImagePath, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.pctPreview, 1, 1);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel1.SetRowSpan(this.tableLayoutPanel2, 2);
+            // 
             // FrmIconSelector
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.lblPreview);
-            this.Controls.Add(this.pctPreview);
-            this.Controls.Add(this.lblCommonDlls);
-            this.Controls.Add(this.cmbCommonIconDlls);
-            this.Controls.Add(this.btnBrowseIconPath);
-            this.Controls.Add(this.txtPathToExtractFrom);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.btnBrowseCustomImage);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtImagePath);
-            this.Controls.Add(this.radUseCustomImage);
-            this.Controls.Add(this.radIconFromTarget);
-            this.Controls.Add(this.lvwIcons);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "FrmIconSelector";
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -220,5 +245,7 @@
         private System.Windows.Forms.Label lblCommonDlls;
         private System.Windows.Forms.Label lblPreview;
         private System.Windows.Forms.PictureBox pctPreview;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }
