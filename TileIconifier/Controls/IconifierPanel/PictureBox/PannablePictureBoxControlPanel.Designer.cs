@@ -45,7 +45,9 @@
             // 
             this.btnShrink.BackgroundImage = global::TileIconifier.Properties.Resources.ZoomOut_12927;
             this.btnShrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnShrink.DisabledForeColor = System.Drawing.Color.Empty;
             this.btnShrink.Location = new System.Drawing.Point(106, 30);
+            this.btnShrink.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.btnShrink.Name = "btnShrink";
             this.btnShrink.Size = new System.Drawing.Size(27, 28);
             this.btnShrink.TabIndex = 0;
@@ -57,7 +59,9 @@
             // 
             this.btnEnlarge.BackgroundImage = global::TileIconifier.Properties.Resources.Zoom_5442;
             this.btnEnlarge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEnlarge.DisabledForeColor = System.Drawing.Color.Empty;
             this.btnEnlarge.Location = new System.Drawing.Point(106, -1);
+            this.btnEnlarge.Margin = new System.Windows.Forms.Padding(3, 0, 0, 3);
             this.btnEnlarge.Name = "btnEnlarge";
             this.btnEnlarge.Size = new System.Drawing.Size(27, 28);
             this.btnEnlarge.TabIndex = 1;
@@ -69,7 +73,9 @@
             // 
             this.btnOpenImage.BackgroundImage = global::TileIconifier.Properties.Resources.OpenComparisonResult_9697;
             this.btnOpenImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnOpenImage.DisabledForeColor = System.Drawing.Color.Empty;
             this.btnOpenImage.Location = new System.Drawing.Point(106, 123);
+            this.btnOpenImage.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.btnOpenImage.Name = "btnOpenImage";
             this.btnOpenImage.Size = new System.Drawing.Size(27, 28);
             this.btnOpenImage.TabIndex = 2;
@@ -80,7 +86,9 @@
             // 
             this.btnReset.BackgroundImage = global::TileIconifier.Properties.Resources.ZoomToFit;
             this.btnReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnReset.DisabledForeColor = System.Drawing.Color.Empty;
             this.btnReset.Location = new System.Drawing.Point(106, 61);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(27, 28);
             this.btnReset.TabIndex = 3;
@@ -101,7 +109,9 @@
             // 
             this.btnAlign.BackgroundImage = global::TileIconifier.Properties.Resources.Translate;
             this.btnAlign.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAlign.DisabledForeColor = System.Drawing.Color.Empty;
             this.btnAlign.Location = new System.Drawing.Point(106, 92);
+            this.btnAlign.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.btnAlign.Name = "btnAlign";
             this.btnAlign.Size = new System.Drawing.Size(27, 28);
             this.btnAlign.TabIndex = 4;
@@ -132,6 +142,8 @@
             // PannablePictureBoxControlPanel
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.lblPercent);
             this.Controls.Add(this.trkZoom);
             this.Controls.Add(this.btnAlign);
@@ -140,7 +152,7 @@
             this.Controls.Add(this.btnEnlarge);
             this.Controls.Add(this.btnShrink);
             this.Name = "PannablePictureBoxControlPanel";
-            this.Size = new System.Drawing.Size(133, 161);
+            this.Size = new System.Drawing.Size(133, 154);
             this.Load += new System.EventHandler(this.PannablePictureBoxControlPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trkZoom)).EndInit();
             this.ResumeLayout(false);
