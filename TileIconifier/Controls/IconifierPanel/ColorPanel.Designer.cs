@@ -47,13 +47,13 @@
             // 
             // panel1
             // 
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.eyedropperColorPicker);
             this.panel1.Controls.Add(this.btnColourPicker);
             this.panel1.Controls.Add(this.pnlFGColour);
             this.panel1.Controls.Add(this.cmbColour);
             this.panel1.Controls.Add(this.lblBGColour);
             this.panel1.Controls.Add(this.txtBGColour);
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // eyedropperColorPicker
@@ -61,12 +61,14 @@
             resources.ApplyResources(this.eyedropperColorPicker, "eyedropperColorPicker");
             this.eyedropperColorPicker.Name = "eyedropperColorPicker";
             this.eyedropperColorPicker.SelectedColor = System.Drawing.Color.Empty;
+            this.eyedropperColorPicker.Zoom = 6;
             this.eyedropperColorPicker.SelectedColorChanged += new System.EventHandler(this.eyedropperColorPicker_SelectedColorChanged);
             // 
             // btnColourPicker
             // 
             resources.ApplyResources(this.btnColourPicker, "btnColourPicker");
             this.btnColourPicker.BackgroundImage = global::TileIconifier.Properties.Resources.colorsquare;
+            this.btnColourPicker.DisabledForeColor = System.Drawing.Color.Empty;
             this.btnColourPicker.FlatAppearance.BorderSize = 0;
             this.btnColourPicker.Name = "btnColourPicker";
             this.btnColourPicker.UseVisualStyleBackColor = true;
@@ -83,15 +85,17 @@
             // 
             // chkFGTxtEnabled
             // 
+            resources.ApplyResources(this.chkFGTxtEnabled, "chkFGTxtEnabled");
             this.chkFGTxtEnabled.Checked = true;
             this.chkFGTxtEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            resources.ApplyResources(this.chkFGTxtEnabled, "chkFGTxtEnabled");
+            this.chkFGTxtEnabled.DisabledForeColor = System.Drawing.Color.Empty;
             this.chkFGTxtEnabled.Name = "chkFGTxtEnabled";
             this.chkFGTxtEnabled.UseVisualStyleBackColor = true;
             // 
             // radFGDark
             // 
             resources.ApplyResources(this.radFGDark, "radFGDark");
+            this.radFGDark.DisabledForeColor = System.Drawing.Color.Empty;
             this.radFGDark.Name = "radFGDark";
             this.radFGDark.UseVisualStyleBackColor = true;
             // 
@@ -102,8 +106,9 @@
             // 
             // radFGLight
             // 
-            this.radFGLight.Checked = true;
             resources.ApplyResources(this.radFGLight, "radFGLight");
+            this.radFGLight.Checked = true;
+            this.radFGLight.DisabledForeColor = System.Drawing.Color.Empty;
             this.radFGLight.Name = "radFGLight";
             this.radFGLight.TabStop = true;
             this.radFGLight.UseVisualStyleBackColor = true;
@@ -112,6 +117,11 @@
             // 
             resources.ApplyResources(this.cmbColour, "cmbColour");
             this.cmbColour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbColour.FlatButtonBackColor = System.Drawing.SystemColors.Control;
+            this.cmbColour.FlatButtonBorderColor = System.Drawing.SystemColors.ControlDark;
+            this.cmbColour.FlatButtonBorderFocusedColor = System.Drawing.SystemColors.Highlight;
+            this.cmbColour.FlatButtonDisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.cmbColour.FlatButtonForeColor = System.Drawing.SystemColors.ControlText;
             this.cmbColour.FormattingEnabled = true;
             this.cmbColour.Name = "cmbColour";
             // 
@@ -135,7 +145,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlFGColour.ResumeLayout(false);
+            this.pnlFGColour.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
