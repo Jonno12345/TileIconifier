@@ -117,358 +117,373 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;clrDialog.Name" xml:space="preserve">
-    <value>clrDialog</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnColourPicker.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;radFGLight.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6275.37687, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="lblFGText.Text" xml:space="preserve">
-    <value>Foreground Text (Medium Icon Only)</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblFGText.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblFGText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 13</value>
-  </data>
-  <data name="radFGLight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 17</value>
-  </data>
-  <data name="&gt;&gt;btnColourPicker.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6275.37687, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="pnlFGColour.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 51</value>
-  </data>
-  <data name="lblBGColour.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 1</value>
-  </data>
-  <data name="chkFGTxtEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 4</value>
-  </data>
-  <data name="&gt;&gt;cmbColour.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="radFGDark.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 17</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;pnlFGColour.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="lblBGColour.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
-  </data>
-  <data name="&gt;&gt;chkFGTxtEnabled.Parent" xml:space="preserve">
-    <value>pnlFGColour</value>
-  </data>
-  <data name="radFGLight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 23</value>
-  </data>
-  <data name="pnlFGColour.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="lblFGText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;pnlFGColour.Name" xml:space="preserve">
-    <value>pnlFGColour</value>
-  </data>
-  <data name="&gt;&gt;cmbColour.Name" xml:space="preserve">
-    <value>cmbColour</value>
-  </data>
-  <data name="&gt;&gt;eyedropperColorPicker.Name" xml:space="preserve">
-    <value>eyedropperColorPicker</value>
-  </data>
-  <data name="radFGDark.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;chkFGTxtEnabled.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableCheckBox, TileIconifier, Version=2.2.6275.37687, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="pnlFGColour.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="pnlFGColour.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 45</value>
-  </data>
-  <data name="txtBGColour.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="&gt;&gt;chkFGTxtEnabled.Name" xml:space="preserve">
-    <value>chkFGTxtEnabled</value>
-  </data>
-  <data name="&gt;&gt;radFGDark.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="panel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="lblBGColour.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 13</value>
-  </data>
-  <data name="&gt;&gt;btnColourPicker.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtBGColour.Text" xml:space="preserve">
-    <value>#323232</value>
-  </data>
-  <data name="radFGDark.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;lblBGColour.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;radFGDark.Name" xml:space="preserve">
-    <value>radFGDark</value>
-  </data>
-  <data name="&gt;&gt;clrDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="chkFGTxtEnabled.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="lblFGText.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkFGTxtEnabled.Text" xml:space="preserve">
-    <value>Enabled</value>
-  </data>
-  <data name="btnColourPicker.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="&gt;&gt;txtBGColour.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;pnlFGColour.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;eyedropperColorPicker.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.Eyedropper.EyedropColorPicker, TileIconifier, Version=2.2.6275.37687, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 96</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="&gt;&gt;radFGLight.Parent" xml:space="preserve">
-    <value>pnlFGColour</value>
-  </data>
-  <data name="&gt;&gt;lblBGColour.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;eyedropperColorPicker.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;radFGLight.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="btnColourPicker.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
-  <data name="radFGDark.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="&gt;&gt;lblFGText.Name" xml:space="preserve">
-    <value>lblFGText</value>
-  </data>
-  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radFGLight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="&gt;&gt;lblBGColour.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="cmbColour.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 21</value>
-  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="eyedropperColorPicker.Location" type="System.Drawing.Point, System.Drawing">
     <value>235, 15</value>
   </data>
-  <data name="txtBGColour.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 20</value>
-  </data>
-  <data name="&gt;&gt;pnlFGColour.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtBGColour.Name" xml:space="preserve">
-    <value>txtBGColour</value>
-  </data>
-  <data name="&gt;&gt;eyedropperColorPicker.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtBGColour.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblBGColour.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;btnColourPicker.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;txtBGColour.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6275.37687, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="chkFGTxtEnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 17</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblFGText.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblFGText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lblFGText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;cmbColour.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableComboBox, TileIconifier, Version=2.2.6275.37687, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="pnlFGColour.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="cmbColour.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 19</value>
-  </data>
-  <data name="lblFGText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 5</value>
-  </data>
-  <data name="radFGLight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="eyedropperColorPicker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
   </data>
   <data name="eyedropperColorPicker.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
-  <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;eyedropperColorPicker.Name" xml:space="preserve">
+    <value>eyedropperColorPicker</value>
   </data>
-  <data name="chkFGTxtEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="&gt;&gt;eyedropperColorPicker.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.Eyedropper.EyedropColorPicker, TileIconifier, Version=2.2.6275.38452, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;eyedropperColorPicker.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;eyedropperColorPicker.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnColourPicker.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="btnColourPicker.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnColourPicker.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnColourPicker.Location" type="System.Drawing.Point, System.Drawing">
     <value>199, 15</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>ColorPanel</value>
-  </data>
-  <data name="&gt;&gt;radFGDark.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6275.37687, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 96</value>
-  </data>
-  <data name="lblBGColour.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;radFGDark.Parent" xml:space="preserve">
-    <value>pnlFGColour</value>
-  </data>
-  <data name="radFGDark.Text" xml:space="preserve">
-    <value>Dark</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="btnColourPicker.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
-  </data>
-  <data name="&gt;&gt;cmbColour.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="lblBGColour.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;chkFGTxtEnabled.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="radFGDark.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 23</value>
-  </data>
-  <data name="&gt;&gt;lblFGText.Parent" xml:space="preserve">
-    <value>pnlFGColour</value>
-  </data>
   <data name="btnColourPicker.Size" type="System.Drawing.Size, System.Drawing">
     <value>27, 27</value>
   </data>
-  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="txtBGColour.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 19</value>
-  </data>
-  <data name="eyedropperColorPicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="chkFGTxtEnabled.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="txtBGColour.MaxLength" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;radFGLight.Name" xml:space="preserve">
-    <value>radFGLight</value>
-  </data>
-  <data name="cmbColour.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="&gt;&gt;txtBGColour.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="btnColourPicker.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
   </data>
   <data name="&gt;&gt;btnColourPicker.Name" xml:space="preserve">
     <value>btnColourPicker</value>
   </data>
+  <data name="&gt;&gt;btnColourPicker.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6275.38452, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnColourPicker.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;btnColourPicker.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmbColour.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
   <data name="cmbColour.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;lblBGColour.Name" xml:space="preserve">
-    <value>lblBGColour</value>
+  <data name="cmbColour.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 21</value>
   </data>
-  <data name="radFGLight.Text" xml:space="preserve">
-    <value>Light</value>
+  <data name="cmbColour.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="&gt;&gt;cmbColour.Name" xml:space="preserve">
+    <value>cmbColour</value>
+  </data>
+  <data name="&gt;&gt;cmbColour.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableComboBox, TileIconifier, Version=2.2.6275.38452, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmbColour.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;cmbColour.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblBGColour.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblBGColour.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblBGColour.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 1</value>
+  </data>
+  <data name="lblBGColour.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 3</value>
+  </data>
+  <data name="lblBGColour.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 13</value>
+  </data>
+  <data name="lblBGColour.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
   </data>
   <data name="lblBGColour.Text" xml:space="preserve">
     <value>Background Colour</value>
   </data>
+  <data name="&gt;&gt;lblBGColour.Name" xml:space="preserve">
+    <value>lblBGColour</value>
+  </data>
+  <data name="&gt;&gt;lblBGColour.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblBGColour.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;lblBGColour.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtBGColour.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 19</value>
+  </data>
+  <data name="txtBGColour.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtBGColour.MaxLength" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="txtBGColour.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
+  </data>
+  <data name="txtBGColour.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="txtBGColour.Text" xml:space="preserve">
+    <value>#323232</value>
+  </data>
+  <data name="&gt;&gt;txtBGColour.Name" xml:space="preserve">
+    <value>txtBGColour</value>
+  </data>
+  <data name="&gt;&gt;txtBGColour.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6275.38452, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtBGColour.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;txtBGColour.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>268, 48</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkFGTxtEnabled.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkFGTxtEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkFGTxtEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 3</value>
+  </data>
+  <data name="chkFGTxtEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="chkFGTxtEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="chkFGTxtEnabled.Text" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="&gt;&gt;chkFGTxtEnabled.Name" xml:space="preserve">
+    <value>chkFGTxtEnabled</value>
+  </data>
+  <data name="&gt;&gt;chkFGTxtEnabled.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableCheckBox, TileIconifier, Version=2.2.6275.38452, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;chkFGTxtEnabled.Parent" xml:space="preserve">
+    <value>tlpFGColour</value>
+  </data>
+  <data name="&gt;&gt;chkFGTxtEnabled.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="radFGDark.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radFGDark.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radFGDark.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 26</value>
+  </data>
+  <data name="radFGDark.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 0</value>
+  </data>
+  <data name="radFGDark.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 17</value>
+  </data>
+  <data name="radFGDark.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="radFGDark.Text" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="&gt;&gt;radFGDark.Name" xml:space="preserve">
+    <value>radFGDark</value>
+  </data>
+  <data name="&gt;&gt;radFGDark.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6275.38452, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;radFGDark.Parent" xml:space="preserve">
+    <value>tlpFGColour</value>
+  </data>
+  <data name="&gt;&gt;radFGDark.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblFGText.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tlpFGColour.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tlpFGColour.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="radFGLight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radFGLight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radFGLight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="radFGLight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 3, 0</value>
+  </data>
+  <data name="radFGLight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 17</value>
+  </data>
   <data name="radFGLight.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="radFGLight.Text" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="&gt;&gt;radFGLight.Name" xml:space="preserve">
+    <value>radFGLight</value>
+  </data>
+  <data name="&gt;&gt;radFGLight.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6275.38452, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;radFGLight.Parent" xml:space="preserve">
+    <value>tlpFGColour</value>
+  </data>
+  <data name="&gt;&gt;radFGLight.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tlpFGColour.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 51</value>
+  </data>
+  <data name="tlpFGColour.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="tlpFGColour.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tlpFGColour.Size" type="System.Drawing.Size, System.Drawing">
+    <value>268, 46</value>
+  </data>
+  <data name="tlpFGColour.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tlpFGColour.Name" xml:space="preserve">
+    <value>tlpFGColour</value>
+  </data>
+  <data name="&gt;&gt;tlpFGColour.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpFGColour.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tlpFGColour.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tlpFGColour.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblFGText" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="radFGDark" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="radFGLight" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkFGTxtEnabled" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="lblFGText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblFGText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
+  </data>
+  <data name="lblFGText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 3, 3</value>
+  </data>
+  <data name="lblFGText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 13</value>
+  </data>
+  <data name="lblFGText.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblFGText.Text" xml:space="preserve">
+    <value>Foreground Text (Medium Icon Only)</value>
+  </data>
+  <data name="&gt;&gt;lblFGText.Name" xml:space="preserve">
+    <value>lblFGText</value>
+  </data>
+  <data name="&gt;&gt;lblFGText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFGText.Parent" xml:space="preserve">
+    <value>tlpFGColour</value>
+  </data>
+  <data name="&gt;&gt;lblFGText.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="clrDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>268, 97</value>
+  </data>
+  <data name="&gt;&gt;clrDialog.Name" xml:space="preserve">
+    <value>clrDialog</value>
+  </data>
+  <data name="&gt;&gt;clrDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ColorPanel</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
