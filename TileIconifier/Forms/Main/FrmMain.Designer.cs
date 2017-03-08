@@ -64,7 +64,9 @@ namespace TileIconifier.Forms.Main
             this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblBadShortcutWarning = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.mnuMain.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtFilter
@@ -72,6 +74,7 @@ namespace TileIconifier.Forms.Main
             resources.ApplyResources(this.txtFilter, "txtFilter");
             this.txtFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tableLayoutPanel1.SetColumnSpan(this.txtFilter, 2);
             this.txtFilter.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
@@ -85,6 +88,7 @@ namespace TileIconifier.Forms.Main
             // 
             resources.ApplyResources(this.btnDeleteCustomShortcut, "btnDeleteCustomShortcut");
             this.btnDeleteCustomShortcut.BackColor = System.Drawing.SystemColors.Control;
+            this.tableLayoutPanel1.SetColumnSpan(this.btnDeleteCustomShortcut, 2);
             this.btnDeleteCustomShortcut.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.btnDeleteCustomShortcut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnDeleteCustomShortcut.Name = "btnDeleteCustomShortcut";
@@ -95,6 +99,7 @@ namespace TileIconifier.Forms.Main
             // 
             resources.ApplyResources(this.btnBuildCustomShortcut, "btnBuildCustomShortcut");
             this.btnBuildCustomShortcut.BackColor = System.Drawing.SystemColors.Control;
+            this.tableLayoutPanel1.SetColumnSpan(this.btnBuildCustomShortcut, 2);
             this.btnBuildCustomShortcut.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.btnBuildCustomShortcut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBuildCustomShortcut.Name = "btnBuildCustomShortcut";
@@ -104,13 +109,16 @@ namespace TileIconifier.Forms.Main
             // iconifyPanel
             // 
             resources.ApplyResources(this.iconifyPanel, "iconifyPanel");
+            this.tableLayoutPanel1.SetColumnSpan(this.iconifyPanel, 2);
             this.iconifyPanel.CurrentShortcutItem = null;
             this.iconifyPanel.Name = "iconifyPanel";
+            this.tableLayoutPanel1.SetRowSpan(this.iconifyPanel, 7);
             // 
             // srtlstShortcuts
             // 
             resources.ApplyResources(this.srtlstShortcuts, "srtlstShortcuts");
             this.srtlstShortcuts.BackColor = System.Drawing.SystemColors.Window;
+            this.tableLayoutPanel1.SetColumnSpan(this.srtlstShortcuts, 3);
             this.srtlstShortcuts.FlatBorderColor = System.Drawing.Color.Empty;
             this.srtlstShortcuts.ForeColor = System.Drawing.SystemColors.WindowText;
             this.srtlstShortcuts.FullRowSelect = true;
@@ -124,11 +132,13 @@ namespace TileIconifier.Forms.Main
             // lblExePath
             // 
             resources.ApplyResources(this.lblExePath, "lblExePath");
+            this.tableLayoutPanel1.SetColumnSpan(this.lblExePath, 2);
             this.lblExePath.Name = "lblExePath";
             // 
             // txtExePath
             // 
             resources.ApplyResources(this.txtExePath, "txtExePath");
+            this.tableLayoutPanel1.SetColumnSpan(this.txtExePath, 3);
             this.txtExePath.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtExePath.Name = "txtExePath";
             this.txtExePath.ReadOnly = true;
@@ -157,11 +167,13 @@ namespace TileIconifier.Forms.Main
             // lblLnkPath
             // 
             resources.ApplyResources(this.lblLnkPath, "lblLnkPath");
+            this.tableLayoutPanel1.SetColumnSpan(this.lblLnkPath, 2);
             this.lblLnkPath.Name = "lblLnkPath";
             // 
             // txtLnkPath
             // 
             resources.ApplyResources(this.txtLnkPath, "txtLnkPath");
+            this.tableLayoutPanel1.SetColumnSpan(this.txtLnkPath, 3);
             this.txtLnkPath.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtLnkPath.Name = "txtLnkPath";
             this.txtLnkPath.ReadOnly = true;
@@ -304,25 +316,32 @@ namespace TileIconifier.Forms.Main
             resources.ApplyResources(this.lblBadShortcutWarning, "lblBadShortcutWarning");
             this.lblBadShortcutWarning.ForeColor = System.Drawing.Color.Red;
             this.lblBadShortcutWarning.Name = "lblBadShortcutWarning";
+            this.tableLayoutPanel1.SetRowSpan(this.lblBadShortcutWarning, 2);
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.lblFilter, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtFilter, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnRemove, 4, 7);
+            this.tableLayoutPanel1.Controls.Add(this.lblBadShortcutWarning, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btnIconify, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.iconifyPanel, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnDeleteCustomShortcut, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.srtlstShortcuts, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnBuildCustomShortcut, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lblLnkPath, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtExePath, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblExePath, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtLnkPath, 0, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.mnuMain);
-            this.Controls.Add(this.lblBadShortcutWarning);
-            this.Controls.Add(this.txtFilter);
-            this.Controls.Add(this.lblFilter);
-            this.Controls.Add(this.btnDeleteCustomShortcut);
-            this.Controls.Add(this.btnBuildCustomShortcut);
-            this.Controls.Add(this.iconifyPanel);
-            this.Controls.Add(this.srtlstShortcuts);
-            this.Controls.Add(this.lblExePath);
-            this.Controls.Add(this.txtExePath);
-            this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.btnIconify);
-            this.Controls.Add(this.lblLnkPath);
-            this.Controls.Add(this.txtLnkPath);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MainMenuStrip = this.mnuMain;
             this.Name = "FrmMain";
@@ -330,6 +349,8 @@ namespace TileIconifier.Forms.Main
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,6 +389,7 @@ namespace TileIconifier.Forms.Main
         private System.Windows.Forms.ToolStripMenuItem russianToolStripMenuItem;
         private System.Windows.Forms.Label lblBadShortcutWarning;
         private System.Windows.Forms.ToolStripMenuItem mnuBatchOperations;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

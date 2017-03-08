@@ -118,56 +118,65 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="txtFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 27</value>
-  </data>
-  <data name="txtFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 20</value>
-  </data>
   <data name="lblFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 13</value>
+    <value>49, 13</value>
   </data>
   <data name="lblFilter.Text" xml:space="preserve">
     <value>Фильтр:</value>
   </data>
+  <data name="btnRemove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>681, 362</value>
+  </data>
+  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 23</value>
+  </data>
+  <data name="btnRemove.Text" xml:space="preserve">
+    <value>Удалить изменения</value>
+  </data>
+  <data name="lblBadShortcutWarning.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 332</value>
+  </data>
+  <data name="lblBadShortcutWarning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 54</value>
+  </data>
+  <data name="lblBadShortcutWarning.Text" xml:space="preserve">
+    <value>Плитка этого ярлыка может быть некорректна! Создайте пользовательский ярлык, если это так.</value>
+  </data>
+  <data name="btnIconify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 23</value>
+  </data>
+  <data name="btnIconify.Text" xml:space="preserve">
+    <value>Изменить плитку!</value>
+  </data>
   <data name="btnDeleteCustomShortcut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 20</value>
+    <value>199, 23</value>
   </data>
   <data name="btnDeleteCustomShortcut.Text" xml:space="preserve">
     <value>Удалить пользовательский ярллык</value>
   </data>
   <data name="btnBuildCustomShortcut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 20</value>
+    <value>192, 23</value>
   </data>
   <data name="btnBuildCustomShortcut.Text" xml:space="preserve">
     <value>Создать пользовательский ярлык</value>
   </data>
+  <data name="lblLnkPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 13</value>
+  </data>
+  <data name="lblLnkPath.Text" xml:space="preserve">
+    <value>Расположение ярлыка</value>
+  </data>
   <data name="lblExePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 13</value>
+    <value>115, 13</value>
   </data>
   <data name="lblExePath.Text" xml:space="preserve">
     <value>Расположение файла</value>
   </data>
-  <data name="btnRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>699, 379</value>
+  <data name="txtFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 3</value>
   </data>
-  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 21</value>
-  </data>
-  <data name="btnRemove.Text" xml:space="preserve">
-    <value>Удалить изменения</value>
-  </data>
-  <data name="btnIconify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 21</value>
-  </data>
-  <data name="btnIconify.Text" xml:space="preserve">
-    <value>Изменить плитку!</value>
-  </data>
-  <data name="lblLnkPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 13</value>
-  </data>
-  <data name="lblLnkPath.Text" xml:space="preserve">
-    <value>Расположение ярлыка</value>
+  <data name="txtFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>447, 20</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 22</value>
@@ -186,6 +195,9 @@
   </data>
   <data name="customShortcutManagerToolStripMenuItem.Text" xml:space="preserve">
     <value>Менеджер пользовальских ярлыков</value>
+  </data>
+  <data name="mnuBatchOperations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>399, 22</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>396, 6</value>
@@ -255,18 +267,6 @@
   </data>
   <data name="donateToolStripMenuItem.Text" xml:space="preserve">
     <value>Пожертвовать</value>
-  </data>
-  <data name="lblBadShortcutWarning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 348</value>
-  </data>
-  <data name="lblBadShortcutWarning.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>300, 0</value>
-  </data>
-  <data name="lblBadShortcutWarning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 54</value>
-  </data>
-  <data name="lblBadShortcutWarning.Text" xml:space="preserve">
-    <value>Плитка этого ярлыка может быть некорректна! Создайте пользовательский ярлык, если это так.</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
