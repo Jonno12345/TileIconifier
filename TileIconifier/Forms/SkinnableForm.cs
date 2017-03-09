@@ -123,13 +123,13 @@ namespace TileIconifier.Forms
         /// <summary>
         /// Applies the skin on the specified control.
         /// </summary>
-        /// <param name="control"></param>
-        private void ApplyControlSkin(Control control)
+        /// <param name="pControl"></param>
+        private void ApplyControlSkin(Control pControl)
         {
             //Maybe not the most efficient way to do this. Something to think about.
 
             //Checkbox or RadioButton
-            ISkinnableCheckableButton checkableBtn = control as ISkinnableCheckableButton;
+            ISkinnableCheckableButton checkableBtn = pControl as ISkinnableCheckableButton;
             if (checkableBtn != null)
             {                   
                 if (checkableBtn.Appearance == Appearance.Button)
@@ -147,7 +147,7 @@ namespace TileIconifier.Forms
             }
 
             //Button
-            ISkinnableButton btn = control as ISkinnableButton;
+            ISkinnableButton btn = pControl as ISkinnableButton;
             if (btn != null)
             {
                 //We MUST evaluate this condition AFTER ISkinnableCheckableButton
@@ -158,8 +158,8 @@ namespace TileIconifier.Forms
                 return;
             }
 
-            //TextBox
-            ISkinnableTextBox txt = control as ISkinnableTextBox;
+            //TextBox or RichTextBox
+            ISkinnableTextBox txt = pControl as ISkinnableTextBox;
             if (txt != null)
             {
                 txt.BorderStyle = FormSkin.TextBoxBorderStyle;
@@ -173,7 +173,7 @@ namespace TileIconifier.Forms
             }            
 
             //ListView
-            SkinnableListView lvw = control as SkinnableListView;
+            SkinnableListView lvw = pControl as SkinnableListView;
             if (lvw != null)
             {
                 lvw.FlatStyle = FormSkin.ListViewFlatStyle;
@@ -188,7 +188,7 @@ namespace TileIconifier.Forms
             }
 
             //ComboBox
-            SkinnableComboBox cbo = control as SkinnableComboBox;
+            SkinnableComboBox cbo = pControl as SkinnableComboBox;
             if (cbo != null)
             {
                 cbo.FlatStyle = FormSkin.ComboBoxFlatStyle;
@@ -203,7 +203,7 @@ namespace TileIconifier.Forms
             }
 
             //ToolStrip
-            ToolStrip tsp = control as ToolStrip;
+            ToolStrip tsp = pControl as ToolStrip;
             if (tsp != null)
             {
                 tsp.Renderer = FormSkin.ToolStripRenderer;
@@ -213,8 +213,8 @@ namespace TileIconifier.Forms
             //Recursive loop that applies the skin to controls inside controls. At this
             //point, the control is not a button, a listview, etc. so it is likely to be just
             //a container that contains more controls.
-            if (control.Controls.Count > 0)
-                foreach (Control c in control.Controls)
+            if (pControl.Controls.Count > 0)
+                foreach (Control c in pControl.Controls)
                     ApplyControlSkin(c);
         }
 
