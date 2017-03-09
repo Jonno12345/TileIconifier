@@ -32,11 +32,12 @@ namespace TileIconifier.Controls.IconifierPanel
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TileIconifierPanel));
             this.pnlImages = new System.Windows.Forms.Panel();
+            this.tlpPictureBoxSmall = new System.Windows.Forms.TableLayoutPanel();
             this.lblSmallIcon = new System.Windows.Forms.Label();
+            this.tlpPictureBoxMedium = new System.Windows.Forms.TableLayoutPanel();
             this.lblMediumIcon = new System.Windows.Forms.Label();
             this.lblUnsaved = new System.Windows.Forms.Label();
-            this.tlpPictureBoxMedium = new System.Windows.Forms.TableLayoutPanel();
-            this.tlpPictureBoxSmall = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnReset = new TileIconifier.Controls.SkinnableButton();
             this.colorPanel = new TileIconifier.Controls.IconifierPanel.ColorPanel();
             this.panPctSmallIcon = new TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox();
@@ -45,8 +46,9 @@ namespace TileIconifier.Controls.IconifierPanel
             this.pannablePictureBoxControlPanelMedium = new TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel();
             this.pannablePictureBoxControlPanelSmall = new TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel();
             this.pnlImages.SuspendLayout();
-            this.tlpPictureBoxMedium.SuspendLayout();
             this.tlpPictureBoxSmall.SuspendLayout();
+            this.tlpPictureBoxMedium.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlImages
@@ -59,10 +61,24 @@ namespace TileIconifier.Controls.IconifierPanel
             this.pnlImages.Controls.Add(this.pannablePictureBoxControlPanelSmall);
             this.pnlImages.Name = "pnlImages";
             // 
+            // tlpPictureBoxSmall
+            // 
+            resources.ApplyResources(this.tlpPictureBoxSmall, "tlpPictureBoxSmall");
+            this.tlpPictureBoxSmall.Controls.Add(this.lblSmallIcon, 0, 0);
+            this.tlpPictureBoxSmall.Controls.Add(this.panPctSmallIcon, 0, 1);
+            this.tlpPictureBoxSmall.Name = "tlpPictureBoxSmall";
+            // 
             // lblSmallIcon
             // 
             resources.ApplyResources(this.lblSmallIcon, "lblSmallIcon");
             this.lblSmallIcon.Name = "lblSmallIcon";
+            // 
+            // tlpPictureBoxMedium
+            // 
+            resources.ApplyResources(this.tlpPictureBoxMedium, "tlpPictureBoxMedium");
+            this.tlpPictureBoxMedium.Controls.Add(this.lblMediumIcon, 0, 0);
+            this.tlpPictureBoxMedium.Controls.Add(this.panPctMediumIcon, 0, 1);
+            this.tlpPictureBoxMedium.Name = "tlpPictureBoxMedium";
             // 
             // lblMediumIcon
             // 
@@ -75,19 +91,12 @@ namespace TileIconifier.Controls.IconifierPanel
             this.lblUnsaved.ForeColor = System.Drawing.Color.Red;
             this.lblUnsaved.Name = "lblUnsaved";
             // 
-            // tlpPictureBoxMedium
+            // tableLayoutPanel1
             // 
-            resources.ApplyResources(this.tlpPictureBoxMedium, "tlpPictureBoxMedium");
-            this.tlpPictureBoxMedium.Controls.Add(this.lblMediumIcon, 0, 0);
-            this.tlpPictureBoxMedium.Controls.Add(this.panPctMediumIcon, 0, 1);
-            this.tlpPictureBoxMedium.Name = "tlpPictureBoxMedium";
-            // 
-            // tlpPictureBoxSmall
-            // 
-            resources.ApplyResources(this.tlpPictureBoxSmall, "tlpPictureBoxSmall");
-            this.tlpPictureBoxSmall.Controls.Add(this.lblSmallIcon, 0, 0);
-            this.tlpPictureBoxSmall.Controls.Add(this.panPctSmallIcon, 0, 1);
-            this.tlpPictureBoxSmall.Name = "tlpPictureBoxSmall";
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.lblUnsaved, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnReset, 1, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // btnReset
             // 
@@ -142,19 +151,20 @@ namespace TileIconifier.Controls.IconifierPanel
             // TileIconifierPanel
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.lblUnsaved);
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.colorPanel);
             this.Controls.Add(this.pnlImages);
             this.Name = "TileIconifierPanel";
-            resources.ApplyResources(this, "$this");
             this.Load += new System.EventHandler(this.TileIconifierPanel_Load);
             this.pnlImages.ResumeLayout(false);
             this.pnlImages.PerformLayout();
-            this.tlpPictureBoxMedium.ResumeLayout(false);
-            this.tlpPictureBoxMedium.PerformLayout();
             this.tlpPictureBoxSmall.ResumeLayout(false);
             this.tlpPictureBoxSmall.PerformLayout();
+            this.tlpPictureBoxMedium.ResumeLayout(false);
+            this.tlpPictureBoxMedium.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,5 +185,6 @@ namespace TileIconifier.Controls.IconifierPanel
         private ColorPanel colorPanel;
         private System.Windows.Forms.TableLayoutPanel tlpPictureBoxSmall;
         private System.Windows.Forms.TableLayoutPanel tlpPictureBoxMedium;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
