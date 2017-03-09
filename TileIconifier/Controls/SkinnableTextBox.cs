@@ -12,7 +12,7 @@ namespace TileIconifier.Controls
 {
     //Inspired from there : http://stackoverflow.com/a/38405319
 
-    class SkinnableTextBox : TextBox
+    class SkinnableTextBox : TextBox, ISkinnableTextBox
     {   
         #region "Properties"
         private Color backColor = SystemColors.Window;

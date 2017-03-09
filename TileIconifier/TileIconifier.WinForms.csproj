@@ -141,6 +141,7 @@
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxMetaData.cs" />
     <Compile Include="Controls\ISkinnableButton.cs" />
     <Compile Include="Controls\ISkinnableCheckableButton.cs" />
+    <Compile Include="Controls\ISkinnableTextBox.cs" />
     <Compile Include="Controls\Shortcut\ShortcutItemListViewItemLibrary.cs" />
     <Compile Include="Controls\SkinnableButton.cs">
       <SubType>Component</SubType>
