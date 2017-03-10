@@ -27,6 +27,7 @@
 
 #endregion
 
+using System;
 using System.Drawing;
 
 namespace TileIconifier.Core.Utilities
@@ -54,6 +55,31 @@ namespace TileIconifier.Core.Utilities
         {
             var tryColorFromName = Color.FromName(h);
             return tryColorFromName.IsKnownColor ? tryColorFromName : HexToColor(h);
+        }
+
+        public static Color BlendColors(Color pColor1, int pCol1Weight, Color pColor2, int pCol2Weight)
+        {
+            int a1 = pColor1.A;
+            int r1 = pColor1.R;
+            int g1 = pColor1.G;
+            int b1 = pColor1.B;
+
+            int a2 = pColor2.A;
+            int r2 = pColor2.R;
+            int g2 = pColor2.G;
+            int b2 = pColor2.B;
+
+            int inTotalIntensity = pCol1Weight + pCol2Weight;
+
+            if (inTotalIntensity <= 0)
+                throw new ArgumentException("The total color intensity must be greater than 0.");
+
+            int a3 = (a1 * pCol1Weight + a2 * pCol2Weight) / inTotalIntensity;
+            int r3 = (r1 * pCol1Weight + r2 * pCol2Weight) / inTotalIntensity;
+            int g3 = (g1 * pCol1Weight + g2 * pCol2Weight) / inTotalIntensity;
+            int b3 = (b1 * pCol1Weight + b2 * pCol2Weight) / inTotalIntensity;
+
+            return Color.FromArgb(a3, r3, g3, b3);
         }
     }
 }
