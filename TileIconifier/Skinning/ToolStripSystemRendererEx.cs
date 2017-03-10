@@ -556,8 +556,7 @@ namespace TileIconifier.Skinning
         protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs e)
         {
             //base.OnRenderItemCheck(e);
-            Rectangle bounds = new Rectangle(e.ImageRectangle.Location, e.ImageRectangle.Size);
-            bounds.Inflate(-5, -5);
+            Rectangle bounds = new Rectangle(e.ImageRectangle.Location, e.ImageRectangle.Size);            
             ControlPaint.DrawMenuGlyph(e.Graphics, bounds, MenuGlyph.Checkmark, colorTable.PopupForeColor, Color.Transparent);
         }
 

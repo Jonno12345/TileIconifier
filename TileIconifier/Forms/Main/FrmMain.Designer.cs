@@ -180,7 +180,6 @@ namespace TileIconifier.Forms.Main
             // 
             // mnuMain
             // 
-            this.mnuMain.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.preferencesToolStripMenuItem,
