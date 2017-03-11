@@ -37,27 +37,27 @@ namespace TileIconifier.Utilities
             TextFormatFlags flags = TextFormatFlags.Default;
 
             //Top
-            if (pContentAlign == ContentAlignment.TopLeft | pContentAlign == ContentAlignment.TopCenter | pContentAlign == ContentAlignment.TopRight)            
+            if (pContentAlign == ContentAlignment.TopLeft || pContentAlign == ContentAlignment.TopCenter || pContentAlign == ContentAlignment.TopRight)            
                 flags = flags | TextFormatFlags.Top;
             
             //Middle
-            if (pContentAlign == ContentAlignment.MiddleLeft | pContentAlign == ContentAlignment.MiddleCenter | pContentAlign == ContentAlignment.MiddleRight)            
+            if (pContentAlign == ContentAlignment.MiddleLeft || pContentAlign == ContentAlignment.MiddleCenter || pContentAlign == ContentAlignment.MiddleRight)            
                 flags = flags | TextFormatFlags.VerticalCenter;            
 
             //Bottom
-            if (pContentAlign == ContentAlignment.BottomLeft | pContentAlign == ContentAlignment.BottomCenter | pContentAlign == ContentAlignment.BottomRight)
+            if (pContentAlign == ContentAlignment.BottomLeft || pContentAlign == ContentAlignment.BottomCenter || pContentAlign == ContentAlignment.BottomRight)
                 flags = flags | TextFormatFlags.Bottom;            
 
             //Left
-            if (pContentAlign == ContentAlignment.BottomLeft | pContentAlign == ContentAlignment.MiddleLeft | pContentAlign == ContentAlignment.TopLeft)            
+            if (pContentAlign == ContentAlignment.BottomLeft || pContentAlign == ContentAlignment.MiddleLeft || pContentAlign == ContentAlignment.TopLeft)            
                 flags = flags | TextFormatFlags.Left;
            
             //Center
-            if (pContentAlign == ContentAlignment.BottomCenter | pContentAlign == ContentAlignment.MiddleCenter | pContentAlign == ContentAlignment.TopCenter)            
+            if (pContentAlign == ContentAlignment.BottomCenter || pContentAlign == ContentAlignment.MiddleCenter || pContentAlign == ContentAlignment.TopCenter)            
                 flags = flags | TextFormatFlags.HorizontalCenter;
            
             //Right
-            if (pContentAlign == ContentAlignment.BottomRight | pContentAlign == ContentAlignment.MiddleRight | pContentAlign == ContentAlignment.TopRight)            
+            if (pContentAlign == ContentAlignment.BottomRight || pContentAlign == ContentAlignment.MiddleRight || pContentAlign == ContentAlignment.TopRight)            
                 flags = flags | TextFormatFlags.Right;            
 
             return flags;
