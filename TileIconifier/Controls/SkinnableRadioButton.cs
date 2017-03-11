@@ -67,13 +67,19 @@ namespace TileIconifier.Controls
             //We paint the disabled text on top of the base class drawing using 
             //the ForeColorDisabled color that we have implemented ourselves.
             //Very rudimentary implementation. Some properties like RightToLeft are ignored.
-            if (!Enabled)
+
+            //Todo: Add support for Appearance.Button. To do that, we could just move the
+            //drawing code of SkinnableButton in an internal static method so that we can
+            //simply call here.
+
+            if (!Enabled && Appearance == Appearance.Normal)
             {
                 const int inGlyphPadding = 1;
                 const int inCheckAreaAndTextAreaSpacing = 2;
 
                 Size checkAreaSize = GetCheckSize(pevent) + new Size(inGlyphPadding, inGlyphPadding);
-                Rectangle textRect = ButtonUtils.GetGlyphButtonTextRect(checkAreaSize, ClientRectangle, inCheckAreaAndTextAreaSpacing);
+                Rectangle paddedRect = ButtonUtils.CreatePaddedRectangle(ClientRectangle, Padding);
+                Rectangle textRect = ButtonUtils.GetGlyphButtonTextRect(checkAreaSize, paddedRect, inCheckAreaAndTextAreaSpacing);
                 TextFormatFlags flags = ButtonUtils.ConvertToTextFormatFlags(TextAlign);
 
                 TextRenderer.DrawText(pevent.Graphics, Text, Font, textRect, DisabledForeColor, flags);
@@ -86,7 +92,7 @@ namespace TileIconifier.Controls
             {
                 case FlatStyle.Flat:
                 case FlatStyle.Popup:
-                    //According to the .Net 4.6 Reference Source, the size of the checkmark is a 
+                    //In the .Net 4.6 Reference Source, the size of the checkmark is a 
                     //constant called "flatCheckSize" in a class called RadioButtonFlatAdapter.
                     return new Size(12, 12);
                 default:
