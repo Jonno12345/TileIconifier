@@ -51,8 +51,8 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color borderColor = Color.Empty;
-        [DefaultValue(typeof(Color), "")]
+        private Color borderColor = SystemColors.WindowFrame;
+        [DefaultValue(typeof(Color), nameof(SystemColors.WindowFrame))]
         public Color BorderColor
         {
             get { return borderColor; }
@@ -145,7 +145,7 @@ namespace TileIconifier.Controls
             {
                 bColor = BorderFocusedColor;
             }
-            else if (!BorderColor.IsEmpty)
+            else if (BorderColor != SystemColors.WindowFrame)
             {
                 bColor = BorderColor;
             }

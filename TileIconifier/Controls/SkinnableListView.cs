@@ -16,6 +16,7 @@ namespace TileIconifier.Controls
         {
             base.OwnerDraw = true;
         }
+
         #region "Properties"
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -112,7 +113,8 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color flatBorderColor;
+        private Color flatBorderColor = SystemColors.WindowFrame;
+        [DefaultValue(typeof(Color), nameof(SystemColors.WindowFrame))]
         public Color FlatBorderColor
         {
             get { return flatBorderColor; }
@@ -167,6 +169,7 @@ namespace TileIconifier.Controls
             }
         }
         #endregion
+
         protected override void OnDrawColumnHeader(DrawListViewColumnHeaderEventArgs e)
         {
             base.OnDrawColumnHeader(e);
@@ -199,8 +202,7 @@ namespace TileIconifier.Controls
         protected override void OnDrawSubItem(DrawListViewSubItemEventArgs e)
         {
             base.OnDrawSubItem(e);
-
-            //Maybe not needed since we already set DrawDefault in OnDrawItem. To verify one day...
+                        
             e.DrawDefault = DrawStandardItems;           
         }
 
@@ -224,17 +226,13 @@ namespace TileIconifier.Controls
             else if (Focused && !FlatBorderFocusedColor.IsEmpty)
             {
                 bColor = FlatBorderFocusedColor;
-            }
-            else if (!FlatBorderColor.IsEmpty)
-            {
-                bColor = FlatBorderColor;
-            }
+            }            
             else
             {
                 //Unlike with the SkinnableTextBox, we need to draw the standard
                 //frame even if no color is specified for the standard state, because
                 //otherwise, the previous color gets stuck. 
-                bColor = SystemColors.WindowFrame;
+                bColor = FlatBorderColor;
             }
             
             var hdc = NativeMethods.GetWindowDC(this.Handle);

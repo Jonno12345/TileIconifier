@@ -28,7 +28,7 @@ namespace TileIconifier.Controls
 
         public override Color BackColor
         {
-            get {return base.BackColor; }
+            get { return base.BackColor; }
             set
             {
                 base.BackColor = value;
@@ -42,10 +42,23 @@ namespace TileIconifier.Controls
                     UseVisualStyleBackColor = true;
             }
         }
+
+        private Color disabledForeColor = SystemColors.GrayText;
         /// <summary>
-        /// Gets or set the foreground color of the button when it is disabled.
+        /// Gets or sets the foreground color of the button when it is disabled.
         /// </summary>
-        public Color DisabledForeColor { get; set; } 
+        public Color DisabledForeColor
+        {
+            get { return disabledForeColor; }
+            set
+            {
+                if (disabledForeColor != value)
+                {
+                    disabledForeColor = value;
+                    Invalidate(ButtonUtils.GetPushButtonTextRectangle(this));
+                }
+            }
+        } 
 
         protected override void OnPaint(PaintEventArgs pevent)
         {

@@ -8,6 +8,7 @@ using TileIconifier.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Drawing;
 using TileIconifier.Utilities;
+using System.ComponentModel;
 
 namespace TileIconifier.Controls
 {
@@ -29,32 +30,44 @@ namespace TileIconifier.Controls
             set { base.Text = value; }
         }
 
-        private Color foreColorDisabled;
+        private Color disabledForeColor;
         /// <summary>
-        /// Gets or set the foreground color of the button when it is disabled.
+        /// Gets or sets the foreground color of the button when it is disabled.
         /// </summary>
+        [DefaultValue(typeof(Color), nameof(SystemColors.GrayText))]
         public Color DisabledForeColor
         {
             get
             {
                 //If the checkbox has the appearance of a checkbox, we treat its
-                //text like a label. Therefore, we want this property to be Ambiant. UNTESTED
-                if (foreColorDisabled.IsEmpty && Appearance != Appearance.Button)
+                //text like a label. Therefore, we want this property to be ambiant.
+                if (disabledForeColor.IsEmpty)
                 {
-                    SkinnableForm frm = TopLevelControl as SkinnableForm;
-                    if (frm != null && frm.FormSkin != null)
-                        return frm.FormSkin.DisabledForeColor;
+                    if (Appearance == Appearance.Button)
+                    {
+                        return SystemColors.GrayText;
+                    }
                     else
-                        return foreColorDisabled;
+                    {
+                        SkinnableForm frm = TopLevelControl as SkinnableForm;
+                        if (frm != null && frm.FormSkin != null)
+                            return frm.FormSkin.DisabledForeColor;
+                        else
+                            return SystemColors.GrayText;
+                    }
                 }
                 else
-                    return foreColorDisabled;
+                {
+                    return disabledForeColor;
+                }
             }
-
             set
             {
-                if (foreColorDisabled != value)
-                    foreColorDisabled = value;
+                if (disabledForeColor != value)
+                {
+                    disabledForeColor = value;
+                    Invalidate();
+                }
             }
         }
 
