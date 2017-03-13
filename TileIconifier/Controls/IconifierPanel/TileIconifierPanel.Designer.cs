@@ -34,17 +34,17 @@ namespace TileIconifier.Controls.IconifierPanel
             this.pnlImages = new System.Windows.Forms.Panel();
             this.tlpPictureBoxSmall = new System.Windows.Forms.TableLayoutPanel();
             this.lblSmallIcon = new System.Windows.Forms.Label();
+            this.panPctSmallIcon = new TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox();
             this.tlpPictureBoxMedium = new System.Windows.Forms.TableLayoutPanel();
             this.lblMediumIcon = new System.Windows.Forms.Label();
-            this.lblUnsaved = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnReset = new TileIconifier.Controls.SkinnableButton();
-            this.colorPanel = new TileIconifier.Controls.IconifierPanel.ColorPanel();
-            this.panPctSmallIcon = new TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox();
             this.panPctMediumIcon = new TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox();
             this.chkUseSameImg = new TileIconifier.Controls.SkinnableCheckBox();
             this.pannablePictureBoxControlPanelMedium = new TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel();
             this.pannablePictureBoxControlPanelSmall = new TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel();
+            this.lblUnsaved = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnReset = new TileIconifier.Controls.SkinnableButton();
+            this.colorPanel = new TileIconifier.Controls.IconifierPanel.ColorPanel();
             this.pnlImages.SuspendLayout();
             this.tlpPictureBoxSmall.SuspendLayout();
             this.tlpPictureBoxMedium.SuspendLayout();
@@ -73,6 +73,15 @@ namespace TileIconifier.Controls.IconifierPanel
             resources.ApplyResources(this.lblSmallIcon, "lblSmallIcon");
             this.lblSmallIcon.Name = "lblSmallIcon";
             // 
+            // panPctSmallIcon
+            // 
+            resources.ApplyResources(this.panPctSmallIcon, "panPctSmallIcon");
+            this.panPctSmallIcon.AssociatedSize = new System.Drawing.Size(0, 0);
+            this.panPctSmallIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panPctSmallIcon.Name = "panPctSmallIcon";
+            this.panPctSmallIcon.Click += new System.EventHandler(this.panPctSmallIcon_Click);
+            this.panPctSmallIcon.DoubleClick += new System.EventHandler(this.panPctSmallIcon_DoubleClick);
+            // 
             // tlpPictureBoxMedium
             // 
             resources.ApplyResources(this.tlpPictureBoxMedium, "tlpPictureBoxMedium");
@@ -84,41 +93,6 @@ namespace TileIconifier.Controls.IconifierPanel
             // 
             resources.ApplyResources(this.lblMediumIcon, "lblMediumIcon");
             this.lblMediumIcon.Name = "lblMediumIcon";
-            // 
-            // lblUnsaved
-            // 
-            resources.ApplyResources(this.lblUnsaved, "lblUnsaved");
-            this.lblUnsaved.ForeColor = System.Drawing.Color.Red;
-            this.lblUnsaved.Name = "lblUnsaved";
-            // 
-            // tableLayoutPanel1
-            // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.lblUnsaved, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnReset, 1, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // btnReset
-            // 
-            resources.ApplyResources(this.btnReset, "btnReset");
-            this.btnReset.DisabledForeColor = System.Drawing.Color.Empty;
-            this.btnReset.Name = "btnReset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // colorPanel
-            // 
-            resources.ApplyResources(this.colorPanel, "colorPanel");
-            this.colorPanel.Name = "colorPanel";
-            // 
-            // panPctSmallIcon
-            // 
-            resources.ApplyResources(this.panPctSmallIcon, "panPctSmallIcon");
-            this.panPctSmallIcon.AssociatedSize = new System.Drawing.Size(0, 0);
-            this.panPctSmallIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panPctSmallIcon.Name = "panPctSmallIcon";
-            this.panPctSmallIcon.Click += new System.EventHandler(this.panPctSmallIcon_Click);
-            this.panPctSmallIcon.DoubleClick += new System.EventHandler(this.panPctSmallIcon_DoubleClick);
             // 
             // panPctMediumIcon
             // 
@@ -147,6 +121,32 @@ namespace TileIconifier.Controls.IconifierPanel
             // 
             resources.ApplyResources(this.pannablePictureBoxControlPanelSmall, "pannablePictureBoxControlPanelSmall");
             this.pannablePictureBoxControlPanelSmall.Name = "pannablePictureBoxControlPanelSmall";
+            // 
+            // lblUnsaved
+            // 
+            resources.ApplyResources(this.lblUnsaved, "lblUnsaved");
+            this.lblUnsaved.ForeColor = System.Drawing.Color.Red;
+            this.lblUnsaved.Name = "lblUnsaved";
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.lblUnsaved, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnReset, 1, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // btnReset
+            // 
+            resources.ApplyResources(this.btnReset, "btnReset");
+            this.btnReset.DisabledForeColor = System.Drawing.Color.Empty;
+            this.btnReset.Name = "btnReset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // colorPanel
+            // 
+            resources.ApplyResources(this.colorPanel, "colorPanel");
+            this.colorPanel.Name = "colorPanel";
             // 
             // TileIconifierPanel
             // 
