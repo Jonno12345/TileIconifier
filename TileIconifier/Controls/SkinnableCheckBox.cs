@@ -66,40 +66,29 @@ namespace TileIconifier.Controls
 
             //We paint the disabled text on top of the base class drawing using 
             //the ForeColorDisabled color that we have implemented ourselves.
-            //Very rudimentary implementation. Properties like RightToLeft are ignored.
-
-            //Todo: Add support for Appearance.Button. To do that, we could just move the
-            //drawing code of SkinnableButton in an internal static method so that we can
-            //simply call here.
-
-            if (!Enabled && Appearance == Appearance.Normal)
+            //Rudimentary implementation. Some properties are ignored.
+            
+            if (!Enabled)
             {
-                const int inGlyphPadding = 1;
-                const int inCheckAreaAndTextAreaSpacing = 2;
+                TextFormatFlags flags;
+                Rectangle textRect;
 
-                Size checkAreaSize = GetCheckSize(pevent) + new Size(inGlyphPadding, inGlyphPadding);
-                Rectangle paddedRect = ButtonUtils.CreatePaddedRectangle(ClientRectangle, Padding);
-                Rectangle textRect = ButtonUtils.GetGlyphButtonTextRect(checkAreaSize, paddedRect, inCheckAreaAndTextAreaSpacing);
-                TextFormatFlags flags = ButtonUtils.ConvertToTextFormatFlags(TextAlign);             
+                flags = ButtonUtils.BaseTextFormatFlags | ButtonUtils.ConvertToTextFormatFlags(RtlTranslateContent(TextAlign));
+                if (RightToLeft == RightToLeft.Yes)
+                {
+                    flags |= TextFormatFlags.RightToLeft;
+                }
+                if (Appearance == Appearance.Button)
+                {
+                    textRect = ButtonUtils.GetPushButtonTextRectangle(this);
+                }
+                else
+                {
+                    textRect = ButtonUtils.GetCheckBoxTextRectangle(this, pevent.Graphics);
+                }
 
                 TextRenderer.DrawText(pevent.Graphics, Text, Font, textRect, DisabledForeColor, flags);
             }                
-        }
-
-        private Size GetCheckSize(PaintEventArgs pevent)
-        {
-            switch (FlatStyle)
-            {
-                case FlatStyle.Flat:
-                case FlatStyle.Popup:                
-                    //In the .Net 4.6 Reference Source, the size of the checkmark is a 
-                    //constant called "flatCheckSize" in a class called CheckBoxBaseAdapter.
-                    return new Size(11, 11);
-                default:
-                    //We don't bother with states here. We just assume 
-                    //that all states have the same size.
-                    return CheckBoxRenderer.GetGlyphSize(pevent.Graphics, CheckBoxState.CheckedNormal);     
-            }             
-        }
+        }        
     }
 }

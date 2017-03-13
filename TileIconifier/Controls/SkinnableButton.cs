@@ -55,11 +55,16 @@ namespace TileIconifier.Controls
 
             //We paint the disabled text on top of the base class drawing using 
             //the ForeColorDisabled color that we have implemented ourselves.
-            //Very rudimentary implementation. Some properties may be ignored.
+            //Rudimentary implementation. Some properties may be ignored.
             if (!Enabled)
             {
-                Rectangle contentRect = ButtonUtils.CreatePaddedRectangle(ClientRectangle, Padding);
-                TextFormatFlags flags = ButtonUtils.ConvertToTextFormatFlags(TextAlign);
+                Rectangle contentRect = ButtonUtils.GetPushButtonTextRectangle(this);
+                TextFormatFlags flags;
+                flags = ButtonUtils.BaseTextFormatFlags | ButtonUtils.ConvertToTextFormatFlags(RtlTranslateContent(TextAlign));
+                if (RightToLeft == RightToLeft.Yes)
+                {
+                    flags |= TextFormatFlags.RightToLeft;
+                }
 
                 TextRenderer.DrawText(pevent.Graphics, Text, Font, contentRect, DisabledForeColor, flags);
             }                
