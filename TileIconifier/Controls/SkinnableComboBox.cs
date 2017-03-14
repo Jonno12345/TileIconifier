@@ -229,8 +229,6 @@ namespace TileIconifier.Controls
 
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
-            base.OnDrawItem(e);
-
             //This method is only called when items are custom drawn and 
             //items always look the same regardless of the DropDownStyle anyway,
             //so there is no need to check if CanCustomDraw.
@@ -239,14 +237,15 @@ namespace TileIconifier.Controls
             e.DrawFocusRectangle();
 
             int inIndex = e.Index;
-            if (inIndex >= 0 & inIndex < Items.Count)
+            if (inIndex >= 0 && inIndex < Items.Count)
             {
-                string stItemText;
-                Color colTextColor = (e.State.HasFlag(DrawItemState.Selected)) ? SystemColors.HighlightText : ForeColor;
-                stItemText = GetItemText(Items[inIndex]);
-                
+                string stItemText = GetItemText(Items[inIndex]);
+                Color colTextColor = (e.State.HasFlag(DrawItemState.Selected)) ? SystemColors.HighlightText : ForeColor;                
+
                 TextRenderer.DrawText(e.Graphics, stItemText, Font, e.Bounds, colTextColor, TextFlags);
             }
+
+            base.OnDrawItem(e);            
         }
     }
 }
