@@ -163,65 +163,68 @@ namespace TileIconifier.Controls
         }
 
         protected override void OnPaint(PaintEventArgs e)
-        {
+        {  
+            if (CanCustomDraw)
+            {
+                Rectangle bounds = ClientRectangle;
+                int inGlyphAreaWidth = SystemInformation.HorizontalScrollBarThumbWidth;
+
+                //Border
+                Color borderColor = (Focused) ? FlatButtonBorderFocusedColor : FlatButtonBorderColor;
+                //Compensation needed when drawing a rectangle with GDI+
+                bounds.Width--;
+                bounds.Height--;
+
+                using (Pen p = new Pen(borderColor))
+                    e.Graphics.DrawRectangle(p, bounds);
+
+                //Background
+                //Removes the 1 pixel GDI+ compensation.
+                bounds.Width++;
+                bounds.Height++;
+                //Skrinks the rectangle to fit within the borders we have just drawn.
+                bounds.Inflate(-1, -1);
+
+                using (SolidBrush b = new SolidBrush(FlatButtonBackColor))
+                    e.Graphics.FillRectangle(b, bounds);
+
+                //Selected item text
+                Color textColor = (Enabled) ? FlatButtonForeColor : FlatButtonDisabledForeColor;
+                //We need to calculate the text bounds even when we don't draw text, 
+                //because we use that rectangle for the glyphRect.
+                //Same thing for the textColor.
+                if (RightToLeft == RightToLeft.Yes)
+                {
+                    bounds.X += inGlyphAreaWidth;
+                }
+                bounds.Width -= inGlyphAreaWidth;
+                if (SelectedIndex >= 0 && SelectedIndex < Items.Count)
+                {
+                    string stText = GetItemText(Items[SelectedIndex]);
+                    TextRenderer.DrawText(e.Graphics, stText, Font, bounds, textColor, TextFlags);
+                }
+
+                //Glyph button
+                Rectangle buttonRect = new Rectangle();
+                buttonRect.Width = inGlyphAreaWidth;
+                buttonRect.Height = bounds.Height;
+                buttonRect.Y = bounds.Y;
+                TextFormatFlags glyphFlags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;
+                if (RightToLeft == RightToLeft.Yes)
+                {
+                    buttonRect.X = bounds.X - inGlyphAreaWidth;
+                }
+                else
+                {
+                    buttonRect.X = bounds.X + bounds.Width;
+                }
+                TextRenderer.DrawText(e.Graphics, "u", glyphFont, buttonRect, textColor, glyphFlags);
+            }
+
+            //The call to base.OnPaint must be after our custom drawing, in order to be
+            //consistent with standard Winform controls and raise the Paint event after
+            //the base drawing.
             base.OnPaint(e);
-
-            if (!CanCustomDraw)
-                return;
-
-            Rectangle bounds = ClientRectangle;
-            int inGlyphAreaWidth = SystemInformation.HorizontalScrollBarThumbWidth;
-
-            //Border
-            Color borderColor = (Focused) ? FlatButtonBorderFocusedColor : FlatButtonBorderColor;
-            //Compensation needed when drawing a rectangle with GDI+
-            bounds.Width--;
-            bounds.Height--;
-           
-            using (Pen p = new Pen(borderColor))
-                e.Graphics.DrawRectangle(p, bounds);
-
-            //Background
-            //Removes the 1 pixel GDI+ compensation.
-            bounds.Width++;
-            bounds.Height++;
-            //Skrinks the rectangle to fit within the borders we have just drawn.
-            bounds.Inflate(-1, -1);
-
-            using (SolidBrush b = new SolidBrush(FlatButtonBackColor))
-                e.Graphics.FillRectangle(b, bounds);
-
-            //Selected item text
-            Color textColor = (Enabled) ? FlatButtonForeColor : FlatButtonDisabledForeColor;
-            //We need to calculate the text bounds even when we don't draw text, 
-            //because we use that rectangle for the glyphRect.
-            //Same thing for the textColor.
-            if (RightToLeft == RightToLeft.Yes)
-            {
-                bounds.X += inGlyphAreaWidth;
-            }
-            bounds.Width -= inGlyphAreaWidth; 
-            if (SelectedIndex >= 0 && SelectedIndex < Items.Count)
-            {
-                string stText = GetItemText(Items[SelectedIndex]);                
-                TextRenderer.DrawText(e.Graphics, stText, Font, bounds, textColor, TextFlags);
-            }
-
-            //Glyph button
-            Rectangle buttonRect = new Rectangle();
-            buttonRect.Width = inGlyphAreaWidth;
-            buttonRect.Height = bounds.Height;
-            buttonRect.Y = bounds.Y;
-            TextFormatFlags glyphFlags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;
-            if (RightToLeft == RightToLeft.Yes)
-            {
-                buttonRect.X = bounds.X - inGlyphAreaWidth;
-            }
-            else
-            {
-                buttonRect.X = bounds.X + bounds.Width;
-            }
-            TextRenderer.DrawText(e.Graphics, "u", glyphFont, buttonRect, textColor, glyphFlags);
         }
 
         protected override void OnDrawItem(DrawItemEventArgs e)

@@ -171,9 +171,7 @@ namespace TileIconifier.Controls
         #endregion
 
         protected override void OnDrawColumnHeader(DrawListViewColumnHeaderEventArgs e)
-        {
-            base.OnDrawColumnHeader(e);
-            
+        {    
             if (FlatStyle == FlatStyle.Flat)
             {
                 using (SolidBrush b = new SolidBrush(FlatHeaderBackColor))
@@ -190,20 +188,22 @@ namespace TileIconifier.Controls
             {
                 e.DrawDefault = true;
             }
+
+            base.OnDrawColumnHeader(e);
         }
 
         protected override void OnDrawItem(DrawListViewItemEventArgs e)
         {
-            base.OnDrawItem(e);
-
             e.DrawDefault = DrawStandardItems;
+
+            base.OnDrawItem(e);            
         }
 
         protected override void OnDrawSubItem(DrawListViewSubItemEventArgs e)
         {
-            base.OnDrawSubItem(e);
-                        
-            e.DrawDefault = DrawStandardItems;           
+            e.DrawDefault = DrawStandardItems;
+
+            base.OnDrawSubItem(e); 
         }
 
         protected override void WndProc(ref Message m)
