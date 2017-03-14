@@ -142,7 +142,7 @@
     <value>3, 6</value>
   </data>
   <data name="lblFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+    <value>32, 13</value>
   </data>
   <data name="lblFilter.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -175,13 +175,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>708, 362</value>
+    <value>709, 362</value>
   </data>
   <data name="btnRemove.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 23</value>
+    <value>91, 23</value>
   </data>
   <data name="btnRemove.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -193,7 +193,7 @@
     <value>btnRemove</value>
   </data>
   <data name="&gt;&gt;btnRemove.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6281.19597, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnRemove.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -214,7 +214,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblBadShortcutWarning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 341</value>
+    <value>162, 341</value>
   </data>
   <data name="lblBadShortcutWarning.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>340, 0</value>
@@ -280,7 +280,7 @@
     <value>btnIconify</value>
   </data>
   <data name="&gt;&gt;btnIconify.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6281.19597, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnIconify.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -313,7 +313,7 @@
     <value>iconifyPanel</value>
   </data>
   <data name="&gt;&gt;iconifyPanel.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.TileIconifierPanel, TileIconifier, Version=2.2.6281.19597, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.TileIconifierPanel, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconifyPanel.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -340,7 +340,7 @@
     <value>75, 23</value>
   </data>
   <data name="btnDeleteCustomShortcut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 23</value>
+    <value>129, 23</value>
   </data>
   <data name="btnDeleteCustomShortcut.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -352,7 +352,7 @@
     <value>btnDeleteCustomShortcut</value>
   </data>
   <data name="&gt;&gt;btnDeleteCustomShortcut.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6281.19597, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnDeleteCustomShortcut.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -376,7 +376,7 @@
     <value>srtlstShortcuts</value>
   </data>
   <data name="&gt;&gt;srtlstShortcuts.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6281.19597, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;srtlstShortcuts.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -403,7 +403,7 @@
     <value>75, 23</value>
   </data>
   <data name="btnBuildCustomShortcut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 23</value>
+    <value>152, 23</value>
   </data>
   <data name="btnBuildCustomShortcut.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -415,7 +415,7 @@
     <value>btnBuildCustomShortcut</value>
   </data>
   <data name="&gt;&gt;btnBuildCustomShortcut.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6281.19597, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnBuildCustomShortcut.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -439,7 +439,7 @@
     <value>3, 3, 3, 0</value>
   </data>
   <data name="lblLnkPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 13</value>
+    <value>53, 13</value>
   </data>
   <data name="lblLnkPath.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -475,7 +475,7 @@
     <value>txtExePath</value>
   </data>
   <data name="&gt;&gt;txtExePath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6281.19597, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtExePath.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -499,7 +499,7 @@
     <value>3, 3, 3, 0</value>
   </data>
   <data name="lblExePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
+    <value>63, 13</value>
   </data>
   <data name="lblExePath.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -535,7 +535,7 @@
     <value>txtLnkPath</value>
   </data>
   <data name="&gt;&gt;txtLnkPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6281.19597, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtLnkPath.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -571,10 +571,10 @@
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblFilter" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtFilter" Row="0" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="btnRemove" Row="7" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="lblBadShortcutWarning" Row="6" RowSpan="2" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnIconify" Row="7" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="iconifyPanel" Row="0" RowSpan="7" Column="3" ColumnSpan="2" /&gt;&lt;Control Name="btnDeleteCustomShortcut" Row="7" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="srtlstShortcuts" Row="1" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="btnBuildCustomShortcut" Row="6" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="lblLnkPath" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="txtExePath" Row="5" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="lblExePath" Row="4" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="txtLnkPath" Row="3" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,100,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="txtFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>44, 3</value>
+    <value>41, 3</value>
   </data>
   <data name="txtFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>458, 20</value>
+    <value>461, 20</value>
   </data>
   <data name="txtFilter.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -583,7 +583,7 @@
     <value>txtFilter</value>
   </data>
   <data name="&gt;&gt;txtFilter.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6281.19597, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtFilter.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -731,9 +731,6 @@
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>827, 427</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1029,6 +1026,6 @@
     <value>FrmMain</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6281.19597, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -67,7 +67,6 @@
             // 
             this.btnColourPicker.BackgroundImage = global::TileIconifier.Properties.Resources.colorsquare;
             resources.ApplyResources(this.btnColourPicker, "btnColourPicker");
-            this.btnColourPicker.DisabledForeColor = System.Drawing.Color.Empty;
             this.btnColourPicker.FlatAppearance.BorderSize = 0;
             this.btnColourPicker.Name = "btnColourPicker";
             this.btnColourPicker.UseVisualStyleBackColor = true;
@@ -76,11 +75,6 @@
             // cmbColour
             // 
             this.cmbColour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbColour.FlatButtonBackColor = System.Drawing.SystemColors.Control;
-            this.cmbColour.FlatButtonBorderColor = System.Drawing.SystemColors.ControlDark;
-            this.cmbColour.FlatButtonBorderFocusedColor = System.Drawing.SystemColors.Highlight;
-            this.cmbColour.FlatButtonDisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.cmbColour.FlatButtonForeColor = System.Drawing.SystemColors.ControlText;
             this.cmbColour.FormattingEnabled = true;
             resources.ApplyResources(this.cmbColour, "cmbColour");
             this.cmbColour.Name = "cmbColour";
@@ -100,14 +94,12 @@
             resources.ApplyResources(this.chkFGTxtEnabled, "chkFGTxtEnabled");
             this.chkFGTxtEnabled.Checked = true;
             this.chkFGTxtEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFGTxtEnabled.DisabledForeColor = System.Drawing.Color.Empty;
             this.chkFGTxtEnabled.Name = "chkFGTxtEnabled";
             this.chkFGTxtEnabled.UseVisualStyleBackColor = true;
             // 
             // radFGDark
             // 
             resources.ApplyResources(this.radFGDark, "radFGDark");
-            this.radFGDark.DisabledForeColor = System.Drawing.Color.Empty;
             this.radFGDark.Name = "radFGDark";
             this.radFGDark.UseVisualStyleBackColor = true;
             // 
@@ -121,7 +113,6 @@
             // 
             resources.ApplyResources(this.radFGLight, "radFGLight");
             this.radFGLight.Checked = true;
-            this.radFGLight.DisabledForeColor = System.Drawing.Color.Empty;
             this.radFGLight.Name = "radFGLight";
             this.radFGLight.TabStop = true;
             this.radFGLight.UseVisualStyleBackColor = true;

@@ -77,14 +77,7 @@
             // cmbCommonIconDlls
             // 
             resources.ApplyResources(this.cmbCommonIconDlls, "cmbCommonIconDlls");
-            this.cmbCommonIconDlls.BackColor = System.Drawing.SystemColors.Window;
             this.cmbCommonIconDlls.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCommonIconDlls.FlatButtonBackColor = System.Drawing.SystemColors.Control;
-            this.cmbCommonIconDlls.FlatButtonBorderColor = System.Drawing.SystemColors.ControlDark;
-            this.cmbCommonIconDlls.FlatButtonBorderFocusedColor = System.Drawing.SystemColors.Highlight;
-            this.cmbCommonIconDlls.FlatButtonDisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.cmbCommonIconDlls.FlatButtonForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmbCommonIconDlls.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cmbCommonIconDlls.FormattingEnabled = true;
             this.cmbCommonIconDlls.Name = "cmbCommonIconDlls";
             this.cmbCommonIconDlls.SelectedIndexChanged += new System.EventHandler(this.cmbCommonIconDlls_SelectedIndexChanged);
@@ -92,9 +85,6 @@
             // btnBrowseIconPath
             // 
             resources.ApplyResources(this.btnBrowseIconPath, "btnBrowseIconPath");
-            this.btnBrowseIconPath.BackColor = System.Drawing.SystemColors.Control;
-            this.btnBrowseIconPath.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnBrowseIconPath.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBrowseIconPath.Name = "btnBrowseIconPath";
             this.btnBrowseIconPath.UseVisualStyleBackColor = true;
             this.btnBrowseIconPath.Click += new System.EventHandler(this.btnBrowseIconPath_Click);
@@ -102,16 +92,12 @@
             // txtPathToExtractFrom
             // 
             resources.ApplyResources(this.txtPathToExtractFrom, "txtPathToExtractFrom");
-            this.txtPathToExtractFrom.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtPathToExtractFrom.Name = "txtPathToExtractFrom";
             this.txtPathToExtractFrom.ReadOnly = true;
             // 
             // btnCancel
             // 
             resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCancel.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -119,9 +105,6 @@
             // btnOk
             // 
             resources.ApplyResources(this.btnOk, "btnOk");
-            this.btnOk.BackColor = System.Drawing.SystemColors.Control;
-            this.btnOk.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnOk.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnOk.Name = "btnOk";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -129,9 +112,6 @@
             // btnBrowseCustomImage
             // 
             resources.ApplyResources(this.btnBrowseCustomImage, "btnBrowseCustomImage");
-            this.btnBrowseCustomImage.BackColor = System.Drawing.SystemColors.Control;
-            this.btnBrowseCustomImage.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnBrowseCustomImage.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBrowseCustomImage.Name = "btnBrowseCustomImage";
             this.btnBrowseCustomImage.UseVisualStyleBackColor = true;
             this.btnBrowseCustomImage.Click += new System.EventHandler(this.btnBrowseCustomImage_Click);
@@ -145,7 +125,6 @@
             // 
             resources.ApplyResources(this.txtImagePath, "txtImagePath");
             this.tableLayoutPanel2.SetColumnSpan(this.txtImagePath, 2);
-            this.txtImagePath.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.TextChanged += new System.EventHandler(this.txtImagePath_TextChanged);
             // 
@@ -153,7 +132,6 @@
             // 
             resources.ApplyResources(this.radUseCustomImage, "radUseCustomImage");
             this.tableLayoutPanel1.SetColumnSpan(this.radUseCustomImage, 2);
-            this.radUseCustomImage.DisabledForeColor = System.Drawing.Color.Empty;
             this.radUseCustomImage.Name = "radUseCustomImage";
             this.radUseCustomImage.TabStop = true;
             this.radUseCustomImage.UseVisualStyleBackColor = true;
@@ -162,19 +140,15 @@
             // 
             resources.ApplyResources(this.radIconFromTarget, "radIconFromTarget");
             this.radIconFromTarget.Checked = true;
-            this.radIconFromTarget.DisabledForeColor = System.Drawing.Color.Empty;
             this.radIconFromTarget.Name = "radIconFromTarget";
             this.radIconFromTarget.TabStop = true;
             this.radIconFromTarget.UseVisualStyleBackColor = true;
             // 
             // lvwIcons
             // 
-            this.lvwIcons.BackColor = System.Drawing.SystemColors.Window;
             this.tableLayoutPanel1.SetColumnSpan(this.lvwIcons, 3);
             resources.ApplyResources(this.lvwIcons, "lvwIcons");
             this.lvwIcons.DrawStandardItems = false;
-            this.lvwIcons.FlatBorderColor = System.Drawing.Color.Empty;
-            this.lvwIcons.ForeColor = System.Drawing.SystemColors.WindowText;
             this.lvwIcons.MultiSelect = false;
             this.lvwIcons.Name = "lvwIcons";
             this.lvwIcons.TileSize = new System.Drawing.Size(50, 50);
@@ -217,7 +191,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.tableLayoutPanel1);
-            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "FrmIconSelector";
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -108,7 +108,6 @@ namespace TileIconifier.Controls.IconifierPanel
             resources.ApplyResources(this.chkUseSameImg, "chkUseSameImg");
             this.chkUseSameImg.Checked = true;
             this.chkUseSameImg.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkUseSameImg.DisabledForeColor = System.Drawing.Color.Empty;
             this.chkUseSameImg.Name = "chkUseSameImg";
             this.chkUseSameImg.UseVisualStyleBackColor = true;
             // 
@@ -125,7 +124,6 @@ namespace TileIconifier.Controls.IconifierPanel
             // lblUnsaved
             // 
             resources.ApplyResources(this.lblUnsaved, "lblUnsaved");
-            this.lblUnsaved.ForeColor = System.Drawing.Color.Red;
             this.lblUnsaved.Name = "lblUnsaved";
             // 
             // tableLayoutPanel1
@@ -138,7 +136,6 @@ namespace TileIconifier.Controls.IconifierPanel
             // btnReset
             // 
             resources.ApplyResources(this.btnReset, "btnReset");
-            this.btnReset.DisabledForeColor = System.Drawing.Color.Empty;
             this.btnReset.Name = "btnReset";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);

@@ -75,7 +75,6 @@ namespace TileIconifier.Forms.Main
             this.txtFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tableLayoutPanel1.SetColumnSpan(this.txtFilter, 2);
-            this.txtFilter.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
@@ -87,10 +86,7 @@ namespace TileIconifier.Forms.Main
             // btnDeleteCustomShortcut
             // 
             resources.ApplyResources(this.btnDeleteCustomShortcut, "btnDeleteCustomShortcut");
-            this.btnDeleteCustomShortcut.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel1.SetColumnSpan(this.btnDeleteCustomShortcut, 2);
-            this.btnDeleteCustomShortcut.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnDeleteCustomShortcut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnDeleteCustomShortcut.Name = "btnDeleteCustomShortcut";
             this.btnDeleteCustomShortcut.UseVisualStyleBackColor = true;
             this.btnDeleteCustomShortcut.Click += new System.EventHandler(this.btnDeleteCustomShortcut_Click);
@@ -98,10 +94,7 @@ namespace TileIconifier.Forms.Main
             // btnBuildCustomShortcut
             // 
             resources.ApplyResources(this.btnBuildCustomShortcut, "btnBuildCustomShortcut");
-            this.btnBuildCustomShortcut.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel1.SetColumnSpan(this.btnBuildCustomShortcut, 2);
-            this.btnBuildCustomShortcut.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnBuildCustomShortcut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBuildCustomShortcut.Name = "btnBuildCustomShortcut";
             this.btnBuildCustomShortcut.UseVisualStyleBackColor = true;
             this.btnBuildCustomShortcut.Click += new System.EventHandler(this.btnBuildCustomShortcut_Click);
@@ -117,10 +110,7 @@ namespace TileIconifier.Forms.Main
             // srtlstShortcuts
             // 
             resources.ApplyResources(this.srtlstShortcuts, "srtlstShortcuts");
-            this.srtlstShortcuts.BackColor = System.Drawing.SystemColors.Window;
             this.tableLayoutPanel1.SetColumnSpan(this.srtlstShortcuts, 3);
-            this.srtlstShortcuts.FlatBorderColor = System.Drawing.Color.Empty;
-            this.srtlstShortcuts.ForeColor = System.Drawing.SystemColors.WindowText;
             this.srtlstShortcuts.FullRowSelect = true;
             this.srtlstShortcuts.HideSelection = false;
             this.srtlstShortcuts.MultiSelect = false;
@@ -139,16 +129,12 @@ namespace TileIconifier.Forms.Main
             // 
             resources.ApplyResources(this.txtExePath, "txtExePath");
             this.tableLayoutPanel1.SetColumnSpan(this.txtExePath, 3);
-            this.txtExePath.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtExePath.Name = "txtExePath";
             this.txtExePath.ReadOnly = true;
             // 
             // btnRemove
             // 
             resources.ApplyResources(this.btnRemove, "btnRemove");
-            this.btnRemove.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRemove.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnRemove.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
@@ -156,9 +142,6 @@ namespace TileIconifier.Forms.Main
             // btnIconify
             // 
             resources.ApplyResources(this.btnIconify, "btnIconify");
-            this.btnIconify.BackColor = System.Drawing.SystemColors.Control;
-            this.btnIconify.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnIconify.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnIconify.Name = "btnIconify";
             this.btnIconify.Tag = "";
             this.btnIconify.UseVisualStyleBackColor = true;
@@ -174,7 +157,6 @@ namespace TileIconifier.Forms.Main
             // 
             resources.ApplyResources(this.txtLnkPath, "txtLnkPath");
             this.tableLayoutPanel1.SetColumnSpan(this.txtLnkPath, 3);
-            this.txtLnkPath.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtLnkPath.Name = "txtLnkPath";
             this.txtLnkPath.ReadOnly = true;
             // 
@@ -341,7 +323,6 @@ namespace TileIconifier.Forms.Main
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.mnuMain);
-            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MainMenuStrip = this.mnuMain;
             this.Name = "FrmMain";
             this.Load += new System.EventHandler(this.frmDropper_Load);
