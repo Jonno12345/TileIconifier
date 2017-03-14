@@ -69,7 +69,7 @@ namespace TileIconifier.Forms
             base.OnControlAdded(e);
 
             //Apply the skin to any control newly added to the form.
-            if (FormSkin != null)
+            if (FormSkin != null && !DesignMode)
                 ApplyControlSkin(e.Control);
         }
 
@@ -83,7 +83,8 @@ namespace TileIconifier.Forms
             //We only apply the skin on the form, not on its controls
             //because control skins are applied when controls are added
             //to the form.
-            ApplyFormSkin();
+            if (!DesignMode)
+                ApplyFormSkin();
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
