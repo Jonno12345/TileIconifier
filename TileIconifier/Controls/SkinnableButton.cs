@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using TileIconifier.Utilities;
+using System.ComponentModel;
 
 namespace TileIconifier.Controls
 {
@@ -47,6 +48,7 @@ namespace TileIconifier.Controls
         /// <summary>
         /// Gets or sets the foreground color of the button when it is disabled.
         /// </summary>
+        [DefaultValue(typeof(Color), nameof(SystemColors.GrayText))]
         public Color DisabledForeColor
         {
             get { return disabledForeColor; }
