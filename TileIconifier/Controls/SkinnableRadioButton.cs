@@ -30,37 +30,14 @@ namespace TileIconifier.Controls
             set { base.Text = value; }
         }
 
-        private Color disabledForeColor;
+        private Color disabledForeColor = SystemColors.GrayText;
         /// <summary>
         /// Gets or sets the foreground color of the button when it is disabled.
         /// </summary>
         [DefaultValue(typeof(Color), nameof(SystemColors.GrayText))]
         public Color DisabledForeColor
         {
-            get
-            {
-                //If the checkbox has the appearance of a checkbox, we treat its
-                //text like a label. Therefore, we want this property to be ambiant.
-                if (disabledForeColor.IsEmpty)
-                {
-                    if (Appearance == Appearance.Button)
-                    {
-                        return SystemColors.GrayText;
-                    }
-                    else
-                    {
-                        SkinnableForm frm = TopLevelControl as SkinnableForm;
-                        if (frm != null && frm.FormSkin != null)
-                            return frm.FormSkin.DisabledForeColor;
-                        else
-                            return SystemColors.GrayText;
-                    }
-                }
-                else
-                {
-                    return disabledForeColor;
-                }
-            }
+            get { return disabledForeColor; }
             set
             {
                 if (disabledForeColor != value)

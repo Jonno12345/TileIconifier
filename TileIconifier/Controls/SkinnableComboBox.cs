@@ -49,9 +49,9 @@ namespace TileIconifier.Controls
                 ConfigureDrawingProperties(true);
             }
         }
-
-        [DefaultValue(typeof(Color), "Control")]
+        
         private Color flatButtonBackColor = SystemColors.Control;
+        [DefaultValue(typeof(Color), nameof(SystemColors.Control))]
         public Color FlatButtonBackColor
         {
             get { return flatButtonBackColor; }
@@ -67,9 +67,9 @@ namespace TileIconifier.Controls
                 }
             }
         }
-
-        [DefaultValue(typeof(Color), "ControlText")]
+                
         private Color flatButtonForeColor = SystemColors.ControlText;
+        [DefaultValue(typeof(Color), nameof(SystemColors.ControlText))]
         public Color FlatButtonForeColor
         {
             get { return flatButtonForeColor; }
@@ -85,9 +85,9 @@ namespace TileIconifier.Controls
                 }
             }
         }
-
-        [DefaultValue(typeof(Color), "GrayText")]
+        
         private Color flatButtonDisabledForeColor = SystemColors.GrayText;
+        [DefaultValue(typeof(Color), nameof(SystemColors.GrayText))]
         public Color FlatButtonDisabledForeColor
         {
             get { return flatButtonDisabledForeColor; }
@@ -103,9 +103,9 @@ namespace TileIconifier.Controls
                 }
             }
         }
-
-        [DefaultValue(typeof(Color), "ControlDark")]
+        
         private Color flatButtonBorderColor = SystemColors.ControlDark;
+        [DefaultValue(typeof(Color), nameof(SystemColors.ControlDark))]
         public Color FlatButtonBorderColor
         {
             get { return flatButtonBorderColor; }
@@ -121,9 +121,9 @@ namespace TileIconifier.Controls
                 }
             }
         }
-
-        [DefaultValue(typeof(Color), "Highlight")]
+        
         private Color flatButtonBorderFocusedColor = SystemColors.Highlight;
+        [DefaultValue(typeof(Color), nameof(SystemColors.Highlight))]
         public Color FlatButtonBorderFocusedColor
         {
             get { return flatButtonBorderFocusedColor; }
@@ -149,6 +149,7 @@ namespace TileIconifier.Controls
             }
             else if (pNeedToRestoreDefaultProperties)
             {
+                //These values could change in a future version of Winforms.
                 SetStyle(ControlStyles.UserPaint, false);
                 DrawMode = DrawMode.Normal;
             }

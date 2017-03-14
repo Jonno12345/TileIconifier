@@ -78,7 +78,7 @@ namespace TileIconifier.Controls
         }
 
         private Color flatHeaderBackColor = SystemColors.Control;
-        [DefaultValue(typeof(Color), "Control")]
+        [DefaultValue(typeof(Color), nameof(SystemColors.Control))]
         public Color FlatHeaderBackColor
         {
             get { return flatHeaderBackColor; }
@@ -96,7 +96,7 @@ namespace TileIconifier.Controls
         }
 
         private Color flatHeaderForeColor = SystemColors.ControlText;
-        [DefaultValue(typeof(Color), "ControlText")]
+        [DefaultValue(typeof(Color), nameof(SystemColors.ControlText))]
         public Color FlatHeaderForeColor
         {
             get { return flatHeaderForeColor; }
