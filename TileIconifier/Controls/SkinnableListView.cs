@@ -235,8 +235,8 @@ namespace TileIconifier.Controls
                 bColor = FlatBorderColor;
             }
             
-            var hdc = NativeMethods.GetWindowDC(this.Handle);
-            using (var g = Graphics.FromHdcInternal(hdc))
+            var hdc = NativeMethods.GetWindowDC(Handle);
+            using (var g = Graphics.FromHdc(hdc))
             using (var p = new Pen(bColor))
                 g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
             NativeMethods.ReleaseDC(Handle, hdc);

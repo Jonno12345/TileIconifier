@@ -155,7 +155,7 @@ namespace TileIconifier.Controls
             }
 
             IntPtr hdc = NativeMethods.GetWindowDC(Handle);
-            using (Graphics g = Graphics.FromHdcInternal(hdc))
+            using (Graphics g = Graphics.FromHdc(hdc))
             using (Pen p = new Pen(bColor))
                 g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
             NativeMethods.ReleaseDC(Handle, hdc);
