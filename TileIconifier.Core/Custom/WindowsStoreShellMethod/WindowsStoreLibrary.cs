@@ -133,9 +133,16 @@ namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
             //this is a somewhat hit and miss method... get the highest resolution icon with the file name and in the folder specified.
             //TODO: improve this...
 
-            var iconPathRegex = Regex.Match(iconTag, @"@{(.*?\..*?)_.*\?ms-resource://.*/Files/(.*)}");
-            var iconPath = string.Empty;
-            if (!iconPathRegex.Success) return iconPath;
+            Match iconPathRegex;
+            try
+            {
+                iconPathRegex = Regex.Match(iconTag, @"@{(.*?\..*?)_.*\?ms-resource://.*/Files/(.*)}");
+            }
+            catch
+            {
+                return string.Empty;
+            }
+            if (!iconPathRegex.Success) return string.Empty;
 
             Func<string, string> getLogoPath = p =>
             {
