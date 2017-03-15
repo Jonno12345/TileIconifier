@@ -256,7 +256,7 @@ namespace TileIconifier.Skinning
             Point sepBegins = new Point(inLATTERAL_PADDING, inY);
             Point sepEnds = new Point(pRect.Width - inLATTERAL_PADDING, inY);
             
-            using (Pen p = new Pen(colorTable.PopupForeColor))
+            using (Pen p = new Pen(pSepColor))
                 pGraphics.DrawLine(p, sepBegins, sepEnds);
         }
         #endregion
