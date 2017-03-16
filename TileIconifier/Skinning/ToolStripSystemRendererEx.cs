@@ -146,16 +146,41 @@ namespace TileIconifier.Skinning
             return VisualStyleElement.CreateElement(vsClass, 8, inState);
         }
 
-        private VisualStyleElement GetSubMenuArrowVSElement(bool pEnabled)
+        private VisualStyleElement GetMenuGlyphVSElement(MenuGlyph pGlyph, bool pEnabled)
         {
-            if (pEnabled)
+            switch(pGlyph)
             {
-                return VisualStyleElement.CreateElement(vsClass, 16, 1);
-            }
+                case MenuGlyph.Arrow:
+                    if (pEnabled)                    
+                        return VisualStyleElement.CreateElement(vsClass, 16, 1);                    
+                    else                    
+                        return VisualStyleElement.CreateElement(vsClass, 16, 2);
+
+                case MenuGlyph.Bullet:
+                    if (pEnabled)
+                        return VisualStyleElement.CreateElement(vsClass, 11, 3);
+                    else
+                        return VisualStyleElement.CreateElement(vsClass, 11, 4);
+
+                case MenuGlyph.Checkmark:
+                    if (pEnabled)
+                        return VisualStyleElement.CreateElement(vsClass, 11, 1);
+                    else
+                        return VisualStyleElement.CreateElement(vsClass, 11, 2);
+
+                default:
+                    throw new System.ComponentModel.InvalidEnumArgumentException();
+            }            
+        }
+
+        private VisualStyleElement GetMenuGlyphBackgroundVSElement(bool pEnabled, bool pBitmap)
+        {
+            if (!pEnabled)
+                return VisualStyleElement.CreateElement(vsClass, 12, 1);
+            else if (pBitmap)
+                return VisualStyleElement.CreateElement(vsClass, 12, 3);
             else
-            {
-                return VisualStyleElement.CreateElement(vsClass, 16, 2);
-            }
+                return VisualStyleElement.CreateElement(vsClass, 12, 2);
         }
         #endregion
 
@@ -519,7 +544,7 @@ namespace TileIconifier.Skinning
             }
             else if (ToolStripManager.VisualStylesEnabled)
             {
-                VisualStyleElement vsElement = GetSubMenuArrowVSElement(e.Item.Enabled);
+                VisualStyleElement vsElement = GetMenuGlyphVSElement(MenuGlyph.Arrow, e.Item.Enabled);
                 if (VisualStyleRenderer.IsElementDefined(vsElement))
                 {
                     //Creates a the appropriate rectangle for the arrow (the one that comes in the ToolStripArrowRenderEventArgs is too big!)
@@ -607,8 +632,48 @@ namespace TileIconifier.Skinning
         protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs e)
         {
             //base.OnRenderItemCheck(e);
-            Rectangle bounds = new Rectangle(e.ImageRectangle.Location, e.ImageRectangle.Size);
-            ControlPaint.DrawMenuGlyph(e.Graphics, bounds, MenuGlyph.Checkmark, colorTable.PopupForeColor, Color.Transparent);
+            
+            Rectangle glyphBounds = new Rectangle(e.ImageRectangle.Location, e.ImageRectangle.Size);
+            Color sysColor;
+            Color defaultColor;
+
+            if (e.Item.Selected)
+            {
+                sysColor = colorTable.HighlightForeColor;
+                defaultColor = ToolStripSystemColorScheme.DefaultHighlightForeColor;
+            }
+            else
+            {
+                sysColor = colorTable.HighlightForeColor;
+                defaultColor = ToolStripSystemColorScheme.DefaultHighlightForeColor;
+            }
+
+            if (sysColor != defaultColor)
+            {
+                ControlPaint.DrawMenuGlyph(e.Graphics, glyphBounds, MenuGlyph.Checkmark, sysColor, Color.Transparent);
+            }
+            else if (ToolStripManager.VisualStylesEnabled)
+            {
+                VisualStyleElement backVSElement = GetMenuGlyphBackgroundVSElement(e.Item.Enabled, false);
+                VisualStyleElement glyphVSElement = GetMenuGlyphVSElement(MenuGlyph.Checkmark, e.Item.Enabled);
+                if (VisualStyleRenderer.IsElementDefined(backVSElement) || VisualStyleRenderer.IsElementDefined(glyphVSElement))
+                {
+                    //We use Inflate in order to keep the rectangle centered with the glyph.
+                    int inInflation = ((e.Item.Height - e.ImageRectangle.Height) / 2);
+                    Rectangle backBounds = glyphBounds;
+                    backBounds.Inflate(inInflation, inInflation);
+                    DrawVisualStyle(e.Graphics, backVSElement, backBounds);
+                    DrawVisualStyle(e.Graphics, glyphVSElement, glyphBounds);
+                }
+                else
+                {
+                    base.OnRenderItemCheck(e);
+                }
+            }
+            else
+            {
+                base.OnRenderItemCheck(e);
+            }
         }
     }
 }
