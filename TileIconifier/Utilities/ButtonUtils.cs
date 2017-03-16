@@ -25,13 +25,16 @@ namespace TileIconifier.Utilities
         
         private static Size GetCheckBoxGlyphSize(Graphics pGraphics, FlatStyle pFlatStyle)
         {
+            float flScaleX = pGraphics.DpiX / 96F;
+            float flScaleY = pGraphics.DpiY / 96F;
+
             switch (pFlatStyle)
             {
                 case FlatStyle.Flat:
                 case FlatStyle.Popup:
                     //In the .Net 4.6 Reference Source, the size of the checkmark is a 
                     //constant called "flatCheckSize" in a class called CheckBoxBaseAdapter.
-                    return new Size(11, 11);
+                    return new Size((int)(11 * flScaleX), (int)(11 * flScaleY));
                 default:
                     //We don't bother with states here. We just assume 
                     //that all states have the same size.
@@ -41,13 +44,16 @@ namespace TileIconifier.Utilities
                 
         private static Size GetRadioButtonGlyphSize(Graphics pGraphics, FlatStyle pFlatStyle)
         {
+            float flScaleX = pGraphics.DpiX / 96F;
+            float flScaleY = pGraphics.DpiY / 96F;
+
             switch (pFlatStyle)
             {
                 case FlatStyle.Flat:
                 case FlatStyle.Popup:
                     //In the .Net 4.6 Reference Source, the size of the checkmark is a 
                     //constant called "flatCheckSize" in a class called RadioButtonFlatAdapter.
-                    return new Size(12, 12);
+                    return new Size((int)(12 * flScaleX), (int)(12 * flScaleY));
                 default:
                     //We don't bother with states here. We just assume 
                     //that all states have the same size.
