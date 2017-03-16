@@ -520,18 +520,19 @@ namespace TileIconifier.Skinning
         protected override void OnRenderSeparator(ToolStripSeparatorRenderEventArgs e)
         {
             Rectangle bounds;
+            Color sepCol = Core.Utilities.ColorUtils.BlendColors(colorTable.PopupForeColor, 1, colorTable.PopupBackColor, 3);
 
             if (colorTable.PopupForeColor != ToolStripSystemColorScheme.DefaultPopupForeColor || !ToolStripManager.VisualStylesEnabled)
             {
-                bounds = new Rectangle(Point.Empty, e.Item.Size);
-                DrawClassicSeparatorInternal(e.Graphics, colorTable.PopupForeColor, bounds);
+                bounds = new Rectangle(Point.Empty, e.Item.Size);                
+                DrawClassicSeparatorInternal(e.Graphics, sepCol, bounds);
             }
             else
             {
                 VisualStyleElement vsElement = VisualStyleElement.CreateElement(vsClass, 15, 0);
                 int inPartHeight = vsRenderer.GetPartSize(e.Graphics, ThemeSizeType.Minimum).Height + 1;
                 int inY = (e.Item.Height - inPartHeight) / 2; //Vertical center
-                bounds = new Rectangle(0, inY, e.Item.Width, inPartHeight); //here, the rect is full width, and we shrink it below.
+                bounds = new Rectangle(0, inY, e.Item.Width, inPartHeight); //here, the rect is full width, and we shrink it when we check for RightToLeft.
                 ToolStripDropDownMenu dropDownMenu = (ToolStripDropDownMenu)e.Item.GetCurrentParent();
 
                 if (dropDownMenu != null)
@@ -549,7 +550,7 @@ namespace TileIconifier.Skinning
                 }
 
                 drawClassicElement fallbackHandler = DrawClassicSeparatorInternal;
-                DrawVisualStyle(e.Graphics, bounds, vsElement, colorTable.PopupForeColor, ref fallbackHandler); //Fallback does not work correctly with this rect.
+                DrawVisualStyle(e.Graphics, bounds, vsElement, sepCol, ref fallbackHandler); //Fallback does not work correctly with this rect.
             }
         }
 
