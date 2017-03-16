@@ -18,8 +18,7 @@ namespace TileIconifier.Skinning
 
         private string vsClass = stSTANDARD_VS_CLASS;
         private VisualStyleRenderer vsRenderer;
-        private ToolStripSystemColorTable colorTable;
-        private delegate void drawClassicElement(Graphics pGraphics, Color pColor, Rectangle pRect);
+        private ToolStripSystemColorTable colorTable;        
 
         #region "Constructors"
         public ToolStripSystemRendererEx()
@@ -43,9 +42,9 @@ namespace TileIconifier.Skinning
             {
                 vsRenderer.SetParameters(pElement);
             }
-        }
+        }        
 
-        #region "Misc helpers"
+        #region "State helpers"
         /// <summary>
         /// Returns the Visual Style Element of a popup menu item with the appropriate state.
         /// </summary>
@@ -161,90 +160,26 @@ namespace TileIconifier.Skinning
         #endregion
 
         #region "Drawing helpers"
-        private void DrawVisualStyle(Graphics pGraphics, Rectangle pRect, VisualStyleElement pVSElement, Color pFallbackColor, ref drawClassicElement pFallbackMethod)
+        private void DrawVisualStyle(Graphics pGrapics, VisualStyleElement pElement, Rectangle pBounds)
         {
-            if (VisualStyleRenderer.IsElementDefined(pVSElement))
-            {
-                PrepareVisualStyleRenderer(pVSElement);
-                vsRenderer.DrawBackground(pGraphics, pRect);
-            }
-            else
-                pFallbackMethod(pGraphics, pFallbackColor, pRect);
-        }        
-
-        private void DrawClassicMenuBarBackInternal(Graphics pGraphics, Color pBackColor, Rectangle pRect)
-        {
-            using (SolidBrush b = new SolidBrush(pBackColor))
-                pGraphics.FillRectangle(b, pRect);
-        }   
-
-        private void DrawClassicPopupMenuBackInternal(Graphics pGraphics, Color pBackColor, Rectangle pRect)
-        {
-            using (SolidBrush b = new SolidBrush(pBackColor))
-                pGraphics.FillRectangle(b, pRect);
-        }
-        
-        private void DrawBorderInternal(ToolStripRenderEventArgs e)
-        {
-            Rectangle bounds = e.AffectedBounds;
-            
-            if (e.ToolStrip.IsDropDown)
-            {
-                //Popup menu
-                if (colorTable.PopupBorderColor != ToolStripSystemColorScheme.DefaultPopupBorderColor || SystemInformation.IsFlatMenuEnabled)
-                {
-                    bounds.Width -= 1;
-                    bounds.Height -= 1;                    
-                    using (Pen p = new Pen(colorTable.PopupBorderColor))
-                        e.Graphics.DrawRectangle(p, bounds);
-                }
-                else
-                {
-                    ControlPaint.DrawBorder3D(e.Graphics, bounds, Border3DStyle.Raised);
-                }
-            }
-            else
-            {
-                //Menu bar
-                if (colorTable.MenuBarBorderColor != ToolStripSystemColorScheme.DefaultMenuBarBorderColor)
-                {
-                    //Draws a border with the suer-defined color. In this case, we just draw a plain line
-                    //the the sake of simplicity.
-                    Point borderBegins = new Point(e.AffectedBounds.X, e.AffectedBounds.Y + e.AffectedBounds.Height - 1);
-                    Point borderEnds = new Point(e.AffectedBounds.X + e.AffectedBounds.Width, borderBegins.Y);
-                                        
-                    using (Pen p = new Pen(colorTable.MenuBarBorderColor))
-                        e.Graphics.DrawLine(p, borderBegins, borderEnds);                        
-                }
-                else if (colorTable.MenuBarBackColor != ToolStripSystemColorScheme.DefaultMenuBarBackColor || !ToolStripManager.VisualStylesEnabled)
-                {
-                    //We let the base class handle the border drawing with the system colors. We only do this if 
-                    //the menu bar background is not painted with visual styles, because the menu bar background 
-                    //visual style image that is painted elsewhere already includes the border.
-                    base.OnRenderToolStripBorder(e);
-                }                    
-            }
-        }        
-
-        private void DrawClassicMenuBarItemBackInternal(Graphics pGraphics, Color pBackColor, Rectangle pRect)
-        {
-            using (SolidBrush b = new SolidBrush(pBackColor))
-            {
-                pGraphics.FillRectangle(b, pRect);
-            }
-        }
-        
-        private void DrawClassicPopupMenuItemBackInternal(Graphics pGraphics, Color pBackColor, Rectangle pRect)
-        {
-            using (SolidBrush b = new SolidBrush(pBackColor))
-            {
-                pGraphics.FillRectangle(b, pRect);
-            }
+            PrepareVisualStyleRenderer(pElement);
+            vsRenderer.DrawBackground(pGrapics, pBounds);
         }
 
-        private void DrawClassicPopupMenuArrowInternal(Graphics pGraphics, Color pGlyphColor, Rectangle pRect)
+        private void FillRectangle(Graphics pGraphics, Color pBackColor, Rectangle pBounds)
         {
-            ControlPaint.DrawMenuGlyph(pGraphics, pRect, MenuGlyph.Arrow, pGlyphColor, Color.Transparent);
+            using (SolidBrush b = new SolidBrush(pBackColor))
+                pGraphics.FillRectangle(b, pBounds);
+        }
+
+        private void DrawRectangle(Graphics pGraphics, Color pColor, Rectangle pBounds)
+        {
+            //Compensation needed by GDI+
+            pBounds.Width--;
+            pBounds.Height--;
+
+            using (Pen p = new Pen(pColor))
+                pGraphics.DrawRectangle(p, pBounds);
         }
 
         private void DrawClassicSeparatorInternal(Graphics pGraphics, Color pSepColor, Rectangle pRect) //pRect.Size = size of the item.
@@ -262,43 +197,115 @@ namespace TileIconifier.Skinning
         #endregion
 
         protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
-        {
-            if (e.ToolStrip.GetType() != typeof(MenuStrip) && !e.ToolStrip.IsDropDown)
-            {
-                base.OnRenderToolStripBackground(e);
-                return;
-            }            
-            
+        { 
             if (e.ToolStrip.IsDropDown) //Popup menu
             {
+                //If the user color does not match the default color, it means that the user
+                //has requested a specific color, so we draw a flat menu with it regardless of
+                //system settings.
                 Color sysColor = colorTable.PopupBackColor;
-                if (sysColor != ToolStripSystemColorScheme.DefaultPopupBackColor || !ToolStripManager.VisualStylesEnabled)
-                    DrawClassicPopupMenuBackInternal(e.Graphics, sysColor, e.AffectedBounds);
-                else
+                if (sysColor != ToolStripSystemColorScheme.DefaultPopupBackColor)
+                {
+                    FillRectangle(e.Graphics, sysColor, e.AffectedBounds);
+                }
+                //If no user color set, we draw using system settings. The ToolStripSystemRenderer
+                //was never updated to support visual styles, so we must implement them ourselves,
+                //if they are enabled.
+                else if (ToolStripManager.VisualStylesEnabled)
                 {
                     VisualStyleElement vsElement = VisualStyleElement.CreateElement(vsClass, 9, 0);
-                    drawClassicElement fallBackHandler = DrawClassicPopupMenuBackInternal;
-                    DrawVisualStyle(e.Graphics, e.AffectedBounds, vsElement, sysColor, ref fallBackHandler);
-                }       
-            }
-            else //Menu bar
-            {
-                Color sysColor = colorTable.MenuBarBackColor;
-                if (sysColor != ToolStripSystemColorScheme.DefaultMenuBarBackColor || !ToolStripManager.VisualStylesEnabled)
-                    DrawClassicMenuBarBackInternal(e.Graphics, sysColor, e.AffectedBounds);
+                    if (VisualStyleRenderer.IsElementDefined(vsElement))
+                    {
+                        DrawVisualStyle(e.Graphics, vsElement, e.AffectedBounds);
+                    }
+                    else
+                    {
+                        //If the visual style element is not defined, we fallback on the classic 
+                        //menu, which the base class already implements.
+                        base.OnRenderToolStripBackground(e);
+                    }
+                }
                 else
                 {
-                    VisualStyleElement vsElement = VisualStyleElement.CreateElement(vsClass, 7, 0);
-                    drawClassicElement fallbackHandler = DrawClassicMenuBarBackInternal;
-                    DrawVisualStyle(e.Graphics, e.AffectedBounds, vsElement, sysColor, ref fallbackHandler);
+                    base.OnRenderToolStripBackground(e);
+                }       
+            }
+            else if (e.ToolStrip.GetType() == typeof(MenuStrip)) //Menu bar
+            {
+                Color sysColor = colorTable.MenuBarBackColor;
+                if (sysColor != ToolStripSystemColorScheme.DefaultMenuBarBackColor)
+                {
+                    FillRectangle(e.Graphics, sysColor, e.AffectedBounds);
                 }
-                    
+                else if (ToolStripManager.VisualStylesEnabled)
+                {
+                    VisualStyleElement vsElement = VisualStyleElement.CreateElement(vsClass, 7, 0);
+                    if (VisualStyleRenderer.IsElementDefined(vsElement))
+                    {
+                        DrawVisualStyle(e.Graphics, vsElement, e.AffectedBounds);
+                    }
+                    else
+                    {
+                        base.OnRenderToolStripBackground(e);
+                    }
+                }
+                else
+                {
+                    base.OnRenderToolStripBackground(e);
+                }                    
+            }
+            else
+            {
+                base.OnRenderToolStripBackground(e);
             }            
         }
         
         protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
         {
-            DrawBorderInternal(e);
+            Rectangle bounds = e.AffectedBounds;
+            Color sysColor;
+
+            if (e.ToolStrip.IsDropDown)
+            {
+                //Popup menu
+
+                sysColor = colorTable.PopupBorderColor;
+
+                if (sysColor != ToolStripSystemColorScheme.DefaultPopupBorderColor)
+                {
+                    DrawRectangle(e.Graphics, sysColor, bounds);
+                }
+                else
+                {
+                    base.OnRenderToolStripBorder(e);
+                }
+            }
+            else
+            {
+                //Menu bar
+
+                sysColor = colorTable.MenuBarBorderColor;
+                if (sysColor != ToolStripSystemColorScheme.DefaultMenuBarBorderColor)
+                {
+                    //Draws a border with the user-defined color. In this case, we just draw a plain line
+                    //the the sake of simplicity.
+                    Point borderBegins = new Point(e.AffectedBounds.X, e.AffectedBounds.Y + e.AffectedBounds.Height - 1);
+                    Point borderEnds = new Point(e.AffectedBounds.X + e.AffectedBounds.Width, borderBegins.Y);
+
+                    using (Pen p = new Pen(sysColor))
+                        e.Graphics.DrawLine(p, borderBegins, borderEnds);
+                }
+                //We check the MenuBarBackColor, because if the user color does not match the default color,
+                //the menu bar background is classic, so we draw a classic border, even then the border
+                //color was not user-defined.
+                else if (colorTable.MenuBarBackColor != ToolStripSystemColorScheme.DefaultMenuBarBackColor || !ToolStripManager.VisualStylesEnabled)
+                {
+                    //We let the base class handle the border drawing with the system colors. We only do this if 
+                    //the menu bar background is not painted with visual styles, because the menu bar background 
+                    //visual style image that is painted elsewhere already includes the border.
+                    base.OnRenderToolStripBorder(e);
+                }
+            }
         }  
 
         protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
@@ -309,12 +316,12 @@ namespace TileIconifier.Skinning
             if (item != null)
             {                
                 Rectangle fillRect = new Rectangle(Point.Empty, item.Size);
+                Color sysColor;
+                Color defaultSysColor;
+
                 if (item.IsOnDropDown)
                 {
-                    //Popup menu
-                    
-                    Color sysColor;
-                    Color defaultSysColor;                    
+                    //Popup menu        
 
                     // VSWhidbey 518568: scoot in by 2 pixels when selected
                     fillRect.X += 2;
@@ -332,22 +339,30 @@ namespace TileIconifier.Skinning
                         defaultSysColor = ToolStripSystemColorScheme.DefaultPopupBackColor;
                     }
 
-
-                    if (sysColor != defaultSysColor || !ToolStripManager.VisualStylesEnabled)
-                        DrawClassicPopupMenuItemBackInternal(e.Graphics, sysColor, fillRect);
+                    if (sysColor != defaultSysColor)
+                    {
+                        FillRectangle(e.Graphics, sysColor, fillRect);
+                    }
+                    else if (ToolStripManager.VisualStylesEnabled)
+                    {
+                        VisualStyleElement vsElement = GetPopUpItemVSElement(item.Selected, item.Enabled);
+                        if (VisualStyleRenderer.IsElementDefined(vsElement))
+                        {
+                            DrawVisualStyle(g, vsElement, fillRect);
+                        }
+                        else
+                        {
+                            base.OnRenderMenuItemBackground(e);
+                        }
+                    }
                     else
                     {
-                        VisualStyleElement vsElement = GetPopUpItemVSElement(e.Item.Selected, e.Item.Enabled);
-                        drawClassicElement fallbackHandler = DrawClassicPopupMenuBackInternal;
-                        DrawVisualStyle(e.Graphics, fillRect, vsElement, sysColor, ref fallbackHandler);
+                        base.OnRenderMenuItemBackground(e);
                     }            
                 }
                 else
                 {
                     //Menu bar item
-
-                    Color sysColor;
-                    Color defaultSysColor;
                     
                     if (e.Item.Selected)
                     {
@@ -360,13 +375,25 @@ namespace TileIconifier.Skinning
                         defaultSysColor = ToolStripSystemColorScheme.DefaultMenuBarBackColor;
                     }
 
-                    if (sysColor != defaultSysColor || !ToolStripManager.VisualStylesEnabled)
-                        DrawClassicMenuBarItemBackInternal(e.Graphics, sysColor, fillRect);
-                    else
+                    if (sysColor != defaultSysColor)
+                    {
+                        FillRectangle(e.Graphics, sysColor, fillRect);
+                    }
+                    else if (ToolStripManager.VisualStylesEnabled)
                     {
                         VisualStyleElement vsElement = GetMenuBarItemVSElement(e.Item.Selected, e.Item.Enabled, e.Item.Pressed);
-                        drawClassicElement fallbackHandler = DrawClassicMenuBarItemBackInternal;
-                        DrawVisualStyle(e.Graphics, fillRect, vsElement, sysColor, ref fallbackHandler);
+                        if (VisualStyleRenderer.IsElementDefined(vsElement))
+                        {
+                            DrawVisualStyle(g, vsElement, fillRect);
+                        }
+                        else
+                        {
+                            base.OnRenderMenuItemBackground(e);
+                        }
+                    }
+                    else
+                    {
+                        base.OnRenderMenuItemBackground(e);
                     }                    
                 }
             }
@@ -386,15 +413,13 @@ namespace TileIconifier.Skinning
                 CenterItemTextRectangle(ref e);           
             
             VisualStyleElement vsElement;
+            Color sysColor;
+            Color defaultColor;
             Color textColor;
-
-            //Here, we don't use the DrawVisualStyle method like the others because we render text
-            //using the TextRenderer wether or not visual style are used.
 
             if (e.Item.IsOnDropDown) //Popup menu item
             {
-                Color sysColor;
-                Color defaultColor;
+                
                 if (e.Item.Selected)
                 {
                     sysColor = colorTable.HighlightForeColor;
@@ -406,11 +431,11 @@ namespace TileIconifier.Skinning
                     defaultColor = ToolStripSystemColorScheme.DefaultPopupForeColor;
                 }
 
-                if (sysColor != defaultColor || !ToolStripManager.VisualStylesEnabled)
+                if (sysColor != defaultColor)
                 {
                     textColor = sysColor;
                 }
-                else
+                else if (ToolStripManager.VisualStylesEnabled)
                 {
                     vsElement = GetPopUpItemVSElement(e.Item.Selected, e.Item.Enabled);
                     if (VisualStyleRenderer.IsElementDefined(vsElement))
@@ -420,15 +445,19 @@ namespace TileIconifier.Skinning
                     }
                     else
                     {
-                        textColor = sysColor;
+                        base.OnRenderItemText(e);
+                        return;
                     }
+                }
+                else
+                {
+                    base.OnRenderItemText(e);
+                    return;
                 }
                 
             }
             else //Menu bar item
-            {
-                Color sysColor;
-                Color defaultColor;
+            {                
                 if (e.Item.Selected)
                 {
                     sysColor = colorTable.HighlightForeColor;
@@ -440,11 +469,11 @@ namespace TileIconifier.Skinning
                     defaultColor = ToolStripSystemColorScheme.DefaultMenuBarForeColor;
                 }
 
-                if (sysColor != defaultColor || !ToolStripManager.VisualStylesEnabled)
+                if (sysColor != defaultColor)
                 {
                     textColor = sysColor;
                 }
-                else
+                else if (ToolStripManager.VisualStylesEnabled)
                 {
                     vsElement = GetMenuBarItemVSElement(e.Item.Selected, e.Item.Enabled, e.Item.Pressed);
                     if (VisualStyleRenderer.IsElementDefined(vsElement))
@@ -454,9 +483,15 @@ namespace TileIconifier.Skinning
                     }
                     else
                     {
-                        textColor = sysColor;
+                        base.OnRenderItemText(e);
+                        return;
                     }
-                }                
+                }  
+                else
+                {
+                    base.OnRenderItemText(e);
+                    return;
+                }              
             }
             
             TextRenderer.DrawText(e.Graphics, e.Text, e.Item.Font, e.TextRectangle, textColor, e.TextFormat);
@@ -478,19 +513,29 @@ namespace TileIconifier.Skinning
                 defaultColor = ToolStripSystemColorScheme.DefaultHighlightForeColor;
             }
 
-            if (sysColor != defaultColor || !ToolStripManager.VisualStylesEnabled)
+            if (sysColor != defaultColor)
             {
-                DrawClassicPopupMenuArrowInternal(e.Graphics, sysColor, e.ArrowRectangle);
+                ControlPaint.DrawMenuGlyph(e.Graphics, e.ArrowRectangle, MenuGlyph.Arrow, sysColor, Color.Transparent);                
+            }
+            else if (ToolStripManager.VisualStylesEnabled)
+            {
+                VisualStyleElement vsElement = GetSubMenuArrowVSElement(e.Item.Enabled);
+                if (VisualStyleRenderer.IsElementDefined(vsElement))
+                {
+                    //Creates a the appropriate rectangle for the arrow (the one that comes in the ToolStripArrowRenderEventArgs is too big!)
+                    Rectangle arrowRect = new Rectangle(e.ArrowRectangle.Location, vsRenderer.GetPartSize(e.Graphics, ThemeSizeType.True));
+                    //Centers the rectangle vertically
+                    arrowRect.Y = e.ArrowRectangle.Y + (e.ArrowRectangle.Height - arrowRect.Height) / 2 + 1; //+1 is just a quick qualitative adjustement.
+                    DrawVisualStyle(e.Graphics, vsElement, arrowRect);
+                }
+                else
+                {
+                    base.OnRenderArrow(e);
+                }                
             }
             else
             {
-                VisualStyleElement vsElement = GetSubMenuArrowVSElement(e.Item.Enabled);
-                //Creates a the appropriate rectangle for the arrow (the one that comes in the ToolStripArrowRenderEventArgs is too big!)
-                Rectangle arrowRect = new Rectangle(e.ArrowRectangle.Location, vsRenderer.GetPartSize(e.Graphics, ThemeSizeType.True));
-                //Centers the rectangle vertically
-                arrowRect.Y = e.ArrowRectangle.Y + (e.ArrowRectangle.Height - arrowRect.Height) / 2 + 1; //+1 is just a quick qualitative adjustement.
-                drawClassicElement fallbackHandler = DrawClassicPopupMenuArrowInternal;
-                DrawVisualStyle(e.Graphics, arrowRect, vsElement, sysColor, ref fallbackHandler);
+                base.OnRenderArrow(e);
             }
         }
 
@@ -510,9 +555,8 @@ namespace TileIconifier.Skinning
                 base.OnRenderImageMargin(e);
                 return;
             }
-            
-            PrepareVisualStyleRenderer(vsElement);            
-            vsRenderer.DrawBackground(e.Graphics, e.AffectedBounds);
+
+            DrawVisualStyle(e.Graphics, vsElement, e.AffectedBounds);
         }
 
         //Rushed at this point...
@@ -530,38 +574,41 @@ namespace TileIconifier.Skinning
             else
             {
                 VisualStyleElement vsElement = VisualStyleElement.CreateElement(vsClass, 15, 0);
-                int inPartHeight = vsRenderer.GetPartSize(e.Graphics, ThemeSizeType.Minimum).Height + 1;
-                int inY = (e.Item.Height - inPartHeight) / 2; //Vertical center
-                bounds = new Rectangle(0, inY, e.Item.Width, inPartHeight); //here, the rect is full width, and we shrink it when we check for RightToLeft.
-                ToolStripDropDownMenu dropDownMenu = (ToolStripDropDownMenu)e.Item.GetCurrentParent();
-
-                if (dropDownMenu != null)
+                if (VisualStyleRenderer.IsElementDefined(vsElement))
                 {
-                    if (dropDownMenu.RightToLeft == RightToLeft.No)
-                    {
-                        bounds.X += dropDownMenu.ImageScalingSize.Width + 2;
-                        bounds.Width = dropDownMenu.Width - bounds.X;
-                    }
-                    else
-                    {
-                        bounds.X -= 2;
-                        bounds.Width = dropDownMenu.Width - bounds.X - dropDownMenu.ImageScalingSize.Width;
-                    }
-                }
+                    int inPartHeight = vsRenderer.GetPartSize(e.Graphics, ThemeSizeType.Minimum).Height + 1;
+                    int inY = (e.Item.Height - inPartHeight) / 2; //Vertical center
+                    bounds = new Rectangle(0, inY, e.Item.Width, inPartHeight); //here, the rect is full width, and we shrink it when we check for RightToLeft.
+                    ToolStripDropDownMenu dropDownMenu = (ToolStripDropDownMenu)e.Item.GetCurrentParent();
 
-                drawClassicElement fallbackHandler = DrawClassicSeparatorInternal;
-                DrawVisualStyle(e.Graphics, bounds, vsElement, sepCol, ref fallbackHandler); //Fallback does not work correctly with this rect.
+                    if (dropDownMenu != null)
+                    {
+                        if (dropDownMenu.RightToLeft == RightToLeft.No)
+                        {
+                            bounds.X += dropDownMenu.ImageScalingSize.Width + 2;
+                            bounds.Width = dropDownMenu.Width - bounds.X;
+                        }
+                        else
+                        {
+                            bounds.X -= 2;
+                            bounds.Width = dropDownMenu.Width - bounds.X - dropDownMenu.ImageScalingSize.Width;
+                        }
+                    }
+
+                    DrawVisualStyle(e.Graphics, vsElement, bounds);
+                }
+                else
+                {
+                    base.OnRenderSeparator(e);
+                }
             }
         }
 
         protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs e)
         {
             //base.OnRenderItemCheck(e);
-            Rectangle bounds = new Rectangle(e.ImageRectangle.Location, e.ImageRectangle.Size);            
+            Rectangle bounds = new Rectangle(e.ImageRectangle.Location, e.ImageRectangle.Size);
             ControlPaint.DrawMenuGlyph(e.Graphics, bounds, MenuGlyph.Checkmark, colorTable.PopupForeColor, Color.Transparent);
         }
-
-
-
     }
 }
