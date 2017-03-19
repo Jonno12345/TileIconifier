@@ -61,7 +61,12 @@ namespace TileIconifier.Utilities
             }
         }
 
-        private static Rectangle CreateGlyphButtonTextRectangle(ISkinnableCheckableButton pCheckButton, Size pGlyphSize)
+        private static Rectangle CreatePushButtonTextRectangle(Control pControl)
+        {
+            return CreatePaddedRectangle(pControl.ClientRectangle, pControl.Padding);
+        }
+
+        private static Rectangle CreateGlyphButtonTextRectangle(Control pControl, Size pGlyphSize)
         {
             //Spacing between the edge of the glyph and the outer edge of the check area.
             //1px padding + 1px for the glyph border.
@@ -69,10 +74,10 @@ namespace TileIconifier.Utilities
             //Some mysterious spacing on the left and right sides of the text.
             const int inTEXT_LATTERAL_PADDING = 1;
 
-            Rectangle contentRect = CreatePaddedRectangle(pCheckButton.ClientRectangle, pCheckButton.Padding);
+            Rectangle contentRect = CreatePaddedRectangle(pControl.ClientRectangle, pControl.Padding);
             Size checkAreaSize = new Size(pGlyphSize.Width + inGLYPH_ADDITIONNAL_SPACE, pGlyphSize.Height + inGLYPH_ADDITIONNAL_SPACE);
             Point textRectLocation;
-            if (pCheckButton.RightToLeft != RightToLeft.Yes)
+            if (pControl.RightToLeft != RightToLeft.Yes)
             {
                 textRectLocation = new Point(contentRect.X + checkAreaSize.Width + inTEXT_LATTERAL_PADDING, contentRect.Y);
             }
@@ -85,7 +90,7 @@ namespace TileIconifier.Utilities
 
             return textRect;
         }
-
+                
         /// <summary>
         /// Converts a ContentAlignement value into a TextFormatFlags.
         /// </summary>
@@ -121,37 +126,58 @@ namespace TileIconifier.Utilities
 
             return flags;
         }
+                
+        /// <summary>
+        /// Returns a rectangle where the text can be drawn on a push button.
+        /// </summary>
+        /// <param name="pButton"></param>
+        /// <returns></returns>
+        internal static Rectangle GetPushButtonTextRectangle(Button pButton)
+        {
+            return CreatePushButtonTextRectangle(pButton);
+        }
 
         /// <summary>
         /// Returns a rectangle where the text can be drawn on a push button.
         /// </summary>
-        /// <param name="pPushButton"></param>
+        /// <param name="pRadioButton"></param>
         /// <returns></returns>
-        internal static Rectangle GetPushButtonTextRectangle(ISkinnableButton pPushButton)
+        internal static Rectangle GetPushButtonTextRectangle(RadioButton pRadioButton)
         {
-            return CreatePaddedRectangle(pPushButton.ClientRectangle, pPushButton.Padding);
+            return CreatePushButtonTextRectangle(pRadioButton);
+        }
+
+        /// <summary>
+        /// Returns a rectangle where the text can be drawn on a push button.
+        /// </summary>
+        /// <param name="pCheckBox"></param>
+        /// <returns></returns>
+        /// 
+        internal static Rectangle GetPushButtonTextRectangle(CheckBox pCheckBox)
+        {
+            return CreatePushButtonTextRectangle(pCheckBox);
         }
 
         /// <summary>
         /// Returns a rectangle where the text can be drawn on a radio button.
         /// </summary>
-        /// <param name="pCheckButton"></param>
+        /// <param name="pRadioButton"></param>
         /// <param name="pGraphics"></param>
         /// <returns></returns>
-        internal static Rectangle GetRadioButtonTextRectangle(ISkinnableCheckableButton pCheckButton, Graphics pGraphics)
+        internal static Rectangle GetRadioButtonTextRectangle(RadioButton pRadioButton, Graphics pGraphics)
         {
-            return CreateGlyphButtonTextRectangle(pCheckButton, GetRadioButtonGlyphSize(pGraphics, pCheckButton.FlatStyle));
+            return CreateGlyphButtonTextRectangle(pRadioButton, GetRadioButtonGlyphSize(pGraphics, pRadioButton.FlatStyle));
         }
 
         /// <summary>
         /// Returns a rectangle where the text can be drawn on a check box.
         /// </summary>
-        /// <param name="pCheckButton"></param>
+        /// <param name="pCheckBox"></param>
         /// <param name="pGraphics"></param>
         /// <returns></returns>
-        internal static Rectangle GetCheckBoxTextRectangle(ISkinnableCheckableButton pCheckButton, Graphics pGraphics)
+        internal static Rectangle GetCheckBoxTextRectangle(CheckBox pCheckBox, Graphics pGraphics)
         {
-            return CreateGlyphButtonTextRectangle(pCheckButton, GetCheckBoxGlyphSize(pGraphics, pCheckButton.FlatStyle));
+            return CreateGlyphButtonTextRectangle(pCheckBox, GetCheckBoxGlyphSize(pGraphics, pCheckBox.FlatStyle));
         }
     }
 }

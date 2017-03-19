@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace TileIconifier.Controls
 {
-    interface ISkinnableTextBox : ISkinnableControl
+    interface ISkinnableTextBox
     {
         BorderStyle BorderStyle { get; set; }
         Color BackColor { get; set; }
