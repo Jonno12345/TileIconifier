@@ -119,13 +119,13 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 13</value>
+    <value>50, 13</value>
   </data>
   <data name="lblFilter.Text" xml:space="preserve">
     <value>Фильтр:</value>
   </data>
   <data name="btnRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>681, 362</value>
+    <value>728, 361</value>
   </data>
   <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 23</value>
@@ -134,13 +134,16 @@
     <value>Удалить изменения</value>
   </data>
   <data name="lblBadShortcutWarning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 332</value>
+    <value>225, 331</value>
   </data>
   <data name="lblBadShortcutWarning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 54</value>
+    <value>306, 54</value>
   </data>
   <data name="lblBadShortcutWarning.Text" xml:space="preserve">
     <value>Плитка этого ярлыка может быть некорректна! Создайте пользовательский ярлык, если это так.</value>
+  </data>
+  <data name="btnIconify.Location" type="System.Drawing.Point, System.Drawing">
+    <value>562, 361</value>
   </data>
   <data name="btnIconify.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 23</value>
@@ -148,11 +151,17 @@
   <data name="btnIconify.Text" xml:space="preserve">
     <value>Изменить плитку!</value>
   </data>
+  <data name="iconifyPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>562, 3</value>
+  </data>
   <data name="btnDeleteCustomShortcut.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 23</value>
   </data>
   <data name="btnDeleteCustomShortcut.Text" xml:space="preserve">
     <value>Удалить пользовательский ярллык</value>
+  </data>
+  <data name="srtlstShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>546, 213</value>
   </data>
   <data name="btnBuildCustomShortcut.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 23</value>
@@ -161,22 +170,31 @@
     <value>Создать пользовательский ярлык</value>
   </data>
   <data name="lblLnkPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 13</value>
+    <value>123, 13</value>
   </data>
   <data name="lblLnkPath.Text" xml:space="preserve">
     <value>Расположение ярлыка</value>
   </data>
+  <data name="txtExePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>546, 20</value>
+  </data>
   <data name="lblExePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 13</value>
+    <value>117, 13</value>
   </data>
   <data name="lblExePath.Text" xml:space="preserve">
     <value>Расположение файла</value>
   </data>
+  <data name="txtLnkPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>546, 20</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>850, 387</value>
+  </data>
   <data name="txtFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 3</value>
+    <value>59, 3</value>
   </data>
   <data name="txtFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>447, 20</value>
+    <value>490, 20</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 22</value>
@@ -267,6 +285,12 @@
   </data>
   <data name="donateToolStripMenuItem.Text" xml:space="preserve">
     <value>Пожертвовать</value>
+  </data>
+  <data name="mnuMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>874, 24</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>874, 426</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -440,5 +464,8 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAgAEAALQF
         wf+0BQAAgAUAAIAFAACAAQAAgAHB/4ABAACAAQAAgAEAALwBAAC8AQAAvAHB/4ABbP///5H/
 </value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>890, 465</value>
   </data>
 </root>
