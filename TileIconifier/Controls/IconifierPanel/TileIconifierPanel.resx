@@ -117,21 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pnlImages.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pnlImages.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="pnlImages.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tlpPictureBoxSmall.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lblSmallIcon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="lblSmallIcon.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="lblSmallIcon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblSmallIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 2</value>
+    <value>21, 0</value>
+  </data>
+  <data name="lblSmallIcon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 2</value>
   </data>
   <data name="lblSmallIcon.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 13</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblSmallIcon.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
   </data>
@@ -145,16 +160,91 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblSmallIcon.Parent" xml:space="preserve">
-    <value>pnlImages</value>
+    <value>tlpPictureBoxSmall</value>
   </data>
   <data name="&gt;&gt;lblSmallIcon.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="panPctSmallIcon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="panPctSmallIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 39</value>
+  </data>
+  <data name="panPctSmallIcon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="panPctSmallIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 50</value>
+  </data>
+  <data name="panPctSmallIcon.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;panPctSmallIcon.Name" xml:space="preserve">
+    <value>panPctSmallIcon</value>
+  </data>
+  <data name="&gt;&gt;panPctSmallIcon.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;panPctSmallIcon.Parent" xml:space="preserve">
+    <value>tlpPictureBoxSmall</value>
+  </data>
+  <data name="&gt;&gt;panPctSmallIcon.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tlpPictureBoxSmall.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 2</value>
+  </data>
+  <data name="tlpPictureBoxSmall.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tlpPictureBoxSmall.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tlpPictureBoxSmall.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 113</value>
+  </data>
+  <data name="tlpPictureBoxSmall.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="&gt;&gt;tlpPictureBoxSmall.Name" xml:space="preserve">
+    <value>tlpPictureBoxSmall</value>
+  </data>
+  <data name="&gt;&gt;tlpPictureBoxSmall.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpPictureBoxSmall.Parent" xml:space="preserve">
+    <value>pnlImages</value>
+  </data>
+  <data name="&gt;&gt;tlpPictureBoxSmall.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tlpPictureBoxSmall.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblSmallIcon" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panPctSmallIcon" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="tlpPictureBoxMedium.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tlpPictureBoxMedium.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tlpPictureBoxMedium.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lblMediumIcon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="lblMediumIcon.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="lblMediumIcon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblMediumIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 2</value>
+    <value>15, 0</value>
+  </data>
+  <data name="lblMediumIcon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 2</value>
   </data>
   <data name="lblMediumIcon.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
@@ -172,37 +262,16 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblMediumIcon.Parent" xml:space="preserve">
-    <value>pnlImages</value>
+    <value>tlpPictureBoxMedium</value>
   </data>
   <data name="&gt;&gt;lblMediumIcon.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
-  <data name="panPctSmallIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 42</value>
-  </data>
-  <data name="panPctSmallIcon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="panPctSmallIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 50</value>
-  </data>
-  <data name="panPctSmallIcon.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;panPctSmallIcon.Name" xml:space="preserve">
-    <value>panPctSmallIcon</value>
-  </data>
-  <data name="&gt;&gt;panPctSmallIcon.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6052.42439, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;panPctSmallIcon.Parent" xml:space="preserve">
-    <value>pnlImages</value>
-  </data>
-  <data name="&gt;&gt;panPctSmallIcon.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="panPctMediumIcon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="panPctMediumIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 17</value>
+    <value>0, 15</value>
   </data>
   <data name="panPctMediumIcon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -217,25 +286,52 @@
     <value>panPctMediumIcon</value>
   </data>
   <data name="&gt;&gt;panPctMediumIcon.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6052.42439, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panPctMediumIcon.Parent" xml:space="preserve">
-    <value>pnlImages</value>
+    <value>tlpPictureBoxMedium</value>
   </data>
   <data name="&gt;&gt;panPctMediumIcon.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
-  <data name="chkUseSameImg.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="tlpPictureBoxMedium.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tlpPictureBoxMedium.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tlpPictureBoxMedium.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tlpPictureBoxMedium.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 115</value>
+  </data>
+  <data name="tlpPictureBoxMedium.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;tlpPictureBoxMedium.Name" xml:space="preserve">
+    <value>tlpPictureBoxMedium</value>
+  </data>
+  <data name="&gt;&gt;tlpPictureBoxMedium.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpPictureBoxMedium.Parent" xml:space="preserve">
+    <value>pnlImages</value>
+  </data>
+  <data name="&gt;&gt;tlpPictureBoxMedium.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tlpPictureBoxMedium.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblMediumIcon" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panPctMediumIcon" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="chkUseSameImg.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="chkUseSameImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkUseSameImg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 187</value>
-  </data>
-  <data name="chkUseSameImg.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 185</value>
   </data>
   <data name="chkUseSameImg.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 17</value>
@@ -250,19 +346,28 @@
     <value>chkUseSameImg</value>
   </data>
   <data name="&gt;&gt;chkUseSameImg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>TileIconifier.Controls.SkinnableCheckBox, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;chkUseSameImg.Parent" xml:space="preserve">
     <value>pnlImages</value>
   </data>
   <data name="&gt;&gt;chkUseSameImg.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
+  </data>
+  <data name="pannablePictureBoxControlPanelMedium.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pannablePictureBoxControlPanelMedium.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="pannablePictureBoxControlPanelMedium.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 17</value>
+    <value>0, 15</value>
+  </data>
+  <data name="pannablePictureBoxControlPanelMedium.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 3, 3</value>
   </data>
   <data name="pannablePictureBoxControlPanelMedium.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 165</value>
+    <value>133, 154</value>
   </data>
   <data name="pannablePictureBoxControlPanelMedium.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -271,19 +376,28 @@
     <value>pannablePictureBoxControlPanelMedium</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelMedium.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6052.42439, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelMedium.Parent" xml:space="preserve">
     <value>pnlImages</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelMedium.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
+  </data>
+  <data name="pannablePictureBoxControlPanelSmall.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pannablePictureBoxControlPanelSmall.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="pannablePictureBoxControlPanelSmall.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 17</value>
+    <value>152, 15</value>
+  </data>
+  <data name="pannablePictureBoxControlPanelSmall.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 3</value>
   </data>
   <data name="pannablePictureBoxControlPanelSmall.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 165</value>
+    <value>133, 154</value>
   </data>
   <data name="pannablePictureBoxControlPanelSmall.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -292,19 +406,22 @@
     <value>pannablePictureBoxControlPanelSmall</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6052.42439, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.Parent" xml:space="preserve">
     <value>pnlImages</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="pnlImages.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>0, 0</value>
+  </data>
+  <data name="pnlImages.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 3</value>
   </data>
   <data name="pnlImages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 216</value>
+    <value>285, 205</value>
   </data>
   <data name="pnlImages.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -319,43 +436,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlImages.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="btnReset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="btnReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 230</value>
-  </data>
-  <data name="btnReset.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="btnReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 20</value>
-  </data>
-  <data name="btnReset.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
-  </data>
-  <data name="btnReset.Text" xml:space="preserve">
-    <value>Reset</value>
-  </data>
-  <data name="&gt;&gt;btnReset.Name" xml:space="preserve">
-    <value>btnReset</value>
-  </data>
-  <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnReset.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnReset.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="lblUnsaved.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
+    <value>Left</value>
+  </data>
+  <data name="lblUnsaved.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="lblUnsaved.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt, style=Italic</value>
@@ -364,10 +451,10 @@
     <value>NoControl</value>
   </data>
   <data name="lblUnsaved.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 234</value>
+    <value>0, 10</value>
   </data>
   <data name="lblUnsaved.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
+    <value>0, 0, 3, 0</value>
   </data>
   <data name="lblUnsaved.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 13</value>
@@ -388,16 +475,100 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblUnsaved.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;lblUnsaved.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnReset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="btnReset.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnReset.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 5</value>
+  </data>
+  <data name="btnReset.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 3</value>
+  </data>
+  <data name="btnReset.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnReset.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="btnReset.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="&gt;&gt;btnReset.Name" xml:space="preserve">
+    <value>btnReset</value>
+  </data>
+  <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnReset.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;btnReset.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 214</value>
+  </data>
+  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>285, 33</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblUnsaved" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnReset" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="colorPanel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorPanel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="colorPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-5, 250</value>
+    <value>0, 254</value>
+  </data>
+  <data name="colorPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 3, 0</value>
   </data>
   <data name="colorPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 101</value>
+    <value>268, 97</value>
   </data>
   <data name="colorPanel.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -406,19 +577,25 @@
     <value>colorPanel</value>
   </data>
   <data name="&gt;&gt;colorPanel.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.ColorPanel, TileIconifier, Version=2.2.6052.42439, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.ColorPanel, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorPanel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 351</value>
+    <value>285, 351</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>TileIconifierPanel</value>

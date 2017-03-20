@@ -16,6 +16,7 @@ namespace TileIconifier.Controls
         {
             base.OwnerDraw = true;
         }
+
         #region "Properties"
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -77,7 +78,7 @@ namespace TileIconifier.Controls
         }
 
         private Color flatHeaderBackColor = SystemColors.Control;
-        [DefaultValue(typeof(Color), "Control")]
+        [DefaultValue(typeof(Color), nameof(SystemColors.Control))]
         public Color FlatHeaderBackColor
         {
             get { return flatHeaderBackColor; }
@@ -95,7 +96,7 @@ namespace TileIconifier.Controls
         }
 
         private Color flatHeaderForeColor = SystemColors.ControlText;
-        [DefaultValue(typeof(Color), "ControlText")]
+        [DefaultValue(typeof(Color), nameof(SystemColors.ControlText))]
         public Color FlatHeaderForeColor
         {
             get { return flatHeaderForeColor; }
@@ -112,7 +113,8 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color flatBorderColor;
+        private Color flatBorderColor = SystemColors.WindowFrame;
+        [DefaultValue(typeof(Color), nameof(SystemColors.WindowFrame))]
         public Color FlatBorderColor
         {
             get { return flatBorderColor; }
@@ -167,10 +169,9 @@ namespace TileIconifier.Controls
             }
         }
         #endregion
+
         protected override void OnDrawColumnHeader(DrawListViewColumnHeaderEventArgs e)
-        {
-            base.OnDrawColumnHeader(e);
-            
+        {    
             if (FlatStyle == FlatStyle.Flat)
             {
                 using (SolidBrush b = new SolidBrush(FlatHeaderBackColor))
@@ -187,21 +188,22 @@ namespace TileIconifier.Controls
             {
                 e.DrawDefault = true;
             }
+
+            base.OnDrawColumnHeader(e);
         }
 
         protected override void OnDrawItem(DrawListViewItemEventArgs e)
         {
-            base.OnDrawItem(e);
-
             e.DrawDefault = DrawStandardItems;
+
+            base.OnDrawItem(e);            
         }
 
         protected override void OnDrawSubItem(DrawListViewSubItemEventArgs e)
         {
-            base.OnDrawSubItem(e);
+            e.DrawDefault = DrawStandardItems;
 
-            //Maybe not needed since we already set DrawDefault in OnDrawItem. To verify one day...
-            e.DrawDefault = DrawStandardItems;           
+            base.OnDrawSubItem(e); 
         }
 
         protected override void WndProc(ref Message m)
@@ -224,21 +226,17 @@ namespace TileIconifier.Controls
             else if (Focused && !FlatBorderFocusedColor.IsEmpty)
             {
                 bColor = FlatBorderFocusedColor;
-            }
-            else if (!FlatBorderColor.IsEmpty)
-            {
-                bColor = FlatBorderColor;
-            }
+            }            
             else
             {
                 //Unlike with the SkinnableTextBox, we need to draw the standard
                 //frame even if no color is specified for the standard state, because
                 //otherwise, the previous color gets stuck. 
-                bColor = SystemColors.WindowFrame;
+                bColor = FlatBorderColor;
             }
             
-            var hdc = NativeMethods.GetWindowDC(this.Handle);
-            using (var g = Graphics.FromHdcInternal(hdc))
+            var hdc = NativeMethods.GetWindowDC(Handle);
+            using (var g = Graphics.FromHdc(hdc))
             using (var p = new Pen(bColor))
                 g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
             NativeMethods.ReleaseDC(Handle, hdc);

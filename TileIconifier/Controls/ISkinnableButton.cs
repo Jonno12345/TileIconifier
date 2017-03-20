@@ -10,10 +10,11 @@ namespace TileIconifier.Controls
 {
     interface ISkinnableButton
     {
+        //Appearance
         Color ForeColor { get; set; }
         Color BackColor { get; set; }
         Color DisabledForeColor { get; set; }
         FlatStyle FlatStyle { get; set; }
-        FlatButtonAppearance FlatAppearance { get; }
+        FlatButtonAppearance FlatAppearance { get; }        
     }
 }

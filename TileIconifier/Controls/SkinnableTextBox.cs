@@ -12,7 +12,7 @@ namespace TileIconifier.Controls
 {
     //Inspired from there : http://stackoverflow.com/a/38405319
 
-    class SkinnableTextBox : TextBox
+    class SkinnableTextBox : TextBox, ISkinnableTextBox
     {   
         #region "Properties"
         private Color backColor = SystemColors.Window;
@@ -51,8 +51,8 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color borderColor = Color.Empty;
-        [DefaultValue(typeof(Color), "")]
+        private Color borderColor = SystemColors.WindowFrame;
+        [DefaultValue(typeof(Color), nameof(SystemColors.WindowFrame))]
         public Color BorderColor
         {
             get { return borderColor; }
@@ -145,7 +145,7 @@ namespace TileIconifier.Controls
             {
                 bColor = BorderFocusedColor;
             }
-            else if (!BorderColor.IsEmpty)
+            else if (BorderColor != SystemColors.WindowFrame)
             {
                 bColor = BorderColor;
             }
@@ -155,7 +155,7 @@ namespace TileIconifier.Controls
             }
 
             IntPtr hdc = NativeMethods.GetWindowDC(Handle);
-            using (Graphics g = Graphics.FromHdcInternal(hdc))
+            using (Graphics g = Graphics.FromHdc(hdc))
             using (Pen p = new Pen(bColor))
                 g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
             NativeMethods.ReleaseDC(Handle, hdc);

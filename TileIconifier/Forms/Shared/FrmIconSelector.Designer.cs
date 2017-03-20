@@ -46,7 +46,11 @@
             this.radUseCustomImage = new TileIconifier.Controls.SkinnableRadioButton();
             this.radIconFromTarget = new TileIconifier.Controls.SkinnableRadioButton();
             this.lvwIcons = new TileIconifier.Controls.SkinnableListView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // opnFile
@@ -73,14 +77,7 @@
             // cmbCommonIconDlls
             // 
             resources.ApplyResources(this.cmbCommonIconDlls, "cmbCommonIconDlls");
-            this.cmbCommonIconDlls.BackColor = System.Drawing.SystemColors.Window;
             this.cmbCommonIconDlls.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCommonIconDlls.FlatButtonBackColor = System.Drawing.SystemColors.Control;
-            this.cmbCommonIconDlls.FlatButtonBorderColor = System.Drawing.SystemColors.ControlDark;
-            this.cmbCommonIconDlls.FlatButtonBorderFocusedColor = System.Drawing.SystemColors.Highlight;
-            this.cmbCommonIconDlls.FlatButtonDisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.cmbCommonIconDlls.FlatButtonForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmbCommonIconDlls.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cmbCommonIconDlls.FormattingEnabled = true;
             this.cmbCommonIconDlls.Name = "cmbCommonIconDlls";
             this.cmbCommonIconDlls.SelectedIndexChanged += new System.EventHandler(this.cmbCommonIconDlls_SelectedIndexChanged);
@@ -88,9 +85,6 @@
             // btnBrowseIconPath
             // 
             resources.ApplyResources(this.btnBrowseIconPath, "btnBrowseIconPath");
-            this.btnBrowseIconPath.BackColor = System.Drawing.SystemColors.Control;
-            this.btnBrowseIconPath.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnBrowseIconPath.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBrowseIconPath.Name = "btnBrowseIconPath";
             this.btnBrowseIconPath.UseVisualStyleBackColor = true;
             this.btnBrowseIconPath.Click += new System.EventHandler(this.btnBrowseIconPath_Click);
@@ -98,16 +92,12 @@
             // txtPathToExtractFrom
             // 
             resources.ApplyResources(this.txtPathToExtractFrom, "txtPathToExtractFrom");
-            this.txtPathToExtractFrom.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtPathToExtractFrom.Name = "txtPathToExtractFrom";
             this.txtPathToExtractFrom.ReadOnly = true;
             // 
             // btnCancel
             // 
             resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCancel.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -115,9 +105,6 @@
             // btnOk
             // 
             resources.ApplyResources(this.btnOk, "btnOk");
-            this.btnOk.BackColor = System.Drawing.SystemColors.Control;
-            this.btnOk.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnOk.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnOk.Name = "btnOk";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -125,9 +112,6 @@
             // btnBrowseCustomImage
             // 
             resources.ApplyResources(this.btnBrowseCustomImage, "btnBrowseCustomImage");
-            this.btnBrowseCustomImage.BackColor = System.Drawing.SystemColors.Control;
-            this.btnBrowseCustomImage.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnBrowseCustomImage.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBrowseCustomImage.Name = "btnBrowseCustomImage";
             this.btnBrowseCustomImage.UseVisualStyleBackColor = true;
             this.btnBrowseCustomImage.Click += new System.EventHandler(this.btnBrowseCustomImage_Click);
@@ -140,33 +124,31 @@
             // txtImagePath
             // 
             resources.ApplyResources(this.txtImagePath, "txtImagePath");
-            this.txtImagePath.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.tableLayoutPanel2.SetColumnSpan(this.txtImagePath, 2);
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.TextChanged += new System.EventHandler(this.txtImagePath_TextChanged);
             // 
             // radUseCustomImage
             // 
             resources.ApplyResources(this.radUseCustomImage, "radUseCustomImage");
-            this.radUseCustomImage.DisabledForeColor = System.Drawing.Color.Empty;
+            this.tableLayoutPanel1.SetColumnSpan(this.radUseCustomImage, 2);
             this.radUseCustomImage.Name = "radUseCustomImage";
             this.radUseCustomImage.TabStop = true;
             this.radUseCustomImage.UseVisualStyleBackColor = true;
             // 
             // radIconFromTarget
             // 
-            this.radIconFromTarget.Checked = true;
             resources.ApplyResources(this.radIconFromTarget, "radIconFromTarget");
+            this.radIconFromTarget.Checked = true;
             this.radIconFromTarget.Name = "radIconFromTarget";
             this.radIconFromTarget.TabStop = true;
             this.radIconFromTarget.UseVisualStyleBackColor = true;
             // 
             // lvwIcons
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.lvwIcons, 3);
             resources.ApplyResources(this.lvwIcons, "lvwIcons");
-            this.lvwIcons.BackColor = System.Drawing.SystemColors.Window;
-            this.lvwIcons.FlatBorderColor = System.Drawing.Color.Empty;
             this.lvwIcons.DrawStandardItems = false;
-            this.lvwIcons.ForeColor = System.Drawing.SystemColors.WindowText;
             this.lvwIcons.MultiSelect = false;
             this.lvwIcons.Name = "lvwIcons";
             this.lvwIcons.TileSize = new System.Drawing.Size(50, 50);
@@ -177,29 +159,45 @@
             this.lvwIcons.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvwIcons_MouseClick);
             this.lvwIcons.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvwIcons_MouseDoubleClick);
             // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.radIconFromTarget, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnCancel, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.txtPathToExtractFrom, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnBrowseIconPath, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cmbCommonIconDlls, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblCommonDlls, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnBrowseCustomImage, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lvwIcons, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.radUseCustomImage, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 4);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // tableLayoutPanel2
+            // 
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnOk, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblPreview, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txtImagePath, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.pctPreview, 1, 1);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel1.SetRowSpan(this.tableLayoutPanel2, 2);
+            // 
             // FrmIconSelector
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.lblPreview);
-            this.Controls.Add(this.pctPreview);
-            this.Controls.Add(this.lblCommonDlls);
-            this.Controls.Add(this.cmbCommonIconDlls);
-            this.Controls.Add(this.btnBrowseIconPath);
-            this.Controls.Add(this.txtPathToExtractFrom);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.btnBrowseCustomImage);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtImagePath);
-            this.Controls.Add(this.radUseCustomImage);
-            this.Controls.Add(this.radIconFromTarget);
-            this.Controls.Add(this.lvwIcons);
-            this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmIconSelector";
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -220,5 +218,7 @@
         private System.Windows.Forms.Label lblCommonDlls;
         private System.Windows.Forms.Label lblPreview;
         private System.Windows.Forms.PictureBox pctPreview;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }

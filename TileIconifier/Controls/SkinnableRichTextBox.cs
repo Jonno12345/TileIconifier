@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace TileIconifier.Controls
 {
-    class SkinnableRichTextBox : RichTextBox
+    class SkinnableRichTextBox : RichTextBox, ISkinnableTextBox
     {
         #region "Properties"
         private Color backColor = SystemColors.Window;
@@ -45,6 +45,45 @@ namespace TileIconifier.Controls
                         base.BackColor = ReadOnlyBackColor;
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Doesn't do anything yet!
+        /// </summary>
+        [DefaultValue(typeof(Color), "")]
+        public Color BorderColor
+        {
+            get { return Color.Empty; }
+            set
+            {
+                
+            }
+        }
+
+        /// <summary>
+        /// Doesn't do anything yet!
+        /// </summary>
+        [DefaultValue(typeof(Color), "")]
+        public Color BorderFocusedColor
+        {
+            get { return Color.Empty; }
+            set
+            {
+                
+            }
+        }
+
+        /// <summary>
+        /// Doesn't do anything yet!
+        /// </summary>
+        [DefaultValue(typeof(Color), "")]
+        public Color BorderDisabledColor
+        {
+            get { return Color.Empty; }
+            set
+            {
+                
             }
         }
         #endregion

@@ -69,7 +69,7 @@ namespace TileIconifier.Forms
             base.OnControlAdded(e);
 
             //Apply the skin to any control newly added to the form.
-            if (FormSkin != null)
+            if (FormSkin != null && !DesignMode)
                 ApplyControlSkin(e.Control);
         }
 
@@ -83,7 +83,8 @@ namespace TileIconifier.Forms
             //We only apply the skin on the form, not on its controls
             //because control skins are applied when controls are added
             //to the form.
-            ApplyFormSkin();
+            if (!DesignMode)
+                ApplyFormSkin();
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -123,13 +124,13 @@ namespace TileIconifier.Forms
         /// <summary>
         /// Applies the skin on the specified control.
         /// </summary>
-        /// <param name="control"></param>
-        private void ApplyControlSkin(Control control)
+        /// <param name="pControl"></param>
+        private void ApplyControlSkin(Control pControl)
         {
             //Maybe not the most efficient way to do this. Something to think about.
 
             //Checkbox or RadioButton
-            ISkinnableCheckableButton checkableBtn = control as ISkinnableCheckableButton;
+            ISkinnableCheckableButton checkableBtn = pControl as ISkinnableCheckableButton;
             if (checkableBtn != null)
             {                   
                 if (checkableBtn.Appearance == Appearance.Button)
@@ -147,7 +148,7 @@ namespace TileIconifier.Forms
             }
 
             //Button
-            ISkinnableButton btn = control as ISkinnableButton;
+            ISkinnableButton btn = pControl as ISkinnableButton;
             if (btn != null)
             {
                 //We MUST evaluate this condition AFTER ISkinnableCheckableButton
@@ -158,8 +159,8 @@ namespace TileIconifier.Forms
                 return;
             }
 
-            //TextBox
-            SkinnableTextBox txt = control as SkinnableTextBox;
+            //TextBox or RichTextBox
+            ISkinnableTextBox txt = pControl as ISkinnableTextBox;
             if (txt != null)
             {
                 txt.BorderStyle = FormSkin.TextBoxBorderStyle;
@@ -170,23 +171,10 @@ namespace TileIconifier.Forms
                 txt.BorderDisabledColor = FormSkin.TextBoxBorderDisabledColor;
                 txt.ForeColor = FormSkin.TextBoxForeColor;
                 return;
-            }
-
-            SkinnableRichTextBox rtb = control as SkinnableRichTextBox;
-            if (rtb != null)
-            {
-                //For the sake of simplicity, rich text boxes use the same skin
-                //properties as regular textboxes. However, rich text boxes do
-                //not support all the text box properties yet (BorderColor, etc.)
-                rtb.BorderStyle = FormSkin.TextBoxBorderStyle;
-                rtb.BackColor = FormSkin.TextBoxBackColor;
-                rtb.ReadOnlyBackColor = FormSkin.TextBoxReadOnlyBackColor;
-                rtb.ForeColor = FormSkin.TextBoxForeColor;
-                return;
-            }
+            }            
 
             //ListView
-            SkinnableListView lvw = control as SkinnableListView;
+            SkinnableListView lvw = pControl as SkinnableListView;
             if (lvw != null)
             {
                 lvw.FlatStyle = FormSkin.ListViewFlatStyle;
@@ -201,7 +189,7 @@ namespace TileIconifier.Forms
             }
 
             //ComboBox
-            SkinnableComboBox cbo = control as SkinnableComboBox;
+            SkinnableComboBox cbo = pControl as SkinnableComboBox;
             if (cbo != null)
             {
                 cbo.FlatStyle = FormSkin.ComboBoxFlatStyle;
@@ -216,7 +204,7 @@ namespace TileIconifier.Forms
             }
 
             //ToolStrip
-            ToolStrip tsp = control as ToolStrip;
+            ToolStrip tsp = pControl as ToolStrip;
             if (tsp != null)
             {
                 tsp.Renderer = FormSkin.ToolStripRenderer;
@@ -226,8 +214,8 @@ namespace TileIconifier.Forms
             //Recursive loop that applies the skin to controls inside controls. At this
             //point, the control is not a button, a listview, etc. so it is likely to be just
             //a container that contains more controls.
-            if (control.Controls.Count > 0)
-                foreach (Control c in control.Controls)
+            if (pControl.Controls.Count > 0)
+                foreach (Control c in pControl.Controls)
                     ApplyControlSkin(c);
         }
 

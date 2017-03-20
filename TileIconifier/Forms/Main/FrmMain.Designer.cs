@@ -64,7 +64,9 @@ namespace TileIconifier.Forms.Main
             this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblBadShortcutWarning = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.mnuMain.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtFilter
@@ -72,6 +74,7 @@ namespace TileIconifier.Forms.Main
             resources.ApplyResources(this.txtFilter, "txtFilter");
             this.txtFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tableLayoutPanel1.SetColumnSpan(this.txtFilter, 2);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
@@ -83,6 +86,7 @@ namespace TileIconifier.Forms.Main
             // btnDeleteCustomShortcut
             // 
             resources.ApplyResources(this.btnDeleteCustomShortcut, "btnDeleteCustomShortcut");
+            this.tableLayoutPanel1.SetColumnSpan(this.btnDeleteCustomShortcut, 2);
             this.btnDeleteCustomShortcut.Name = "btnDeleteCustomShortcut";
             this.btnDeleteCustomShortcut.UseVisualStyleBackColor = true;
             this.btnDeleteCustomShortcut.Click += new System.EventHandler(this.btnDeleteCustomShortcut_Click);
@@ -90,6 +94,7 @@ namespace TileIconifier.Forms.Main
             // btnBuildCustomShortcut
             // 
             resources.ApplyResources(this.btnBuildCustomShortcut, "btnBuildCustomShortcut");
+            this.tableLayoutPanel1.SetColumnSpan(this.btnBuildCustomShortcut, 2);
             this.btnBuildCustomShortcut.Name = "btnBuildCustomShortcut";
             this.btnBuildCustomShortcut.UseVisualStyleBackColor = true;
             this.btnBuildCustomShortcut.Click += new System.EventHandler(this.btnBuildCustomShortcut_Click);
@@ -97,12 +102,15 @@ namespace TileIconifier.Forms.Main
             // iconifyPanel
             // 
             resources.ApplyResources(this.iconifyPanel, "iconifyPanel");
+            this.tableLayoutPanel1.SetColumnSpan(this.iconifyPanel, 2);
             this.iconifyPanel.CurrentShortcutItem = null;
             this.iconifyPanel.Name = "iconifyPanel";
+            this.tableLayoutPanel1.SetRowSpan(this.iconifyPanel, 7);
             // 
             // srtlstShortcuts
             // 
             resources.ApplyResources(this.srtlstShortcuts, "srtlstShortcuts");
+            this.tableLayoutPanel1.SetColumnSpan(this.srtlstShortcuts, 3);
             this.srtlstShortcuts.FullRowSelect = true;
             this.srtlstShortcuts.HideSelection = false;
             this.srtlstShortcuts.MultiSelect = false;
@@ -114,11 +122,13 @@ namespace TileIconifier.Forms.Main
             // lblExePath
             // 
             resources.ApplyResources(this.lblExePath, "lblExePath");
+            this.tableLayoutPanel1.SetColumnSpan(this.lblExePath, 2);
             this.lblExePath.Name = "lblExePath";
             // 
             // txtExePath
             // 
             resources.ApplyResources(this.txtExePath, "txtExePath");
+            this.tableLayoutPanel1.SetColumnSpan(this.txtExePath, 3);
             this.txtExePath.Name = "txtExePath";
             this.txtExePath.ReadOnly = true;
             // 
@@ -140,17 +150,19 @@ namespace TileIconifier.Forms.Main
             // lblLnkPath
             // 
             resources.ApplyResources(this.lblLnkPath, "lblLnkPath");
+            this.tableLayoutPanel1.SetColumnSpan(this.lblLnkPath, 2);
             this.lblLnkPath.Name = "lblLnkPath";
             // 
             // txtLnkPath
             // 
             resources.ApplyResources(this.txtLnkPath, "txtLnkPath");
+            this.tableLayoutPanel1.SetColumnSpan(this.txtLnkPath, 3);
             this.txtLnkPath.Name = "txtLnkPath";
             this.txtLnkPath.ReadOnly = true;
             // 
             // mnuMain
             // 
-            this.mnuMain.ImageScalingSize = new System.Drawing.Size(24, 24);
+            resources.ApplyResources(this.mnuMain, "mnuMain");
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.preferencesToolStripMenuItem,
@@ -159,24 +171,24 @@ namespace TileIconifier.Forms.Main
             this.helpToolStripMenuItem,
             this.languageToolStripMenuItem,
             this.donateToolStripMenuItem});
-            resources.ApplyResources(this.mnuMain, "mnuMain");
             this.mnuMain.Name = "mnuMain";
             // 
             // fileToolStripMenuItem
             // 
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // exitToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // preferencesToolStripMenuItem
             // 
+            resources.ApplyResources(this.preferencesToolStripMenuItem, "preferencesToolStripMenuItem");
             this.preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customShortcutManagerToolStripMenuItem,
             this.mnuBatchOperations,
@@ -185,100 +197,99 @@ namespace TileIconifier.Forms.Main
             this.refreshAllToolStripMenuItem,
             this.checkForUpdateToolStripMenuItem});
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            resources.ApplyResources(this.preferencesToolStripMenuItem, "preferencesToolStripMenuItem");
             // 
             // customShortcutManagerToolStripMenuItem
             // 
-            this.customShortcutManagerToolStripMenuItem.Name = "customShortcutManagerToolStripMenuItem";
             resources.ApplyResources(this.customShortcutManagerToolStripMenuItem, "customShortcutManagerToolStripMenuItem");
+            this.customShortcutManagerToolStripMenuItem.Name = "customShortcutManagerToolStripMenuItem";
             this.customShortcutManagerToolStripMenuItem.Click += new System.EventHandler(this.customShortcutManagerToolStripMenuItem_Click);
             // 
             // mnuBatchOperations
             // 
-            this.mnuBatchOperations.Name = "mnuBatchOperations";
             resources.ApplyResources(this.mnuBatchOperations, "mnuBatchOperations");
+            this.mnuBatchOperations.Name = "mnuBatchOperations";
             this.mnuBatchOperations.Click += new System.EventHandler(this.mnuBatchOperations_Click);
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
             // 
             // getPinnedItemsRequiresPowershellToolStripMenuItem
             // 
+            resources.ApplyResources(this.getPinnedItemsRequiresPowershellToolStripMenuItem, "getPinnedItemsRequiresPowershellToolStripMenuItem");
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.Name = "getPinnedItemsRequiresPowershellToolStripMenuItem";
-            resources.ApplyResources(this.getPinnedItemsRequiresPowershellToolStripMenuItem, "getPinnedItemsRequiresPowershellToolStripMenuItem");
             this.getPinnedItemsRequiresPowershellToolStripMenuItem.Click += new System.EventHandler(this.getPinnedItemsRequiresPowershellToolStripMenuItem_Click);
             // 
             // refreshAllToolStripMenuItem
             // 
-            this.refreshAllToolStripMenuItem.Name = "refreshAllToolStripMenuItem";
             resources.ApplyResources(this.refreshAllToolStripMenuItem, "refreshAllToolStripMenuItem");
+            this.refreshAllToolStripMenuItem.Name = "refreshAllToolStripMenuItem";
             this.refreshAllToolStripMenuItem.Click += new System.EventHandler(this.refreshAllToolStripMenuItem_Click);
             // 
             // checkForUpdateToolStripMenuItem
             // 
-            this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
             resources.ApplyResources(this.checkForUpdateToolStripMenuItem, "checkForUpdateToolStripMenuItem");
+            this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
             // 
             // skinToolStripMenuItem
             // 
+            resources.ApplyResources(this.skinToolStripMenuItem, "skinToolStripMenuItem");
             this.skinToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.defaultSkinToolStripMenuItem,
             this.darkSkinToolStripMenuItem});
             this.skinToolStripMenuItem.Name = "skinToolStripMenuItem";
-            resources.ApplyResources(this.skinToolStripMenuItem, "skinToolStripMenuItem");
             // 
             // defaultSkinToolStripMenuItem
             // 
+            resources.ApplyResources(this.defaultSkinToolStripMenuItem, "defaultSkinToolStripMenuItem");
             this.defaultSkinToolStripMenuItem.Checked = true;
             this.defaultSkinToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.defaultSkinToolStripMenuItem.Name = "defaultSkinToolStripMenuItem";
-            resources.ApplyResources(this.defaultSkinToolStripMenuItem, "defaultSkinToolStripMenuItem");
             // 
             // darkSkinToolStripMenuItem
             // 
-            this.darkSkinToolStripMenuItem.Name = "darkSkinToolStripMenuItem";
             resources.ApplyResources(this.darkSkinToolStripMenuItem, "darkSkinToolStripMenuItem");
+            this.darkSkinToolStripMenuItem.Name = "darkSkinToolStripMenuItem";
             // 
             // aboutToolStripMenuItem
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // languageToolStripMenuItem
             // 
+            resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
             this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
             this.russianToolStripMenuItem});
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
             // 
             // englishToolStripMenuItem
             // 
-            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
+            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             this.englishToolStripMenuItem.Tag = "en-US";
             // 
             // russianToolStripMenuItem
             // 
-            this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
             resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
+            this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
             this.russianToolStripMenuItem.Tag = "ru-RU";
             // 
             // donateToolStripMenuItem
             // 
-            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
             resources.ApplyResources(this.donateToolStripMenuItem, "donateToolStripMenuItem");
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
             this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
             // 
             // lblBadShortcutWarning
@@ -286,24 +297,31 @@ namespace TileIconifier.Forms.Main
             resources.ApplyResources(this.lblBadShortcutWarning, "lblBadShortcutWarning");
             this.lblBadShortcutWarning.ForeColor = System.Drawing.Color.Red;
             this.lblBadShortcutWarning.Name = "lblBadShortcutWarning";
+            this.tableLayoutPanel1.SetRowSpan(this.lblBadShortcutWarning, 2);
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.lblFilter, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtFilter, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnRemove, 4, 7);
+            this.tableLayoutPanel1.Controls.Add(this.lblBadShortcutWarning, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btnIconify, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.iconifyPanel, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnDeleteCustomShortcut, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.srtlstShortcuts, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnBuildCustomShortcut, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lblLnkPath, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtExePath, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblExePath, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtLnkPath, 0, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // FrmMain
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.lblBadShortcutWarning);
-            this.Controls.Add(this.txtFilter);
-            this.Controls.Add(this.lblFilter);
-            this.Controls.Add(this.btnDeleteCustomShortcut);
-            this.Controls.Add(this.btnBuildCustomShortcut);
-            this.Controls.Add(this.iconifyPanel);
-            this.Controls.Add(this.srtlstShortcuts);
-            this.Controls.Add(this.lblExePath);
-            this.Controls.Add(this.txtExePath);
-            this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.btnIconify);
-            this.Controls.Add(this.lblLnkPath);
-            this.Controls.Add(this.txtLnkPath);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.mnuMain);
             this.MainMenuStrip = this.mnuMain;
             this.Name = "FrmMain";
@@ -311,6 +329,8 @@ namespace TileIconifier.Forms.Main
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,6 +369,7 @@ namespace TileIconifier.Forms.Main
         private System.Windows.Forms.ToolStripMenuItem russianToolStripMenuItem;
         private System.Windows.Forms.Label lblBadShortcutWarning;
         private System.Windows.Forms.ToolStripMenuItem mnuBatchOperations;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

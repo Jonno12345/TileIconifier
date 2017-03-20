@@ -10,13 +10,13 @@ namespace TileIconifier.Skinning.Skins.Dark
     class ToolStripDarkColorScheme : ToolStripSystemColorScheme
     {
         public override Color MenuBarBackColor { get { return Color.FromArgb(70, 70, 70); } }
-        public override Color PopupBackColor { get { return Color.FromArgb(95, 95, 95); } }
-        public override Color MenuBarBorderColor { get { return Color.FromArgb(100, 100, 100); } }
-        public override Color PopupBorderColor { get { return Color.FromArgb(120, 120, 120); } }
-        public override Color HighlightBackColor { get { return Color.DarkBlue; } }
-        public override Color HighlightForeColor { get { return Color.White; } }
+        public override Color PopupBackColor { get { return Color.FromArgb(70, 70, 70); } }
+        public override Color MenuBarBorderColor { get { return Color.FromArgb(90, 90, 90); } }
+        public override Color PopupBorderColor { get { return Color.FromArgb(90, 90, 90); } }
+        public override Color HighlightBackColor { get { return Color.FromArgb(100, 100, 100); } }
+        public override Color HighlightForeColor { get { return Color.FromArgb(255, 255, 255); } }
         public override Color MenuBarForeColor { get { return Color.FromArgb(230, 230, 230); } }
-        public override Color PopupForeColor { get { return Color.White; } }
-        public override Color DisabledForeColor { get { return Color.Gray; } }
+        public override Color PopupForeColor { get { return Color.FromArgb(240, 240, 240); } }
+        public override Color DisabledForeColor { get { return Color.FromArgb(130, 130, 130); } }
     }
 }

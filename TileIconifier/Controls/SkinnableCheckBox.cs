@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using TileIconifier.Forms;
 using System.Windows.Forms.VisualStyles;
 using TileIconifier.Utilities;
+using System.ComponentModel;
 
 namespace TileIconifier.Controls
 {
@@ -29,32 +30,21 @@ namespace TileIconifier.Controls
             set { base.Text = value; }
         }
 
-        private Color foreColorDisabled;
+        private Color disabledForeColor = SystemColors.GrayText;
         /// <summary>
-        /// Gets or set the foreground color of the button when it is disabled.
+        /// Gets or sets the foreground color of the button when it is disabled.
         /// </summary>
+        [DefaultValue(typeof(Color), nameof(SystemColors.GrayText))]
         public Color DisabledForeColor
         {
-            get
-            {
-                //If the checkbox has the appearance of a checkbox, we treat its
-                //text like a label. Therefore, we want this property to be Ambiant.
-                if (foreColorDisabled.IsEmpty && Appearance != Appearance.Button)
-                {
-                    SkinnableForm frm = TopLevelControl as SkinnableForm;
-                    if (frm != null && frm.FormSkin != null)
-                        return frm.FormSkin.DisabledForeColor;
-                    else
-                        return foreColorDisabled;
-                }
-                else
-                    return foreColorDisabled;
-            }
-
+            get { return disabledForeColor; }
             set
             {
-                if (foreColorDisabled != value)
-                    foreColorDisabled = value;
+                if (disabledForeColor != value)
+                {
+                    disabledForeColor = value;
+                    Invalidate();
+                }
             }
         }
 
@@ -66,34 +56,29 @@ namespace TileIconifier.Controls
 
             //We paint the disabled text on top of the base class drawing using 
             //the ForeColorDisabled color that we have implemented ourselves.
-            //Very rudimentary implementation. Properties like RightToLeft are ignored.
+            //Rudimentary implementation. Some properties are ignored.
+            
             if (!Enabled)
             {
-                const int inGlyphPadding = 1;
-                const int inCheckAreaAndTextAreaSpacing = 2;
+                TextFormatFlags flags;
+                Rectangle textRect;
 
-                Size checkAreaSize = GetCheckSize(pevent) + new Size(inGlyphPadding, inGlyphPadding);
-                Rectangle textRect = ButtonUtils.GetGlyphButtonTextRect(checkAreaSize, ClientRectangle, inCheckAreaAndTextAreaSpacing);
-                TextFormatFlags flags = ButtonUtils.ConvertToTextFormatFlags(TextAlign);             
+                flags = ButtonUtils.BaseTextFormatFlags | ButtonUtils.ConvertToTextFormatFlags(RtlTranslateContent(TextAlign));
+                if (RightToLeft == RightToLeft.Yes)
+                {
+                    flags |= TextFormatFlags.RightToLeft;
+                }
+                if (Appearance == Appearance.Button)
+                {
+                    textRect = ButtonUtils.GetPushButtonTextRectangle(this);
+                }
+                else
+                {
+                    textRect = ButtonUtils.GetCheckBoxTextRectangle(this, pevent.Graphics);
+                }
 
                 TextRenderer.DrawText(pevent.Graphics, Text, Font, textRect, DisabledForeColor, flags);
             }                
-        }
-
-        private Size GetCheckSize(PaintEventArgs pevent)
-        {
-            switch (FlatStyle)
-            {
-                case FlatStyle.Flat:
-                case FlatStyle.Popup:                
-                    //According to the .Net 4.6 Reference Source, the size of the checkmark is a 
-                    //constant called "flatCheckSize" in a class called CheckBoxBaseAdapter.
-                    return new Size(11, 11);
-                default:
-                    //We don't bother with states here. We just assume 
-                    //that all states have the same size.
-                    return CheckBoxRenderer.GetGlyphSize(pevent.Graphics, CheckBoxState.CheckedNormal);     
-            }             
         }
     }
 }
