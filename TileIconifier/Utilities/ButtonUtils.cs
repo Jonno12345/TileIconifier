@@ -13,79 +13,79 @@ namespace TileIconifier.Utilities
     {
         internal static readonly TextFormatFlags BaseTextFormatFlags = TextFormatFlags.WordBreak | TextFormatFlags.TextBoxControl;
         
-        private static Rectangle CreatePaddedRectangle(Rectangle pRect, Padding pPad)
+        private static Rectangle CreatePaddedRectangle(Rectangle rect, Padding pad)
         {
-            Rectangle rect = Rectangle.FromLTRB(
-                    pRect.Left + pPad.Left,
-                    pRect.Top + pPad.Top,
-                    pRect.Right - pPad.Right,
-                    pRect.Bottom - pPad.Bottom);
-            return rect;
+            Rectangle r = Rectangle.FromLTRB(
+                    rect.Left + pad.Left,
+                    rect.Top + pad.Top,
+                    rect.Right - pad.Right,
+                    rect.Bottom - pad.Bottom);
+            return r;
         }
         
-        private static Size GetCheckBoxGlyphSize(Graphics pGraphics, FlatStyle pFlatStyle)
+        private static Size GetCheckBoxGlyphSize(Graphics graphics, FlatStyle flatStyle)
         {
-            float flScaleX = pGraphics.DpiX / 96F;
-            float flScaleY = pGraphics.DpiY / 96F;
+            float scaleX = graphics.DpiX / 96F;
+            float scaleY = graphics.DpiY / 96F;
 
-            switch (pFlatStyle)
+            switch (flatStyle)
             {
                 case FlatStyle.Flat:
                 case FlatStyle.Popup:
                     //In the .Net 4.6 Reference Source, the size of the checkmark is a 
                     //constant called "flatCheckSize" in a class called CheckBoxBaseAdapter.
-                    return new Size((int)(11 * flScaleX), (int)(11 * flScaleY));
+                    return new Size((int)(11 * scaleX), (int)(11 * scaleY));
                 default:
                     //We don't bother with states here. We just assume 
                     //that all states have the same size.
-                    return CheckBoxRenderer.GetGlyphSize(pGraphics, System.Windows.Forms.VisualStyles.CheckBoxState.CheckedNormal);
+                    return CheckBoxRenderer.GetGlyphSize(graphics, System.Windows.Forms.VisualStyles.CheckBoxState.CheckedNormal);
             }
         }
                 
-        private static Size GetRadioButtonGlyphSize(Graphics pGraphics, FlatStyle pFlatStyle)
+        private static Size GetRadioButtonGlyphSize(Graphics graphics, FlatStyle flatStyle)
         {
-            float flScaleX = pGraphics.DpiX / 96F;
-            float flScaleY = pGraphics.DpiY / 96F;
+            float scaleX = graphics.DpiX / 96F;
+            float scaleY = graphics.DpiY / 96F;
 
-            switch (pFlatStyle)
+            switch (flatStyle)
             {
                 case FlatStyle.Flat:
                 case FlatStyle.Popup:
                     //In the .Net 4.6 Reference Source, the size of the checkmark is a 
                     //constant called "flatCheckSize" in a class called RadioButtonFlatAdapter.
-                    return new Size((int)(12 * flScaleX), (int)(12 * flScaleY));
+                    return new Size((int)(12 * scaleX), (int)(12 * scaleY));
                 default:
                     //We don't bother with states here. We just assume 
                     //that all states have the same size.
-                    return RadioButtonRenderer.GetGlyphSize(pGraphics, System.Windows.Forms.VisualStyles.RadioButtonState.CheckedNormal);
+                    return RadioButtonRenderer.GetGlyphSize(graphics, System.Windows.Forms.VisualStyles.RadioButtonState.CheckedNormal);
             }
         }
 
-        private static Rectangle CreatePushButtonTextRectangle(Control pControl)
+        private static Rectangle CreatePushButtonTextRectangle(Control control)
         {
-            return CreatePaddedRectangle(pControl.ClientRectangle, pControl.Padding);
+            return CreatePaddedRectangle(control.ClientRectangle, control.Padding);
         }
 
-        private static Rectangle CreateGlyphButtonTextRectangle(Control pControl, Size pGlyphSize)
+        private static Rectangle CreateGlyphButtonTextRectangle(Control control, Size glyphSize)
         {
             //Spacing between the edge of the glyph and the outer edge of the check area.
             //1px padding + 1px for the glyph border.
-            const int inGLYPH_ADDITIONNAL_SPACE = 2;
+            const int GLYPH_ADDITIONNAL_SPACE = 2;
             //Some mysterious spacing on the left and right sides of the text.
-            const int inTEXT_LATTERAL_PADDING = 1;
+            const int TEXT_LATTERAL_PADDING = 1;
 
-            Rectangle contentRect = CreatePaddedRectangle(pControl.ClientRectangle, pControl.Padding);
-            Size checkAreaSize = new Size(pGlyphSize.Width + inGLYPH_ADDITIONNAL_SPACE, pGlyphSize.Height + inGLYPH_ADDITIONNAL_SPACE);
+            Rectangle contentRect = CreatePaddedRectangle(control.ClientRectangle, control.Padding);
+            Size checkAreaSize = new Size(glyphSize.Width + GLYPH_ADDITIONNAL_SPACE, glyphSize.Height + GLYPH_ADDITIONNAL_SPACE);
             Point textRectLocation;
-            if (pControl.RightToLeft != RightToLeft.Yes)
+            if (control.RightToLeft != RightToLeft.Yes)
             {
-                textRectLocation = new Point(contentRect.X + checkAreaSize.Width + inTEXT_LATTERAL_PADDING, contentRect.Y);
+                textRectLocation = new Point(contentRect.X + checkAreaSize.Width + TEXT_LATTERAL_PADDING, contentRect.Y);
             }
             else
             {
-                textRectLocation = new Point(contentRect.X + inTEXT_LATTERAL_PADDING);
+                textRectLocation = new Point(contentRect.X + TEXT_LATTERAL_PADDING);
             }
-            Size textRectSize = new Size(contentRect.Width - checkAreaSize.Width - 2 * inTEXT_LATTERAL_PADDING, contentRect.Height);
+            Size textRectSize = new Size(contentRect.Width - checkAreaSize.Width - 2 * TEXT_LATTERAL_PADDING, contentRect.Height);
             Rectangle textRect = new Rectangle(textRectLocation, textRectSize);
 
             return textRect;
@@ -94,34 +94,34 @@ namespace TileIconifier.Utilities
         /// <summary>
         /// Converts a ContentAlignement value into a TextFormatFlags.
         /// </summary>
-        /// <param name="pContentAlign"></param>
+        /// <param name="contentAlign"></param>
         /// <returns></returns>
-        internal static TextFormatFlags ConvertToTextFormatFlags(ContentAlignment pContentAlign)
+        internal static TextFormatFlags ConvertToTextFormatFlags(ContentAlignment contentAlign)
         {
             TextFormatFlags flags = TextFormatFlags.Default;
 
             //Top
-            if (pContentAlign == ContentAlignment.TopLeft || pContentAlign == ContentAlignment.TopCenter || pContentAlign == ContentAlignment.TopRight)            
+            if (contentAlign == ContentAlignment.TopLeft || contentAlign == ContentAlignment.TopCenter || contentAlign == ContentAlignment.TopRight)            
                 flags = flags | TextFormatFlags.Top;
             
             //Middle
-            if (pContentAlign == ContentAlignment.MiddleLeft || pContentAlign == ContentAlignment.MiddleCenter || pContentAlign == ContentAlignment.MiddleRight)            
+            if (contentAlign == ContentAlignment.MiddleLeft || contentAlign == ContentAlignment.MiddleCenter || contentAlign == ContentAlignment.MiddleRight)            
                 flags = flags | TextFormatFlags.VerticalCenter;            
 
             //Bottom
-            if (pContentAlign == ContentAlignment.BottomLeft || pContentAlign == ContentAlignment.BottomCenter || pContentAlign == ContentAlignment.BottomRight)
+            if (contentAlign == ContentAlignment.BottomLeft || contentAlign == ContentAlignment.BottomCenter || contentAlign == ContentAlignment.BottomRight)
                 flags = flags | TextFormatFlags.Bottom;            
 
             //Left
-            if (pContentAlign == ContentAlignment.BottomLeft || pContentAlign == ContentAlignment.MiddleLeft || pContentAlign == ContentAlignment.TopLeft)            
+            if (contentAlign == ContentAlignment.BottomLeft || contentAlign == ContentAlignment.MiddleLeft || contentAlign == ContentAlignment.TopLeft)            
                 flags = flags | TextFormatFlags.Left;
            
             //Center
-            if (pContentAlign == ContentAlignment.BottomCenter || pContentAlign == ContentAlignment.MiddleCenter || pContentAlign == ContentAlignment.TopCenter)            
+            if (contentAlign == ContentAlignment.BottomCenter || contentAlign == ContentAlignment.MiddleCenter || contentAlign == ContentAlignment.TopCenter)            
                 flags = flags | TextFormatFlags.HorizontalCenter;
            
             //Right
-            if (pContentAlign == ContentAlignment.BottomRight || pContentAlign == ContentAlignment.MiddleRight || pContentAlign == ContentAlignment.TopRight)            
+            if (contentAlign == ContentAlignment.BottomRight || contentAlign == ContentAlignment.MiddleRight || contentAlign == ContentAlignment.TopRight)            
                 flags = flags | TextFormatFlags.Right;            
 
             return flags;
@@ -130,54 +130,54 @@ namespace TileIconifier.Utilities
         /// <summary>
         /// Returns a rectangle where the text can be drawn on a push button.
         /// </summary>
-        /// <param name="pButton"></param>
+        /// <param name="button"></param>
         /// <returns></returns>
-        internal static Rectangle GetPushButtonTextRectangle(Button pButton)
+        internal static Rectangle GetPushButtonTextRectangle(Button button)
         {
-            return CreatePushButtonTextRectangle(pButton);
+            return CreatePushButtonTextRectangle(button);
         }
 
         /// <summary>
         /// Returns a rectangle where the text can be drawn on a push button.
         /// </summary>
-        /// <param name="pRadioButton"></param>
+        /// <param name="radioButton"></param>
         /// <returns></returns>
-        internal static Rectangle GetPushButtonTextRectangle(RadioButton pRadioButton)
+        internal static Rectangle GetPushButtonTextRectangle(RadioButton radioButton)
         {
-            return CreatePushButtonTextRectangle(pRadioButton);
+            return CreatePushButtonTextRectangle(radioButton);
         }
 
         /// <summary>
         /// Returns a rectangle where the text can be drawn on a push button.
         /// </summary>
-        /// <param name="pCheckBox"></param>
+        /// <param name="checkBox"></param>
         /// <returns></returns>
         /// 
-        internal static Rectangle GetPushButtonTextRectangle(CheckBox pCheckBox)
+        internal static Rectangle GetPushButtonTextRectangle(CheckBox checkBox)
         {
-            return CreatePushButtonTextRectangle(pCheckBox);
+            return CreatePushButtonTextRectangle(checkBox);
         }
 
         /// <summary>
         /// Returns a rectangle where the text can be drawn on a radio button.
         /// </summary>
-        /// <param name="pRadioButton"></param>
-        /// <param name="pGraphics"></param>
+        /// <param name="radioButton"></param>
+        /// <param name="graphics"></param>
         /// <returns></returns>
-        internal static Rectangle GetRadioButtonTextRectangle(RadioButton pRadioButton, Graphics pGraphics)
+        internal static Rectangle GetRadioButtonTextRectangle(RadioButton radioButton, Graphics graphics)
         {
-            return CreateGlyphButtonTextRectangle(pRadioButton, GetRadioButtonGlyphSize(pGraphics, pRadioButton.FlatStyle));
+            return CreateGlyphButtonTextRectangle(radioButton, GetRadioButtonGlyphSize(graphics, radioButton.FlatStyle));
         }
 
         /// <summary>
         /// Returns a rectangle where the text can be drawn on a check box.
         /// </summary>
-        /// <param name="pCheckBox"></param>
-        /// <param name="pGraphics"></param>
+        /// <param name="checkBox"></param>
+        /// <param name="graphics"></param>
         /// <returns></returns>
-        internal static Rectangle GetCheckBoxTextRectangle(CheckBox pCheckBox, Graphics pGraphics)
+        internal static Rectangle GetCheckBoxTextRectangle(CheckBox checkBox, Graphics graphics)
         {
-            return CreateGlyphButtonTextRectangle(pCheckBox, GetCheckBoxGlyphSize(pGraphics, pCheckBox.FlatStyle));
+            return CreateGlyphButtonTextRectangle(checkBox, GetCheckBoxGlyphSize(graphics, checkBox.FlatStyle));
         }
     }
 }

@@ -140,14 +140,14 @@ namespace TileIconifier.Controls
             }
         }
 
-        private void ConfigureDrawingProperties(bool pNeedToRestoreDefaultProperties)
+        private void ConfigureDrawingProperties(bool needToRestoreDefaultProperties)
         {
             if (CanCustomDraw)
             {
                 SetStyle(ControlStyles.UserPaint, true);
                 DrawMode = DrawMode.OwnerDrawFixed;
             }
-            else if (pNeedToRestoreDefaultProperties)
+            else if (needToRestoreDefaultProperties)
             {
                 //These values could change in a future version of Winforms.
                 SetStyle(ControlStyles.UserPaint, false);
@@ -167,7 +167,7 @@ namespace TileIconifier.Controls
             if (CanCustomDraw)
             {
                 Rectangle bounds = ClientRectangle;
-                int inGlyphAreaWidth = SystemInformation.HorizontalScrollBarThumbWidth;
+                int glyphAreaWidth = SystemInformation.HorizontalScrollBarThumbWidth;
 
                 //Border
                 Color borderColor = (Focused) ? FlatButtonBorderFocusedColor : FlatButtonBorderColor;
@@ -175,7 +175,7 @@ namespace TileIconifier.Controls
                 bounds.Width--;
                 bounds.Height--;
 
-                using (Pen p = new Pen(borderColor))
+                using (var p = new Pen(borderColor))
                     e.Graphics.DrawRectangle(p, bounds);
 
                 //Background
@@ -185,7 +185,7 @@ namespace TileIconifier.Controls
                 //Skrinks the rectangle to fit within the borders we have just drawn.
                 bounds.Inflate(-1, -1);
 
-                using (SolidBrush b = new SolidBrush(FlatButtonBackColor))
+                using (var b = new SolidBrush(FlatButtonBackColor))
                     e.Graphics.FillRectangle(b, bounds);
 
                 //Selected item text
@@ -195,24 +195,24 @@ namespace TileIconifier.Controls
                 //Same thing for the textColor.
                 if (RightToLeft == RightToLeft.Yes)
                 {
-                    bounds.X += inGlyphAreaWidth;
+                    bounds.X += glyphAreaWidth;
                 }
-                bounds.Width -= inGlyphAreaWidth;
+                bounds.Width -= glyphAreaWidth;
                 if (SelectedIndex >= 0 && SelectedIndex < Items.Count)
                 {
-                    string stText = GetItemText(Items[SelectedIndex]);
-                    TextRenderer.DrawText(e.Graphics, stText, Font, bounds, textColor, TextFlags);
+                    string text = GetItemText(Items[SelectedIndex]);
+                    TextRenderer.DrawText(e.Graphics, text, Font, bounds, textColor, TextFlags);
                 }
 
                 //Glyph button
                 Rectangle buttonRect = new Rectangle();
-                buttonRect.Width = inGlyphAreaWidth;
+                buttonRect.Width = glyphAreaWidth;
                 buttonRect.Height = bounds.Height;
                 buttonRect.Y = bounds.Y;
                 TextFormatFlags glyphFlags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;
                 if (RightToLeft == RightToLeft.Yes)
                 {
-                    buttonRect.X = bounds.X - inGlyphAreaWidth;
+                    buttonRect.X = bounds.X - glyphAreaWidth;
                 }
                 else
                 {
@@ -236,13 +236,13 @@ namespace TileIconifier.Controls
             e.DrawBackground();
             e.DrawFocusRectangle();
 
-            int inIndex = e.Index;
-            if (inIndex >= 0 && inIndex < Items.Count)
+            int index = e.Index;
+            if (index >= 0 && index < Items.Count)
             {
-                string stItemText = GetItemText(Items[inIndex]);
+                string itemText = GetItemText(Items[index]);
                 Color colTextColor = (e.State.HasFlag(DrawItemState.Selected)) ? SystemColors.HighlightText : ForeColor;                
 
-                TextRenderer.DrawText(e.Graphics, stItemText, Font, e.Bounds, colTextColor, TextFlags);
+                TextRenderer.DrawText(e.Graphics, itemText, Font, e.Bounds, colTextColor, TextFlags);
             }
 
             base.OnDrawItem(e);            

@@ -174,7 +174,7 @@ namespace TileIconifier.Controls
         {    
             if (FlatStyle == FlatStyle.Flat)
             {
-                using (SolidBrush b = new SolidBrush(FlatHeaderBackColor))
+                using (var b = new SolidBrush(FlatHeaderBackColor))
                     e.Graphics.FillRectangle(b, e.Bounds);
 
                 TextFormatFlags flags =                     
@@ -235,16 +235,16 @@ namespace TileIconifier.Controls
                 bColor = FlatBorderColor;
             }
             
-            var hdc = NativeMethods.GetWindowDC(Handle);
+            IntPtr hdc = NativeMethods.GetWindowDC(Handle);
             using (var g = Graphics.FromHdc(hdc))
             using (var p = new Pen(bColor))
                 g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
             NativeMethods.ReleaseDC(Handle, hdc);
         }
 
-        private TextFormatFlags ConvertToTextFormatFlags(HorizontalAlignment pHoriAlign)
+        private TextFormatFlags ConvertToTextFormatFlags(HorizontalAlignment horiAlign)
         {     
-            switch (pHoriAlign)
+            switch (horiAlign)
             {
                 case HorizontalAlignment.Left:
                     return TextFormatFlags.Left;

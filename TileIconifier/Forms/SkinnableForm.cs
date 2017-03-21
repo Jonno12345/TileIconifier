@@ -124,13 +124,13 @@ namespace TileIconifier.Forms
         /// <summary>
         /// Applies the skin on the specified control.
         /// </summary>
-        /// <param name="pControl"></param>
-        private void ApplyControlSkin(Control pControl)
+        /// <param name="control"></param>
+        private void ApplyControlSkin(Control control)
         {
             //Maybe not the most efficient way to do this. Something to think about.
 
             //Checkbox or RadioButton
-            ISkinnableCheckableButton checkableBtn = pControl as ISkinnableCheckableButton;
+            ISkinnableCheckableButton checkableBtn = control as ISkinnableCheckableButton;
             if (checkableBtn != null)
             {                   
                 if (checkableBtn.Appearance == Appearance.Button)
@@ -139,16 +139,17 @@ namespace TileIconifier.Forms
                 }
                 else
                 {
-                    //We treat checkboxes and radiobutton like labels (their Fore/Back/Disabled colors
+                    //We treat checkboxes and radiobutton like labels (their Fore/Back colors
                     //are ambiant) so there is no need to apply any skin properties manually. The
-                    //only exception is FlatStyle, which is not ambiant and specific to ISkinnableButton.
-                    checkableBtn.FlatStyle = FormSkin.ButtonFlatStyle;
+                    //only exceptions are FlatStyle and DisabledForeColor, which are not ambiant 
+                    //and specific to ISkinnableButton in the case of FlatStyle.
+                    checkableBtn.FlatStyle = FormSkin.ButtonFlatStyle;                    
                 }
                 return;
             }
 
             //Button
-            ISkinnableButton btn = pControl as ISkinnableButton;
+            ISkinnableButton btn = control as ISkinnableButton;
             if (btn != null)
             {
                 //We MUST evaluate this condition AFTER ISkinnableCheckableButton
@@ -160,7 +161,7 @@ namespace TileIconifier.Forms
             }
 
             //TextBox or RichTextBox
-            ISkinnableTextBox txt = pControl as ISkinnableTextBox;
+            ISkinnableTextBox txt = control as ISkinnableTextBox;
             if (txt != null)
             {
                 txt.BorderStyle = FormSkin.TextBoxBorderStyle;
@@ -174,7 +175,7 @@ namespace TileIconifier.Forms
             }            
 
             //ListView
-            SkinnableListView lvw = pControl as SkinnableListView;
+            SkinnableListView lvw = control as SkinnableListView;
             if (lvw != null)
             {
                 lvw.FlatStyle = FormSkin.ListViewFlatStyle;
@@ -189,22 +190,22 @@ namespace TileIconifier.Forms
             }
 
             //ComboBox
-            SkinnableComboBox cbo = pControl as SkinnableComboBox;
-            if (cbo != null)
+            SkinnableComboBox cmb = control as SkinnableComboBox;
+            if (cmb != null)
             {
-                cbo.FlatStyle = FormSkin.ComboBoxFlatStyle;
-                cbo.BackColor = FormSkin.ComboBoxBackColor;
-                cbo.ForeColor = FormSkin.ComboBoxForeColor;
-                cbo.FlatButtonBackColor = FormSkin.ComboBoxButtonBackColor;
-                cbo.FlatButtonForeColor = FormSkin.ComboboxButtonForeColor;
-                cbo.FlatButtonDisabledForeColor = FormSkin.ComboBoxDisabledForeColor;
-                cbo.FlatButtonBorderColor = FormSkin.ComboBoxButtonBorderColor;
-                cbo.FlatButtonBorderFocusedColor = FormSkin.ComboBoxButtonBorderFocusedColor;
+                cmb.FlatStyle = FormSkin.ComboBoxFlatStyle;
+                cmb.BackColor = FormSkin.ComboBoxBackColor;
+                cmb.ForeColor = FormSkin.ComboBoxForeColor;
+                cmb.FlatButtonBackColor = FormSkin.ComboBoxButtonBackColor;
+                cmb.FlatButtonForeColor = FormSkin.ComboboxButtonForeColor;
+                cmb.FlatButtonDisabledForeColor = FormSkin.ComboBoxDisabledForeColor;
+                cmb.FlatButtonBorderColor = FormSkin.ComboBoxButtonBorderColor;
+                cmb.FlatButtonBorderFocusedColor = FormSkin.ComboBoxButtonBorderFocusedColor;
                 return;
             }
 
             //ToolStrip
-            ToolStrip tsp = pControl as ToolStrip;
+            ToolStrip tsp = control as ToolStrip;
             if (tsp != null)
             {
                 tsp.Renderer = FormSkin.ToolStripRenderer;
@@ -214,8 +215,8 @@ namespace TileIconifier.Forms
             //Recursive loop that applies the skin to controls inside controls. At this
             //point, the control is not a button, a listview, etc. so it is likely to be just
             //a container that contains more controls.
-            if (pControl.Controls.Count > 0)
-                foreach (Control c in pControl.Controls)
+            if (control.Controls.Count > 0)
+                foreach (Control c in control.Controls)
                     ApplyControlSkin(c);
         }
 
@@ -224,14 +225,14 @@ namespace TileIconifier.Forms
         /// Applies the part of the FormSkin that defines the appearance 
         /// of a button on the specified control.
         /// </summary>
-        /// <param name="pButton"></param>
-        private void ApplyButtonSkin(ISkinnableButton pButton)
+        /// <param name="button"></param>
+        private void ApplyButtonSkin(ISkinnableButton button)
         {
-            pButton.FlatStyle = FormSkin.ButtonFlatStyle;
-            pButton.ForeColor = FormSkin.ButtonForeColor;
-            pButton.BackColor = FormSkin.ButtonBackColor;
-            pButton.DisabledForeColor = FormSkin.ButtonDisabledForeColor;
-            pButton.FlatAppearance.BorderColor = FormSkin.ButtonFlatBorderColor;
+            button.FlatStyle = FormSkin.ButtonFlatStyle;
+            button.ForeColor = FormSkin.ButtonForeColor;
+            button.BackColor = FormSkin.ButtonBackColor;
+            button.DisabledForeColor = FormSkin.ButtonDisabledForeColor;
+            button.FlatAppearance.BorderColor = FormSkin.ButtonFlatBorderColor;
         }
     }
 }
