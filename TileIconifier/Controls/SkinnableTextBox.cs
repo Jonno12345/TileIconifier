@@ -130,11 +130,11 @@ namespace TileIconifier.Controls
             //The paint event is not fired, so we must listen for the paint Windows message ourselves.
             if (m.Msg == NativeMethods.WM_PAINT && BorderStyle == BorderStyle.FixedSingle)
             {                
-                PaintUserBorder();
+                PaintBorder();
             }
         }
 
-        private void PaintUserBorder()
+        private void PaintBorder()
         {
             Color bColor;
             if (!Enabled && !BorderDisabledColor.IsEmpty)
@@ -155,8 +155,8 @@ namespace TileIconifier.Controls
             }
 
             IntPtr hdc = NativeMethods.GetWindowDC(Handle);
-            using (Graphics g = Graphics.FromHdc(hdc))
-            using (Pen p = new Pen(bColor))
+            using (var g = Graphics.FromHdc(hdc))
+            using (var p = new Pen(bColor))
                 g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
             NativeMethods.ReleaseDC(Handle, hdc);
         }

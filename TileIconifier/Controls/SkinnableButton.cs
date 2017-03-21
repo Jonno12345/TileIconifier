@@ -12,14 +12,14 @@ namespace TileIconifier.Controls
 {
     class SkinnableButton : Button, ISkinnableButton
     {
-        private bool boBasePainting = false;  
+        private bool basePainting = false;  
 
         public override string Text
         {
             get
             {
                 //Lies to the base class by telling it there is no text to draw.                
-                if (boBasePainting && !Enabled)
+                if (basePainting && !Enabled)
                     return "";
                 else
                     return base.Text;
@@ -64,13 +64,14 @@ namespace TileIconifier.Controls
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
-            boBasePainting = true;
+            basePainting = true;
             base.OnPaint(pevent);
-            boBasePainting = false;
+            basePainting = false;
 
             //We paint the disabled text on top of the base class drawing using 
             //the ForeColorDisabled color that we have implemented ourselves.
-            //Rudimentary implementation. Some properties may be ignored.
+            //Incomplete implementation: We don't consider the TextImageRelation property (yet).
+
             if (!Enabled)
             {
                 Rectangle contentRect = ButtonUtils.GetPushButtonTextRectangle(this);

@@ -14,7 +14,7 @@ namespace TileIconifier.Controls
 {
     class SkinnableRadioButton : RadioButton, ISkinnableCheckableButton
     {
-        private bool boBasePainting;
+        private bool basePainting;
 
         public override string Text
         {
@@ -22,7 +22,7 @@ namespace TileIconifier.Controls
             {
                 //Lies to the base class by telling it there is no text to draw
                 //so that we can draw it ourselves.
-                if (boBasePainting && !Enabled)
+                if (basePainting && !Enabled)
                     return "";
                 else
                     return base.Text;
@@ -50,24 +50,27 @@ namespace TileIconifier.Controls
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
-            boBasePainting = true;
+            basePainting = true;
             base.OnPaint(pevent);
-            boBasePainting = false;
+            basePainting = false;
 
             //We paint the disabled text on top of the base class drawing using 
             //the ForeColorDisabled color that we have implemented ourselves.
-            //Rudimentary implementation. Some properties are ignored.
+            //Incomplete implementation: We don't consider the TextImageRelation property (yet).
             
             if (!Enabled)
             {
                 TextFormatFlags flags;
                 Rectangle textRect;
 
+                //Create flags
                 flags = ButtonUtils.BaseTextFormatFlags | ButtonUtils.ConvertToTextFormatFlags(RtlTranslateContent(TextAlign));
                 if (RightToLeft == RightToLeft.Yes)
                 {
                     flags |= TextFormatFlags.RightToLeft;
                 }
+
+                //Create rectangle
                 if (Appearance == Appearance.Button)
                 {
                     textRect = ButtonUtils.GetPushButtonTextRectangle(this);
@@ -77,6 +80,7 @@ namespace TileIconifier.Controls
                     textRect = ButtonUtils.GetRadioButtonTextRectangle(this, pevent.Graphics);
                 }
 
+                //Draw
                 TextRenderer.DrawText(pevent.Graphics, Text, Font, textRect, DisabledForeColor, flags);
             }
         }        
