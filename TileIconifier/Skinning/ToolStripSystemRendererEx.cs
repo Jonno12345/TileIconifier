@@ -42,7 +42,23 @@ namespace TileIconifier.Skinning
             {
                 vsRenderer.SetParameters(element);
             }
-        }        
+        }
+
+        /// <summary>
+        /// Vertically centers the text rectangle of a ToolstripMenuItem. Fixes a bug 
+        /// with ToolStripMenuItems where the text is not vertically centered if the item
+        /// is taller than the default size.
+        /// </summary>
+        /// <param name="pevent"></param>
+        private void CenterItemTextRectangle(ref ToolStripItemTextRenderEventArgs pevent)
+        {
+            Rectangle itemRect = new Rectangle(Point.Empty, pevent.Item.Size);
+            Rectangle textRectNew = pevent.TextRectangle;
+
+            textRectNew.Y = (itemRect.Height - textRectNew.Height) / 2;
+
+            pevent.TextRectangle = textRectNew;
+        }
 
         #region "State helpers"
         /// <summary>
@@ -53,7 +69,7 @@ namespace TileIconifier.Skinning
         /// <returns></returns>
         private VisualStyleElement GetPopUpItemVSElement(bool selected, bool enabled)
         {
-            int state = 0;
+            int state;
 
             if (selected)
             {
@@ -83,21 +99,7 @@ namespace TileIconifier.Skinning
             }
 
             return VisualStyleElement.CreateElement(vsClass, 14, state);
-        }
-
-        /// <summary>
-        /// Vertically centers the text rectangle of a ToolstripMenuItem, which is otherwise aligned at the top.
-        /// </summary>
-        /// <param name="pevent"></param>
-        private void CenterItemTextRectangle(ref ToolStripItemTextRenderEventArgs pevent)
-        {
-            Rectangle itemRect = new Rectangle(Point.Empty, pevent.Item.Size);
-            Rectangle textRectNew = pevent.TextRectangle;
-
-            textRectNew.Y = (itemRect.Height - textRectNew.Height) / 2;
-
-            pevent.TextRectangle = textRectNew;
-        }
+        }        
 
         private VisualStyleElement GetMenuBarItemVSElement(bool selected, bool enabled, bool pushed)
         {
@@ -552,11 +554,12 @@ namespace TileIconifier.Skinning
                 VisualStyleElement vsElement = GetMenuGlyphVSElement(MenuGlyph.Arrow, e.Item.Enabled);
                 if (VisualStyleRenderer.IsElementDefined(vsElement))
                 {
+                    PrepareVisualStyleRenderer(vsElement);
                     //Creates a the appropriate rectangle for the arrow (the one that comes in the ToolStripArrowRenderEventArgs is too big!)
                     Rectangle arrowRect = new Rectangle(e.ArrowRectangle.Location, vsRenderer.GetPartSize(e.Graphics, ThemeSizeType.True));
                     //Centers the rectangle vertically
                     arrowRect.Y = e.ArrowRectangle.Y + (e.ArrowRectangle.Height - arrowRect.Height) / 2 + 1; //+1 is just a quick qualitative adjustement.
-                    DrawVisualStyle(e.Graphics, vsElement, arrowRect);
+                    vsRenderer.DrawBackground(e.Graphics, arrowRect);
                 }
                 else
                 {
@@ -606,7 +609,8 @@ namespace TileIconifier.Skinning
                 VisualStyleElement vsElement = VisualStyleElement.CreateElement(vsClass, 15, 0);
                 if (VisualStyleRenderer.IsElementDefined(vsElement))
                 {
-                    int partHeight = vsRenderer.GetPartSize(e.Graphics, ThemeSizeType.Minimum).Height + 1;
+                    PrepareVisualStyleRenderer(vsElement);
+                    int partHeight = vsRenderer.GetPartSize(e.Graphics, ThemeSizeType.True).Height;
                     int y = (e.Item.Height - partHeight) / 2; //Vertical center
                     bounds = new Rectangle(0, y, e.Item.Width, partHeight); //here, the rect is full width, and we shrink it when we check for RightToLeft.
                     ToolStripDropDownMenu dropDownMenu = (ToolStripDropDownMenu)e.Item.GetCurrentParent();
@@ -625,7 +629,7 @@ namespace TileIconifier.Skinning
                         }
                     }
 
-                    DrawVisualStyle(e.Graphics, vsElement, bounds);
+                    vsRenderer.DrawBackground(e.Graphics, bounds);
                 }
                 else
                 {
@@ -661,7 +665,7 @@ namespace TileIconifier.Skinning
             {
                 VisualStyleElement backVSElement = GetMenuGlyphBackgroundVSElement(e.Item.Enabled, false);
                 VisualStyleElement glyphVSElement = GetMenuGlyphVSElement(MenuGlyph.Checkmark, e.Item.Enabled);
-                if (VisualStyleRenderer.IsElementDefined(backVSElement) || VisualStyleRenderer.IsElementDefined(glyphVSElement))
+                if (VisualStyleRenderer.IsElementDefined(backVSElement) && VisualStyleRenderer.IsElementDefined(glyphVSElement))
                 {
                     //We use Inflate in order to keep the rectangle centered with the glyph.
                     int inInflation = ((e.Item.Height - e.ImageRectangle.Height) / 2);
