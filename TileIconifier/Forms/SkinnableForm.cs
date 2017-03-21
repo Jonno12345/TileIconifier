@@ -140,10 +140,11 @@ namespace TileIconifier.Forms
                 else
                 {
                     //We treat checkboxes and radiobutton like labels (their Fore/Back colors
-                    //are ambiant) so there is no need to apply any skin properties manually. The
+                    //are ambiant) so there is no need to apply skin properties manually. The
                     //only exceptions are FlatStyle and DisabledForeColor, which are not ambiant 
                     //and specific to ISkinnableButton in the case of FlatStyle.
-                    checkableBtn.FlatStyle = FormSkin.ButtonFlatStyle;                    
+                    checkableBtn.FlatStyle = FormSkin.ButtonFlatStyle;
+                    checkableBtn.DisabledForeColor = FormSkin.DisabledForeColor;
                 }
                 return;
             }
@@ -214,10 +215,9 @@ namespace TileIconifier.Forms
 
             //Recursive loop that applies the skin to controls inside controls. At this
             //point, the control is not a button, a listview, etc. so it is likely to be just
-            //a container that contains more controls.
-            if (control.Controls.Count > 0)
-                foreach (Control c in control.Controls)
-                    ApplyControlSkin(c);
+            //a container that contains more controls.            
+            foreach (Control c in control.Controls)
+                ApplyControlSkin(c);
         }
 
 

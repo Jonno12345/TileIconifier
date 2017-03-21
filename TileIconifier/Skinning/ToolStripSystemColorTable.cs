@@ -17,6 +17,18 @@ namespace TileIconifier.Skinning
         private ToolStripSystemColorScheme userScheme;
         private ToolStripSystemColorScheme hcScheme;
 
+        #region "Contructors"
+        internal ToolStripSystemColorTable()
+        {
+
+        }
+
+        internal ToolStripSystemColorTable(ToolStripSystemColorScheme pSysColorScheme)
+        {
+            userScheme = pSysColorScheme;
+        }
+        #endregion
+
         private ToolStripSystemColorScheme Scheme
         {
             get
@@ -30,19 +42,7 @@ namespace TileIconifier.Skinning
                 else
                     return userScheme;
             }
-        }
-
-        #region "Contructors"
-        internal ToolStripSystemColorTable()
-        {
-            
-        }
-
-        internal ToolStripSystemColorTable(ToolStripSystemColorScheme pSysColorScheme)
-        {
-            userScheme = pSysColorScheme;
-        }
-        #endregion
+        }        
 
         internal Color MenuBarBackColor { get { return Scheme.MenuBarBackColor; } }
         internal Color PopupBackColor { get { return Scheme.PopupBackColor; } }
