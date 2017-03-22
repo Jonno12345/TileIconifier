@@ -65,7 +65,7 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color TextBoxBackColor { get { return SystemColors.Window; } }
         public virtual Color TextBoxForeColor { get { return SystemColors.WindowText; } }
         public virtual Color TextBoxReadOnlyBackColor { get { return SystemColors.Control; } }
-        public virtual Color TextBoxBorderColor { get { return Color.Empty; } } //not used
+        public virtual Color TextBoxBorderColor { get { return SystemColors.WindowFrame; } } //not used
         public virtual Color TextBoxBorderFocusedColor { get { return Color.Empty; } } //not used
         public virtual Color TextBoxBorderDisabledColor { get { return Color.Empty; } } //not used
         #endregion
@@ -76,7 +76,7 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color ListViewForeColor { get { return SystemColors.WindowText; } }
         public virtual Color ListViewHeaderBackColor { get { return SystemColors.Control; } } //not used
         public virtual Color ListViewHeaderForeColor { get { return SystemColors.ControlText; } } //not used
-        public virtual Color ListViewBorderColor { get { return Color.Empty; } } //not used
+        public virtual Color ListViewBorderColor { get { return SystemColors.WindowFrame; } } //not used
         public virtual Color ListViewBorderFocusedColor { get { return Color.Empty; } } //not used
         public virtual Color ListViewBorderDisabledColor { get { return Color.Empty; } } //not used
         #endregion
