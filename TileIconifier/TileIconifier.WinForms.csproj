@@ -161,6 +161,9 @@
     <Compile Include="Controls\SkinnableRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\SkinnableTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\SkinnableTextBox.cs">
       <SubType>Component</SubType>
     </Compile>

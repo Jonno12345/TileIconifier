@@ -213,6 +213,17 @@ namespace TileIconifier.Forms
                 return;
             }
 
+            SkinnableTabControl tab = control as SkinnableTabControl;
+            if (tab != null)
+            {
+                tab.FlatStyle = FormSkin.TabControlFlatStyle;
+                tab.FlatTabSelectedBackColor = FormSkin.TabControlSelectedTabBackColor;
+                tab.FlatTabSelectedForeColor = FormSkin.TabControlSelectedTabForeColor;
+                tab.FlatTabBorderColor = FormSkin.TabControlTabBorderColor;
+                //Don't return now so that the recursive loop is reached and applies
+                //the skin to controls inside the tab pages.
+            }
+
             //Recursive loop that applies the skin to controls inside controls. At this
             //point, the control is not a button, a listview, etc. so it is likely to be just
             //a container that contains more controls.            

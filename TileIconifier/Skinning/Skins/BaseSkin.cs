@@ -91,5 +91,12 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color ComboBoxButtonBorderColor { get { return SystemColors.ControlDark; } } //not used
         public virtual Color ComboBoxButtonBorderFocusedColor { get { return SystemColors.Highlight; } } //not used
         #endregion
+
+        #region "TabControl"
+        public virtual FlatStyle TabControlFlatStyle { get { return FlatStyle.Standard; } }
+        public virtual Color TabControlSelectedTabBackColor { get { return SystemColors.Window; } } //not used
+        public virtual Color TabControlSelectedTabForeColor { get { return SystemColors.WindowText; } } //not used
+        public virtual Color TabControlTabBorderColor { get { return SystemColors.WindowFrame; } } //not used
+        #endregion
     }
 }

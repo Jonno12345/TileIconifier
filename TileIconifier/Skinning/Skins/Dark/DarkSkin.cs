@@ -102,5 +102,12 @@ namespace TileIconifier.Skinning.Skins.Dark
         public override Color ComboBoxButtonBorderColor { get { return CommonBorderColor; } }
         public override Color ComboBoxButtonBorderFocusedColor { get { return CommonFocusedBorderColor; } }
         #endregion
+
+        #region "TabControl"
+        public override FlatStyle TabControlFlatStyle { get { return FlatStyle.Flat; } }
+        public override Color TabControlSelectedTabBackColor { get { return LowBackColor; } }
+        public override Color TabControlSelectedTabForeColor { get { return CommonForeColor; } }
+        public override Color TabControlTabBorderColor { get { return CommonBorderColor; } }
+        #endregion
     }
 }

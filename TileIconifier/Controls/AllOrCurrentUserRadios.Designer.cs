@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllOrCurrentUserRadios));
-            this.radAllUsers = new System.Windows.Forms.RadioButton();
+            this.radAllUsers = new TileIconifier.Controls.SkinnableRadioButton();
             this.lblHeader = new System.Windows.Forms.Label();
-            this.radCurrentUser = new System.Windows.Forms.RadioButton();
+            this.radCurrentUser = new TileIconifier.Controls.SkinnableRadioButton();
             this.SuspendLayout();
             // 
             // radAllUsers
@@ -67,8 +67,8 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton radAllUsers;
+        private TileIconifier.Controls.SkinnableRadioButton radAllUsers;
         private System.Windows.Forms.Label lblHeader;
-        private System.Windows.Forms.RadioButton radCurrentUser;
+        private TileIconifier.Controls.SkinnableRadioButton radCurrentUser;
     }
 }
