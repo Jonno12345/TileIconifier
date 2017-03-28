@@ -1,4 +1,6 @@
-﻿namespace TileIconifier.Forms.Shared
+﻿using TileIconifier.Controls;
+
+namespace TileIconifier.Forms.Shared
 {
     partial class FrmIconSelector
     {
@@ -37,12 +39,12 @@
             this.lblCommonDlls = new System.Windows.Forms.Label();
             this.cmbCommonIconDlls = new TileIconifier.Controls.SkinnableComboBox();
             this.btnBrowseIconPath = new TileIconifier.Controls.SkinnableButton();
-            this.txtPathToExtractFrom = new TileIconifier.Controls.SkinnableTextBox();
+            this.txtPathToExtractFrom = new SkinnableTextBox();
             this.btnCancel = new TileIconifier.Controls.SkinnableButton();
             this.btnOk = new TileIconifier.Controls.SkinnableButton();
             this.btnBrowseCustomImage = new TileIconifier.Controls.SkinnableButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtImagePath = new TileIconifier.Controls.SkinnableTextBox();
+            this.txtImagePath = new SkinnableTextBox();
             this.radUseCustomImage = new TileIconifier.Controls.SkinnableRadioButton();
             this.radIconFromTarget = new TileIconifier.Controls.SkinnableRadioButton();
             this.lvwIcons = new TileIconifier.Controls.SkinnableListView();
@@ -206,13 +208,13 @@
         private TileIconifier.Controls.SkinnableListView lvwIcons;
         private TileIconifier.Controls.SkinnableRadioButton radIconFromTarget;
         private TileIconifier.Controls.SkinnableRadioButton radUseCustomImage;
-        private TileIconifier.Controls.SkinnableTextBox txtImagePath;
+        private SkinnableTextBox txtImagePath;
         private System.Windows.Forms.Label label1;
         private TileIconifier.Controls.SkinnableButton btnBrowseCustomImage;
         private TileIconifier.Controls.SkinnableButton btnOk;
         private TileIconifier.Controls.SkinnableButton btnCancel;
         private System.Windows.Forms.OpenFileDialog opnFile;
-        private TileIconifier.Controls.SkinnableTextBox txtPathToExtractFrom;
+        private SkinnableTextBox txtPathToExtractFrom;
         private TileIconifier.Controls.SkinnableButton btnBrowseIconPath;
         private TileIconifier.Controls.SkinnableComboBox cmbCommonIconDlls;
         private System.Windows.Forms.Label lblCommonDlls;

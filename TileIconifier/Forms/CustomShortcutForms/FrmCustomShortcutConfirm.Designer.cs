@@ -1,4 +1,6 @@
-﻿namespace TileIconifier.Forms.CustomShortcutForms
+﻿using TileIconifier.Controls;
+
+namespace TileIconifier.Forms.CustomShortcutForms
 {
     partial class FrmCustomShortcutConfirm
     {
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomShortcutConfirm));
-            this.txtCustomShortcutName = new TileIconifier.Controls.SkinnableTextBox();
+            this.txtCustomShortcutName = new SkinnableTextBox();
             this.lblCustomShortcutName = new System.Windows.Forms.Label();
             this.btnOk = new TileIconifier.Controls.SkinnableButton();
             this.btnCancel = new TileIconifier.Controls.SkinnableButton();
@@ -86,7 +88,7 @@
 
         #endregion
 
-        private TileIconifier.Controls.SkinnableTextBox txtCustomShortcutName;
+        private SkinnableTextBox txtCustomShortcutName;
         private System.Windows.Forms.Label lblCustomShortcutName;
         private TileIconifier.Controls.SkinnableButton btnOk;
         private TileIconifier.Controls.SkinnableButton btnCancel;

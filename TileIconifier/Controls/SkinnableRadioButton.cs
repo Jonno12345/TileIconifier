@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TileIconifier.Forms;
-using System.Windows.Forms.VisualStyles;
+﻿using System.Windows.Forms;
 using System.Drawing;
 using TileIconifier.Utilities;
 using System.ComponentModel;
+using TileIconifier.Skinning.Skins;
 
 namespace TileIconifier.Controls
 {
@@ -83,6 +77,27 @@ namespace TileIconifier.Controls
                 //Draw
                 TextRenderer.DrawText(pevent.Graphics, Text, Font, textRect, DisabledForeColor, flags);
             }
-        }        
+        }
+
+        public void ApplySkin(BaseSkin skin)
+        {
+            if (Appearance == Appearance.Button)
+            {
+                FlatStyle = skin.ButtonFlatStyle;
+                ForeColor = skin.ButtonForeColor;
+                BackColor = skin.ButtonBackColor;
+                DisabledForeColor = skin.ButtonDisabledForeColor;
+                FlatAppearance.BorderColor = skin.ButtonFlatBorderColor;
+            }
+            else
+            {
+                //We treat checkboxes and radiobutton like labels (their Fore/Back colors
+                //are ambiant) so there is no need to apply skin properties manually. The
+                //only exceptions are FlatStyle and DisabledForeColor, which are not ambiant 
+                //and specific to ISkinnableButton in the case of FlatStyle.
+                FlatStyle = skin.ButtonFlatStyle;
+                DisabledForeColor = skin.DisabledForeColor;
+            }
+        }
     }
 }

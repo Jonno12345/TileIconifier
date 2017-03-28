@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using System.Drawing;
 using TileIconifier.Utilities;
 using System.ComponentModel;
+using TileIconifier.Skinning.Skins;
 
 namespace TileIconifier.Controls
 {
@@ -42,6 +38,15 @@ namespace TileIconifier.Controls
                 if (BackColor == DefaultBackColor)
                     UseVisualStyleBackColor = true;
             }
+        }
+
+        public void ApplySkin(BaseSkin skin)
+        {
+            FlatStyle = skin.ButtonFlatStyle;
+            ForeColor = skin.ButtonForeColor;
+            BackColor = skin.ButtonBackColor;
+            DisabledForeColor = skin.ButtonDisabledForeColor;
+            FlatAppearance.BorderColor = skin.ButtonFlatBorderColor;
         }
 
         private Color disabledForeColor = SystemColors.GrayText;

@@ -32,18 +32,18 @@ namespace TileIconifier.Forms.Main
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.txtFilter = new TileIconifier.Controls.SkinnableTextBox();
+            this.txtFilter = new SkinnableTextBox();
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnDeleteCustomShortcut = new TileIconifier.Controls.SkinnableButton();
             this.btnBuildCustomShortcut = new TileIconifier.Controls.SkinnableButton();
             this.iconifyPanel = new TileIconifier.Controls.IconifierPanel.TileIconifierPanel();
             this.srtlstShortcuts = new TileIconifier.Controls.SortableListView();
             this.lblExePath = new System.Windows.Forms.Label();
-            this.txtExePath = new TileIconifier.Controls.SkinnableTextBox();
+            this.txtExePath = new SkinnableTextBox();
             this.btnRemove = new TileIconifier.Controls.SkinnableButton();
             this.btnIconify = new TileIconifier.Controls.SkinnableButton();
             this.lblLnkPath = new System.Windows.Forms.Label();
-            this.txtLnkPath = new TileIconifier.Controls.SkinnableTextBox();
+            this.txtLnkPath = new SkinnableTextBox();
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -337,12 +337,12 @@ namespace TileIconifier.Forms.Main
         }
 
         #endregion
-        private TileIconifier.Controls.SkinnableTextBox txtLnkPath;
+        private SkinnableTextBox txtLnkPath;
         private System.Windows.Forms.Label lblLnkPath;
         private TileIconifier.Controls.SkinnableButton btnIconify;
         private TileIconifier.Controls.SkinnableButton btnRemove;
         private System.Windows.Forms.Label lblExePath;
-        private TileIconifier.Controls.SkinnableTextBox txtExePath;
+        private SkinnableTextBox txtExePath;
         private System.Windows.Forms.MenuStrip mnuMain;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -362,7 +362,7 @@ namespace TileIconifier.Forms.Main
         private TileIconifier.Controls.SkinnableButton btnBuildCustomShortcut;
         private TileIconifier.Controls.SkinnableButton btnDeleteCustomShortcut;
         private System.Windows.Forms.Label lblFilter;
-        private TileIconifier.Controls.SkinnableTextBox txtFilter;
+        private SkinnableTextBox txtFilter;
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
