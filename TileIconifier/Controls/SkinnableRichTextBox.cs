@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TileIconifier.Skinning.Skins;
 
 namespace TileIconifier.Controls
 {
@@ -28,6 +25,17 @@ namespace TileIconifier.Controls
                     }
                 }
             }
+        }
+
+        public void ApplySkin(BaseSkin skin)
+        {
+            BorderStyle = skin.TextBoxBorderStyle;
+            BackColor = skin.TextBoxBackColor;
+            ReadOnlyBackColor = skin.TextBoxReadOnlyBackColor;
+            BorderColor = skin.TextBoxBorderColor;
+            BorderFocusedColor = skin.TextBoxBorderFocusedColor;
+            BorderDisabledColor = skin.TextBoxBorderDisabledColor;
+            ForeColor = skin.TextBoxForeColor;
         }
 
         private Color readOnlyBackColor = SystemColors.Control;

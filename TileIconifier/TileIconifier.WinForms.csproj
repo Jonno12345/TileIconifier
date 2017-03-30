@@ -141,6 +141,7 @@
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxMetaData.cs" />
     <Compile Include="Controls\ISkinnableButton.cs" />
     <Compile Include="Controls\ISkinnableCheckableButton.cs" />
+    <Compile Include="Controls\ISkinnableControl.cs" />
     <Compile Include="Controls\ISkinnableTextBox.cs" />
     <Compile Include="Controls\Shortcut\ShortcutItemListViewItemLibrary.cs" />
     <Compile Include="Controls\SkinnableButton.cs">
@@ -461,6 +462,10 @@
       <Project>{02d2a2f4-8f79-4373-9804-9e7d339fd6e2}</Project>
       <Name>TileIconifier.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Skinning\Controls\" />
+    <Folder Include="Skinning\Forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

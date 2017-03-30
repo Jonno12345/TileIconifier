@@ -3,7 +3,7 @@
 // /*
 //         The MIT License (MIT)
 // 
-//         Copyright (c) 2016 Johnathon M
+//         Copyright (c) 2017 Johnathon M
 // 
 //         Permission is hereby granted, free of charge, to any person obtaining a copy
 //         of this software and associated documentation files (the "Software"), to deal
@@ -28,9 +28,6 @@
 #endregion
 
 using System;
-using System.Collections;
-using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using TileIconifier.Controls;
 using TileIconifier.Properties;
@@ -41,15 +38,16 @@ namespace TileIconifier.Forms
 {
     public class SkinnableForm : Form
     {
-        private BaseSkin formSkin = SkinHandler.GetCurrentSkin();
+        private BaseSkin _formSkin = SkinHandler.GetCurrentSkin();
+
         public BaseSkin FormSkin
         {
-            get { return formSkin; }
+            get { return _formSkin; }
             set
             {
-                if (formSkin != value)
+                if (_formSkin != value)
                 {
-                    formSkin = value;
+                    _formSkin = value;
                     OnSkinChanged(EventArgs.Empty);
                 }
             }
@@ -62,7 +60,7 @@ namespace TileIconifier.Forms
                 ApplyFormSkin();
                 ApplyAllControlsSkin();
             }
-        }        
+        }
 
         protected override void OnControlAdded(ControlEventArgs e)
         {
@@ -70,7 +68,9 @@ namespace TileIconifier.Forms
 
             //Apply the skin to any control newly added to the form.
             if (FormSkin != null && !DesignMode)
+            {
                 ApplyControlSkin(e.Control);
+            }
         }
 
         protected override void OnLoad(EventArgs e)
@@ -79,12 +79,14 @@ namespace TileIconifier.Forms
 
             Icon = Resources.tiles2_shadow_lyk_icon;
             SkinHandler.SkinChanged += SkinHandler_SkinChanged;
-            
+
             //We only apply the skin on the form, not on its controls
             //because control skins are applied when controls are added
             //to the form.
             if (!DesignMode)
+            {
                 ApplyFormSkin();
+            }
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -103,110 +105,41 @@ namespace TileIconifier.Forms
         }
 
         /// <summary>
-        /// Applies the skin on the form only.
+        ///     Applies the skin on the form only.
         /// </summary>
         private void ApplyFormSkin()
         {
             ForeColor = FormSkin.ForeColor;
             BackColor = FormSkin.BackColor;
-            Font = FormSkin.Font;            
+            Font = FormSkin.Font;
         }
 
         /// <summary>
-        /// Applies the skin on all controls inside the form.
+        ///     Applies the skin on all controls inside the form.
         /// </summary>
         private void ApplyAllControlsSkin()
         {
             foreach (Control c in Controls)
+            {
                 ApplyControlSkin(c);
+            }
         }
 
         /// <summary>
-        /// Applies the skin on the specified control.
+        ///     Applies the skin on the specified control.
         /// </summary>
         /// <param name="control"></param>
         private void ApplyControlSkin(Control control)
         {
-            //Maybe not the most efficient way to do this. Something to think about.
-
-            //Checkbox or RadioButton
-            ISkinnableCheckableButton checkableBtn = control as ISkinnableCheckableButton;
-            if (checkableBtn != null)
-            {                   
-                if (checkableBtn.Appearance == Appearance.Button)
-                {
-                    ApplyButtonSkin(checkableBtn);
-                }
-                else
-                {
-                    //We treat checkboxes and radiobutton like labels (their Fore/Back colors
-                    //are ambiant) so there is no need to apply skin properties manually. The
-                    //only exceptions are FlatStyle and DisabledForeColor, which are not ambiant 
-                    //and specific to ISkinnableButton in the case of FlatStyle.
-                    checkableBtn.FlatStyle = FormSkin.ButtonFlatStyle;
-                    checkableBtn.DisabledForeColor = FormSkin.DisabledForeColor;
-                }
-                return;
-            }
-
-            //Button
-            ISkinnableButton btn = control as ISkinnableButton;
-            if (btn != null)
+            var skinnableControl = control as ISkinnableControl;
+            if (skinnableControl != null)
             {
-                //We MUST evaluate this condition AFTER ISkinnableCheckableButton
-                //because ISkinnableCheckableButton descends from ISkinnableButton, so we would otherwise
-                //be unable to differenciate Buttons from Checkboxes and RadioButtons, because this condition would
-                //be always true and the other would not be evaluated.
-                ApplyButtonSkin(btn);
-                return;
-            }
-
-            //TextBox or RichTextBox
-            ISkinnableTextBox txt = control as ISkinnableTextBox;
-            if (txt != null)
-            {
-                txt.BorderStyle = FormSkin.TextBoxBorderStyle;
-                txt.BackColor = FormSkin.TextBoxBackColor;
-                txt.ReadOnlyBackColor = FormSkin.TextBoxReadOnlyBackColor;
-                txt.BorderColor = FormSkin.TextBoxBorderColor;
-                txt.BorderFocusedColor = FormSkin.TextBoxBorderFocusedColor;
-                txt.BorderDisabledColor = FormSkin.TextBoxBorderDisabledColor;
-                txt.ForeColor = FormSkin.TextBoxForeColor;
-                return;
-            }            
-
-            //ListView
-            SkinnableListView lvw = control as SkinnableListView;
-            if (lvw != null)
-            {
-                lvw.FlatStyle = FormSkin.ListViewFlatStyle;
-                lvw.FlatHeaderBackColor = FormSkin.ListViewHeaderBackColor;
-                lvw.FlatHeaderForeColor = FormSkin.ListViewHeaderForeColor;
-                lvw.BackColor = FormSkin.ListViewBackColor;
-                lvw.ForeColor = FormSkin.ListViewForeColor;                
-                lvw.FlatBorderColor = FormSkin.ListViewBorderColor;
-                lvw.FlatBorderFocusedColor = FormSkin.ListViewBorderFocusedColor;
-                lvw.FlatBorderDisabledColor = FormSkin.ListViewBorderDisabledColor;
-                return;
-            }
-
-            //ComboBox
-            SkinnableComboBox cmb = control as SkinnableComboBox;
-            if (cmb != null)
-            {
-                cmb.FlatStyle = FormSkin.ComboBoxFlatStyle;
-                cmb.BackColor = FormSkin.ComboBoxBackColor;
-                cmb.ForeColor = FormSkin.ComboBoxForeColor;
-                cmb.FlatButtonBackColor = FormSkin.ComboBoxButtonBackColor;
-                cmb.FlatButtonForeColor = FormSkin.ComboboxButtonForeColor;
-                cmb.FlatButtonDisabledForeColor = FormSkin.ComboBoxDisabledForeColor;
-                cmb.FlatButtonBorderColor = FormSkin.ComboBoxButtonBorderColor;
-                cmb.FlatButtonBorderFocusedColor = FormSkin.ComboBoxButtonBorderFocusedColor;
+                skinnableControl.ApplySkin(FormSkin);
                 return;
             }
 
             //ToolStrip
-            ToolStrip tsp = control as ToolStrip;
+            var tsp = control as ToolStrip;
             if (tsp != null)
             {
                 tsp.Renderer = FormSkin.ToolStripRenderer;
@@ -225,25 +158,12 @@ namespace TileIconifier.Forms
             }
 
             //Recursive loop that applies the skin to controls inside controls. At this
-            //point, the control is not a button, a listview, etc. so it is likely to be just
+            //point, the control is not a handled skinnable control so it is likely to be just
             //a container that contains more controls.            
             foreach (Control c in control.Controls)
+            {
                 ApplyControlSkin(c);
-        }
-
-
-        /// <summary>
-        /// Applies the part of the FormSkin that defines the appearance 
-        /// of a button on the specified control.
-        /// </summary>
-        /// <param name="button"></param>
-        private void ApplyButtonSkin(ISkinnableButton button)
-        {
-            button.FlatStyle = FormSkin.ButtonFlatStyle;
-            button.ForeColor = FormSkin.ButtonForeColor;
-            button.BackColor = FormSkin.ButtonBackColor;
-            button.DisabledForeColor = FormSkin.ButtonDisabledForeColor;
-            button.FlatAppearance.BorderColor = FormSkin.ButtonFlatBorderColor;
+            }
         }
     }
 }

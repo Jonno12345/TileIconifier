@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace TileIconifier.Skinning.Skins
 {
@@ -13,25 +8,26 @@ namespace TileIconifier.Skinning.Skins
     public class ToolStripSystemColorScheme
     {
         #region "Default colors"
-        public static Color DefaultMenuBarBackColor { get { return SystemColors.MenuBar; } }
-        public static Color DefaultPopupBackColor { get { return SystemColors.Menu; } }
-        public static Color DefaultMenuBarBorderColor { get { return SystemColors.ControlDark; } }
-        public static Color DefaultPopupBorderColor { get { return SystemColors.ControlDark; } }
-        public static Color DefaultHighlightBackColor { get { return SystemColors.Highlight; } }
-        public static Color DefaultHighlightForeColor { get { return SystemColors.HighlightText; } }
-        public static Color DefaultMenuBarForeColor { get { return SystemColors.MenuText; } }
-        public static Color DefaultPopupForeColor { get { return SystemColors.MenuText; } }
-        public static Color DefaultDisabledForeColor { get { return SystemColors.GrayText; } }
+        public static Color DefaultMenuBarBackColor => SystemColors.MenuBar;
+        public static Color DefaultPopupBackColor => SystemColors.Menu;
+        public static Color DefaultMenuBarBorderColor => SystemColors.ControlDark;
+        public static Color DefaultPopupBorderColor => SystemColors.ControlDark;
+        public static Color DefaultHighlightBackColor => SystemColors.Highlight;
+        public static Color DefaultHighlightForeColor => SystemColors.HighlightText;
+        public static Color DefaultMenuBarForeColor => SystemColors.MenuText;
+        public static Color DefaultPopupForeColor => SystemColors.MenuText;
+        public static Color DefaultDisabledForeColor => SystemColors.GrayText;
+
         #endregion
 
-        public virtual Color MenuBarBackColor { get { return DefaultMenuBarBackColor; } }
-        public virtual Color PopupBackColor { get { return DefaultPopupBackColor; } }
-        public virtual Color MenuBarBorderColor { get { return DefaultMenuBarBorderColor; } }
-        public virtual Color PopupBorderColor { get { return DefaultPopupBorderColor; } }
-        public virtual Color HighlightBackColor { get { return DefaultHighlightBackColor; } }
-        public virtual Color HighlightForeColor { get { return DefaultHighlightForeColor; } }
-        public virtual Color MenuBarForeColor { get { return DefaultMenuBarForeColor; } }
-        public virtual Color PopupForeColor { get { return DefaultPopupForeColor; } }
-        public virtual Color DisabledForeColor { get { return DefaultDisabledForeColor; } }
+        public virtual Color MenuBarBackColor => DefaultMenuBarBackColor;
+        public virtual Color PopupBackColor => DefaultPopupBackColor;
+        public virtual Color MenuBarBorderColor => DefaultMenuBarBorderColor;
+        public virtual Color PopupBorderColor => DefaultPopupBorderColor;
+        public virtual Color HighlightBackColor => DefaultHighlightBackColor;
+        public virtual Color HighlightForeColor => DefaultHighlightForeColor;
+        public virtual Color MenuBarForeColor => DefaultMenuBarForeColor;
+        public virtual Color PopupForeColor => DefaultPopupForeColor;
+        public virtual Color DisabledForeColor => DefaultDisabledForeColor;
     }
 }
