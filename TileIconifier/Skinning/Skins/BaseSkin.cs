@@ -57,8 +57,7 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color ButtonForeColor => SystemColors.ControlText;
         public virtual Color ButtonBackColor => SystemColors.Control;
         public virtual Color ButtonDisabledForeColor => SystemColors.GrayText;
-        public virtual Color ButtonFlatBorderColor => Color.Empty;
-//not used
+        public virtual Color ButtonFlatBorderColor => Color.Empty; //not used
         #endregion
 
         #region "TextBox"
@@ -66,51 +65,38 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color TextBoxBackColor => SystemColors.Window;
         public virtual Color TextBoxForeColor => SystemColors.WindowText;
         public virtual Color TextBoxReadOnlyBackColor => SystemColors.Control;
-        public virtual Color TextBoxBorderColor => SystemColors.WindowFrame;
-//not used
-        public virtual Color TextBoxBorderFocusedColor => Color.Empty;
-//not used
-        public virtual Color TextBoxBorderDisabledColor => Color.Empty;
-//not used
+        public virtual Color TextBoxBorderColor => SystemColors.WindowFrame; //not used
+        public virtual Color TextBoxBorderFocusedColor => Color.Empty; //not used
+        public virtual Color TextBoxBorderDisabledColor => Color.Empty; //not used
         #endregion
 
         #region "ListView"        
         public virtual FlatStyle ListViewFlatStyle => FlatStyle.Standard;
         public virtual Color ListViewBackColor => SystemColors.Window;
         public virtual Color ListViewForeColor => SystemColors.WindowText;
-        public virtual Color ListViewHeaderBackColor => SystemColors.Control;
-//not used
-        public virtual Color ListViewHeaderForeColor => SystemColors.ControlText;
-//not used
-        public virtual Color ListViewBorderColor => SystemColors.WindowFrame;
-//not used
-        public virtual Color ListViewBorderFocusedColor => Color.Empty;
-//not used
-        public virtual Color ListViewBorderDisabledColor => Color.Empty;
-//not used
+        public virtual Color ListViewHeaderBackColor => SystemColors.Control; //not used
+        public virtual Color ListViewHeaderForeColor => SystemColors.ControlText; //not used
+        public virtual Color ListViewBorderColor => SystemColors.WindowFrame; //not used
+        public virtual Color ListViewBorderFocusedColor => Color.Empty; //not used
+        public virtual Color ListViewBorderDisabledColor => Color.Empty; //not used
         #endregion
 
         #region "ComboBox"
         public virtual FlatStyle ComboBoxFlatStyle => FlatStyle.Standard;
         public virtual Color ComboBoxBackColor => SystemColors.Window;
         public virtual Color ComboBoxForeColor => SystemColors.WindowText;
-        public virtual Color ComboBoxButtonBackColor => SystemColors.Control;
-//not used
-        public virtual Color ComboboxButtonForeColor => SystemColors.ControlText;
-//not used
-        public virtual Color ComboBoxDisabledForeColor => SystemColors.GrayText;
-//not used
-        public virtual Color ComboBoxButtonBorderColor => SystemColors.ControlDark;
-//not used
-        public virtual Color ComboBoxButtonBorderFocusedColor => SystemColors.Highlight;
-//not used
+        public virtual Color ComboBoxButtonBackColor => SystemColors.Control; //not used
+        public virtual Color ComboboxButtonForeColor => SystemColors.ControlText; //not used
+        public virtual Color ComboBoxDisabledForeColor => SystemColors.GrayText; //not used
+        public virtual Color ComboBoxButtonBorderColor => SystemColors.ControlDark; //not used
+        public virtual Color ComboBoxButtonBorderFocusedColor => SystemColors.Highlight; //not used
         #endregion
 
         #region "TabControl"
-        public virtual FlatStyle TabControlFlatStyle { get { return FlatStyle.Standard; } }
-        public virtual Color TabControlSelectedTabBackColor { get { return SystemColors.Window; } } //not used
-        public virtual Color TabControlSelectedTabForeColor { get { return SystemColors.WindowText; } } //not used
-        public virtual Color TabControlTabBorderColor { get { return SystemColors.WindowFrame; } } //not used
+        public virtual FlatStyle TabControlFlatStyle => FlatStyle.Standard;
+        public virtual Color TabControlSelectedTabBackColor => SystemColors.Window; //not used
+        public virtual Color TabControlSelectedTabForeColor => SystemColors.WindowText; //not used
+        public virtual Color TabControlTabBorderColor => SystemColors.WindowFrame; //not used
         #endregion
     }
 }

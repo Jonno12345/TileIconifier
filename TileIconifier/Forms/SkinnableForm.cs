@@ -29,10 +29,10 @@
 
 using System;
 using System.Windows.Forms;
-using TileIconifier.Controls;
 using TileIconifier.Properties;
 using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms
 {
@@ -69,7 +69,7 @@ namespace TileIconifier.Forms
             //Apply the skin to any control newly added to the form.
             if (FormSkin != null && !DesignMode)
             {
-                ApplyControlSkin(e.Control);
+                ContainerUtils.ApplySkinToControl(FormSkin, e.Control);
             }
         }
 
@@ -121,49 +121,8 @@ namespace TileIconifier.Forms
         {
             foreach (Control c in Controls)
             {
-                ApplyControlSkin(c);
+                ContainerUtils.ApplySkinToControl(FormSkin, c);
             }
-        }
-
-        /// <summary>
-        ///     Applies the skin on the specified control.
-        /// </summary>
-        /// <param name="control"></param>
-        private void ApplyControlSkin(Control control)
-        {
-            var skinnableControl = control as ISkinnableControl;
-            if (skinnableControl != null)
-            {
-                skinnableControl.ApplySkin(FormSkin);
-                return;
-            }
-
-            //ToolStrip
-            var tsp = control as ToolStrip;
-            if (tsp != null)
-            {
-                tsp.Renderer = FormSkin.ToolStripRenderer;
-                return;
-            }
-
-            SkinnableTabControl tab = control as SkinnableTabControl;
-            if (tab != null)
-            {
-                tab.FlatStyle = FormSkin.TabControlFlatStyle;
-                tab.FlatTabSelectedBackColor = FormSkin.TabControlSelectedTabBackColor;
-                tab.FlatTabSelectedForeColor = FormSkin.TabControlSelectedTabForeColor;
-                tab.FlatTabBorderColor = FormSkin.TabControlTabBorderColor;
-                //Don't return now so that the recursive loop is reached and applies
-                //the skin to controls inside the tab pages.
-            }
-
-            //Recursive loop that applies the skin to controls inside controls. At this
-            //point, the control is not a handled skinnable control so it is likely to be just
-            //a container that contains more controls.            
-            foreach (Control c in control.Controls)
-            {
-                ApplyControlSkin(c);
-            }
-        }
+        }        
     }
 }

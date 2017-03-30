@@ -318,6 +318,7 @@
     <Compile Include="Skinning\ToolStripSystemColorTable.cs" />
     <Compile Include="Skinning\ToolStripSystemRendererEx.cs" />
     <Compile Include="Utilities\ButtonUtils.cs" />
+    <Compile Include="Utilities\ContainerUtils.cs" />
     <Compile Include="Utilities\FontUtils.cs" />
     <Compile Include="Utilities\FormUtils.cs" />
     <Compile Include="Forms\Shared\FrmIconSelector.cs">

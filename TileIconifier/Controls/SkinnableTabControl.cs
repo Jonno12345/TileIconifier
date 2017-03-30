@@ -1,34 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TileIconifier.Skinning.Skins;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls
 {
-    class SkinnableTabControl : TabControl
+    class SkinnableTabControl : TabControl, ISkinnableControl
     {
-        private const ControlStyles OWNER_DRAWN_FLAGS =
-            ControlStyles.AllPaintingInWmPaint |
-            ControlStyles.DoubleBuffer |
-            ControlStyles.ResizeRedraw |
-            ControlStyles.UserPaint;
+        private const string UNSUPPORTED_PROPERTY_ERROR =
+            "This property is not currently supported by this control.";
 
         private const TextFormatFlags TEXT_FLAGS =
             TextFormatFlags.HorizontalCenter |
             TextFormatFlags.VerticalCenter;
+        
+        /// <summary>
+        ///     Collection of <see cref="ControlStyles"/> that should be set to true 
+        ///     when we want to draw ourselves. 
+        /// </summary>
+        private readonly ReadOnlyCollection<ControlStyles> customPaintingFlags = new List<ControlStyles>
+        {
+            ControlStyles.UserPaint,
+            ControlStyles.AllPaintingInWmPaint,
+            ControlStyles.OptimizedDoubleBuffer,
+            ControlStyles.ResizeRedraw            
+        }.AsReadOnly();
 
-        private const string UNSUPPORTED_PROPERTY_ERROR =
-            "This property is not currently supported by this control.";
+        /// <summary>
+        ///     Dictionary of the default values for the <see cref="ControlStyles"/>
+        ///     that we change when we are drawing ourselves. 
+        /// </summary>
+        private readonly ReadOnlyDictionary<ControlStyles, bool> defaultPaintingFlags;                
+
+        public SkinnableTabControl()
+        {
+            //Backup the initial ControlStyles in case we need to reset them.
+            var defaultsFlags = new Dictionary<ControlStyles, bool>();
+            foreach (var f in customPaintingFlags)
+            {
+                defaultsFlags.Add(f,GetStyle(f));
+            }
+            defaultPaintingFlags = new ReadOnlyDictionary<ControlStyles, bool>(defaultsFlags);
+        }
 
         #region "Properties"
         /// <summary>
-        /// Indicates whether or not we draw the control ourselves.
+        /// Indicates whether or not we should draw the control ourselves.
         /// </summary>
-        private bool OwnerDrawInternal
+        private bool HandleDrawing
         {
             get
             {
@@ -36,40 +59,14 @@ namespace TileIconifier.Controls
             }
         }
 
-        /// <summary>
-        /// Gets or sets whether or not the control has the OwnerDrawn flag
-        /// at the Win32 API level.
-        /// </summary>
-        private bool HasOwnerDrawFlags
-        {
-            get
-            {
-                return GetStyle(OWNER_DRAWN_FLAGS);
-            }
-            set
-            {
-                SetStyle(OWNER_DRAWN_FLAGS, value);
-            }
-        }
-
-        //The base class' ForeColor properties is totally hidden from the code editor 
-        //and the designer, which is extremely inconvinient, so we need to reimplement it
-        //to change its visibility attribute.
-        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public override Color ForeColor
-        {
-            get { return base.ForeColor; }
-            set { base.ForeColor = value; }
-        }
-
         public override Color BackColor
         {
             get
             {
-                //The base control does not support any other BackColor than 
-                //the one the property returns, which means that we can't make 
-                //it ambiant.
-                if (OwnerDrawInternal && Parent != null)
+                //We make the property ambiant, but only if we draw the control 
+                //ourselves because the base control does not support any other 
+                //BackColor than the one that the property returns.
+                if (HandleDrawing && Parent != null)
                 {
                     return Parent.BackColor;
                 }
@@ -129,16 +126,13 @@ namespace TileIconifier.Controls
         [DefaultValue(typeof(Color), nameof(SystemColors.Window))]
         public Color FlatTabSelectedBackColor
         {
-            get
-            {
-                return flatTabSelectedBackColor;
-            }
+            get { return flatTabSelectedBackColor; }
             set
             {
                 if (flatTabSelectedBackColor != value)
                 {
                     flatTabSelectedBackColor = value;
-                    if (OwnerDrawInternal)
+                    if (HandleDrawing)
                     {
                         if (SelectedIndex >= 0 && SelectedIndex < TabPages.Count)
                         {
@@ -154,16 +148,13 @@ namespace TileIconifier.Controls
         [DefaultValue(typeof(Color), nameof(SystemColors.WindowText))]
         public Color FlatTabSelectedForeColor
         {
-            get
-            {
-                return flatTabSelectedForeColor;
-            }
+            get { return flatTabSelectedForeColor; }
             set
             {
                 if (flatTabSelectedForeColor != value)
                 {
                     flatTabSelectedForeColor = value;
-                    if (OwnerDrawInternal)
+                    if (HandleDrawing)
                     {
                         if (SelectedIndex >= 0 && SelectedIndex < TabPages.Count)
                         {
@@ -185,7 +176,7 @@ namespace TileIconifier.Controls
                 if (flatTabBorderColor != value)
                 {
                     flatTabBorderColor = value;
-                    if (OwnerDrawInternal)
+                    if (HandleDrawing)
                     {
                         Invalidate();
                     }
@@ -203,7 +194,7 @@ namespace TileIconifier.Controls
                 if (flatTabBorderWidth != value)
                 {
                     flatTabBorderWidth = value;
-                    if (OwnerDrawInternal)
+                    if (HandleDrawing)
                     {
                         Invalidate();
                     }
@@ -212,13 +203,21 @@ namespace TileIconifier.Controls
         }
         #endregion
 
+        /// <summary>
+        ///     Invalidate the region of the tab at the given index.
+        /// </summary>        
         private void InvalidateTab(int index)
         {
-            TabPage page = SelectedTab;
-            if (SelectedTab != null)
+            //We use the selected tab to calculate the spacing between the bottom
+            //of the rectangle returned by GetTabRect() and the top of the page
+            //so that we can invalidate it too (remember that we draw there so that
+            //the tab blends with the page). If we can't obtain the selected page, we
+            //just invalidate the whole control.
+            var page = SelectedTab;
+            if (page != null)
             {
-                Rectangle tabRect = GetTabRect(index);
-                tabRect.Height += SelectedTab.Bounds.Top - tabRect.Bottom;
+                var tabRect = GetTabRect(index);
+                tabRect.Height += page.Bounds.Top - tabRect.Bottom;
                 Invalidate(tabRect);
             }
             else
@@ -227,14 +226,44 @@ namespace TileIconifier.Controls
             }
         }
 
+        /// <summary>
+        ///     Sets the appropriate flags to the control so that it can be owner drawn.
+        /// </summary>
+        private void EnableOwnerDrawing()
+        {
+            var flags = new ControlStyles();
+            foreach (ControlStyles s in customPaintingFlags)
+            {
+                flags |= s;
+            }
+
+            SetStyle(flags, true);
+        }
+
+        /// <summary>
+        ///     Reset the owner drawing flags.
+        /// </summary>
+        private void ResetOwnerDrawing()
+        {
+            foreach (var k in defaultPaintingFlags.Keys)
+            {
+                SetStyle(k, defaultPaintingFlags[k]);
+            }
+        }
+
         protected override void OnSelectedIndexChanged(EventArgs e)
         {
             base.OnSelectedIndexChanged(e);
 
-            if (OwnerDrawInternal)
+            if (HandleDrawing)
                 Invalidate();
         }
 
+        /// <summary>
+        ///     Applies the most appropriate values to the base control 
+        ///     depending of the FlatStyle and the Appearance properties 
+        ///     that we have implemented ourselves.
+        /// </summary>
         private void SetBaseProperties()
         {
             switch (FlatStyle)
@@ -249,7 +278,7 @@ namespace TileIconifier.Controls
                     {
                         base.Appearance = TabAppearance.Normal;
                     }
-                    HasOwnerDrawFlags = false;
+                    ResetOwnerDrawing();
                     break;
 
                 case FlatStyle.Popup:
@@ -263,13 +292,14 @@ namespace TileIconifier.Controls
                     {
                         base.Appearance = TabAppearance.Normal;
                     }
-                    HasOwnerDrawFlags = false;
+                    ResetOwnerDrawing();
                     break;
 
                 case FlatStyle.Flat:
                     //We don't mind the base.Appearance property, since it
-                    //has no value that matches a Flat FlatStyle.
-                    HasOwnerDrawFlags = true;
+                    //has no value that matches a Flat FlatStyle and we draw
+                    //everything ourslves anyway.
+                    EnableOwnerDrawing();
                     break;
             }
         }
@@ -293,15 +323,15 @@ namespace TileIconifier.Controls
             }
         }
 
+        /// <summary>
+        ///     Sets the appropriate colors to the given <see cref="TabPage"/>.
+        /// </summary>        
         private void RefreshTabPageColors(TabPage tabPage)
         {
             //We don't touch to the tab pages in design mode to prevent
-            //the designer setting the property value in the designer generated file, 
-            //which causes weird things. As a side effect of this check, the designer
-            //preview is not faithful to the actual result, but that's better than nothing.
-            //To completely fix this issue, we would probably need to subclass the TabPage
-            //control, which would be a nightmare because of the lack of designer support 
-            //for custom TabPages.            
+            //the designer from setting the property value in the designer 
+            //generated file. As a side effect of this check, the designer 
+            //preview is not faithful to the actual result.                  
             if (DesignMode) return;
 
             if (FlatStyle == FlatStyle.Flat)
@@ -324,53 +354,54 @@ namespace TileIconifier.Controls
         }
 
         protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-
-            if (SelectedIndex < 0 || TabCount < 1)
-                return;
-
-            float borderWidth = FlatTabBorderWidth;
-            Pen borderPen = new Pen(FlatTabBorderColor, borderWidth);
-            Graphics g = e.Graphics;
-
-            //Create a copy of all tap rectangles, since we will re-use and modify them
-            //several times.
-            RectangleF[] tabRects = new RectangleF[TabPages.Count];
-            for (int i = 0; i < TabCount; i++)
+        {   
+            if (HandleDrawing)
             {
-                tabRects[i] = GetTabRect(i);
-            }
+                if (SelectedIndex < 0 || TabCount < 1)
+                    return;
 
+                var borderWidth = (float)FlatTabBorderWidth;
+                var borderPen = new Pen(FlatTabBorderColor, borderWidth);
+                var g = e.Graphics;
 
-            //Adjust the size of tabs so that the left edge of the first one aligns with the page border.            
-            //-2F is the substaction of the location of the first visible tab's left side and 
-            //the page's left side. We hard-codethe value, because there is no way that I know of to get the
-            //location of the first visible tab (the tab with an index of 0 is not necesserily the "leftiest" tab.)            
-            //+borderWidth / 2F so that we draw the border outside of the tab, as we did with the page.
-            float tabInflation = -2F + borderWidth / 2F;
-            for (int i = 0; i < tabRects.Length; i++)
-            {
-                tabRects[i].Inflate(tabInflation, 0);
-            }
-
-            //Let's start drawing!
-
-            e.Graphics.Clear(BackColor);
-
-            //Draw a border just outside of the page
-            RectangleF tabPageBorderBounds = SelectedTab.Bounds;
-            tabPageBorderBounds.Inflate(borderWidth / 2F, borderWidth / 2F);
-            if (Appearance == Appearance.Button)
-            {
-                DrawRectangle(g, tabPageBorderBounds, borderPen);
-            }
-            else
-            {
-                //If tabs have a tab appearance, there is no border under the selected tab
-                RectangleF trect = tabRects[SelectedIndex];
-                PointF[] pts =
+                //Create a copy of all tab rectangles, since we will re-use and modify them
+                //several times.
+                RectangleF[] tabRects = new RectangleF[TabPages.Count];
+                for (int i = 0; i < TabCount; i++)
                 {
+                    tabRects[i] = GetTabRect(i);
+                }
+
+
+                //Adjust the size of tabs so that the left edge of the first one aligns with the page border.            
+                //-2F is an empirical value that is the space between the left side of the first visible tab and the 
+                //left side of the page. We hard-code the value, because there is no way that I know of to get the
+                //location of the first visible tab (the tab with an index of 0 is not necesserily the "leftiest" tab.)            
+                //+borderWidth / 2F ensures that we draw the border outside of the tab, as we do with the page.
+                var tabInflation = -2F + borderWidth / 2F;
+                for (int i = 0; i < tabRects.Length; i++)
+                {
+                    tabRects[i].Inflate(tabInflation, 0);
+                }
+
+                //Let's start drawing!
+
+                e.Graphics.Clear(BackColor);
+
+                //Draw a border just outside of the page
+                var tabPageBorderBounds = (RectangleF)SelectedTab.Bounds;
+                tabPageBorderBounds.Inflate(borderWidth / 2F, borderWidth / 2F);
+                if (Appearance == Appearance.Button)
+                {
+                    DrawRectangle(g, tabPageBorderBounds, borderPen);
+                }
+                else
+                {
+                    //If tabs have a tab appearance, there is no border under the selected tab, so 
+                    //we draw a partial rectangle with DrawLines().
+                    var trect = tabRects[SelectedIndex];
+                    var pts = new[]
+                    {
                     new PointF(trect.Left, tabPageBorderBounds.Top),
                     tabPageBorderBounds.Location,
                     new PointF(tabPageBorderBounds.Left, tabPageBorderBounds.Bottom),
@@ -378,78 +409,101 @@ namespace TileIconifier.Controls
                     new PointF(tabPageBorderBounds.Right, tabPageBorderBounds.Top),
                     new PointF(trect.Right, tabPageBorderBounds.Top)
                 };
-                g.DrawLines(borderPen, pts);
-            }
-
-            //Draw the border and background of each tab.
-            if (Appearance == Appearance.Button)
-            {
-                for (int i = 0; i < TabCount; i++)
-                {
-                    DrawRectangle(g, tabRects[i], borderPen);
-
-                    //Exclude the border that we have just drawn from the rectangle for when 
-                    //we draw the background and text.
-                    tabRects[i].Inflate(-borderWidth / 2F, -borderWidth / 2F);
+                    g.DrawLines(borderPen, pts);
                 }
-            }
-            else
-            {
-                //Extend the tab so that it reaches the top of the page.
-                //We must always use the rectangle of the selected tab to calculate the spacing to add, because
-                //when Multiline is true, other tabs may appear on rows the are farther from the top of the page.
-                float heightToAdd = tabPageBorderBounds.Top + borderWidth / 2F - tabRects[SelectedIndex].Bottom;
-                for (int i = 0; i < TabCount; i++)
-                {
-                    tabRects[i].Height += heightToAdd;
 
-                    if (i == SelectedIndex) //Tab is selected
+                //Draw the border and background of each tab.
+                if (Appearance == Appearance.Button)
+                {
+                    for (int i = 0; i < TabCount; i++)
                     {
-                        PointF[] pts =
+                        DrawRectangle(g, tabRects[i], borderPen);
+
+                        //Exclude the border that we have just drawn from the rectangle for when 
+                        //we draw the background and text.
+                        tabRects[i].Inflate(-borderWidth / 2F, -borderWidth / 2F);
+                    }
+                }
+                else
+                {
+                    //Extend the tab so that it reaches the top of the page.
+                    //We must always use the rectangle of the selected tab to calculate the spacing to add, because
+                    //when Multiline is true, other tabs may appear on rows the are farther from the top of the page.
+                    var heightToAdd = tabPageBorderBounds.Top + borderWidth / 2F - tabRects[SelectedIndex].Bottom;
+                    for (int i = 0; i < TabCount; i++)
+                    {
+                        tabRects[i].Height += heightToAdd;
+
+                        if (i == SelectedIndex) //Tab is selected
                         {
+                            var pts = new[]
+                            {
                             new PointF(tabRects[i].Right, tabRects[i].Bottom),
                             new PointF(tabRects[i].Right, tabRects[i].Top),
                             tabRects[i].Location,
                             new PointF(tabRects[i].Left, tabRects[i].Bottom)
                         };
 
-                        g.DrawLines(borderPen, pts);
+                            g.DrawLines(borderPen, pts);
+                        }
+
+                        //Exclude the border that we may have just drawn from the rectangle for when 
+                        //we draw the background and text. Don't forget that in this case, there 
+                        //is no border at the bottom of the tab.
+                        tabRects[i].X += borderWidth / 2F;
+                        tabRects[i].Y += borderWidth / 2F;
+                        tabRects[i].Width -= borderWidth;
+                        tabRects[i].Height -= borderWidth / 2F;
+                    }
+                }
+
+                //Draw the background, focus rectangle and text of each tab
+                for (int i = 0; i < TabCount; i++)
+                {
+                    Color textCol;
+                    if (i == SelectedIndex)
+                    {
+                        using (var b = new SolidBrush(FlatTabSelectedBackColor))
+                            g.FillRectangle(b, tabRects[i]);
+
+                        if (Focused && ShowFocusCues)
+                        {
+                            var focusRect = Rectangle.Round(tabRects[i]);
+                            focusRect.Inflate(-3, -3);
+                            ControlPaint.DrawFocusRectangle(g, focusRect, flatTabSelectedForeColor, FlatTabSelectedBackColor);
+                        }
+
+                        textCol = FlatTabSelectedForeColor;
+                    }
+                    else
+                    {
+                        textCol = ForeColor;
                     }
 
-                    //Exclude the border that we may have just drawn from the rectangle for when 
-                    //we draw the background and text. Don't forget that in this case, there 
-                    //is no border at the bottom of the tab.
-                    tabRects[i].X += borderWidth / 2F;
-                    tabRects[i].Y += borderWidth / 2F;
-                    tabRects[i].Width -= borderWidth;
-                    tabRects[i].Height -= borderWidth / 2F;
+                    var flags = TEXT_FLAGS;
+                    if (RightToLeft == RightToLeft.Yes)
+                        flags |= TextFormatFlags.RightToLeft;
+
+                    TextRenderer.DrawText(g, TabPages[i].Text, Font, Rectangle.Round(tabRects[i]), textCol, flags);
                 }
+
+                borderPen.Dispose();
             }
 
-            //Draw the text of each tab
-            for (int i = 0; i < TabCount; i++)
-            {
-                Color textCol;
-                if (i == SelectedIndex)
-                {
-                    using (var b = new SolidBrush(FlatTabSelectedBackColor))
-                        g.FillRectangle(b, tabRects[i]);
-
-                    textCol = FlatTabSelectedForeColor;
-                }
-                else
-                {
-                    textCol = ForeColor;
-                }
-
-                TextFormatFlags flags = TEXT_FLAGS;
-                if (RightToLeft == RightToLeft.Yes)
-                    flags |= TextFormatFlags.RightToLeft;
-
-                TextRenderer.DrawText(g, TabPages[i].Text, Font, Rectangle.Round(tabRects[i]), textCol, flags);
-            }
-
-            borderPen.Dispose();
+            base.OnPaint(e);
         }
+
+        public void ApplySkin(BaseSkin skin)
+        {
+            FlatStyle = skin.TabControlFlatStyle;
+            FlatTabSelectedBackColor = skin.TabControlSelectedTabBackColor;
+            FlatTabSelectedForeColor = skin.TabControlSelectedTabForeColor;
+            FlatTabBorderColor = skin.TabControlTabBorderColor;
+            
+            foreach (Control c in Controls)
+            {
+                ContainerUtils.ApplySkinToControl(skin, c);
+            }          
+        }        
     }
 }

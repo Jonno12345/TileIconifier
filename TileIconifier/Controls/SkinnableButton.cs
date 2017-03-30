@@ -31,10 +31,7 @@ namespace TileIconifier.Controls
                 base.BackColor = value;
                 //We can't override the OnBackColorChanged method for this
                 //because it is only called when the BackColor property 
-                //value itself is changed. However, the UseVisualStyleBackColor
-                //property is always set to false when the BackColor property setter
-                //is ran, even when the property value is not really changed,
-                //so we need to to the same.
+                //value itself is changed.
                 if (BackColor == DefaultBackColor)
                     UseVisualStyleBackColor = true;
             }
