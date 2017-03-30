@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TileIconifier.Skinning.Skins;
 
 namespace TileIconifier.Controls
 {
-    class SkinnableListView : ListView
+    class SkinnableListView : ListView, ISkinnableControl
     {
         public SkinnableListView()
         {
@@ -255,6 +251,18 @@ namespace TileIconifier.Controls
                 default:
                     throw new ArgumentException("Unsupported horizontal alignement.");
             }                
+        }
+
+        public void ApplySkin(BaseSkin skin)
+        {
+            FlatStyle = skin.ListViewFlatStyle;
+            FlatHeaderBackColor = skin.ListViewHeaderBackColor;
+            FlatHeaderForeColor = skin.ListViewHeaderForeColor;
+            BackColor = skin.ListViewBackColor;
+            ForeColor = skin.ListViewForeColor;
+            FlatBorderColor = skin.ListViewBorderColor;
+            FlatBorderFocusedColor = skin.ListViewBorderFocusedColor;
+            FlatBorderDisabledColor = skin.ListViewBorderDisabledColor;
         }
     }
 }

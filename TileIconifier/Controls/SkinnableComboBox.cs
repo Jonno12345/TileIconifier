@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TileIconifier.Skinning.Skins;
 
 namespace TileIconifier.Controls
 {
-    class SkinnableComboBox : ComboBox
+    class SkinnableComboBox : ComboBox, ISkinnableControl
     {
         private const TextFormatFlags DEFAULT_TEXT_FLAGS = TextFormatFlags.VerticalCenter;        
 
@@ -246,6 +243,18 @@ namespace TileIconifier.Controls
             }
 
             base.OnDrawItem(e);            
+        }
+
+        public void ApplySkin(BaseSkin skin)
+        {
+            FlatStyle = skin.ComboBoxFlatStyle;
+            BackColor = skin.ComboBoxBackColor;
+            ForeColor = skin.ComboBoxForeColor;
+            FlatButtonBackColor = skin.ComboBoxButtonBackColor;
+            FlatButtonForeColor = skin.ComboboxButtonForeColor;
+            FlatButtonDisabledForeColor = skin.ComboBoxDisabledForeColor;
+            FlatButtonBorderColor = skin.ComboBoxButtonBorderColor;
+            FlatButtonBorderFocusedColor = skin.ComboBoxButtonBorderFocusedColor;
         }
     }
 }

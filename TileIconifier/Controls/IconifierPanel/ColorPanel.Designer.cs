@@ -34,8 +34,8 @@
             this.btnColourPicker = new TileIconifier.Controls.SkinnableButton();
             this.cmbColour = new TileIconifier.Controls.SkinnableComboBox();
             this.lblBGColour = new System.Windows.Forms.Label();
-            this.txtBGColour = new TileIconifier.Controls.SkinnableTextBox();
-            this.chkFGTxtEnabled = new TileIconifier.Controls.SkinnableCheckBox();
+            this.txtBGColour = new SkinnableTextBox();
+            this.chkFGTxtEnabled = new SkinnableCheckBox();
             this.radFGDark = new TileIconifier.Controls.SkinnableRadioButton();
             this.lblFGText = new System.Windows.Forms.Label();
             this.radFGLight = new TileIconifier.Controls.SkinnableRadioButton();
@@ -149,12 +149,12 @@
         private Eyedropper.EyedropColorPicker eyedropperColorPicker;
         private TileIconifier.Controls.SkinnableButton btnColourPicker;
         private TileIconifier.Controls.SkinnableRadioButton radFGDark;
-        private TileIconifier.Controls.SkinnableCheckBox chkFGTxtEnabled;
+        private SkinnableCheckBox chkFGTxtEnabled;
         private System.Windows.Forms.Label lblFGText;
         private TileIconifier.Controls.SkinnableRadioButton radFGLight;
         private TileIconifier.Controls.SkinnableComboBox cmbColour;
         private System.Windows.Forms.Label lblBGColour;
-        private TileIconifier.Controls.SkinnableTextBox txtBGColour;
+        private SkinnableTextBox txtBGColour;
         private System.Windows.Forms.ColorDialog clrDialog;
         private System.Windows.Forms.TableLayoutPanel tlpFGColour;
     }
