@@ -255,7 +255,7 @@ namespace TileIconifier.Skinning
                     base.OnRenderToolStripBackground(e);
                 }       
             }
-            else if (e.ToolStrip.GetType() == typeof(MenuStrip)) //Menu bar
+            else if (e.ToolStrip is MenuStrip) //Menu bar
             {
                 Color tableColor = colorTable.MenuBarBackColor;
                 if (tableColor != ToolStripSystemColorScheme.DefaultMenuBarBackColor)
@@ -428,7 +428,7 @@ namespace TileIconifier.Skinning
 
         protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
         {
-            if ((e.ToolStrip.GetType() != typeof(MenuStrip) && !e.Item.IsOnDropDown) || e.TextDirection != ToolStripTextDirection.Horizontal)
+            if ((e.ToolStrip is MenuStrip && !e.Item.IsOnDropDown) || e.TextDirection != ToolStripTextDirection.Horizontal)
             {
                 base.OnRenderItemText(e);
                 return;

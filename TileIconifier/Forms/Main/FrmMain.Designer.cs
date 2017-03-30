@@ -32,19 +32,19 @@ namespace TileIconifier.Forms.Main
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.txtFilter = new SkinnableTextBox();
+            this.txtFilter = new TileIconifier.Controls.SkinnableTextBox();
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnDeleteCustomShortcut = new TileIconifier.Controls.SkinnableButton();
             this.btnBuildCustomShortcut = new TileIconifier.Controls.SkinnableButton();
             this.iconifyPanel = new TileIconifier.Controls.IconifierPanel.TileIconifierPanel();
             this.srtlstShortcuts = new TileIconifier.Controls.SortableListView();
             this.lblExePath = new System.Windows.Forms.Label();
-            this.txtExePath = new SkinnableTextBox();
+            this.txtExePath = new TileIconifier.Controls.SkinnableTextBox();
             this.btnRemove = new TileIconifier.Controls.SkinnableButton();
             this.btnIconify = new TileIconifier.Controls.SkinnableButton();
             this.lblLnkPath = new System.Windows.Forms.Label();
-            this.txtLnkPath = new SkinnableTextBox();
-            this.mnuMain = new System.Windows.Forms.MenuStrip();
+            this.txtLnkPath = new TileIconifier.Controls.SkinnableTextBox();
+            this.mnuMain = new TileIconifier.Controls.SkinnableMenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +65,7 @@ namespace TileIconifier.Forms.Main
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblBadShortcutWarning = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -169,7 +170,8 @@ namespace TileIconifier.Forms.Main
             this.aboutToolStripMenuItem,
             this.helpToolStripMenuItem,
             this.languageToolStripMenuItem,
-            this.donateToolStripMenuItem});
+            this.donateToolStripMenuItem,
+            this.toolStripMenuItem1});
             resources.ApplyResources(this.mnuMain, "mnuMain");
             this.mnuMain.Name = "mnuMain";
             // 
@@ -317,6 +319,11 @@ namespace TileIconifier.Forms.Main
             this.tableLayoutPanel1.Controls.Add(this.txtLnkPath, 0, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -343,7 +350,6 @@ namespace TileIconifier.Forms.Main
         private TileIconifier.Controls.SkinnableButton btnRemove;
         private System.Windows.Forms.Label lblExePath;
         private SkinnableTextBox txtExePath;
-        private System.Windows.Forms.MenuStrip mnuMain;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
@@ -370,6 +376,8 @@ namespace TileIconifier.Forms.Main
         private System.Windows.Forms.Label lblBadShortcutWarning;
         private System.Windows.Forms.ToolStripMenuItem mnuBatchOperations;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private SkinnableMenuStrip mnuMain;
     }
 }
 

@@ -51,7 +51,9 @@ There is some mechanism I have yet to understand overriding these from being til
 ## Credits
 
 Logo provided by AdamDesrosiers of XDA Developers.
+
 Hugely improved skinning by @mcdenis - https://github.com/mcdenis
 
 Translations:
+
 Russian by @Zik - https://github.com/Zik
