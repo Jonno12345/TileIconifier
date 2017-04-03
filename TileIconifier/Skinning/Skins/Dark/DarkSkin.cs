@@ -59,8 +59,7 @@ namespace TileIconifier.Skinning.Skins.Dark
         public override Color ErrorForeColor { get { return Color.Red; } }
 
         //These objects are potentially more expensive to create, so we cache them.
-        public override Font Font { get; } = new Font("Segoe UI", 8);
-        public override ToolStripSystemRendererEx ToolStripRenderer { get; } = new ToolStripSystemRendererEx(new ToolStripDarkColorScheme());
+        public override Font Font { get; } = new Font("Segoe UI", 8);        
         #endregion
 
         #region "Button"
@@ -108,6 +107,18 @@ namespace TileIconifier.Skinning.Skins.Dark
         public override Color TabControlSelectedTabBackColor { get { return LowBackColor; } }
         public override Color TabControlSelectedTabForeColor { get { return CommonForeColor; } }
         public override Color TabControlTabBorderColor { get { return CommonBorderColor; } }
+        #endregion
+
+        #region "ToolStrip"
+        public override Color ToolStripMenuBarBackColor { get { return Color.FromArgb(70, 70, 70); } }
+        public override Color ToolStripPopupBackColor { get { return Color.FromArgb(70, 70, 70); } }
+        public override Color ToolStripMenuBarBorderColor { get { return Color.FromArgb(90, 90, 90); } }
+        public override Color ToolStripPopupBorderColor { get { return Color.FromArgb(90, 90, 90); } }
+        public override Color ToolStripHighlightBackColor { get { return Color.FromArgb(100, 100, 100); } }
+        public override Color ToolStripHighlightForeColor { get { return Color.FromArgb(255, 255, 255); } }
+        public override Color ToolStripMenuBarForeColor { get { return Color.FromArgb(230, 230, 230); } }
+        public override Color ToolStripPopupForeColor { get { return Color.FromArgb(240, 240, 240); } }
+        public override Color ToolStripDisabledForeColor { get { return Color.FromArgb(130, 130, 130); } }
         #endregion
     }
 }
