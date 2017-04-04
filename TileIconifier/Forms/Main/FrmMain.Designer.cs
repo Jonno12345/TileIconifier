@@ -325,8 +325,7 @@ namespace TileIconifier.Forms.Main
             this.Controls.Add(this.mnuMain);
             this.MainMenuStrip = this.mnuMain;
             this.Name = "FrmMain";
-            this.Load += new System.EventHandler(this.frmDropper_Load);
-            this.Resize += new System.EventHandler(this.FrmMain_Resize);
+            this.Load += new System.EventHandler(this.frmDropper_Load);            
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
