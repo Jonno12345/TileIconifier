@@ -57,9 +57,9 @@ namespace TileIconifier.Forms.Main
 
         private ShortcutItem CurrentShortcutItem => _currentShortcutListViewItem.ShortcutItem;
 
-        protected override void OnSkinChanged(EventArgs e)
+        protected override void OnSkinChanged(object sender, EventArgs e)
         {
-            base.OnSkinChanged(e);
+            base.OnSkinChanged(sender, e);
 
             ApplySkin();
         }
