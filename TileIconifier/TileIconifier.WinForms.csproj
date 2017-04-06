@@ -168,9 +168,6 @@
     <Compile Include="Controls\SkinnableTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\SkinnableToolStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Controls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -198,7 +195,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerMain.ru.resx">
       <DependentUpon>FrmCustomShortcutManagerMain.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerNew.ru.resx">
       <DependentUpon>FrmCustomShortcutManagerNew.cs</DependentUpon>
@@ -292,9 +288,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\Shortcut\ShortcutItemListViewItem.cs" />
-    <Compile Include="Controls\SkinnableMenuStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Skinning\SkinAttributes.cs" />
     <Compile Include="Skinning\SkinHandler.cs" />
     <Compile Include="Skinning\Skins\Dark\DarkSkin.cs" />
@@ -359,7 +352,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerMain.resx">
       <DependentUpon>FrmCustomShortcutManagerMain.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomShortcutForms\FrmCustomShortcutManagerNew.resx">
       <DependentUpon>FrmCustomShortcutManagerNew.cs</DependentUpon>

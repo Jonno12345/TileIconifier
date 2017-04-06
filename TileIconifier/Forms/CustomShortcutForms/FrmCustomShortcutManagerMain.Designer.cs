@@ -32,7 +32,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomShortcutManagerMain));
             this.btnCreateNewShortcut = new TileIconifier.Controls.SkinnableButton();
-            this.menuStrip1 = new SkinnableMenuStrip();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDeleteCustomShortcut = new TileIconifier.Controls.SkinnableButton();
             this.lstCustomShortcuts = new TileIconifier.Controls.SortableListView();

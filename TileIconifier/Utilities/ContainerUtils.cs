@@ -17,7 +17,15 @@ namespace TileIconifier.Utilities
                 skinnableControl.ApplySkin(skin);
                 return;
             }
-            
+
+            //ToolStrip
+            var tsp = control as ToolStrip;
+            if (tsp != null)
+            {
+                tsp.Renderer = skin.ToolStripRenderer;
+                return;
+            }
+
             //Recursive loop that applies the skin to controls inside controls. At this
             //point, the control is not a handled skinnable control so it is likely to be just
             //a container that contains more controls.            
