@@ -45,8 +45,7 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color ErrorForeColor => Color.Red;
 
         //These objects are potentially more expensive to create, se we cache them.
-        public virtual Font Font { get; } = SystemFonts.DialogFont;
-        public virtual ToolStripSystemRendererEx ToolStripRenderer { get; } = new ToolStripSystemRendererEx();
+        public virtual Font Font { get; } = SystemFonts.DialogFont;       
         #endregion
 
         //"not used" means that the given color is not actually used by the control, because
@@ -97,6 +96,18 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color TabControlSelectedTabBackColor => SystemColors.Window; //not used
         public virtual Color TabControlSelectedTabForeColor => SystemColors.WindowText; //not used
         public virtual Color TabControlTabBorderColor => SystemColors.WindowFrame; //not used
+        #endregion
+
+        #region "ToolStrip"
+        public virtual Color ToolStripMenuBarBackColor => ToolStripSystemColorTable.DefaultMenuBarBackColor;
+        public virtual Color ToolStripPopupBackColor => ToolStripSystemColorTable.DefaultPopupBackColor;
+        public virtual Color ToolStripMenuBarBorderColor => ToolStripSystemColorTable.DefaultMenuBarBorderColor;
+        public virtual Color ToolStripPopupBorderColor => ToolStripSystemColorTable.DefaultPopupBorderColor;
+        public virtual Color ToolStripHighlightBackColor => ToolStripSystemColorTable.DefaultHighlightBackColor;
+        public virtual Color ToolStripHighlightForeColor => ToolStripSystemColorTable.DefaultHighlightForeColor;
+        public virtual Color ToolStripMenuBarForeColor => ToolStripSystemColorTable.DefaultMenuBarForeColor;
+        public virtual Color ToolStripPopupForeColor => ToolStripSystemColorTable.DefaultPopupForeColor;
+        public virtual Color ToolStripDisabledForeColor => ToolStripSystemColorTable.DefaultDisabledForeColor;
         #endregion
     }
 }

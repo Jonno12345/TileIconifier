@@ -18,12 +18,12 @@ namespace TileIconifier.Skinning
         #region "Constructors"
         public ToolStripSystemRendererEx()
         {
-            colorTable = new ToolStripSystemColorTable();
+            colorTable = new ToolStripSystemColorTable(new BaseSkin());
         }
 
-        public ToolStripSystemRendererEx(ToolStripSystemColorScheme pScheme)
+        public ToolStripSystemRendererEx(BaseSkin skin)
         {
-            colorTable = new ToolStripSystemColorTable(pScheme);
+            colorTable = new ToolStripSystemColorTable(skin);
         }
         #endregion
 
@@ -229,7 +229,7 @@ namespace TileIconifier.Skinning
                 //has requested a specific color, so we draw a flat menu with it regardless of
                 //system settings.
                 Color tableColor = colorTable.PopupBackColor;
-                if (tableColor != ToolStripSystemColorScheme.DefaultPopupBackColor)
+                if (tableColor != ToolStripSystemColorTable.DefaultPopupBackColor)
                 {
                     FillRectangle(e.Graphics, tableColor, e.AffectedBounds);
                 }
@@ -258,7 +258,7 @@ namespace TileIconifier.Skinning
             else if (e.ToolStrip.GetType() == typeof(MenuStrip)) //Menu bar
             {
                 Color tableColor = colorTable.MenuBarBackColor;
-                if (tableColor != ToolStripSystemColorScheme.DefaultMenuBarBackColor)
+                if (tableColor != ToolStripSystemColorTable.DefaultMenuBarBackColor)
                 {
                     FillRectangle(e.Graphics, tableColor, e.AffectedBounds);
                 }
@@ -296,7 +296,7 @@ namespace TileIconifier.Skinning
 
                 tableColor = colorTable.PopupBorderColor;
 
-                if (tableColor != ToolStripSystemColorScheme.DefaultPopupBorderColor)
+                if (tableColor != ToolStripSystemColorTable.DefaultPopupBorderColor)
                 {
                     DrawRectangle(e.Graphics, tableColor, bounds);
                 }
@@ -310,7 +310,7 @@ namespace TileIconifier.Skinning
                 //Menu bar
 
                 tableColor = colorTable.MenuBarBorderColor;
-                if (tableColor != ToolStripSystemColorScheme.DefaultMenuBarBorderColor)
+                if (tableColor != ToolStripSystemColorTable.DefaultMenuBarBorderColor)
                 {
                     //Draws a border with the user-defined color. In this case, we just draw a plain line
                     //the the sake of simplicity.
@@ -323,7 +323,7 @@ namespace TileIconifier.Skinning
                 //We check the MenuBarBackColor, because if the user color does not match the default color,
                 //the menu bar background is classic, so we need to draw a classic border, even then the border
                 //color was not user-defined.
-                else if (colorTable.MenuBarBackColor != ToolStripSystemColorScheme.DefaultMenuBarBackColor || !ToolStripManager.VisualStylesEnabled)
+                else if (colorTable.MenuBarBackColor != ToolStripSystemColorTable.DefaultMenuBarBackColor || !ToolStripManager.VisualStylesEnabled)
                 {
                     //We let the base class handle the border drawing with the system colors. We only do this if 
                     //the menu bar background is not painted with visual styles, because the menu bar background 
@@ -357,12 +357,12 @@ namespace TileIconifier.Skinning
                     if (e.Item.Selected)
                     {
                         tableColor = colorTable.HighlightBackColor;
-                        defaultColor = ToolStripSystemColorScheme.DefaultHighlightBackColor;
+                        defaultColor = ToolStripSystemColorTable.DefaultHighlightBackColor;
                     }
                     else
                     {
                         tableColor = colorTable.PopupBackColor;
-                        defaultColor = ToolStripSystemColorScheme.DefaultPopupBackColor;
+                        defaultColor = ToolStripSystemColorTable.DefaultPopupBackColor;
                     }
 
                     //Compares the user color and the default color and draw accordignly.
@@ -394,12 +394,12 @@ namespace TileIconifier.Skinning
                     if (e.Item.Selected)
                     {
                         tableColor = colorTable.HighlightBackColor;
-                        defaultColor = ToolStripSystemColorScheme.DefaultHighlightBackColor;
+                        defaultColor = ToolStripSystemColorTable.DefaultHighlightBackColor;
                     }
                     else
                     {
                         tableColor = colorTable.MenuBarBackColor;
-                        defaultColor = ToolStripSystemColorScheme.DefaultMenuBarBackColor;
+                        defaultColor = ToolStripSystemColorTable.DefaultMenuBarBackColor;
                     }
 
                     if (tableColor != defaultColor)
@@ -450,12 +450,12 @@ namespace TileIconifier.Skinning
                 if (e.Item.Selected)
                 {
                     tableColor = colorTable.HighlightForeColor;
-                    defaultColor = ToolStripSystemColorScheme.DefaultHighlightForeColor;
+                    defaultColor = ToolStripSystemColorTable.DefaultHighlightForeColor;
                 }
                 else
                 {
                     tableColor = colorTable.PopupForeColor;
-                    defaultColor = ToolStripSystemColorScheme.DefaultPopupForeColor;
+                    defaultColor = ToolStripSystemColorTable.DefaultPopupForeColor;
                 }
 
                 if (tableColor != defaultColor)
@@ -488,12 +488,12 @@ namespace TileIconifier.Skinning
                 if (e.Item.Selected)
                 {
                     tableColor = colorTable.HighlightForeColor;
-                    defaultColor = ToolStripSystemColorScheme.DefaultHighlightForeColor;
+                    defaultColor = ToolStripSystemColorTable.DefaultHighlightForeColor;
                 }
                 else
                 {
                     tableColor = colorTable.MenuBarForeColor;
-                    defaultColor = ToolStripSystemColorScheme.DefaultMenuBarForeColor;
+                    defaultColor = ToolStripSystemColorTable.DefaultMenuBarForeColor;
                 }
 
                 if (tableColor != defaultColor)
@@ -532,12 +532,12 @@ namespace TileIconifier.Skinning
             if (e.Item.Selected)
             {
                 tableColor = colorTable.HighlightForeColor;
-                defaultColor = ToolStripSystemColorScheme.DefaultHighlightForeColor;
+                defaultColor = ToolStripSystemColorTable.DefaultHighlightForeColor;
             }
             else
             {
                 tableColor = colorTable.HighlightForeColor;
-                defaultColor = ToolStripSystemColorScheme.DefaultHighlightForeColor;
+                defaultColor = ToolStripSystemColorTable.DefaultHighlightForeColor;
             }
 
             if (tableColor != defaultColor)
@@ -571,7 +571,7 @@ namespace TileIconifier.Skinning
         {
             //We only need to draw the gutter background for the visually styled menu item.
 
-            if (colorTable.PopupBackColor != ToolStripSystemColorScheme.DefaultPopupBackColor || !ToolStripManager.VisualStylesEnabled)
+            if (colorTable.PopupBackColor != ToolStripSystemColorTable.DefaultPopupBackColor || !ToolStripManager.VisualStylesEnabled)
             {
                 base.OnRenderImageMargin(e);
                 return;
@@ -594,7 +594,7 @@ namespace TileIconifier.Skinning
             Rectangle bounds;
             Color sepCol = Core.Utilities.ColorUtils.BlendColors(colorTable.PopupForeColor, 1, colorTable.PopupBackColor, 3);
 
-            if (colorTable.PopupForeColor != ToolStripSystemColorScheme.DefaultPopupForeColor || !ToolStripManager.VisualStylesEnabled)
+            if (colorTable.PopupForeColor != ToolStripSystemColorTable.DefaultPopupForeColor || !ToolStripManager.VisualStylesEnabled)
             {
                 bounds = new Rectangle(Point.Empty, e.Item.Size);                
                 DrawClassicSeparatorInternal(e.Graphics, sepCol, bounds);
@@ -644,12 +644,12 @@ namespace TileIconifier.Skinning
             if (e.Item.Selected)
             {
                 tableColor = colorTable.HighlightForeColor;
-                defaultColor = ToolStripSystemColorScheme.DefaultHighlightForeColor;
+                defaultColor = ToolStripSystemColorTable.DefaultHighlightForeColor;
             }
             else
             {
                 tableColor = colorTable.HighlightForeColor;
-                defaultColor = ToolStripSystemColorScheme.DefaultHighlightForeColor;
+                defaultColor = ToolStripSystemColorTable.DefaultHighlightForeColor;
             }
 
             if (tableColor != defaultColor)

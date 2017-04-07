@@ -28,6 +28,7 @@
 #endregion
 
 using System;
+using System.Windows.Forms;
 using TileIconifier.Skinning.Skins;
 
 namespace TileIconifier.Skinning
@@ -36,7 +37,9 @@ namespace TileIconifier.Skinning
     {
         public delegate void SkinChangedEventHandler(object sender, EventArgs e);
 
-        private static BaseSkin _currentBaseSkin = new BaseSkin();
+        //The current skin is initially null to enforce the need to call 
+        //SetCurrentSkin when the app starts so that the ToolStripRenderer is set.
+        private static BaseSkin _currentBaseSkin;
 
         public static event SkinChangedEventHandler SkinChanged;
 
@@ -45,6 +48,7 @@ namespace TileIconifier.Skinning
         public static void SetCurrentSkin(BaseSkin baseSkin)
         {
             _currentBaseSkin = baseSkin;
+            ToolStripManager.Renderer = new ToolStripSystemRendererEx(baseSkin);
             SkinChanged?.Invoke(null, null);
         }
     }
