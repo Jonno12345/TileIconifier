@@ -10,7 +10,10 @@ namespace TileIconifier.Controls
     {
         public SkinnableListView()
         {
+            //Set the base class property to bypass the deprecated warning
             base.OwnerDraw = true;
+
+            DoubleBuffered = true;
         }
 
         #region "Properties"
