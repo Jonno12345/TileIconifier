@@ -38,22 +38,9 @@ namespace TileIconifier.Forms
 {
     public class SkinnableForm : Form
     {
-        private BaseSkin _formSkin = SkinHandler.GetCurrentSkin();
-
-        public BaseSkin FormSkin
-        {
-            get { return _formSkin; }
-            set
-            {
-                if (_formSkin != value)
-                {
-                    _formSkin = value;
-                    OnSkinChanged(EventArgs.Empty);
-                }
-            }
-        }
-
-        protected virtual void OnSkinChanged(EventArgs e)
+        protected BaseSkin FormSkin => SkinHandler.GetCurrentSkin();
+        
+        protected virtual void OnSkinChanged(object sender, EventArgs e)
         {
             if (FormSkin != null)
             {
@@ -75,10 +62,11 @@ namespace TileIconifier.Forms
 
         protected override void OnLoad(EventArgs e)
         {
-            base.OnLoad(e);
 
             Icon = Resources.tiles2_shadow_lyk_icon;
-            SkinHandler.SkinChanged += SkinHandler_SkinChanged;
+            base.OnLoad(e);
+
+            SkinHandler.SkinChanged += OnSkinChanged;
 
             //We only apply the skin on the form, not on its controls
             //because control skins are applied when controls are added
@@ -96,12 +84,7 @@ namespace TileIconifier.Forms
             //FormClosed is a good place to remove an handler that was added when Load, because
             //if the form is ever shown again, it will raise the Load event, which will add the
             //handler back (even if the form was just hidden).
-            SkinHandler.SkinChanged -= SkinHandler_SkinChanged;
-        }
-
-        private void SkinHandler_SkinChanged(object sender, EventArgs e)
-        {
-            FormSkin = SkinHandler.GetCurrentSkin();
+            SkinHandler.SkinChanged -= OnSkinChanged;
         }
 
         /// <summary>
