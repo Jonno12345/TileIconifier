@@ -69,15 +69,17 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tlpWindowsStore = new System.Windows.Forms.TableLayoutPanel();
             this.lstWindowsStoreApps = new TileIconifier.Controls.SortableListView();
             this.tabURI = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblUriExplain = new System.Windows.Forms.Label();
             this.txtUriString = new TileIconifier.Controls.SkinnableTextBox();
             this.lblUriString = new System.Windows.Forms.Label();
-            this.lblUriExplain = new System.Windows.Forms.Label();
             this.tabOther = new System.Windows.Forms.TabPage();
-            this.lblOtherShortcutArguments = new System.Windows.Forms.Label();
-            this.txtOtherShortcutArguments = new TileIconifier.Controls.SkinnableTextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblOtherTargetPath = new System.Windows.Forms.Label();
-            this.btnOtherTargetBrowse = new TileIconifier.Controls.SkinnableButton();
+            this.txtOtherShortcutArguments = new TileIconifier.Controls.SkinnableTextBox();
+            this.lblOtherShortcutArguments = new System.Windows.Forms.Label();
             this.txtOtherTargetPath = new TileIconifier.Controls.SkinnableTextBox();
+            this.btnOtherTargetBrowse = new TileIconifier.Controls.SkinnableButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pctCurrentIcon)).BeginInit();
@@ -91,7 +93,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tabWindowsStore.SuspendLayout();
             this.tlpWindowsStore.SuspendLayout();
             this.tabURI.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.tabOther.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -333,7 +337,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // btnChromeAppPathChange
             // 
             resources.ApplyResources(this.btnChromeAppPathChange, "btnChromeAppPathChange");
-            this.btnChromeAppPathChange.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnChromeAppPathChange.FlatAppearance.BorderSize = 0;
             this.btnChromeAppPathChange.Name = "btnChromeAppPathChange";
             this.btnChromeAppPathChange.UseVisualStyleBackColor = true;
@@ -342,7 +345,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // btnChromeExePathChange
             // 
             resources.ApplyResources(this.btnChromeExePathChange, "btnChromeExePathChange");
-            this.btnChromeExePathChange.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnChromeExePathChange.FlatAppearance.BorderSize = 0;
             this.btnChromeExePathChange.Name = "btnChromeExePathChange";
             this.btnChromeExePathChange.UseVisualStyleBackColor = true;
@@ -374,12 +376,24 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabURI
             // 
-            this.tabURI.Controls.Add(this.txtUriString);
-            this.tabURI.Controls.Add(this.lblUriString);
-            this.tabURI.Controls.Add(this.lblUriExplain);
+            this.tabURI.Controls.Add(this.tableLayoutPanel1);
             resources.ApplyResources(this.tabURI, "tabURI");
             this.tabURI.Name = "tabURI";
             this.tabURI.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.lblUriExplain, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtUriString, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblUriString, 0, 1);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // lblUriExplain
+            // 
+            resources.ApplyResources(this.lblUriExplain, "lblUriExplain");
+            this.tableLayoutPanel1.SetColumnSpan(this.lblUriExplain, 2);
+            this.lblUriExplain.Name = "lblUriExplain";
             // 
             // txtUriString
             // 
@@ -391,50 +405,50 @@ namespace TileIconifier.Forms.CustomShortcutForms
             resources.ApplyResources(this.lblUriString, "lblUriString");
             this.lblUriString.Name = "lblUriString";
             // 
-            // lblUriExplain
-            // 
-            resources.ApplyResources(this.lblUriExplain, "lblUriExplain");
-            this.lblUriExplain.Name = "lblUriExplain";
-            // 
             // tabOther
             // 
-            this.tabOther.Controls.Add(this.lblOtherShortcutArguments);
-            this.tabOther.Controls.Add(this.txtOtherShortcutArguments);
-            this.tabOther.Controls.Add(this.lblOtherTargetPath);
-            this.tabOther.Controls.Add(this.btnOtherTargetBrowse);
-            this.tabOther.Controls.Add(this.txtOtherTargetPath);
+            this.tabOther.Controls.Add(this.tableLayoutPanel2);
             resources.ApplyResources(this.tabOther, "tabOther");
             this.tabOther.Name = "tabOther";
             this.tabOther.UseVisualStyleBackColor = true;
             // 
-            // lblOtherShortcutArguments
+            // tableLayoutPanel2
             // 
-            resources.ApplyResources(this.lblOtherShortcutArguments, "lblOtherShortcutArguments");
-            this.lblOtherShortcutArguments.Name = "lblOtherShortcutArguments";
-            // 
-            // txtOtherShortcutArguments
-            // 
-            resources.ApplyResources(this.txtOtherShortcutArguments, "txtOtherShortcutArguments");
-            this.txtOtherShortcutArguments.Name = "txtOtherShortcutArguments";
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.lblOtherTargetPath, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtOtherShortcutArguments, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblOtherShortcutArguments, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txtOtherTargetPath, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnOtherTargetBrowse, 2, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
             // lblOtherTargetPath
             // 
             resources.ApplyResources(this.lblOtherTargetPath, "lblOtherTargetPath");
             this.lblOtherTargetPath.Name = "lblOtherTargetPath";
             // 
-            // btnOtherTargetBrowse
+            // txtOtherShortcutArguments
             // 
-            resources.ApplyResources(this.btnOtherTargetBrowse, "btnOtherTargetBrowse");
-            this.btnOtherTargetBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOtherTargetBrowse.FlatAppearance.BorderSize = 0;
-            this.btnOtherTargetBrowse.Name = "btnOtherTargetBrowse";
-            this.btnOtherTargetBrowse.UseVisualStyleBackColor = true;
-            this.btnOtherTargetBrowse.Click += new System.EventHandler(this.btnOtherTargetBrowse_Click);
+            resources.ApplyResources(this.txtOtherShortcutArguments, "txtOtherShortcutArguments");
+            this.txtOtherShortcutArguments.Name = "txtOtherShortcutArguments";
+            // 
+            // lblOtherShortcutArguments
+            // 
+            resources.ApplyResources(this.lblOtherShortcutArguments, "lblOtherShortcutArguments");
+            this.lblOtherShortcutArguments.Name = "lblOtherShortcutArguments";
             // 
             // txtOtherTargetPath
             // 
             resources.ApplyResources(this.txtOtherTargetPath, "txtOtherTargetPath");
             this.txtOtherTargetPath.Name = "txtOtherTargetPath";
+            // 
+            // btnOtherTargetBrowse
+            // 
+            resources.ApplyResources(this.btnOtherTargetBrowse, "btnOtherTargetBrowse");
+            this.btnOtherTargetBrowse.FlatAppearance.BorderSize = 0;
+            this.btnOtherTargetBrowse.Name = "btnOtherTargetBrowse";
+            this.btnOtherTargetBrowse.UseVisualStyleBackColor = true;
+            this.btnOtherTargetBrowse.Click += new System.EventHandler(this.btnOtherTargetBrowse_Click);
             // 
             // menuStrip1
             // 
@@ -480,8 +494,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.tlpWindowsStore.ResumeLayout(false);
             this.tabURI.ResumeLayout(false);
             this.tabURI.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tabOther.ResumeLayout(false);
-            this.tabOther.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -540,5 +557,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private System.Windows.Forms.TableLayoutPanel tlpSteam;
         private System.Windows.Forms.TableLayoutPanel tlpChromeApps;
         private System.Windows.Forms.TableLayoutPanel tlpWindowsStore;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }

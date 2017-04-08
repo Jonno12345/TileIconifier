@@ -109,8 +109,8 @@ namespace TileIconifier.Forms.Main
             // 
             // srtlstShortcuts
             // 
-            resources.ApplyResources(this.srtlstShortcuts, "srtlstShortcuts");
             this.tableLayoutPanel1.SetColumnSpan(this.srtlstShortcuts, 3);
+            resources.ApplyResources(this.srtlstShortcuts, "srtlstShortcuts");
             this.srtlstShortcuts.FullRowSelect = true;
             this.srtlstShortcuts.HideSelection = false;
             this.srtlstShortcuts.MultiSelect = false;

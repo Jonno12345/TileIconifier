@@ -117,148 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="radShortcutLocation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 66</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblShortcutName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="lblShortcutName.Text" xml:space="preserve">
     <value>Имя ярлыка</value>
-  </data>
-  <data name="btnGenerateShortcut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="btnGenerateShortcut.Text" xml:space="preserve">
     <value>Создать</value>
   </data>
-  <data name="lblCurrentIcon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblCurrentIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
-  </data>
   <data name="lblCurrentIcon.Text" xml:space="preserve">
     <value>Иконка:</value>
-  </data>
-  <data name="pctCurrentIcon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnExplorerBrowse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="btnExplorerBrowse.Text" xml:space="preserve">
     <value>Обзор</value>
   </data>
-  <data name="txtCustomFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 40</value>
-  </data>
-  <data name="txtCustomFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 20</value>
-  </data>
-  <data name="radCustomFolder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radCustomFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 17</value>
-  </data>
   <data name="radCustomFolder.Text" xml:space="preserve">
     <value>Использовать свою папку</value>
-  </data>
-  <data name="radSpecialFolder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radSpecialFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 17</value>
   </data>
   <data name="radSpecialFolder.Text" xml:space="preserve">
     <value>Использовать специальную папку</value>
   </data>
-  <data name="cmbExplorerGuids.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 7</value>
-  </data>
-  <data name="cmbExplorerGuids.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 21</value>
-  </data>
   <data name="tabExplorer.Text" xml:space="preserve">
     <value>Проводник</value>
-  </data>
-  <data name="btnSteamLibrariesPath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnSteamLibrariesPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 60</value>
-  </data>
-  <data name="btnSteamLibrariesPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 26</value>
   </data>
   <data name="btnSteamLibrariesPath.Text" xml:space="preserve">
     <value>Изменить</value>
   </data>
-  <data name="btnSteamExeChange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnSteamExeChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 34</value>
-  </data>
-  <data name="btnSteamExeChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 26</value>
-  </data>
   <data name="btnSteamExeChange.Text" xml:space="preserve">
     <value>Изменить</value>
-  </data>
-  <data name="btnSteamInstallationChange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnSteamInstallationChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 8</value>
-  </data>
-  <data name="btnSteamInstallationChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 26</value>
   </data>
   <data name="btnSteamInstallationChange.Text" xml:space="preserve">
     <value>Изменить</value>
   </data>
-  <data name="txtSteamInstallationPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>513, 20</value>
-  </data>
-  <data name="txtSteamExecutablePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>513, 20</value>
-  </data>
-  <data name="txtSteamLibraryPaths.Size" type="System.Drawing.Size, System.Drawing">
-    <value>513, 20</value>
-  </data>
-  <data name="btnChromeAppPathChange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnChromeAppPathChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 34</value>
-  </data>
-  <data name="btnChromeAppPathChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 26</value>
-  </data>
   <data name="btnChromeAppPathChange.Text" xml:space="preserve">
     <value>Изменить</value>
   </data>
-  <data name="txtChromeAppPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>513, 20</value>
-  </data>
-  <data name="btnChromeExePathChange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnChromeExePathChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 8</value>
-  </data>
-  <data name="btnChromeExePathChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 26</value>
-  </data>
   <data name="btnChromeExePathChange.Text" xml:space="preserve">
     <value>Изменить</value>
-  </data>
-  <data name="txtChromeExePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>513, 20</value>
   </data>
   <data name="tabChromeApps.Text" xml:space="preserve">
     <value>Приложения Chrome</value>
@@ -266,23 +159,8 @@
   <data name="tabWindowsStore.Text" xml:space="preserve">
     <value>Магазин Windows</value>
   </data>
-  <data name="txtUriString.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 113</value>
-  </data>
-  <data name="lblUriString.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 116</value>
-  </data>
-  <data name="lblUriString.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
-  </data>
   <data name="lblUriString.Text" xml:space="preserve">
     <value>Путь URI:</value>
-  </data>
-  <data name="lblUriExplain.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>615, 0</value>
-  </data>
-  <data name="lblUriExplain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 91</value>
   </data>
   <data name="lblUriExplain.Text" xml:space="preserve">
     <value>Используйте этот раздел, чтобы создать пользовательский ярлык для любого пути URI. Под этим подразумеваются веб-адреса, которые вы хотите открыть в браузере по умолчанию.
@@ -292,51 +170,22 @@ https://www.google.com
 spotify:trackId
 mailto:test@example.com</value>
   </data>
-  <data name="lblOtherShortcutArguments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 13</value>
-  </data>
   <data name="lblOtherShortcutArguments.Text" xml:space="preserve">
     <value>Параметры запуска</value>
-  </data>
-  <data name="txtOtherShortcutArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 38</value>
-  </data>
-  <data name="txtOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 20</value>
-  </data>
-  <data name="lblOtherTargetPath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
   </data>
   <data name="lblOtherTargetPath.Text" xml:space="preserve">
     <value>Путь</value>
   </data>
-  <data name="btnOtherTargetBrowse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="btnOtherTargetBrowse.Text" xml:space="preserve">
     <value>Обзор</value>
-  </data>
-  <data name="txtOtherTargetPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 12</value>
-  </data>
-  <data name="txtOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 20</value>
   </data>
   <data name="tabOther.Text" xml:space="preserve">
     <value>Свой ярлык</value>
   </data>
-  <data name="refreshToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
-  </data>
   <data name="refreshToolStripMenuItem.Text" xml:space="preserve">
     <value>Обновить</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAICAQAAAAAADoAgAAZgAAABAQEAAAAAAAKAEAAE4DAAAgIAAAAQAIAKgIAAB2BAAAEBAAAAEA

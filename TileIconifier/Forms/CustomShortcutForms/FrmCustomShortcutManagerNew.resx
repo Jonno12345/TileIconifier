@@ -163,7 +163,7 @@
     <value>radShortcutLocation</value>
   </data>
   <data name="&gt;&gt;radShortcutLocation.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.AllOrCurrentUserRadios, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.AllOrCurrentUserRadios, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;radShortcutLocation.Parent" xml:space="preserve">
     <value>$this</value>
@@ -187,7 +187,7 @@
     <value>txtShortcutName</value>
   </data>
   <data name="&gt;&gt;txtShortcutName.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtShortcutName.Parent" xml:space="preserve">
     <value>$this</value>
@@ -241,7 +241,7 @@
     <value>btnGenerateShortcut</value>
   </data>
   <data name="&gt;&gt;btnGenerateShortcut.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnGenerateShortcut.Parent" xml:space="preserve">
     <value>$this</value>
@@ -306,6 +306,171 @@
   <data name="tabShortcutType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="tlpExplorer.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnExplorerBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="btnExplorerBrowse.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnExplorerBrowse.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnExplorerBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>532, 40</value>
+  </data>
+  <data name="btnExplorerBrowse.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnExplorerBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnExplorerBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnExplorerBrowse.Text" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="&gt;&gt;btnExplorerBrowse.Name" xml:space="preserve">
+    <value>btnExplorerBrowse</value>
+  </data>
+  <data name="&gt;&gt;btnExplorerBrowse.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnExplorerBrowse.Parent" xml:space="preserve">
+    <value>tlpExplorer</value>
+  </data>
+  <data name="&gt;&gt;btnExplorerBrowse.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radSpecialFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="radSpecialFolder.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radSpecialFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 8</value>
+  </data>
+  <data name="radSpecialFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 17</value>
+  </data>
+  <data name="radSpecialFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radSpecialFolder.Text" xml:space="preserve">
+    <value>Use Special Folder</value>
+  </data>
+  <data name="&gt;&gt;radSpecialFolder.Name" xml:space="preserve">
+    <value>radSpecialFolder</value>
+  </data>
+  <data name="&gt;&gt;radSpecialFolder.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;radSpecialFolder.Parent" xml:space="preserve">
+    <value>tlpExplorer</value>
+  </data>
+  <data name="&gt;&gt;radSpecialFolder.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtCustomFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="txtCustomFolder.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtCustomFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 41</value>
+  </data>
+  <data name="txtCustomFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>403, 20</value>
+  </data>
+  <data name="txtCustomFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtCustomFolder.Name" xml:space="preserve">
+    <value>txtCustomFolder</value>
+  </data>
+  <data name="&gt;&gt;txtCustomFolder.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtCustomFolder.Parent" xml:space="preserve">
+    <value>tlpExplorer</value>
+  </data>
+  <data name="&gt;&gt;txtCustomFolder.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radCustomFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="radCustomFolder.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radCustomFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 43</value>
+  </data>
+  <data name="radCustomFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 17</value>
+  </data>
+  <data name="radCustomFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radCustomFolder.Text" xml:space="preserve">
+    <value>Use Custom Folder</value>
+  </data>
+  <data name="&gt;&gt;radCustomFolder.Name" xml:space="preserve">
+    <value>radCustomFolder</value>
+  </data>
+  <data name="&gt;&gt;radCustomFolder.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;radCustomFolder.Parent" xml:space="preserve">
+    <value>tlpExplorer</value>
+  </data>
+  <data name="&gt;&gt;radCustomFolder.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cmbExplorerGuids.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="cmbExplorerGuids.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 6</value>
+  </data>
+  <data name="cmbExplorerGuids.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 21</value>
+  </data>
+  <data name="cmbExplorerGuids.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cmbExplorerGuids.Name" xml:space="preserve">
+    <value>cmbExplorerGuids</value>
+  </data>
+  <data name="&gt;&gt;cmbExplorerGuids.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableComboBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmbExplorerGuids.Parent" xml:space="preserve">
+    <value>tlpExplorer</value>
+  </data>
+  <data name="&gt;&gt;cmbExplorerGuids.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tlpExplorer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="tlpExplorer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 30</value>
+  </data>
+  <data name="tlpExplorer.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tlpExplorer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 69</value>
+  </data>
+  <data name="tlpExplorer.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="&gt;&gt;tlpExplorer.Name" xml:space="preserve">
     <value>tlpExplorer</value>
   </data>
@@ -347,6 +512,255 @@
   </data>
   <data name="&gt;&gt;tabExplorer.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="tlpSteam.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="txtSteamInstallationPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="txtSteamInstallationPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 4</value>
+  </data>
+  <data name="txtSteamInstallationPath.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="txtSteamInstallationPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>523, 20</value>
+  </data>
+  <data name="txtSteamInstallationPath.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="txtSteamInstallationPath.Text" xml:space="preserve">
+    <value>txtSteamInstallationPath</value>
+  </data>
+  <data name="txtSteamInstallationPath.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;txtSteamInstallationPath.Name" xml:space="preserve">
+    <value>txtSteamInstallationPath</value>
+  </data>
+  <data name="&gt;&gt;txtSteamInstallationPath.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtSteamInstallationPath.Parent" xml:space="preserve">
+    <value>tlpSteam</value>
+  </data>
+  <data name="&gt;&gt;txtSteamInstallationPath.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lstSteamGames.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="lstSteamGames.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 90</value>
+  </data>
+  <data name="lstSteamGames.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 150</value>
+  </data>
+  <data name="lstSteamGames.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lstSteamGames.Name" xml:space="preserve">
+    <value>lstSteamGames</value>
+  </data>
+  <data name="&gt;&gt;lstSteamGames.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lstSteamGames.Parent" xml:space="preserve">
+    <value>tlpSteam</value>
+  </data>
+  <data name="&gt;&gt;lstSteamGames.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnSteamLibrariesPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="btnSteamLibrariesPath.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnSteamLibrariesPath.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnSteamLibrariesPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>532, 61</value>
+  </data>
+  <data name="btnSteamLibrariesPath.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnSteamLibrariesPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnSteamLibrariesPath.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="btnSteamLibrariesPath.Text" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="&gt;&gt;btnSteamLibrariesPath.Name" xml:space="preserve">
+    <value>btnSteamLibrariesPath</value>
+  </data>
+  <data name="&gt;&gt;btnSteamLibrariesPath.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnSteamLibrariesPath.Parent" xml:space="preserve">
+    <value>tlpSteam</value>
+  </data>
+  <data name="&gt;&gt;btnSteamLibrariesPath.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnSteamInstallationChange.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="btnSteamInstallationChange.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnSteamInstallationChange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnSteamInstallationChange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>532, 3</value>
+  </data>
+  <data name="btnSteamInstallationChange.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnSteamInstallationChange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnSteamInstallationChange.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnSteamInstallationChange.Text" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="&gt;&gt;btnSteamInstallationChange.Name" xml:space="preserve">
+    <value>btnSteamInstallationChange</value>
+  </data>
+  <data name="&gt;&gt;btnSteamInstallationChange.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnSteamInstallationChange.Parent" xml:space="preserve">
+    <value>tlpSteam</value>
+  </data>
+  <data name="&gt;&gt;btnSteamInstallationChange.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtSteamLibraryPaths.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="txtSteamLibraryPaths.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 62</value>
+  </data>
+  <data name="txtSteamLibraryPaths.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="txtSteamLibraryPaths.Size" type="System.Drawing.Size, System.Drawing">
+    <value>523, 20</value>
+  </data>
+  <data name="txtSteamLibraryPaths.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="txtSteamLibraryPaths.Text" xml:space="preserve">
+    <value>txtSteamLibraryPaths</value>
+  </data>
+  <data name="txtSteamLibraryPaths.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;txtSteamLibraryPaths.Name" xml:space="preserve">
+    <value>txtSteamLibraryPaths</value>
+  </data>
+  <data name="&gt;&gt;txtSteamLibraryPaths.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtSteamLibraryPaths.Parent" xml:space="preserve">
+    <value>tlpSteam</value>
+  </data>
+  <data name="&gt;&gt;txtSteamLibraryPaths.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnSteamExeChange.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="btnSteamExeChange.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnSteamExeChange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnSteamExeChange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>532, 32</value>
+  </data>
+  <data name="btnSteamExeChange.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnSteamExeChange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnSteamExeChange.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnSteamExeChange.Text" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="&gt;&gt;btnSteamExeChange.Name" xml:space="preserve">
+    <value>btnSteamExeChange</value>
+  </data>
+  <data name="&gt;&gt;btnSteamExeChange.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnSteamExeChange.Parent" xml:space="preserve">
+    <value>tlpSteam</value>
+  </data>
+  <data name="&gt;&gt;btnSteamExeChange.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtSteamExecutablePath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="txtSteamExecutablePath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 33</value>
+  </data>
+  <data name="txtSteamExecutablePath.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="txtSteamExecutablePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>523, 20</value>
+  </data>
+  <data name="txtSteamExecutablePath.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="txtSteamExecutablePath.Text" xml:space="preserve">
+    <value>txtSteamExecutablePath</value>
+  </data>
+  <data name="txtSteamExecutablePath.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;txtSteamExecutablePath.Name" xml:space="preserve">
+    <value>txtSteamExecutablePath</value>
+  </data>
+  <data name="&gt;&gt;txtSteamExecutablePath.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtSteamExecutablePath.Parent" xml:space="preserve">
+    <value>tlpSteam</value>
+  </data>
+  <data name="&gt;&gt;txtSteamExecutablePath.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tlpSteam.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tlpSteam.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="tlpSteam.RowCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tlpSteam.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 243</value>
+  </data>
+  <data name="tlpSteam.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
   </data>
   <data name="&gt;&gt;tlpSteam.Name" xml:space="preserve">
     <value>tlpSteam</value>
@@ -418,7 +832,7 @@
     <value>txtChromeExePath</value>
   </data>
   <data name="&gt;&gt;txtChromeExePath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtChromeExePath.Parent" xml:space="preserve">
     <value>tlpChromeApps</value>
@@ -442,7 +856,7 @@
     <value>lstChromeAppItems</value>
   </data>
   <data name="&gt;&gt;lstChromeAppItems.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lstChromeAppItems.Parent" xml:space="preserve">
     <value>tlpChromeApps</value>
@@ -475,7 +889,7 @@
     <value>txtChromeAppPath</value>
   </data>
   <data name="&gt;&gt;txtChromeAppPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtChromeAppPath.Parent" xml:space="preserve">
     <value>tlpChromeApps</value>
@@ -511,7 +925,7 @@
     <value>btnChromeAppPathChange</value>
   </data>
   <data name="&gt;&gt;btnChromeAppPathChange.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnChromeAppPathChange.Parent" xml:space="preserve">
     <value>tlpChromeApps</value>
@@ -547,7 +961,7 @@
     <value>btnChromeExePathChange</value>
   </data>
   <data name="&gt;&gt;btnChromeExePathChange.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnChromeExePathChange.Parent" xml:space="preserve">
     <value>tlpChromeApps</value>
@@ -612,6 +1026,48 @@
   <data name="&gt;&gt;tabChromeApps.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="tlpWindowsStore.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lstWindowsStoreApps.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="lstWindowsStoreApps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="lstWindowsStoreApps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 237</value>
+  </data>
+  <data name="lstWindowsStoreApps.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lstWindowsStoreApps.Name" xml:space="preserve">
+    <value>lstWindowsStoreApps</value>
+  </data>
+  <data name="&gt;&gt;lstWindowsStoreApps.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lstWindowsStoreApps.Parent" xml:space="preserve">
+    <value>tlpWindowsStore</value>
+  </data>
+  <data name="&gt;&gt;lstWindowsStoreApps.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tlpWindowsStore.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tlpWindowsStore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="tlpWindowsStore.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tlpWindowsStore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 243</value>
+  </data>
+  <data name="tlpWindowsStore.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
   <data name="&gt;&gt;tlpWindowsStore.Name" xml:space="preserve">
     <value>tlpWindowsStore</value>
   </data>
@@ -654,29 +1110,40 @@
   <data name="&gt;&gt;tabWindowsStore.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;txtUriString.Name" xml:space="preserve">
-    <value>txtUriString</value>
+  <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;txtUriString.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+  <data name="tableLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="&gt;&gt;txtUriString.Parent" xml:space="preserve">
-    <value>tabURI</value>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;txtUriString.ZOrder" xml:space="preserve">
+  <data name="lblUriExplain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lblUriExplain.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblUriExplain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="lblUriExplain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 15</value>
+  </data>
+  <data name="lblUriExplain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>590, 78</value>
+  </data>
+  <data name="lblUriExplain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;lblUriString.Name" xml:space="preserve">
-    <value>lblUriString</value>
-  </data>
-  <data name="&gt;&gt;lblUriString.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblUriString.Parent" xml:space="preserve">
-    <value>tabURI</value>
-  </data>
-  <data name="&gt;&gt;lblUriString.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="lblUriExplain.Text" xml:space="preserve">
+    <value>Use this to create a custom shortcut to any URI path. This includes web addresses you wish to open in the default browser. 
+
+For example:
+https://www.google.com
+spotify:trackId
+mailto:test@example.com</value>
   </data>
   <data name="&gt;&gt;lblUriExplain.Name" xml:space="preserve">
     <value>lblUriExplain</value>
@@ -685,13 +1152,100 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblUriExplain.Parent" xml:space="preserve">
-    <value>tabURI</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;lblUriExplain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtUriString.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="txtUriString.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 96</value>
+  </data>
+  <data name="txtUriString.Size" type="System.Drawing.Size, System.Drawing">
+    <value>535, 20</value>
+  </data>
+  <data name="txtUriString.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtUriString.Name" xml:space="preserve">
+    <value>txtUriString</value>
+  </data>
+  <data name="&gt;&gt;txtUriString.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtUriString.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;txtUriString.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblUriString.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lblUriString.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblUriString.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 99</value>
+  </data>
+  <data name="lblUriString.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="lblUriString.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lblUriString.Text" xml:space="preserve">
+    <value>URI Target:</value>
+  </data>
+  <data name="&gt;&gt;lblUriString.Name" xml:space="preserve">
+    <value>lblUriString</value>
+  </data>
+  <data name="&gt;&gt;lblUriString.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblUriString.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;lblUriString.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 30</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 119</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>tabURI</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblUriExplain" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="txtUriString" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblUriString" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabURI.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
+  </data>
+  <data name="tabURI.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 30, 6, 6</value>
   </data>
   <data name="tabURI.Size" type="System.Drawing.Size, System.Drawing">
     <value>622, 255</value>
@@ -714,29 +1268,26 @@
   <data name="&gt;&gt;tabURI.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;lblOtherShortcutArguments.Name" xml:space="preserve">
-    <value>lblOtherShortcutArguments</value>
+  <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;lblOtherShortcutArguments.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblOtherTargetPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="&gt;&gt;lblOtherShortcutArguments.Parent" xml:space="preserve">
-    <value>tabOther</value>
+  <data name="lblOtherTargetPath.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;lblOtherShortcutArguments.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="lblOtherTargetPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 10</value>
   </data>
-  <data name="&gt;&gt;txtOtherShortcutArguments.Name" xml:space="preserve">
-    <value>txtOtherShortcutArguments</value>
+  <data name="lblOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 13</value>
   </data>
-  <data name="&gt;&gt;txtOtherShortcutArguments.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+  <data name="lblOtherTargetPath.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
-  <data name="&gt;&gt;txtOtherShortcutArguments.Parent" xml:space="preserve">
-    <value>tabOther</value>
-  </data>
-  <data name="&gt;&gt;txtOtherShortcutArguments.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="lblOtherTargetPath.Text" xml:space="preserve">
+    <value>Shortcut Target</value>
   </data>
   <data name="&gt;&gt;lblOtherTargetPath.Name" xml:space="preserve">
     <value>lblOtherTargetPath</value>
@@ -745,37 +1296,160 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblOtherTargetPath.Parent" xml:space="preserve">
-    <value>tabOther</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;lblOtherTargetPath.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtOtherShortcutArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="txtOtherShortcutArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 41</value>
+  </data>
+  <data name="txtOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>417, 20</value>
+  </data>
+  <data name="txtOtherShortcutArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;txtOtherShortcutArguments.Name" xml:space="preserve">
+    <value>txtOtherShortcutArguments</value>
+  </data>
+  <data name="&gt;&gt;txtOtherShortcutArguments.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtOtherShortcutArguments.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;txtOtherShortcutArguments.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblOtherShortcutArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lblOtherShortcutArguments.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblOtherShortcutArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 45</value>
+  </data>
+  <data name="lblOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lblOtherShortcutArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="lblOtherShortcutArguments.Text" xml:space="preserve">
+    <value>Shortcut Arguments</value>
+  </data>
+  <data name="&gt;&gt;lblOtherShortcutArguments.Name" xml:space="preserve">
+    <value>lblOtherShortcutArguments</value>
+  </data>
+  <data name="&gt;&gt;lblOtherShortcutArguments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblOtherShortcutArguments.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;lblOtherShortcutArguments.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;btnOtherTargetBrowse.Name" xml:space="preserve">
-    <value>btnOtherTargetBrowse</value>
+  <data name="txtOtherTargetPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
   </data>
-  <data name="&gt;&gt;btnOtherTargetBrowse.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+  <data name="txtOtherTargetPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 7</value>
   </data>
-  <data name="&gt;&gt;btnOtherTargetBrowse.Parent" xml:space="preserve">
-    <value>tabOther</value>
+  <data name="txtOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>417, 20</value>
   </data>
-  <data name="&gt;&gt;btnOtherTargetBrowse.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="txtOtherTargetPath.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;txtOtherTargetPath.Name" xml:space="preserve">
     <value>txtOtherTargetPath</value>
   </data>
   <data name="&gt;&gt;txtOtherTargetPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtOtherTargetPath.Parent" xml:space="preserve">
-    <value>tabOther</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;txtOtherTargetPath.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnOtherTargetBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="btnOtherTargetBrowse.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnOtherTargetBrowse.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnOtherTargetBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>532, 5</value>
+  </data>
+  <data name="btnOtherTargetBrowse.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnOtherTargetBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnOtherTargetBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnOtherTargetBrowse.Text" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="&gt;&gt;btnOtherTargetBrowse.Name" xml:space="preserve">
+    <value>btnOtherTargetBrowse</value>
+  </data>
+  <data name="&gt;&gt;btnOtherTargetBrowse.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnOtherTargetBrowse.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;btnOtherTargetBrowse.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 30</value>
+  </data>
+  <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 69</value>
+  </data>
+  <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
+    <value>tabOther</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblOtherTargetPath" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtOtherShortcutArguments" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblOtherShortcutArguments" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtOtherTargetPath" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnOtherTargetBrowse" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabOther.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
+  </data>
+  <data name="tabOther.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 30, 6, 6</value>
   </data>
   <data name="tabOther.Size" type="System.Drawing.Size, System.Drawing">
     <value>622, 255</value>
@@ -811,7 +1485,7 @@
     <value>tabShortcutType</value>
   </data>
   <data name="&gt;&gt;tabShortcutType.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTabControl, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTabControl, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabShortcutType.Parent" xml:space="preserve">
     <value>$this</value>
@@ -819,878 +1493,15 @@
   <data name="&gt;&gt;tabShortcutType.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="tlpExplorer.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;btnExplorerBrowse.Name" xml:space="preserve">
-    <value>btnExplorerBrowse</value>
-  </data>
-  <data name="&gt;&gt;btnExplorerBrowse.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnExplorerBrowse.Parent" xml:space="preserve">
-    <value>tlpExplorer</value>
-  </data>
-  <data name="&gt;&gt;btnExplorerBrowse.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;radSpecialFolder.Name" xml:space="preserve">
-    <value>radSpecialFolder</value>
-  </data>
-  <data name="&gt;&gt;radSpecialFolder.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;radSpecialFolder.Parent" xml:space="preserve">
-    <value>tlpExplorer</value>
-  </data>
-  <data name="&gt;&gt;radSpecialFolder.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtCustomFolder.Name" xml:space="preserve">
-    <value>txtCustomFolder</value>
-  </data>
-  <data name="&gt;&gt;txtCustomFolder.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtCustomFolder.Parent" xml:space="preserve">
-    <value>tlpExplorer</value>
-  </data>
-  <data name="&gt;&gt;txtCustomFolder.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;radCustomFolder.Name" xml:space="preserve">
-    <value>radCustomFolder</value>
-  </data>
-  <data name="&gt;&gt;radCustomFolder.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;radCustomFolder.Parent" xml:space="preserve">
-    <value>tlpExplorer</value>
-  </data>
-  <data name="&gt;&gt;radCustomFolder.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;cmbExplorerGuids.Name" xml:space="preserve">
-    <value>cmbExplorerGuids</value>
-  </data>
-  <data name="&gt;&gt;cmbExplorerGuids.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableComboBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmbExplorerGuids.Parent" xml:space="preserve">
-    <value>tlpExplorer</value>
-  </data>
-  <data name="&gt;&gt;cmbExplorerGuids.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tlpExplorer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="tlpExplorer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 30</value>
-  </data>
-  <data name="tlpExplorer.RowCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tlpExplorer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 69</value>
-  </data>
-  <data name="tlpExplorer.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tlpExplorer.Name" xml:space="preserve">
-    <value>tlpExplorer</value>
-  </data>
-  <data name="&gt;&gt;tlpExplorer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tlpExplorer.Parent" xml:space="preserve">
-    <value>tabExplorer</value>
-  </data>
-  <data name="&gt;&gt;tlpExplorer.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tlpExplorer.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnExplorerBrowse" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="radSpecialFolder" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtCustomFolder" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="radCustomFolder" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cmbExplorerGuids" Row="0" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="btnExplorerBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="btnExplorerBrowse.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="btnExplorerBrowse.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="btnExplorerBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>532, 40</value>
-  </data>
-  <data name="btnExplorerBrowse.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnExplorerBrowse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnExplorerBrowse.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="btnExplorerBrowse.Text" xml:space="preserve">
-    <value>Browse</value>
-  </data>
-  <data name="&gt;&gt;btnExplorerBrowse.Name" xml:space="preserve">
-    <value>btnExplorerBrowse</value>
-  </data>
-  <data name="&gt;&gt;btnExplorerBrowse.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnExplorerBrowse.Parent" xml:space="preserve">
-    <value>tlpExplorer</value>
-  </data>
-  <data name="&gt;&gt;btnExplorerBrowse.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="radSpecialFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="radSpecialFolder.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radSpecialFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 8</value>
-  </data>
-  <data name="radSpecialFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 17</value>
-  </data>
-  <data name="radSpecialFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="radSpecialFolder.Text" xml:space="preserve">
-    <value>Use Special Folder</value>
-  </data>
-  <data name="&gt;&gt;radSpecialFolder.Name" xml:space="preserve">
-    <value>radSpecialFolder</value>
-  </data>
-  <data name="&gt;&gt;radSpecialFolder.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;radSpecialFolder.Parent" xml:space="preserve">
-    <value>tlpExplorer</value>
-  </data>
-  <data name="&gt;&gt;radSpecialFolder.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtCustomFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="txtCustomFolder.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="txtCustomFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 41</value>
-  </data>
-  <data name="txtCustomFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>403, 20</value>
-  </data>
-  <data name="txtCustomFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtCustomFolder.Name" xml:space="preserve">
-    <value>txtCustomFolder</value>
-  </data>
-  <data name="&gt;&gt;txtCustomFolder.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtCustomFolder.Parent" xml:space="preserve">
-    <value>tlpExplorer</value>
-  </data>
-  <data name="&gt;&gt;txtCustomFolder.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="radCustomFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="radCustomFolder.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radCustomFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 43</value>
-  </data>
-  <data name="radCustomFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 17</value>
-  </data>
-  <data name="radCustomFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="radCustomFolder.Text" xml:space="preserve">
-    <value>Use Custom Folder</value>
-  </data>
-  <data name="&gt;&gt;radCustomFolder.Name" xml:space="preserve">
-    <value>radCustomFolder</value>
-  </data>
-  <data name="&gt;&gt;radCustomFolder.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;radCustomFolder.Parent" xml:space="preserve">
-    <value>tlpExplorer</value>
-  </data>
-  <data name="&gt;&gt;radCustomFolder.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cmbExplorerGuids.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="cmbExplorerGuids.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 6</value>
-  </data>
-  <data name="cmbExplorerGuids.Size" type="System.Drawing.Size, System.Drawing">
-    <value>484, 21</value>
-  </data>
-  <data name="cmbExplorerGuids.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cmbExplorerGuids.Name" xml:space="preserve">
-    <value>cmbExplorerGuids</value>
-  </data>
-  <data name="&gt;&gt;cmbExplorerGuids.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableComboBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmbExplorerGuids.Parent" xml:space="preserve">
-    <value>tlpExplorer</value>
-  </data>
-  <data name="&gt;&gt;cmbExplorerGuids.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tlpSteam.ColumnCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtSteamInstallationPath.Name" xml:space="preserve">
-    <value>txtSteamInstallationPath</value>
-  </data>
-  <data name="&gt;&gt;txtSteamInstallationPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtSteamInstallationPath.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;txtSteamInstallationPath.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lstSteamGames.Name" xml:space="preserve">
-    <value>lstSteamGames</value>
-  </data>
-  <data name="&gt;&gt;lstSteamGames.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lstSteamGames.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;lstSteamGames.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnSteamLibrariesPath.Name" xml:space="preserve">
-    <value>btnSteamLibrariesPath</value>
-  </data>
-  <data name="&gt;&gt;btnSteamLibrariesPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnSteamLibrariesPath.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;btnSteamLibrariesPath.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;btnSteamInstallationChange.Name" xml:space="preserve">
-    <value>btnSteamInstallationChange</value>
-  </data>
-  <data name="&gt;&gt;btnSteamInstallationChange.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnSteamInstallationChange.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;btnSteamInstallationChange.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtSteamLibraryPaths.Name" xml:space="preserve">
-    <value>txtSteamLibraryPaths</value>
-  </data>
-  <data name="&gt;&gt;txtSteamLibraryPaths.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtSteamLibraryPaths.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;txtSteamLibraryPaths.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;btnSteamExeChange.Name" xml:space="preserve">
-    <value>btnSteamExeChange</value>
-  </data>
-  <data name="&gt;&gt;btnSteamExeChange.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnSteamExeChange.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;btnSteamExeChange.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;txtSteamExecutablePath.Name" xml:space="preserve">
-    <value>txtSteamExecutablePath</value>
-  </data>
-  <data name="&gt;&gt;txtSteamExecutablePath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtSteamExecutablePath.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;txtSteamExecutablePath.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="tlpSteam.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tlpSteam.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="tlpSteam.RowCount" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="tlpSteam.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 243</value>
-  </data>
-  <data name="tlpSteam.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;tlpSteam.Name" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;tlpSteam.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tlpSteam.Parent" xml:space="preserve">
-    <value>tabSteam</value>
-  </data>
-  <data name="&gt;&gt;tlpSteam.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tlpSteam.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="txtSteamInstallationPath" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lstSteamGames" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="btnSteamLibrariesPath" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnSteamInstallationChange" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtSteamLibraryPaths" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnSteamExeChange" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtSteamExecutablePath" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="txtSteamInstallationPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="txtSteamInstallationPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 4</value>
-  </data>
-  <data name="txtSteamInstallationPath.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Horizontal</value>
-  </data>
-  <data name="txtSteamInstallationPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>523, 20</value>
-  </data>
-  <data name="txtSteamInstallationPath.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="txtSteamInstallationPath.Text" xml:space="preserve">
-    <value>txtSteamInstallationPath</value>
-  </data>
-  <data name="txtSteamInstallationPath.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;txtSteamInstallationPath.Name" xml:space="preserve">
-    <value>txtSteamInstallationPath</value>
-  </data>
-  <data name="&gt;&gt;txtSteamInstallationPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtSteamInstallationPath.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;txtSteamInstallationPath.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lstSteamGames.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="lstSteamGames.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 90</value>
-  </data>
-  <data name="lstSteamGames.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 150</value>
-  </data>
-  <data name="lstSteamGames.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lstSteamGames.Name" xml:space="preserve">
-    <value>lstSteamGames</value>
-  </data>
-  <data name="&gt;&gt;lstSteamGames.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lstSteamGames.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;lstSteamGames.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnSteamLibrariesPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="btnSteamLibrariesPath.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="btnSteamLibrariesPath.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="btnSteamLibrariesPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>532, 61</value>
-  </data>
-  <data name="btnSteamLibrariesPath.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnSteamLibrariesPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnSteamLibrariesPath.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="btnSteamLibrariesPath.Text" xml:space="preserve">
-    <value>Change</value>
-  </data>
-  <data name="&gt;&gt;btnSteamLibrariesPath.Name" xml:space="preserve">
-    <value>btnSteamLibrariesPath</value>
-  </data>
-  <data name="&gt;&gt;btnSteamLibrariesPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnSteamLibrariesPath.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;btnSteamLibrariesPath.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="btnSteamInstallationChange.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="btnSteamInstallationChange.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="btnSteamInstallationChange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="btnSteamInstallationChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>532, 3</value>
-  </data>
-  <data name="btnSteamInstallationChange.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnSteamInstallationChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnSteamInstallationChange.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="btnSteamInstallationChange.Text" xml:space="preserve">
-    <value>Change</value>
-  </data>
-  <data name="&gt;&gt;btnSteamInstallationChange.Name" xml:space="preserve">
-    <value>btnSteamInstallationChange</value>
-  </data>
-  <data name="&gt;&gt;btnSteamInstallationChange.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnSteamInstallationChange.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;btnSteamInstallationChange.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="txtSteamLibraryPaths.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="txtSteamLibraryPaths.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 62</value>
-  </data>
-  <data name="txtSteamLibraryPaths.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Horizontal</value>
-  </data>
-  <data name="txtSteamLibraryPaths.Size" type="System.Drawing.Size, System.Drawing">
-    <value>523, 20</value>
-  </data>
-  <data name="txtSteamLibraryPaths.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="txtSteamLibraryPaths.Text" xml:space="preserve">
-    <value>txtSteamLibraryPaths</value>
-  </data>
-  <data name="txtSteamLibraryPaths.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;txtSteamLibraryPaths.Name" xml:space="preserve">
-    <value>txtSteamLibraryPaths</value>
-  </data>
-  <data name="&gt;&gt;txtSteamLibraryPaths.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtSteamLibraryPaths.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;txtSteamLibraryPaths.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="btnSteamExeChange.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="btnSteamExeChange.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="btnSteamExeChange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="btnSteamExeChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>532, 32</value>
-  </data>
-  <data name="btnSteamExeChange.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnSteamExeChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnSteamExeChange.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="btnSteamExeChange.Text" xml:space="preserve">
-    <value>Change</value>
-  </data>
-  <data name="&gt;&gt;btnSteamExeChange.Name" xml:space="preserve">
-    <value>btnSteamExeChange</value>
-  </data>
-  <data name="&gt;&gt;btnSteamExeChange.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnSteamExeChange.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;btnSteamExeChange.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="txtSteamExecutablePath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="txtSteamExecutablePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 33</value>
-  </data>
-  <data name="txtSteamExecutablePath.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Horizontal</value>
-  </data>
-  <data name="txtSteamExecutablePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>523, 20</value>
-  </data>
-  <data name="txtSteamExecutablePath.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="txtSteamExecutablePath.Text" xml:space="preserve">
-    <value>txtSteamExecutablePath</value>
-  </data>
-  <data name="txtSteamExecutablePath.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;txtSteamExecutablePath.Name" xml:space="preserve">
-    <value>txtSteamExecutablePath</value>
-  </data>
-  <data name="&gt;&gt;txtSteamExecutablePath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtSteamExecutablePath.Parent" xml:space="preserve">
-    <value>tlpSteam</value>
-  </data>
-  <data name="&gt;&gt;txtSteamExecutablePath.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="tlpWindowsStore.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lstWindowsStoreApps.Name" xml:space="preserve">
-    <value>lstWindowsStoreApps</value>
-  </data>
-  <data name="&gt;&gt;lstWindowsStoreApps.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lstWindowsStoreApps.Parent" xml:space="preserve">
-    <value>tlpWindowsStore</value>
-  </data>
-  <data name="&gt;&gt;lstWindowsStoreApps.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tlpWindowsStore.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tlpWindowsStore.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="tlpWindowsStore.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tlpWindowsStore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 243</value>
-  </data>
-  <data name="tlpWindowsStore.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tlpWindowsStore.Name" xml:space="preserve">
-    <value>tlpWindowsStore</value>
-  </data>
-  <data name="&gt;&gt;tlpWindowsStore.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tlpWindowsStore.Parent" xml:space="preserve">
-    <value>tabWindowsStore</value>
-  </data>
-  <data name="&gt;&gt;tlpWindowsStore.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tlpWindowsStore.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lstWindowsStoreApps" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="lstWindowsStoreApps.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="lstWindowsStoreApps.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="lstWindowsStoreApps.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 237</value>
-  </data>
-  <data name="lstWindowsStoreApps.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lstWindowsStoreApps.Name" xml:space="preserve">
-    <value>lstWindowsStoreApps</value>
-  </data>
-  <data name="&gt;&gt;lstWindowsStoreApps.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lstWindowsStoreApps.Parent" xml:space="preserve">
-    <value>tlpWindowsStore</value>
-  </data>
-  <data name="&gt;&gt;lstWindowsStoreApps.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtUriString.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 106</value>
-  </data>
-  <data name="txtUriString.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 20</value>
-  </data>
-  <data name="txtUriString.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;txtUriString.Name" xml:space="preserve">
-    <value>txtUriString</value>
-  </data>
-  <data name="&gt;&gt;txtUriString.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtUriString.Parent" xml:space="preserve">
-    <value>tabURI</value>
-  </data>
-  <data name="&gt;&gt;txtUriString.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblUriString.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblUriString.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 109</value>
-  </data>
-  <data name="lblUriString.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 13</value>
-  </data>
-  <data name="lblUriString.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="lblUriString.Text" xml:space="preserve">
-    <value>URI Target:</value>
-  </data>
-  <data name="&gt;&gt;lblUriString.Name" xml:space="preserve">
-    <value>lblUriString</value>
-  </data>
-  <data name="&gt;&gt;lblUriString.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblUriString.Parent" xml:space="preserve">
-    <value>tabURI</value>
-  </data>
-  <data name="&gt;&gt;lblUriString.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblUriExplain.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblUriExplain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 15</value>
-  </data>
-  <data name="lblUriExplain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>590, 78</value>
-  </data>
-  <data name="lblUriExplain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblUriExplain.Text" xml:space="preserve">
-    <value>Use this to create a custom shortcut to any URI path. This includes web addresses you wish to open in the default browser. 
-
-For example:
-https://www.google.com
-spotify:trackId
-mailto:test@example.com</value>
-  </data>
-  <data name="&gt;&gt;lblUriExplain.Name" xml:space="preserve">
-    <value>lblUriExplain</value>
-  </data>
-  <data name="&gt;&gt;lblUriExplain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblUriExplain.Parent" xml:space="preserve">
-    <value>tabURI</value>
-  </data>
-  <data name="&gt;&gt;lblUriExplain.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblOtherShortcutArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 41</value>
-  </data>
-  <data name="lblOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
-  </data>
-  <data name="lblOtherShortcutArguments.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="lblOtherShortcutArguments.Text" xml:space="preserve">
-    <value>Shortcut Arguments</value>
-  </data>
-  <data name="&gt;&gt;lblOtherShortcutArguments.Name" xml:space="preserve">
-    <value>lblOtherShortcutArguments</value>
-  </data>
-  <data name="&gt;&gt;lblOtherShortcutArguments.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblOtherShortcutArguments.Parent" xml:space="preserve">
-    <value>tabOther</value>
-  </data>
-  <data name="&gt;&gt;lblOtherShortcutArguments.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="txtOtherShortcutArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtOtherShortcutArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 38</value>
-  </data>
-  <data name="txtOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 20</value>
-  </data>
-  <data name="txtOtherShortcutArguments.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;txtOtherShortcutArguments.Name" xml:space="preserve">
-    <value>txtOtherShortcutArguments</value>
-  </data>
-  <data name="&gt;&gt;txtOtherShortcutArguments.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtOtherShortcutArguments.Parent" xml:space="preserve">
-    <value>tabOther</value>
-  </data>
-  <data name="&gt;&gt;txtOtherShortcutArguments.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblOtherTargetPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 15</value>
-  </data>
-  <data name="lblOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 13</value>
-  </data>
-  <data name="lblOtherTargetPath.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="lblOtherTargetPath.Text" xml:space="preserve">
-    <value>Shortcut Target</value>
-  </data>
-  <data name="&gt;&gt;lblOtherTargetPath.Name" xml:space="preserve">
-    <value>lblOtherTargetPath</value>
-  </data>
-  <data name="&gt;&gt;lblOtherTargetPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblOtherTargetPath.Parent" xml:space="preserve">
-    <value>tabOther</value>
-  </data>
-  <data name="&gt;&gt;lblOtherTargetPath.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="btnOtherTargetBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnOtherTargetBrowse.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="btnOtherTargetBrowse.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="btnOtherTargetBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>545, 8</value>
-  </data>
-  <data name="btnOtherTargetBrowse.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="btnOtherTargetBrowse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 26</value>
-  </data>
-  <data name="btnOtherTargetBrowse.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="btnOtherTargetBrowse.Text" xml:space="preserve">
-    <value>Browse</value>
-  </data>
-  <data name="&gt;&gt;btnOtherTargetBrowse.Name" xml:space="preserve">
-    <value>btnOtherTargetBrowse</value>
-  </data>
-  <data name="&gt;&gt;btnOtherTargetBrowse.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnOtherTargetBrowse.Parent" xml:space="preserve">
-    <value>tabOther</value>
-  </data>
-  <data name="&gt;&gt;btnOtherTargetBrowse.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="txtOtherTargetPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtOtherTargetPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 12</value>
-  </data>
-  <data name="txtOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 20</value>
-  </data>
-  <data name="txtOtherTargetPath.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtOtherTargetPath.Name" xml:space="preserve">
-    <value>txtOtherTargetPath</value>
-  </data>
-  <data name="&gt;&gt;txtOtherTargetPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtOtherTargetPath.Parent" xml:space="preserve">
-    <value>tabOther</value>
-  </data>
-  <data name="&gt;&gt;txtOtherTargetPath.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>592, 26</value>
   </metadata>
+  <data name="refreshToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 20</value>
+  </data>
+  <data name="refreshToolStripMenuItem.Text" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1714,12 +1525,6 @@ mailto:test@example.com</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>7</value>
-  </data>
-  <data name="refreshToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 20</value>
-  </data>
-  <data name="refreshToolStripMenuItem.Text" xml:space="preserve">
-    <value>Refresh</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2225,6 +2030,6 @@ mailto:test@example.com</value>
     <value>FrmCustomShortcutManagerNew</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6306.37261, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
