@@ -32,18 +32,18 @@ namespace TileIconifier.Forms.Main
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.txtFilter = new SkinnableTextBox();
+            this.txtFilter = new TileIconifier.Controls.SkinnableTextBox();
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnDeleteCustomShortcut = new TileIconifier.Controls.SkinnableButton();
             this.btnBuildCustomShortcut = new TileIconifier.Controls.SkinnableButton();
             this.iconifyPanel = new TileIconifier.Controls.IconifierPanel.TileIconifierPanel();
             this.srtlstShortcuts = new TileIconifier.Controls.SortableListView();
             this.lblExePath = new System.Windows.Forms.Label();
-            this.txtExePath = new SkinnableTextBox();
+            this.txtExePath = new TileIconifier.Controls.SkinnableTextBox();
             this.btnRemove = new TileIconifier.Controls.SkinnableButton();
             this.btnIconify = new TileIconifier.Controls.SkinnableButton();
             this.lblLnkPath = new System.Windows.Forms.Label();
-            this.txtLnkPath = new SkinnableTextBox();
+            this.txtLnkPath = new TileIconifier.Controls.SkinnableTextBox();
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -325,7 +325,7 @@ namespace TileIconifier.Forms.Main
             this.Controls.Add(this.mnuMain);
             this.MainMenuStrip = this.mnuMain;
             this.Name = "FrmMain";
-            this.Load += new System.EventHandler(this.frmDropper_Load);            
+            this.Load += new System.EventHandler(this.frmDropper_Load);
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
