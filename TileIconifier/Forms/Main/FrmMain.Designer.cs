@@ -248,11 +248,13 @@ namespace TileIconifier.Forms.Main
             this.defaultSkinToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.defaultSkinToolStripMenuItem.Name = "defaultSkinToolStripMenuItem";
             resources.ApplyResources(this.defaultSkinToolStripMenuItem, "defaultSkinToolStripMenuItem");
+            this.defaultSkinToolStripMenuItem.Tag = "DefaultSkin";
             // 
             // darkSkinToolStripMenuItem
             // 
             this.darkSkinToolStripMenuItem.Name = "darkSkinToolStripMenuItem";
             resources.ApplyResources(this.darkSkinToolStripMenuItem, "darkSkinToolStripMenuItem");
+            this.darkSkinToolStripMenuItem.Tag = "DarkSkin";
             // 
             // aboutToolStripMenuItem
             // 

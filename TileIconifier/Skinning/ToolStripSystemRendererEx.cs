@@ -18,7 +18,7 @@ namespace TileIconifier.Skinning
         #region "Constructors"
         public ToolStripSystemRendererEx()
         {
-            colorTable = new ToolStripSystemColorTable(new BaseSkin());
+            colorTable = new ToolStripSystemColorTable(SkinHandler.DefaultSkin);
         }
 
         public ToolStripSystemRendererEx(BaseSkin skin)

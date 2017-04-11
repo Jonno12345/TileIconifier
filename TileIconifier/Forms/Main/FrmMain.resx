@@ -196,7 +196,7 @@
     <value>btnRemove</value>
   </data>
   <data name="&gt;&gt;btnRemove.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37860, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6310.40567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnRemove.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -280,7 +280,7 @@
     <value>btnIconify</value>
   </data>
   <data name="&gt;&gt;btnIconify.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37860, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6310.40567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnIconify.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -313,7 +313,7 @@
     <value>iconifyPanel</value>
   </data>
   <data name="&gt;&gt;iconifyPanel.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.TileIconifierPanel, TileIconifier, Version=2.2.6306.37860, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.TileIconifierPanel, TileIconifier, Version=2.2.6310.40567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconifyPanel.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -352,7 +352,7 @@
     <value>btnDeleteCustomShortcut</value>
   </data>
   <data name="&gt;&gt;btnDeleteCustomShortcut.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37860, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6310.40567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnDeleteCustomShortcut.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -376,7 +376,7 @@
     <value>srtlstShortcuts</value>
   </data>
   <data name="&gt;&gt;srtlstShortcuts.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6306.37860, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6310.40567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;srtlstShortcuts.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -415,7 +415,7 @@
     <value>btnBuildCustomShortcut</value>
   </data>
   <data name="&gt;&gt;btnBuildCustomShortcut.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.37860, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6310.40567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnBuildCustomShortcut.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -475,7 +475,7 @@
     <value>txtExePath</value>
   </data>
   <data name="&gt;&gt;txtExePath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37860, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6310.40567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtExePath.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -535,7 +535,7 @@
     <value>txtLnkPath</value>
   </data>
   <data name="&gt;&gt;txtLnkPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37860, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6310.40567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtLnkPath.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -583,7 +583,7 @@
     <value>txtFilter</value>
   </data>
   <data name="&gt;&gt;txtFilter.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.37860, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6310.40567, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtFilter.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -646,13 +646,13 @@
     <value>Utilities</value>
   </data>
   <data name="defaultSkinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="defaultSkinToolStripMenuItem.Text" xml:space="preserve">
     <value>Default Skin</value>
   </data>
   <data name="darkSkinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="darkSkinToolStripMenuItem.Text" xml:space="preserve">
     <value>Dark Skin</value>
@@ -676,13 +676,13 @@
     <value>Help</value>
   </data>
   <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="englishToolStripMenuItem.Text" xml:space="preserve">
     <value>English</value>
   </data>
   <data name="russianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="russianToolStripMenuItem.Text" xml:space="preserve">
     <value>Русский</value>
@@ -1026,6 +1026,6 @@
     <value>FrmMain</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6306.37860, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6310.40567, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

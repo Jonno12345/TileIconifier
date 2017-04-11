@@ -79,6 +79,7 @@ namespace TileIconifier.Forms.Main
             srtlstShortcuts.ClientSizeChanged += SrtlstShortcuts_ClientSizeChanged;
 
             SetCurrentLanguage();
+            SetCurrentSkin();
             CheckPowershellPinningFromConfig();
 
             iconifyPanel.OnIconifyPanelUpdate += (s, ev) => { UpdateFormControls(); };

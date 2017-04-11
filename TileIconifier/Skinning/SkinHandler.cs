@@ -35,6 +35,8 @@ namespace TileIconifier.Skinning
 {
     public static class SkinHandler
     {
+        public static BaseSkin DefaultSkin { get; } = new BaseSkin();
+
         public delegate void SkinChangedEventHandler(object sender, EventArgs e);
 
         //The current skin is initially null to enforce the need to call 

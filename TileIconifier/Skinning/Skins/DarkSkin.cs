@@ -30,7 +30,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace TileIconifier.Skinning.Skins.Dark
+namespace TileIconifier.Skinning.Skins
 {
     /// <summary>
     /// Skin for a <see cref="Forms.SkinnableForm"/> with a flat appearance, a bright foreground and a dark background.
