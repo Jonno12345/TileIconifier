@@ -146,7 +146,7 @@
     <value>-2, 5</value>
   </data>
   <data name="lblFGText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 13</value>
+    <value>239, 13</value>
   </data>
   <data name="lblFGText.Text" xml:space="preserve">
     <value>Текст на плитке (только для средней иконки)</value>
@@ -164,21 +164,24 @@
     <value>3, 53</value>
   </data>
   <data name="pnlFGColour.Size" type="System.Drawing.Size, System.Drawing">
-    <value>298, 45</value>
-  </data>
-  <data name="cmbColour.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 19</value>
+    <value>296, 45</value>
   </data>
   <data name="lblBGColour.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 3</value>
   </data>
   <data name="lblBGColour.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 13</value>
+    <value>61, 13</value>
   </data>
   <data name="lblBGColour.Text" xml:space="preserve">
     <value>Цвет фона</value>
   </data>
   <data name="txtBGColour.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 19</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>266, 98</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>266, 98</value>
   </data>
 </root>

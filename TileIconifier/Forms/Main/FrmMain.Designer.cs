@@ -32,18 +32,18 @@ namespace TileIconifier.Forms.Main
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.txtFilter = new TileIconifier.Controls.SkinnableTextBox();
             this.lblFilter = new System.Windows.Forms.Label();
-            this.btnDeleteCustomShortcut = new System.Windows.Forms.Button();
-            this.btnBuildCustomShortcut = new System.Windows.Forms.Button();
+            this.btnDeleteCustomShortcut = new TileIconifier.Controls.SkinnableButton();
+            this.btnBuildCustomShortcut = new TileIconifier.Controls.SkinnableButton();
             this.iconifyPanel = new TileIconifier.Controls.IconifierPanel.TileIconifierPanel();
             this.srtlstShortcuts = new TileIconifier.Controls.SortableListView();
             this.lblExePath = new System.Windows.Forms.Label();
-            this.txtExePath = new System.Windows.Forms.TextBox();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.btnIconify = new System.Windows.Forms.Button();
+            this.txtExePath = new TileIconifier.Controls.SkinnableTextBox();
+            this.btnRemove = new TileIconifier.Controls.SkinnableButton();
+            this.btnIconify = new TileIconifier.Controls.SkinnableButton();
             this.lblLnkPath = new System.Windows.Forms.Label();
-            this.txtLnkPath = new System.Windows.Forms.TextBox();
+            this.txtLnkPath = new TileIconifier.Controls.SkinnableTextBox();
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +64,9 @@ namespace TileIconifier.Forms.Main
             this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblBadShortcutWarning = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.mnuMain.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtFilter
@@ -72,6 +74,7 @@ namespace TileIconifier.Forms.Main
             resources.ApplyResources(this.txtFilter, "txtFilter");
             this.txtFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tableLayoutPanel1.SetColumnSpan(this.txtFilter, 2);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
@@ -83,6 +86,7 @@ namespace TileIconifier.Forms.Main
             // btnDeleteCustomShortcut
             // 
             resources.ApplyResources(this.btnDeleteCustomShortcut, "btnDeleteCustomShortcut");
+            this.tableLayoutPanel1.SetColumnSpan(this.btnDeleteCustomShortcut, 2);
             this.btnDeleteCustomShortcut.Name = "btnDeleteCustomShortcut";
             this.btnDeleteCustomShortcut.UseVisualStyleBackColor = true;
             this.btnDeleteCustomShortcut.Click += new System.EventHandler(this.btnDeleteCustomShortcut_Click);
@@ -90,6 +94,7 @@ namespace TileIconifier.Forms.Main
             // btnBuildCustomShortcut
             // 
             resources.ApplyResources(this.btnBuildCustomShortcut, "btnBuildCustomShortcut");
+            this.tableLayoutPanel1.SetColumnSpan(this.btnBuildCustomShortcut, 2);
             this.btnBuildCustomShortcut.Name = "btnBuildCustomShortcut";
             this.btnBuildCustomShortcut.UseVisualStyleBackColor = true;
             this.btnBuildCustomShortcut.Click += new System.EventHandler(this.btnBuildCustomShortcut_Click);
@@ -97,11 +102,14 @@ namespace TileIconifier.Forms.Main
             // iconifyPanel
             // 
             resources.ApplyResources(this.iconifyPanel, "iconifyPanel");
+            this.tableLayoutPanel1.SetColumnSpan(this.iconifyPanel, 2);
             this.iconifyPanel.CurrentShortcutItem = null;
             this.iconifyPanel.Name = "iconifyPanel";
+            this.tableLayoutPanel1.SetRowSpan(this.iconifyPanel, 7);
             // 
             // srtlstShortcuts
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.srtlstShortcuts, 3);
             resources.ApplyResources(this.srtlstShortcuts, "srtlstShortcuts");
             this.srtlstShortcuts.FullRowSelect = true;
             this.srtlstShortcuts.HideSelection = false;
@@ -114,11 +122,13 @@ namespace TileIconifier.Forms.Main
             // lblExePath
             // 
             resources.ApplyResources(this.lblExePath, "lblExePath");
+            this.tableLayoutPanel1.SetColumnSpan(this.lblExePath, 2);
             this.lblExePath.Name = "lblExePath";
             // 
             // txtExePath
             // 
             resources.ApplyResources(this.txtExePath, "txtExePath");
+            this.tableLayoutPanel1.SetColumnSpan(this.txtExePath, 3);
             this.txtExePath.Name = "txtExePath";
             this.txtExePath.ReadOnly = true;
             // 
@@ -140,17 +150,18 @@ namespace TileIconifier.Forms.Main
             // lblLnkPath
             // 
             resources.ApplyResources(this.lblLnkPath, "lblLnkPath");
+            this.tableLayoutPanel1.SetColumnSpan(this.lblLnkPath, 2);
             this.lblLnkPath.Name = "lblLnkPath";
             // 
             // txtLnkPath
             // 
             resources.ApplyResources(this.txtLnkPath, "txtLnkPath");
+            this.tableLayoutPanel1.SetColumnSpan(this.txtLnkPath, 3);
             this.txtLnkPath.Name = "txtLnkPath";
             this.txtLnkPath.ReadOnly = true;
             // 
             // mnuMain
             // 
-            this.mnuMain.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.preferencesToolStripMenuItem,
@@ -286,43 +297,51 @@ namespace TileIconifier.Forms.Main
             resources.ApplyResources(this.lblBadShortcutWarning, "lblBadShortcutWarning");
             this.lblBadShortcutWarning.ForeColor = System.Drawing.Color.Red;
             this.lblBadShortcutWarning.Name = "lblBadShortcutWarning";
+            this.tableLayoutPanel1.SetRowSpan(this.lblBadShortcutWarning, 2);
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.lblFilter, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtFilter, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnRemove, 4, 7);
+            this.tableLayoutPanel1.Controls.Add(this.lblBadShortcutWarning, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btnIconify, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.iconifyPanel, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnDeleteCustomShortcut, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.srtlstShortcuts, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnBuildCustomShortcut, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lblLnkPath, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtExePath, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblExePath, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtLnkPath, 0, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.lblBadShortcutWarning);
-            this.Controls.Add(this.txtFilter);
-            this.Controls.Add(this.lblFilter);
-            this.Controls.Add(this.btnDeleteCustomShortcut);
-            this.Controls.Add(this.btnBuildCustomShortcut);
-            this.Controls.Add(this.iconifyPanel);
-            this.Controls.Add(this.srtlstShortcuts);
-            this.Controls.Add(this.lblExePath);
-            this.Controls.Add(this.txtExePath);
-            this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.btnIconify);
-            this.Controls.Add(this.lblLnkPath);
-            this.Controls.Add(this.txtLnkPath);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.mnuMain);
             this.MainMenuStrip = this.mnuMain;
             this.Name = "FrmMain";
             this.Load += new System.EventHandler(this.frmDropper_Load);
-            this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtLnkPath;
+        private SkinnableTextBox txtLnkPath;
         private System.Windows.Forms.Label lblLnkPath;
-        private System.Windows.Forms.Button btnIconify;
-        private System.Windows.Forms.Button btnRemove;
+        private TileIconifier.Controls.SkinnableButton btnIconify;
+        private TileIconifier.Controls.SkinnableButton btnRemove;
         private System.Windows.Forms.Label lblExePath;
-        private System.Windows.Forms.TextBox txtExePath;
+        private SkinnableTextBox txtExePath;
         private System.Windows.Forms.MenuStrip mnuMain;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -339,16 +358,17 @@ namespace TileIconifier.Forms.Main
         private System.Windows.Forms.ToolStripMenuItem defaultSkinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darkSkinToolStripMenuItem;
         private TileIconifierPanel iconifyPanel;
-        private System.Windows.Forms.Button btnBuildCustomShortcut;
-        private System.Windows.Forms.Button btnDeleteCustomShortcut;
+        private TileIconifier.Controls.SkinnableButton btnBuildCustomShortcut;
+        private TileIconifier.Controls.SkinnableButton btnDeleteCustomShortcut;
         private System.Windows.Forms.Label lblFilter;
-        private System.Windows.Forms.TextBox txtFilter;
+        private SkinnableTextBox txtFilter;
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem russianToolStripMenuItem;
         private System.Windows.Forms.Label lblBadShortcutWarning;
         private System.Windows.Forms.ToolStripMenuItem mnuBatchOperations;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

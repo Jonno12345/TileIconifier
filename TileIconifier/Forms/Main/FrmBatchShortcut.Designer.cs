@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBatchShortcut));
-            this.btnBatchAmendBackgroundColor = new System.Windows.Forms.Button();
+            this.btnBatchAmendBackgroundColor = new TileIconifier.Controls.SkinnableButton();
             this.pctColorPreview = new System.Windows.Forms.PictureBox();
-            this.btnSelectNone = new System.Windows.Forms.Button();
-            this.btnSelectAll = new System.Windows.Forms.Button();
+            this.btnSelectNone = new TileIconifier.Controls.SkinnableButton();
+            this.btnSelectAll = new TileIconifier.Controls.SkinnableButton();
             this.colorPanel = new TileIconifier.Controls.IconifierPanel.ColorPanel();
             this.lstIconifiedItems = new TileIconifier.Controls.SortableListView();
-            this.btnAmendForegroundColor = new System.Windows.Forms.Button();
-            this.btnAmendForegroundText = new System.Windows.Forms.Button();
+            this.btnAmendForegroundColor = new TileIconifier.Controls.SkinnableButton();
+            this.btnAmendForegroundText = new TileIconifier.Controls.SkinnableButton();
             ((System.ComponentModel.ISupportInitialize)(this.pctColorPreview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,12 +144,12 @@
         #endregion
 
         private Controls.SortableListView lstIconifiedItems;
-        private System.Windows.Forms.Button btnSelectAll;
-        private System.Windows.Forms.Button btnSelectNone;
+        private TileIconifier.Controls.SkinnableButton btnSelectAll;
+        private TileIconifier.Controls.SkinnableButton btnSelectNone;
         private Controls.IconifierPanel.ColorPanel colorPanel;
         private System.Windows.Forms.PictureBox pctColorPreview;
-        private System.Windows.Forms.Button btnBatchAmendBackgroundColor;
-        private System.Windows.Forms.Button btnAmendForegroundColor;
-        private System.Windows.Forms.Button btnAmendForegroundText;
+        private TileIconifier.Controls.SkinnableButton btnBatchAmendBackgroundColor;
+        private TileIconifier.Controls.SkinnableButton btnAmendForegroundColor;
+        private TileIconifier.Controls.SkinnableButton btnAmendForegroundText;
     }
 }

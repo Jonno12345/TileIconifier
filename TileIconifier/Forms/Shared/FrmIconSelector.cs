@@ -101,7 +101,7 @@ namespace TileIconifier.Forms.Shared
             SetUpOpenFileDialog();
             SetUpCommonDllComboBox();
             SetUpTargetPath(targetPath);
-            BuildListView();
+            BuildListView();            
         }
 
         public static IconSelectorResult GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
@@ -238,12 +238,13 @@ namespace TileIconifier.Forms.Shared
 
             e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
             e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
-            e.Graphics.Clip = new Region(e.Bounds);
 
-            e.Graphics.FillRectangle(
-                e.Item.Selected
-                    ? new SolidBrush(CurrentBaseSkin.HighlightColor)
-                    : new SolidBrush(CurrentBaseSkin.BackColor), e.Bounds);
+            if (e.Item.Selected)
+                //If the skin ever gets a highlight color property specific 
+                //to listview (something like ListViewSelectedBackColor), 
+                //it is the one that we should use here instead of the generic highlight color.
+                using (var b = new SolidBrush(FormSkin.HighlightBackColor))
+                    e.Graphics.FillRectangle(b, e.Bounds);            
 
             var w = (int) Math.Ceiling(lvwIcons.TileSize.Width*0.8);
             var h = (int) Math.Ceiling(lvwIcons.TileSize.Height*0.8);
@@ -257,10 +258,17 @@ namespace TileIconifier.Forms.Shared
 
                 e.Graphics.DrawImage(item.Bitmap, dstRect, srcRect, GraphicsUnit.Pixel);
             }
+            
+            //Draw a border that uses a blend of the ForeColor and the BackColor to
+            //ensure that it is good looking and visible with any skin.
+            var borderColor = ColorUtils.BlendColors(FormSkin.ListViewForeColor, 1, FormSkin.ListViewBackColor, 10);
+            var borderRect = e.Bounds;
+            borderRect.Width--;
+            borderRect.Height--;
 
-            e.Graphics.Clip = new Region();
-            e.Graphics.DrawRectangle(SystemPens.ControlLight, e.Bounds);
-        }
+            using (var p = new Pen(borderColor))
+                e.Graphics.DrawRectangle(p, e.Bounds);
+        }        
 
         private void lvwIcons_MouseDoubleClick(object sender, MouseEventArgs e)
         {

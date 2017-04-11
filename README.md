@@ -9,7 +9,7 @@ Creates tiles for any Windows 8.1 (Largely untested) and Windows 10 (Build 10586
  - Create custom shortcuts to Steam games, Chrome apps, Windows Store apps and explorer shortcuts, or any other shortcut target you wish using custom VBS script launchers. 
  - Extract icons from the software EXE/DLL, without using any other external program.
  - Move and resize the image to where you want it within the tile, allowing more customisation than simply a full sized image.
- - Support Languages: English, Russian (happy to add other languages if anyone can help with translation).
+ - Supported Languages: English, Russian (happy to add other languages if anyone can help with translation).
 
 --------------
 
@@ -45,3 +45,13 @@ Unfortunately these options are only available for Live tiles, not standard LNK 
 **Microsoft Office/Mozilla Firefox/Other shortcuts aren't working, can these be tiled?**
 
 There is some mechanism I have yet to understand overriding these from being tiled. The easiest way to resolve this is to go to your shortcut within TileIconifier and click 'Quick Build Custom Shortcut'. This will create a second shortcut with the same parameters that can be tiled, which you will then find in your start menu under 'TileIconify'. 
+
+--------------
+
+## Credits
+
+Logo provided by AdamDesrosiers of XDA Developers.
+Hugely improved skinning by @mcdenis - https://github.com/mcdenis
+
+Translations:
+Russian by @Zik - https://github.com/Zik

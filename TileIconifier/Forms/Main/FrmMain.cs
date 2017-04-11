@@ -51,15 +51,23 @@ namespace TileIconifier.Forms.Main
         public FrmMain()
         {
             InitializeComponent();
+
+            ApplySkin();
         }
 
         private ShortcutItem CurrentShortcutItem => _currentShortcutListViewItem.ShortcutItem;
 
-        protected override void ApplySkin(object sender, EventArgs e)
+        protected override void OnSkinChanged(object sender, EventArgs e)
         {
-            base.ApplySkin(sender, e);
-            iconifyPanel.UpdateSkinColors(CurrentBaseSkin);
-            lblBadShortcutWarning.ForeColor = CurrentBaseSkin.ErrorColor;
+            base.OnSkinChanged(sender, e);
+
+            ApplySkin();
+        }
+
+        private void ApplySkin()
+        {
+            iconifyPanel.UpdateSkinColors(FormSkin);
+            lblBadShortcutWarning.ForeColor = FormSkin.ErrorForeColor;
         }
 
         private void frmDropper_Load(object sender, EventArgs e)
@@ -68,6 +76,7 @@ namespace TileIconifier.Forms.Main
             defaultSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
             englishToolStripMenuItem.Click += LanguageToolStripMenuClick;
             russianToolStripMenuItem.Click += LanguageToolStripMenuClick;
+            srtlstShortcuts.ClientSizeChanged += SrtlstShortcuts_ClientSizeChanged;
 
             SetCurrentLanguage();
             CheckPowershellPinningFromConfig();
@@ -79,7 +88,7 @@ namespace TileIconifier.Forms.Main
 
             Show();
             StartFullUpdate();
-        }
+        }        
 
         private void btnIconify_Click(object sender, EventArgs e)
         {
@@ -282,10 +291,10 @@ namespace TileIconifier.Forms.Main
             }
         }
 
-        private void FrmMain_Resize(object sender, EventArgs e)
+        private void SrtlstShortcuts_ClientSizeChanged(object sender, EventArgs e)
         {
-            InitializeListboxColumns();
-        }
+            UpdateListBoxColumnsSize();
+        }        
 
         private void mnuBatchOperations_Click(object sender, EventArgs e)
         {

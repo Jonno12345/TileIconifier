@@ -139,7 +139,35 @@
     </Compile>
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxImage.cs" />
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxMetaData.cs" />
+    <Compile Include="Controls\ISkinnableButton.cs" />
+    <Compile Include="Controls\ISkinnableCheckableButton.cs" />
+    <Compile Include="Controls\ISkinnableControl.cs" />
+    <Compile Include="Controls\ISkinnableTextBox.cs" />
     <Compile Include="Controls\Shortcut\ShortcutItemListViewItemLibrary.cs" />
+    <Compile Include="Controls\SkinnableButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinnableCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinnableComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinnableListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinnableRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinnableRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinnableTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinnableTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -256,6 +284,7 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Localization\LocalizationEvent.cs" />
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\Shortcut\ShortcutItemListViewItem.cs" />
@@ -284,6 +313,10 @@
       <DependentUpon>Strings.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Skinning\ToolStripSystemColorTable.cs" />
+    <Compile Include="Skinning\ToolStripSystemRendererEx.cs" />
+    <Compile Include="Utilities\ButtonUtils.cs" />
+    <Compile Include="Utilities\ContainerUtils.cs" />
     <Compile Include="Utilities\FontUtils.cs" />
     <Compile Include="Utilities\FormUtils.cs" />
     <Compile Include="Forms\Shared\FrmIconSelector.cs">
@@ -428,6 +461,10 @@
       <Project>{02d2a2f4-8f79-4373-9804-9e7d339fd6e2}</Project>
       <Name>TileIconifier.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Skinning\Controls\" />
+    <Folder Include="Skinning\Forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

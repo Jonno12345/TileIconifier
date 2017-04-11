@@ -136,7 +136,7 @@ namespace TileIconifier.Controls.IconifierPanel
 
             Action<Control> controlInvalid = c =>
             {
-                c.BackColor = SkinHandler.GetCurrentSkin().ErrorColor;
+                c.BackColor = SkinHandler.GetCurrentSkin().ErrorForeColor;
                 valid = false;
             };
 
@@ -151,7 +151,13 @@ namespace TileIconifier.Controls.IconifierPanel
 
         public void ResetValidation()
         {
-            txtBGColour.BackColor = SkinHandler.GetCurrentSkin().BackColor;
+            //mcdenis: I am not sure what is the purpose of the line below
+            //since the color of the textbox does not seem to be changed
+            //anywhere else, but if it is actually necessary, it should be updated
+            //to use the newly added TextBoxBackColor skin property
+            //instead of BackColor. For now, I have commented it out.
+
+            //txtBGColour.BackColor = SkinHandler.GetCurrentSkin().BackColor;
         }
 
         private void RemoveEventHandlers()

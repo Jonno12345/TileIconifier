@@ -31,29 +31,28 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorPanel));
             this.panel1 = new System.Windows.Forms.Panel();
             this.eyedropperColorPicker = new TileIconifier.Controls.Eyedropper.EyedropColorPicker();
-            this.btnColourPicker = new System.Windows.Forms.Button();
-            this.pnlFGColour = new System.Windows.Forms.Panel();
-            this.chkFGTxtEnabled = new System.Windows.Forms.CheckBox();
-            this.radFGDark = new System.Windows.Forms.RadioButton();
-            this.lblFGText = new System.Windows.Forms.Label();
-            this.radFGLight = new System.Windows.Forms.RadioButton();
-            this.cmbColour = new System.Windows.Forms.ComboBox();
+            this.btnColourPicker = new TileIconifier.Controls.SkinnableButton();
+            this.cmbColour = new TileIconifier.Controls.SkinnableComboBox();
             this.lblBGColour = new System.Windows.Forms.Label();
-            this.txtBGColour = new System.Windows.Forms.TextBox();
+            this.txtBGColour = new SkinnableTextBox();
+            this.chkFGTxtEnabled = new SkinnableCheckBox();
+            this.radFGDark = new TileIconifier.Controls.SkinnableRadioButton();
+            this.lblFGText = new System.Windows.Forms.Label();
+            this.radFGLight = new TileIconifier.Controls.SkinnableRadioButton();
             this.clrDialog = new System.Windows.Forms.ColorDialog();
+            this.tlpFGColour = new System.Windows.Forms.TableLayoutPanel();
             this.panel1.SuspendLayout();
-            this.pnlFGColour.SuspendLayout();
+            this.tlpFGColour.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.eyedropperColorPicker);
             this.panel1.Controls.Add(this.btnColourPicker);
-            this.panel1.Controls.Add(this.pnlFGColour);
             this.panel1.Controls.Add(this.cmbColour);
             this.panel1.Controls.Add(this.lblBGColour);
             this.panel1.Controls.Add(this.txtBGColour);
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // eyedropperColorPicker
@@ -61,58 +60,23 @@
             resources.ApplyResources(this.eyedropperColorPicker, "eyedropperColorPicker");
             this.eyedropperColorPicker.Name = "eyedropperColorPicker";
             this.eyedropperColorPicker.SelectedColor = System.Drawing.Color.Empty;
+            this.eyedropperColorPicker.Zoom = 6;
             this.eyedropperColorPicker.SelectedColorChanged += new System.EventHandler(this.eyedropperColorPicker_SelectedColorChanged);
             // 
             // btnColourPicker
             // 
-            resources.ApplyResources(this.btnColourPicker, "btnColourPicker");
             this.btnColourPicker.BackgroundImage = global::TileIconifier.Properties.Resources.colorsquare;
+            resources.ApplyResources(this.btnColourPicker, "btnColourPicker");
             this.btnColourPicker.FlatAppearance.BorderSize = 0;
             this.btnColourPicker.Name = "btnColourPicker";
             this.btnColourPicker.UseVisualStyleBackColor = true;
             this.btnColourPicker.Click += new System.EventHandler(this.btnColourPicker_Click);
             // 
-            // pnlFGColour
-            // 
-            resources.ApplyResources(this.pnlFGColour, "pnlFGColour");
-            this.pnlFGColour.Controls.Add(this.chkFGTxtEnabled);
-            this.pnlFGColour.Controls.Add(this.radFGDark);
-            this.pnlFGColour.Controls.Add(this.lblFGText);
-            this.pnlFGColour.Controls.Add(this.radFGLight);
-            this.pnlFGColour.Name = "pnlFGColour";
-            // 
-            // chkFGTxtEnabled
-            // 
-            this.chkFGTxtEnabled.Checked = true;
-            this.chkFGTxtEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            resources.ApplyResources(this.chkFGTxtEnabled, "chkFGTxtEnabled");
-            this.chkFGTxtEnabled.Name = "chkFGTxtEnabled";
-            this.chkFGTxtEnabled.UseVisualStyleBackColor = true;
-            // 
-            // radFGDark
-            // 
-            resources.ApplyResources(this.radFGDark, "radFGDark");
-            this.radFGDark.Name = "radFGDark";
-            this.radFGDark.UseVisualStyleBackColor = true;
-            // 
-            // lblFGText
-            // 
-            resources.ApplyResources(this.lblFGText, "lblFGText");
-            this.lblFGText.Name = "lblFGText";
-            // 
-            // radFGLight
-            // 
-            this.radFGLight.Checked = true;
-            resources.ApplyResources(this.radFGLight, "radFGLight");
-            this.radFGLight.Name = "radFGLight";
-            this.radFGLight.TabStop = true;
-            this.radFGLight.UseVisualStyleBackColor = true;
-            // 
             // cmbColour
             // 
-            resources.ApplyResources(this.cmbColour, "cmbColour");
             this.cmbColour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbColour.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbColour, "cmbColour");
             this.cmbColour.Name = "cmbColour";
             // 
             // lblBGColour
@@ -125,17 +89,57 @@
             resources.ApplyResources(this.txtBGColour, "txtBGColour");
             this.txtBGColour.Name = "txtBGColour";
             // 
+            // chkFGTxtEnabled
+            // 
+            resources.ApplyResources(this.chkFGTxtEnabled, "chkFGTxtEnabled");
+            this.chkFGTxtEnabled.Checked = true;
+            this.chkFGTxtEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkFGTxtEnabled.Name = "chkFGTxtEnabled";
+            this.chkFGTxtEnabled.UseVisualStyleBackColor = true;
+            // 
+            // radFGDark
+            // 
+            resources.ApplyResources(this.radFGDark, "radFGDark");
+            this.radFGDark.Name = "radFGDark";
+            this.radFGDark.UseVisualStyleBackColor = true;
+            // 
+            // lblFGText
+            // 
+            resources.ApplyResources(this.lblFGText, "lblFGText");
+            this.tlpFGColour.SetColumnSpan(this.lblFGText, 2);
+            this.lblFGText.Name = "lblFGText";
+            // 
+            // radFGLight
+            // 
+            resources.ApplyResources(this.radFGLight, "radFGLight");
+            this.radFGLight.Checked = true;
+            this.radFGLight.Name = "radFGLight";
+            this.radFGLight.TabStop = true;
+            this.radFGLight.UseVisualStyleBackColor = true;
+            // 
+            // tlpFGColour
+            // 
+            resources.ApplyResources(this.tlpFGColour, "tlpFGColour");
+            this.tlpFGColour.Controls.Add(this.lblFGText, 0, 0);
+            this.tlpFGColour.Controls.Add(this.radFGDark, 1, 1);
+            this.tlpFGColour.Controls.Add(this.radFGLight, 0, 1);
+            this.tlpFGColour.Controls.Add(this.chkFGTxtEnabled, 2, 0);
+            this.tlpFGColour.Name = "tlpFGColour";
+            // 
             // ColorPanel
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tlpFGColour);
             this.Controls.Add(this.panel1);
             this.Name = "ColorPanel";
             this.Load += new System.EventHandler(this.ColorPanel_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.pnlFGColour.ResumeLayout(false);
+            this.tlpFGColour.ResumeLayout(false);
+            this.tlpFGColour.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -143,15 +147,15 @@
 
         private System.Windows.Forms.Panel panel1;
         private Eyedropper.EyedropColorPicker eyedropperColorPicker;
-        private System.Windows.Forms.Button btnColourPicker;
-        private System.Windows.Forms.Panel pnlFGColour;
-        private System.Windows.Forms.RadioButton radFGDark;
-        private System.Windows.Forms.CheckBox chkFGTxtEnabled;
+        private TileIconifier.Controls.SkinnableButton btnColourPicker;
+        private TileIconifier.Controls.SkinnableRadioButton radFGDark;
+        private SkinnableCheckBox chkFGTxtEnabled;
         private System.Windows.Forms.Label lblFGText;
-        private System.Windows.Forms.RadioButton radFGLight;
-        private System.Windows.Forms.ComboBox cmbColour;
+        private TileIconifier.Controls.SkinnableRadioButton radFGLight;
+        private TileIconifier.Controls.SkinnableComboBox cmbColour;
         private System.Windows.Forms.Label lblBGColour;
-        private System.Windows.Forms.TextBox txtBGColour;
+        private SkinnableTextBox txtBGColour;
         private System.Windows.Forms.ColorDialog clrDialog;
+        private System.Windows.Forms.TableLayoutPanel tlpFGColour;
     }
 }

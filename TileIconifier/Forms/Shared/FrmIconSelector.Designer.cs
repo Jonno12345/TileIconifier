@@ -1,4 +1,6 @@
-﻿namespace TileIconifier.Forms.Shared
+﻿using TileIconifier.Controls;
+
+namespace TileIconifier.Forms.Shared
 {
     partial class FrmIconSelector
     {
@@ -35,18 +37,20 @@
             this.lblPreview = new System.Windows.Forms.Label();
             this.pctPreview = new System.Windows.Forms.PictureBox();
             this.lblCommonDlls = new System.Windows.Forms.Label();
-            this.cmbCommonIconDlls = new System.Windows.Forms.ComboBox();
-            this.btnBrowseIconPath = new System.Windows.Forms.Button();
-            this.txtPathToExtractFrom = new System.Windows.Forms.TextBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnBrowseCustomImage = new System.Windows.Forms.Button();
+            this.cmbCommonIconDlls = new TileIconifier.Controls.SkinnableComboBox();
+            this.btnBrowseIconPath = new TileIconifier.Controls.SkinnableButton();
+            this.txtPathToExtractFrom = new TileIconifier.Controls.SkinnableTextBox();
+            this.btnCancel = new TileIconifier.Controls.SkinnableButton();
+            this.btnOk = new TileIconifier.Controls.SkinnableButton();
+            this.btnBrowseCustomImage = new TileIconifier.Controls.SkinnableButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtImagePath = new System.Windows.Forms.TextBox();
-            this.radUseCustomImage = new System.Windows.Forms.RadioButton();
-            this.radIconFromTarget = new System.Windows.Forms.RadioButton();
-            this.lvwIcons = new System.Windows.Forms.ListView();
+            this.txtImagePath = new TileIconifier.Controls.SkinnableTextBox();
+            this.radUseCustomImage = new TileIconifier.Controls.SkinnableRadioButton();
+            this.radIconFromTarget = new TileIconifier.Controls.SkinnableRadioButton();
+            this.lvwIcons = new TileIconifier.Controls.SkinnableListView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // opnFile
@@ -62,17 +66,20 @@
             // 
             resources.ApplyResources(this.pctPreview, "pctPreview");
             this.pctPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableLayoutPanel1.SetColumnSpan(this.pctPreview, 2);
             this.pctPreview.Name = "pctPreview";
             this.pctPreview.TabStop = false;
             // 
             // lblCommonDlls
             // 
             resources.ApplyResources(this.lblCommonDlls, "lblCommonDlls");
+            this.tableLayoutPanel1.SetColumnSpan(this.lblCommonDlls, 2);
             this.lblCommonDlls.Name = "lblCommonDlls";
             // 
             // cmbCommonIconDlls
             // 
             resources.ApplyResources(this.cmbCommonIconDlls, "cmbCommonIconDlls");
+            this.tableLayoutPanel1.SetColumnSpan(this.cmbCommonIconDlls, 2);
             this.cmbCommonIconDlls.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCommonIconDlls.FormattingEnabled = true;
             this.cmbCommonIconDlls.Name = "cmbCommonIconDlls";
@@ -88,6 +95,7 @@
             // txtPathToExtractFrom
             // 
             resources.ApplyResources(this.txtPathToExtractFrom, "txtPathToExtractFrom");
+            this.tableLayoutPanel1.SetColumnSpan(this.txtPathToExtractFrom, 2);
             this.txtPathToExtractFrom.Name = "txtPathToExtractFrom";
             this.txtPathToExtractFrom.ReadOnly = true;
             // 
@@ -120,31 +128,34 @@
             // txtImagePath
             // 
             resources.ApplyResources(this.txtImagePath, "txtImagePath");
+            this.tableLayoutPanel1.SetColumnSpan(this.txtImagePath, 3);
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.TextChanged += new System.EventHandler(this.txtImagePath_TextChanged);
             // 
             // radUseCustomImage
             // 
             resources.ApplyResources(this.radUseCustomImage, "radUseCustomImage");
+            this.tableLayoutPanel1.SetColumnSpan(this.radUseCustomImage, 5);
             this.radUseCustomImage.Name = "radUseCustomImage";
             this.radUseCustomImage.TabStop = true;
             this.radUseCustomImage.UseVisualStyleBackColor = true;
             // 
             // radIconFromTarget
             // 
-            this.radIconFromTarget.Checked = true;
             resources.ApplyResources(this.radIconFromTarget, "radIconFromTarget");
+            this.radIconFromTarget.Checked = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.radIconFromTarget, 2);
             this.radIconFromTarget.Name = "radIconFromTarget";
             this.radIconFromTarget.TabStop = true;
             this.radIconFromTarget.UseVisualStyleBackColor = true;
             // 
             // lvwIcons
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.lvwIcons, 5);
             resources.ApplyResources(this.lvwIcons, "lvwIcons");
-            this.lvwIcons.BackColor = System.Drawing.SystemColors.Control;
+            this.lvwIcons.DrawStandardItems = false;
             this.lvwIcons.MultiSelect = false;
             this.lvwIcons.Name = "lvwIcons";
-            this.lvwIcons.OwnerDraw = true;
             this.lvwIcons.TileSize = new System.Drawing.Size(50, 50);
             this.lvwIcons.UseCompatibleStateImageBehavior = false;
             this.lvwIcons.View = System.Windows.Forms.View.Tile;
@@ -153,47 +164,55 @@
             this.lvwIcons.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvwIcons_MouseClick);
             this.lvwIcons.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvwIcons_MouseDoubleClick);
             // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.btnOk, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.pctPreview, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblPreview, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.radIconFromTarget, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtImagePath, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnCancel, 4, 5);
+            this.tableLayoutPanel1.Controls.Add(this.txtPathToExtractFrom, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnBrowseIconPath, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cmbCommonIconDlls, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblCommonDlls, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnBrowseCustomImage, 4, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lvwIcons, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.radUseCustomImage, 0, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
             // FrmIconSelector
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.lblPreview);
-            this.Controls.Add(this.pctPreview);
-            this.Controls.Add(this.lblCommonDlls);
-            this.Controls.Add(this.cmbCommonIconDlls);
-            this.Controls.Add(this.btnBrowseIconPath);
-            this.Controls.Add(this.txtPathToExtractFrom);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.btnBrowseCustomImage);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtImagePath);
-            this.Controls.Add(this.radUseCustomImage);
-            this.Controls.Add(this.radIconFromTarget);
-            this.Controls.Add(this.lvwIcons);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmIconSelector";
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView lvwIcons;
-        private System.Windows.Forms.RadioButton radIconFromTarget;
-        private System.Windows.Forms.RadioButton radUseCustomImage;
-        private System.Windows.Forms.TextBox txtImagePath;
+        private TileIconifier.Controls.SkinnableListView lvwIcons;
+        private TileIconifier.Controls.SkinnableRadioButton radIconFromTarget;
+        private TileIconifier.Controls.SkinnableRadioButton radUseCustomImage;
+        private SkinnableTextBox txtImagePath;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnBrowseCustomImage;
-        private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button btnCancel;
+        private TileIconifier.Controls.SkinnableButton btnBrowseCustomImage;
+        private TileIconifier.Controls.SkinnableButton btnOk;
+        private TileIconifier.Controls.SkinnableButton btnCancel;
         private System.Windows.Forms.OpenFileDialog opnFile;
-        private System.Windows.Forms.TextBox txtPathToExtractFrom;
-        private System.Windows.Forms.Button btnBrowseIconPath;
-        private System.Windows.Forms.ComboBox cmbCommonIconDlls;
+        private SkinnableTextBox txtPathToExtractFrom;
+        private TileIconifier.Controls.SkinnableButton btnBrowseIconPath;
+        private TileIconifier.Controls.SkinnableComboBox cmbCommonIconDlls;
         private System.Windows.Forms.Label lblCommonDlls;
         private System.Windows.Forms.Label lblPreview;
         private System.Windows.Forms.PictureBox pctPreview;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
