@@ -168,6 +168,9 @@
     <Compile Include="Controls\SkinnableTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\SkinnableTrackBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>

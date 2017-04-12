@@ -111,6 +111,13 @@ namespace TileIconifier.Skinning.Skins.Dark
         public override Color TabControlTabBorderColor { get { return LowBorderColor; } }
         #endregion
 
+        #region "TrackBar"
+        public override FlatStyle TrackBarFlatStyle => FlatStyle.Flat;
+        public override Color TrackBarThumbBackColor => CommonFocusedBorderColor;
+        public override Color TrackBarThumbBorderColor => CommonFocusedBorderColor;
+        public override Color TrackBarTrackColor => MediumBorderColor;
+        #endregion
+
         #region "ToolStrip"
         public override Color ToolStripMenuBarBackColor { get { return HighBackColor; } }
         public override Color ToolStripPopupBackColor { get { return HighBackColor; } }

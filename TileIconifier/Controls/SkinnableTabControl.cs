@@ -49,14 +49,11 @@ namespace TileIconifier.Controls
 
         #region "Properties"
         /// <summary>
-        /// Indicates whether or not we should draw the control ourselves.
+        ///     Indicates whether or not we should draw the control ourselves.
         /// </summary>
         private bool HandleDrawing
         {
-            get
-            {
-                return (FlatStyle == FlatStyle.Flat);
-            }
+            get { return (FlatStyle == FlatStyle.Flat); }
         }
 
         public override Color BackColor

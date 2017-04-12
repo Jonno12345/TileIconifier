@@ -98,6 +98,13 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color TabControlTabBorderColor => SystemColors.WindowFrame; //not used
         #endregion
 
+        #region "TrackBar"
+        public virtual FlatStyle TrackBarFlatStyle => FlatStyle.Standard;
+        public virtual Color TrackBarThumbBackColor => SystemColors.Control; //not used
+        public virtual Color TrackBarThumbBorderColor => SystemColors.ControlDark; //not used
+        public virtual Color TrackBarTrackColor => SystemColors.ControlDarkDark; //not used
+        #endregion
+
         #region "ToolStrip"
         public virtual Color ToolStripMenuBarBackColor => ToolStripSystemColorTable.DefaultMenuBarBackColor;
         public virtual Color ToolStripPopupBackColor => ToolStripSystemColorTable.DefaultPopupBackColor;
@@ -108,6 +115,6 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color ToolStripMenuBarForeColor => ToolStripSystemColorTable.DefaultMenuBarForeColor;
         public virtual Color ToolStripPopupForeColor => ToolStripSystemColorTable.DefaultPopupForeColor;
         public virtual Color ToolStripDisabledForeColor => ToolStripSystemColorTable.DefaultDisabledForeColor;
-        #endregion
+        #endregion        
     }
 }
