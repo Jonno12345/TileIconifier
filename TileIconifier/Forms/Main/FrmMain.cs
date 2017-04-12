@@ -72,6 +72,7 @@ namespace TileIconifier.Forms.Main
 
         private void frmDropper_Load(object sender, EventArgs e)
         {
+            Shown += FrmMain_Shown;
             darkSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
             defaultSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
             englishToolStripMenuItem.Click += LanguageToolStripMenuClick;
@@ -86,10 +87,12 @@ namespace TileIconifier.Forms.Main
 
             CheckForUpdates(true);
             InitializeListboxColumns();
+        }
 
-            Show();
+        private void FrmMain_Shown(object sender, EventArgs e)
+        {
             StartFullUpdate();
-        }        
+        }
 
         private void btnIconify_Click(object sender, EventArgs e)
         {

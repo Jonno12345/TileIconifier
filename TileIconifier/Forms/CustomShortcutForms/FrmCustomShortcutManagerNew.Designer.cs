@@ -477,7 +477,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmCustomShortcutManagerNew";
-            this.Load += new System.EventHandler(this.FrmCustomShortcutManagerNew_Load);
+            this.Shown += new System.EventHandler(this.FrmCustomShortcutManagerNew_Shown);
             this.Resize += new System.EventHandler(this.FrmCustomShortcutManagerNew_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pctCurrentIcon)).EndInit();
             this.tabShortcutType.ResumeLayout(false);

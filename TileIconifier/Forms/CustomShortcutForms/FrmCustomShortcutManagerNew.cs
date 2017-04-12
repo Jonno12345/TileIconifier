@@ -112,9 +112,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             }
         }
 
-        private void FrmCustomShortcutManagerNew_Load(object sender, EventArgs e)
-        {
-            Show();
+        private void FrmCustomShortcutManagerNew_Shown(object sender, EventArgs e)
+        {            
             FormUtils.DoBackgroundWorkWithSplash(this, FullUpdate, Strings.Loading);
             LoadCache(CurrentCache);
         }
