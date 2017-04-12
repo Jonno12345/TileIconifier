@@ -61,7 +61,7 @@ namespace TileIconifier.Core
         
         public string LocaleToUse { get; set; }
         public bool GetPinnedItems { get; set; }
-
+        public string LastSkin { get; set; }
 
         public void SaveConfig()
         {

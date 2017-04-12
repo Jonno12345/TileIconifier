@@ -39,6 +39,7 @@ using TileIconifier.Localization;
 using TileIconifier.Properties;
 using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
+using TileIconifier.Utilities;
 
 namespace TileIconifier
 {
@@ -54,10 +55,7 @@ namespace TileIconifier
         private static void Main()
         {
             SetUpLanguageFromConfig();
-
-            //Here, we could set the last used skin from Config, 
-            //instead of always starting with the BaseSkin.
-            SkinHandler.SetCurrentSkin(new BaseSkin());
+            ApplySkinFromConfig();
 
             try
             {
@@ -91,6 +89,13 @@ namespace TileIconifier
                 _fm.LanguageChangedEvent += main_LanguageChangedEvent;
                 Application.Run(_fm);
             }
+        }
+
+        private static void ApplySkinFromConfig()
+        {
+            var skin = Config.Instance.LastSkin;
+
+            SkinHandler.SetCurrentSkin(ContainerUtils.SkinFromString(skin));
         }
 
         private static void SetUpLanguageFromConfig()
