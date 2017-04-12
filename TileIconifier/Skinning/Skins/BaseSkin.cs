@@ -43,6 +43,7 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color DisabledForeColor => SystemColors.GrayText;
         public virtual Color HighlightBackColor => SystemColors.Highlight;
         public virtual Color ErrorForeColor => Color.Red;
+        public virtual bool EnforceOnMessageBox => false;
 
         //These objects are potentially more expensive to create, se we cache them.
         public virtual Font Font { get; } = SystemFonts.DialogFont;       

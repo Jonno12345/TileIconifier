@@ -59,6 +59,8 @@ namespace TileIconifier.Skinning.Skins
         public override Color DisabledForeColor { get { return CommonDisabledForeColor; } }
         public override Color HighlightBackColor { get { return CommonFocusedBorderColor; } }
         public override Color ErrorForeColor { get { return Color.Red; } }
+        public override bool EnforceOnMessageBox => true;
+            
 
         //These objects are potentially more expensive to create, so we cache them.
         public override Font Font { get; } = new Font("Segoe UI", 8);        

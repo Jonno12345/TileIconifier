@@ -31,6 +31,7 @@ using System.ComponentModel;
 using System.Threading;
 using System.Windows.Forms;
 using TileIconifier.Forms.Shared;
+using TileIconifier.Skinning;
 
 namespace TileIconifier.Utilities
 {
@@ -61,6 +62,24 @@ namespace TileIconifier.Utilities
             thread.Start();
 
             loadingSplash.ShowDialog(sender);
+        }
+
+        public static DialogResult ShowMessage(
+            IWin32Window owner,
+            string text,
+            string caption = null,
+            MessageBoxButtons buttons = MessageBoxButtons.OK,
+            MessageBoxIcon icon = MessageBoxIcon.None,
+            MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1)
+        {
+            if (SkinHandler.GetCurrentSkin().EnforceOnMessageBox)
+            {
+                return FrmMessageBox.Show(owner, text, caption, buttons, icon, defaultButton);
+            }
+            else
+            {
+                return MessageBox.Show(owner, text, caption, buttons, icon, defaultButton);
+            }
         }
     }
 }

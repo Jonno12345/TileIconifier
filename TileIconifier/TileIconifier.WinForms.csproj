@@ -220,6 +220,9 @@
     <EmbeddedResource Include="Forms\Shared\FrmIconSelector.ru.resx">
       <DependentUpon>FrmIconSelector.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Shared\FrmMessageBox.resx">
+      <DependentUpon>FrmMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings1.Designer.cs</LastGenOutput>
@@ -285,6 +288,12 @@
     </Compile>
     <Compile Include="Forms\Main\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Shared\FrmMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Shared\FrmMessageBox.Designer.cs">
+      <DependentUpon>FrmMessageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Localization\LocalizationEvent.cs" />
     <Compile Include="NativeMethods.cs" />

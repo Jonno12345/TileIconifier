@@ -177,12 +177,12 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 BuildIconifiedTile(ImageUtils.ImageToByteArray(pctCurrentIcon.Image), customShortcut);
 
                 //confirm to the user the shortcut has been created
-                ConfirmToUser(shortcutName);
+                ConfirmToUser(this ,shortcutName);
             }
             catch (FileNotFoundException ex)
-            {
-                MessageBox.Show(ex.Message, Strings.FileCouldNotBeFound,
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            {                
+                FormUtils.ShowMessage(this, ex.Message, Strings.FileCouldNotBeFound,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -212,9 +212,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
             iconify.RunIconify();
         }
 
-        private static void ConfirmToUser(string shortcutName)
+        private static void ConfirmToUser(IWin32Window dialogOwner, string shortcutName)
         {
-            MessageBox.Show(
+            FormUtils.ShowMessage(dialogOwner,
                 string.Format(
                     Strings.ShortcutCreatedNeedsPinning,
                     shortcutName.QuoteWrap()),
@@ -227,7 +227,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             //Check if there are invalid characters in the shortcut name
             if (txtShortcutName.Text != shortcutName || shortcutName.Length == 0)
             {
-                MessageBox.Show(Strings.InvalidCharactersOrInvalidShortcutName,
+                FormUtils.ShowMessage(this, Strings.InvalidCharactersOrInvalidShortcutName,
                     Strings.InvalidCharactersOrInvalidShortcutName,
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 throw new ValidationFailureException();
@@ -235,14 +235,14 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             if (targetPath.Length == 0)
             {
-                MessageBox.Show(Strings.TargetPathIsEmpty, Strings.TargetPathIsEmpty, MessageBoxButtons.OK,
+                FormUtils.ShowMessage(this, Strings.TargetPathIsEmpty, Strings.TargetPathIsEmpty, MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
                 throw new ValidationFailureException();
             }
 
             if (pctCurrentIcon.Image == null)
             {
-                MessageBox.Show(Strings.NoIconHasBeenSelected, Strings.PleaseSelectAnIcon, MessageBoxButtons.OK,
+                FormUtils.ShowMessage(this, Strings.NoIconHasBeenSelected, Strings.PleaseSelectAnIcon, MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
                 throw new ValidationFailureException();
             }
@@ -253,7 +253,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             }
             catch
             {
-                MessageBox.Show(
+                FormUtils.ShowMessage(this,
                     Strings.IssueWithImageSelected,
                     Strings.IconError, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 throw new ValidationFailureException();
@@ -507,7 +507,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 }
                 catch (SteamLibraryPathNotFoundException)
                 {
-                    MessageBox.Show(this,
+                    FormUtils.ShowMessage(this,
                         Strings.InvalidSteamLibraryPath);
                 }
             }
