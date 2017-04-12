@@ -1,28 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TileIconifier.Skinning.Skins;
 
 namespace TileIconifier.Controls
 {
-    class SkinnableComboBox : ComboBox
+    class SkinnableComboBox : ComboBox, ISkinnableControl
     {
         private const TextFormatFlags DEFAULT_TEXT_FLAGS = TextFormatFlags.VerticalCenter;        
 
         private Font glyphFont = new Font("Marlett", 10);
 
-        private bool CanCustomDraw
+        /// <summary>
+        /// Indicates whether or not we should draw the control ourselves.
+        /// </summary>
+        private bool HandleDrawing
         {
             get
             {
-                if (FlatStyle == FlatStyle.Flat && DropDownStyle == ComboBoxStyle.DropDownList)
-                    return true;
-                else
-                    return false;
+                return (FlatStyle == FlatStyle.Flat && DropDownStyle == ComboBoxStyle.DropDownList);                
             }
         }
 
@@ -39,14 +36,14 @@ namespace TileIconifier.Controls
         }
 
         //There is no event for when this properties is changed,
-        //so we need reimplement it to allow us to do stuff when it is changed.
+        //so we need to reimplement it to allow us to do stuff when it is changed.
         public new FlatStyle FlatStyle
         {
             get { return base.FlatStyle; }
             set
             {
                 base.FlatStyle = value;
-                ConfigureDrawingProperties(true);
+                ConfigureDrawingProperties();
             }
         }
         
@@ -60,7 +57,7 @@ namespace TileIconifier.Controls
                 if (flatButtonBackColor != value)
                 {
                     flatButtonBackColor = value;
-                    if (CanCustomDraw)
+                    if (HandleDrawing)
                     {
                         Invalidate();
                     }
@@ -78,7 +75,7 @@ namespace TileIconifier.Controls
                 if (flatButtonForeColor != value)
                 {
                     flatButtonForeColor = value;
-                    if (CanCustomDraw)
+                    if (HandleDrawing)
                     {
                         Invalidate();
                     }
@@ -96,7 +93,7 @@ namespace TileIconifier.Controls
                 if (flatButtonDisabledForeColor != value)
                 {
                     flatButtonDisabledForeColor = value;
-                    if (CanCustomDraw)
+                    if (HandleDrawing)
                     {
                         Invalidate();
                     }
@@ -114,7 +111,7 @@ namespace TileIconifier.Controls
                 if (flatButtonBorderColor != value)
                 {
                     flatButtonBorderColor = value;
-                    if (CanCustomDraw)
+                    if (HandleDrawing)
                     {
                         Invalidate();
                     }
@@ -132,7 +129,7 @@ namespace TileIconifier.Controls
                 if (flatButtonBorderFocusedColor != value)
                 {
                     flatButtonBorderFocusedColor = value;
-                    if (CanCustomDraw)
+                    if (HandleDrawing)
                     {
                         Invalidate();
                     }
@@ -140,14 +137,14 @@ namespace TileIconifier.Controls
             }
         }
 
-        private void ConfigureDrawingProperties(bool needToRestoreDefaultProperties)
+        private void ConfigureDrawingProperties()
         {
-            if (CanCustomDraw)
+            if (HandleDrawing)
             {
                 SetStyle(ControlStyles.UserPaint, true);
                 DrawMode = DrawMode.OwnerDrawFixed;
             }
-            else if (needToRestoreDefaultProperties)
+            else
             {
                 //These values could change in a future version of Winforms.
                 SetStyle(ControlStyles.UserPaint, false);
@@ -159,19 +156,19 @@ namespace TileIconifier.Controls
         {
             base.OnDropDownStyleChanged(e);
 
-            ConfigureDrawingProperties(true);
+            ConfigureDrawingProperties();
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {  
-            if (CanCustomDraw)
+            if (HandleDrawing)
             {
                 Rectangle bounds = ClientRectangle;
                 int glyphAreaWidth = SystemInformation.HorizontalScrollBarThumbWidth;
 
                 //Border
                 Color borderColor = (Focused) ? FlatButtonBorderFocusedColor : FlatButtonBorderColor;
-                //Compensation needed when drawing a rectangle with GDI+
+                //Compensation needed when drawing with a 1px wide Pen with GDI+
                 bounds.Width--;
                 bounds.Height--;
 
@@ -229,9 +226,8 @@ namespace TileIconifier.Controls
 
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
-            //This method is only called when items are custom drawn and 
-            //items always look the same regardless of the DropDownStyle anyway,
-            //so there is no need to check if CanCustomDraw.
+            //This method is only called when items are owner drawn
+            //so there is no need to check if HandleDrawing.
 
             e.DrawBackground();
             e.DrawFocusRectangle();
@@ -246,6 +242,18 @@ namespace TileIconifier.Controls
             }
 
             base.OnDrawItem(e);            
+        }
+
+        public void ApplySkin(BaseSkin skin)
+        {
+            FlatStyle = skin.ComboBoxFlatStyle;
+            BackColor = skin.ComboBoxBackColor;
+            ForeColor = skin.ComboBoxForeColor;
+            FlatButtonBackColor = skin.ComboBoxButtonBackColor;
+            FlatButtonForeColor = skin.ComboboxButtonForeColor;
+            FlatButtonDisabledForeColor = skin.ComboBoxDisabledForeColor;
+            FlatButtonBorderColor = skin.ComboBoxButtonBorderColor;
+            FlatButtonBorderFocusedColor = skin.ComboBoxButtonBorderFocusedColor;
         }
     }
 }

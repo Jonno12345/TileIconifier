@@ -36,7 +36,7 @@
             this.tmrEnlarge = new System.Windows.Forms.Timer(this.components);
             this.tmrShrink = new System.Windows.Forms.Timer(this.components);
             this.btnAlign = new TileIconifier.Controls.SkinnableButton();
-            this.trkZoom = new System.Windows.Forms.TrackBar();
+            this.trkZoom = new TileIconifier.Controls.SkinnableTrackBar();
             this.lblPercent = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trkZoom)).BeginInit();
             this.SuspendLayout();
@@ -169,7 +169,7 @@
         private System.Windows.Forms.Timer tmrEnlarge;
         private System.Windows.Forms.Timer tmrShrink;
         private TileIconifier.Controls.SkinnableButton btnAlign;
-        private System.Windows.Forms.TrackBar trkZoom;
+        private TileIconifier.Controls.SkinnableTrackBar trkZoom;
         private System.Windows.Forms.Label lblPercent;
     }
 }

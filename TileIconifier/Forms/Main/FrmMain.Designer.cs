@@ -109,8 +109,8 @@ namespace TileIconifier.Forms.Main
             // 
             // srtlstShortcuts
             // 
-            resources.ApplyResources(this.srtlstShortcuts, "srtlstShortcuts");
             this.tableLayoutPanel1.SetColumnSpan(this.srtlstShortcuts, 3);
+            resources.ApplyResources(this.srtlstShortcuts, "srtlstShortcuts");
             this.srtlstShortcuts.FullRowSelect = true;
             this.srtlstShortcuts.HideSelection = false;
             this.srtlstShortcuts.MultiSelect = false;
@@ -326,7 +326,6 @@ namespace TileIconifier.Forms.Main
             this.MainMenuStrip = this.mnuMain;
             this.Name = "FrmMain";
             this.Load += new System.EventHandler(this.frmDropper_Load);
-            this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -337,12 +336,12 @@ namespace TileIconifier.Forms.Main
         }
 
         #endregion
-        private TileIconifier.Controls.SkinnableTextBox txtLnkPath;
+        private SkinnableTextBox txtLnkPath;
         private System.Windows.Forms.Label lblLnkPath;
         private TileIconifier.Controls.SkinnableButton btnIconify;
         private TileIconifier.Controls.SkinnableButton btnRemove;
         private System.Windows.Forms.Label lblExePath;
-        private TileIconifier.Controls.SkinnableTextBox txtExePath;
+        private SkinnableTextBox txtExePath;
         private System.Windows.Forms.MenuStrip mnuMain;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -362,7 +361,7 @@ namespace TileIconifier.Forms.Main
         private TileIconifier.Controls.SkinnableButton btnBuildCustomShortcut;
         private TileIconifier.Controls.SkinnableButton btnDeleteCustomShortcut;
         private System.Windows.Forms.Label lblFilter;
-        private TileIconifier.Controls.SkinnableTextBox txtFilter;
+        private SkinnableTextBox txtFilter;
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;

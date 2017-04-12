@@ -50,7 +50,7 @@ using TileIconifier.Utilities;
 namespace TileIconifier.Forms.Main
 {
     public partial class FrmMain
-    {
+    {   
         public event LocalizationEventHandler LanguageChangedEvent;
 
         protected virtual void OnLanguageChangedEvent(string newCulture)
@@ -279,11 +279,39 @@ namespace TileIconifier.Forms.Main
 
         private void InitializeListboxColumns()
         {
+            srtlstShortcuts.BeginUpdate();            
             srtlstShortcuts.Columns.Clear();
-            srtlstShortcuts.Columns.Add(Strings.ShortcutName, srtlstShortcuts.Width/7*4 - 10, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add(Strings.IsCustom, srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add(Strings.IsIconified, srtlstShortcuts.Width/7 - 2, HorizontalAlignment.Left);
-            srtlstShortcuts.Columns.Add(Strings.IsPinned, srtlstShortcuts.Width/7 - 4, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add(Strings.ShortcutName, 0, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add(Strings.IsCustom, 0, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add(Strings.IsIconified, 0, HorizontalAlignment.Left);
+            srtlstShortcuts.Columns.Add(Strings.IsPinned, 0, HorizontalAlignment.Left);
+            UpdateListBoxColumnsSize();
+            srtlstShortcuts.EndUpdate();
+        }
+
+        private void UpdateListBoxColumnsSize()
+        {
+            //Width of the list box columns in percent. Their sum should be 100.
+            const int SRTLSTSHORTCUTS_COLUMN1_WIDTH = 55;
+            const int SRTLSTSHORTCUTS_COLUMN2_WIDTH = 15;
+            const int SRTLSTSHORTCUTS_COLUMN3_WIDTH = 15;
+            const int SRTLSTSHORTCUTS_COLUMN4_WIDTH = 15;
+
+            if (srtlstShortcuts.Columns.Count < 4)
+            {
+                return;
+            }
+
+            int clientWidth = srtlstShortcuts.ClientSize.Width;            
+
+            srtlstShortcuts.BeginUpdate();
+
+            srtlstShortcuts.Columns[0].Width = clientWidth * SRTLSTSHORTCUTS_COLUMN1_WIDTH / 100;
+            srtlstShortcuts.Columns[1].Width = clientWidth * SRTLSTSHORTCUTS_COLUMN2_WIDTH / 100;
+            srtlstShortcuts.Columns[2].Width = clientWidth * SRTLSTSHORTCUTS_COLUMN3_WIDTH / 100;
+            srtlstShortcuts.Columns[3].Width = clientWidth * SRTLSTSHORTCUTS_COLUMN4_WIDTH / 100;
+
+            srtlstShortcuts.EndUpdate();
         }
 
         private void LanguageToolStripMenuClick(object sender, EventArgs e)

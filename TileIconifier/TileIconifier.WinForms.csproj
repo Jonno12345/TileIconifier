@@ -141,6 +141,7 @@
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxMetaData.cs" />
     <Compile Include="Controls\ISkinnableButton.cs" />
     <Compile Include="Controls\ISkinnableCheckableButton.cs" />
+    <Compile Include="Controls\ISkinnableControl.cs" />
     <Compile Include="Controls\ISkinnableTextBox.cs" />
     <Compile Include="Controls\Shortcut\ShortcutItemListViewItemLibrary.cs" />
     <Compile Include="Controls\SkinnableButton.cs">
@@ -161,7 +162,13 @@
     <Compile Include="Controls\SkinnableRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\SkinnableTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\SkinnableTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinnableTrackBar.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\SortableListView.cs">
@@ -309,11 +316,10 @@
       <DependentUpon>Strings.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Skinning\Skins\Dark\ToolStripDarkColorScheme.cs" />
-    <Compile Include="Skinning\Skins\ToolStripSystemColorScheme.cs" />
     <Compile Include="Skinning\ToolStripSystemColorTable.cs" />
     <Compile Include="Skinning\ToolStripSystemRendererEx.cs" />
     <Compile Include="Utilities\ButtonUtils.cs" />
+    <Compile Include="Utilities\ContainerUtils.cs" />
     <Compile Include="Utilities\FontUtils.cs" />
     <Compile Include="Utilities\FormUtils.cs" />
     <Compile Include="Forms\Shared\FrmIconSelector.cs">
@@ -458,6 +464,10 @@
       <Project>{02d2a2f4-8f79-4373-9804-9e7d339fd6e2}</Project>
       <Name>TileIconifier.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Skinning\Controls\" />
+    <Folder Include="Skinning\Forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

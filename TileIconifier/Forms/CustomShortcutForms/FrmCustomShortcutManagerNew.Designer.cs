@@ -36,62 +36,71 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.opnOtherTarget = new System.Windows.Forms.OpenFileDialog();
             this.opnChromeExe = new System.Windows.Forms.OpenFileDialog();
             this.radShortcutLocation = new TileIconifier.Controls.AllOrCurrentUserRadios();
-            this.txtShortcutName = new System.Windows.Forms.TextBox();
+            this.txtShortcutName = new TileIconifier.Controls.SkinnableTextBox();
             this.lblShortcutName = new System.Windows.Forms.Label();
-            this.btnGenerateShortcut = new System.Windows.Forms.Button();
+            this.btnGenerateShortcut = new TileIconifier.Controls.SkinnableButton();
             this.lblCurrentIcon = new System.Windows.Forms.Label();
             this.pctCurrentIcon = new System.Windows.Forms.PictureBox();
-            this.tabShortcutType = new System.Windows.Forms.TabControl();
+            this.tabShortcutType = new TileIconifier.Controls.SkinnableTabControl();
             this.tabExplorer = new System.Windows.Forms.TabPage();
-            this.pnlExplorer = new System.Windows.Forms.Panel();
-            this.btnExplorerBrowse = new System.Windows.Forms.Button();
-            this.txtCustomFolder = new System.Windows.Forms.TextBox();
-            this.radCustomFolder = new System.Windows.Forms.RadioButton();
-            this.radSpecialFolder = new System.Windows.Forms.RadioButton();
-            this.cmbExplorerGuids = new System.Windows.Forms.ComboBox();
+            this.tlpExplorer = new System.Windows.Forms.TableLayoutPanel();
+            this.btnExplorerBrowse = new TileIconifier.Controls.SkinnableButton();
+            this.radSpecialFolder = new TileIconifier.Controls.SkinnableRadioButton();
+            this.txtCustomFolder = new TileIconifier.Controls.SkinnableTextBox();
+            this.radCustomFolder = new TileIconifier.Controls.SkinnableRadioButton();
+            this.cmbExplorerGuids = new TileIconifier.Controls.SkinnableComboBox();
             this.tabSteam = new System.Windows.Forms.TabPage();
-            this.btnSteamLibrariesPath = new System.Windows.Forms.Button();
-            this.btnSteamExeChange = new System.Windows.Forms.Button();
-            this.btnSteamInstallationChange = new System.Windows.Forms.Button();
-            this.txtSteamInstallationPath = new System.Windows.Forms.TextBox();
-            this.txtSteamExecutablePath = new System.Windows.Forms.TextBox();
-            this.txtSteamLibraryPaths = new System.Windows.Forms.TextBox();
+            this.tlpSteam = new System.Windows.Forms.TableLayoutPanel();
+            this.txtSteamInstallationPath = new TileIconifier.Controls.SkinnableTextBox();
             this.lstSteamGames = new TileIconifier.Controls.SortableListView();
+            this.btnSteamLibrariesPath = new TileIconifier.Controls.SkinnableButton();
+            this.btnSteamInstallationChange = new TileIconifier.Controls.SkinnableButton();
+            this.txtSteamLibraryPaths = new TileIconifier.Controls.SkinnableTextBox();
+            this.btnSteamExeChange = new TileIconifier.Controls.SkinnableButton();
+            this.txtSteamExecutablePath = new TileIconifier.Controls.SkinnableTextBox();
             this.tabChromeApps = new System.Windows.Forms.TabPage();
+            this.tlpChromeApps = new System.Windows.Forms.TableLayoutPanel();
+            this.txtChromeExePath = new TileIconifier.Controls.SkinnableTextBox();
             this.lstChromeAppItems = new TileIconifier.Controls.SortableListView();
-            this.btnChromeAppPathChange = new System.Windows.Forms.Button();
-            this.txtChromeAppPath = new System.Windows.Forms.TextBox();
-            this.btnChromeExePathChange = new System.Windows.Forms.Button();
-            this.txtChromeExePath = new System.Windows.Forms.TextBox();
+            this.txtChromeAppPath = new TileIconifier.Controls.SkinnableTextBox();
+            this.btnChromeAppPathChange = new TileIconifier.Controls.SkinnableButton();
+            this.btnChromeExePathChange = new TileIconifier.Controls.SkinnableButton();
             this.tabWindowsStore = new System.Windows.Forms.TabPage();
+            this.tlpWindowsStore = new System.Windows.Forms.TableLayoutPanel();
             this.lstWindowsStoreApps = new TileIconifier.Controls.SortableListView();
             this.tabURI = new System.Windows.Forms.TabPage();
-            this.txtUriString = new System.Windows.Forms.TextBox();
-            this.lblUriString = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblUriExplain = new System.Windows.Forms.Label();
+            this.txtUriString = new TileIconifier.Controls.SkinnableTextBox();
+            this.lblUriString = new System.Windows.Forms.Label();
             this.tabOther = new System.Windows.Forms.TabPage();
-            this.lblOtherShortcutArguments = new System.Windows.Forms.Label();
-            this.txtOtherShortcutArguments = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblOtherTargetPath = new System.Windows.Forms.Label();
-            this.btnOtherTargetBrowse = new System.Windows.Forms.Button();
-            this.txtOtherTargetPath = new System.Windows.Forms.TextBox();
+            this.txtOtherShortcutArguments = new TileIconifier.Controls.SkinnableTextBox();
+            this.lblOtherShortcutArguments = new System.Windows.Forms.Label();
+            this.txtOtherTargetPath = new TileIconifier.Controls.SkinnableTextBox();
+            this.btnOtherTargetBrowse = new TileIconifier.Controls.SkinnableButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pctCurrentIcon)).BeginInit();
             this.tabShortcutType.SuspendLayout();
             this.tabExplorer.SuspendLayout();
-            this.pnlExplorer.SuspendLayout();
+            this.tlpExplorer.SuspendLayout();
             this.tabSteam.SuspendLayout();
+            this.tlpSteam.SuspendLayout();
             this.tabChromeApps.SuspendLayout();
+            this.tlpChromeApps.SuspendLayout();
             this.tabWindowsStore.SuspendLayout();
+            this.tlpWindowsStore.SuspendLayout();
             this.tabURI.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.tabOther.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // fldBrowser
             // 
-            resources.ApplyResources(this.fldBrowser, "fldBrowser");
             this.fldBrowser.ShowNewFolderButton = false;
             // 
             // opnSteamExe
@@ -159,29 +168,37 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabExplorer
             // 
+            this.tabExplorer.Controls.Add(this.tlpExplorer);
             resources.ApplyResources(this.tabExplorer, "tabExplorer");
-            this.tabExplorer.Controls.Add(this.pnlExplorer);
             this.tabExplorer.Name = "tabExplorer";
             this.tabExplorer.UseVisualStyleBackColor = true;
             // 
-            // pnlExplorer
+            // tlpExplorer
             // 
-            resources.ApplyResources(this.pnlExplorer, "pnlExplorer");
-            this.pnlExplorer.Controls.Add(this.btnExplorerBrowse);
-            this.pnlExplorer.Controls.Add(this.txtCustomFolder);
-            this.pnlExplorer.Controls.Add(this.radCustomFolder);
-            this.pnlExplorer.Controls.Add(this.radSpecialFolder);
-            this.pnlExplorer.Controls.Add(this.cmbExplorerGuids);
-            this.pnlExplorer.Name = "pnlExplorer";
+            resources.ApplyResources(this.tlpExplorer, "tlpExplorer");
+            this.tlpExplorer.Controls.Add(this.btnExplorerBrowse, 2, 1);
+            this.tlpExplorer.Controls.Add(this.radSpecialFolder, 0, 0);
+            this.tlpExplorer.Controls.Add(this.txtCustomFolder, 1, 1);
+            this.tlpExplorer.Controls.Add(this.radCustomFolder, 0, 1);
+            this.tlpExplorer.Controls.Add(this.cmbExplorerGuids, 1, 0);
+            this.tlpExplorer.Name = "tlpExplorer";
             // 
             // btnExplorerBrowse
             // 
             resources.ApplyResources(this.btnExplorerBrowse, "btnExplorerBrowse");
-            this.btnExplorerBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExplorerBrowse.FlatAppearance.BorderSize = 0;
             this.btnExplorerBrowse.Name = "btnExplorerBrowse";
             this.btnExplorerBrowse.UseVisualStyleBackColor = true;
             this.btnExplorerBrowse.Click += new System.EventHandler(this.btnExplorerBrowse_Click);
+            // 
+            // radSpecialFolder
+            // 
+            resources.ApplyResources(this.radSpecialFolder, "radSpecialFolder");
+            this.radSpecialFolder.Checked = true;
+            this.radSpecialFolder.Name = "radSpecialFolder";
+            this.radSpecialFolder.TabStop = true;
+            this.radSpecialFolder.UseVisualStyleBackColor = true;
+            this.radSpecialFolder.CheckedChanged += new System.EventHandler(this.radSpecialFolder_CheckedChanged);
             // 
             // txtCustomFolder
             // 
@@ -194,18 +211,10 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.radCustomFolder.Name = "radCustomFolder";
             this.radCustomFolder.UseVisualStyleBackColor = true;
             // 
-            // radSpecialFolder
-            // 
-            resources.ApplyResources(this.radSpecialFolder, "radSpecialFolder");
-            this.radSpecialFolder.Checked = true;
-            this.radSpecialFolder.Name = "radSpecialFolder";
-            this.radSpecialFolder.TabStop = true;
-            this.radSpecialFolder.UseVisualStyleBackColor = true;
-            this.radSpecialFolder.CheckedChanged += new System.EventHandler(this.radSpecialFolder_CheckedChanged);
-            // 
             // cmbExplorerGuids
             // 
             resources.ApplyResources(this.cmbExplorerGuids, "cmbExplorerGuids");
+            this.tlpExplorer.SetColumnSpan(this.cmbExplorerGuids, 2);
             this.cmbExplorerGuids.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbExplorerGuids.FormattingEnabled = true;
             this.cmbExplorerGuids.Name = "cmbExplorerGuids";
@@ -213,43 +222,22 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabSteam
             // 
+            this.tabSteam.Controls.Add(this.tlpSteam);
             resources.ApplyResources(this.tabSteam, "tabSteam");
-            this.tabSteam.Controls.Add(this.btnSteamLibrariesPath);
-            this.tabSteam.Controls.Add(this.btnSteamExeChange);
-            this.tabSteam.Controls.Add(this.btnSteamInstallationChange);
-            this.tabSteam.Controls.Add(this.txtSteamInstallationPath);
-            this.tabSteam.Controls.Add(this.txtSteamExecutablePath);
-            this.tabSteam.Controls.Add(this.txtSteamLibraryPaths);
-            this.tabSteam.Controls.Add(this.lstSteamGames);
             this.tabSteam.Name = "tabSteam";
             this.tabSteam.UseVisualStyleBackColor = true;
             // 
-            // btnSteamLibrariesPath
+            // tlpSteam
             // 
-            resources.ApplyResources(this.btnSteamLibrariesPath, "btnSteamLibrariesPath");
-            this.btnSteamLibrariesPath.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSteamLibrariesPath.FlatAppearance.BorderSize = 0;
-            this.btnSteamLibrariesPath.Name = "btnSteamLibrariesPath";
-            this.btnSteamLibrariesPath.UseVisualStyleBackColor = true;
-            this.btnSteamLibrariesPath.Click += new System.EventHandler(this.btnSteamLibrariesPath_Click);
-            // 
-            // btnSteamExeChange
-            // 
-            resources.ApplyResources(this.btnSteamExeChange, "btnSteamExeChange");
-            this.btnSteamExeChange.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSteamExeChange.FlatAppearance.BorderSize = 0;
-            this.btnSteamExeChange.Name = "btnSteamExeChange";
-            this.btnSteamExeChange.UseVisualStyleBackColor = true;
-            this.btnSteamExeChange.Click += new System.EventHandler(this.btnSteamExeChange_Click);
-            // 
-            // btnSteamInstallationChange
-            // 
-            resources.ApplyResources(this.btnSteamInstallationChange, "btnSteamInstallationChange");
-            this.btnSteamInstallationChange.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSteamInstallationChange.FlatAppearance.BorderSize = 0;
-            this.btnSteamInstallationChange.Name = "btnSteamInstallationChange";
-            this.btnSteamInstallationChange.UseVisualStyleBackColor = true;
-            this.btnSteamInstallationChange.Click += new System.EventHandler(this.btnInstallationChange_Click);
+            resources.ApplyResources(this.tlpSteam, "tlpSteam");
+            this.tlpSteam.Controls.Add(this.txtSteamInstallationPath, 0, 0);
+            this.tlpSteam.Controls.Add(this.lstSteamGames, 0, 3);
+            this.tlpSteam.Controls.Add(this.btnSteamLibrariesPath, 1, 2);
+            this.tlpSteam.Controls.Add(this.btnSteamInstallationChange, 1, 0);
+            this.tlpSteam.Controls.Add(this.txtSteamLibraryPaths, 0, 2);
+            this.tlpSteam.Controls.Add(this.btnSteamExeChange, 1, 1);
+            this.tlpSteam.Controls.Add(this.txtSteamExecutablePath, 0, 1);
+            this.tlpSteam.Name = "tlpSteam";
             // 
             // txtSteamInstallationPath
             // 
@@ -257,20 +245,9 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.txtSteamInstallationPath.Name = "txtSteamInstallationPath";
             this.txtSteamInstallationPath.ReadOnly = true;
             // 
-            // txtSteamExecutablePath
-            // 
-            resources.ApplyResources(this.txtSteamExecutablePath, "txtSteamExecutablePath");
-            this.txtSteamExecutablePath.Name = "txtSteamExecutablePath";
-            this.txtSteamExecutablePath.ReadOnly = true;
-            // 
-            // txtSteamLibraryPaths
-            // 
-            resources.ApplyResources(this.txtSteamLibraryPaths, "txtSteamLibraryPaths");
-            this.txtSteamLibraryPaths.Name = "txtSteamLibraryPaths";
-            this.txtSteamLibraryPaths.ReadOnly = true;
-            // 
             // lstSteamGames
             // 
+            this.tlpSteam.SetColumnSpan(this.lstSteamGames, 2);
             resources.ApplyResources(this.lstSteamGames, "lstSteamGames");
             this.lstSteamGames.FullRowSelect = true;
             this.lstSteamGames.HideSelection = false;
@@ -280,19 +257,68 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.lstSteamGames.View = System.Windows.Forms.View.Details;
             this.lstSteamGames.SelectedIndexChanged += new System.EventHandler(this.lstSteamGames_SelectedIndexChanged);
             // 
+            // btnSteamLibrariesPath
+            // 
+            resources.ApplyResources(this.btnSteamLibrariesPath, "btnSteamLibrariesPath");
+            this.btnSteamLibrariesPath.FlatAppearance.BorderSize = 0;
+            this.btnSteamLibrariesPath.Name = "btnSteamLibrariesPath";
+            this.btnSteamLibrariesPath.UseVisualStyleBackColor = true;
+            this.btnSteamLibrariesPath.Click += new System.EventHandler(this.btnSteamLibrariesPath_Click);
+            // 
+            // btnSteamInstallationChange
+            // 
+            resources.ApplyResources(this.btnSteamInstallationChange, "btnSteamInstallationChange");
+            this.btnSteamInstallationChange.FlatAppearance.BorderSize = 0;
+            this.btnSteamInstallationChange.Name = "btnSteamInstallationChange";
+            this.btnSteamInstallationChange.UseVisualStyleBackColor = true;
+            this.btnSteamInstallationChange.Click += new System.EventHandler(this.btnInstallationChange_Click);
+            // 
+            // txtSteamLibraryPaths
+            // 
+            resources.ApplyResources(this.txtSteamLibraryPaths, "txtSteamLibraryPaths");
+            this.txtSteamLibraryPaths.Name = "txtSteamLibraryPaths";
+            this.txtSteamLibraryPaths.ReadOnly = true;
+            // 
+            // btnSteamExeChange
+            // 
+            resources.ApplyResources(this.btnSteamExeChange, "btnSteamExeChange");
+            this.btnSteamExeChange.FlatAppearance.BorderSize = 0;
+            this.btnSteamExeChange.Name = "btnSteamExeChange";
+            this.btnSteamExeChange.UseVisualStyleBackColor = true;
+            this.btnSteamExeChange.Click += new System.EventHandler(this.btnSteamExeChange_Click);
+            // 
+            // txtSteamExecutablePath
+            // 
+            resources.ApplyResources(this.txtSteamExecutablePath, "txtSteamExecutablePath");
+            this.txtSteamExecutablePath.Name = "txtSteamExecutablePath";
+            this.txtSteamExecutablePath.ReadOnly = true;
+            // 
             // tabChromeApps
             // 
+            this.tabChromeApps.Controls.Add(this.tlpChromeApps);
             resources.ApplyResources(this.tabChromeApps, "tabChromeApps");
-            this.tabChromeApps.Controls.Add(this.lstChromeAppItems);
-            this.tabChromeApps.Controls.Add(this.btnChromeAppPathChange);
-            this.tabChromeApps.Controls.Add(this.txtChromeAppPath);
-            this.tabChromeApps.Controls.Add(this.btnChromeExePathChange);
-            this.tabChromeApps.Controls.Add(this.txtChromeExePath);
             this.tabChromeApps.Name = "tabChromeApps";
             this.tabChromeApps.UseVisualStyleBackColor = true;
             // 
+            // tlpChromeApps
+            // 
+            resources.ApplyResources(this.tlpChromeApps, "tlpChromeApps");
+            this.tlpChromeApps.Controls.Add(this.txtChromeExePath, 0, 0);
+            this.tlpChromeApps.Controls.Add(this.lstChromeAppItems, 0, 2);
+            this.tlpChromeApps.Controls.Add(this.txtChromeAppPath, 0, 1);
+            this.tlpChromeApps.Controls.Add(this.btnChromeAppPathChange, 1, 1);
+            this.tlpChromeApps.Controls.Add(this.btnChromeExePathChange, 1, 0);
+            this.tlpChromeApps.Name = "tlpChromeApps";
+            // 
+            // txtChromeExePath
+            // 
+            resources.ApplyResources(this.txtChromeExePath, "txtChromeExePath");
+            this.txtChromeExePath.Name = "txtChromeExePath";
+            this.txtChromeExePath.ReadOnly = true;
+            // 
             // lstChromeAppItems
             // 
+            this.tlpChromeApps.SetColumnSpan(this.lstChromeAppItems, 2);
             resources.ApplyResources(this.lstChromeAppItems, "lstChromeAppItems");
             this.lstChromeAppItems.FullRowSelect = true;
             this.lstChromeAppItems.HideSelection = false;
@@ -302,42 +328,40 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.lstChromeAppItems.View = System.Windows.Forms.View.Details;
             this.lstChromeAppItems.SelectedIndexChanged += new System.EventHandler(this.lstChromeAppItems_SelectedIndexChanged);
             // 
-            // btnChromeAppPathChange
-            // 
-            resources.ApplyResources(this.btnChromeAppPathChange, "btnChromeAppPathChange");
-            this.btnChromeAppPathChange.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnChromeAppPathChange.FlatAppearance.BorderSize = 0;
-            this.btnChromeAppPathChange.Name = "btnChromeAppPathChange";
-            this.btnChromeAppPathChange.UseVisualStyleBackColor = true;
-            this.btnChromeAppPathChange.Click += new System.EventHandler(this.btnChromeAppPathChange_Click);
-            // 
             // txtChromeAppPath
             // 
             resources.ApplyResources(this.txtChromeAppPath, "txtChromeAppPath");
             this.txtChromeAppPath.Name = "txtChromeAppPath";
             this.txtChromeAppPath.ReadOnly = true;
             // 
+            // btnChromeAppPathChange
+            // 
+            resources.ApplyResources(this.btnChromeAppPathChange, "btnChromeAppPathChange");
+            this.btnChromeAppPathChange.FlatAppearance.BorderSize = 0;
+            this.btnChromeAppPathChange.Name = "btnChromeAppPathChange";
+            this.btnChromeAppPathChange.UseVisualStyleBackColor = true;
+            this.btnChromeAppPathChange.Click += new System.EventHandler(this.btnChromeAppPathChange_Click);
+            // 
             // btnChromeExePathChange
             // 
             resources.ApplyResources(this.btnChromeExePathChange, "btnChromeExePathChange");
-            this.btnChromeExePathChange.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnChromeExePathChange.FlatAppearance.BorderSize = 0;
             this.btnChromeExePathChange.Name = "btnChromeExePathChange";
             this.btnChromeExePathChange.UseVisualStyleBackColor = true;
             this.btnChromeExePathChange.Click += new System.EventHandler(this.btnChromeExePathChange_Click);
             // 
-            // txtChromeExePath
-            // 
-            resources.ApplyResources(this.txtChromeExePath, "txtChromeExePath");
-            this.txtChromeExePath.Name = "txtChromeExePath";
-            this.txtChromeExePath.ReadOnly = true;
-            // 
             // tabWindowsStore
             // 
+            this.tabWindowsStore.Controls.Add(this.tlpWindowsStore);
             resources.ApplyResources(this.tabWindowsStore, "tabWindowsStore");
-            this.tabWindowsStore.Controls.Add(this.lstWindowsStoreApps);
             this.tabWindowsStore.Name = "tabWindowsStore";
             this.tabWindowsStore.UseVisualStyleBackColor = true;
+            // 
+            // tlpWindowsStore
+            // 
+            resources.ApplyResources(this.tlpWindowsStore, "tlpWindowsStore");
+            this.tlpWindowsStore.Controls.Add(this.lstWindowsStoreApps, 0, 0);
+            this.tlpWindowsStore.Name = "tlpWindowsStore";
             // 
             // lstWindowsStoreApps
             // 
@@ -352,12 +376,24 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // tabURI
             // 
+            this.tabURI.Controls.Add(this.tableLayoutPanel1);
             resources.ApplyResources(this.tabURI, "tabURI");
-            this.tabURI.Controls.Add(this.txtUriString);
-            this.tabURI.Controls.Add(this.lblUriString);
-            this.tabURI.Controls.Add(this.lblUriExplain);
             this.tabURI.Name = "tabURI";
             this.tabURI.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.lblUriExplain, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtUriString, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblUriString, 0, 1);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // lblUriExplain
+            // 
+            resources.ApplyResources(this.lblUriExplain, "lblUriExplain");
+            this.tableLayoutPanel1.SetColumnSpan(this.lblUriExplain, 2);
+            this.lblUriExplain.Name = "lblUriExplain";
             // 
             // txtUriString
             // 
@@ -369,68 +405,68 @@ namespace TileIconifier.Forms.CustomShortcutForms
             resources.ApplyResources(this.lblUriString, "lblUriString");
             this.lblUriString.Name = "lblUriString";
             // 
-            // lblUriExplain
-            // 
-            resources.ApplyResources(this.lblUriExplain, "lblUriExplain");
-            this.lblUriExplain.Name = "lblUriExplain";
-            // 
             // tabOther
             // 
+            this.tabOther.Controls.Add(this.tableLayoutPanel2);
             resources.ApplyResources(this.tabOther, "tabOther");
-            this.tabOther.Controls.Add(this.lblOtherShortcutArguments);
-            this.tabOther.Controls.Add(this.txtOtherShortcutArguments);
-            this.tabOther.Controls.Add(this.lblOtherTargetPath);
-            this.tabOther.Controls.Add(this.btnOtherTargetBrowse);
-            this.tabOther.Controls.Add(this.txtOtherTargetPath);
             this.tabOther.Name = "tabOther";
             this.tabOther.UseVisualStyleBackColor = true;
             // 
-            // lblOtherShortcutArguments
+            // tableLayoutPanel2
             // 
-            resources.ApplyResources(this.lblOtherShortcutArguments, "lblOtherShortcutArguments");
-            this.lblOtherShortcutArguments.Name = "lblOtherShortcutArguments";
-            // 
-            // txtOtherShortcutArguments
-            // 
-            resources.ApplyResources(this.txtOtherShortcutArguments, "txtOtherShortcutArguments");
-            this.txtOtherShortcutArguments.Name = "txtOtherShortcutArguments";
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.lblOtherTargetPath, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtOtherShortcutArguments, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblOtherShortcutArguments, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txtOtherTargetPath, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnOtherTargetBrowse, 2, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
             // lblOtherTargetPath
             // 
             resources.ApplyResources(this.lblOtherTargetPath, "lblOtherTargetPath");
             this.lblOtherTargetPath.Name = "lblOtherTargetPath";
             // 
-            // btnOtherTargetBrowse
+            // txtOtherShortcutArguments
             // 
-            resources.ApplyResources(this.btnOtherTargetBrowse, "btnOtherTargetBrowse");
-            this.btnOtherTargetBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOtherTargetBrowse.FlatAppearance.BorderSize = 0;
-            this.btnOtherTargetBrowse.Name = "btnOtherTargetBrowse";
-            this.btnOtherTargetBrowse.UseVisualStyleBackColor = true;
-            this.btnOtherTargetBrowse.Click += new System.EventHandler(this.btnOtherTargetBrowse_Click);
+            resources.ApplyResources(this.txtOtherShortcutArguments, "txtOtherShortcutArguments");
+            this.txtOtherShortcutArguments.Name = "txtOtherShortcutArguments";
+            // 
+            // lblOtherShortcutArguments
+            // 
+            resources.ApplyResources(this.lblOtherShortcutArguments, "lblOtherShortcutArguments");
+            this.lblOtherShortcutArguments.Name = "lblOtherShortcutArguments";
             // 
             // txtOtherTargetPath
             // 
             resources.ApplyResources(this.txtOtherTargetPath, "txtOtherTargetPath");
             this.txtOtherTargetPath.Name = "txtOtherTargetPath";
             // 
+            // btnOtherTargetBrowse
+            // 
+            resources.ApplyResources(this.btnOtherTargetBrowse, "btnOtherTargetBrowse");
+            this.btnOtherTargetBrowse.FlatAppearance.BorderSize = 0;
+            this.btnOtherTargetBrowse.Name = "btnOtherTargetBrowse";
+            this.btnOtherTargetBrowse.UseVisualStyleBackColor = true;
+            this.btnOtherTargetBrowse.Click += new System.EventHandler(this.btnOtherTargetBrowse_Click);
+            // 
             // menuStrip1
             // 
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.refreshToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
             // refreshToolStripMenuItem
             // 
-            resources.ApplyResources(this.refreshToolStripMenuItem, "refreshToolStripMenuItem");
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            resources.ApplyResources(this.refreshToolStripMenuItem, "refreshToolStripMenuItem");
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // FrmCustomShortcutManagerNew
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.radShortcutLocation);
             this.Controls.Add(this.txtShortcutName);
             this.Controls.Add(this.lblShortcutName);
@@ -446,17 +482,23 @@ namespace TileIconifier.Forms.CustomShortcutForms
             ((System.ComponentModel.ISupportInitialize)(this.pctCurrentIcon)).EndInit();
             this.tabShortcutType.ResumeLayout(false);
             this.tabExplorer.ResumeLayout(false);
-            this.pnlExplorer.ResumeLayout(false);
-            this.pnlExplorer.PerformLayout();
+            this.tlpExplorer.ResumeLayout(false);
+            this.tlpExplorer.PerformLayout();
             this.tabSteam.ResumeLayout(false);
-            this.tabSteam.PerformLayout();
+            this.tlpSteam.ResumeLayout(false);
+            this.tlpSteam.PerformLayout();
             this.tabChromeApps.ResumeLayout(false);
-            this.tabChromeApps.PerformLayout();
+            this.tlpChromeApps.ResumeLayout(false);
+            this.tlpChromeApps.PerformLayout();
             this.tabWindowsStore.ResumeLayout(false);
+            this.tlpWindowsStore.ResumeLayout(false);
             this.tabURI.ResumeLayout(false);
             this.tabURI.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tabOther.ResumeLayout(false);
-            this.tabOther.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -466,51 +508,56 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabShortcutType;
+        private TileIconifier.Controls.SkinnableTabControl tabShortcutType;
         private System.Windows.Forms.TabPage tabExplorer;
         private System.Windows.Forms.TabPage tabSteam;
         private SortableListView lstSteamGames;
-        private System.Windows.Forms.TextBox txtSteamLibraryPaths;
-        private System.Windows.Forms.TextBox txtSteamInstallationPath;
-        private System.Windows.Forms.TextBox txtSteamExecutablePath;
-        private System.Windows.Forms.Button btnSteamInstallationChange;
-        private System.Windows.Forms.Button btnSteamExeChange;
+        private TileIconifier.Controls.SkinnableTextBox txtSteamLibraryPaths;
+        private TileIconifier.Controls.SkinnableTextBox txtSteamInstallationPath;
+        private TileIconifier.Controls.SkinnableTextBox txtSteamExecutablePath;
+        private TileIconifier.Controls.SkinnableButton btnSteamInstallationChange;
+        private TileIconifier.Controls.SkinnableButton btnSteamExeChange;
         private System.Windows.Forms.OpenFileDialog opnSteamExe;
-        private System.Windows.Forms.Button btnSteamLibrariesPath;
+        private TileIconifier.Controls.SkinnableButton btnSteamLibrariesPath;
         private System.Windows.Forms.FolderBrowserDialog fldBrowser;
         private AllOrCurrentUserRadios radShortcutLocation;
-        private System.Windows.Forms.TextBox txtShortcutName;
+        private TileIconifier.Controls.SkinnableTextBox txtShortcutName;
         private System.Windows.Forms.Label lblShortcutName;
-        private System.Windows.Forms.Button btnGenerateShortcut;
+        private TileIconifier.Controls.SkinnableButton btnGenerateShortcut;
         private System.Windows.Forms.Label lblCurrentIcon;
         private System.Windows.Forms.PictureBox pctCurrentIcon;
         private System.Windows.Forms.TabPage tabOther;
         private System.Windows.Forms.Label lblOtherShortcutArguments;
-        private System.Windows.Forms.TextBox txtOtherShortcutArguments;
+        private TileIconifier.Controls.SkinnableTextBox txtOtherShortcutArguments;
         private System.Windows.Forms.Label lblOtherTargetPath;
-        private System.Windows.Forms.Button btnOtherTargetBrowse;
-        private System.Windows.Forms.TextBox txtOtherTargetPath;
+        private TileIconifier.Controls.SkinnableButton btnOtherTargetBrowse;
+        private TileIconifier.Controls.SkinnableTextBox txtOtherTargetPath;
         private System.Windows.Forms.OpenFileDialog opnOtherTarget;
-        private System.Windows.Forms.Panel pnlExplorer;
-        private System.Windows.Forms.TextBox txtCustomFolder;
-        private System.Windows.Forms.RadioButton radCustomFolder;
-        private System.Windows.Forms.RadioButton radSpecialFolder;
-        private System.Windows.Forms.ComboBox cmbExplorerGuids;
-        private System.Windows.Forms.Button btnExplorerBrowse;
+        private TileIconifier.Controls.SkinnableTextBox txtCustomFolder;
+        private TileIconifier.Controls.SkinnableRadioButton radCustomFolder;
+        private TileIconifier.Controls.SkinnableRadioButton radSpecialFolder;
+        private TileIconifier.Controls.SkinnableComboBox cmbExplorerGuids;
+        private TileIconifier.Controls.SkinnableButton btnExplorerBrowse;
         private System.Windows.Forms.TabPage tabChromeApps;
-        private System.Windows.Forms.Button btnChromeExePathChange;
-        private System.Windows.Forms.TextBox txtChromeExePath;
-        private System.Windows.Forms.Button btnChromeAppPathChange;
-        private System.Windows.Forms.TextBox txtChromeAppPath;
+        private TileIconifier.Controls.SkinnableButton btnChromeExePathChange;
+        private TileIconifier.Controls.SkinnableTextBox txtChromeExePath;
+        private TileIconifier.Controls.SkinnableButton btnChromeAppPathChange;
+        private TileIconifier.Controls.SkinnableTextBox txtChromeAppPath;
         private SortableListView lstChromeAppItems;
         private System.Windows.Forms.TabPage tabWindowsStore;
         private SortableListView lstWindowsStoreApps;
         private System.Windows.Forms.OpenFileDialog opnChromeExe;
         private System.Windows.Forms.TabPage tabURI;
-        private System.Windows.Forms.TextBox txtUriString;
+        private TileIconifier.Controls.SkinnableTextBox txtUriString;
         private System.Windows.Forms.Label lblUriString;
         private System.Windows.Forms.Label lblUriExplain;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel tlpExplorer;
+        private System.Windows.Forms.TableLayoutPanel tlpSteam;
+        private System.Windows.Forms.TableLayoutPanel tlpChromeApps;
+        private System.Windows.Forms.TableLayoutPanel tlpWindowsStore;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }

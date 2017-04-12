@@ -57,27 +57,27 @@ namespace TileIconifier.Core.Utilities
             return tryColorFromName.IsKnownColor ? tryColorFromName : HexToColor(h);
         }
 
-        public static Color BlendColors(Color pColor1, int pCol1Weight, Color pColor2, int pCol2Weight)
+        public static Color BlendColors(Color color1, int col1Weight, Color color2, int col2Weight)
         {
-            int a1 = pColor1.A;
-            int r1 = pColor1.R;
-            int g1 = pColor1.G;
-            int b1 = pColor1.B;
+            int a1 = color1.A;
+            int r1 = color1.R;
+            int g1 = color1.G;
+            int b1 = color1.B;
 
-            int a2 = pColor2.A;
-            int r2 = pColor2.R;
-            int g2 = pColor2.G;
-            int b2 = pColor2.B;
+            int a2 = color2.A;
+            int r2 = color2.R;
+            int g2 = color2.G;
+            int b2 = color2.B;
 
-            int inTotalIntensity = pCol1Weight + pCol2Weight;
+            int totalIntensity = col1Weight + col2Weight;
 
-            if (inTotalIntensity <= 0)
+            if (totalIntensity <= 0)
                 throw new ArgumentException("The total color intensity must be greater than 0.");
 
-            int a3 = (a1 * pCol1Weight + a2 * pCol2Weight) / inTotalIntensity;
-            int r3 = (r1 * pCol1Weight + r2 * pCol2Weight) / inTotalIntensity;
-            int g3 = (g1 * pCol1Weight + g2 * pCol2Weight) / inTotalIntensity;
-            int b3 = (b1 * pCol1Weight + b2 * pCol2Weight) / inTotalIntensity;
+            int a3 = (a1 * col1Weight + a2 * col2Weight) / totalIntensity;
+            int r3 = (r1 * col1Weight + r2 * col2Weight) / totalIntensity;
+            int g3 = (g1 * col1Weight + g2 * col2Weight) / totalIntensity;
+            int b3 = (b1 * col1Weight + b2 * col2Weight) / totalIntensity;
 
             return Color.FromArgb(a3, r3, g3, b3);
         }
