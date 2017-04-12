@@ -22,7 +22,7 @@ namespace TileIconifier.Skinning
         #region "Constructors"
         public ToolStripSystemRendererEx()
         {
-            colorTable = new ToolStripSystemColorTable(new BaseSkin());
+            colorTable = new ToolStripSystemColorTable(SkinHandler.DefaultSkin);
         }
 
         public ToolStripSystemRendererEx(BaseSkin skin)
@@ -35,13 +35,13 @@ namespace TileIconifier.Skinning
         {
             if (visualStyleRenderer == null)
             {
-                return new VisualStyleRenderer(element);
+                visualStyleRenderer = new VisualStyleRenderer(element);                
             }
             else
             {
-                visualStyleRenderer.SetParameters(element);
-                return visualStyleRenderer;
+                visualStyleRenderer.SetParameters(element);                
             }
+            return visualStyleRenderer;
         }
 
         /// <summary>
