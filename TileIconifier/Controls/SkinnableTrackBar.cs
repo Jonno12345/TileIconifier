@@ -96,7 +96,7 @@ namespace TileIconifier.Controls
                 if (_flatThumbBackColor != value)
                 {
                     _flatThumbBackColor = value;
-                    if (HandleDrawing)
+                    if (HandleDrawing && Enabled)
                     {
                         Invalidate();
                     }
@@ -104,8 +104,26 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color _flatThumbBorderColor = SystemColors.ControlDark;
-        [DefaultValue(typeof(Color), nameof(SystemColors.ControlDark))]
+        private Color _flatThumbDisabledBackColor = SystemColors.ControlLight;
+        [DefaultValue(typeof(Color), nameof(SystemColors.ControlLight))]
+        public Color FlatThumbDisabledBackColor
+        {
+            get { return _flatThumbDisabledBackColor; }
+            set
+            {
+                if (_flatThumbDisabledBackColor != value)
+                {
+                    _flatThumbDisabledBackColor = value;
+                    if (HandleDrawing && !Enabled)
+                    {
+                        Invalidate();
+                    }
+                }
+            }
+        }
+
+        private Color _flatThumbBorderColor = SystemColors.WindowFrame;
+        [DefaultValue(typeof(Color), nameof(SystemColors.WindowFrame))]
         public Color FlatThumbBorderColor
         {
             get { return _flatThumbBorderColor; }
@@ -114,7 +132,25 @@ namespace TileIconifier.Controls
                 if (_flatThumbBorderColor != value)
                 {
                     _flatThumbBorderColor = value;
-                    if (HandleDrawing)
+                    if (HandleDrawing && Enabled)
+                    {
+                        Invalidate();
+                    }
+                }
+            }
+        }
+
+        private Color _flatThumbDisabledBorderColor = SystemColors.ControlDark;
+        [DefaultValue(typeof(Color), nameof(SystemColors.ControlDark))]
+        public Color FlatThumbDisabledBorderColor
+        {
+            get { return _flatThumbDisabledBorderColor; }
+            set
+            {
+                if (_flatThumbDisabledBorderColor != value)
+                {
+                    _flatThumbDisabledBorderColor = value;
+                    if (HandleDrawing && !Enabled)
                     {
                         Invalidate();
                     }
@@ -158,6 +194,10 @@ namespace TileIconifier.Controls
             }
         }
         #endregion
+        
+        /// <summary>
+        ///     Returns the bounding rectangle for the track of this trackbar.
+        /// </summary>
         protected Rectangle GetTrackRect()
         {
             NativeMethods.RECT r = new NativeMethods.RECT();
@@ -165,6 +205,9 @@ namespace TileIconifier.Controls
             return Rectangle.FromLTRB(r.left, r.top, r.right, r.bottom);
         }
 
+        /// <summary>
+        ///     Returns the bounding rectangle for the thumb of this trackbar.
+        /// </summary>
         protected Rectangle GetThumbRect()
         {
             NativeMethods.RECT r = new NativeMethods.RECT();
@@ -268,15 +311,27 @@ namespace TileIconifier.Controls
             Point[] ptsBorder = GetThumbPoints(new Rectangle(thumbRect.X, thumbRect.Y, thumbRect.Width - 1, thumbRect.Height - 1)); //-1 is the typical GDI+ compensation.
             thumbRect.Inflate(-1, -1); //exclude border
             Point[] ptsBack = GetThumbPoints(thumbRect);
+            Color borderCol;
+            Color backCol;
+            if (Enabled)
+            {
+                borderCol = FlatThumbBorderColor;
+                backCol = FlatThumbBackColor;
+            }
+            else
+            {
+                borderCol = FlatThumbDisabledBorderColor;
+                backCol = FlatThumbDisabledBackColor;
+            }
 
             //Draw border
-            using (var p = new Pen(FlatThumbBorderColor))
+            using (var p = new Pen(borderCol))
             {
                 g.DrawPolygon(p, ptsBorder);
             }
 
             //Draw background
-            using (var b = new SolidBrush(FlatThumbBackColor))
+            using (var b = new SolidBrush(backCol))
             {
                 g.FillPolygon(b, ptsBack);
             }
@@ -288,7 +343,9 @@ namespace TileIconifier.Controls
         {
             FlatStyle = skin.TrackBarFlatStyle;
             FlatThumbBackColor = skin.TrackBarThumbBackColor;
+            FlatThumbDisabledBackColor = skin.TrackBarThumbDisabledBackColor;
             FlatThumbBorderColor = skin.TrackBarThumbBorderColor;
+            FlatThumbDisabledBorderColor = skin.TrackBarThumbDisabledBorderColor;
             FlatTrackColor = skin.TrackBarTrackColor;
         }
     }

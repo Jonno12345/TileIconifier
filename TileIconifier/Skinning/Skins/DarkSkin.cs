@@ -115,6 +115,8 @@ namespace TileIconifier.Skinning.Skins
         public override FlatStyle TrackBarFlatStyle => FlatStyle.Flat;
         public override Color TrackBarThumbBackColor => CommonFocusedBorderColor;
         public override Color TrackBarThumbBorderColor => CommonFocusedBorderColor;
+        public override Color TrackBarThumbDisabledBackColor => HighBackColor;
+        public override Color TrackBarThumbDisabledBorderColor => CommonDisabledBorderColor;
         public override Color TrackBarTrackColor => MediumBorderColor;
         #endregion
 

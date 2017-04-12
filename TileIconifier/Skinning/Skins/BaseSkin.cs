@@ -101,8 +101,10 @@ namespace TileIconifier.Skinning.Skins
         #region "TrackBar"
         public virtual FlatStyle TrackBarFlatStyle => FlatStyle.Standard;
         public virtual Color TrackBarThumbBackColor => SystemColors.Control; //not used
-        public virtual Color TrackBarThumbBorderColor => SystemColors.ControlDark; //not used
-        public virtual Color TrackBarTrackColor => SystemColors.ControlDarkDark; //not used
+        public virtual Color TrackBarThumbBorderColor => SystemColors.WindowFrame; //not used
+        public virtual Color TrackBarThumbDisabledBackColor => SystemColors.ControlLight; //not used
+        public virtual Color TrackBarThumbDisabledBorderColor => SystemColors.ControlDark; //not used
+        public virtual Color TrackBarTrackColor => SystemColors.ControlDarkDark; //not used        
         #endregion
 
         #region "ToolStrip"
