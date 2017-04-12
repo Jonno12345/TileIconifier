@@ -13,7 +13,7 @@ namespace TileIconifier.Controls
         private Font glyphFont = new Font("Marlett", 10);
 
         /// <summary>
-        /// Indicates whether or not we should draw the control ourselves.
+        ///     Indicates whether or not we should draw the control ourselves.
         /// </summary>
         private bool HandleDrawing
         {
@@ -75,7 +75,7 @@ namespace TileIconifier.Controls
                 if (flatButtonForeColor != value)
                 {
                     flatButtonForeColor = value;
-                    if (HandleDrawing)
+                    if (HandleDrawing && Enabled)
                     {
                         Invalidate();
                     }
@@ -93,7 +93,7 @@ namespace TileIconifier.Controls
                 if (flatButtonDisabledForeColor != value)
                 {
                     flatButtonDisabledForeColor = value;
-                    if (HandleDrawing)
+                    if (HandleDrawing && !Enabled)
                     {
                         Invalidate();
                     }
@@ -111,7 +111,7 @@ namespace TileIconifier.Controls
                 if (flatButtonBorderColor != value)
                 {
                     flatButtonBorderColor = value;
-                    if (HandleDrawing)
+                    if (HandleDrawing && !Focused)
                     {
                         Invalidate();
                     }
@@ -129,7 +129,7 @@ namespace TileIconifier.Controls
                 if (flatButtonBorderFocusedColor != value)
                 {
                     flatButtonBorderFocusedColor = value;
-                    if (HandleDrawing)
+                    if (HandleDrawing && Focused)
                     {
                         Invalidate();
                     }
@@ -143,12 +143,14 @@ namespace TileIconifier.Controls
             {
                 SetStyle(ControlStyles.UserPaint, true);
                 DrawMode = DrawMode.OwnerDrawFixed;
+                DoubleBuffered = true;
             }
             else
             {
                 //These values could change in a future version of Winforms.
                 SetStyle(ControlStyles.UserPaint, false);
                 DrawMode = DrawMode.Normal;
+                DoubleBuffered = false;
             }
         }
 
