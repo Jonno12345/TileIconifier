@@ -336,6 +336,12 @@ namespace TileIconifier.Controls
                 g.FillPolygon(b, ptsBack);
             }
 
+            //Draw focus rectangle, if needed
+            if (Focused && ShowFocusCues)
+            {                
+                ControlPaint.DrawFocusRectangle(g, ClientRectangle, ForeColor, Color.Transparent);
+            }
+
             base.OnPaint(e);
         }
 
