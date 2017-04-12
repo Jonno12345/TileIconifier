@@ -46,15 +46,19 @@ namespace TileIconifier.Controls
                 if (flatStyle != value)
                 {                    
                     switch (value)
-                    {
-                        case FlatStyle.Standard:                            
-                            base.BorderStyle = BorderStyle.Fixed3D;                            
-                            break;
-                        case FlatStyle.Flat:                            
+                    {                        
+                        case FlatStyle.Flat:
+                        case FlatStyle.Popup:
+                            //Popup effect not implemented, so FlatStyle.Popup behaves
+                            //exactly like FlatStyle.Flat.
                             base.BorderStyle = BorderStyle.FixedSingle;
                             break;
-                        default:
-                            throw new InvalidEnumArgumentException("Only the Standard and Flat FlatStyle are supported by this control.");
+                        default: //Standard and System
+                            //TO REVIEW
+                            //Behaviour is a mix of Standard and System: 
+                            //Appearance determined by the OS, but the Paint events are still raised.
+                            base.BorderStyle = BorderStyle.Fixed3D;
+                            break;
                     }
                     flatStyle = value;
                 }

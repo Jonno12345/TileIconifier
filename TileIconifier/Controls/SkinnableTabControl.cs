@@ -102,8 +102,8 @@ namespace TileIconifier.Controls
             }
         }
 
-        private FlatStyle flatStyle = FlatStyle.System;
-        [DefaultValue(FlatStyle.System)]
+        private FlatStyle flatStyle = FlatStyle.Standard;
+        [DefaultValue(FlatStyle.Standard)]
         public FlatStyle FlatStyle
         {
             get { return flatStyle; }
@@ -266,6 +266,7 @@ namespace TileIconifier.Controls
             switch (FlatStyle)
             {
                 case FlatStyle.Standard:
+                    //Not supported. Fallback on FlatStyle.System
                 case FlatStyle.System:
                     if (Appearance == Appearance.Button)
                     {
