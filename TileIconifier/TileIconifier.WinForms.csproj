@@ -290,7 +290,7 @@
     <Compile Include="Controls\Shortcut\ShortcutItemListViewItem.cs" />
     <Compile Include="Skinning\SkinAttributes.cs" />
     <Compile Include="Skinning\SkinHandler.cs" />
-    <Compile Include="Skinning\Skins\Dark\DarkSkin.cs" />
+    <Compile Include="Skinning\Skins\DarkSkin.cs" />
     <Compile Include="Skinning\Skins\BaseSkin.cs" />
     <Compile Include="Forms\SkinnableForm.cs">
       <SubType>Form</SubType>
