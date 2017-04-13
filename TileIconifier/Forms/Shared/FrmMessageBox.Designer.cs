@@ -84,7 +84,7 @@
             this.btn3.MinimumSize = new System.Drawing.Size(75, 23);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(75, 23);
-            this.btn3.TabIndex = 0;
+            this.btn3.TabIndex = 2;
             this.btn3.Text = "Button3";
             this.btn3.UseVisualStyleBackColor = true;
             // 
@@ -110,7 +110,7 @@
             this.btn1.MinimumSize = new System.Drawing.Size(75, 23);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(75, 23);
-            this.btn1.TabIndex = 2;
+            this.btn1.TabIndex = 0;
             this.btn1.Text = "Button 1";
             this.btn1.UseVisualStyleBackColor = true;
             // 

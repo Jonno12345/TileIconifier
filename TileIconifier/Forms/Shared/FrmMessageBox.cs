@@ -12,24 +12,52 @@ namespace TileIconifier.Forms.Shared
     {
         private FrmMessageBox()
         {
-            InitializeComponent();
-
-            Font = SystemFonts.MessageBoxFont;            
+            InitializeComponent();            
         }
 
+        /// <summary>
+        /// Displays a message box.
+        /// </summary>
+        /// 
+        /// <param name="owner">
+        /// An implementation of <see cref="IWin32Window"/> that will 
+        /// own the modal dialog box.</param>
+        /// 
+        /// <param name="text">
+        /// The text to display in the message box.</param>
+        /// 
+        /// <param name="caption">
+        /// The text to display in the title bar of the message box. 
+        /// If the value is not specified or null, the product name 
+        /// is used instead.</param>
+        /// 
+        /// <param name="buttons">
+        /// One of the <see cref="MessageBoxButtons"/> values that 
+        /// specifies which buttons to display in the message box.</param>
+        /// 
+        /// <param name="icon">
+        /// One of the <see cref="MessageBoxIcon"/> values that specifies 
+        /// which icon to display in the message box. </param>
+        /// 
+        /// <param name="defaultButton">
+        /// One of the <see cref="MessageBoxDefaultButton"/> values that 
+        /// specifies the default button for the message box. If the value 
+        /// is not specified or null, the default button is determined by 
+        /// the <see cref="MessageBoxButtons"/> value.</param>
+        /// <returns></returns>
         public static DialogResult Show(
             IWin32Window owner,
             string text,
             string caption = null,
             MessageBoxButtons buttons = MessageBoxButtons.OK,
             MessageBoxIcon icon = MessageBoxIcon.None,
-            MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1)
+            MessageBoxDefaultButton? defaultButton = null) //Use nullable, because there is no "default" value.
         {
             using (var frm = new FrmMessageBox())
             {
                 //Ensure the title bar always have text, because otherwise,
-                //it is totally hidden. Alternatively, we could override 
-                //the CreateParams property.
+                //it is totally hidden when ControlBox = false. Alternatively, 
+                //we could override the CreateParams property.
                 if (caption == null || caption == "")
                 {
                     caption = Application.ProductName;
@@ -43,26 +71,27 @@ namespace TileIconifier.Forms.Shared
                 {
                     case MessageBoxButtons.OK:
                         frm.btn1.Text = "OK";
-                        frm.btn1.DialogResult = DialogResult.OK;
+                        frm.btn1.DialogResult = DialogResult.OK;                        
+
+                        frm.btn2.Visible = false;
+
+                        frm.btn3.Visible = false;
 
                         frm.AcceptButton = frm.btn1;
                         frm.CancelButton = frm.btn1;
-
-                        frm.btn2.Visible = false;
-                        frm.btn3.Visible = false;
                         break;
 
                     case MessageBoxButtons.OKCancel:
                         frm.btn1.Text = "OK";
                         frm.btn1.DialogResult = DialogResult.OK;
+                        
+                        frm.btn2.Text = "Cancel";
+                        frm.btn2.DialogResult = DialogResult.Cancel;                        
+
+                        frm.btn3.Visible = false;
 
                         frm.AcceptButton = frm.btn1;
                         frm.CancelButton = frm.btn2;
-
-                        frm.btn2.Text = "Cancel";
-                        frm.btn2.DialogResult = DialogResult.Cancel;
-
-                        frm.btn3.Visible = false;
                         break;                        
 
                     case MessageBoxButtons.AbortRetryIgnore:
@@ -75,7 +104,7 @@ namespace TileIconifier.Forms.Shared
                         frm.btn3.Text = "Ignore";
                         frm.btn3.DialogResult = DialogResult.Ignore;
 
-                        frm.ControlBox = false;// to fix
+                        frm.ControlBox = false;
                         break;
 
                     case MessageBoxButtons.YesNoCancel:
@@ -98,11 +127,11 @@ namespace TileIconifier.Forms.Shared
 
                         frm.btn2.Text = "No";
                         frm.btn2.DialogResult = DialogResult.No;
+                        
+                        frm.btn3.Visible = false;
 
                         frm.AcceptButton = frm.btn1;
-
-                        frm.ControlBox = false;// to fix
-                        frm.btn3.Visible = false;
+                        frm.ControlBox = false;
                         break;
 
                     case MessageBoxButtons.RetryCancel:
@@ -110,12 +139,12 @@ namespace TileIconifier.Forms.Shared
                         frm.btn1.DialogResult = DialogResult.Retry;
 
                         frm.btn2.Text = "Cancel";
-                        frm.btn2.DialogResult = DialogResult.Cancel;
+                        frm.btn2.DialogResult = DialogResult.Cancel;                        
+
+                        frm.btn3.Visible = false;
 
                         frm.AcceptButton = frm.btn1;
                         frm.CancelButton = frm.btn2;
-
-                        frm.btn3.Visible = false;
                         break;
 
                     default:
@@ -123,23 +152,30 @@ namespace TileIconifier.Forms.Shared
                 }
 
                 //Setup default button
-                switch(defaultButton)
+                if (defaultButton != null)
                 {
-                    case MessageBoxDefaultButton.Button1:
-                        frm.btn1.NotifyDefault(true);
-                        break;
+                    Button btn;
+                    switch (defaultButton)
+                    {
+                        case MessageBoxDefaultButton.Button1:
+                            btn = frm.btn1;
+                            break;
 
-                    case MessageBoxDefaultButton.Button2:
-                        frm.btn2.NotifyDefault(true);
-                        break;
+                        case MessageBoxDefaultButton.Button2:
+                            btn = frm.btn2;
+                            break;
 
-                    case MessageBoxDefaultButton.Button3:
-                        frm.btn3.NotifyDefault(true);
-                        break;
+                        case MessageBoxDefaultButton.Button3:
+                            btn = frm.btn3;
+                            break;
 
-                    default:
-                        throw new ArgumentException("Unkown default buttons", nameof(defaultButton));
+                        default:
+                            throw new ArgumentException("Unkown default buttons", nameof(defaultButton));
+                    }
+                    btn.NotifyDefault(true);
+                    btn.Select();
                 }
+                
 
                 //Setup icon
                 //Cast enum because there are seveal enum members with the same value.

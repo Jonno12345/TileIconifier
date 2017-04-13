@@ -70,15 +70,19 @@ namespace TileIconifier.Utilities
             string caption = null,
             MessageBoxButtons buttons = MessageBoxButtons.OK,
             MessageBoxIcon icon = MessageBoxIcon.None,
-            MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1)
+            MessageBoxDefaultButton? defaultButton = null)
         {
             if (SkinHandler.GetCurrentSkin().EnforceOnMessageBox)
             {
                 return FrmMessageBox.Show(owner, text, caption, buttons, icon, defaultButton);
             }
+            else if(defaultButton != null)
+            {
+                return MessageBox.Show(owner, text, caption, buttons, icon, (MessageBoxDefaultButton)defaultButton);
+            }
             else
             {
-                return MessageBox.Show(owner, text, caption, buttons, icon, defaultButton);
+                return MessageBox.Show(owner, text, caption, buttons, icon);
             }
         }
     }
