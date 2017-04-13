@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TileIconifier.Skinning.Skins;
 
@@ -54,6 +51,7 @@ namespace TileIconifier.Controls
         }
 
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Obsolete(UNSUPPORTED_PROPERTY_ERROR)]
         public new Orientation Orientation
         {

@@ -8,6 +8,9 @@ namespace TileIconifier.Controls
 {
     class SkinnableListView : ListView, ISkinnableControl
     {
+        private const string USE_FLATSTYLE_INSTEAD_ERROR = 
+            "Use the FlatStyle property instead.";
+
         public SkinnableListView()
         {
             //Set the base class property to bypass the deprecated warning
@@ -17,23 +20,23 @@ namespace TileIconifier.Controls
         }
 
         #region "Properties"
-        [Browsable(false)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        [Obsolete("Use the FlatStyle property instead.")]
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Obsolete(USE_FLATSTYLE_INSTEAD_ERROR)]
         [DefaultValue(true)]
         public new bool OwnerDraw
         {
             get { return base.OwnerDraw; }
-            set { base.OwnerDraw = value; }
+            set { throw new NotSupportedException(USE_FLATSTYLE_INSTEAD_ERROR); }
         }
 
-        [Browsable(false)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        [Obsolete("Use the FlatStyle property instead.")]
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Obsolete(USE_FLATSTYLE_INSTEAD_ERROR)]
         public new BorderStyle BorderStyle
         {
             get { return base.BorderStyle; }
-            set { base.BorderStyle = value; }
+            set { throw new NotSupportedException(USE_FLATSTYLE_INSTEAD_ERROR); }
         }
         
         private FlatStyle flatStyle = FlatStyle.Standard;
@@ -44,23 +47,31 @@ namespace TileIconifier.Controls
             set
             {
                 if (flatStyle != value)
-                {                    
+                {
+                    flatStyle = value;
+
                     switch (value)
                     {                        
                         case FlatStyle.Flat:
                         case FlatStyle.Popup:
                             //Popup effect not implemented, so FlatStyle.Popup behaves
                             //exactly like FlatStyle.Flat.
-                            base.BorderStyle = BorderStyle.FixedSingle;
+                            base.OwnerDraw = true;
+                            base.BorderStyle = BorderStyle.FixedSingle;                            
                             break;
-                        default: //Standard and System
-                            //TO REVIEW
-                            //Behaviour is a mix of Standard and System: 
-                            //Appearance determined by the OS, but the Paint events are still raised.
+
+                        case FlatStyle.Standard:
+                            //The appearance is still determined by the system, but at
+                            //least the Paint events are raised.
+                            base.OwnerDraw = true;
                             base.BorderStyle = BorderStyle.Fixed3D;
                             break;
-                    }
-                    flatStyle = value;
+
+                        default:
+                            base.OwnerDraw = false;
+                            base.BorderStyle = BorderStyle.Fixed3D;
+                            break;
+                    }                    
                 }
             }
         }
@@ -127,8 +138,12 @@ namespace TileIconifier.Controls
                 {
                     flatBorderColor = value;
                     {
-                        if (FlatStyle == FlatStyle.Flat)
-                        {
+                        //This color is also used for the focused and the 
+                        //disabled states if their value is empty.
+                        if (FlatStyle == FlatStyle.Flat && 
+                            (!Focused || (Focused && FlatBorderFocusedColor.IsEmpty) ||
+                            (!Enabled && FlatBorderDisabledColor.IsEmpty)))
+                        {                            
                             Invalidate();
                         }
                     }
@@ -146,7 +161,7 @@ namespace TileIconifier.Controls
                 if (flatBorderFocusedColor != value)
                 {
                     flatBorderFocusedColor = value;
-                    if (FlatStyle == FlatStyle.Flat)
+                    if (FlatStyle == FlatStyle.Flat && Focused)
                     {
                         Invalidate();
                     }
@@ -164,7 +179,7 @@ namespace TileIconifier.Controls
                 if (flatBorderDisabledColor != value)
                 {
                     flatBorderDisabledColor = value;
-                    if (FlatStyle == FlatStyle.Flat)
+                    if (FlatStyle == FlatStyle.Flat && !Enabled)
                     {
                         Invalidate();
                     }
@@ -175,7 +190,7 @@ namespace TileIconifier.Controls
 
         protected override void OnDrawColumnHeader(DrawListViewColumnHeaderEventArgs e)
         {    
-            if (FlatStyle == FlatStyle.Flat)
+            if (FlatStyle == FlatStyle.Flat || FlatStyle == FlatStyle.Popup)
             {
                 using (var b = new SolidBrush(FlatHeaderBackColor))
                     e.Graphics.FillRectangle(b, e.Bounds);
@@ -183,7 +198,7 @@ namespace TileIconifier.Controls
                 TextFormatFlags flags =                     
                     TextFormatFlags.VerticalCenter |
                     TextFormatFlags.EndEllipsis |
-                    ConvertToTextFormatFlags(e.Header.TextAlign);
+                    ConvertToTextFormatFlags(e.Header.TextAlign); //Header.TextAlign is already Rtl translated
 
                 TextRenderer.DrawText(e.Graphics, e.Header.Text, Font, e.Bounds, FlatHeaderForeColor, flags);
             }
@@ -215,11 +230,11 @@ namespace TileIconifier.Controls
 
             if (m.Msg == NativeMethods.WM_PAINT && FlatStyle == FlatStyle.Flat)
             {
-                DrawUserBorder();
+                DrawFlatBorder();
             }                
         }
 
-        private void DrawUserBorder()
+        private void DrawFlatBorder()
         {
             Color bColor;
             if (!Enabled && !FlatBorderDisabledColor.IsEmpty)
@@ -251,10 +266,13 @@ namespace TileIconifier.Controls
             {
                 case HorizontalAlignment.Left:
                     return TextFormatFlags.Left;
+
                 case HorizontalAlignment.Center:
                     return TextFormatFlags.HorizontalCenter;
+
                 case HorizontalAlignment.Right:
                     return TextFormatFlags.Right;
+
                 default:
                     throw new ArgumentException("Unsupported horizontal alignement.");
             }                

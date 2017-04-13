@@ -79,6 +79,7 @@ namespace TileIconifier.Controls
         }
 
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Obsolete(UNSUPPORTED_PROPERTY_ERROR)]
         public new TabAlignment Alignment
         {
