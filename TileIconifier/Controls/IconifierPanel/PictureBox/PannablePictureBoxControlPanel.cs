@@ -28,6 +28,8 @@
 #endregion
 
 using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using TileIconifier.Properties;
 
@@ -40,13 +42,22 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             InitializeComponent();
         }
 
-        public PannablePictureBox PannablePictureBox { get; private set; }
+        [Browsable(false)]
+        public PannablePictureBox PannablePictureBox => panPct;
 
-        public void SetPannablePictureBoxControl(PannablePictureBox value)
+        [Localizable(true)]
+        public string HeaderText
         {
-            PannablePictureBox = value;
-            PannablePictureBox.OnPannablePictureImagePropertyChange += (o, args) => UpdateControls();
+            get { return lblHeader.Text; }
+            set { lblHeader.Text = value; }
         }
+
+        [Localizable(false)]
+        public Size PannablePictureBoxSize
+        {
+            get { return panPct.Size; }
+            set { panPct.Size = value; }
+        }        
 
         public event EventHandler ChangeImageClick;
 
