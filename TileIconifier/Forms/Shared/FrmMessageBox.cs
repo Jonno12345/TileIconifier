@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Media;
-
 using System.Windows.Forms;
 using TileIconifier.Properties;
 
@@ -52,172 +51,190 @@ namespace TileIconifier.Forms.Shared
             string caption = null,
             MessageBoxButtons buttons = MessageBoxButtons.OK,
             MessageBoxIcon icon = MessageBoxIcon.None,
-            MessageBoxDefaultButton? defaultButton = null) //Use nullable, because there is no "default" value.
+
+            //Use nullable for this parameter, because there is no enum 
+            //member that means "Don't override the default default button".
+            MessageBoxDefaultButton? defaultButton = null)
         {
             using (var frm = new FrmMessageBox())
             {
-                //Ensure the title bar always have text, because otherwise,
-                //it is totally hidden when ControlBox = false. Alternatively, 
-                //we could override the CreateParams property.
-                if (caption == null || caption == "")
-                {
-                    caption = Application.ProductName;
-                }
-
-                frm.lblMsg.Text = text;
-                frm.Text = caption;
-
-                //Setup buttons
-                switch(buttons)
-                {
-                    case MessageBoxButtons.OK:
-                        frm.btn1.Text = Strings.Ok;
-                        frm.btn1.DialogResult = DialogResult.OK;                        
-
-                        frm.btn2.Visible = false;
-
-                        frm.btn3.Visible = false;
-
-                        frm.AcceptButton = frm.btn1;
-                        frm.CancelButton = frm.btn1;
-                        break;
-
-                    case MessageBoxButtons.OKCancel:
-                        frm.btn1.Text = Strings.Ok;
-                        frm.btn1.DialogResult = DialogResult.OK;
-                        
-                        frm.btn2.Text = Strings.Cancel;
-                        frm.btn2.DialogResult = DialogResult.Cancel;                        
-
-                        frm.btn3.Visible = false;
-
-                        frm.AcceptButton = frm.btn1;
-                        frm.CancelButton = frm.btn2;
-                        break;                        
-
-                    case MessageBoxButtons.AbortRetryIgnore:
-                        frm.btn1.Text = Strings.Abord;
-                        frm.btn1.DialogResult = DialogResult.Abort;
-
-                        frm.btn2.Text = Strings.Retry;
-                        frm.btn2.DialogResult = DialogResult.Retry;
-
-                        frm.btn3.Text = Strings.Ignore;
-                        frm.btn3.DialogResult = DialogResult.Ignore;
-
-                        frm.ControlBox = false;
-                        break;
-
-                    case MessageBoxButtons.YesNoCancel:
-                        frm.btn1.Text = Strings.Yes;
-                        frm.btn1.DialogResult = DialogResult.Yes;
-
-                        frm.btn2.Text = Strings.No;
-                        frm.btn2.DialogResult = DialogResult.No;
-
-                        frm.btn3.Text = Strings.Cancel;
-                        frm.btn3.DialogResult = DialogResult.Cancel;
-
-                        frm.AcceptButton = frm.btn1;
-                        frm.CancelButton = frm.btn3;
-                        break;
-
-                    case MessageBoxButtons.YesNo:
-                        frm.btn1.Text = Strings.Yes;
-                        frm.btn1.DialogResult = DialogResult.Yes;
-
-                        frm.btn2.Text = Strings.No;
-                        frm.btn2.DialogResult = DialogResult.No;
-                        
-                        frm.btn3.Visible = false;
-
-                        frm.AcceptButton = frm.btn1;
-                        frm.ControlBox = false;
-                        break;
-
-                    case MessageBoxButtons.RetryCancel:
-                        frm.btn1.Text = Strings.Retry;
-                        frm.btn1.DialogResult = DialogResult.Retry;
-
-                        frm.btn2.Text = Strings.Cancel;
-                        frm.btn2.DialogResult = DialogResult.Cancel;                        
-
-                        frm.btn3.Visible = false;
-
-                        frm.AcceptButton = frm.btn1;
-                        frm.CancelButton = frm.btn2;
-                        break;
-
-                    default:
-                        throw new ArgumentException("Unkown combination of dialog buttons", nameof(buttons));
-                }
-
-                //Setup default button
-                if (defaultButton != null)
-                {
-                    Button btn;
-                    switch (defaultButton)
-                    {
-                        case MessageBoxDefaultButton.Button1:
-                            btn = frm.btn1;
-                            break;
-
-                        case MessageBoxDefaultButton.Button2:
-                            btn = frm.btn2;
-                            break;
-
-                        case MessageBoxDefaultButton.Button3:
-                            btn = frm.btn3;
-                            break;
-
-                        default:
-                            throw new ArgumentException("Unkown default buttons", nameof(defaultButton));
-                    }
-                    btn.NotifyDefault(true);
-                    btn.Select();
-                }
-                
-
-                //Setup icon and sound                
-                //Cast enum to int because there are seveal enum members with the same value.
-                switch((int)icon)
-                {
-                    case 16: //That red error icon...
-                        frm.SetIcon(SystemIcons.Hand);
-                        frm._sound = SystemSounds.Hand;
-                        break;
-
-                    case 48: //Warning
-                        frm.SetIcon(SystemIcons.Exclamation);
-                        frm._sound = SystemSounds.Exclamation;
-                        break;
-
-                    case 64: //Info
-                        frm.SetIcon(SystemIcons.Asterisk);
-                        frm._sound = SystemSounds.Asterisk;
-                        break;
-
-                    //Question message box icon is deprecated, so we purposely not implement it.
-
-                    default:
-                        frm.pctIcon.Visible = false;
-                        break;
-                }
+                frm.SetText(text, caption);
+                frm.SetButtons(buttons);
+                frm.SetDefaultButton(defaultButton);
+                frm.SetDecoration(icon);
 
                 return frm.ShowDialog(owner);
             }
         }
-        
-        private void SetIcon(Icon icon)
+
+        #region "Setup methods"
+        private void SetText(string text, string caption)
         {
-            //Attempt to find an icon that's the same size as the picture box.
-            //If the correct size is not available, the picture box will stretch
-            //the image.
-            using (var ico = new Icon(icon, pctIcon.Size))
+            //Ensure the title bar always have text, because otherwise,
+            //it is totally hidden when ControlBox = false. Alternatively, 
+            //we could override the CreateParams property.
+            if (caption == null || caption == "")
             {
-                pctIcon.Image = ico.ToBitmap();
+                caption = Application.ProductName;
+            }
+
+            lblMsg.Text = text;
+            Text = caption;
+        }
+
+        private void SetButtons(MessageBoxButtons buttons)
+        {
+            switch (buttons)
+            {
+                case MessageBoxButtons.OK:
+                    btn1.Text = Strings.Ok;
+                    btn1.DialogResult = DialogResult.OK;
+
+                    btn2.Visible = false;
+
+                    btn3.Visible = false;
+
+                    AcceptButton = btn1;
+                    CancelButton = btn1;
+                    break;
+
+                case MessageBoxButtons.OKCancel:
+                    btn1.Text = Strings.Ok;
+                    btn1.DialogResult = DialogResult.OK;
+
+                    btn2.Text = Strings.Cancel;
+                    btn2.DialogResult = DialogResult.Cancel;
+
+                    btn3.Visible = false;
+
+                    AcceptButton = btn1;
+                    CancelButton = btn2;
+                    break;
+
+                case MessageBoxButtons.AbortRetryIgnore:
+                    btn1.Text = Strings.Abord;
+                    btn1.DialogResult = DialogResult.Abort;
+
+                    btn2.Text = Strings.Retry;
+                    btn2.DialogResult = DialogResult.Retry;
+
+                    btn3.Text = Strings.Ignore;
+                    btn3.DialogResult = DialogResult.Ignore;
+
+                    ControlBox = false;
+                    break;
+
+                case MessageBoxButtons.YesNoCancel:
+                    btn1.Text = Strings.Yes;
+                    btn1.DialogResult = DialogResult.Yes;
+
+                    btn2.Text = Strings.No;
+                    btn2.DialogResult = DialogResult.No;
+
+                    btn3.Text = Strings.Cancel;
+                    btn3.DialogResult = DialogResult.Cancel;
+
+                    AcceptButton = btn1;
+                    CancelButton = btn3;
+                    break;
+
+                case MessageBoxButtons.YesNo:
+                    btn1.Text = Strings.Yes;
+                    btn1.DialogResult = DialogResult.Yes;
+
+                    btn2.Text = Strings.No;
+                    btn2.DialogResult = DialogResult.No;
+
+                    btn3.Visible = false;
+
+                    AcceptButton = btn1;
+                    ControlBox = false;
+                    break;
+
+                case MessageBoxButtons.RetryCancel:
+                    btn1.Text = Strings.Retry;
+                    btn1.DialogResult = DialogResult.Retry;
+
+                    btn2.Text = Strings.Cancel;
+                    btn2.DialogResult = DialogResult.Cancel;
+
+                    btn3.Visible = false;
+
+                    AcceptButton = btn1;
+                    CancelButton = btn2;
+                    break;
+
+                default:
+                    throw new ArgumentException("Unkown combination of dialog buttons", nameof(buttons));
             }
         }
+
+        private void SetDefaultButton(MessageBoxDefaultButton? defaultButton)
+        {            
+            if (defaultButton != null)
+            {
+                Button btn;
+                switch (defaultButton)
+                {
+                    case MessageBoxDefaultButton.Button1:
+                        btn = btn1;
+                        break;
+
+                    case MessageBoxDefaultButton.Button2:
+                        btn = btn2;
+                        break;
+
+                    case MessageBoxDefaultButton.Button3:
+                        btn = btn3;
+                        break;
+
+                    default:
+                        throw new ArgumentException("Unkown default buttons", nameof(defaultButton));
+                }
+                btn.NotifyDefault(true);
+                btn.Select();
+            }
+        }
+
+        private void SetDecoration(MessageBoxIcon icon)
+        {
+            Action<Icon> setIcon = i =>
+            {
+                //Attempt to find an icon that's the same size as the picture box.
+                //If the correct size is not available, the picture box will stretch
+                //the image.
+                using (var ico = new Icon(i, pctIcon.Size))
+                {
+                    pctIcon.Image = ico.ToBitmap();
+                }
+            };
+            
+            //Cast enum to int because there are seveal enum members with the same value.
+            switch ((int)icon)
+            {
+                case 16: //That red error icon...
+                    setIcon(SystemIcons.Hand);
+                    _sound = SystemSounds.Hand;
+                    break;
+
+                case 48: //Warning
+                    setIcon(SystemIcons.Exclamation);
+                    _sound = SystemSounds.Exclamation;
+                    break;
+
+                case 64: //Info
+                    setIcon(SystemIcons.Asterisk);
+                    _sound = SystemSounds.Asterisk;
+                    break;
+
+                //Question message box icon is deprecated, so we purposely not implement it.
+
+                default:
+                    pctIcon.Visible = false;
+                    break;
+            }
+        }
+        #endregion
 
         protected override void OnShown(EventArgs e)
         {
