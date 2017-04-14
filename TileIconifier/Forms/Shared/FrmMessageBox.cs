@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
+using System.Media;
+
 using System.Windows.Forms;
 
 namespace TileIconifier.Forms.Shared
 {
     public partial class FrmMessageBox : TileIconifier.Forms.SkinnableForm
     {
+        private SystemSound _sound;
+
         private FrmMessageBox()
         {
             InitializeComponent();            
@@ -42,8 +42,8 @@ namespace TileIconifier.Forms.Shared
         /// <param name="defaultButton">
         /// One of the <see cref="MessageBoxDefaultButton"/> values that 
         /// specifies the default button for the message box. If the value 
-        /// is not specified or null, the default button is determined by 
-        /// the <see cref="MessageBoxButtons"/> value.</param>
+        /// is null, the default button is determined by the 
+        /// <see cref="MessageBoxButtons"/> value.</param>
         /// <returns></returns>
         public static DialogResult Show(
             IWin32Window owner,
@@ -177,21 +177,26 @@ namespace TileIconifier.Forms.Shared
                 }
                 
 
-                //Setup icon
-                //Cast enum because there are seveal enum members with the same value.
+                //Setup icon and sound                
+                //Cast enum to int because there are seveal enum members with the same value.
                 switch((int)icon)
                 {
                     case 16: //That red error icon...
-                        frm.SetIcon(SystemIcons.Error);
+                        frm.SetIcon(SystemIcons.Hand);
+                        frm._sound = SystemSounds.Hand;
                         break;
 
                     case 48: //Warning
                         frm.SetIcon(SystemIcons.Exclamation);
+                        frm._sound = SystemSounds.Exclamation;
                         break;
 
                     case 64: //Info
-                        frm.SetIcon(SystemIcons.Information);
+                        frm.SetIcon(SystemIcons.Asterisk);
+                        frm._sound = SystemSounds.Asterisk;
                         break;
+
+                    //Question message box icon is deprecated, so we purposely not implement it.
 
                     default:
                         frm.pctIcon.Visible = false;
@@ -202,7 +207,7 @@ namespace TileIconifier.Forms.Shared
             }
         }
         
-        public void SetIcon(Icon icon)
+        private void SetIcon(Icon icon)
         {
             //Attempt to find an icon that's the same size as the picture box.
             //If the correct size is not available, the picture box will stretch
@@ -211,6 +216,16 @@ namespace TileIconifier.Forms.Shared
             {
                 pctIcon.Image = ico.ToBitmap();
             }
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            if (_sound != null)
+            {
+                _sound.Play();
+            }
+
+            base.OnShown(e);
         }
     }
 }
