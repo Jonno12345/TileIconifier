@@ -118,26 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblSmallIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 0</value>
+  <data name="btnReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>267, 203</value>
   </data>
-  <data name="lblSmallIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 26</value>
+  <data name="btnReset.Text" xml:space="preserve">
+    <value>Сбросить</value>
   </data>
-  <data name="lblSmallIcon.Text" xml:space="preserve">
-    <value>Маленькая иконка:</value>
-  </data>
-  <data name="panPctSmallIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 45</value>
-  </data>
-  <data name="lblMediumIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 0</value>
-  </data>
-  <data name="lblMediumIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 13</value>
-  </data>
-  <data name="lblMediumIcon.Text" xml:space="preserve">
+  <data name="pannablePictureBoxControlPanelMedium.HeaderText" xml:space="preserve">
     <value>Средяя иконка:</value>
+  </data>
+  <data name="pannablePictureBoxControlPanelSmall.HeaderText" xml:space="preserve">
+    <value>Маленькая иконка:</value>
   </data>
   <data name="chkUseSameImg.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 17</value>
@@ -145,13 +136,28 @@
   <data name="chkUseSameImg.Text" xml:space="preserve">
     <value>Изменять иконки вместе</value>
   </data>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>342, 329</value>
+  </data>
   <data name="lblUnsaved.Size" type="System.Drawing.Size, System.Drawing">
     <value>261, 13</value>
   </data>
   <data name="lblUnsaved.Text" xml:space="preserve">
     <value>Этот ярлык содержит несохраненные изменения!</value>
   </data>
-  <data name="btnReset.Text" xml:space="preserve">
-    <value>Сбросить</value>
+  <data name="tmiChangeImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 22</value>
+  </data>
+  <data name="tmiChangeImage.Text" xml:space="preserve">
+    <value>Изменить изображение</value>
+  </data>
+  <data name="tmiCentreImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 22</value>
+  </data>
+  <data name="tmiCentreImage.Text" xml:space="preserve">
+    <value>Выровнять по центру</value>
+  </data>
+  <data name="cmsPicBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 48</value>
   </data>
 </root>
