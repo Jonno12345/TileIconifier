@@ -151,10 +151,7 @@
     <value>2</value>
   </data>
   <data name="lblUnsaved.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="lblUnsaved.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="tableLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -199,7 +196,7 @@
     <value>btnReset</value>
   </data>
   <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6312.38195, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6313.27391, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnReset.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -226,7 +223,7 @@
     <value>pannablePictureBoxControlPanelMedium</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelMedium.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6312.38195, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6313.27391, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelMedium.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -256,13 +253,16 @@
     <value>colorPanel</value>
   </data>
   <data name="&gt;&gt;colorPanel.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.ColorPanel, TileIconifier, Version=2.2.6312.38195, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.ColorPanel, TileIconifier, Version=2.2.6313.27391, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorPanel.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;colorPanel.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="pannablePictureBoxControlPanelSmall.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="pannablePictureBoxControlPanelSmall.HeaderText" xml:space="preserve">
     <value>Small icon:</value>
@@ -283,7 +283,7 @@
     <value>pannablePictureBoxControlPanelSmall</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6312.38195, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6313.27391, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -316,7 +316,7 @@
     <value>chkUseSameImg</value>
   </data>
   <data name="&gt;&gt;chkUseSameImg.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableCheckBox, TileIconifier, Version=2.2.6312.38195, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableCheckBox, TileIconifier, Version=2.2.6313.27391, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;chkUseSameImg.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -352,7 +352,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnReset" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="pannablePictureBoxControlPanelMedium" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="colorPanel" Row="3" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="lblUnsaved" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="pannablePictureBoxControlPanelSmall" Row="0" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="chkUseSameImg" Row="1" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnReset" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="pannablePictureBoxControlPanelMedium" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="colorPanel" Row="3" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="lblUnsaved" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="pannablePictureBoxControlPanelSmall" Row="0" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="chkUseSameImg" Row="1" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="lblUnsaved.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt, style=Italic</value>
@@ -361,19 +361,25 @@
     <value>NoControl</value>
   </data>
   <data name="lblUnsaved.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 208</value>
+    <value>0, 200</value>
   </data>
   <data name="lblUnsaved.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 3, 0</value>
   </data>
+  <data name="lblUnsaved.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>230, 0</value>
+  </data>
   <data name="lblUnsaved.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 13</value>
+    <value>230, 29</value>
   </data>
   <data name="lblUnsaved.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
   </data>
   <data name="lblUnsaved.Text" xml:space="preserve">
     <value>This shortcut has unsaved changes!</value>
+  </data>
+  <data name="lblUnsaved.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="lblUnsaved.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
