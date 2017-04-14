@@ -24,7 +24,6 @@ namespace TileIconifier.Controls.Eyedropper
     internal sealed class EyedropColorPicker : Control, ISkinnableControl
     {
         private readonly Bitmap _mIcon;
-        private Color _backColor;
 
         private bool _iscapturing;
 
@@ -88,7 +87,7 @@ namespace TileIconifier.Controls.Eyedropper
             {
                 int offset = (int)((r.Width - _mIcon.Width) / 2);
 
-                e.Graphics.FillRectangle(new SolidBrush(_backColor), new Rectangle(new Point(0, 0), Size));
+                e.Graphics.FillRectangle(new SolidBrush(BackColor), new Rectangle(new Point(0, 0), Size));
                 e.Graphics.DrawImage(_mIcon, offset, offset);
             }
             //
@@ -163,7 +162,7 @@ namespace TileIconifier.Controls.Eyedropper
 
         public void ApplySkin(BaseSkin skin)
         {
-            _backColor = skin.BackColor;
+            BackColor = skin.BackColor;
         }
     }
 }
