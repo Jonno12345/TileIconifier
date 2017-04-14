@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Media;
 
 using System.Windows.Forms;
+using TileIconifier.Properties;
 
 namespace TileIconifier.Forms.Shared
 {
@@ -70,7 +71,7 @@ namespace TileIconifier.Forms.Shared
                 switch(buttons)
                 {
                     case MessageBoxButtons.OK:
-                        frm.btn1.Text = "OK";
+                        frm.btn1.Text = Strings.Ok;
                         frm.btn1.DialogResult = DialogResult.OK;                        
 
                         frm.btn2.Visible = false;
@@ -82,10 +83,10 @@ namespace TileIconifier.Forms.Shared
                         break;
 
                     case MessageBoxButtons.OKCancel:
-                        frm.btn1.Text = "OK";
+                        frm.btn1.Text = Strings.Ok;
                         frm.btn1.DialogResult = DialogResult.OK;
                         
-                        frm.btn2.Text = "Cancel";
+                        frm.btn2.Text = Strings.Cancel;
                         frm.btn2.DialogResult = DialogResult.Cancel;                        
 
                         frm.btn3.Visible = false;
@@ -95,26 +96,26 @@ namespace TileIconifier.Forms.Shared
                         break;                        
 
                     case MessageBoxButtons.AbortRetryIgnore:
-                        frm.btn1.Text = "Abord";
+                        frm.btn1.Text = Strings.Abord;
                         frm.btn1.DialogResult = DialogResult.Abort;
 
-                        frm.btn2.Text = "Retry";
+                        frm.btn2.Text = Strings.Retry;
                         frm.btn2.DialogResult = DialogResult.Retry;
 
-                        frm.btn3.Text = "Ignore";
+                        frm.btn3.Text = Strings.Ignore;
                         frm.btn3.DialogResult = DialogResult.Ignore;
 
                         frm.ControlBox = false;
                         break;
 
                     case MessageBoxButtons.YesNoCancel:
-                        frm.btn1.Text = "Yes";
+                        frm.btn1.Text = Strings.Yes;
                         frm.btn1.DialogResult = DialogResult.Yes;
 
-                        frm.btn2.Text = "No";
+                        frm.btn2.Text = Strings.No;
                         frm.btn2.DialogResult = DialogResult.No;
 
-                        frm.btn3.Text = "Cancel";
+                        frm.btn3.Text = Strings.Cancel;
                         frm.btn3.DialogResult = DialogResult.Cancel;
 
                         frm.AcceptButton = frm.btn1;
@@ -122,10 +123,10 @@ namespace TileIconifier.Forms.Shared
                         break;
 
                     case MessageBoxButtons.YesNo:
-                        frm.btn1.Text = "Yes";
+                        frm.btn1.Text = Strings.Yes;
                         frm.btn1.DialogResult = DialogResult.Yes;
 
-                        frm.btn2.Text = "No";
+                        frm.btn2.Text = Strings.No;
                         frm.btn2.DialogResult = DialogResult.No;
                         
                         frm.btn3.Visible = false;
@@ -135,10 +136,10 @@ namespace TileIconifier.Forms.Shared
                         break;
 
                     case MessageBoxButtons.RetryCancel:
-                        frm.btn1.Text = "Retry";
+                        frm.btn1.Text = Strings.Retry;
                         frm.btn1.DialogResult = DialogResult.Retry;
 
-                        frm.btn2.Text = "Cancel";
+                        frm.btn2.Text = Strings.Cancel;
                         frm.btn2.DialogResult = DialogResult.Cancel;                        
 
                         frm.btn3.Visible = false;

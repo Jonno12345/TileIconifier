@@ -386,4 +386,19 @@ Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?<
   <data name="SelectValidColor" xml:space="preserve">
     <value>Please select a valid color!</value>
   </data>
+  <data name="Abord" xml:space="preserve">
+    <value>Abord</value>
+  </data>
+  <data name="Ignore" xml:space="preserve">
+    <value>Ignore</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
 </root>
