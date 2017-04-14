@@ -261,7 +261,9 @@ namespace TileIconifier.Controls.IconifierPanel
         }
 
         private void BuildPannableShortcutBoxControlPanels()
-        {            
+        {
+            _panPctMediumIcon.ContextMenuStrip = cmsPicBox;
+            _panPctSmallIcon.ContextMenuStrip = cmsPicBox;
             pannablePictureBoxControlPanelMedium.ChangeImageClick += (sender, args) => { IconSet(sender); };
             pannablePictureBoxControlPanelSmall.ChangeImageClick += (sender, args) => { IconSet(sender); };
             pannablePictureBoxControlPanelMedium.UpdateTrackBarAndZoom();
@@ -379,40 +381,43 @@ namespace TileIconifier.Controls.IconifierPanel
             IconSet(sender);
         }
 
-        private void panPctSmallIcon_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Returns the control from which the ToolStrip originated.
+        /// </summary>
+        /// <param name="sender">ToolStripItem that was clicked.</param>
+        /// <returns></returns>
+        private Control GetToolStripSourceControl(object sender)
         {
-            if (((MouseEventArgs) e).Button != MouseButtons.Right)
+            var menuItem = sender as ToolStripItem;
+            if (menuItem != null)
             {
-                return;
+                var owner = menuItem.Owner as ContextMenuStrip;
+                if (owner != null)
+                {
+                    return owner.SourceControl;
+                }
+                return null;
             }
-
-            var contextMenu = new ContextMenu();
-            var menuItem = new MenuItem(Strings.ChangeImage,
-                (o, args) => { IconSet(_panPctSmallIcon); });
-            contextMenu.MenuItems.Add(menuItem);
-            menuItem = new MenuItem(Strings.CentreImage,
-                (o, args) => { _panPctSmallIcon.CenterImage(); });
-            contextMenu.MenuItems.Add(menuItem);
-            contextMenu.Show(_panPctSmallIcon, ((MouseEventArgs) e).Location);
+            return null;
         }
 
-        private void panPctMediumIcon_Click(object sender, EventArgs e)
+        private void tmiChangeImage_Click(object sender, EventArgs e)
         {
-            if (((MouseEventArgs) e).Button != MouseButtons.Right)
+            var panPctBox = GetToolStripSourceControl(sender);
+            if (panPctBox != null)
             {
-                return;
+                IconSet(panPctBox);
             }
-
-            var contextMenu = new ContextMenu();
-            var menuItem = new MenuItem(Strings.ChangeImage,
-                (o, args) => { IconSet(_panPctMediumIcon); });
-            contextMenu.MenuItems.Add(menuItem);
-            menuItem = new MenuItem(Strings.CentreImage,
-                (o, args) => { _panPctMediumIcon.CenterImage(); });
-            contextMenu.MenuItems.Add(menuItem);
-            contextMenu.Show(_panPctMediumIcon, ((MouseEventArgs) e).Location);
         }
 
+        private void tmiCentreImage_Click(object sender, EventArgs e)
+        {
+            var panPctBox = GetToolStripSourceControl(sender) as PannablePictureBox;
+            if (panPctBox != null)
+            {
+                panPctBox.CenterImage();
+            }
+        }
 
         private void PanPctMediumIcon_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
         {
@@ -434,6 +439,6 @@ namespace TileIconifier.Controls.IconifierPanel
             CurrentShortcutItem.Properties.CurrentState.SmallImage.Height = item.Height;
 
             RunUpdate();
-        }
+        }        
     }
 }

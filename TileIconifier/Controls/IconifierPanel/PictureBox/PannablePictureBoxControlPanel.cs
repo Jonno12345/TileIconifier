@@ -51,8 +51,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             get { return lblHeader.Text; }
             set { lblHeader.Text = value; }
         }
-
-        [Localizable(false)]
+        
         public Size PannablePictureBoxSize
         {
             get { return panPct.Size; }
