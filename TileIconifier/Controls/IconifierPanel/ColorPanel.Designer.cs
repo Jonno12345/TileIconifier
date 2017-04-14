@@ -34,8 +34,8 @@
             this.btnColourPicker = new TileIconifier.Controls.SkinnableButton();
             this.cmbColour = new TileIconifier.Controls.SkinnableComboBox();
             this.lblBGColour = new System.Windows.Forms.Label();
-            this.txtBGColour = new SkinnableTextBox();
-            this.chkFGTxtEnabled = new SkinnableCheckBox();
+            this.txtBGColour = new TileIconifier.Controls.SkinnableTextBox();
+            this.chkFGTxtEnabled = new TileIconifier.Controls.SkinnableCheckBox();
             this.radFGDark = new TileIconifier.Controls.SkinnableRadioButton();
             this.lblFGText = new System.Windows.Forms.Label();
             this.radFGLight = new TileIconifier.Controls.SkinnableRadioButton();

@@ -70,7 +70,7 @@ namespace TileIconifier.Forms.Main
 
         private void BuildListBoxColumns()
         {
-            lstIconifiedItems.Columns.Add("Shortcut Name", lstIconifiedItems.Width);
+            lstIconifiedItems.Columns.Add("Shortcut Name", lstIconifiedItems.ClientSize.Width);
         }
 
         private void UpdateListViewBoxItems()
