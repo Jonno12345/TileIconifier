@@ -187,6 +187,9 @@
     <EmbeddedResource Include="Controls\IconifierPanel\ColorPanel.ru.resx">
       <DependentUpon>ColorPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxControlPanel.ru.resx">
+      <DependentUpon>PannablePictureBoxControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\IconifierPanel\TileIconifierPanel.ru.resx">
       <DependentUpon>TileIconifierPanel.cs</DependentUpon>
     </EmbeddedResource>

@@ -75,21 +75,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             }
             EnableControls();
             UpdateTrackBarAndZoom();
-        }
-
-        private void PannablePictureBoxControlPanel_Load(object sender, EventArgs e)
-        {
-            var shrinkToolTip = new ToolTip();
-            shrinkToolTip.SetToolTip(btnShrink, Strings.ZoomOut);
-            var enlargeToolTip = new ToolTip();
-            enlargeToolTip.SetToolTip(btnEnlarge, Strings.ZoomIn);
-            var resetToolTip = new ToolTip();
-            resetToolTip.SetToolTip(btnReset, Strings.Reset);
-            var changeImageToolTip = new ToolTip();
-            changeImageToolTip.SetToolTip(btnOpenImage, Strings.ChangeImage);
-            var alignImageToolTip = new ToolTip();
-            alignImageToolTip.SetToolTip(btnAlign, Strings.AlignImage);
-        }
+        }        
 
         private void btnEnlarge_MouseDown(object sender, MouseEventArgs e)
         {
