@@ -118,6 +118,6 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color ToolStripMenuBarForeColor => ToolStripSystemColorTable.DefaultMenuBarForeColor;
         public virtual Color ToolStripPopupForeColor => ToolStripSystemColorTable.DefaultPopupForeColor;
         public virtual Color ToolStripDisabledForeColor => ToolStripSystemColorTable.DefaultDisabledForeColor;
-        #endregion        
+        #endregion
     }
 }

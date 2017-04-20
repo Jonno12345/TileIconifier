@@ -9,8 +9,10 @@ namespace TileIconifier.Controls
     class SkinnableComboBox : ComboBox, ISkinnableControl
     {
         private const TextFormatFlags DEFAULT_TEXT_FLAGS = TextFormatFlags.VerticalCenter;        
-
-        private Font glyphFont = new Font("Marlett", 10);
+        
+        //Fonts are very expensive to create and this one is only used
+        //with the Flat FlatStyle, so it's worth loading it lazyly.
+        private Lazy<Font> glyphFont = new Lazy<Font>(() => new Font("Marlett", 10));
 
         /// <summary>
         ///     Indicates whether or not we should draw the control ourselves.
@@ -217,7 +219,7 @@ namespace TileIconifier.Controls
                 {
                     buttonRect.X = bounds.X + bounds.Width;
                 }
-                TextRenderer.DrawText(e.Graphics, "u", glyphFont, buttonRect, textColor, glyphFlags);
+                TextRenderer.DrawText(e.Graphics, "u", glyphFont.Value, buttonRect, textColor, glyphFlags);
             }
 
             //The call to base.OnPaint must be after our custom drawing, in order to be
@@ -244,6 +246,16 @@ namespace TileIconifier.Controls
             }
 
             base.OnDrawItem(e);            
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && glyphFont.IsValueCreated)
+            {
+                glyphFont.Value.Dispose();
+            }
+
+            base.Dispose(disposing);
         }
 
         public void ApplySkin(BaseSkin skin)

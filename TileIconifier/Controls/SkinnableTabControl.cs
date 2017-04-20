@@ -22,7 +22,7 @@ namespace TileIconifier.Controls
         ///     Collection of <see cref="ControlStyles"/> that should be set to true 
         ///     when we want to draw ourselves. 
         /// </summary>
-        private readonly ReadOnlyCollection<ControlStyles> customPaintingFlags = new List<ControlStyles>
+        private static readonly ReadOnlyCollection<ControlStyles> customPaintingFlags = new List<ControlStyles>
         {
             ControlStyles.UserPaint,
             ControlStyles.AllPaintingInWmPaint,

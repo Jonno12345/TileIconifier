@@ -42,8 +42,7 @@ namespace TileIconifier.Forms.Shared
         /// <param name="defaultButton">
         /// One of the <see cref="MessageBoxDefaultButton"/> values that 
         /// specifies the default button for the message box. If the value 
-        /// is null, the default button is determined by the 
-        /// <see cref="MessageBoxButtons"/> value.</param>
+        /// is null, the default button is the first one from the left</param>
         /// <returns></returns>
         public static DialogResult Show(
             IWin32Window owner,
@@ -52,8 +51,8 @@ namespace TileIconifier.Forms.Shared
             MessageBoxButtons buttons = MessageBoxButtons.OK,
             MessageBoxIcon icon = MessageBoxIcon.None,
 
-            //Use nullable for this parameter, because there is no enum 
-            //member that means "Don't override the default default button".
+            //Use nullable for this parameter, because there is no 
+            //"default" enum member.
             MessageBoxDefaultButton? defaultButton = null)
         {
             using (var frm = new FrmMessageBox())
@@ -73,7 +72,7 @@ namespace TileIconifier.Forms.Shared
             //Ensure the title bar always have text, because otherwise,
             //it is totally hidden when ControlBox = false. Alternatively, 
             //we could override the CreateParams property.
-            if (caption == null || caption == "")
+            if (string.IsNullOrEmpty(caption))
             {
                 caption = Application.ProductName;
             }
