@@ -41,6 +41,7 @@ using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
 using TileIconifier.Skinning.Skins;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls.IconifierPanel
 {
@@ -52,7 +53,6 @@ namespace TileIconifier.Controls.IconifierPanel
         private BaseSkin _currentBaseSkin;
         private PannablePictureBox _panPctMediumIcon;
         private PannablePictureBox _panPctSmallIcon;
-
 
         public TileIconifierPanel()
         {
@@ -271,7 +271,7 @@ namespace TileIconifier.Controls.IconifierPanel
         }
 
         private void TileIconifierPanel_Load(object sender, EventArgs e)
-        {            
+        {
             SetupPannablePictureBoxes();
             BuildPannableShortcutBoxControlPanels();
         }
@@ -379,31 +379,11 @@ namespace TileIconifier.Controls.IconifierPanel
         private void _panPctSmallIcon_DoubleClick(object sender, EventArgs e)
         {
             IconSet(sender);
-        }
-
-        /// <summary>
-        /// Returns the control from which the ToolStrip originated.
-        /// </summary>
-        /// <param name="sender">ToolStripItem that was clicked.</param>
-        /// <returns></returns>
-        private Control GetToolStripSourceControl(object sender)
-        {
-            var menuItem = sender as ToolStripItem;
-            if (menuItem != null)
-            {
-                var owner = menuItem.Owner as ContextMenuStrip;
-                if (owner != null)
-                {
-                    return owner.SourceControl;
-                }
-                return null;
-            }
-            return null;
-        }
+        }        
 
         private void tmiChangeImage_Click(object sender, EventArgs e)
         {
-            var panPctBox = GetToolStripSourceControl(sender);
+            var panPctBox = ContainerUtils.GetToolStripSourceControl(sender);
             if (panPctBox != null)
             {
                 IconSet(panPctBox);
@@ -412,7 +392,7 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void tmiCentreImage_Click(object sender, EventArgs e)
         {
-            var panPctBox = GetToolStripSourceControl(sender) as PannablePictureBox;
+            var panPctBox = ContainerUtils.GetToolStripSourceControl(sender) as PannablePictureBox;
             if (panPctBox != null)
             {
                 panPctBox.CenterImage();
@@ -439,6 +419,6 @@ namespace TileIconifier.Controls.IconifierPanel
             CurrentShortcutItem.Properties.CurrentState.SmallImage.Height = item.Height;
 
             RunUpdate();
-        }        
+        }
     }
 }

@@ -180,7 +180,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 ConfirmToUser(this ,shortcutName);
             }
             catch (FileNotFoundException ex)
-            {                
+            {
                 FormUtils.ShowMessage(this, ex.Message, Strings.FileCouldNotBeFound,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

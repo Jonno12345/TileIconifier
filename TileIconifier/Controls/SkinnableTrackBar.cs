@@ -13,12 +13,6 @@ namespace TileIconifier.Controls
         private const string UNSUPPORTED_PROPERTY_ERROR =
             "This property is not currently supported by this control.";
 
-        //Normally, we would just calclulate these when we paint, which would avoid 
-        //the need to reimplement tons of properties, but the needed Windows message 
-        //does not work when painting, so we calculate them whenever they change and
-        //store the result for when we need it.
-        private int[] _tickLocations;
-
         /// <summary>
         ///     Collection of <see cref="ControlStyles"/> that should be set to true 
         ///     when we want to draw ourselves. 
@@ -45,8 +39,6 @@ namespace TileIconifier.Controls
                 defaultsFlags.Add(f, GetStyle(f));
             }
             _defaultPaintingFlags = new ReadOnlyDictionary<ControlStyles, bool>(defaultsFlags);
-
-            CreateTickPositions();
         }
 
         #region "Properties"
@@ -65,51 +57,6 @@ namespace TileIconifier.Controls
         {
             get { return base.Orientation; }
             set { throw new NotSupportedException(UNSUPPORTED_PROPERTY_ERROR); }
-        }
-
-        public new int Maximum
-        {
-            get { return base.Maximum; }
-            set
-            {
-                base.Maximum = value;
-                CreateTickPositions();
-            }
-        }
-
-        public new int Minimum
-        {
-            get { return base.Minimum; }
-            set
-            {
-                base.Minimum = value;
-                CreateTickPositions();
-            }
-        }
-
-        public new int TickFrequency
-        {
-            get { return base.TickFrequency; }
-            set
-            {
-                base.TickFrequency = value;
-                CreateTickPositions();
-            }
-        }
-
-        public new TickStyle TickStyle
-        {
-            get { return base.TickStyle; }
-            set
-            {
-                base.TickStyle = value;
-                CreateTickPositions();
-            }
-        }
-
-        protected int TickCount
-        {
-            get { return _tickLocations.Length; }
         }
 
         private FlatStyle _flatStyle = FlatStyle.Standard;
@@ -267,16 +214,86 @@ namespace TileIconifier.Controls
         }
 
         /// <summary>
-        ///     Returns the bounding rectangles of the ticks at the specified index.
+        ///     Returns the number of ticks for this trackbar.
         /// </summary>        
-        protected Rectangle[] GetTickRectangles(int index)
+        protected int GetTickCount()
         {
-            if (index < 0 || index >= TickCount)
+            return NativeMethods.SendMessage(Handle, NativeMethods.TBM_GETNUMTICS, IntPtr.Zero, IntPtr.Zero).ToInt32();
+        }
+
+        /// <summary>
+        ///     Returns the physical distance between the tick at the specified index and the left of this trackbar.
+        /// </summary>
+        protected int GetTickPosition(int index)
+        {
+            //We must do all sort of tricks here because of how the native track bar control is implemented:
+            //0 1 2 3 4 5 6 7 8 9    // Tick positions seen on the trackbar.
+            //  1 2 3 4 5 6 7 8      // Tick positions whose position can be identified.
+            //  0 1 2 3 4 5 6 7      // Index numbers for the identifiable positions.
+            //https://msdn.microsoft.com/en-us/library/windows/desktop/bb760207
+
+            int tickCount = GetTickCount();
+
+            if (index < 0 || index >= tickCount)
             {
-                throw new ArgumentOutOfRangeException(nameof(index));
+                throw new IndexOutOfRangeException(nameof(index));
             }
 
-            var x = _tickLocations[index];
+            if (index > 0 && index < tickCount - 1)
+            {
+                //The index is within the range that the native method supports
+                return GetTickPositionNative(index);
+            }
+            else if (tickCount >= 4)
+            {
+                //We can get the location of at least two ticks, so we can 
+                //calculate the spacing between those and guess the location 
+                //of the first/last one from there.
+                var tick1 = GetTickPositionNative(1);
+                var tick2 = GetTickPositionNative(2);
+                var ticksSpacing = tick2 - tick1;
+                if ((index == 0 && RightToLeft != RightToLeft.Yes) || (index == tickCount - 1 && RightToLeft == RightToLeft.Yes))
+                {
+                    //tick is far left
+                    return tick1 - ticksSpacing;
+                }
+                else
+                {
+                    //tick is far right
+                    return GetTickPosition(tickCount - 2) + ticksSpacing;
+                }
+            }
+            else
+            {
+                //We don't have enough info, so we just hard-code empirical values.
+                if ((index == 0 && RightToLeft != RightToLeft.Yes) || (index == tickCount - 1 && RightToLeft == RightToLeft.Yes))
+                {
+                    return ClientRectangle.Left + 13;
+                }
+                else
+                {
+                    return ClientRectangle.Right - 13;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Wraps the native method to obtain the tick position, but with the index offsets compensated.
+        ///     The lowest and the highest indexes are not supported though. For most scenarios use the 
+        ///     GetTickPosition method instead, which supports all the indexes.
+        /// </summary>        
+        private int GetTickPositionNative(int index)
+        {
+            return NativeMethods.SendMessage(Handle, NativeMethods.TBM_GETTICPOS, (IntPtr)index - 1, IntPtr.Zero).ToInt32();
+        }
+
+        /// <summary>
+        ///     Returns the bounding rectangles of the ticks at the specified index.
+        /// </summary>        
+        private Rectangle[] GetTickRectangles(int tickPos)
+        {
+
+            var x = tickPos;
             var tickWidth = 1;
             var tickHeight = 4;
 
@@ -297,62 +314,6 @@ namespace TileIconifier.Controls
         }
 
         /// <summary>
-        ///     Returns the number of ticks for this trackbar, whether or not we are ready to deal with 
-        ///     that number. For most scenarios, use the <see cref="TickCount"/> property instead.
-        /// </summary>        
-        private int GetTickCountInternal()
-        {
-            return NativeMethods.SendMessage(Handle, NativeMethods.TBM_GETNUMTICS, IntPtr.Zero, IntPtr.Zero).ToInt32();
-        }
-
-        /// <summary>
-        ///     Initialize the _tickLocation array and calculate its values.
-        /// </summary>
-        private void CreateTickPositions()
-        {
-            //We must do all sort of tricks here because of how the native track bar control is implemented:
-            //0 1 2 3 4 5 6 7 8 9    // Tick positions seen on the trackbar.
-            //  1 2 3 4 5 6 7 8      // Tick positions whose position can be identified.
-            //  0 1 2 3 4 5 6 7      // Index numbers for the identifiable positions.
-            //https://msdn.microsoft.com/en-us/library/windows/desktop/bb760207
-
-            int tickCount = GetTickCountInternal();
-
-            if (tickCount < 1)
-            {
-                //Must not be null, because we use the length of this array for the TickCount property.
-                _tickLocations = new int[0];
-                return;
-            }
-
-            int[] ticksLoc = new int[tickCount];
-
-            //Get the location of the ticks whose position can be obtained
-            for (int i = 1; i < tickCount - 1; i++)
-            {
-                ticksLoc[i] = NativeMethods.SendMessage(Handle, NativeMethods.TBM_GETTICPOS, (IntPtr)i - 1, IntPtr.Zero).ToInt32();
-            }
-
-            //Get the location of the first and last ticks
-            if (tickCount >= 4)
-            {
-                //We have the location of at least two ticks, so we can 
-                //calculate the spacing between each tick and guess from there.
-                int ticksSpacing = ticksLoc[2] - ticksLoc[1] - 1;
-                ticksLoc[0] = ticksLoc[1] - ticksSpacing;
-                ticksLoc[ticksLoc.Length - 1] = ticksLoc[ticksLoc.Length - 2] + ticksSpacing;
-            }
-            else if (tickCount >= 2)
-            {
-                //We don't have enough info, so we just hard-code empirical values.
-                ticksLoc[0] = ClientRectangle.Left + 13;
-                ticksLoc[ticksLoc.Length - 1] = ClientRectangle.Right - 13;
-            }
-
-            _tickLocations = ticksLoc;
-        }
-
-        /// <summary>
         ///     Sets the appropriate flags to the control so that it can be owner drawn.
         /// </summary>
         private void EnableOwnerDrawing()
@@ -367,7 +328,7 @@ namespace TileIconifier.Controls
         }
 
         /// <summary>
-        ///     Reset the owner drawing flags.
+        ///     Resets the owner drawing flags.
         /// </summary>
         private void ResetOwnerDrawing()
         {
@@ -426,13 +387,6 @@ namespace TileIconifier.Controls
             return pts;
         }
 
-        protected override void OnSizeChanged(EventArgs e)
-        {
-            base.OnSizeChanged(e);
-
-            CreateTickPositions();
-        }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -440,14 +394,14 @@ namespace TileIconifier.Controls
 
             //Draw the track
             Rectangle trackRect = GetTrackRect();
-            //We can't use Inflate here, because it can only change the height two pixels
-            //at the time (one on each side).
-            Rectangle usrTrackRect = new Rectangle(
+            //Apply the user-defined track thickness. We can't use Inflate here, 
+            //because it can only change the height two pixels at the time (one on each side).
+            trackRect = new Rectangle(
                 trackRect.X, trackRect.Y + (trackRect.Height - FlatTrackThickness) / 2, trackRect.Width, FlatTrackThickness);
 
             using (var b = new SolidBrush(FlatTrackColor))
             {
-                g.FillRectangle(b, usrTrackRect);
+                g.FillRectangle(b, trackRect);
             }
 
             //Prepare to draw the thumb
@@ -480,12 +434,13 @@ namespace TileIconifier.Controls
                 g.FillPolygon(b, ptsBack);
             }
 
-            //Draw ticks            
+            //Draw ticks
+            var tickCount = GetTickCount();
             using (var b = new SolidBrush(ForeColor))
             {
-                for (int i = 0; i < TickCount; i++)
+                for (int i = 0; i < tickCount; i++)
                 {
-                    g.FillRectangles(b, GetTickRectangles(i));
+                    g.FillRectangles(b, GetTickRectangles(GetTickPosition(i)));
                 }
             }
 

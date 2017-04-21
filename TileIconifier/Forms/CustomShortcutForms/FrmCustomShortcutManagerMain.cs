@@ -142,7 +142,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             }
             catch (Exception ex)
             {
-                FormUtils.ShowMessage(this, Strings.UnableToClearUpShortcuts + ex);                
+                FormUtils.ShowMessage(this, Strings.UnableToClearUpShortcuts + ex);
             }
 
             //update our lists and refresh

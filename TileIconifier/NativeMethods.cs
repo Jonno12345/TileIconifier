@@ -5,7 +5,7 @@ namespace TileIconifier
 {
     internal static class NativeMethods
     {
-        public const int WM_PAINT = 0xF;
+        public const int WM_PAINT = 0x000F;
         public const int WM_USER = 0x0400;
 
         public const int TBM_GETTICPOS = WM_USER + 15;
