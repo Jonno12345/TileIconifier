@@ -17,10 +17,11 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Properties;
+using TileIconifier.Skinning.Skins;
 
 namespace TileIconifier.Controls.Eyedropper
 {
-    internal sealed class EyedropColorPicker : Control
+    internal sealed class EyedropColorPicker : Control, ISkinnableControl
     {
         private readonly Bitmap _mIcon;
 
@@ -86,7 +87,7 @@ namespace TileIconifier.Controls.Eyedropper
             {
                 int offset = (int)((r.Width - _mIcon.Width) / 2);
 
-                e.Graphics.FillRectangle(SystemBrushes.Control, new Rectangle(new Point(0, 0), Size));
+                e.Graphics.FillRectangle(new SolidBrush(BackColor), new Rectangle(new Point(0, 0), Size));
                 e.Graphics.DrawImage(_mIcon, offset, offset);
             }
             //
@@ -157,6 +158,11 @@ namespace TileIconifier.Controls.Eyedropper
                 SelectedColor = c;
                 SelectedColorChanged?.Invoke(this, null);
             }
+        }
+
+        public void ApplySkin(BaseSkin skin)
+        {
+            BackColor = skin.BackColor;
         }
     }
 }
