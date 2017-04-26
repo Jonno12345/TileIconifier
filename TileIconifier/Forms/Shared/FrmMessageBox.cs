@@ -28,8 +28,7 @@ namespace TileIconifier.Forms.Shared
         /// 
         /// <param name="caption">
         /// The text to display in the title bar of the message box. 
-        /// If the value is not specified or null, the product name 
-        /// is used instead.</param>
+        /// If the value is null, the product name is used instead.</param>
         /// 
         /// <param name="buttons">
         /// One of the <see cref="MessageBoxButtons"/> values that 

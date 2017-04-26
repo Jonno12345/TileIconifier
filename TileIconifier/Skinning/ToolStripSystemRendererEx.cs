@@ -35,11 +35,11 @@ namespace TileIconifier.Skinning
         {
             if (visualStyleRenderer == null)
             {
-                visualStyleRenderer = new VisualStyleRenderer(element);                
+                visualStyleRenderer = new VisualStyleRenderer(element);
             }
             else
             {
-                visualStyleRenderer.SetParameters(element);                
+                visualStyleRenderer.SetParameters(element);
             }
             return visualStyleRenderer;
         }
@@ -462,7 +462,7 @@ namespace TileIconifier.Skinning
                 {
                     tableColor = colorTable.DisabledForeColor;
                     defaultColor = ToolStripSystemColorTable.DefaultDisabledForeColor;
-                }                
+                }
 
                 if (tableColor != defaultColor)
                 {
@@ -507,7 +507,7 @@ namespace TileIconifier.Skinning
                 {
                     tableColor = colorTable.DisabledForeColor;
                     defaultColor = ToolStripSystemColorTable.DefaultDisabledForeColor;
-                }                
+                }
 
                 if (tableColor != defaultColor)
                 {

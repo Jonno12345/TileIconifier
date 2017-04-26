@@ -161,7 +161,7 @@ namespace TileIconifier.Utilities
         public static Rectangle GetPushButtonTextRectangle(ButtonBase button)
         {
             return CreatePushButtonTextRectangle(button);
-        }        
+        }
 
         /// <summary>
         /// Returns a rectangle where the text can be drawn on a radio button.

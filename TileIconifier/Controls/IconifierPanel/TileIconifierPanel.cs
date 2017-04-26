@@ -379,7 +379,7 @@ namespace TileIconifier.Controls.IconifierPanel
         private void _panPctSmallIcon_DoubleClick(object sender, EventArgs e)
         {
             IconSet(sender);
-        }        
+        }
 
         private void tmiChangeImage_Click(object sender, EventArgs e)
         {

@@ -141,7 +141,7 @@ namespace TileIconifier.Controls
                         //This color is also used for the focused and the 
                         //disabled states if their value is empty.
                         if (FlatStyle == FlatStyle.Flat && 
-                            (!Focused || (Focused && FlatBorderFocusedColor.IsEmpty) ||
+                            (!Focused && Enabled || (Focused && FlatBorderFocusedColor.IsEmpty) ||
                             (!Enabled && FlatBorderDisabledColor.IsEmpty)))
                         {                            
                             Invalidate();
