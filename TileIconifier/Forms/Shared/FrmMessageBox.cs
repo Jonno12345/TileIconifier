@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Media;
+using System.Text;
 using System.Windows.Forms;
 using TileIconifier.Properties;
 
@@ -242,6 +243,62 @@ namespace TileIconifier.Forms.Shared
             }
 
             base.OnShown(e);
+        }
+
+        //Re-implements an obscure feature of the standard Windows message box where 
+        //its content is copied to the clipboard when it is active and Ctrl+C is pressed.
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                var sb = new StringBuilder();
+                Action<Button> handleButton = b =>
+                {
+                    if (b.Visible)
+                    {
+                        sb.AppendFormat("[{0}] ", b.Text);
+                    }
+                };
+
+                //Add text from the caption and the message
+                var common = string.Format(
+                    "[Title]" +
+                    Environment.NewLine +
+                    "{0}" +
+                    Environment.NewLine +
+                    Environment.NewLine +
+                    "[Message]" +
+                    Environment.NewLine +
+                    "{1}" +
+                    Environment.NewLine + 
+                    Environment.NewLine, Text, lblMsg.Text);
+                sb.Append(common);
+
+                //Add the text from the buttons.
+                //Note that the order of a button in the ControlCollection is determined by its z-index.
+                var ctrls = flpCommands.Controls;
+                if (RightToLeftLayout)
+                {
+                    for (var i = 0; i < ctrls.Count; i++)
+                    {
+                        handleButton((Button)ctrls[i]);
+                    }
+                }
+                else
+                {
+                    for (var i = ctrls.Count - 1; i >= 0; i--)
+                    {
+                        handleButton((Button)ctrls[i]);
+                    }
+                }                
+
+                //Remove the last space that was added in case there would be another button.
+                sb.Remove(sb.Length - 1, 1);
+
+                Clipboard.SetText(sb.ToString());
+            }
         }
     }
 }

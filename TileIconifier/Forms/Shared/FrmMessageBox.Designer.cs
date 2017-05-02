@@ -29,51 +29,51 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMessageBox));
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tlpBody = new System.Windows.Forms.TableLayoutPanel();
+            this.flpCommands = new System.Windows.Forms.FlowLayoutPanel();
             this.btn3 = new TileIconifier.Controls.SkinnableButton();
             this.btn2 = new TileIconifier.Controls.SkinnableButton();
             this.btn1 = new TileIconifier.Controls.SkinnableButton();
             this.pctIcon = new System.Windows.Forms.PictureBox();
             this.lblMsg = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.tlpBody.SuspendLayout();
+            this.flpCommands.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctIcon)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tlpBody
             // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.pctIcon, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblMsg, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 13);
-            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(400, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(323, 89);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tlpBody.AutoSize = true;
+            this.tlpBody.ColumnCount = 2;
+            this.tlpBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpBody.Controls.Add(this.flpCommands, 1, 1);
+            this.tlpBody.Controls.Add(this.pctIcon, 0, 0);
+            this.tlpBody.Controls.Add(this.lblMsg, 1, 0);
+            this.tlpBody.Location = new System.Drawing.Point(13, 13);
+            this.tlpBody.MaximumSize = new System.Drawing.Size(400, 0);
+            this.tlpBody.Name = "tlpBody";
+            this.tlpBody.RowCount = 2;
+            this.tlpBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpBody.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpBody.Size = new System.Drawing.Size(323, 89);
+            this.tlpBody.TabIndex = 0;
             // 
-            // flowLayoutPanel1
+            // flpCommands
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.btn3);
-            this.flowLayoutPanel1.Controls.Add(this.btn2);
-            this.flowLayoutPanel1.Controls.Add(this.btn1);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(80, 60);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(243, 29);
-            this.flowLayoutPanel1.TabIndex = 1;
-            this.flowLayoutPanel1.WrapContents = false;
+            this.flpCommands.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.flpCommands.AutoSize = true;
+            this.flpCommands.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flpCommands.Controls.Add(this.btn3);
+            this.flpCommands.Controls.Add(this.btn2);
+            this.flpCommands.Controls.Add(this.btn1);
+            this.flpCommands.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flpCommands.Location = new System.Drawing.Point(80, 60);
+            this.flpCommands.Margin = new System.Windows.Forms.Padding(0);
+            this.flpCommands.Name = "flpCommands";
+            this.flpCommands.Size = new System.Drawing.Size(243, 29);
+            this.flpCommands.TabIndex = 1;
+            this.flpCommands.WrapContents = false;
             // 
             // btn3
             // 
@@ -140,19 +140,20 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(428, 222);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tlpBody);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmMessageBox";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.tlpBody.ResumeLayout(false);
+            this.tlpBody.PerformLayout();
+            this.flpCommands.ResumeLayout(false);
+            this.flpCommands.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -161,12 +162,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tlpBody;
         private Controls.SkinnableButton btn3;
         private Controls.SkinnableButton btn1;
         private Controls.SkinnableButton btn2;
         private System.Windows.Forms.PictureBox pctIcon;
         private System.Windows.Forms.Label lblMsg;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpCommands;
     }
 }
