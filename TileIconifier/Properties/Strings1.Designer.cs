@@ -88,15 +88,6 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Align Image.
-        /// </summary>
-        internal static string AlignImage {
-            get {
-                return ResourceManager.GetString("AlignImage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Align Left.
         /// </summary>
         internal static string AlignLeft {
@@ -192,24 +183,6 @@ namespace TileIconifier.Properties {
         internal static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Centre Image.
-        /// </summary>
-        internal static string CentreImage {
-            get {
-                return ResourceManager.GetString("CentreImage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change Image.
-        /// </summary>
-        internal static string ChangeImage {
-            get {
-                return ResourceManager.GetString("ChangeImage", resourceCulture);
             }
         }
         
@@ -585,15 +558,6 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset.
-        /// </summary>
-        internal static string Reset {
-            get {
-                return ResourceManager.GetString("Reset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Retry.
         /// </summary>
         internal static string Retry {
@@ -887,24 +851,6 @@ namespace TileIconifier.Properties {
         internal static string Yes {
             get {
                 return ResourceManager.GetString("Yes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zoom In.
-        /// </summary>
-        internal static string ZoomIn {
-            get {
-                return ResourceManager.GetString("ZoomIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zoom Out.
-        /// </summary>
-        internal static string ZoomOut {
-            get {
-                return ResourceManager.GetString("ZoomOut", resourceCulture);
             }
         }
     }

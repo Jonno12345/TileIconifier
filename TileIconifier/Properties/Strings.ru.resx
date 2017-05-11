@@ -123,9 +123,6 @@
   <data name="AlignCentre" xml:space="preserve">
     <value>Выровнять по центру</value>
   </data>
-  <data name="AlignImage" xml:space="preserve">
-    <value>Выровнять изображение</value>
-  </data>
   <data name="AlignLeft" xml:space="preserve">
     <value>Выровнять по левому краю</value>
   </data>
@@ -149,9 +146,6 @@
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Отмена</value>
-  </data>
-  <data name="ChangeImage" xml:space="preserve">
-    <value>Изменить изображение</value>
   </data>
   <data name="ChromeExtensionsFolder" xml:space="preserve">
     <value>Выберите папку 'Extensions' в папке с Chrome</value>
@@ -180,9 +174,6 @@
   <data name="NudgeUp" xml:space="preserve">
     <value>Сдвинуть вверх</value>
   </data>
-  <data name="Reset" xml:space="preserve">
-    <value>Сбросить</value>
-  </data>
   <data name="ShortcutName" xml:space="preserve">
     <value>Имя ярлыка</value>
   </data>
@@ -191,12 +182,6 @@
   </data>
   <data name="ShortcutUser" xml:space="preserve">
     <value>Пользователь</value>
-  </data>
-  <data name="ZoomIn" xml:space="preserve">
-    <value>Приблизить</value>
-  </data>
-  <data name="ZoomOut" xml:space="preserve">
-    <value>Отдалить</value>
   </data>
   <data name="SteamExecutablePath" xml:space="preserve">
     <value>Исполняемый файл Steam:</value>
@@ -326,9 +311,6 @@
   </data>
   <data name="PleaseSelectAnIcon" xml:space="preserve">
     <value>Пожалуйста выберите иконку</value>
-  </data>
-  <data name="CentreImage" xml:space="preserve">
-    <value>Выровнять по центру</value>
   </data>
   <data name="ConfirmRemoveIconification" xml:space="preserve">
     <value>Вы уверены, что хотите удалить изменения плитки?</value>
