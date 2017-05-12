@@ -61,11 +61,11 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Abord.
+        ///   Looks up a localized string similar to Abort.
         /// </summary>
-        internal static string Abord {
+        internal static string Abort {
             get {
-                return ResourceManager.GetString("Abord", resourceCulture);
+                return ResourceManager.GetString("Abort", resourceCulture);
             }
         }
         

@@ -111,7 +111,7 @@ namespace TileIconifier.Forms.Shared
                     break;
 
                 case MessageBoxButtons.AbortRetryIgnore:
-                    btn1.Text = Strings.Abord;
+                    btn1.Text = Strings.Abort;
                     btn1.DialogResult = DialogResult.Abort;
 
                     btn2.Text = Strings.Retry;
