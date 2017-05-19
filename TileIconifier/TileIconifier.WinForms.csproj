@@ -168,6 +168,9 @@
     <Compile Include="Controls\SkinnableTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\SkinnableTrackBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -183,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\IconifierPanel\ColorPanel.ru.resx">
       <DependentUpon>ColorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxControlPanel.ru.resx">
+      <DependentUpon>PannablePictureBoxControlPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\IconifierPanel\TileIconifierPanel.ru.resx">
       <DependentUpon>TileIconifierPanel.cs</DependentUpon>
@@ -216,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Shared\FrmIconSelector.ru.resx">
       <DependentUpon>FrmIconSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Shared\FrmMessageBox.resx">
+      <DependentUpon>FrmMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -282,6 +291,12 @@
     </Compile>
     <Compile Include="Forms\Main\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Shared\FrmMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Shared\FrmMessageBox.Designer.cs">
+      <DependentUpon>FrmMessageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Localization\LocalizationEvent.cs" />
     <Compile Include="NativeMethods.cs" />

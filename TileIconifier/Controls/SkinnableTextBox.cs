@@ -18,27 +18,21 @@ namespace TileIconifier.Controls
             get { return backColor; }
             set
             {
-                if (backColor != value)
+                //Don't check if the old value is the same as the new one!
+                //Since the user can set base.BackColor by casting the
+                //the control to an upper level type, it is entirely possible
+                //for our "backColor" variable to be the same as "value" while
+                //being different from base.BackColor even when those values
+                //should be the same. Ultimately, the base class *already*
+                //checks if the value is the same before doing expensive
+                //operations anyway.
+                backColor = value;
+                if (!ReadOnly)
                 {
-                    backColor = value;
-                    if (!ReadOnly)
-                    {
-                        base.BackColor = value;
-                    }
-                }                
+                    base.BackColor = value;
+                }
             }
-        }
-
-        public void ApplySkin(BaseSkin skin)
-        {
-            BorderStyle = skin.TextBoxBorderStyle;
-            BackColor = skin.TextBoxBackColor;
-            ReadOnlyBackColor = skin.TextBoxReadOnlyBackColor;
-            BorderColor = skin.TextBoxBorderColor;
-            BorderFocusedColor = skin.TextBoxBorderFocusedColor;
-            BorderDisabledColor = skin.TextBoxBorderDisabledColor;
-            ForeColor = skin.TextBoxForeColor;
-        }
+        }        
 
         private Color readOnlyBackColor = SystemColors.Control;
         [DefaultValue(typeof(Color), nameof(SystemColors.Control))]
@@ -47,13 +41,10 @@ namespace TileIconifier.Controls
             get { return readOnlyBackColor; }
             set
             {
-                if (readOnlyBackColor != value)
+                readOnlyBackColor = value;
+                if (ReadOnly)
                 {
-                    readOnlyBackColor = value;  
-                    if (ReadOnly)
-                    {
-                        base.BackColor = value;
-                    }
+                    base.BackColor = value;
                 }
             }
         }
@@ -166,6 +157,17 @@ namespace TileIconifier.Controls
             using (var p = new Pen(bColor))
                 g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
             NativeMethods.ReleaseDC(Handle, hdc);
+        }
+
+        public void ApplySkin(BaseSkin skin)
+        {
+            BorderStyle = skin.TextBoxBorderStyle;
+            BackColor = skin.TextBoxBackColor;
+            ReadOnlyBackColor = skin.TextBoxReadOnlyBackColor;
+            BorderColor = skin.TextBoxBorderColor;
+            BorderFocusedColor = skin.TextBoxBorderFocusedColor;
+            BorderDisabledColor = skin.TextBoxBorderDisabledColor;
+            ForeColor = skin.TextBoxForeColor;
         }
     }
 }

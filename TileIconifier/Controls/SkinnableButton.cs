@@ -77,12 +77,7 @@ namespace TileIconifier.Controls
             if (!Enabled)
             {
                 Rectangle contentRect = ButtonUtils.GetPushButtonTextRectangle(this);
-                TextFormatFlags flags;
-                flags = ButtonUtils.BaseTextFormatFlags | ButtonUtils.ConvertToTextFormatFlags(RtlTranslateContent(TextAlign));
-                if (RightToLeft == RightToLeft.Yes)
-                {
-                    flags |= TextFormatFlags.RightToLeft;
-                }
+                TextFormatFlags flags = ButtonUtils.CreateTextFormatFlags(this, RtlTranslateContent(TextAlign), ShowKeyboardCues);
 
                 TextRenderer.DrawText(pevent.Graphics, Text, Font, contentRect, DisabledForeColor, flags);
             }                

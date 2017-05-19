@@ -139,7 +139,7 @@
     <value>eyedropperColorPicker</value>
   </data>
   <data name="&gt;&gt;eyedropperColorPicker.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.Eyedropper.EyedropColorPicker, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.Eyedropper.EyedropColorPicker, TileIconifier, Version=2.2.6313.33307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;eyedropperColorPicker.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -169,7 +169,7 @@
     <value>btnColourPicker</value>
   </data>
   <data name="&gt;&gt;btnColourPicker.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6313.33307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnColourPicker.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -193,7 +193,7 @@
     <value>cmbColour</value>
   </data>
   <data name="&gt;&gt;cmbColour.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableComboBox, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableComboBox, TileIconifier, Version=2.2.6313.33307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cmbColour.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -256,7 +256,7 @@
     <value>txtBGColour</value>
   </data>
   <data name="&gt;&gt;txtBGColour.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6313.33307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtBGColour.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -310,7 +310,7 @@
     <value>chkFGTxtEnabled</value>
   </data>
   <data name="&gt;&gt;chkFGTxtEnabled.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableCheckBox, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableCheckBox, TileIconifier, Version=2.2.6313.33307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;chkFGTxtEnabled.Parent" xml:space="preserve">
     <value>tlpFGColour</value>
@@ -343,7 +343,7 @@
     <value>radFGDark</value>
   </data>
   <data name="&gt;&gt;radFGDark.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6313.33307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;radFGDark.Parent" xml:space="preserve">
     <value>tlpFGColour</value>
@@ -385,7 +385,7 @@
     <value>radFGLight</value>
   </data>
   <data name="&gt;&gt;radFGLight.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6282.25150, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6313.33307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;radFGLight.Parent" xml:space="preserve">
     <value>tlpFGColour</value>
@@ -467,9 +467,6 @@
   </data>
   <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>268, 97</value>

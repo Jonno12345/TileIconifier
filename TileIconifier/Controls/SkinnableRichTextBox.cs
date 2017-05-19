@@ -16,27 +16,13 @@ namespace TileIconifier.Controls
             get { return backColor; }
             set
             {
-                if (backColor != value)
+                backColor = value;
+                if (!ReadOnly)
                 {
-                    backColor = value;
-                    if (!ReadOnly)
-                    {
-                        base.BackColor = value;
-                    }
+                    base.BackColor = value;
                 }
             }
-        }
-
-        public void ApplySkin(BaseSkin skin)
-        {
-            BorderStyle = skin.TextBoxBorderStyle;
-            BackColor = skin.TextBoxBackColor;
-            ReadOnlyBackColor = skin.TextBoxReadOnlyBackColor;
-            BorderColor = skin.TextBoxBorderColor;
-            BorderFocusedColor = skin.TextBoxBorderFocusedColor;
-            BorderDisabledColor = skin.TextBoxBorderDisabledColor;
-            ForeColor = skin.TextBoxForeColor;
-        }
+        }        
 
         private Color readOnlyBackColor = SystemColors.Control;
         [DefaultValue(typeof(Color), nameof(SystemColors.Control))]
@@ -45,13 +31,10 @@ namespace TileIconifier.Controls
             get { return readOnlyBackColor; }
             set
             {
-                if (readOnlyBackColor != value)
+                readOnlyBackColor = value;
+                if (ReadOnly)
                 {
-                    readOnlyBackColor = value;
-                    if (ReadOnly)
-                    {
-                        base.BackColor = ReadOnlyBackColor;
-                    }
+                    base.BackColor = ReadOnlyBackColor;
                 }
             }
         }
@@ -111,6 +94,17 @@ namespace TileIconifier.Controls
             {
                 base.BackColor = BackColor;
             }
+        }
+
+        public void ApplySkin(BaseSkin skin)
+        {
+            BorderStyle = skin.TextBoxBorderStyle;
+            BackColor = skin.TextBoxBackColor;
+            ReadOnlyBackColor = skin.TextBoxReadOnlyBackColor;
+            BorderColor = skin.TextBoxBorderColor;
+            BorderFocusedColor = skin.TextBoxBorderFocusedColor;
+            BorderDisabledColor = skin.TextBoxBorderDisabledColor;
+            ForeColor = skin.TextBoxForeColor;
         }
     }
 }

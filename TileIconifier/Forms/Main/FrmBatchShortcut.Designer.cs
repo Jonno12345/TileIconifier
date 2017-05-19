@@ -42,6 +42,7 @@
             // 
             // btnBatchAmendBackgroundColor
             // 
+            this.btnBatchAmendBackgroundColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBatchAmendBackgroundColor.Location = new System.Drawing.Point(12, 433);
             this.btnBatchAmendBackgroundColor.Name = "btnBatchAmendBackgroundColor";
             this.btnBatchAmendBackgroundColor.Size = new System.Drawing.Size(86, 49);
@@ -52,6 +53,7 @@
             // 
             // pctColorPreview
             // 
+            this.pctColorPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pctColorPreview.Location = new System.Drawing.Point(12, 327);
             this.pctColorPreview.Name = "pctColorPreview";
             this.pctColorPreview.Size = new System.Drawing.Size(68, 61);
@@ -60,6 +62,7 @@
             // 
             // btnSelectNone
             // 
+            this.btnSelectNone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSelectNone.Location = new System.Drawing.Point(96, 293);
             this.btnSelectNone.Name = "btnSelectNone";
             this.btnSelectNone.Size = new System.Drawing.Size(78, 28);
@@ -70,6 +73,7 @@
             // 
             // btnSelectAll
             // 
+            this.btnSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSelectAll.Location = new System.Drawing.Point(12, 293);
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(78, 28);
@@ -80,20 +84,26 @@
             // 
             // colorPanel
             // 
-            this.colorPanel.Location = new System.Drawing.Point(86, 327);
+            this.colorPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.colorPanel.AutoSize = true;
+            this.colorPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.colorPanel.Location = new System.Drawing.Point(92, 327);
             this.colorPanel.MaximumSize = new System.Drawing.Size(310, 111);
             this.colorPanel.Name = "colorPanel";
-            this.colorPanel.Size = new System.Drawing.Size(273, 107);
+            this.colorPanel.Size = new System.Drawing.Size(268, 97);
             this.colorPanel.TabIndex = 3;
             this.colorPanel.ColorUpdate += new System.EventHandler(this.colorPanel_ColorUpdate);
             // 
             // lstIconifiedItems
             // 
+            this.lstIconifiedItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstIconifiedItems.CheckBoxes = true;
             this.lstIconifiedItems.HideSelection = false;
             this.lstIconifiedItems.Location = new System.Drawing.Point(12, 12);
             this.lstIconifiedItems.Name = "lstIconifiedItems";
-            this.lstIconifiedItems.Size = new System.Drawing.Size(347, 275);
+            this.lstIconifiedItems.Size = new System.Drawing.Size(348, 275);
             this.lstIconifiedItems.TabIndex = 0;
             this.lstIconifiedItems.UseCompatibleStateImageBehavior = false;
             this.lstIconifiedItems.View = System.Windows.Forms.View.Details;
@@ -101,7 +111,8 @@
             // 
             // btnAmendForegroundColor
             // 
-            this.btnAmendForegroundColor.Location = new System.Drawing.Point(272, 433);
+            this.btnAmendForegroundColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAmendForegroundColor.Location = new System.Drawing.Point(274, 433);
             this.btnAmendForegroundColor.Name = "btnAmendForegroundColor";
             this.btnAmendForegroundColor.Size = new System.Drawing.Size(86, 49);
             this.btnAmendForegroundColor.TabIndex = 5;
@@ -111,7 +122,8 @@
             // 
             // btnAmendForegroundText
             // 
-            this.btnAmendForegroundText.Location = new System.Drawing.Point(142, 433);
+            this.btnAmendForegroundText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAmendForegroundText.Location = new System.Drawing.Point(143, 433);
             this.btnAmendForegroundText.Name = "btnAmendForegroundText";
             this.btnAmendForegroundText.Size = new System.Drawing.Size(86, 49);
             this.btnAmendForegroundText.TabIndex = 6;
@@ -123,6 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(372, 494);
             this.Controls.Add(this.btnAmendForegroundText);
             this.Controls.Add(this.btnAmendForegroundColor);
@@ -132,12 +145,15 @@
             this.Controls.Add(this.btnSelectNone);
             this.Controls.Add(this.btnSelectAll);
             this.Controls.Add(this.lstIconifiedItems);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmBatchShortcut";
             this.Text = "Batch Shortcut Operations";
             this.Load += new System.EventHandler(this.FrmBatchShortcut_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pctColorPreview)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

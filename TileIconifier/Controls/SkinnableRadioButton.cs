@@ -58,11 +58,7 @@ namespace TileIconifier.Controls
                 Rectangle textRect;
 
                 //Create flags
-                flags = ButtonUtils.BaseTextFormatFlags | ButtonUtils.ConvertToTextFormatFlags(RtlTranslateContent(TextAlign));
-                if (RightToLeft == RightToLeft.Yes)
-                {
-                    flags |= TextFormatFlags.RightToLeft;
-                }
+                flags = ButtonUtils.CreateTextFormatFlags(this, RtlTranslateContent(TextAlign), ShowKeyboardCues);
 
                 //Create rectangle
                 if (Appearance == Appearance.Button)

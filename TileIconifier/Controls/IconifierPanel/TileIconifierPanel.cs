@@ -41,6 +41,7 @@ using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Properties;
 using TileIconifier.Skinning.Skins;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls.IconifierPanel
 {
@@ -50,17 +51,24 @@ namespace TileIconifier.Controls.IconifierPanel
             new List<PannablePictureBoxMetaData>();
 
         private BaseSkin _currentBaseSkin;
+        private PannablePictureBox _panPctMediumIcon;
+        private PannablePictureBox _panPctSmallIcon;
 
         public TileIconifierPanel()
         {
             InitializeComponent();
+
+            //Keep a reference to the pictureboxes in a field just for convenience
+            _panPctMediumIcon = pannablePictureBoxControlPanelMedium.PannablePictureBox;
+            _panPctSmallIcon = pannablePictureBoxControlPanelSmall.PannablePictureBox;
+
             AddEventHandlers();
         }
 
         public ShortcutItem CurrentShortcutItem { get; set; }
 
-        public Size MediumPictureBoxSize => panPctMediumIcon.Size;
-        public Size SmallPictureBoxSize => panPctSmallIcon.Size;
+        public Size MediumPictureBoxSize => _panPctMediumIcon.Size;
+        public Size SmallPictureBoxSize => _panPctSmallIcon.Size;
 
         public event EventHandler OnIconifyPanelUpdate;
 
@@ -81,17 +89,17 @@ namespace TileIconifier.Controls.IconifierPanel
             UpdateColorPanelControlsToCurrentShortcut();
             
             //update the picture boxes to show the relevant images
-            UpdatePictureBoxImage(panPctMediumIcon, CurrentShortcutItem.Properties.CurrentState.MediumImage);
-            UpdatePictureBoxImage(panPctSmallIcon, CurrentShortcutItem.Properties.CurrentState.SmallImage);
-            UpdatePictureBoxOverlay(panPctMediumIcon, CurrentShortcutItem);
+            UpdatePictureBoxImage(_panPctMediumIcon, CurrentShortcutItem.Properties.CurrentState.MediumImage);
+            UpdatePictureBoxImage(_panPctSmallIcon, CurrentShortcutItem.Properties.CurrentState.SmallImage);
+            UpdatePictureBoxOverlay(_panPctMediumIcon, CurrentShortcutItem);
 
             UpdatePictureBoxBackColors();
 
 
             //set the associatedShortcutItemImages for each picturebox
-            GetSenderPictureBoxToMetaData(panPctMediumIcon).ShortcutItemImage =
+            GetSenderPictureBoxToMetaData(_panPctMediumIcon).ShortcutItemImage =
                 CurrentShortcutItem.Properties.CurrentState.MediumImage;
-            GetSenderPictureBoxToMetaData(panPctSmallIcon).ShortcutItemImage =
+            GetSenderPictureBoxToMetaData(_panPctSmallIcon).ShortcutItemImage =
                 CurrentShortcutItem.Properties.CurrentState.SmallImage;
 
             //update the picture box control panels
@@ -131,8 +139,8 @@ namespace TileIconifier.Controls.IconifierPanel
                     : color == null ? _currentBaseSkin.BackColor : ColorUtils.HexOrNameToColor(color);
                 b.Refresh();
             };
-            setBackColor(panPctMediumIcon);
-            setBackColor(panPctSmallIcon);
+            setBackColor(_panPctMediumIcon);
+            setBackColor(_panPctSmallIcon);
         }
 
 
@@ -254,8 +262,8 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void BuildPannableShortcutBoxControlPanels()
         {
-            pannablePictureBoxControlPanelMedium.SetPannablePictureBoxControl(panPctMediumIcon);
-            pannablePictureBoxControlPanelSmall.SetPannablePictureBoxControl(panPctSmallIcon);
+            _panPctMediumIcon.ContextMenuStrip = cmsPicBox;
+            _panPctSmallIcon.ContextMenuStrip = cmsPicBox;
             pannablePictureBoxControlPanelMedium.ChangeImageClick += (sender, args) => { IconSet(sender); };
             pannablePictureBoxControlPanelSmall.ChangeImageClick += (sender, args) => { IconSet(sender); };
             pannablePictureBoxControlPanelMedium.UpdateTrackBarAndZoom();
@@ -270,16 +278,16 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void SetupPannablePictureBoxes()
         {
-            panPctMediumIcon.TextOverlayPoint = new Point(6, 78);
+            _panPctMediumIcon.TextOverlayPoint = new Point(6, 78);
 
             _pannablePictureBoxMetaDatas.Add(new PannablePictureBoxMetaData
             {
-                PannablePictureBox = panPctMediumIcon,
+                PannablePictureBox = _panPctMediumIcon,
                 Size = ShortcutConstantsAndEnums.MediumShortcutOutputSize
             });
             _pannablePictureBoxMetaDatas.Add(new PannablePictureBoxMetaData
             {
-                PannablePictureBox = panPctSmallIcon,
+                PannablePictureBox = _panPctSmallIcon,
                 Size = ShortcutConstantsAndEnums.SmallShortcutOutputSize
             });
         }
@@ -309,12 +317,12 @@ namespace TileIconifier.Controls.IconifierPanel
 
             if (CurrentShortcutItem.Properties.CurrentState.MediumImage.Bytes == null)
             {
-                controlInvalid(panPctMediumIcon);
+                controlInvalid(_panPctMediumIcon);
             }
 
             if (CurrentShortcutItem.Properties.CurrentState.SmallImage.Bytes == null)
             {
-                controlInvalid(panPctSmallIcon);
+                controlInvalid(_panPctSmallIcon);
             }
 
             var colorPanelValid = colorPanel.ValidateControls();
@@ -326,10 +334,12 @@ namespace TileIconifier.Controls.IconifierPanel
         private void AddEventHandlers()
         {
             colorPanel.ColorUpdate += ColorPanelColorUpdate;
-            panPctMediumIcon.OnPannablePictureImagePropertyChange +=
+            _panPctMediumIcon.OnPannablePictureImagePropertyChange +=
                 PanPctMediumIcon_OnPannablePictureImagePropertyChange;
-            panPctSmallIcon.OnPannablePictureImagePropertyChange += PanPctSmallIcon_OnPannablePictureImagePropertyChange;
-        }
+            _panPctSmallIcon.OnPannablePictureImagePropertyChange += PanPctSmallIcon_OnPannablePictureImagePropertyChange;
+            _panPctMediumIcon.DoubleClick += _panPctMediumIcon_DoubleClick;
+            _panPctSmallIcon.DoubleClick += _panPctSmallIcon_DoubleClick;
+        }        
 
         private void ColorPanelColorUpdate(object sender, EventArgs eventArgs)
         {
@@ -353,55 +363,41 @@ namespace TileIconifier.Controls.IconifierPanel
         private void RemoveEventHandlers()
         {
             colorPanel.ColorUpdate -= ColorPanelColorUpdate;
-            panPctMediumIcon.OnPannablePictureImagePropertyChange -=
+            _panPctMediumIcon.OnPannablePictureImagePropertyChange -=
                 PanPctMediumIcon_OnPannablePictureImagePropertyChange;
-            panPctSmallIcon.OnPannablePictureImagePropertyChange -= PanPctSmallIcon_OnPannablePictureImagePropertyChange;
-        }
+            _panPctSmallIcon.OnPannablePictureImagePropertyChange -=
+                PanPctSmallIcon_OnPannablePictureImagePropertyChange;
+            _panPctMediumIcon.DoubleClick -= _panPctMediumIcon_DoubleClick;
+            _panPctSmallIcon.DoubleClick -= _panPctSmallIcon_DoubleClick;
+        }        
 
-        private void panPctSmallIcon_DoubleClick(object sender, EventArgs e)
+        private void _panPctMediumIcon_DoubleClick(object sender, EventArgs e)
         {
             IconSet(sender);
         }
 
-        private void panPctMediumIcon_DoubleClick(object sender, EventArgs e)
+        private void _panPctSmallIcon_DoubleClick(object sender, EventArgs e)
         {
             IconSet(sender);
         }
 
-        private void panPctSmallIcon_Click(object sender, EventArgs e)
+        private void tmiChangeImage_Click(object sender, EventArgs e)
         {
-            if (((MouseEventArgs) e).Button != MouseButtons.Right)
+            var panPctBox = ContainerUtils.GetToolStripSourceControl(sender);
+            if (panPctBox != null)
             {
-                return;
+                IconSet(panPctBox);
             }
-
-            var contextMenu = new ContextMenu();
-            var menuItem = new MenuItem(Strings.ChangeImage,
-                (o, args) => { IconSet(panPctSmallIcon); });
-            contextMenu.MenuItems.Add(menuItem);
-            menuItem = new MenuItem(Strings.CentreImage,
-                (o, args) => { panPctSmallIcon.CenterImage(); });
-            contextMenu.MenuItems.Add(menuItem);
-            contextMenu.Show(panPctSmallIcon, ((MouseEventArgs) e).Location);
         }
 
-        private void panPctMediumIcon_Click(object sender, EventArgs e)
+        private void tmiCentreImage_Click(object sender, EventArgs e)
         {
-            if (((MouseEventArgs) e).Button != MouseButtons.Right)
+            var panPctBox = ContainerUtils.GetToolStripSourceControl(sender) as PannablePictureBox;
+            if (panPctBox != null)
             {
-                return;
+                panPctBox.CenterImage();
             }
-
-            var contextMenu = new ContextMenu();
-            var menuItem = new MenuItem(Strings.ChangeImage,
-                (o, args) => { IconSet(panPctMediumIcon); });
-            contextMenu.MenuItems.Add(menuItem);
-            menuItem = new MenuItem(Strings.CentreImage,
-                (o, args) => { panPctMediumIcon.CenterImage(); });
-            contextMenu.MenuItems.Add(menuItem);
-            contextMenu.Show(panPctMediumIcon, ((MouseEventArgs) e).Location);
         }
-
 
         private void PanPctMediumIcon_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
         {

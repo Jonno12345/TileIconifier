@@ -9,11 +9,13 @@ namespace TileIconifier.Controls
     class SkinnableComboBox : ComboBox, ISkinnableControl
     {
         private const TextFormatFlags DEFAULT_TEXT_FLAGS = TextFormatFlags.VerticalCenter;        
-
-        private Font glyphFont = new Font("Marlett", 10);
+        
+        //Fonts are very expensive to create and this one is only used
+        //with the Flat FlatStyle, so it's worth loading it lazyly.
+        private Lazy<Font> glyphFont = new Lazy<Font>(() => new Font("Marlett", 10));
 
         /// <summary>
-        /// Indicates whether or not we should draw the control ourselves.
+        ///     Indicates whether or not we should draw the control ourselves.
         /// </summary>
         private bool HandleDrawing
         {
@@ -75,7 +77,7 @@ namespace TileIconifier.Controls
                 if (flatButtonForeColor != value)
                 {
                     flatButtonForeColor = value;
-                    if (HandleDrawing)
+                    if (HandleDrawing && Enabled)
                     {
                         Invalidate();
                     }
@@ -93,7 +95,7 @@ namespace TileIconifier.Controls
                 if (flatButtonDisabledForeColor != value)
                 {
                     flatButtonDisabledForeColor = value;
-                    if (HandleDrawing)
+                    if (HandleDrawing && !Enabled)
                     {
                         Invalidate();
                     }
@@ -111,7 +113,7 @@ namespace TileIconifier.Controls
                 if (flatButtonBorderColor != value)
                 {
                     flatButtonBorderColor = value;
-                    if (HandleDrawing)
+                    if (HandleDrawing && !Focused)
                     {
                         Invalidate();
                     }
@@ -129,7 +131,7 @@ namespace TileIconifier.Controls
                 if (flatButtonBorderFocusedColor != value)
                 {
                     flatButtonBorderFocusedColor = value;
-                    if (HandleDrawing)
+                    if (HandleDrawing && Focused)
                     {
                         Invalidate();
                     }
@@ -143,12 +145,14 @@ namespace TileIconifier.Controls
             {
                 SetStyle(ControlStyles.UserPaint, true);
                 DrawMode = DrawMode.OwnerDrawFixed;
+                DoubleBuffered = true;
             }
             else
             {
                 //These values could change in a future version of Winforms.
                 SetStyle(ControlStyles.UserPaint, false);
                 DrawMode = DrawMode.Normal;
+                DoubleBuffered = false;
             }
         }
 
@@ -215,7 +219,7 @@ namespace TileIconifier.Controls
                 {
                     buttonRect.X = bounds.X + bounds.Width;
                 }
-                TextRenderer.DrawText(e.Graphics, "u", glyphFont, buttonRect, textColor, glyphFlags);
+                TextRenderer.DrawText(e.Graphics, "u", glyphFont.Value, buttonRect, textColor, glyphFlags);
             }
 
             //The call to base.OnPaint must be after our custom drawing, in order to be
@@ -242,6 +246,16 @@ namespace TileIconifier.Controls
             }
 
             base.OnDrawItem(e);            
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && glyphFont.IsValueCreated)
+            {
+                glyphFont.Value.Dispose();
+            }
+
+            base.Dispose(disposing);
         }
 
         public void ApplySkin(BaseSkin skin)

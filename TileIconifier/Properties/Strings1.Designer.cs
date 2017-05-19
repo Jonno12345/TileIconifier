@@ -61,6 +61,15 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Abort.
+        /// </summary>
+        internal static string Abort {
+            get {
+                return ResourceManager.GetString("Abort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Align Bottom.
         /// </summary>
         internal static string AlignBottom {
@@ -75,15 +84,6 @@ namespace TileIconifier.Properties {
         internal static string AlignCentre {
             get {
                 return ResourceManager.GetString("AlignCentre", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Align Image.
-        /// </summary>
-        internal static string AlignImage {
-            get {
-                return ResourceManager.GetString("AlignImage", resourceCulture);
             }
         }
         
@@ -183,24 +183,6 @@ namespace TileIconifier.Properties {
         internal static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Centre Image.
-        /// </summary>
-        internal static string CentreImage {
-            get {
-                return ResourceManager.GetString("CentreImage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change Image.
-        /// </summary>
-        internal static string ChangeImage {
-            get {
-                return ResourceManager.GetString("ChangeImage", resourceCulture);
             }
         }
         
@@ -324,6 +306,15 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ignore.
+        /// </summary>
+        internal static string Ignore {
+            get {
+                return ResourceManager.GetString("Ignore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect Platform.
         /// </summary>
         internal static string IncorrectPlatform {
@@ -410,6 +401,15 @@ namespace TileIconifier.Properties {
         internal static string NewVersionAvailable {
             get {
                 return ResourceManager.GetString("NewVersionAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -558,11 +558,11 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset.
+        ///   Looks up a localized string similar to Retry.
         /// </summary>
-        internal static string Reset {
+        internal static string Retry {
             get {
-                return ResourceManager.GetString("Reset", resourceCulture);
+                return ResourceManager.GetString("Retry", resourceCulture);
             }
         }
         
@@ -846,20 +846,11 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zoom In.
+        ///   Looks up a localized string similar to Yes.
         /// </summary>
-        internal static string ZoomIn {
+        internal static string Yes {
             get {
-                return ResourceManager.GetString("ZoomIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zoom Out.
-        /// </summary>
-        internal static string ZoomOut {
-            get {
-                return ResourceManager.GetString("ZoomOut", resourceCulture);
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }
