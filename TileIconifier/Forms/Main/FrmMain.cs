@@ -72,6 +72,7 @@ namespace TileIconifier.Forms.Main
 
         private void frmDropper_Load(object sender, EventArgs e)
         {
+            Shown += FrmMain_Shown;
             darkSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
             defaultSkinToolStripMenuItem.Click += SkinToolStripMenuClick;
             englishToolStripMenuItem.Click += LanguageToolStripMenuClick;
@@ -86,10 +87,12 @@ namespace TileIconifier.Forms.Main
 
             CheckForUpdates(true);
             InitializeListboxColumns();
+        }
 
-            Show();
+        private void FrmMain_Shown(object sender, EventArgs e)
+        {
             StartFullUpdate();
-        }        
+        }
 
         private void btnIconify_Click(object sender, EventArgs e)
         {
@@ -105,7 +108,7 @@ namespace TileIconifier.Forms.Main
 
             if (showForegroundColourWarning)
             {
-                MessageBox.Show(
+                FormUtils.ShowMessage(this,
                     Strings.ForegroundColourChangeExplain,
                     Strings.ForegroundColourChange, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -113,7 +116,7 @@ namespace TileIconifier.Forms.Main
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(Strings.ConfirmRemoveIconification, Strings.Confirm, MessageBoxButtons.YesNo,
+            if (FormUtils.ShowMessage(this, Strings.ConfirmRemoveIconification, Strings.Confirm, MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) != DialogResult.Yes)
             {
                 return;
@@ -146,7 +149,7 @@ namespace TileIconifier.Forms.Main
             else
             {
                 if (
-                    MessageBox.Show(
+                    FormUtils.ShowMessage(this,
                         Strings.UsesPowershell,
                         Strings.Confirm, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -242,7 +245,7 @@ namespace TileIconifier.Forms.Main
             JumpToShortcutItem(customShortcut.ShortcutItem);
 
             //confirm to the user the shortcut has been created
-            MessageBox.Show(
+            FormUtils.ShowMessage(this,
                 string.Format(
                     Strings.ShortcutCreatedNeedsPinning,
                     shortcutName.QuoteWrap()),
@@ -252,7 +255,7 @@ namespace TileIconifier.Forms.Main
         private void btnDeleteCustomShortcut_Click(object sender, EventArgs e)
         {
             if (
-                MessageBox.Show(
+                FormUtils.ShowMessage(this,
                     string.Format(Strings.ConfirmDeleteCustomShortcut,
                         Path.GetFileNameWithoutExtension(CurrentShortcutItem.ShortcutFileInfo.Name).QuoteWrap()),
                     Strings.AreYouSure,
@@ -269,7 +272,7 @@ namespace TileIconifier.Forms.Main
             catch (Exception ex)
             {
                 FrmException.ShowExceptionHandler(ex);
-                MessageBox.Show(Strings.UnableToClearShortcuts);
+                FormUtils.ShowMessage(this, Strings.UnableToClearShortcuts);
             }
 
             StartFullUpdate();
@@ -284,9 +287,9 @@ namespace TileIconifier.Forms.Main
 
         private void donateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(this,
+            if (FormUtils.ShowMessage(this,
                 Strings.DonationNotification,
-                Strings.Donation, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                Strings.Donation, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 UrlUtils.OpenUrlInBrowser("https://www.paypal.me/Jonno12345");
             }

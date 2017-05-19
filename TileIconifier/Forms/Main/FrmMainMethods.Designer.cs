@@ -75,7 +75,7 @@ namespace TileIconifier.Forms.Main
                 catch (Exception ex)
                 {
                     FrmException.ShowExceptionHandler(ex);
-                    MessageBox.Show(
+                    FormUtils.ShowMessage(this,
                         Strings.PowershellErrorFull,
                         Strings.PowershellFailure, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
@@ -233,22 +233,21 @@ namespace TileIconifier.Forms.Main
 
                 if (updateDetails.UpdateAvailable)
                 {
-                    if (MessageBox.Show(
+                    if (FormUtils.ShowMessage(null,
                         string.Format(
                             Strings.UpdateAvailableFull,
                             updateDetails.CurrentVersion, updateDetails.LatestVersion),
                         Strings.NewVersionAvailable,
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question,
-                        MessageBoxDefaultButton.Button1) == DialogResult.Yes
-                        )
+                        defaultButton: MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                     {
                         UrlUtils.OpenUrlInBrowser("https://github.com/Jonno12345/TileIconifier/releases");
                     }
                 }
                 else if (!silentIfNoUpdateDetected)
                 {
-                    MessageBox.Show(Strings.AlreadyLatest, Strings.UpToDate);
+                    FormUtils.ShowMessage(null, Strings.AlreadyLatest, Strings.UpToDate, icon: MessageBoxIcon.Information);
                 }
             }
             catch
@@ -258,7 +257,7 @@ namespace TileIconifier.Forms.Main
                     return;
                 }
 
-                if (MessageBox.Show(
+                if (FormUtils.ShowMessage(null,
                     string.Format(
                         Strings.UpdateAvailableError,
                         UpdateUtils

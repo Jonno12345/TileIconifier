@@ -28,6 +28,8 @@
 #endregion
 
 using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using TileIconifier.Properties;
 
@@ -40,13 +42,21 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             InitializeComponent();
         }
 
-        public PannablePictureBox PannablePictureBox { get; private set; }
+        [Browsable(false)]
+        public PannablePictureBox PannablePictureBox => panPct;
 
-        public void SetPannablePictureBoxControl(PannablePictureBox value)
+        [Localizable(true)]
+        public string HeaderText
         {
-            PannablePictureBox = value;
-            PannablePictureBox.OnPannablePictureImagePropertyChange += (o, args) => UpdateControls();
+            get { return lblHeader.Text; }
+            set { lblHeader.Text = value; }
         }
+        
+        public Size PannablePictureBoxSize
+        {
+            get { return panPct.Size; }
+            set { panPct.Size = value; }
+        }        
 
         public event EventHandler ChangeImageClick;
 
@@ -65,21 +75,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             }
             EnableControls();
             UpdateTrackBarAndZoom();
-        }
-
-        private void PannablePictureBoxControlPanel_Load(object sender, EventArgs e)
-        {
-            var shrinkToolTip = new ToolTip();
-            shrinkToolTip.SetToolTip(btnShrink, Strings.ZoomOut);
-            var enlargeToolTip = new ToolTip();
-            enlargeToolTip.SetToolTip(btnEnlarge, Strings.ZoomIn);
-            var resetToolTip = new ToolTip();
-            resetToolTip.SetToolTip(btnReset, Strings.Reset);
-            var changeImageToolTip = new ToolTip();
-            changeImageToolTip.SetToolTip(btnOpenImage, Strings.ChangeImage);
-            var alignImageToolTip = new ToolTip();
-            alignImageToolTip.SetToolTip(btnAlign, Strings.AlignImage);
-        }
+        }        
 
         private void btnEnlarge_MouseDown(object sender, MouseEventArgs e)
         {

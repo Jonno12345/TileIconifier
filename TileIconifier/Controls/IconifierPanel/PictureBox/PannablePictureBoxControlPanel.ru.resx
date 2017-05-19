@@ -117,47 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 203</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPercent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="btnReset.Text" xml:space="preserve">
+  <data name="btnEnlarge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEnlarge.ToolTip" xml:space="preserve">
+    <value>Приблизить</value>
+  </data>
+  <data name="btnShrink.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnShrink.ToolTip" xml:space="preserve">
+    <value>Отдалить</value>
+  </data>
+  <data name="btnReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnReset.ToolTip" xml:space="preserve">
     <value>Сбросить</value>
   </data>
-  <data name="pannablePictureBoxControlPanelMedium.HeaderText" xml:space="preserve">
-    <value>Средяя иконка:</value>
+  <data name="btnAlign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="pannablePictureBoxControlPanelSmall.HeaderText" xml:space="preserve">
-    <value>Маленькая иконка:</value>
+  <data name="btnAlign.ToolTip" xml:space="preserve">
+    <value>Выровнять изображение</value>
   </data>
-  <data name="chkUseSameImg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 17</value>
+  <data name="btnOpenImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="chkUseSameImg.Text" xml:space="preserve">
-    <value>Изменять иконки вместе</value>
-  </data>
-  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 329</value>
-  </data>
-  <data name="lblUnsaved.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 13</value>
-  </data>
-  <data name="lblUnsaved.Text" xml:space="preserve">
-    <value>Этот ярлык содержит несохраненные изменения!</value>
-  </data>
-  <data name="tmiChangeImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
-  </data>
-  <data name="tmiChangeImage.Text" xml:space="preserve">
+  <data name="btnOpenImage.ToolTip" xml:space="preserve">
     <value>Изменить изображение</value>
   </data>
-  <data name="tmiCentreImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
+  <data name="trkZoom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="tmiCentreImage.Text" xml:space="preserve">
-    <value>Выровнять по центру</value>
-  </data>
-  <data name="cmsPicBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 48</value>
+  <data name="lblHeader.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
 </root>

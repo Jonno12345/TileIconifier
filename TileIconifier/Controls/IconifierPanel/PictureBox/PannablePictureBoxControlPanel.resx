@@ -123,4 +123,427 @@
   <metadata name="tmrShrink.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>104, 17</value>
   </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPercent.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="lblPercent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblPercent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 26</value>
+  </data>
+  <data name="lblPercent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 13</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPercent.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblPercent.Text" xml:space="preserve">
+    <value>xxx%</value>
+  </data>
+  <data name="lblPercent.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;lblPercent.Name" xml:space="preserve">
+    <value>lblPercent</value>
+  </data>
+  <data name="&gt;&gt;lblPercent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPercent.Parent" xml:space="preserve">
+    <value>pnlZoomTrack</value>
+  </data>
+  <data name="&gt;&gt;lblPercent.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="flpCommands.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="flpCommands.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flpCommands.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnEnlarge.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="btnEnlarge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEnlarge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnEnlarge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 0, 1</value>
+  </data>
+  <data name="btnEnlarge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="btnEnlarge.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <metadata name="ttpCommands.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>209, 17</value>
+  </metadata>
+  <data name="btnEnlarge.ToolTip" xml:space="preserve">
+    <value>Zoom in</value>
+  </data>
+  <data name="&gt;&gt;btnEnlarge.Name" xml:space="preserve">
+    <value>btnEnlarge</value>
+  </data>
+  <data name="&gt;&gt;btnEnlarge.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6312.38853, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnEnlarge.Parent" xml:space="preserve">
+    <value>flpCommands</value>
+  </data>
+  <data name="&gt;&gt;btnEnlarge.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnShrink.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="btnShrink.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnShrink.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 31</value>
+  </data>
+  <data name="btnShrink.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 0, 1</value>
+  </data>
+  <data name="btnShrink.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="btnShrink.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btnShrink.ToolTip" xml:space="preserve">
+    <value>Zoom out</value>
+  </data>
+  <data name="&gt;&gt;btnShrink.Name" xml:space="preserve">
+    <value>btnShrink</value>
+  </data>
+  <data name="&gt;&gt;btnShrink.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6312.38853, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnShrink.Parent" xml:space="preserve">
+    <value>flpCommands</value>
+  </data>
+  <data name="&gt;&gt;btnShrink.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnReset.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="btnReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 61</value>
+  </data>
+  <data name="btnReset.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 0, 1</value>
+  </data>
+  <data name="btnReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="btnReset.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnReset.ToolTip" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="&gt;&gt;btnReset.Name" xml:space="preserve">
+    <value>btnReset</value>
+  </data>
+  <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6312.38853, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnReset.Parent" xml:space="preserve">
+    <value>flpCommands</value>
+  </data>
+  <data name="&gt;&gt;btnReset.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnAlign.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="btnAlign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnAlign.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 91</value>
+  </data>
+  <data name="btnAlign.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 0, 1</value>
+  </data>
+  <data name="btnAlign.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="btnAlign.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="btnAlign.ToolTip" xml:space="preserve">
+    <value>Align image</value>
+  </data>
+  <data name="&gt;&gt;btnAlign.Name" xml:space="preserve">
+    <value>btnAlign</value>
+  </data>
+  <data name="&gt;&gt;btnAlign.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6312.38853, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnAlign.Parent" xml:space="preserve">
+    <value>flpCommands</value>
+  </data>
+  <data name="&gt;&gt;btnAlign.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnOpenImage.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="btnOpenImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnOpenImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 121</value>
+  </data>
+  <data name="btnOpenImage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 0, 1</value>
+  </data>
+  <data name="btnOpenImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="btnOpenImage.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnOpenImage.ToolTip" xml:space="preserve">
+    <value>Change image</value>
+  </data>
+  <data name="&gt;&gt;btnOpenImage.Name" xml:space="preserve">
+    <value>btnOpenImage</value>
+  </data>
+  <data name="&gt;&gt;btnOpenImage.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6312.38853, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnOpenImage.Parent" xml:space="preserve">
+    <value>flpCommands</value>
+  </data>
+  <data name="&gt;&gt;btnOpenImage.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="flpCommands.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flpCommands.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 20</value>
+  </data>
+  <data name="flpCommands.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flpCommands.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 150</value>
+  </data>
+  <data name="flpCommands.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="flpCommands.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flpCommands.Name" xml:space="preserve">
+    <value>flpCommands</value>
+  </data>
+  <data name="&gt;&gt;flpCommands.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flpCommands.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flpCommands.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlZoomTrack.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="pnlZoomTrack.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pnlZoomTrack.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="trkZoom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="trkZoom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trkZoom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="trkZoom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 45</value>
+  </data>
+  <data name="trkZoom.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;trkZoom.Name" xml:space="preserve">
+    <value>trkZoom</value>
+  </data>
+  <data name="&gt;&gt;trkZoom.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableTrackBar, TileIconifier, Version=2.2.6312.38853, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trkZoom.Parent" xml:space="preserve">
+    <value>pnlZoomTrack</value>
+  </data>
+  <data name="&gt;&gt;trkZoom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlZoomTrack.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 129</value>
+  </data>
+  <data name="pnlZoomTrack.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 45</value>
+  </data>
+  <data name="pnlZoomTrack.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pnlZoomTrack.Name" xml:space="preserve">
+    <value>pnlZoomTrack</value>
+  </data>
+  <data name="&gt;&gt;pnlZoomTrack.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlZoomTrack.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;pnlZoomTrack.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panPct.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="panPct.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 44</value>
+  </data>
+  <data name="panPct.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="panPct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 50</value>
+  </data>
+  <data name="panPct.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panPct.Name" xml:space="preserve">
+    <value>panPct</value>
+  </data>
+  <data name="&gt;&gt;panPct.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6312.38853, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;panPct.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;panPct.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblHeader.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="lblHeader.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblHeader.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblHeader.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 0</value>
+  </data>
+  <data name="lblHeader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="lblHeader.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lblHeader.Text" xml:space="preserve">
+    <value>Header text</value>
+  </data>
+  <data name="&gt;&gt;lblHeader.Name" xml:space="preserve">
+    <value>lblHeader</value>
+  </data>
+  <data name="&gt;&gt;lblHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblHeader.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;lblHeader.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 177</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="flpCommands" Row="1" RowSpan="2" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="pnlZoomTrack" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panPct" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lblHeader" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 177</value>
+  </data>
+  <data name="&gt;&gt;tmrEnlarge.Name" xml:space="preserve">
+    <value>tmrEnlarge</value>
+  </data>
+  <data name="&gt;&gt;tmrEnlarge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tmrShrink.Name" xml:space="preserve">
+    <value>tmrShrink</value>
+  </data>
+  <data name="&gt;&gt;tmrShrink.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ttpCommands.Name" xml:space="preserve">
+    <value>ttpCommands</value>
+  </data>
+  <data name="&gt;&gt;ttpCommands.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>PannablePictureBoxControlPanel</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

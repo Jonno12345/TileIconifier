@@ -90,9 +90,9 @@ namespace TileIconifier.Utilities
         /// </summary>
         /// <param name="contentAlign"></param>
         /// <returns></returns>
-        internal static TextFormatFlags ConvertToTextFormatFlags(ContentAlignment contentAlign)
+        private static TextFormatFlags ConvertToTextFormatFlags(ContentAlignment contentAlign)
         {
-            TextFormatFlags flags = TextFormatFlags.Default;
+            TextFormatFlags flags = new TextFormatFlags();
 
             //Top
             if (contentAlign == ContentAlignment.TopLeft || contentAlign == ContentAlignment.TopCenter || contentAlign == ContentAlignment.TopRight)            
@@ -120,36 +120,47 @@ namespace TileIconifier.Utilities
 
             return flags;
         }
+
+        /// <summary>
+        /// Returns a <see cref="TextFormatFlags"/> for the specified button.
+        /// </summary>
+        /// <param name="btn"></param>
+        /// <param name="translatedContentAlign">A <see cref="ContentAlignment"/> value that specifies the 
+        /// text alignement for the control. Note that this value must be provided already translated for
+        /// right-to-left, if desired</param>
+        /// <param name="showKeyboardCue"></param>
+        /// <returns></returns>
+        public static TextFormatFlags CreateTextFormatFlags(ButtonBase btn, ContentAlignment translatedContentAlign, bool showKeyboardCue)
+        {
+            var flags = BaseTextFormatFlags | ConvertToTextFormatFlags(translatedContentAlign);
+
+            if (btn.RightToLeft == RightToLeft.Yes)
+            {
+                flags |= TextFormatFlags.RightToLeft;
+            }
+
+            if (!btn.UseMnemonic)
+            {
+                //Show the ampersand
+                flags |= TextFormatFlags.NoPrefix;
+            }
+            else if (!showKeyboardCue)
+            {
+                //Hide the cue
+                flags |= TextFormatFlags.HidePrefix;
+            }
+
+            return flags;
+        }
                 
         /// <summary>
         /// Returns a rectangle where the text can be drawn on a push button.
         /// </summary>
         /// <param name="button"></param>
         /// <returns></returns>
-        internal static Rectangle GetPushButtonTextRectangle(Button button)
+        public static Rectangle GetPushButtonTextRectangle(ButtonBase button)
         {
             return CreatePushButtonTextRectangle(button);
-        }
-
-        /// <summary>
-        /// Returns a rectangle where the text can be drawn on a push button.
-        /// </summary>
-        /// <param name="radioButton"></param>
-        /// <returns></returns>
-        internal static Rectangle GetPushButtonTextRectangle(RadioButton radioButton)
-        {
-            return CreatePushButtonTextRectangle(radioButton);
-        }
-
-        /// <summary>
-        /// Returns a rectangle where the text can be drawn on a push button.
-        /// </summary>
-        /// <param name="checkBox"></param>
-        /// <returns></returns>
-        /// 
-        internal static Rectangle GetPushButtonTextRectangle(CheckBox checkBox)
-        {
-            return CreatePushButtonTextRectangle(checkBox);
         }
 
         /// <summary>
@@ -158,7 +169,7 @@ namespace TileIconifier.Utilities
         /// <param name="radioButton"></param>
         /// <param name="graphics"></param>
         /// <returns></returns>
-        internal static Rectangle GetRadioButtonTextRectangle(RadioButton radioButton, Graphics graphics)
+        public static Rectangle GetRadioButtonTextRectangle(RadioButton radioButton, Graphics graphics)
         {
             return CreateGlyphButtonTextRectangle(radioButton, GetRadioButtonGlyphSize(graphics, radioButton.FlatStyle));
         }
@@ -169,7 +180,7 @@ namespace TileIconifier.Utilities
         /// <param name="checkBox"></param>
         /// <param name="graphics"></param>
         /// <returns></returns>
-        internal static Rectangle GetCheckBoxTextRectangle(CheckBox checkBox, Graphics graphics)
+        public static Rectangle GetCheckBoxTextRectangle(CheckBox checkBox, Graphics graphics)
         {
             return CreateGlyphButtonTextRectangle(checkBox, GetCheckBoxGlyphSize(graphics, checkBox.FlatStyle));
         }

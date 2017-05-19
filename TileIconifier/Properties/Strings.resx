@@ -123,9 +123,6 @@
   <data name="AlignCentre" xml:space="preserve">
     <value>Align Centre</value>
   </data>
-  <data name="AlignImage" xml:space="preserve">
-    <value>Align Image</value>
-  </data>
   <data name="AlignLeft" xml:space="preserve">
     <value>Align Left</value>
   </data>
@@ -149,9 +146,6 @@
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
-  </data>
-  <data name="ChangeImage" xml:space="preserve">
-    <value>Change Image</value>
   </data>
   <data name="GameName" xml:space="preserve">
     <value>Game Name</value>
@@ -180,9 +174,6 @@
   <data name="Ok" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="Reset" xml:space="preserve">
-    <value>Reset</value>
-  </data>
   <data name="ShortcutName" xml:space="preserve">
     <value>Shortcut Name</value>
   </data>
@@ -191,12 +182,6 @@
   </data>
   <data name="ShortcutUser" xml:space="preserve">
     <value>Shortcut User</value>
-  </data>
-  <data name="ZoomIn" xml:space="preserve">
-    <value>Zoom In</value>
-  </data>
-  <data name="ZoomOut" xml:space="preserve">
-    <value>Zoom Out</value>
   </data>
   <data name="ChromeExtensionsFolder" xml:space="preserve">
     <value>Select your Chrome `Extensions` folder</value>
@@ -341,9 +326,6 @@ Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?<
   <data name="ConfirmRemoveIconification" xml:space="preserve">
     <value>Are you sure you wish to remove iconification?</value>
   </data>
-  <data name="CentreImage" xml:space="preserve">
-    <value>Centre Image</value>
-  </data>
   <data name="NoIconHasBeenSelected" xml:space="preserve">
     <value>No icon has been selected!</value>
   </data>
@@ -385,5 +367,20 @@ Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?<
   </data>
   <data name="SelectValidColor" xml:space="preserve">
     <value>Please select a valid color!</value>
+  </data>
+  <data name="Abort" xml:space="preserve">
+    <value>Abort</value>
+  </data>
+  <data name="Ignore" xml:space="preserve">
+    <value>Ignore</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

@@ -38,6 +38,7 @@ using TileIconifier.Core;
 using TileIconifier.Core.IconExtractor;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Properties;
+using TileIconifier.Utilities;
 using static System.String;
 
 namespace TileIconifier.Forms.Shared
@@ -288,7 +289,7 @@ namespace TileIconifier.Forms.Shared
                 {
                     if (lvwIcons.SelectedItems.Count != 1)
                     {
-                        MessageBox.Show(Strings.PleaseSelectAnIcon, Strings.PleaseSelectAnIcon, MessageBoxButtons.OK,
+                        FormUtils.ShowMessage(this, Strings.PleaseSelectAnIcon, Strings.PleaseSelectAnIcon, MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation);
                         return;
                     }
@@ -308,7 +309,7 @@ namespace TileIconifier.Forms.Shared
             }
             catch (FileNotFoundException ex)
             {
-                MessageBox.Show($"{ex.Message}: {ex.FileName}", $"{Strings.FileCouldNotBeFound}", MessageBoxButtons.OK,
+                FormUtils.ShowMessage(this, $"{ex.Message}: {ex.FileName}", $"{Strings.FileCouldNotBeFound}", MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
             }
 
@@ -425,7 +426,7 @@ namespace TileIconifier.Forms.Shared
             }
             catch
             {
-                MessageBox.Show(Strings.ErrorLoadingImageFile);
+                FormUtils.ShowMessage(this, Strings.ErrorLoadingImageFile);
             }
         }
 

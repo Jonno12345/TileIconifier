@@ -129,7 +129,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             var customShortcut = (CustomShortcutListViewItem) lstCustomShortcuts.SelectedItems[0];
 
             if (
-                MessageBox.Show(
+                FormUtils.ShowMessage(this,
                     string.Format(Strings.ConfirmDeleteCustomShortcut,
                         customShortcut.Text.QuoteWrap()),
                     Strings.AreYouSure,
@@ -142,7 +142,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Strings.UnableToClearUpShortcuts + ex);
+                FormUtils.ShowMessage(this, Strings.UnableToClearUpShortcuts + ex);
             }
 
             //update our lists and refresh

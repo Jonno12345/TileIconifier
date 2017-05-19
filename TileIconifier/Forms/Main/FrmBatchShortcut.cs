@@ -70,7 +70,7 @@ namespace TileIconifier.Forms.Main
 
         private void BuildListBoxColumns()
         {
-            lstIconifiedItems.Columns.Add("Shortcut Name", lstIconifiedItems.Width);
+            lstIconifiedItems.Columns.Add("Shortcut Name", lstIconifiedItems.ClientSize.Width);
         }
 
         private void UpdateListViewBoxItems()
@@ -120,7 +120,7 @@ namespace TileIconifier.Forms.Main
             var colorPanelResult = colorPanel.GetColorPanelResult();
             if (colorPanelResult == null)
             {
-                MessageBox.Show(Strings.SelectValidColor);
+                FormUtils.ShowMessage(this, Strings.SelectValidColor);
                 return;
             }
 
@@ -131,7 +131,7 @@ namespace TileIconifier.Forms.Main
                 new TileIcon(item).RunIconify();
             }))
             {
-                MessageBox.Show(Strings.Completed, Strings.Completed);
+                FormUtils.ShowMessage(this, Strings.Completed, Strings.Completed);
             }
         }
 
@@ -145,12 +145,12 @@ namespace TileIconifier.Forms.Main
 
             if (!selectedItems.Any())
             {
-                MessageBox.Show(this, Strings.NoItemsHaveBeenSelected);
+                FormUtils.ShowMessage(this, Strings.NoItemsHaveBeenSelected);
                 return null;
             }
 
             if (
-                MessageBox.Show(this,
+                FormUtils.ShowMessage(this,
                     $"You have selected {selectedItems.Count} shortcut(s) to be amended. Are you sure you wish to continue?",
                     Strings.Confirm,
                     MessageBoxButtons.YesNo) != DialogResult.Yes)
@@ -208,7 +208,7 @@ namespace TileIconifier.Forms.Main
             var colorPanelResult = colorPanel.GetColorPanelResult();
             if (colorPanelResult == null)
             {
-                MessageBox.Show(Strings.SelectValidColor);
+                FormUtils.ShowMessage(this, Strings.SelectValidColor);
                 return;
             }
 
@@ -219,7 +219,7 @@ namespace TileIconifier.Forms.Main
                 new TileIcon(item).RunIconify();
             }))
             {
-                MessageBox.Show(Strings.Completed, Strings.Completed);
+                FormUtils.ShowMessage(this, Strings.Completed, Strings.Completed);
             }
         }
 
@@ -228,7 +228,7 @@ namespace TileIconifier.Forms.Main
             var colorPanelResult = colorPanel.GetColorPanelResult();
             if (colorPanelResult == null)
             {
-                MessageBox.Show(Strings.SelectValidColor);
+                FormUtils.ShowMessage(this, Strings.SelectValidColor);
                 return;
             }
 
@@ -239,7 +239,7 @@ namespace TileIconifier.Forms.Main
                 new TileIcon(item).RunIconify();
             }))
             {
-                MessageBox.Show(Strings.Completed, Strings.Completed);
+                FormUtils.ShowMessage(this, Strings.Completed, Strings.Completed);
             }
         }
     }
