@@ -121,9 +121,11 @@
     <Compile Include="Controls\IconifierPanel\ColorPanel.Designer.cs">
       <DependentUpon>ColorPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\IconifierPanel\PictureBox\AlignForm.cs" />
-    <Compile Include="Controls\IconifierPanel\PictureBox\AlignForm.Designer.cs">
-      <DependentUpon>AlignForm.cs</DependentUpon>
+    <Compile Include="Controls\IconifierPanel\PictureBox\AlignImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\IconifierPanel\PictureBox\AlignImageForm.Designer.cs">
+      <DependentUpon>AlignImageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBox.cs">
       <SubType>UserControl</SubType>
@@ -186,6 +188,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\IconifierPanel\ColorPanel.ru.resx">
       <DependentUpon>ColorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\IconifierPanel\PictureBox\AlignImageForm.resx">
+      <DependentUpon>AlignImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\IconifierPanel\PictureBox\AlignImageForm.ru.resx">
+      <DependentUpon>AlignImageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxControlPanel.ru.resx">
       <DependentUpon>PannablePictureBoxControlPanel.cs</DependentUpon>
@@ -342,9 +350,6 @@
     </Compile>
     <EmbeddedResource Include="Controls\AllOrCurrentUserRadios.resx">
       <DependentUpon>AllOrCurrentUserRadios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\IconifierPanel\PictureBox\AlignForm.resx">
-      <DependentUpon>AlignForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\IconifierPanel\PictureBox\PannablePictureBox.resx">
       <DependentUpon>PannablePictureBox.cs</DependentUpon>

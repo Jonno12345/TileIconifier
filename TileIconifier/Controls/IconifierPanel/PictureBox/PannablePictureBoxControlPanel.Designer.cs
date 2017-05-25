@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PannablePictureBoxControlPanel));
-            this.tmrEnlarge = new System.Windows.Forms.Timer(this.components);
-            this.tmrShrink = new System.Windows.Forms.Timer(this.components);
             this.lblPercent = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flpCommands = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlZoomTrack = new System.Windows.Forms.Panel();
             this.lblHeader = new System.Windows.Forms.Label();
             this.ttpCommands = new System.Windows.Forms.ToolTip(this.components);
+            this.tmrScrollDelay = new System.Windows.Forms.Timer(this.components);
+            this.tmrZoom = new System.Windows.Forms.Timer(this.components);
             this.btnEnlarge = new TileIconifier.Controls.SkinnableButton();
             this.btnShrink = new TileIconifier.Controls.SkinnableButton();
             this.btnReset = new TileIconifier.Controls.SkinnableButton();
@@ -50,16 +50,6 @@
             this.pnlZoomTrack.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkZoom)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tmrEnlarge
-            // 
-            this.tmrEnlarge.Interval = 50;
-            this.tmrEnlarge.Tick += new System.EventHandler(this.tmrEnlarge_Tick);
-            // 
-            // tmrShrink
-            // 
-            this.tmrShrink.Interval = 50;
-            this.tmrShrink.Tick += new System.EventHandler(this.tmrShrink_Tick);
             // 
             // lblPercent
             // 
@@ -97,6 +87,15 @@
             // 
             resources.ApplyResources(this.lblHeader, "lblHeader");
             this.lblHeader.Name = "lblHeader";
+            // 
+            // tmrScrollDelay
+            // 
+            this.tmrScrollDelay.Tick += new System.EventHandler(this.tmrScrollDelay_Tick);
+            // 
+            // tmrZoom
+            // 
+            this.tmrZoom.Interval = 50;
+            this.tmrZoom.Tick += new System.EventHandler(this.tmrZoom_Tick);
             // 
             // btnEnlarge
             // 
@@ -189,8 +188,6 @@
         private TileIconifier.Controls.SkinnableButton btnEnlarge;
         private TileIconifier.Controls.SkinnableButton btnOpenImage;
         private TileIconifier.Controls.SkinnableButton btnReset;
-        private System.Windows.Forms.Timer tmrEnlarge;
-        private System.Windows.Forms.Timer tmrShrink;
         private TileIconifier.Controls.SkinnableButton btnAlign;
         private TileIconifier.Controls.SkinnableTrackBar trkZoom;
         private System.Windows.Forms.Label lblPercent;
@@ -200,5 +197,7 @@
         private PannablePictureBox panPct;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.ToolTip ttpCommands;
+        private System.Windows.Forms.Timer tmrScrollDelay;
+        private System.Windows.Forms.Timer tmrZoom;
     }
 }

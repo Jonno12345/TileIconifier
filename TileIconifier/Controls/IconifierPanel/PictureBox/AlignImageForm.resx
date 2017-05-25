@@ -1,0 +1,840 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tlpBody.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tlpBody.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tlpBody.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnLeft.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnLeft.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnLeft.ImageKey" xml:space="preserve">
+    <value>AlignLeft.png</value>
+  </data>
+  <metadata name="ilsCommandIcons.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="ilsCommandIcons.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABW
+        EwAAAk1TRnQBSQFMAgEBCwEAAQQBAQEEAQEBGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABYAMAAUgDAAEBAQABCAYAARsYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD//8AXQABbS4AAfQB8hgA
+        AfIB8xUAAW0tAAH0AW0aAAFDAfIUAAFtLAAB/wESAQABBxgAAfIBAAFDAfMTAAFtLgAB7xoAAfIVAAFt
+        KgAB9AESAQAB9xwAAfABEAEAAfMRAAFtKQAB9AFtAQAB7x0AAf8B8AEAAUMB8hAAAW0pAAESAQABBwH/
+        HgAB/wHyAQABFQHzDwABbT8AAW0fAAFtKAABbQIAARINbQYAAfcNbQIAARIKAAHtAf8DAAFtBQABBwEA
+        AfIhAAHtAQAB7QH/HgAB/wHvAQABbQH0CQAB7QEAAe0DAAFtBAAB7wEAAW0B9CEAAf8B7QEAAewB/x0A
+        AfcBAAESAfQKAAH/Ae0BAAFtAgABbQIAAf8B9wEAARIB9CQAAW0BAAFtHAAB7w8AAf8BbQEAAW0B/wFt
+        AQAB/wEHKQABbQEAAe0B/xkAAQcBAAETEAABbQEAAe0BEgEAAQcBAAESKQAB7QEAAe0YAAHvAQABbQH0
+        EQAB7QQAAW0B9CkAAf8B7RoAARIB9BIAAf8B7QIAARIB9FwAAW3/AN0ACPIrAAHwAe9eAAFtLAAD8gES
+        AQAD8isAAW0XAAFtFwABbS8AAW0XAAFtFwABbRYAAfQBEgEAAfMVAAFtFwABbRcAAW0VAAH0AW0CAAFD
+        AfIUAAFtFwABbRUAAfMBbQEPAQABbQHwEgABEgQAAUMB8xMAAW0XAAFtFQAB8wEOAgABDwHvEwAB7wFt
+        AQAB8hUAAW0OAAHvCAABbQkAAfIBAAHyCgAB/wFtAgAB/w8AAfQBEgEAAe8B/wFtAQAB/wHwAQ8BAAHz
+        EQABbQ4AAe8DAAHyAe8B/wIAAW0EAAHvAfADAAHyAQAB8gsAAW0RAAH0AW0BAAHvAf8BAAFtAwAB8AEA
+        AUMB8goAAW0B8AQAAW0FAAHzAW0B8wYAAe8DAAHvAQ4DAAFtBQABbQMAAfIBAAHyCwABbREAARIBAAEH
+        AwABbQQAAfIBAAFDAfMLAAHyAwABbQcAAfIbAAHyAwABbRoAAe8EAAFtBQAB8gEAAfIJAAHzAUMBAAHy
+        AgABbQMAAfMBAAEPAfAHAAFDA20BQwEAA20BDwEAA20BAAEPA20BEgEAAfIDAAH3B20BDwEACG0OAAFt
+        EgAB8gFDAQAB8AH/AW0BAAH/AfMBFQEAAfAIAAHvAwAB7wEAAf8CAAFtBQABbQMAAfIBAAHyCwABbRcA
+        AW0SAAH/AfMBAAEPAfABbQEAAfMBFQEAAfIJAAHvAwAB9AHzAwABbQQAAfIB8wMAAfIBAAHyCwABbRcA
+        AW0bAAHyCgAB7wgAAW0JAAHyAQAB8gsAAW0XAAFtFQAB8wFDAgABEAHwFAABbRUAAfIEAAHvFAABbRYA
+        AfIBQwEAAfAVAAFtFQAB9AHvAUMBAAHvAfIUAAFtFwAB8wHyFgABbRcAAW0XAAFtDQAB8hQAAe8MAAFt
+        FwABbRcAAW0NAAHzFG0B8AwAAfcBbRYAAW0XAAH3AW1DAAPvAUMBAAPv/wABAAjyYAAB/woAAfAB7yYA
+        AfAB7yMAA/IBEgEAA/ILAAFtJwABbQUAAfIUAAHvDAABbQEAAf8NAAFtJwABbQUAAfMUbQHwDAABbQEA
+        Af8NAAFtCAAB8gHzFAAB9AHyBwABbQ8AAfAB7xYAAW0BAAH/DQABbQcAAfABAAFtFAAB7wEAAe8GAAFt
+        DgAB8AEPAQAB9xMAAfMBbQEPAQABbQHwDAABbQUAAf8BvAEPAQAB8xQAAfQBEgEAAfcFAAFtDQAB8gQA
+        Ae8SAAHzAQ4CAAEPAe8MAAFtBQAB8hwAAe8EAAFtDAAB8gEAAUMBDwEAARIBAAEHCgAB7wcAAf8BbQIA
+        Af8GAAHyAQAB8gMAAW0EAAHyAQABQwHzGQABEgEAAQcDAAFtCwAB8AEAARQB8gFtAQAB9AFtAQAB7wH/
+        CAAB7wMAAfIB7wH/AgABbQQAAe8B8AMAAfIBAAHyAwABbQMAAfABAAFDAfIaAAH0AW0BAAHvAgABbQoA
+        AfABDwEAAfQB/wFtAgAB9AESAQAB9wgAAe8DAAHvAQ4DAAFtBQABbQMAAfIBAAHyAwABbQIAAfABDwEA
+        AfMcAAH0ARIBAAH3AQABbQkAAfIFAAFtBgAB7xwAAfIDAAFtAQAB8hAAAe8CAAHyEAAB7wFtCgABQwHz
+        AwABbQUAARIBAAHyBgABQwhtAQ8BAANtAQABDwNtARIBAAHyAwABbQEAAfMBQwIADW0B8AIAAfMNbQEP
+        AQABDwHwAW0JAAHvAfIEAAFtBQAB9AHvAfQGAAHvCAABbQUAAW0DAAHyAQAB8gMAAW0CAAHyARUBAAHw
+        Af8aAAH/AfIBQwEAAfABAAFtDwABbQ4AAe8IAAFtBAAB8gHzAwAB8gEAAfIDAAFtAwAB8wEAARAB8BoA
+        AfMBQwEAAfICAAFtDwABbQ4AAe8HAAH/AW0CAAH/BgAB8gEAAfIDAAFtBwAB8hsAAfIDAAFtDwABbRUA
+        AfMDAAEOAe8MAAFtBQAB8wFDAQAB8hYAAfMBAAEPAfAEAAFtDwABbRUAAfQB7wFDAQAB7wHyDAABbQYA
+        AfIBQwEAAfAUAAHyAUMBAAHwAf8EAAFtDwABbRcAAW0BAAH/DQABbQcAAfMBAAFtFAAB7wEAAfIGAAFt
+        DwABbRcAAW0BAAH/DQABbScAAW0PAAFtFwABbQEAAf8NAAFtJwABbQ8AAW0UAAPvAUMBAAPvAf8KAAFt
+        JwABbQ8AAfMB8hsAAf8KAAHzAfImAAHzAfJjAAFCAU0BPgcAAT4DAAEoAwABYAMAAUgDAAEBAQABAQUA
+        AWABAxYAA/8BAAn/AwAJ/wMACf8DAAf/AecB/wMAAf8BzwL/AfMC/wHnAf8DAAH/AY8C/wHxAv8B5wH/
+        AwAB/wEPAv8B8AL/AecB/wMAAf8BHwL/AfgC/wHnAf8DAAH8AT8C/wH8AT8B/wHnAf8DAAH4AX8C/wH8
+        AR8B/wHnAf8DAAH4AX8C/wH+AQ8B/wHnAf8DAAHwAQABBwHgAQABDwH/AecB/wMAAfABAAEHAeABAAEP
+        AfgB5wGPAwAB+AF/Av8B/gEPAfgB5wEPAwAB+AE/Av8B/gEfAfgBZAEfAwAB/gE/Av8B/AF/AfwBAAF/
+        AwAB/wEPAv8B+AL/AQAB/wMAAf8BjwL/AfAC/wGAAf8DAAH/AY8C/wHxAv8BgQH/AwAH/wHnAf8DAAn/
+        AwAJ/wMACf8DAAn/AwAH/wEABf8B5wX/AQAF/wHnBf8BAAX/AecC/wHnAv8B5wX/AecC/wHnAv8B5wL/
+        AcMC/wHnAv8B5wL/AecC/wGBAv8B5wL/AecC/wGBAv8BgAL/AecC/wHnAv8BgQL/AQAC/wHnAf8BnwHn
+        AfgB/wHFAf8B/AEAAT8B/wHnAf8BnAFnATgB/wHnAf8B+AEmAR8B+QHnAY8BnAHnATgB/wHnAf8B+AHn
+        AQ8B+AHnAY8BgAIAAeABAAEHAfkB5wGPAfgBZgEfAYACAAHgAQABBwH/AecB/wH8AQABPwGcAWcBOAH/
+        AecC/wHnAf8B/AEAAX8BnAHnATgB/wHnAv8B5wL/AYAB/wGfAecB+AH/AecC/wHnAv8BgQL/AecC/wGB
+        Av8B5wL/AcMC/wHnAv8BgQL/AecC/wHnAv8B5wL/AecC/wHnAf8BgAEAAQEB/wHnAv8B5wL/AecB/wGA
+        AQABAQH/AecC/wHnAv8B5wj/AQAL/wEAFP8BAAv/AQABfwHnBP8B5wT/AQAB/wHnBP8B5wGAAQABAQH/
+        AeMB/wHnBP8B5wGAAQABAQH/AeMB/wHnAfMC/wHPAecB/wHnAv8B4wH/AecB4wL/AccB5wH/AcMC/wGB
+        Af8B5wGDAv8BwwHnAf8BgQL/AYEB/wHnAY8C/wHxAecB/wEAAf8BnwHFAfgB5wEPAv8B+AHnAf4BAAE/
+        AZwBZwE4AeYBHwL/AfgBZwH8AQQBPwGcAecBOAHkAT8C/wH8AScB+AHnAR8BgAIAAeABAAEBAYABAAEH
+        AfgB5wGPAYACAAHgAQABAQGAAQABBwH5AecBjwGfAecBOAHkAR8C/wH4AScB/wHnAf8BnwHnATgB5gEf
+        Av8B+AFnAf8B5wH/AZ8BxQH4AecBjwL/AfgB5wH/AecC/wGBAf8B5wGHAv8B4QHnAf8B5wL/AYEB/wHn
+        AcMC/wHBAecB/wHnAv8B4wH/AecB4wL/AccB5wH/AecC/wHjAf8B5wT/AecB/wHnAv8B4wH/AecE/wHn
+        Af8B5wL/AQABfwHnBP8B5wH/AecC/wEAAX8B5wT/AecM/ws=
+</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="btnLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <metadata name="ttpCommands.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>360, 17</value>
+  </metadata>
+  <data name="btnLeft.ToolTip" xml:space="preserve">
+    <value>Align left</value>
+  </data>
+  <data name="&gt;&gt;btnLeft.Name" xml:space="preserve">
+    <value>btnLeft</value>
+  </data>
+  <data name="&gt;&gt;btnLeft.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnLeft.Parent" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;btnLeft.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnXMiddle.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnXMiddle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnXMiddle.ImageKey" xml:space="preserve">
+    <value>AlignXMiddle.png</value>
+  </data>
+  <data name="btnXMiddle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 3</value>
+  </data>
+  <data name="btnXMiddle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnXMiddle.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnXMiddle.ToolTip" xml:space="preserve">
+    <value>Align x middle</value>
+  </data>
+  <data name="&gt;&gt;btnXMiddle.Name" xml:space="preserve">
+    <value>btnXMiddle</value>
+  </data>
+  <data name="&gt;&gt;btnXMiddle.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnXMiddle.Parent" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;btnXMiddle.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnRight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnRight.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnRight.ImageKey" xml:space="preserve">
+    <value>AlignRight.png</value>
+  </data>
+  <data name="btnRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 3</value>
+  </data>
+  <data name="btnRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnRight.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnRight.ToolTip" xml:space="preserve">
+    <value>Align right</value>
+  </data>
+  <data name="&gt;&gt;btnRight.Name" xml:space="preserve">
+    <value>btnRight</value>
+  </data>
+  <data name="&gt;&gt;btnRight.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnRight.Parent" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;btnRight.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnTop.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnTop.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnTop.ImageKey" xml:space="preserve">
+    <value>AlignTop.png</value>
+  </data>
+  <data name="btnTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 39</value>
+  </data>
+  <data name="btnTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnTop.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnTop.ToolTip" xml:space="preserve">
+    <value>Align top</value>
+  </data>
+  <data name="&gt;&gt;btnTop.Name" xml:space="preserve">
+    <value>btnTop</value>
+  </data>
+  <data name="&gt;&gt;btnTop.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnTop.Parent" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;btnTop.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnYMiddle.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnYMiddle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnYMiddle.ImageKey" xml:space="preserve">
+    <value>AlignYMiddle.png</value>
+  </data>
+  <data name="btnYMiddle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 39</value>
+  </data>
+  <data name="btnYMiddle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnYMiddle.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="btnYMiddle.ToolTip" xml:space="preserve">
+    <value>Align y middle</value>
+  </data>
+  <data name="&gt;&gt;btnYMiddle.Name" xml:space="preserve">
+    <value>btnYMiddle</value>
+  </data>
+  <data name="&gt;&gt;btnYMiddle.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnYMiddle.Parent" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;btnYMiddle.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnBottom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnBottom.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnBottom.ImageKey" xml:space="preserve">
+    <value>AlignBottom.png</value>
+  </data>
+  <data name="btnBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 39</value>
+  </data>
+  <data name="btnBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnBottom.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnBottom.ToolTip" xml:space="preserve">
+    <value>Align bottom</value>
+  </data>
+  <data name="&gt;&gt;btnBottom.Name" xml:space="preserve">
+    <value>btnBottom</value>
+  </data>
+  <data name="&gt;&gt;btnBottom.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnBottom.Parent" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;btnBottom.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnNudgeUp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnNudgeUp.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnNudgeUp.ImageKey" xml:space="preserve">
+    <value>NudgeUp.png</value>
+  </data>
+  <data name="btnNudgeUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 75</value>
+  </data>
+  <data name="btnNudgeUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnNudgeUp.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeUp.Name" xml:space="preserve">
+    <value>btnNudgeUp</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeUp.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeUp.Parent" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeUp.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="btnNudgeLeft.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnNudgeLeft.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnNudgeLeft.ImageKey" xml:space="preserve">
+    <value>NudgeLeft.png</value>
+  </data>
+  <data name="btnNudgeLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 111</value>
+  </data>
+  <data name="btnNudgeLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnNudgeLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeLeft.Name" xml:space="preserve">
+    <value>btnNudgeLeft</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeLeft.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeLeft.Parent" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeLeft.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="btnCenter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnCenter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnCenter.ImageKey" xml:space="preserve">
+    <value>AlignCenter.png</value>
+  </data>
+  <data name="btnCenter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 111</value>
+  </data>
+  <data name="btnCenter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnCenter.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;btnCenter.Name" xml:space="preserve">
+    <value>btnCenter</value>
+  </data>
+  <data name="&gt;&gt;btnCenter.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnCenter.Parent" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;btnCenter.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="btnNudgeRight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnNudgeRight.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnNudgeRight.ImageKey" xml:space="preserve">
+    <value>NudgeRight.png</value>
+  </data>
+  <data name="btnNudgeRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 111</value>
+  </data>
+  <data name="btnNudgeRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnNudgeRight.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeRight.Name" xml:space="preserve">
+    <value>btnNudgeRight</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeRight.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeRight.Parent" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeRight.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="btnNudgeDown.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnNudgeDown.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnNudgeDown.ImageKey" xml:space="preserve">
+    <value>NudgeDown.png</value>
+  </data>
+  <data name="btnNudgeDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 147</value>
+  </data>
+  <data name="btnNudgeDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnNudgeDown.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeDown.Name" xml:space="preserve">
+    <value>btnNudgeDown</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeDown.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeDown.Parent" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;btnNudgeDown.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="tlpLocation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="tlpLocation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tlpLocation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tlpLocation.ColumnCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblX.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lblX.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 1</value>
+  </data>
+  <data name="lblX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="lblX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 13</value>
+  </data>
+  <data name="lblX.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblX.Text" xml:space="preserve">
+    <value>X:</value>
+  </data>
+  <data name="&gt;&gt;lblX.Name" xml:space="preserve">
+    <value>lblX</value>
+  </data>
+  <data name="&gt;&gt;lblX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblX.Parent" xml:space="preserve">
+    <value>tlpLocation</value>
+  </data>
+  <data name="&gt;&gt;lblX.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblXValue.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="lblXValue.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblXValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 0</value>
+  </data>
+  <data name="lblXValue.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="lblXValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 15</value>
+  </data>
+  <data name="lblXValue.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lblXValue.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblXValue.Name" xml:space="preserve">
+    <value>lblXValue</value>
+  </data>
+  <data name="&gt;&gt;lblXValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblXValue.Parent" xml:space="preserve">
+    <value>tlpLocation</value>
+  </data>
+  <data name="&gt;&gt;lblXValue.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblY.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lblY.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>62, 1</value>
+  </data>
+  <data name="lblY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="lblY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 13</value>
+  </data>
+  <data name="lblY.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lblY.Text" xml:space="preserve">
+    <value>Y:</value>
+  </data>
+  <data name="&gt;&gt;lblY.Name" xml:space="preserve">
+    <value>lblY</value>
+  </data>
+  <data name="&gt;&gt;lblY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblY.Parent" xml:space="preserve">
+    <value>tlpLocation</value>
+  </data>
+  <data name="&gt;&gt;lblY.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblYValue.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="lblYValue.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblYValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 0</value>
+  </data>
+  <data name="lblYValue.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="lblYValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 15</value>
+  </data>
+  <data name="lblYValue.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lblYValue.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblYValue.Name" xml:space="preserve">
+    <value>lblYValue</value>
+  </data>
+  <data name="&gt;&gt;lblYValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblYValue.Parent" xml:space="preserve">
+    <value>tlpLocation</value>
+  </data>
+  <data name="&gt;&gt;lblYValue.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tlpLocation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 183</value>
+  </data>
+  <data name="tlpLocation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="tlpLocation.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tlpLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 13</value>
+  </data>
+  <data name="tlpLocation.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;tlpLocation.Name" xml:space="preserve">
+    <value>tlpLocation</value>
+  </data>
+  <data name="&gt;&gt;tlpLocation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpLocation.Parent" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;tlpLocation.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="tlpLocation.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblX" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lblXValue" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblY" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="lblYValue" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,50,AutoSize,0,Percent,50" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="tlpBody.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tlpBody.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tlpBody.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="tlpBody.RowCount" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tlpBody.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 199</value>
+  </data>
+  <data name="tlpBody.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tlpBody.Name" xml:space="preserve">
+    <value>tlpBody</value>
+  </data>
+  <data name="&gt;&gt;tlpBody.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpBody.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tlpBody.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tlpBody.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnLeft" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnXMiddle" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnRight" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnTop" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnYMiddle" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnBottom" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeUp" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeLeft" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnCenter" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeRight" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeDown" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tlpLocation" Row="5" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="tmrDelay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>165, 17</value>
+  </metadata>
+  <metadata name="tmrNudge.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>252, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>124, 205</value>
+  </data>
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>Manual</value>
+  </data>
+  <data name="&gt;&gt;ilsCommandIcons.Name" xml:space="preserve">
+    <value>ilsCommandIcons</value>
+  </data>
+  <data name="&gt;&gt;ilsCommandIcons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tmrDelay.Name" xml:space="preserve">
+    <value>tmrDelay</value>
+  </data>
+  <data name="&gt;&gt;tmrDelay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tmrNudge.Name" xml:space="preserve">
+    <value>tmrNudge</value>
+  </data>
+  <data name="&gt;&gt;tmrNudge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ttpCommands.Name" xml:space="preserve">
+    <value>ttpCommands</value>
+  </data>
+  <data name="&gt;&gt;ttpCommands.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>AlignImageForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
