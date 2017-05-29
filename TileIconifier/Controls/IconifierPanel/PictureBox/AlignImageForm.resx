@@ -145,7 +145,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABW
-        EwAAAk1TRnQBSQFMAgEBCwEAAQQBAQEEAQEBGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EwAAAk1TRnQBSQFMAgEBCwEAAUwBAQFMAQEBGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABYAMAAUgDAAEBAQABCAYAARsYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -230,6 +230,9 @@
         Af8B5wL/AQABfwHnBP8B5wH/AecC/wEAAX8B5wT/AecM/ws=
 </value>
   </data>
+  <data name="btnLeft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnLeft.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -250,7 +253,7 @@
     <value>btnLeft</value>
   </data>
   <data name="&gt;&gt;btnLeft.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6358.33789, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLeft.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -266,6 +269,9 @@
   </data>
   <data name="btnXMiddle.ImageKey" xml:space="preserve">
     <value>AlignXMiddle.png</value>
+  </data>
+  <data name="btnXMiddle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnXMiddle.Location" type="System.Drawing.Point, System.Drawing">
     <value>39, 3</value>
@@ -283,7 +289,7 @@
     <value>btnXMiddle</value>
   </data>
   <data name="&gt;&gt;btnXMiddle.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6358.33789, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnXMiddle.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -299,6 +305,9 @@
   </data>
   <data name="btnRight.ImageKey" xml:space="preserve">
     <value>AlignRight.png</value>
+  </data>
+  <data name="btnRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnRight.Location" type="System.Drawing.Point, System.Drawing">
     <value>75, 3</value>
@@ -316,7 +325,7 @@
     <value>btnRight</value>
   </data>
   <data name="&gt;&gt;btnRight.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6358.33789, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnRight.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -332,6 +341,9 @@
   </data>
   <data name="btnTop.ImageKey" xml:space="preserve">
     <value>AlignTop.png</value>
+  </data>
+  <data name="btnTop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnTop.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 39</value>
@@ -349,7 +361,7 @@
     <value>btnTop</value>
   </data>
   <data name="&gt;&gt;btnTop.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6358.33789, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnTop.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -365,6 +377,9 @@
   </data>
   <data name="btnYMiddle.ImageKey" xml:space="preserve">
     <value>AlignYMiddle.png</value>
+  </data>
+  <data name="btnYMiddle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnYMiddle.Location" type="System.Drawing.Point, System.Drawing">
     <value>39, 39</value>
@@ -382,7 +397,7 @@
     <value>btnYMiddle</value>
   </data>
   <data name="&gt;&gt;btnYMiddle.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6358.33789, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnYMiddle.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -398,6 +413,9 @@
   </data>
   <data name="btnBottom.ImageKey" xml:space="preserve">
     <value>AlignBottom.png</value>
+  </data>
+  <data name="btnBottom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnBottom.Location" type="System.Drawing.Point, System.Drawing">
     <value>75, 39</value>
@@ -415,7 +433,7 @@
     <value>btnBottom</value>
   </data>
   <data name="&gt;&gt;btnBottom.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6358.33789, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnBottom.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -432,8 +450,14 @@
   <data name="btnNudgeUp.ImageKey" xml:space="preserve">
     <value>NudgeUp.png</value>
   </data>
+  <data name="btnNudgeUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnNudgeUp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 75</value>
+    <value>39, 82</value>
+  </data>
+  <data name="btnNudgeUp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 3, 3</value>
   </data>
   <data name="btnNudgeUp.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -445,7 +469,7 @@
     <value>btnNudgeUp</value>
   </data>
   <data name="&gt;&gt;btnNudgeUp.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6358.33789, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnNudgeUp.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -462,8 +486,11 @@
   <data name="btnNudgeLeft.ImageKey" xml:space="preserve">
     <value>NudgeLeft.png</value>
   </data>
+  <data name="btnNudgeLeft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnNudgeLeft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 111</value>
+    <value>3, 118</value>
   </data>
   <data name="btnNudgeLeft.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -475,7 +502,7 @@
     <value>btnNudgeLeft</value>
   </data>
   <data name="&gt;&gt;btnNudgeLeft.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6358.33789, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnNudgeLeft.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -492,8 +519,11 @@
   <data name="btnCenter.ImageKey" xml:space="preserve">
     <value>AlignCenter.png</value>
   </data>
+  <data name="btnCenter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnCenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 111</value>
+    <value>39, 118</value>
   </data>
   <data name="btnCenter.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -505,7 +535,7 @@
     <value>btnCenter</value>
   </data>
   <data name="&gt;&gt;btnCenter.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6358.33789, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnCenter.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -522,8 +552,11 @@
   <data name="btnNudgeRight.ImageKey" xml:space="preserve">
     <value>NudgeRight.png</value>
   </data>
+  <data name="btnNudgeRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnNudgeRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 111</value>
+    <value>75, 118</value>
   </data>
   <data name="btnNudgeRight.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -535,7 +568,7 @@
     <value>btnNudgeRight</value>
   </data>
   <data name="&gt;&gt;btnNudgeRight.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6358.33789, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnNudgeRight.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -552,8 +585,11 @@
   <data name="btnNudgeDown.ImageKey" xml:space="preserve">
     <value>NudgeDown.png</value>
   </data>
+  <data name="btnNudgeDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnNudgeDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 147</value>
+    <value>39, 154</value>
   </data>
   <data name="btnNudgeDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -565,7 +601,7 @@
     <value>btnNudgeDown</value>
   </data>
   <data name="&gt;&gt;btnNudgeDown.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.29216, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6358.33789, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnNudgeDown.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -590,6 +626,9 @@
   </data>
   <data name="lblX.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lblX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblX.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 1</value>
@@ -624,6 +663,9 @@
   <data name="lblXValue.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblXValue.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblXValue.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 0</value>
   </data>
@@ -656,6 +698,9 @@
   </data>
   <data name="lblY.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lblY.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblY.Location" type="System.Drawing.Point, System.Drawing">
     <value>62, 1</value>
@@ -690,6 +735,9 @@
   <data name="lblYValue.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblYValue.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblYValue.Location" type="System.Drawing.Point, System.Drawing">
     <value>79, 0</value>
   </data>
@@ -718,7 +766,7 @@
     <value>3</value>
   </data>
   <data name="tlpLocation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 183</value>
+    <value>0, 195</value>
   </data>
   <data name="tlpLocation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
@@ -727,7 +775,7 @@
     <value>1</value>
   </data>
   <data name="tlpLocation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 13</value>
+    <value>118, 15</value>
   </data>
   <data name="tlpLocation.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -754,13 +802,13 @@
     <value>False</value>
   </data>
   <data name="tlpBody.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>3, 4</value>
   </data>
   <data name="tlpBody.RowCount" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="tlpBody.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 199</value>
+    <value>118, 215</value>
   </data>
   <data name="tlpBody.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -778,9 +826,9 @@
     <value>0</value>
   </data>
   <data name="tlpBody.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnLeft" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnXMiddle" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnRight" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnTop" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnYMiddle" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnBottom" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeUp" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeLeft" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnCenter" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeRight" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeDown" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tlpLocation" Row="5" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnLeft" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnXMiddle" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnRight" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnTop" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnYMiddle" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnBottom" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeUp" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeLeft" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnCenter" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeRight" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeDown" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tlpLocation" Row="7" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Absolute,4,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,4,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <metadata name="tmrDelay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="tmrScrollDelay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>165, 17</value>
   </metadata>
   <metadata name="tmrNudge.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -799,10 +847,13 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>124, 205</value>
+    <value>124, 223</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>
@@ -813,10 +864,10 @@
   <data name="&gt;&gt;ilsCommandIcons.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tmrDelay.Name" xml:space="preserve">
-    <value>tmrDelay</value>
+  <data name="&gt;&gt;tmrScrollDelay.Name" xml:space="preserve">
+    <value>tmrScrollDelay</value>
   </data>
-  <data name="&gt;&gt;tmrDelay.Type" xml:space="preserve">
+  <data name="&gt;&gt;tmrScrollDelay.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tmrNudge.Name" xml:space="preserve">
