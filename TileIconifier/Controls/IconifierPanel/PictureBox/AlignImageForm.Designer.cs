@@ -31,16 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlignImageForm));
             this.tlpBody = new System.Windows.Forms.TableLayoutPanel();
-            this.ilsCommandIcons = new System.Windows.Forms.ImageList(this.components);
-            this.tlpLocation = new System.Windows.Forms.TableLayoutPanel();
-            this.lblX = new System.Windows.Forms.Label();
-            this.lblXValue = new System.Windows.Forms.Label();
-            this.lblY = new System.Windows.Forms.Label();
-            this.lblYValue = new System.Windows.Forms.Label();
-            this.tmrScrollDelay = new System.Windows.Forms.Timer(this.components);
-            this.tmrNudge = new System.Windows.Forms.Timer(this.components);
-            this.ttpCommands = new System.Windows.Forms.ToolTip(this.components);
             this.btnLeft = new TileIconifier.Controls.SkinnableButton();
+            this.ilsCommandIcons = new System.Windows.Forms.ImageList(this.components);
             this.btnXMiddle = new TileIconifier.Controls.SkinnableButton();
             this.btnRight = new TileIconifier.Controls.SkinnableButton();
             this.btnTop = new TileIconifier.Controls.SkinnableButton();
@@ -51,6 +43,14 @@
             this.btnCenter = new TileIconifier.Controls.SkinnableButton();
             this.btnNudgeRight = new TileIconifier.Controls.SkinnableButton();
             this.btnNudgeDown = new TileIconifier.Controls.SkinnableButton();
+            this.tlpLocation = new System.Windows.Forms.TableLayoutPanel();
+            this.lblX = new System.Windows.Forms.Label();
+            this.lblXValue = new System.Windows.Forms.Label();
+            this.lblY = new System.Windows.Forms.Label();
+            this.lblYValue = new System.Windows.Forms.Label();
+            this.tmrScrollDelay = new System.Windows.Forms.Timer(this.components);
+            this.tmrNudge = new System.Windows.Forms.Timer(this.components);
+            this.ttpCommands = new System.Windows.Forms.ToolTip(this.components);
             this.tlpBody.SuspendLayout();
             this.tlpLocation.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +72,15 @@
             this.tlpBody.Controls.Add(this.tlpLocation, 0, 7);
             this.tlpBody.Name = "tlpBody";
             // 
+            // btnLeft
+            // 
+            resources.ApplyResources(this.btnLeft, "btnLeft");
+            this.btnLeft.ImageList = this.ilsCommandIcons;
+            this.btnLeft.Name = "btnLeft";
+            this.ttpCommands.SetToolTip(this.btnLeft, resources.GetString("btnLeft.ToolTip"));
+            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.AlignButton_Click);
+            // 
             // ilsCommandIcons
             // 
             this.ilsCommandIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilsCommandIcons.ImageStream")));
@@ -87,56 +96,6 @@
             this.ilsCommandIcons.Images.SetKeyName(8, "NudgeLeft.png");
             this.ilsCommandIcons.Images.SetKeyName(9, "NudgeRight.png");
             this.ilsCommandIcons.Images.SetKeyName(10, "NudgeUp.png");
-            // 
-            // tlpLocation
-            // 
-            resources.ApplyResources(this.tlpLocation, "tlpLocation");
-            this.tlpBody.SetColumnSpan(this.tlpLocation, 3);
-            this.tlpLocation.Controls.Add(this.lblX, 0, 0);
-            this.tlpLocation.Controls.Add(this.lblXValue, 1, 0);
-            this.tlpLocation.Controls.Add(this.lblY, 2, 0);
-            this.tlpLocation.Controls.Add(this.lblYValue, 3, 0);
-            this.tlpLocation.Name = "tlpLocation";
-            // 
-            // lblX
-            // 
-            resources.ApplyResources(this.lblX, "lblX");
-            this.lblX.Name = "lblX";
-            // 
-            // lblXValue
-            // 
-            resources.ApplyResources(this.lblXValue, "lblXValue");
-            this.lblXValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblXValue.Name = "lblXValue";
-            // 
-            // lblY
-            // 
-            resources.ApplyResources(this.lblY, "lblY");
-            this.lblY.Name = "lblY";
-            // 
-            // lblYValue
-            // 
-            resources.ApplyResources(this.lblYValue, "lblYValue");
-            this.lblYValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblYValue.Name = "lblYValue";
-            // 
-            // tmrScrollDelay
-            // 
-            this.tmrScrollDelay.Tick += new System.EventHandler(this.TmrScrollDelay_Tick);
-            // 
-            // tmrNudge
-            // 
-            this.tmrNudge.Interval = 50;
-            this.tmrNudge.Tick += new System.EventHandler(this.TmrNudge_Tick);
-            // 
-            // btnLeft
-            // 
-            resources.ApplyResources(this.btnLeft, "btnLeft");
-            this.btnLeft.ImageList = this.ilsCommandIcons;
-            this.btnLeft.Name = "btnLeft";
-            this.ttpCommands.SetToolTip(this.btnLeft, resources.GetString("btnLeft.ToolTip"));
-            this.btnLeft.UseVisualStyleBackColor = true;
-            this.btnLeft.Click += new System.EventHandler(this.AlignButton_Click);
             // 
             // btnXMiddle
             // 
@@ -226,6 +185,47 @@
             this.btnNudgeDown.UseVisualStyleBackColor = true;
             this.btnNudgeDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseDown);
             this.btnNudgeDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseUp);
+            // 
+            // tlpLocation
+            // 
+            resources.ApplyResources(this.tlpLocation, "tlpLocation");
+            this.tlpBody.SetColumnSpan(this.tlpLocation, 3);
+            this.tlpLocation.Controls.Add(this.lblX, 0, 0);
+            this.tlpLocation.Controls.Add(this.lblXValue, 1, 0);
+            this.tlpLocation.Controls.Add(this.lblY, 2, 0);
+            this.tlpLocation.Controls.Add(this.lblYValue, 3, 0);
+            this.tlpLocation.Name = "tlpLocation";
+            // 
+            // lblX
+            // 
+            resources.ApplyResources(this.lblX, "lblX");
+            this.lblX.Name = "lblX";
+            // 
+            // lblXValue
+            // 
+            resources.ApplyResources(this.lblXValue, "lblXValue");
+            this.lblXValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblXValue.Name = "lblXValue";
+            // 
+            // lblY
+            // 
+            resources.ApplyResources(this.lblY, "lblY");
+            this.lblY.Name = "lblY";
+            // 
+            // lblYValue
+            // 
+            resources.ApplyResources(this.lblYValue, "lblYValue");
+            this.lblYValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblYValue.Name = "lblYValue";
+            // 
+            // tmrScrollDelay
+            // 
+            this.tmrScrollDelay.Tick += new System.EventHandler(this.TmrScrollDelay_Tick);
+            // 
+            // tmrNudge
+            // 
+            this.tmrNudge.Interval = 50;
+            this.tmrNudge.Tick += new System.EventHandler(this.TmrNudge_Tick);
             // 
             // AlignImageForm
             // 
