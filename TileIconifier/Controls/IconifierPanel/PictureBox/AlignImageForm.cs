@@ -43,8 +43,6 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         {
             InitializeComponent();
 
-            Location = Cursor.Position;
-
             //Unlike what its name implies, the "DoubleClickTime" system setting
             //is not only used for double clicks. It more generally describes for
             //how long a mouse button needs to be pressed before the click is

@@ -129,7 +129,8 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         private void btnAlign_Click(object sender, EventArgs e)
         {
             var alignForm = new AlignImageForm();
-            alignForm.PannablePictureBox = PannablePictureBox;            
+            alignForm.PannablePictureBox = PannablePictureBox;
+            alignForm.Location = MousePosition;
             alignForm.Show(this);
         }
         
