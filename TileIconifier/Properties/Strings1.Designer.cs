@@ -70,65 +70,11 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Align Bottom.
-        /// </summary>
-        internal static string AlignBottom {
-            get {
-                return ResourceManager.GetString("AlignBottom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Align Centre.
         /// </summary>
         internal static string AlignCentre {
             get {
                 return ResourceManager.GetString("AlignCentre", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Align Left.
-        /// </summary>
-        internal static string AlignLeft {
-            get {
-                return ResourceManager.GetString("AlignLeft", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Align Right.
-        /// </summary>
-        internal static string AlignRight {
-            get {
-                return ResourceManager.GetString("AlignRight", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Align Top.
-        /// </summary>
-        internal static string AlignTop {
-            get {
-                return ResourceManager.GetString("AlignTop", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Align X Middle.
-        /// </summary>
-        internal static string AlignXMiddle {
-            get {
-                return ResourceManager.GetString("AlignXMiddle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Align Y Middle.
-        /// </summary>
-        internal static string AlignYMiddle {
-            get {
-                return ResourceManager.GetString("AlignYMiddle", resourceCulture);
             }
         }
         
@@ -428,42 +374,6 @@ namespace TileIconifier.Properties {
         internal static string NoItemsHaveBeenSelected {
             get {
                 return ResourceManager.GetString("NoItemsHaveBeenSelected", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nudge Down.
-        /// </summary>
-        internal static string NudgeDown {
-            get {
-                return ResourceManager.GetString("NudgeDown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nudge Left.
-        /// </summary>
-        internal static string NudgeLeft {
-            get {
-                return ResourceManager.GetString("NudgeLeft", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nudge Right.
-        /// </summary>
-        internal static string NudgeRight {
-            get {
-                return ResourceManager.GetString("NudgeRight", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nudge Up.
-        /// </summary>
-        internal static string NudgeUp {
-            get {
-                return ResourceManager.GetString("NudgeUp", resourceCulture);
             }
         }
         
