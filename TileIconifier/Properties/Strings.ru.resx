@@ -117,26 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AlignBottom" xml:space="preserve">
-    <value>Выровнять по нижнему краю</value>
-  </data>
   <data name="AlignCentre" xml:space="preserve">
     <value>Выровнять по центру</value>
-  </data>
-  <data name="AlignLeft" xml:space="preserve">
-    <value>Выровнять по левому краю</value>
-  </data>
-  <data name="AlignRight" xml:space="preserve">
-    <value>Выровнять по правому краю</value>
-  </data>
-  <data name="AlignTop" xml:space="preserve">
-    <value>Выровнять по верхнему краю</value>
-  </data>
-  <data name="AlignXMiddle" xml:space="preserve">
-    <value>Выровнять по центру оси-X</value>
-  </data>
-  <data name="AlignYMiddle" xml:space="preserve">
-    <value>Выровнять по центру оси-Y</value>
   </data>
   <data name="AppId" xml:space="preserve">
     <value>ID приложения</value>
@@ -161,18 +143,6 @@
   </data>
   <data name="IsPinned" xml:space="preserve">
     <value>Закреплён</value>
-  </data>
-  <data name="NudgeDown" xml:space="preserve">
-    <value>Сдвинуть вниз</value>
-  </data>
-  <data name="NudgeLeft" xml:space="preserve">
-    <value>Сдвинуть влево</value>
-  </data>
-  <data name="NudgeRight" xml:space="preserve">
-    <value>Сдвинуть вправо</value>
-  </data>
-  <data name="NudgeUp" xml:space="preserve">
-    <value>Сдвинуть вверх</value>
   </data>
   <data name="ShortcutName" xml:space="preserve">
     <value>Имя ярлыка</value>

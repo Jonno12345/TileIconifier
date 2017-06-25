@@ -117,26 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AlignBottom" xml:space="preserve">
-    <value>Align Bottom</value>
-  </data>
   <data name="AlignCentre" xml:space="preserve">
     <value>Align Centre</value>
-  </data>
-  <data name="AlignLeft" xml:space="preserve">
-    <value>Align Left</value>
-  </data>
-  <data name="AlignRight" xml:space="preserve">
-    <value>Align Right</value>
-  </data>
-  <data name="AlignTop" xml:space="preserve">
-    <value>Align Top</value>
-  </data>
-  <data name="AlignXMiddle" xml:space="preserve">
-    <value>Align X Middle</value>
-  </data>
-  <data name="AlignYMiddle" xml:space="preserve">
-    <value>Align Y Middle</value>
   </data>
   <data name="AppId" xml:space="preserve">
     <value>App Id</value>
@@ -158,18 +140,6 @@
   </data>
   <data name="IsPinned" xml:space="preserve">
     <value>Is Pinned</value>
-  </data>
-  <data name="NudgeDown" xml:space="preserve">
-    <value>Nudge Down</value>
-  </data>
-  <data name="NudgeLeft" xml:space="preserve">
-    <value>Nudge Left</value>
-  </data>
-  <data name="NudgeRight" xml:space="preserve">
-    <value>Nudge Right</value>
-  </data>
-  <data name="NudgeUp" xml:space="preserve">
-    <value>Nudge Up</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>OK</value>
