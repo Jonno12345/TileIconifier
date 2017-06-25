@@ -61,10 +61,10 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             set { lblHeader.Text = value; }
         }
         
-        public Size PannablePictureBoxSize
+        public Size PannablePictureBoxOutputSize
         {
-            get { return panPct.Size; }
-            set { panPct.Size = value; }
+            get { return panPct.OutputSize; }
+            set { panPct.OutputSize = value; }
         }        
 
         public event EventHandler ChangeImageClick;

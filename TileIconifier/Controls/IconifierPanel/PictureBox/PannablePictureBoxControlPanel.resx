@@ -193,7 +193,7 @@
     <value>btnEnlarge</value>
   </data>
   <data name="&gt;&gt;btnEnlarge.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.30023, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.32977, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnEnlarge.Parent" xml:space="preserve">
     <value>flpCommands</value>
@@ -226,7 +226,7 @@
     <value>btnShrink</value>
   </data>
   <data name="&gt;&gt;btnShrink.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.30023, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.32977, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnShrink.Parent" xml:space="preserve">
     <value>flpCommands</value>
@@ -259,7 +259,7 @@
     <value>btnReset</value>
   </data>
   <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.30023, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.32977, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnReset.Parent" xml:space="preserve">
     <value>flpCommands</value>
@@ -292,7 +292,7 @@
     <value>btnAlign</value>
   </data>
   <data name="&gt;&gt;btnAlign.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.30023, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.32977, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnAlign.Parent" xml:space="preserve">
     <value>flpCommands</value>
@@ -325,7 +325,7 @@
     <value>btnOpenImage</value>
   </data>
   <data name="&gt;&gt;btnOpenImage.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6354.30023, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.32977, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnOpenImage.Parent" xml:space="preserve">
     <value>flpCommands</value>
@@ -391,7 +391,7 @@
     <value>trkZoom</value>
   </data>
   <data name="&gt;&gt;trkZoom.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTrackBar, TileIconifier, Version=2.2.6354.30023, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTrackBar, TileIconifier, Version=2.2.6385.32977, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trkZoom.Parent" xml:space="preserve">
     <value>pnlZoomTrack</value>
@@ -423,14 +423,17 @@
   <data name="panPct.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
+  <data name="panPct.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="panPct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 44</value>
+    <value>52, 56</value>
   </data>
   <data name="panPct.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panPct.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 50</value>
+    <value>27, 27</value>
   </data>
   <data name="panPct.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -439,7 +442,7 @@
     <value>panPct</value>
   </data>
   <data name="&gt;&gt;panPct.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6354.30023, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6385.32977, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panPct.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>

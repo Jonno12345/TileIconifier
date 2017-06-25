@@ -148,8 +148,6 @@
             // panPct
             // 
             resources.ApplyResources(this.panPct, "panPct");
-            this.panPct.AssociatedSize = new System.Drawing.Size(0, 0);
-            this.panPct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panPct.Name = "panPct";
             // 
             // lblHeader

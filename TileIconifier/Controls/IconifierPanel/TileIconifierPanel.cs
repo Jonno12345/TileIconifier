@@ -134,7 +134,7 @@ namespace TileIconifier.Controls.IconifierPanel
         {
             Action<PannablePictureBox> setBackColor = b =>
             {
-                b.BackColor = b.PannablePictureBoxImage.Image == null
+                b.ImageBackColor = b.PannablePictureBoxImage.Image == null
                     ? _currentBaseSkin.BackColor
                     : color == null ? _currentBaseSkin.BackColor : ColorUtils.HexOrNameToColor(color);
                 b.Refresh();
@@ -169,7 +169,7 @@ namespace TileIconifier.Controls.IconifierPanel
         private void UpdatePictureBoxOverlay(PannablePictureBox pannablePictureBox, ShortcutItem currentShortcutItem)
         {
             pannablePictureBox.ShowTextOverlay = currentShortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo;
-            pannablePictureBox.OverlayColor = currentShortcutItem.Properties.CurrentState.ForegroundText == "light"
+            pannablePictureBox.TextOverlayColor = currentShortcutItem.Properties.CurrentState.ForegroundText == "light"
                 ? Color.White
                 : Color.Black;
             pannablePictureBox.TextOverlay = Path.GetFileNameWithoutExtension(currentShortcutItem.ShortcutFileInfo.Name);
@@ -278,7 +278,8 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void SetupPannablePictureBoxes()
         {
-            _panPctMediumIcon.TextOverlayPoint = new Point(6, 78);
+            //TODO: Set this with the output size
+            _panPctMediumIcon.TextOverlayLocation = new Point(6, 78);
 
             _pannablePictureBoxMetaDatas.Add(new PannablePictureBoxMetaData
             {

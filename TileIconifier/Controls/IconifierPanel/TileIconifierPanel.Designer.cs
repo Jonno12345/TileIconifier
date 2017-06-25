@@ -100,7 +100,7 @@ namespace TileIconifier.Controls.IconifierPanel
             // 
             resources.ApplyResources(this.pannablePictureBoxControlPanelMedium, "pannablePictureBoxControlPanelMedium");
             this.pannablePictureBoxControlPanelMedium.Name = "pannablePictureBoxControlPanelMedium";
-            this.pannablePictureBoxControlPanelMedium.PannablePictureBoxSize = new System.Drawing.Size(100, 100);
+            this.pannablePictureBoxControlPanelMedium.PannablePictureBoxOutputSize = new System.Drawing.Size(100, 100);
             // 
             // colorPanel
             // 
@@ -113,7 +113,7 @@ namespace TileIconifier.Controls.IconifierPanel
             resources.ApplyResources(this.pannablePictureBoxControlPanelSmall, "pannablePictureBoxControlPanelSmall");
             this.tableLayoutPanel2.SetColumnSpan(this.pannablePictureBoxControlPanelSmall, 2);
             this.pannablePictureBoxControlPanelSmall.Name = "pannablePictureBoxControlPanelSmall";
-            this.pannablePictureBoxControlPanelSmall.PannablePictureBoxSize = new System.Drawing.Size(50, 50);
+            this.pannablePictureBoxControlPanelSmall.PannablePictureBoxOutputSize = new System.Drawing.Size(50, 50);
             // 
             // chkUseSameImg
             // 

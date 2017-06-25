@@ -128,10 +128,7 @@
       <DependentUpon>AlignImageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBox.Designer.cs">
-      <DependentUpon>PannablePictureBox.cs</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxControlPanel.cs">
       <SubType>UserControl</SubType>
@@ -350,9 +347,6 @@
     </Compile>
     <EmbeddedResource Include="Controls\AllOrCurrentUserRadios.resx">
       <DependentUpon>AllOrCurrentUserRadios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\IconifierPanel\PictureBox\PannablePictureBox.resx">
-      <DependentUpon>PannablePictureBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxControlPanel.resx">
       <DependentUpon>PannablePictureBoxControlPanel.cs</DependentUpon>
