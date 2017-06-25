@@ -44,7 +44,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             resources.ApplyResources(this.btnCreateNewShortcut, "btnCreateNewShortcut");
             this.btnCreateNewShortcut.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCreateNewShortcut.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.btnCreateNewShortcut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCreateNewShortcut.Name = "btnCreateNewShortcut";
             this.btnCreateNewShortcut.UseVisualStyleBackColor = true;
@@ -67,7 +66,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             resources.ApplyResources(this.btnDeleteCustomShortcut, "btnDeleteCustomShortcut");
             this.btnDeleteCustomShortcut.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDeleteCustomShortcut.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.btnDeleteCustomShortcut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnDeleteCustomShortcut.Name = "btnDeleteCustomShortcut";
             this.btnDeleteCustomShortcut.UseVisualStyleBackColor = true;
@@ -89,7 +87,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             resources.ApplyResources(this.btnGotoShortcut, "btnGotoShortcut");
             this.btnGotoShortcut.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGotoShortcut.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.btnGotoShortcut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnGotoShortcut.Name = "btnGotoShortcut";
             this.btnGotoShortcut.UseVisualStyleBackColor = true;
@@ -97,8 +94,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // FrmCustomShortcutManagerMain
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnGotoShortcut);
             this.Controls.Add(this.lstCustomShortcuts);
             this.Controls.Add(this.btnDeleteCustomShortcut);

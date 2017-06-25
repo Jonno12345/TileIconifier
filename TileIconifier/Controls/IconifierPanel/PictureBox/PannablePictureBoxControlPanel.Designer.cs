@@ -166,10 +166,10 @@
             // 
             // PannablePictureBoxControlPanel
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PannablePictureBoxControlPanel";
-            resources.ApplyResources(this, "$this");
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flpCommands.ResumeLayout(false);

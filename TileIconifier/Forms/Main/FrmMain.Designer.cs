@@ -321,8 +321,8 @@ namespace TileIconifier.Forms.Main
             // 
             // FrmMain
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.mnuMain);
             this.MainMenuStrip = this.mnuMain;

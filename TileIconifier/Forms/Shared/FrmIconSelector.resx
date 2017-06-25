@@ -193,7 +193,7 @@
     <value>btnOk</value>
   </data>
   <data name="&gt;&gt;btnOk.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.36068, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.34360, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnOk.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -259,7 +259,7 @@
     <value>radIconFromTarget</value>
   </data>
   <data name="&gt;&gt;radIconFromTarget.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6306.36068, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6385.34360, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;radIconFromTarget.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -283,7 +283,7 @@
     <value>txtImagePath</value>
   </data>
   <data name="&gt;&gt;txtImagePath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.36068, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6385.34360, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtImagePath.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -322,7 +322,7 @@
     <value>btnCancel</value>
   </data>
   <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.36068, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.34360, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -346,7 +346,7 @@
     <value>txtPathToExtractFrom</value>
   </data>
   <data name="&gt;&gt;txtPathToExtractFrom.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.36068, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6385.34360, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtPathToExtractFrom.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -385,7 +385,7 @@
     <value>btnBrowseIconPath</value>
   </data>
   <data name="&gt;&gt;btnBrowseIconPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.36068, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.34360, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnBrowseIconPath.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -409,7 +409,7 @@
     <value>cmbCommonIconDlls</value>
   </data>
   <data name="&gt;&gt;cmbCommonIconDlls.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableComboBox, TileIconifier, Version=2.2.6306.36068, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableComboBox, TileIconifier, Version=2.2.6385.34360, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cmbCommonIconDlls.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -484,7 +484,7 @@
     <value>btnBrowseCustomImage</value>
   </data>
   <data name="&gt;&gt;btnBrowseCustomImage.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.36068, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.34360, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnBrowseCustomImage.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -511,7 +511,7 @@
     <value>lvwIcons</value>
   </data>
   <data name="&gt;&gt;lvwIcons.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableListView, TileIconifier, Version=2.2.6306.36068, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableListView, TileIconifier, Version=2.2.6385.34360, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lvwIcons.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -544,7 +544,7 @@
     <value>radUseCustomImage</value>
   </data>
   <data name="&gt;&gt;radUseCustomImage.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6306.36068, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6385.34360, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;radUseCustomImage.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -615,6 +615,9 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>89</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>601, 404</value>
   </data>
@@ -1095,6 +1098,6 @@
     <value>FrmIconSelector</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6306.36068, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6385.34360, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

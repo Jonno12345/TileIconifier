@@ -117,31 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;rtxtHelp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="rtxtHelp.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;rtxtHelp.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="rtxtHelp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="rtxtHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>637, 238</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="rtxtHelp.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6021.23420, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="rtxtHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>637, 238</value>
-  </data>
-  <data name="rtxtHelp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>637, 238</value>
-  </data>
-  <data name="&gt;&gt;rtxtHelp.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="rtxtHelp.Text" xml:space="preserve">
     <value>This is used to create custom shortcuts that otherwise wouldn't be TileIconifiable. It works by generating VBS files, which do show as valid tiles.
@@ -155,14 +144,26 @@ Current user shortcut files will be added to:
 All user shortcut files will be added to:
 [@@PROGRAMALLUSERSHORTCUTPATH@@]</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FrmCustomShortcutManagerHelp</value>
-  </data>
   <data name="&gt;&gt;rtxtHelp.Name" xml:space="preserve">
     <value>rtxtHelp</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Custom Shortcut Manager - About</value>
+  <data name="&gt;&gt;rtxtHelp.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableRichTextBox, TileIconifier, Version=2.2.6385.34383, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rtxtHelp.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;rtxtHelp.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>637, 238</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -622,14 +623,13 @@ All user shortcut files will be added to:
         QmCC
 </value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="rtxtHelp.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Custom Shortcut Manager - About</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ru</value>
-  </metadata>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmCustomShortcutManagerHelp</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6385.34383, Culture=neutral, PublicKeyToken=null</value>
+  </data>
 </root>

@@ -35,14 +35,14 @@ namespace TileIconifier.Controls.IconifierPanel
             this.pnlImages = new System.Windows.Forms.Panel();
             this.lblUnsaved = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.cmsPicBox = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tmiChangeImage = new System.Windows.Forms.ToolStripMenuItem();
-            this.tmiCentreImage = new System.Windows.Forms.ToolStripMenuItem();
             this.btnReset = new TileIconifier.Controls.SkinnableButton();
             this.pannablePictureBoxControlPanelMedium = new TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel();
             this.colorPanel = new TileIconifier.Controls.IconifierPanel.ColorPanel();
             this.pannablePictureBoxControlPanelSmall = new TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel();
             this.chkUseSameImg = new TileIconifier.Controls.SkinnableCheckBox();
+            this.cmsPicBox = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tmiChangeImage = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmiCentreImage = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2.SuspendLayout();
             this.cmsPicBox.SuspendLayout();
             this.SuspendLayout();
@@ -68,26 +68,6 @@ namespace TileIconifier.Controls.IconifierPanel
             this.tableLayoutPanel2.Controls.Add(this.pannablePictureBoxControlPanelSmall, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.chkUseSameImg, 0, 1);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            // 
-            // cmsPicBox
-            // 
-            this.cmsPicBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tmiChangeImage,
-            this.tmiCentreImage});
-            this.cmsPicBox.Name = "cmsPicBox";
-            resources.ApplyResources(this.cmsPicBox, "cmsPicBox");
-            // 
-            // tmiChangeImage
-            // 
-            this.tmiChangeImage.Name = "tmiChangeImage";
-            resources.ApplyResources(this.tmiChangeImage, "tmiChangeImage");
-            this.tmiChangeImage.Click += new System.EventHandler(this.tmiChangeImage_Click);
-            // 
-            // tmiCentreImage
-            // 
-            this.tmiCentreImage.Name = "tmiCentreImage";
-            resources.ApplyResources(this.tmiCentreImage, "tmiCentreImage");
-            this.tmiCentreImage.Click += new System.EventHandler(this.tmiCentreImage_Click);
             // 
             // btnReset
             // 
@@ -124,13 +104,33 @@ namespace TileIconifier.Controls.IconifierPanel
             this.chkUseSameImg.Name = "chkUseSameImg";
             this.chkUseSameImg.UseVisualStyleBackColor = true;
             // 
+            // cmsPicBox
+            // 
+            this.cmsPicBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tmiChangeImage,
+            this.tmiCentreImage});
+            this.cmsPicBox.Name = "cmsPicBox";
+            resources.ApplyResources(this.cmsPicBox, "cmsPicBox");
+            // 
+            // tmiChangeImage
+            // 
+            this.tmiChangeImage.Name = "tmiChangeImage";
+            resources.ApplyResources(this.tmiChangeImage, "tmiChangeImage");
+            this.tmiChangeImage.Click += new System.EventHandler(this.tmiChangeImage_Click);
+            // 
+            // tmiCentreImage
+            // 
+            this.tmiCentreImage.Name = "tmiCentreImage";
+            resources.ApplyResources(this.tmiCentreImage, "tmiCentreImage");
+            this.tmiCentreImage.Click += new System.EventHandler(this.tmiCentreImage_Click);
+            // 
             // TileIconifierPanel
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.pnlImages);
             this.Name = "TileIconifierPanel";
-            resources.ApplyResources(this, "$this");
             this.Load += new System.EventHandler(this.TileIconifierPanel_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

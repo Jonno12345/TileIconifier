@@ -62,7 +62,6 @@ namespace TileIconifier.Forms
 
         protected override void OnLoad(EventArgs e)
         {
-
             Icon = Resources.tiles2_shadow_lyk_icon;
 
             SkinHandler.SkinChanged += OnSkinChanged;
