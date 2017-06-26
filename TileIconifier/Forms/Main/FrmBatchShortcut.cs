@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
@@ -75,16 +76,15 @@ namespace TileIconifier.Forms.Main
 
         private void UpdateListViewBoxItems()
         {
-            var smallImageList = new ImageList();
+            ilsIconifiedItemsSmallIcons.Images.Clear();
             for (var i = 0; i < _iconifiedItems.Count; i++)
             {
                 var shortcutItem = _iconifiedItems[i];
                 lstIconifiedItems.Items.Add(shortcutItem);
-                smallImageList.Images.Add(shortcutItem.ShortcutItem.StandardIcon ??
+                ilsIconifiedItemsSmallIcons.Images.Add(shortcutItem.ShortcutItem.StandardIcon ??
                                           Resources.QuestionMark);
                 shortcutItem.ImageIndex = i;
-            }
-            lstIconifiedItems.SmallImageList = smallImageList;
+            }            
         }
 
         private void btnSelectAll_Click(object sender, EventArgs e)
@@ -241,6 +241,14 @@ namespace TileIconifier.Forms.Main
             {
                 FormUtils.ShowMessage(this, Strings.Completed, Strings.Completed);
             }
+        }
+
+        protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
+        {
+            var scaler = new ComponentScalingHandler(factor, specified);
+            scaler.Scale(ilsIconifiedItemsSmallIcons);
+
+            base.ScaleControl(factor, specified);
         }
     }
 }

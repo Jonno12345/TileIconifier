@@ -102,6 +102,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComponentScalingHandler.cs" />
     <Compile Include="Controls\AllOrCurrentUserRadios.cs">
       <SubType>UserControl</SubType>
     </Compile>

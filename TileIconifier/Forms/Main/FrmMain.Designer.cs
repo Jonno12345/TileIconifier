@@ -31,6 +31,7 @@ namespace TileIconifier.Forms.Main
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.txtFilter = new TileIconifier.Controls.SkinnableTextBox();
             this.lblFilter = new System.Windows.Forms.Label();
@@ -65,6 +66,7 @@ namespace TileIconifier.Forms.Main
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblBadShortcutWarning = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ilsShortcutItemsSmallIcons = new System.Windows.Forms.ImageList(this.components);
             this.mnuMain.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -115,6 +117,7 @@ namespace TileIconifier.Forms.Main
             this.srtlstShortcuts.HideSelection = false;
             this.srtlstShortcuts.MultiSelect = false;
             this.srtlstShortcuts.Name = "srtlstShortcuts";
+            this.srtlstShortcuts.SmallImageList = this.ilsShortcutItemsSmallIcons;
             this.srtlstShortcuts.UseCompatibleStateImageBehavior = false;
             this.srtlstShortcuts.View = System.Windows.Forms.View.Details;
             this.srtlstShortcuts.SelectedIndexChanged += new System.EventHandler(this.srtlstShortcuts_SelectedIndexChanged);
@@ -319,6 +322,12 @@ namespace TileIconifier.Forms.Main
             this.tableLayoutPanel1.Controls.Add(this.txtLnkPath, 0, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
+            // ilsShortcutItemsSmallIcons
+            // 
+            this.ilsShortcutItemsSmallIcons.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            resources.ApplyResources(this.ilsShortcutItemsSmallIcons, "ilsShortcutItemsSmallIcons");
+            this.ilsShortcutItemsSmallIcons.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // FrmMain
             // 
             resources.ApplyResources(this, "$this");
@@ -371,6 +380,7 @@ namespace TileIconifier.Forms.Main
         private System.Windows.Forms.Label lblBadShortcutWarning;
         private System.Windows.Forms.ToolStripMenuItem mnuBatchOperations;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ImageList ilsShortcutItemsSmallIcons;
     }
 }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBatchShortcut));
             this.btnBatchAmendBackgroundColor = new TileIconifier.Controls.SkinnableButton();
             this.pctColorPreview = new System.Windows.Forms.PictureBox();
@@ -37,6 +38,7 @@
             this.lstIconifiedItems = new TileIconifier.Controls.SortableListView();
             this.btnAmendForegroundColor = new TileIconifier.Controls.SkinnableButton();
             this.btnAmendForegroundText = new TileIconifier.Controls.SkinnableButton();
+            this.ilsIconifiedItemsSmallIcons = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pctColorPreview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,6 +106,7 @@
             this.lstIconifiedItems.Location = new System.Drawing.Point(12, 12);
             this.lstIconifiedItems.Name = "lstIconifiedItems";
             this.lstIconifiedItems.Size = new System.Drawing.Size(348, 275);
+            this.lstIconifiedItems.SmallImageList = this.ilsIconifiedItemsSmallIcons;
             this.lstIconifiedItems.TabIndex = 0;
             this.lstIconifiedItems.UseCompatibleStateImageBehavior = false;
             this.lstIconifiedItems.View = System.Windows.Forms.View.Details;
@@ -130,6 +133,12 @@
             this.btnAmendForegroundText.Text = "Amend Foreground Text";
             this.btnAmendForegroundText.UseVisualStyleBackColor = true;
             this.btnAmendForegroundText.Click += new System.EventHandler(this.btnAmendForegroundText_Click);
+            // 
+            // ilsIconifiedItemsSmallIcons
+            // 
+            this.ilsIconifiedItemsSmallIcons.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.ilsIconifiedItemsSmallIcons.ImageSize = new System.Drawing.Size(16, 16);
+            this.ilsIconifiedItemsSmallIcons.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // FrmBatchShortcut
             // 
@@ -167,5 +176,6 @@
         private TileIconifier.Controls.SkinnableButton btnBatchAmendBackgroundColor;
         private TileIconifier.Controls.SkinnableButton btnAmendForegroundColor;
         private TileIconifier.Controls.SkinnableButton btnAmendForegroundText;
+        private System.Windows.Forms.ImageList ilsIconifiedItemsSmallIcons;
     }
 }

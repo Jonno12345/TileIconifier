@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -59,17 +60,16 @@ namespace TileIconifier.Forms.CustomShortcutForms
 
             BuildListBoxColumns();
 
-            var smallImageList = new ImageList();
+            ilsCustomShortcutsSmallIcons.Images.Clear();
             for (var i = 0; i < _customShortcutsList.Count; i++)
             {
-                smallImageList.Images.Add(
+                ilsCustomShortcutsSmallIcons.Images.Add(
                     _customShortcutsList[i].CustomShortcut.ShortcutItem.Properties.CurrentState.MediumImage.CachedImage() ??
                     (_customShortcutsList[i].CustomShortcut.ShortcutItem.StandardIcon ??
                      Resources.QuestionMark));
                 _customShortcutsList[i].ImageIndex = i;
                 lstCustomShortcuts.Items.Add(_customShortcutsList[i]);
             }
-            lstCustomShortcuts.SmallImageList = smallImageList;
         }
 
         private void BuildListBoxColumns()
@@ -162,6 +162,14 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private void FrmCustomShortcutManagerMain_Resize(object sender, EventArgs e)
         {
             BuildListBoxColumns();
+        }
+
+        protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
+        {
+            var scaler = new ComponentScalingHandler(factor, specified);
+            scaler.Scale(ilsCustomShortcutsSmallIcons);
+
+            base.ScaleControl(factor, specified);
         }
     }
 }

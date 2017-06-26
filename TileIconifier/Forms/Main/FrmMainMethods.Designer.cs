@@ -102,17 +102,16 @@ namespace TileIconifier.Forms.Main
         private void BuildShortcutList()
         {
             srtlstShortcuts.Items.Clear();
-
-            var smallImageList = new ImageList();
+            ilsShortcutItemsSmallIcons.Images.Clear();
+            
             for (var i = 0; i < _filteredList.Count; i++)
             {
                 var shortcutItem = _filteredList[i];
                 srtlstShortcuts.Items.Add(shortcutItem);
-                smallImageList.Images.Add(shortcutItem.ShortcutItem.StandardIcon ??
+                ilsShortcutItemsSmallIcons.Images.Add(shortcutItem.ShortcutItem.StandardIcon ??
                                           Resources.QuestionMark);
                 shortcutItem.ImageIndex = i;
-            }
-            srtlstShortcuts.SmallImageList = smallImageList;
+            }            
 
             if (srtlstShortcuts.Items.Count > 0)
             {
