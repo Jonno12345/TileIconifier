@@ -31,9 +31,8 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using TileIconifier.Core.Utilities;
-using TileIconifier.Properties;
 using TileIconifier.Skinning;
+using TileIconifier.Skinning.Utilities;
 using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls.IconifierPanel.PictureBox
@@ -397,7 +396,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             //"Unscale" the provided point so that the panning follow the mouse.
             var scaleFactor = GetControlScaleFactor();
             var location = e.Location;
-            ScalePoint(ref location, new SizeF(1 / scaleFactor, 1 / scaleFactor));
+            LayoutAndPaintUtils.ScalePoint(ref location, new SizeF(1 / scaleFactor, 1 / scaleFactor));
 
             _startingPoint = new Point(location.X - _movingPoint.X,
                 location.Y - _movingPoint.Y);
@@ -422,7 +421,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             //"Unscale" the provided point so that the panning follow the mouse.
             var scaleFactor = GetControlScaleFactor();
             var location = e.Location;
-            ScalePoint(ref location, new SizeF(1 / scaleFactor, 1 / scaleFactor));
+            LayoutAndPaintUtils.ScalePoint(ref location, new SizeF(1 / scaleFactor, 1 / scaleFactor));
 
             _movingPoint = new Point(location.X - _startingPoint.X,
                 location.Y - _startingPoint.Y);
@@ -722,23 +721,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
                 PannablePictureBoxImage.Y = (int)y;
             TriggerUpdate();
         }
-
-        //TODO re-use drawing helpers
-        /// <summary>
-        ///     Scale a point using the specified scaling factor.
-        /// </summary>
-        /// <param name="pt"><see cref="Point"/> to scale</param>
-        /// <param name="scale"><see cref="SizeF"/> specifiying the scaling factor for each axis of the point.</param>
-        private void ScalePoint(ref Point pt, SizeF scale)
-        {
-            var ptF = (PointF)pt;
-
-            ptF.X *= scale.Width;
-            ptF.Y *= scale.Height;
-
-            pt = Point.Round(ptF);
-        }
-
+        
         /// <summary>
         ///     Returns the bounding rectangle of the region where the image can be drawn.
         /// </summary>        

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using TileIconifier.Skinning.Skins;
+using TileIconifier.Skinning.Utilities;
 
 namespace TileIconifier.Controls
 {
@@ -198,7 +199,7 @@ namespace TileIconifier.Controls
                 TextFormatFlags flags =                     
                     TextFormatFlags.VerticalCenter |
                     TextFormatFlags.EndEllipsis |
-                    ConvertToTextFormatFlags(e.Header.TextAlign); //Header.TextAlign is already Rtl translated
+                    LayoutAndPaintUtils.ConvertToTextFormatFlags(e.Header.TextAlign); //Header.TextAlign is already Rtl translated
 
                 TextRenderer.DrawText(e.Graphics, e.Header.Text, Font, e.Bounds, FlatHeaderForeColor, flags);
             }
@@ -258,24 +259,6 @@ namespace TileIconifier.Controls
             using (var p = new Pen(bColor))
                 g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
             NativeMethods.ReleaseDC(Handle, hdc);
-        }
-
-        private TextFormatFlags ConvertToTextFormatFlags(HorizontalAlignment horiAlign)
-        {     
-            switch (horiAlign)
-            {
-                case HorizontalAlignment.Left:
-                    return TextFormatFlags.Left;
-
-                case HorizontalAlignment.Center:
-                    return TextFormatFlags.HorizontalCenter;
-
-                case HorizontalAlignment.Right:
-                    return TextFormatFlags.Right;
-
-                default:
-                    throw new ArgumentException("Unsupported horizontal alignement.");
-            }                
         }
 
         public void ApplySkin(BaseSkin skin)

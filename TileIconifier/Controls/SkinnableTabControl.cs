@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using TileIconifier.Skinning.Skins;
-using TileIconifier.Utilities;
+using TileIconifier.Skinning.Utilities;
 
 namespace TileIconifier.Controls
 {
@@ -501,7 +501,7 @@ namespace TileIconifier.Controls
             
             foreach (Control c in Controls)
             {
-                ContainerUtils.ApplySkinToControl(skin, c);
+                SkinUtils.ApplySkinToControl(skin, c);
             }          
         }        
     }

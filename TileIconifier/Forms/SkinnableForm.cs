@@ -32,7 +32,7 @@ using System.Windows.Forms;
 using TileIconifier.Properties;
 using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
-using TileIconifier.Utilities;
+using TileIconifier.Skinning.Utilities;
 
 namespace TileIconifier.Forms
 {
@@ -56,7 +56,7 @@ namespace TileIconifier.Forms
             //Apply the skin to any control newly added to the form.
             if (FormSkin != null && !DesignMode)
             {
-                ContainerUtils.ApplySkinToControl(FormSkin, e.Control);
+                SkinUtils.ApplySkinToControl(FormSkin, e.Control);
             }
         }
 
@@ -104,7 +104,7 @@ namespace TileIconifier.Forms
         {
             foreach (Control c in Controls)
             {
-                ContainerUtils.ApplySkinToControl(FormSkin, c);
+                SkinUtils.ApplySkinToControl(FormSkin, c);
             }
         }        
     }

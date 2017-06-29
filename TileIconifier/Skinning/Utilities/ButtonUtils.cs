@@ -1,21 +1,11 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace TileIconifier.Utilities
+namespace TileIconifier.Skinning.Utilities
 {
     internal static class ButtonUtils
     {
-        internal static readonly TextFormatFlags BaseTextFormatFlags = TextFormatFlags.WordBreak | TextFormatFlags.TextBoxControl;
-        
-        private static Rectangle CreatePaddedRectangle(Rectangle rect, Padding pad)
-        {
-            Rectangle r = Rectangle.FromLTRB(
-                    rect.Left + pad.Left,
-                    rect.Top + pad.Top,
-                    rect.Right - pad.Right,
-                    rect.Bottom - pad.Bottom);
-            return r;
-        }
+        private static readonly TextFormatFlags BaseTextFormatFlags = TextFormatFlags.WordBreak | TextFormatFlags.TextBoxControl;
         
         private static Size GetCheckBoxGlyphSize(Graphics graphics, FlatStyle flatStyle)
         {
@@ -57,7 +47,7 @@ namespace TileIconifier.Utilities
 
         private static Rectangle CreatePushButtonTextRectangle(Control control)
         {
-            return CreatePaddedRectangle(control.ClientRectangle, control.Padding);
+            return LayoutAndPaintUtils.InflateRectangle(control.ClientRectangle, control.Padding);
         }
 
         private static Rectangle CreateGlyphButtonTextRectangle(Control control, Size glyphSize)
@@ -68,7 +58,7 @@ namespace TileIconifier.Utilities
             //Some mysterious spacing on the left and right sides of the text.
             const int TEXT_LATTERAL_PADDING = 1;
 
-            Rectangle contentRect = CreatePaddedRectangle(control.ClientRectangle, control.Padding);
+            Rectangle contentRect = LayoutAndPaintUtils.InflateRectangle(control.ClientRectangle, control.Padding);
             Size checkAreaSize = new Size(glyphSize.Width + GLYPH_ADDITIONNAL_SPACE, glyphSize.Height + GLYPH_ADDITIONNAL_SPACE);
             Point textRectLocation;
             if (control.RightToLeft != RightToLeft.Yes)
@@ -84,42 +74,6 @@ namespace TileIconifier.Utilities
 
             return textRect;
         }
-                
-        /// <summary>
-        /// Converts a ContentAlignement value into a TextFormatFlags.
-        /// </summary>
-        /// <param name="contentAlign"></param>
-        /// <returns></returns>
-        private static TextFormatFlags ConvertToTextFormatFlags(ContentAlignment contentAlign)
-        {
-            TextFormatFlags flags = new TextFormatFlags();
-
-            //Top
-            if (contentAlign == ContentAlignment.TopLeft || contentAlign == ContentAlignment.TopCenter || contentAlign == ContentAlignment.TopRight)            
-                flags = flags | TextFormatFlags.Top;
-            
-            //Middle
-            if (contentAlign == ContentAlignment.MiddleLeft || contentAlign == ContentAlignment.MiddleCenter || contentAlign == ContentAlignment.MiddleRight)            
-                flags = flags | TextFormatFlags.VerticalCenter;            
-
-            //Bottom
-            if (contentAlign == ContentAlignment.BottomLeft || contentAlign == ContentAlignment.BottomCenter || contentAlign == ContentAlignment.BottomRight)
-                flags = flags | TextFormatFlags.Bottom;            
-
-            //Left
-            if (contentAlign == ContentAlignment.BottomLeft || contentAlign == ContentAlignment.MiddleLeft || contentAlign == ContentAlignment.TopLeft)            
-                flags = flags | TextFormatFlags.Left;
-           
-            //Center
-            if (contentAlign == ContentAlignment.BottomCenter || contentAlign == ContentAlignment.MiddleCenter || contentAlign == ContentAlignment.TopCenter)            
-                flags = flags | TextFormatFlags.HorizontalCenter;
-           
-            //Right
-            if (contentAlign == ContentAlignment.BottomRight || contentAlign == ContentAlignment.MiddleRight || contentAlign == ContentAlignment.TopRight)            
-                flags = flags | TextFormatFlags.Right;            
-
-            return flags;
-        }
 
         /// <summary>
         /// Returns a <see cref="TextFormatFlags"/> for the specified button.
@@ -132,7 +86,7 @@ namespace TileIconifier.Utilities
         /// <returns></returns>
         public static TextFormatFlags CreateTextFormatFlags(ButtonBase btn, ContentAlignment translatedContentAlign, bool showKeyboardCue)
         {
-            var flags = BaseTextFormatFlags | ConvertToTextFormatFlags(translatedContentAlign);
+            var flags = BaseTextFormatFlags | LayoutAndPaintUtils.ConvertToTextFormatFlags(translatedContentAlign);
 
             if (btn.RightToLeft == RightToLeft.Yes)
             {
