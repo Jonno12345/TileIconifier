@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TileIconifier.Skinning.Utilities
@@ -96,6 +93,112 @@ namespace TileIconifier.Skinning.Utilities
                 default:
                     throw new ArgumentException("Unsupported horizontal alignement.");
             }
+        }
+
+        /// <summary>
+        ///     Returns the client rectangle of the specified control with a location relative
+        ///     to the control's location.
+        /// </summary>       
+        public static Rectangle GetAbsoluteClientRectangle(Control control)
+        {
+            //Get the whole control rect relative to the screen.
+            var nonClientToScreen = new NativeMethods.RECT();
+            NativeMethods.GetWindowRect(control.Handle, ref nonClientToScreen);
+            //Get the client rectangle relative to the screen.
+            var clientToScreen = control.RectangleToScreen(control.ClientRectangle);
+
+            var clientRect = new Rectangle();
+            clientRect.X = clientToScreen.Left - nonClientToScreen.left;
+            clientRect.Y = clientToScreen.Top - nonClientToScreen.top;
+            clientRect.Size = clientToScreen.Size;
+
+            return clientRect;
+        }
+
+        //Adapted from https://referencesource.microsoft.com/#System.Windows.Forms/winforms/Managed/System/WinForms/ToolStripTextBox.cs
+        /// <summary>
+        ///     Invalidates the entire non-client area of the specified control.
+        /// </summary>        
+        public static void InvalidateNonClient(Control control)
+        {
+            var absoluteClientRectangle = GetAbsoluteClientRectangle(control);
+            var clientRect = new NativeMethods.RECT(control.ClientRectangle);
+            var hNonClientRegion = IntPtr.Zero;
+            var hClientRegion = IntPtr.Zero;
+            var hTotalRegion = IntPtr.Zero;
+
+            try
+            {
+                // get the total client area, then exclude the client by using XOR
+
+                //Note that even with the RDW_FRAME flag, RedrawWindow takes a region 
+                //relative to the client area. Therefore, the top left corner of the 
+                //non client area possibly has negative coordonates.
+                hTotalRegion = NativeMethods.CreateRectRgn(-absoluteClientRectangle.X, -absoluteClientRectangle.Y, control.Width, control.Height);
+                hClientRegion = NativeMethods.CreateRectRgn(
+                    clientRect.left,
+                    clientRect.top,
+                    clientRect.right,
+                    clientRect.bottom);
+                hNonClientRegion = NativeMethods.CreateRectRgn(0, 0, 0, 0);
+
+                NativeMethods.CombineRgn(hNonClientRegion, hTotalRegion, hClientRegion, NativeMethods.RGN_XOR);
+
+                // Call RedrawWindow with the region.
+                NativeMethods.RECT ignored = new NativeMethods.RECT();
+                NativeMethods.RedrawWindow(control.Handle, ref ignored, hNonClientRegion,
+                                               NativeMethods.RDW_INVALIDATE | //NativeMethods.RDW_ERASE |
+                                               //NativeMethods.RDW_UPDATENOW | NativeMethods.RDW_ERASENOW |
+                                               NativeMethods.RDW_FRAME);
+            }
+            finally
+            {
+                // clean up our regions.
+                try
+                {
+                    if (hNonClientRegion != IntPtr.Zero)
+                    {
+                        NativeMethods.DeleteObject(hNonClientRegion);
+                    }
+                }
+                finally
+                {
+                    try
+                    {
+                        if (hClientRegion != IntPtr.Zero)
+                        {
+                            NativeMethods.DeleteObject(hClientRegion);
+                        }
+                    }
+                    finally
+                    {
+                        if (hTotalRegion != IntPtr.Zero)
+                        {
+                            NativeMethods.DeleteObject(hTotalRegion);
+                        }
+                    }
+                }
+
+            }
+        }
+
+        /// <summary>
+        ///     Returns the handle of a new region identical to the one specified by the provided handle.
+        /// </summary>
+        /// <param name="hRgnToCopy">Handle to the region to copy.</param>        
+        internal static IntPtr CopyHRgn(IntPtr hRgnToCopy)
+        {
+            var hRgnCopy = NativeMethods.CreateRectRgn(0, 0, 0, 0);
+            var result = NativeMethods.CombineRgn(hRgnCopy, hRgnToCopy, IntPtr.Zero, NativeMethods.RGN_COPY);
+
+            if (result == 0)
+            {
+                //An error occured. Cleanup the region that we created before throwing an exception.
+                NativeMethods.DeleteObject(hRgnCopy);
+                throw new Win32Exception();
+            }
+
+            return hRgnCopy;
         }
     }
 }

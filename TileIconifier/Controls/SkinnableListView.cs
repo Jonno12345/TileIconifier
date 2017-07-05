@@ -144,8 +144,8 @@ namespace TileIconifier.Controls
                         if (FlatStyle == FlatStyle.Flat && 
                             (!Focused && Enabled || (Focused && FlatBorderFocusedColor.IsEmpty) ||
                             (!Enabled && FlatBorderDisabledColor.IsEmpty)))
-                        {                            
-                            Invalidate();
+                        {
+                            InvalidateNonClient();
                         }
                     }
                 }
@@ -164,7 +164,7 @@ namespace TileIconifier.Controls
                     flatBorderFocusedColor = value;
                     if (FlatStyle == FlatStyle.Flat && Focused)
                     {
-                        Invalidate();
+                        InvalidateNonClient();
                     }
                 }
             }
@@ -182,12 +182,32 @@ namespace TileIconifier.Controls
                     flatBorderDisabledColor = value;
                     if (FlatStyle == FlatStyle.Flat && !Enabled)
                     {
-                        Invalidate();
+                        InvalidateNonClient();
                     }
                 }
             }
         }
         #endregion
+
+        protected override void OnEnter(EventArgs e)
+        {
+            if (BorderStyle == BorderStyle.FixedSingle)
+            {
+                InvalidateNonClient();
+            }
+
+            base.OnEnter(e);
+        }
+
+        protected override void OnLeave(EventArgs e)
+        {
+            if (BorderStyle == BorderStyle.FixedSingle)
+            {
+                InvalidateNonClient();
+            }
+
+            base.OnLeave(e);
+        }
 
         protected override void OnDrawColumnHeader(DrawListViewColumnHeaderEventArgs e)
         {    
@@ -225,17 +245,22 @@ namespace TileIconifier.Controls
             base.OnDrawSubItem(e); 
         }
 
+        private void InvalidateNonClient()
+        {
+            LayoutAndPaintUtils.InvalidateNonClient(this);
+        }
+
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
 
-            if (m.Msg == NativeMethods.WM_PAINT && FlatStyle == FlatStyle.Flat)
+            if (m.Msg == NativeMethods.WM_NCPAINT && FlatStyle == FlatStyle.Flat)
             {
-                DrawFlatBorder();
+                PaintCustomBorder(m.HWnd, m.WParam);
             }                
         }
 
-        private void DrawFlatBorder()
+        private void PaintCustomBorder(IntPtr hDC, IntPtr hRgn)
         {
             Color bColor;
             if (!Enabled && !FlatBorderDisabledColor.IsEmpty)
@@ -245,20 +270,26 @@ namespace TileIconifier.Controls
             else if (Focused && !FlatBorderFocusedColor.IsEmpty)
             {
                 bColor = FlatBorderFocusedColor;
-            }            
-            else
+            }
+            else if (FlatBorderColor != SystemColors.WindowFrame)
             {
-                //Unlike with the SkinnableTextBox, we need to draw the standard
-                //frame even if no color is specified for the standard state, because
-                //otherwise, the previous color gets stuck. 
                 bColor = FlatBorderColor;
             }
-            
-            IntPtr hdc = NativeMethods.GetWindowDC(Handle);
-            using (var g = Graphics.FromHdc(hdc))
-            using (var p = new Pen(bColor))
-                g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
-            NativeMethods.ReleaseDC(Handle, hdc);
+            else
+            {
+                //Regular border, which has already been drawn by the system at this point
+                return;
+            }
+
+            using (var ncg = new NonClientGraphics(hDC, hRgn))
+            {
+                if (ncg.Graphics == null)
+                {
+                    return;
+                }
+
+                ControlPaint.DrawBorder(ncg.Graphics, new Rectangle(new Point(0), Size), bColor, ButtonBorderStyle.Solid);
+            }
         }
 
         public void ApplySkin(BaseSkin skin)

@@ -40,7 +40,7 @@ using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.Shared;
 using TileIconifier.Skinning.Skins;
-using TileIconifier.Skinning.Utilities;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls.IconifierPanel
 {
@@ -383,7 +383,7 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void tmiChangeImage_Click(object sender, EventArgs e)
         {
-            var panPctBox = SkinUtils.GetToolStripSourceControl(sender);
+            var panPctBox = ControlUtils.GetToolStripSourceControl(sender);
             if (panPctBox != null)
             {
                 IconSet(panPctBox);
@@ -392,7 +392,7 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void tmiCentreImage_Click(object sender, EventArgs e)
         {
-            var panPctBox = SkinUtils.GetToolStripSourceControl(sender) as PannablePictureBox;
+            var panPctBox = ControlUtils.GetToolStripSourceControl(sender) as PannablePictureBox;
             if (panPctBox != null)
             {
                 panPctBox.CenterImage();
