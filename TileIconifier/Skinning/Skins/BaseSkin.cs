@@ -29,6 +29,7 @@
 
 using System.Drawing;
 using System.Windows.Forms;
+using TileIconifier.Controls;
 
 namespace TileIconifier.Skinning.Skins
 {
@@ -70,8 +71,10 @@ namespace TileIconifier.Skinning.Skins
         public virtual Color TextBoxBorderDisabledColor => Color.Empty; //not used
         #endregion
 
-        #region "ListView"        
-        public virtual FlatStyle ListViewFlatStyle => FlatStyle.Standard;
+        #region "ListView" 
+        public virtual bool ListViewUseExplorerStyle => true;
+        public virtual BorderStyle ListViewBorderStyle => BorderStyle.Fixed3D;
+        public virtual ListViewHeaderAppearance ListViewHeaderStyle => ListViewHeaderAppearance.Standard;
         public virtual Color ListViewBackColor => SystemColors.Window;
         public virtual Color ListViewForeColor => SystemColors.WindowText;
         public virtual Color ListViewHeaderBackColor => SystemColors.Control; //not used

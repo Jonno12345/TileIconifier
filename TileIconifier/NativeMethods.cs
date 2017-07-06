@@ -62,6 +62,9 @@ namespace TileIconifier
         [DllImport("gdi32.dll", SetLastError = true, ExactSpelling = true, CharSet = CharSet.Auto)]        
         public static extern bool DeleteObject(IntPtr hObject);
 
+        //UXTheme
+        [DllImport("uxtheme.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
+        public static extern int SetWindowTheme(IntPtr hwnd, string pszSubAppName, string pszSubIdList);
 
         [StructLayout(LayoutKind.Sequential)]
         public struct RECT

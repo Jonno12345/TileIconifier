@@ -77,7 +77,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             resources.ApplyResources(this.lstCustomShortcuts, "lstCustomShortcuts");
             this.lstCustomShortcuts.BackColor = System.Drawing.SystemColors.Window;
-            this.lstCustomShortcuts.FlatBorderColor = System.Drawing.Color.Empty;
+            this.lstCustomShortcuts.BorderColor = System.Drawing.Color.Empty;
             this.lstCustomShortcuts.ForeColor = System.Drawing.SystemColors.WindowText;
             this.lstCustomShortcuts.FullRowSelect = true;
             this.lstCustomShortcuts.HideSelection = false;

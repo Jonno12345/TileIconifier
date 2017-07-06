@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("ghjh");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("yufu");
             this.skinnableComboBox1 = new TileIconifier.Controls.SkinnableComboBox();
             this.skinnableRichTextBox1 = new TileIconifier.Controls.SkinnableRichTextBox();
             this.skinnableCheckBox1 = new TileIconifier.Controls.SkinnableCheckBox();
             this.skinnableListView1 = new TileIconifier.Controls.SkinnableListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.skinnableTextBox1 = new TileIconifier.Controls.SkinnableTextBox();
             this.SuspendLayout();
             // 
@@ -75,15 +77,26 @@
             // 
             // skinnableListView1
             // 
-            this.skinnableListView1.FlatBorderFocusedColor = System.Drawing.Color.Red;
-            this.skinnableListView1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.skinnableListView1.BorderFocusedColor = System.Drawing.Color.Red;
+            this.skinnableListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.skinnableListView1.FlatHeaderBackColor = System.Drawing.Color.PaleGoldenrod;
+            this.skinnableListView1.FlatHeaderForeColor = System.Drawing.Color.CornflowerBlue;
+            this.skinnableListView1.HeaderAppearance = TileIconifier.Controls.ListViewHeaderAppearance.Flat;
             this.skinnableListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem1,
+            listViewItem2});
             this.skinnableListView1.Location = new System.Drawing.Point(93, 160);
             this.skinnableListView1.Name = "skinnableListView1";
-            this.skinnableListView1.Size = new System.Drawing.Size(121, 97);
+            this.skinnableListView1.Size = new System.Drawing.Size(132, 97);
             this.skinnableListView1.TabIndex = 1;
             this.skinnableListView1.UseCompatibleStateImageBehavior = false;
+            this.skinnableListView1.UseExplorerStyle = false;
+            this.skinnableListView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Width = 99;
             // 
             // skinnableTextBox1
             // 
@@ -120,5 +133,6 @@
         private Controls.SkinnableCheckBox skinnableCheckBox1;
         private Controls.SkinnableRichTextBox skinnableRichTextBox1;
         private Controls.SkinnableComboBox skinnableComboBox1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

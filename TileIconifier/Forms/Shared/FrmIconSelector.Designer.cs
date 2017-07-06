@@ -152,8 +152,7 @@ namespace TileIconifier.Forms.Shared
             // lvwIcons
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.lvwIcons, 5);
-            resources.ApplyResources(this.lvwIcons, "lvwIcons");
-            this.lvwIcons.DrawStandardItems = false;
+            resources.ApplyResources(this.lvwIcons, "lvwIcons");            
             this.lvwIcons.MultiSelect = false;
             this.lvwIcons.Name = "lvwIcons";
             this.lvwIcons.TileSize = new System.Drawing.Size(50, 50);

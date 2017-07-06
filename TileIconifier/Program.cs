@@ -55,7 +55,8 @@ namespace TileIconifier
         {
             SetUpLanguageFromConfig();
             ApplySkinFromConfig();
-            Application.Run(new Skinning.Skins.Form1());
+            //Application.EnableVisualStyles(); //
+            //Application.Run(new Skinning.Skins.Form1()); //
             try
             {
                 if (!SystemUtils.IsAdministrator())
