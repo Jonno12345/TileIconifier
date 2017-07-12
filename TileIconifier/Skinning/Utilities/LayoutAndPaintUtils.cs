@@ -121,6 +121,15 @@ namespace TileIconifier.Skinning.Utilities
         /// </summary>        
         public static void InvalidateNonClient(Control control)
         {
+            //Very important check. Not only it avoids useless processing, but otherwise, 
+            //the Handle property getter may force the creation of the handle, which can 
+            //cause problems if it happens too early (e.g. The background color of the 
+            //RichTextBox is ignored).
+            if (!control.IsHandleCreated)
+            {
+                return;
+            }
+
             var absoluteClientRectangle = GetAbsoluteClientRectangle(control);
             var clientRect = new NativeMethods.RECT(control.ClientRectangle);
             var hNonClientRegion = IntPtr.Zero;
