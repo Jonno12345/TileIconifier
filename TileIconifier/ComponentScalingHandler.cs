@@ -40,18 +40,43 @@ namespace TileIconifier
 
         public void Scale(ImageList imageList)
         {
-            //If the handle has been created, we can't just change the ImageSize 
-            //property because doing so clears all the images in the collection! 
-            //Therefore, it should be treated as a special case. However, I am not
-            //to sure how we could proceed while avoiding resource leak, so for now,
-            //we just don't perform scaling in that scenario. That's is really no
-            //big deal for now, since the app is not per-monitor aware, so scaling
-            //is usually performed very early, before the form is even shown. In
-            //the worst case scenario, the images will simply be too small!
             if (!imageList.HandleCreated)
             {
                 imageList.ImageSize = ScaleSize(imageList.ImageSize);
-            }            
+            }
+            else
+            {
+                //If the handle has been created, we can't just change the ImageSize 
+                //property because doing so clears all the images in the collection! 
+                //Therefore, we clone each images and add them back after scaling the 
+                //image list. This is far from ideal and images seem to progresively
+                //become more blurry each time scaling is performed, but I guess there
+                //is not much that we can do...
+                var imgCopies = new Image[imageList.Images.Count];
+                try
+                {
+                    for (var i = 0; i < imageList.Images.Count; i++)
+                    {
+                        imgCopies[i] = (Image)imageList.Images[i].Clone();
+                    }
+                    imageList.Images.Clear();
+                    imageList.ImageSize = ScaleSize(imageList.ImageSize);
+                    imageList.Images.AddRange(imgCopies);
+                    //Forces the creation of the handle, so that the image list creates 
+                    //its own copies of the images, so that we can dispose ours.
+                    var ignored = imageList.Handle;
+                }
+                finally
+                {
+                    foreach (Image img in imgCopies)
+                    {
+                        if (img != null)
+                        {
+                            img.Dispose();
+                        }                        
+                    }
+                }
+            }
         }
     }
 }
