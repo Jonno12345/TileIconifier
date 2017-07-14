@@ -53,17 +53,30 @@ namespace TileIconifier
                 //become more blurry each time scaling is performed, but I guess there
                 //is not much that we can do...
                 var imgCopies = new Image[imageList.Images.Count];
+                var imgKeys = new string[imageList.Images.Count];
                 try
                 {
+                    //Backup the images & keys
                     for (var i = 0; i < imageList.Images.Count; i++)
                     {
                         imgCopies[i] = (Image)imageList.Images[i].Clone();
+                        imgKeys[i] = imageList.Images.Keys[i];
                     }
+
+                    //Perform scaling. Clearing the images is already done internally by 
+                    //the image list component, but we do it here explicitely.
                     imageList.Images.Clear();
                     imageList.ImageSize = ScaleSize(imageList.ImageSize);
-                    imageList.Images.AddRange(imgCopies);
-                    //Forces the creation of the handle, so that the image list creates 
-                    //its own copies of the images, so that we can dispose ours.
+
+                    //Add the images back
+                    for (var i = 0; i < imgCopies.Length; i++)
+                    {
+                        imageList.Images.Add(imgKeys[i], imgCopies[i]);
+                    }
+                    
+                    //Ensure the handle was re-created at this point, which ensures 
+                    //that the component has created its copies of the images, which
+                    //allows us to dispose our copies immediately.
                     var ignored = imageList.Handle;
                 }
                 finally
