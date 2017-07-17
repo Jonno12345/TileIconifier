@@ -54,6 +54,7 @@ namespace TileIconifier.Forms.Main
             InitializeComponent();
 
             ApplySkin();
+            ilsShortcutItemsSmallIcons.ImageSize = SystemInformation.SmallIconSize;
         }
 
         private ShortcutItem CurrentShortcutItem => _currentShortcutListViewItem.ShortcutItem;
@@ -282,7 +283,7 @@ namespace TileIconifier.Forms.Main
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             UpdateFilteredList();
-            BuildShortcutList();
+            BuildListViewContent();
             UpdateShortcut();
         }
 
@@ -304,17 +305,6 @@ namespace TileIconifier.Forms.Main
         private void mnuBatchOperations_Click(object sender, EventArgs e)
         {
             FormUtils.ShowCenteredDialogForm<FrmBatchShortcut>(this);
-        }
-
-        //Manually perform scaling on some components that are not scaled correctly out of the box.
-        //We do this in each form on a case-by-case basis. However, if we end up doing this frequently,
-        //it might be wise to do this in a base form (e.g. SkinnableForm).
-        protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
-        {
-            var scaler = new ComponentScalingHandler(factor, specified);
-            scaler.Scale(ilsShortcutItemsSmallIcons);
-
-            base.ScaleControl(factor, specified);
         }
     }
 }
