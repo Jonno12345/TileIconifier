@@ -108,18 +108,20 @@ namespace TileIconifier.Forms.Shared
 
         public static IconSelectorResult GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
         {
-            var iconSelector = new FrmIconSelector(defaultPathForIconExtraction);
-            iconSelector.ShowDialog(owner);
-            if (iconSelector.ReturnedBitmapBytes == null)
+            using (var iconSelector = new FrmIconSelector(defaultPathForIconExtraction))
             {
-                throw new UserCancellationException();
-            }
+                iconSelector.ShowDialog(owner);
+                if (iconSelector.ReturnedBitmapBytes == null)
+                {
+                    throw new UserCancellationException();
+                }
 
-            return new IconSelectorResult
-            {
-                ImageBytes = iconSelector.ReturnedBitmapBytes,
-                ImagePath = iconSelector.ReturnedImagePath
-            };
+                return new IconSelectorResult
+                {
+                    ImageBytes = iconSelector.ReturnedBitmapBytes,
+                    ImagePath = iconSelector.ReturnedImagePath
+                };
+            }
         }
 
         private void SetUpOpenFileDialog()
@@ -217,11 +219,14 @@ namespace TileIconifier.Forms.Shared
                         .ThenByDescending(k => Math.Max(k.Height, k.Width))
                         .First();
 
-                    items[i] = new IconListViewItem(IconUtil.ToBitmap(largestIcon));
+                    var bmp = IconUtil.ToBitmap(largestIcon);
+                    items[i] = new IconListViewItem(bmp);
 
                     //Icon cleanup
                     _icons[i].Dispose();
                     Array.ForEach(splitIcons, ic => ic.Dispose());
+                    //The listview creates its own copy of the bitmap
+                    bmp.Dispose();
                 }
                 lvwIcons.Items.AddRange(items);
             }

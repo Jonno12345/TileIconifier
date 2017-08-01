@@ -25,11 +25,9 @@ namespace TileIconifier.Controls.IconListView
                 }
                 return _items[index];
             }
-
             set
             {
-                _items[index] = value;
-                _owner.Invalidate(value.Bounds);
+                throw new NotSupportedException();
             }
         }
 
@@ -98,10 +96,14 @@ namespace TileIconifier.Controls.IconListView
 
         public void Clear()
         {
+            if (Count == 0)
+            {
+                return;
+            }
             for (var i = _items.Count - 1; i >= 0; i--)
             {
                 SetupForRemove(_items[i]);
-                _items.Remove(_items[i]);
+                _items.RemoveAt(i);
             }
             _owner.CalculateLayout();
         }

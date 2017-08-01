@@ -1044,6 +1044,22 @@ namespace TileIconifier.Controls.IconListView
             ItemSize = Size.Round(scaledItemSize);
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                foreach (IconListViewItem i in Items)
+                {
+                    if (i != null)
+                    {
+                        i.Dispose();
+                    }
+                }
+            }
+
+            base.Dispose(disposing);
+        }
+
         public void ApplySkin(BaseSkin skin)
         {
             UseExplorerStyle = skin.ListViewUseExplorerStyle;

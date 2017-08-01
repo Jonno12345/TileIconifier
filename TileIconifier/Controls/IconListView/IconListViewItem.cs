@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace TileIconifier.Controls.IconListView
 {
-    class IconListViewItem
+    class IconListViewItem : IDisposable
     {
         public IconListViewItem()
         {
@@ -85,7 +85,7 @@ namespace TileIconifier.Controls.IconListView
             {
                 if (_image != value)
                 {
-                    _image = value;
+                    _image = (Image)value.Clone();
                     if (ListView != null)
                     {
                         ListView.Invalidate(Bounds);
@@ -129,6 +129,23 @@ namespace TileIconifier.Controls.IconListView
             r.Y = containerRect.Y + (containerRect.Height - r.Height) / 2;
 
             return Rectangle.Round(r);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (Image != null)
+                {
+                    Image.Dispose();
+                }
+            }
         }
     }
 }
