@@ -138,6 +138,12 @@
     </Compile>
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxImage.cs" />
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxMetaData.cs" />
+    <Compile Include="Controls\IconListView\IconListVewItemCollection.cs" />
+    <Compile Include="Controls\IconListView\IconListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\IconListView\IconListViewItem.cs" />
+    <Compile Include="Controls\IconListView\IconListViewPaintItemEventArgs.cs" />
     <Compile Include="Controls\ISkinnableButton.cs" />
     <Compile Include="Controls\ISkinnableCheckableButton.cs" />
     <Compile Include="Controls\ISkinnableControl.cs" />
