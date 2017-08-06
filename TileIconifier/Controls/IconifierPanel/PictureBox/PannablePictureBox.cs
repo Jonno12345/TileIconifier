@@ -372,13 +372,16 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
 
         protected override void OnMouseWheel(MouseEventArgs e)
         {
-            if (e.Delta < 0)
+            if (PannablePictureBoxImage.Image != null)
             {
-                ShrinkImage();
-            }
-            else
-            {
-                EnlargeImage();
+                if (e.Delta < 0)
+                {
+                    ShrinkImage();
+                }
+                else
+                {
+                    EnlargeImage();
+                }
             }
 
             base.OnMouseWheel(e);
