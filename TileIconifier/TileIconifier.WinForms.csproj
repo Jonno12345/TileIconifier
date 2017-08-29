@@ -474,6 +474,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+    <None Include="Resources\ZoomToFit_128x.png" />
+    <None Include="Resources\ZoomOut_128x.png" />
+    <None Include="Resources\ZoomIn_128x.png" />
+    <None Include="Resources\MoveGlyph_128x.png" />
+    <None Include="Resources\ExportPerformance_128x.png" />
     <None Include="Resources\AlignCenter.png" />
     <None Include="Resources\NudgeUp.png" />
     <None Include="Resources\NudgeRight.png" />

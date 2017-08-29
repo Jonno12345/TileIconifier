@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlignImageForm));
             this.tlpBody = new System.Windows.Forms.TableLayoutPanel();
             this.btnLeft = new TileIconifier.Controls.SkinnableButton();
-            this.ilsCommandIcons = new System.Windows.Forms.ImageList(this.components);
             this.btnXMiddle = new TileIconifier.Controls.SkinnableButton();
             this.btnRight = new TileIconifier.Controls.SkinnableButton();
             this.btnTop = new TileIconifier.Controls.SkinnableButton();
@@ -75,32 +74,14 @@
             // btnLeft
             // 
             resources.ApplyResources(this.btnLeft, "btnLeft");
-            this.btnLeft.ImageList = this.ilsCommandIcons;
             this.btnLeft.Name = "btnLeft";
             this.ttpCommands.SetToolTip(this.btnLeft, resources.GetString("btnLeft.ToolTip"));
             this.btnLeft.UseVisualStyleBackColor = true;
             this.btnLeft.Click += new System.EventHandler(this.AlignButton_Click);
             // 
-            // ilsCommandIcons
-            // 
-            this.ilsCommandIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilsCommandIcons.ImageStream")));
-            this.ilsCommandIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilsCommandIcons.Images.SetKeyName(0, "AlignBottom.png");
-            this.ilsCommandIcons.Images.SetKeyName(1, "AlignCenter.png");
-            this.ilsCommandIcons.Images.SetKeyName(2, "AlignLeft.png");
-            this.ilsCommandIcons.Images.SetKeyName(3, "AlignRight.png");
-            this.ilsCommandIcons.Images.SetKeyName(4, "AlignTop.png");
-            this.ilsCommandIcons.Images.SetKeyName(5, "AlignXMiddle.png");
-            this.ilsCommandIcons.Images.SetKeyName(6, "AlignYMiddle.png");
-            this.ilsCommandIcons.Images.SetKeyName(7, "NudgeDown.png");
-            this.ilsCommandIcons.Images.SetKeyName(8, "NudgeLeft.png");
-            this.ilsCommandIcons.Images.SetKeyName(9, "NudgeRight.png");
-            this.ilsCommandIcons.Images.SetKeyName(10, "NudgeUp.png");
-            // 
             // btnXMiddle
             // 
             resources.ApplyResources(this.btnXMiddle, "btnXMiddle");
-            this.btnXMiddle.ImageList = this.ilsCommandIcons;
             this.btnXMiddle.Name = "btnXMiddle";
             this.ttpCommands.SetToolTip(this.btnXMiddle, resources.GetString("btnXMiddle.ToolTip"));
             this.btnXMiddle.UseVisualStyleBackColor = true;
@@ -109,7 +90,6 @@
             // btnRight
             // 
             resources.ApplyResources(this.btnRight, "btnRight");
-            this.btnRight.ImageList = this.ilsCommandIcons;
             this.btnRight.Name = "btnRight";
             this.ttpCommands.SetToolTip(this.btnRight, resources.GetString("btnRight.ToolTip"));
             this.btnRight.UseVisualStyleBackColor = true;
@@ -118,7 +98,6 @@
             // btnTop
             // 
             resources.ApplyResources(this.btnTop, "btnTop");
-            this.btnTop.ImageList = this.ilsCommandIcons;
             this.btnTop.Name = "btnTop";
             this.ttpCommands.SetToolTip(this.btnTop, resources.GetString("btnTop.ToolTip"));
             this.btnTop.UseVisualStyleBackColor = true;
@@ -127,7 +106,6 @@
             // btnYMiddle
             // 
             resources.ApplyResources(this.btnYMiddle, "btnYMiddle");
-            this.btnYMiddle.ImageList = this.ilsCommandIcons;
             this.btnYMiddle.Name = "btnYMiddle";
             this.ttpCommands.SetToolTip(this.btnYMiddle, resources.GetString("btnYMiddle.ToolTip"));
             this.btnYMiddle.UseVisualStyleBackColor = true;
@@ -136,7 +114,6 @@
             // btnBottom
             // 
             resources.ApplyResources(this.btnBottom, "btnBottom");
-            this.btnBottom.ImageList = this.ilsCommandIcons;
             this.btnBottom.Name = "btnBottom";
             this.ttpCommands.SetToolTip(this.btnBottom, resources.GetString("btnBottom.ToolTip"));
             this.btnBottom.UseVisualStyleBackColor = true;
@@ -145,7 +122,6 @@
             // btnNudgeUp
             // 
             resources.ApplyResources(this.btnNudgeUp, "btnNudgeUp");
-            this.btnNudgeUp.ImageList = this.ilsCommandIcons;
             this.btnNudgeUp.Name = "btnNudgeUp";
             this.btnNudgeUp.UseVisualStyleBackColor = true;
             this.btnNudgeUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseDown);
@@ -154,7 +130,6 @@
             // btnNudgeLeft
             // 
             resources.ApplyResources(this.btnNudgeLeft, "btnNudgeLeft");
-            this.btnNudgeLeft.ImageList = this.ilsCommandIcons;
             this.btnNudgeLeft.Name = "btnNudgeLeft";
             this.btnNudgeLeft.UseVisualStyleBackColor = true;
             this.btnNudgeLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseDown);
@@ -163,7 +138,6 @@
             // btnCenter
             // 
             resources.ApplyResources(this.btnCenter, "btnCenter");
-            this.btnCenter.ImageList = this.ilsCommandIcons;
             this.btnCenter.Name = "btnCenter";
             this.btnCenter.UseVisualStyleBackColor = true;
             this.btnCenter.Click += new System.EventHandler(this.AlignButton_Click);
@@ -171,7 +145,6 @@
             // btnNudgeRight
             // 
             resources.ApplyResources(this.btnNudgeRight, "btnNudgeRight");
-            this.btnNudgeRight.ImageList = this.ilsCommandIcons;
             this.btnNudgeRight.Name = "btnNudgeRight";
             this.btnNudgeRight.UseVisualStyleBackColor = true;
             this.btnNudgeRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseDown);
@@ -180,7 +153,6 @@
             // btnNudgeDown
             // 
             resources.ApplyResources(this.btnNudgeDown, "btnNudgeDown");
-            this.btnNudgeDown.ImageList = this.ilsCommandIcons;
             this.btnNudgeDown.Name = "btnNudgeDown";
             this.btnNudgeDown.UseVisualStyleBackColor = true;
             this.btnNudgeDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseDown);
@@ -252,7 +224,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tlpBody;
         private SkinnableButton btnLeft;
-        private System.Windows.Forms.ImageList ilsCommandIcons;
         private SkinnableButton btnXMiddle;
         private SkinnableButton btnRight;
         private SkinnableButton btnTop;

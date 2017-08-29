@@ -165,9 +165,6 @@
   <data name="flpCommands.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="btnEnlarge.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
   <data name="btnEnlarge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -193,16 +190,13 @@
     <value>btnEnlarge</value>
   </data>
   <data name="&gt;&gt;btnEnlarge.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.34562, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnEnlarge.Parent" xml:space="preserve">
     <value>flpCommands</value>
   </data>
   <data name="&gt;&gt;btnEnlarge.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="btnShrink.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
   </data>
   <data name="btnShrink.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -226,16 +220,13 @@
     <value>btnShrink</value>
   </data>
   <data name="&gt;&gt;btnShrink.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.34562, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnShrink.Parent" xml:space="preserve">
     <value>flpCommands</value>
   </data>
   <data name="&gt;&gt;btnShrink.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="btnReset.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
   </data>
   <data name="btnReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -259,16 +250,13 @@
     <value>btnReset</value>
   </data>
   <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.34562, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnReset.Parent" xml:space="preserve">
     <value>flpCommands</value>
   </data>
   <data name="&gt;&gt;btnReset.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="btnAlign.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
   </data>
   <data name="btnAlign.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -292,16 +280,13 @@
     <value>btnAlign</value>
   </data>
   <data name="&gt;&gt;btnAlign.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.34562, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnAlign.Parent" xml:space="preserve">
     <value>flpCommands</value>
   </data>
   <data name="&gt;&gt;btnAlign.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="btnOpenImage.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
   </data>
   <data name="btnOpenImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -325,7 +310,7 @@
     <value>btnOpenImage</value>
   </data>
   <data name="&gt;&gt;btnOpenImage.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6385.34562, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnOpenImage.Parent" xml:space="preserve">
     <value>flpCommands</value>
@@ -391,7 +376,7 @@
     <value>trkZoom</value>
   </data>
   <data name="&gt;&gt;trkZoom.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTrackBar, TileIconifier, Version=2.2.6385.34562, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTrackBar, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trkZoom.Parent" xml:space="preserve">
     <value>pnlZoomTrack</value>
@@ -442,7 +427,7 @@
     <value>panPct</value>
   </data>
   <data name="&gt;&gt;panPct.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6385.34562, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panPct.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>

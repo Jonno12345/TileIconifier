@@ -1,5 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+using TileIconifier.Core.Utilities;
 
 namespace TileIconifier.Skinning.Utilities
 {
@@ -137,6 +139,44 @@ namespace TileIconifier.Skinning.Utilities
         public static Rectangle GetCheckBoxTextRectangle(CheckBox checkBox, Graphics graphics)
         {
             return CreateGlyphButtonTextRectangle(checkBox, GetCheckBoxGlyphSize(graphics, checkBox.FlatStyle));
+        }
+
+        /// <summary>
+        ///     Set the Image of the specified buttons to the specified images, scaled to the specified logical size.
+        /// </summary>
+        /// <param name="buttons"></param>
+        /// <param name="images"></param>
+        /// <param name="logicalMaxSize"></param>
+        internal static void SetScaledImage(ButtonBase[] buttons, Image[] images, Size logicalMaxSize)
+        {
+            if (buttons == null)
+            {
+                throw new ArgumentNullException(nameof(buttons));
+            }
+            if (images == null)
+            {
+                throw new ArgumentNullException(nameof(images));
+            }
+            if (buttons.Length < 1 || images.Length < 1 || buttons.Length != images.Length)
+            {
+                throw new ArgumentException("The amount of specified buttons must be equal to the amount of specified images. Furthermore, both must be greater than 0.");
+            }
+            //When the app targets .net 4.7 or higher, use Control.LogicalToDeviceUnit() instead
+            //of calculating the scaling factor ourselves.
+            float scaleX;
+            float scaleY;
+            using (var g = buttons[0].CreateGraphics())
+            {
+                scaleX = g.DpiX / 96F;
+                scaleY = g.DpiY / 96F;
+            }
+            var imgWidth = (int)Math.Round(logicalMaxSize.Width * scaleX);
+            var imgHeight = (int)Math.Round(logicalMaxSize.Height * scaleY);
+            //
+            for (var i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].Image = ImageUtils.ScaleImage(images[i], imgWidth, imgHeight);
+            }
         }
     }
 }

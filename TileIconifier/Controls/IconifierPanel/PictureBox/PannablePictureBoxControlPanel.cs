@@ -31,11 +31,15 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using TileIconifier.Properties;
+using TileIconifier.Skinning.Utilities;
 
 namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {
     public partial class PannablePictureBoxControlPanel : UserControl
     {
+        private int BUTTON_ICON__LOGICAL_SIZE = 16;
+
         private enum ImageZoomAdjustement
         {
             None, Enlarge, Shrink
@@ -46,6 +50,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         public PannablePictureBoxControlPanel()
         {
             InitializeComponent();
+            SetButtonImages();
             tmrScrollDelay.Interval = SystemInformation.DoubleClickTime;
             btnEnlarge.Tag = ImageZoomAdjustement.Enlarge;
             btnShrink.Tag = ImageZoomAdjustement.Shrink;
@@ -180,6 +185,29 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         private void UpdateZoomPercentage()
         {
             lblPercent.Text = $@"{PannablePictureBox.GetZoomPercentage().ToString("F")}%";
+        }
+
+        private void SetButtonImages()
+        {
+            Button[] btns =
+            {
+                btnEnlarge,
+                btnShrink,
+                btnReset,
+                btnAlign,
+                btnOpenImage
+            };
+
+            Image[] imgs =
+            {
+                Resources.ZoomIn_128x,
+                Resources.ZoomOut_128x,
+                Resources.ZoomToFit_128x,
+                Resources.MoveGlyph_128x,
+                Resources.ExportPerformance_128x
+            };
+
+            ButtonUtils.SetScaledImage(btns, imgs, new Size(BUTTON_ICON__LOGICAL_SIZE, BUTTON_ICON__LOGICAL_SIZE));
         }
     }
 }

@@ -29,12 +29,18 @@
 
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
+using TileIconifier.Core.Utilities;
+using TileIconifier.Properties;
+using TileIconifier.Skinning.Utilities;
 
 namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {
     public partial class AlignImageForm : Form
     {
+        private int BUTTON_ICON_LOGICAL_SIZE = 24;
+
         private ImageAlignAdjustement _lastClickType;
 
         public event EventHandler<AlignImageEventArgs> ImageLocationChanged;
@@ -42,6 +48,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         public AlignImageForm()
         {
             InitializeComponent();
+            SetButtonImages();
 
             //Unlike what its name implies, the "DoubleClickTime" system setting
             //is not only used for double clicks. It more generally describes for
@@ -196,6 +203,39 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
                 lblXValue.Text = string.Empty;
                 lblYValue.Text = string.Empty;
             }
+        }
+
+        private void SetButtonImages()
+        {
+            Button[] btns =
+            {
+                btnLeft,
+                btnXMiddle,
+                btnRight,
+                btnTop,
+                btnYMiddle,
+                btnBottom,
+                btnNudgeUp,
+                btnNudgeLeft,
+                btnCenter,
+                btnNudgeRight,
+                btnNudgeDown
+            };
+            Image[] imgs = 
+            {
+                Resources.AlignLeft,
+                Resources.AlignXMiddle,
+                Resources.AlignRight,
+                Resources.AlignTop,
+                Resources.AlignYMiddle,
+                Resources.AlignBottom,
+                Resources.NudgeUp,
+                Resources.NudgeLeft,
+                Resources.AlignCenter,
+                Resources.NudgeRight,
+                Resources.NudgeDown
+            };
+            ButtonUtils.SetScaledImage(btns, imgs, new Size(BUTTON_ICON_LOGICAL_SIZE, BUTTON_ICON_LOGICAL_SIZE));
         }
     }
 
