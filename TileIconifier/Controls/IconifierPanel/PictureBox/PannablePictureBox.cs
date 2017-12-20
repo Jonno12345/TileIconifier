@@ -51,6 +51,10 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         private Point _movingPoint = Point.Empty;
         private bool _panning = false;
         private Point _startingPoint = Point.Empty;
+        private PannableImageContinuousAdjustement _adjustementInProgress = PannableImageContinuousAdjustement.None;
+        private Container _components;
+        private Timer _tmrScrollDelay;
+        private Timer _tmrNudge;
 
         //Read-only properties
         [Browsable(false)]
@@ -259,6 +263,16 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             DoubleBuffered = true;
             ResizeRedraw = true;
             SetAutoSizeMode(AutoSizeMode.GrowAndShrink);
+            
+            //Components initialization
+            _components = new Container();
+            _tmrScrollDelay = new Timer(_components);
+            _tmrNudge = new Timer(_components);
+            _tmrScrollDelay.Interval = SystemInformation.DoubleClickTime;
+            _tmrNudge.Interval = 50;
+            _tmrScrollDelay.Tick += _tmrScrollDelay_Tick;
+            _tmrNudge.Tick += _tmrNudge_Tick;
+
             PannablePictureBoxImage.OnPannablePictureNewImageSet += Image_OnPannablePictureNewImageSet;
         }
 
@@ -357,6 +371,57 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             TriggerUpdate();
         }
 
+        private void DoContinuousAdjustment(PannableImageContinuousAdjustement adjustmentType)
+        {
+            switch (adjustmentType)
+            {
+                case PannableImageContinuousAdjustement.None:
+                    return;                
+                case PannableImageContinuousAdjustement.NudgeUp:
+                    Nudge(y: -1);
+                    break;
+                case PannableImageContinuousAdjustement.NudgeDown:
+                    Nudge(y: 1);
+                    break;
+                case PannableImageContinuousAdjustement.NudgeLeft:
+                    Nudge(-1);
+                    break;
+                case PannableImageContinuousAdjustement.NudgeRight:
+                    Nudge(1);
+                    break;                
+                case PannableImageContinuousAdjustement.Enlarge:
+                    EnlargeImage();
+                    break;
+                case PannableImageContinuousAdjustement.Shrink:
+                    ShrinkImage();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(adjustmentType), adjustmentType, null);
+            }
+        }
+
+        internal void BeginContinuousAdjustment(PannableImageContinuousAdjustement adjustmentType)
+        {
+            if (_adjustementInProgress != PannableImageContinuousAdjustement.None)
+            {
+                throw new InvalidOperationException("A continuous adjustement is already in progress.");
+            }
+
+            //First adjustement immediatly when the button is down, before the delay is considered.
+            //This also checks if the adjustement type is valid.
+            DoContinuousAdjustment(adjustmentType);
+            _adjustementInProgress = adjustmentType;
+            _tmrScrollDelay.Start();
+
+        }
+
+        internal void EndContinuousAdjustment()
+        {
+            //Don't forget to stop _tmrScrollDelay to prevent it from starting tmrNudge if the delay is not reached yet.
+            _tmrScrollDelay.Stop();
+            _tmrNudge.Stop();
+            _adjustementInProgress = PannableImageContinuousAdjustement.None;
+        }
 
         internal decimal GetZoomPercentage()
         {
@@ -365,9 +430,73 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             return zoomPercentage >= 1 ? zoomPercentage : 1;
         }
 
+        private void _tmrScrollDelay_Tick(object sender, EventArgs e)
+        {
+            _tmrScrollDelay.Stop();
+            //Do an adjustement right now
+            DoContinuousAdjustment(_adjustementInProgress);
+            //Start the continuous adjustement
+            _tmrNudge.Start();
+        }
+
+        private void _tmrNudge_Tick(object sender, EventArgs e)
+        {
+            DoContinuousAdjustment(_adjustementInProgress);
+        }
+
         private void Image_OnPannablePictureNewImageSet(object sender, EventArgs e)
         {
             Invalidate(ImageRectangle);
+        }
+        
+        protected override bool IsInputKey(Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Up:
+                case Keys.Down:
+                case Keys.Left:
+                case Keys.Right:
+                case Keys.Add:
+                case Keys.Subtract:
+                    return true;
+            }
+            return base.IsInputKey(keyData);
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            if (PannablePictureBoxImage.Image != null)
+            {
+                PannableImageContinuousAdjustement adjustment = PannableImageContinuousAdjustement.None;
+                switch (e.KeyData)
+                {
+                    case Keys.Up:
+                        adjustment = PannableImageContinuousAdjustement.NudgeUp;
+                        break;
+                    case Keys.Down:
+                        adjustment = PannableImageContinuousAdjustement.NudgeDown;
+                        break;
+                    case Keys.Left:
+                        adjustment = PannableImageContinuousAdjustement.NudgeLeft;
+                        break;
+                    case Keys.Right:
+                        adjustment = PannableImageContinuousAdjustement.NudgeRight;
+                        break;
+                    case Keys.Add:
+                        adjustment = PannableImageContinuousAdjustement.Enlarge;
+                        break;
+                    case Keys.Subtract:
+                        adjustment = PannableImageContinuousAdjustement.Shrink;
+                        break;
+                }
+                if (adjustment != PannableImageContinuousAdjustement.None)
+                {
+                    DoContinuousAdjustment(adjustment);
+                }
+            }
+
+            base.OnKeyDown(e);
         }
 
         protected override void OnMouseWheel(MouseEventArgs e)
@@ -389,59 +518,61 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left)
-                return;
+            if (e.Button == MouseButtons.Left)
+            {
+                Focus();
 
-            Focus();
+                _panning = true;
 
-            _panning = true;
+                //"Unscale" the provided point so that the panning follow the mouse.
+                var scaleFactor = GetControlScaleFactor();
+                var location = e.Location;
+                LayoutAndPaintUtils.ScalePoint(ref location, new SizeF(1 / scaleFactor, 1 / scaleFactor));
 
-            //"Unscale" the provided point so that the panning follow the mouse.
-            var scaleFactor = GetControlScaleFactor();
-            var location = e.Location;
-            LayoutAndPaintUtils.ScalePoint(ref location, new SizeF(1 / scaleFactor, 1 / scaleFactor));
-
-            _startingPoint = new Point(location.X - _movingPoint.X,
-                location.Y - _movingPoint.Y);
+                _startingPoint = new Point(location.X - _movingPoint.X,
+                    location.Y - _movingPoint.Y);
+            }
 
             base.OnMouseDown(e);
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left)
-                return;
-            _panning = false;
-            TriggerUpdate();
+            if (e.Button == MouseButtons.Left)
+            {
+                _panning = false;
+                TriggerUpdate();
+            }
 
             base.OnMouseUp(e);
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            if (!_panning || PannablePictureBoxImage.Image == null || e.Button != MouseButtons.Left) return;
+            if (_panning && PannablePictureBoxImage.Image != null && e.Button == MouseButtons.Left)
+            {
+                //"Unscale" the provided point so that the panning follow the mouse.
+                var scaleFactor = GetControlScaleFactor();
+                var location = e.Location;
+                LayoutAndPaintUtils.ScalePoint(ref location, new SizeF(1 / scaleFactor, 1 / scaleFactor));
 
-            //"Unscale" the provided point so that the panning follow the mouse.
-            var scaleFactor = GetControlScaleFactor();
-            var location = e.Location;
-            LayoutAndPaintUtils.ScalePoint(ref location, new SizeF(1 / scaleFactor, 1 / scaleFactor));
+                _movingPoint = new Point(location.X - _startingPoint.X,
+                    location.Y - _startingPoint.Y);
 
-            _movingPoint = new Point(location.X - _startingPoint.X,
-                location.Y - _startingPoint.Y);
+                if (_movingPoint.X + PannablePictureBoxImage.Width > _maxWidth * 2)
+                    _movingPoint.X = _maxWidth * 2 - PannablePictureBoxImage.Width;
+                if (_movingPoint.Y + PannablePictureBoxImage.Height > _maxHeight * 2)
+                    _movingPoint.Y = _maxHeight * 2 - PannablePictureBoxImage.Height;
+                if (_movingPoint.X < _minWidth * 2)
+                    _movingPoint.X = _minWidth * 2;
+                if (_movingPoint.Y < _minHeight * 2)
+                    _movingPoint.Y = _minHeight * 2;
 
-            if (_movingPoint.X + PannablePictureBoxImage.Width > _maxWidth * 2)
-                _movingPoint.X = _maxWidth * 2 - PannablePictureBoxImage.Width;
-            if (_movingPoint.Y + PannablePictureBoxImage.Height > _maxHeight * 2)
-                _movingPoint.Y = _maxHeight * 2 - PannablePictureBoxImage.Height;
-            if (_movingPoint.X < _minWidth * 2)
-                _movingPoint.X = _minWidth * 2;
-            if (_movingPoint.Y < _minHeight * 2)
-                _movingPoint.Y = _minHeight * 2;
+                PannablePictureBoxImage.X = _movingPoint.X;
+                PannablePictureBoxImage.Y = _movingPoint.Y;
 
-            PannablePictureBoxImage.X = _movingPoint.X;
-            PannablePictureBoxImage.Y = _movingPoint.Y;
-
-            Invalidate(ImageRectangle);
+                Invalidate(ImageRectangle);
+            }
 
             base.OnMouseMove(e);
         }
@@ -456,6 +587,15 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         {
             Invalidate(); //We could only invalidate the border region
             base.OnLeave(e);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && _components != null)
+            {
+                _components.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
         public override Size GetPreferredSize(Size proposedSize)
@@ -799,7 +939,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         {
             var scale = new SizeF();
 
-            scale.Width = (float)(ClientSize.Width - 2 * BorderThickness) / OutputSize.Width; //Don't scale the border size! We certainely don't want the control border to grow with the control size and apparently GDI+ does not scale Pens with DPI.
+            scale.Width = (float)(ClientSize.Width - 2 * BorderThickness) / OutputSize.Width; //Don't scale the border size! Apparently GDI+ does not scale Pens with DPI.
             scale.Height = (float)(ClientSize.Height - 2 * BorderThickness) / OutputSize.Height;
 
             return scale;
@@ -814,5 +954,18 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
 
             return new SizeF(g.DpiX / 96F, g.DpiY / 96F);
         }
+    }
+
+    internal enum PannableImageContinuousAdjustement
+    {
+        None,
+        //Pan
+        NudgeUp,
+        NudgeDown,
+        NudgeLeft,
+        NudgeRight,        
+        //Zoom
+        Enlarge,
+        Shrink
     }
 }

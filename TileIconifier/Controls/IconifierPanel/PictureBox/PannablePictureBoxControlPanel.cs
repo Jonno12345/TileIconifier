@@ -39,21 +39,11 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
     public partial class PannablePictureBoxControlPanel : UserControl
     {
         private int BUTTON_ICON__LOGICAL_SIZE = 16;
-
-        private enum ImageZoomAdjustement
-        {
-            None, Enlarge, Shrink
-        }
-
-        private ImageZoomAdjustement _lastClickType;
-
+        
         public PannablePictureBoxControlPanel()
         {
             InitializeComponent();
             SetButtonImages();
-            tmrScrollDelay.Interval = SystemInformation.DoubleClickTime;
-            btnEnlarge.Tag = ImageZoomAdjustement.Enlarge;
-            btnShrink.Tag = ImageZoomAdjustement.Shrink;
         }
 
         [Browsable(false)]
@@ -89,36 +79,26 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             }
             EnableControls();
             UpdateTrackBarAndZoom();
-        }        
-
-        private void ZoomButton_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left) return;
-
-            var ctrl = ((Control)sender);
-            var adjustement = (ImageZoomAdjustement)ctrl.Tag;
-
-            DoAdjustement(adjustement);
-            _lastClickType = adjustement;
-            tmrScrollDelay.Start();
         }
 
-        private void ZoomButton_MouseUp(object sender, MouseEventArgs e)
+        private void btnEnlarge_MouseDown(object sender, MouseEventArgs e)
         {
-            tmrScrollDelay.Stop();
-            tmrZoom.Stop();
-        }        
-
-        private void tmrScrollDelay_Tick(object sender, EventArgs e)
-        {
-            tmrScrollDelay.Stop();
-            DoAdjustement(_lastClickType);
-            tmrZoom.Start();
+            PannablePictureBox.BeginContinuousAdjustment(PannableImageContinuousAdjustement.Enlarge);
         }
 
-        private void tmrZoom_Tick(object sender, EventArgs e)
+        private void btnEnlarge_MouseUp(object sender, MouseEventArgs e)
         {
-            DoAdjustement(_lastClickType);
+            PannablePictureBox.EndContinuousAdjustment();
+        }
+
+        private void btnShrink_MouseDown(object sender, MouseEventArgs e)
+        {
+            PannablePictureBox.BeginContinuousAdjustment(PannableImageContinuousAdjustement.Shrink);
+        }
+
+        private void btnShrink_MouseUp(object sender, MouseEventArgs e)
+        {
+            PannablePictureBox.EndContinuousAdjustment();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -163,23 +143,6 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             btnEnlarge.Enabled = false;
             btnReset.Enabled = false;
             btnShrink.Enabled = false;
-        }
-
-        private void DoAdjustement(ImageZoomAdjustement adjustementType)
-        {
-            switch(adjustementType)
-            {
-                case ImageZoomAdjustement.Enlarge:
-                    PannablePictureBox.EnlargeImage();
-                    break;
-                case ImageZoomAdjustement.Shrink:
-                    PannablePictureBox.ShrinkImage();
-                    break;
-                case ImageZoomAdjustement.None:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(adjustementType), adjustementType, null);
-            }
         }
 
         private void UpdateZoomPercentage()

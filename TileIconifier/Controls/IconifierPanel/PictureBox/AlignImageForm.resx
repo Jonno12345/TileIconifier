@@ -151,7 +151,7 @@
     <value>btnLeft</value>
   </data>
   <data name="&gt;&gt;btnLeft.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.19015, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.32358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLeft.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -178,7 +178,7 @@
     <value>btnXMiddle</value>
   </data>
   <data name="&gt;&gt;btnXMiddle.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.19015, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.32358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnXMiddle.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -205,7 +205,7 @@
     <value>btnRight</value>
   </data>
   <data name="&gt;&gt;btnRight.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.19015, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.32358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnRight.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -232,7 +232,7 @@
     <value>btnTop</value>
   </data>
   <data name="&gt;&gt;btnTop.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.19015, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.32358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnTop.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -259,7 +259,7 @@
     <value>btnYMiddle</value>
   </data>
   <data name="&gt;&gt;btnYMiddle.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.19015, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.32358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnYMiddle.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -286,7 +286,7 @@
     <value>btnBottom</value>
   </data>
   <data name="&gt;&gt;btnBottom.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.19015, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.32358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnBottom.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -310,7 +310,7 @@
     <value>btnNudgeUp</value>
   </data>
   <data name="&gt;&gt;btnNudgeUp.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.19015, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.32358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnNudgeUp.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -334,7 +334,7 @@
     <value>btnNudgeLeft</value>
   </data>
   <data name="&gt;&gt;btnNudgeLeft.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.19015, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.32358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnNudgeLeft.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -358,7 +358,7 @@
     <value>btnCenter</value>
   </data>
   <data name="&gt;&gt;btnCenter.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.19015, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.32358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnCenter.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -382,7 +382,7 @@
     <value>btnNudgeRight</value>
   </data>
   <data name="&gt;&gt;btnNudgeRight.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.19015, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.32358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnNudgeRight.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -406,7 +406,7 @@
     <value>btnNudgeDown</value>
   </data>
   <data name="&gt;&gt;btnNudgeDown.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.19015, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.32358, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnNudgeDown.Parent" xml:space="preserve">
     <value>tlpBody</value>
@@ -633,12 +633,6 @@
   <data name="tlpBody.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnLeft" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnXMiddle" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnRight" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnTop" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnYMiddle" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnBottom" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeUp" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeLeft" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnCenter" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeRight" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnNudgeDown" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tlpLocation" Row="7" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Absolute,4,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,4,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <metadata name="tmrScrollDelay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>165, 17</value>
-  </metadata>
-  <metadata name="tmrNudge.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>252, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -659,18 +653,6 @@
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>
-  </data>
-  <data name="&gt;&gt;tmrScrollDelay.Name" xml:space="preserve">
-    <value>tmrScrollDelay</value>
-  </data>
-  <data name="&gt;&gt;tmrScrollDelay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tmrNudge.Name" xml:space="preserve">
-    <value>tmrNudge</value>
-  </data>
-  <data name="&gt;&gt;tmrNudge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ttpCommands.Name" xml:space="preserve">
     <value>ttpCommands</value>

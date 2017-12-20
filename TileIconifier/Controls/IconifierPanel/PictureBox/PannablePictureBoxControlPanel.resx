@@ -165,6 +165,9 @@
   <data name="flpCommands.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <metadata name="ttpCommands.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>209, 17</value>
+  </metadata>
   <data name="btnEnlarge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -180,9 +183,6 @@
   <data name="btnEnlarge.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <metadata name="ttpCommands.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>209, 17</value>
-  </metadata>
   <data name="btnEnlarge.ToolTip" xml:space="preserve">
     <value>Zoom in</value>
   </data>
@@ -190,7 +190,7 @@
     <value>btnEnlarge</value>
   </data>
   <data name="&gt;&gt;btnEnlarge.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.19696, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnEnlarge.Parent" xml:space="preserve">
     <value>flpCommands</value>
@@ -213,6 +213,9 @@
   <data name="btnShrink.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <metadata name="ttpCommands.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>209, 17</value>
+  </metadata>
   <data name="btnShrink.ToolTip" xml:space="preserve">
     <value>Zoom out</value>
   </data>
@@ -220,7 +223,7 @@
     <value>btnShrink</value>
   </data>
   <data name="&gt;&gt;btnShrink.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.19696, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnShrink.Parent" xml:space="preserve">
     <value>flpCommands</value>
@@ -250,7 +253,7 @@
     <value>btnReset</value>
   </data>
   <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.19696, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnReset.Parent" xml:space="preserve">
     <value>flpCommands</value>
@@ -280,7 +283,7 @@
     <value>btnAlign</value>
   </data>
   <data name="&gt;&gt;btnAlign.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.19696, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnAlign.Parent" xml:space="preserve">
     <value>flpCommands</value>
@@ -310,7 +313,7 @@
     <value>btnOpenImage</value>
   </data>
   <data name="&gt;&gt;btnOpenImage.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6450.19696, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnOpenImage.Parent" xml:space="preserve">
     <value>flpCommands</value>
@@ -357,26 +360,11 @@
   <data name="pnlZoomTrack.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="trkZoom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="trkZoom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="trkZoom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="trkZoom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 45</value>
-  </data>
-  <data name="trkZoom.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <data name="&gt;&gt;trkZoom.Name" xml:space="preserve">
     <value>trkZoom</value>
   </data>
   <data name="&gt;&gt;trkZoom.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTrackBar, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTrackBar, TileIconifier, Version=2.2.6450.19696, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trkZoom.Parent" xml:space="preserve">
     <value>pnlZoomTrack</value>
@@ -427,7 +415,7 @@
     <value>panPct</value>
   </data>
   <data name="&gt;&gt;panPct.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6449.18859, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox, TileIconifier, Version=2.2.6450.19696, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panPct.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -498,12 +486,33 @@
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="flpCommands" Row="1" RowSpan="2" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="pnlZoomTrack" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panPct" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lblHeader" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <metadata name="tmrScrollDelay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>338, 17</value>
-  </metadata>
-  <metadata name="tmrZoom.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>469, 17</value>
-  </metadata>
+  <data name="trkZoom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="trkZoom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trkZoom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="trkZoom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 45</value>
+  </data>
+  <data name="trkZoom.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;trkZoom.Name" xml:space="preserve">
+    <value>trkZoom</value>
+  </data>
+  <data name="&gt;&gt;trkZoom.Type" xml:space="preserve">
+    <value>TileIconifier.Controls.SkinnableTrackBar, TileIconifier, Version=2.2.6450.19696, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trkZoom.Parent" xml:space="preserve">
+    <value>pnlZoomTrack</value>
+  </data>
+  <data name="&gt;&gt;trkZoom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -518,18 +527,6 @@
   </data>
   <data name="&gt;&gt;ttpCommands.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tmrScrollDelay.Name" xml:space="preserve">
-    <value>tmrScrollDelay</value>
-  </data>
-  <data name="&gt;&gt;tmrScrollDelay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tmrZoom.Name" xml:space="preserve">
-    <value>tmrZoom</value>
-  </data>
-  <data name="&gt;&gt;tmrZoom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>PannablePictureBoxControlPanel</value>
