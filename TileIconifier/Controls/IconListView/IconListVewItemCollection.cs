@@ -57,6 +57,10 @@ namespace TileIconifier.Controls.IconListView
             {
                 throw new ArgumentNullException(nameof(item));
             }
+            if (item.ListView != null)
+            {
+                throw new InvalidOperationException("The item is already contained in another IconListView.");
+            }
             item.ListView = _owner;
         }
 
@@ -69,6 +73,7 @@ namespace TileIconifier.Controls.IconListView
             //A null item is accepted
             if (item != null)
             {
+                _owner.OnItemRemovingInternal(item.Index);
                 item.ListView = null;
             }
         }
@@ -77,7 +82,7 @@ namespace TileIconifier.Controls.IconListView
         {
             SetupForAdd(item);
             _items.Add(item);
-            _owner.CalculateLayout();
+            _owner.OnItemAddedInternal(true);
         }
 
         public void AddRange(IconListViewItem[] items)
@@ -90,8 +95,8 @@ namespace TileIconifier.Controls.IconListView
             {
                 SetupForAdd(items[i]);
                 _items.Add(items[i]);
+                _owner.OnItemAddedInternal(i == items.Length - 1);
             }
-            _owner.CalculateLayout();
         }
 
         public void Clear()
@@ -104,8 +109,8 @@ namespace TileIconifier.Controls.IconListView
             {
                 SetupForRemove(_items[i]);
                 _items.RemoveAt(i);
+                _owner.OnItemRemovedInternal(i == 0);
             }
-            _owner.CalculateLayout();
         }
 
         public bool Contains(IconListViewItem item)
@@ -132,7 +137,7 @@ namespace TileIconifier.Controls.IconListView
         {
             SetupForAdd(item);
             _items.Insert(index, item);
-            _owner.CalculateLayout();
+            _owner.OnItemAddedInternal(true);
         }
 
         public bool Remove(IconListViewItem item)
@@ -141,22 +146,21 @@ namespace TileIconifier.Controls.IconListView
             var result = _items.Remove(item);
             if (result)
             {
-                _owner.CalculateLayout();
+                _owner.OnItemRemovedInternal(true);
             }
             return result;
         }
 
         public void RemoveAt(int index)
         {
-            IconListViewItem item = null;
             //Accept invalid indexes
             if (index >= 0 && index < _items.Count)
             {
-                item = _items[index];
+                var item = _items[index];
+                SetupForRemove(item);
+                _items.RemoveAt(index);
+                _owner.OnItemRemovedInternal(true);
             }
-            SetupForRemove(item);
-            _items.RemoveAt(index);
-            _owner.CalculateLayout();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

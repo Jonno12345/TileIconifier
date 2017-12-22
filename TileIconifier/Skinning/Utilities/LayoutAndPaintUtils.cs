@@ -96,6 +96,46 @@ namespace TileIconifier.Skinning.Utilities
         }
 
         /// <summary>
+        ///     Invalidate the region of the specified control defined by the specified Rectangles.
+        /// </summary>
+        /// <param name="control">Control to invalidate.</param>
+        /// <param name="rects">Parts of the control to invalidate.</param>
+        /// <remarks>Empty rectangles are ignored.</remarks>
+        public static void InvalidateRectangles(Control control, params Rectangle[] rects)
+        {
+            if (rects == null)
+            {
+                throw new ArgumentNullException(nameof(rects));
+            }
+
+            //Calling Invalidate with an empty rectangle causes the whole control to be 
+            //invalidated, which is obviously not what we want to do here, so we really 
+            //need to ensure that at least one rectangle is not empty. (Btw, this does
+            //not apply to Invalidate(Region). In that case, an empty region causes the
+            //control not to be invalidated at all.)
+            if (rects.Length < 1 || Array.TrueForAll(rects, r => r.IsEmpty))
+            {
+                return;
+            }
+
+            if (rects.Length == 1)
+            {
+                control.Invalidate(rects[0]);
+            }
+            else
+            {
+                using (var reg = new Region(rects[0]))
+                {
+                    for (var i = 1; i < rects.Length; i++)
+                    {
+                        reg.Union(rects[i]);
+                    }
+                    control.Invalidate(reg);
+                }
+            }
+        }
+
+        /// <summary>
         ///     Returns the client rectangle of the specified control with a location relative
         ///     to the control's location.
         /// </summary>       

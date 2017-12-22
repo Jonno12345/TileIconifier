@@ -14,7 +14,7 @@ namespace TileIconifier.Controls.IconListView
     class IconListView : ScrollableControl, ISkinnableControl
     {
         private const string VSCLASS_LISTVIEW = "ListView";
-        private const string VSCLASS_EXPLORER_LISTVIEW_ITEM = "ItemsView::ListView";
+        private const string VSCLASS_EXPLORER_LISTVIEW_ITEM = "Explorer::ListView";
         private const int VSPART_LISTVIEW_ITEM = 1;
         //Item states
         private const int
@@ -64,10 +64,10 @@ namespace TileIconifier.Controls.IconListView
         /// <summary>
         ///     Gets the bounding rectangle of the complete control, including its non client area.
         /// </summary>
-        private Rectangle FullSizeRectangle => new Rectangle(Point.Empty, Size);
+        private Rectangle NonClientRectangle => new Rectangle(Point.Empty, Size);
 
         /// <summary>
-        ///     Returns the index of the first partially or entirely visible item.
+        ///     Gets the index of the first partially or entirely visible item.
         /// </summary>
         private int FirstVisibleItemIndex
         {
@@ -84,7 +84,7 @@ namespace TileIconifier.Controls.IconListView
         }
 
         /// <summary>
-        ///     Returns the index of the last partially or entirely visible item.
+        ///     Gets the index of the last partially or entirely visible item.
         /// </summary>
         private int LastVisibleItemIndex
         {
@@ -108,7 +108,7 @@ namespace TileIconifier.Controls.IconListView
 
         private int _hotItemIndex = -1;
         /// <summary>
-        ///     Index of the item on which the mouse currently is.
+        ///     Gets the index of the item on which the mouse currently is.
         /// </summary>
         internal int HotItemIndex
         {
@@ -163,6 +163,13 @@ namespace TileIconifier.Controls.IconListView
             Items = new IconListVewItemCollection(this);
             BackColor = SystemColors.Window;
             ForeColor = SystemColors.WindowText;
+            //Note that for now, we don't really need to call CalculateLayout at initialization. 
+            //The consequence of not calling it here would be that ItemDisplayBounds stays null until
+            //the control is resized or an item is added, which is not a problem since the only 
+            //public member that uses that property is in the IconListViewItem class. However,
+            //since CalculateLayout does not do much when no items are present, we call it anyway
+            //to prevent problems in the future.
+            CalculateLayout();
         }
 
         [DefaultValue(typeof(Color), nameof(SystemColors.Window))]
@@ -303,11 +310,39 @@ namespace TileIconifier.Controls.IconListView
         public int SelectedIndex
         {
             get { return _selectedIndex; }
-            private set
+            internal set
             {
                 if (_selectedIndex != value)
                 {
+                    var nextItemBounds = Rectangle.Empty;
+                    if (value >= 0 && value < Items.Count)
+                    {
+                        nextItemBounds = Items[value].Bounds;
+                    }
+                    else if (value != -1)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(SelectedIndex), value, null);
+                    }
+
+                    //Add the rectangle of the previously selected item, 
+                    //if relevant (if there was previously no selected item, 
+                    //the selected index was -1.
+                    var oldItemBounds = Rectangle.Empty;
+                    if (_selectedIndex >= 0 && _selectedIndex < Items.Count)
+                    {
+                        oldItemBounds = Items[_selectedIndex].Bounds;
+                    }
+
+                    //Obviously, we must set the new value before scrolling to the new item and invalidating
                     _selectedIndex = value;
+
+                    //Scroll to the newly selected item. If no scrolling was required, 
+                    //we simply invalidate the affected items to refresh their visual state.
+                    if (_selectedIndex == -1 || !ScrollToItem(value))
+                    {
+                        LayoutAndPaintUtils.InvalidateRectangles(this, nextItemBounds, oldItemBounds);
+                    }
+
                     OnSelectedIndexChanged(EventArgs.Empty);
                 }
             }
@@ -371,6 +406,7 @@ namespace TileIconifier.Controls.IconListView
             ItemActivate?.Invoke(this, e);
         }
         #endregion
+
         private VisualStyleRenderer GetVisualStyleRenderer(VisualStyleElement vsElement)
         {
             if (_vsRenderer == null)
@@ -384,13 +420,9 @@ namespace TileIconifier.Controls.IconListView
             return _vsRenderer;
         }
 
-        internal void CalculateLayout()
+        //This should not be called before the item collection is initialized
+        private void CalculateLayout()
         {
-            if (Items == null)
-            {
-                return;
-            }
-
             if (ClientSize.Width < 1 || ClientSize.Height < 1)
             {
                 _rows = 0;
@@ -399,122 +431,107 @@ namespace TileIconifier.Controls.IconListView
                 return;
             }
 
-            //Some of the changes that we do here (AutoScrollMinSize, maybe others) result layout operation            
-            SuspendLayout();
+            var cols = (int)Math.Floor((double)DisplayRectangle.Width / (ItemsSpaceNeeded.Width));
+            //When there is not enough place for a single column, cols is equals to 0 and 
+            //prevents us to calculate the number of rows. Therefore, if the width is insuficient, 
+            //we just act as if there was enought place for the column and let it be cropped.
+            _columns = (cols > 0) ? cols : 1;
+            _rows = (int)Math.Ceiling((double)Items.Count / _columns);
+            //The value of the scrollbar indicates the vertical offset of all the items.
+            //When the value is, say, 23, all the items are 23px higher than if the
+            //scollbar value was 0;
+            var displayHeight = (ItemsSpaceNeeded.Height) * _rows;
+            
+            AutoScrollMinSize = new Size(ItemsSpaceNeeded.Width + Padding.Horizontal, displayHeight + Padding.Vertical);
+            //Don't use the DisplayRectangle before this line, because the scroll properties set above are used for its calculation.
 
-            try
+            //Calculate item bounds
+            ItemDisplayBounds = new Rectangle[Items.Count];
+            if (Items.Count > 0)
             {
-                var cols = (int)Math.Floor((double)DisplayRectangle.Width / (ItemsSpaceNeeded.Width));
-                //When there is not enought place for a single column, cols is equals to 0 and 
-                //prevents us to calculate the number of rows. Therefore, if the width is insuficient, 
-                //we just act as if there was enought place for the column and let it be cropped.
-                _columns = (cols > 0) ? cols : 1;
-                _rows = (int)Math.Ceiling((double)Items.Count / _columns);
-                //The value of the scrollbar indicates the vertical offset of all the items.
-                //When the value is, say, 23, all the items are 23px higher than if the
-                //scollbar value was 0;
-                var displayHeight = (ItemsSpaceNeeded.Height) * _rows;
-
-                //VerticalScroll.Maximum = _displayHeight + Padding.Vertical;
-                //VerticalScroll.SmallChange = 1;
-                AutoScrollMinSize = new Size(ItemsSpaceNeeded.Width + Padding.Horizontal, displayHeight + Padding.Vertical);
-                //Don't use the DisplayRectangle before this line, because the scroll properties set above are used for its calculation.
-
-                //Calculate item bounds
-                ItemDisplayBounds = new Rectangle[Items.Count];
-                if (Items.Count > 0)
+                var index = 0;
+                for (var y = 0; y < _rows; y++)
                 {
-                    var index = 0;
-                    for (var y = 0; y < _rows; y++)
+                    for (var x = 0; x < _columns; x++)
                     {
-                        for (var x = 0; x < _columns; x++)
-                        {
-                            var r = new Rectangle();
-                            r.Size = ItemSize;
+                        var r = new Rectangle();
+                        r.Size = ItemSize;
 
-                            r.X = _itemSpacing; //Place the item in the first column
-                            r.X += ItemsSpaceNeeded.Width * x; //Adjust depending of the position
+                        r.X = _itemSpacing; //Place the item in the first column
+                        r.X += ItemsSpaceNeeded.Width * x; //Adjust depending of the position
 
-                            r.Y = _itemSpacing;
-                            r.Y += ItemsSpaceNeeded.Height * y;
+                        r.Y = _itemSpacing;
+                        r.Y += ItemsSpaceNeeded.Height * y;
 
-                            ItemDisplayBounds[index] = r;
+                        ItemDisplayBounds[index] = r;
 
-                            index++;
+                        index++;
 
-                            if (index >= Items.Count) break;
-                        }
                         if (index >= Items.Count) break;
                     }
+                    if (index >= Items.Count) break;
                 }
             }
-            finally
+
+            Invalidate();
+        }
+
+        //Call this method to inform the control that items have been added
+        internal void OnItemAddedInternal(bool lastItemFromBatch)
+        {
+            if (lastItemFromBatch)
             {
-                ResumeLayout();
-                Invalidate();
+                CalculateLayout();
             }
         }
 
-        //If we ever add a multi selection feature, this method could set another property called SelectedIndexes that returns something like an SelectedIndexCollection. Naturally, the Selected property of the item should them uses that collection for its getter.
-        /// <summary>
-        /// Sets the item at the current index as selected and unselect the previously
-        /// selected item if MultiSelect (the feature I am refering to above, which is not implemented yet) is false. Internally used by the Selected property setter of the IconListViewItem. Users should use the latter instead of this method.
-        /// </summary>        
-        internal void SelectIndex(int index)
+        //Call this method to inform the control that items have been removed
+        internal void OnItemRemovedInternal(bool lastItemFromBatch)
         {
-            var nextItemBounds = Rectangle.Empty;
-            if (index >= 0 && index < Items.Count)
+            if (lastItemFromBatch)
             {
-                nextItemBounds = Items[index].Bounds;
+                CalculateLayout();
             }
-            else if (index != -1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(index), index, null);
-            }
+        }
 
-            if (ClientRectangle.Contains(nextItemBounds))
-            {
-                //We can just invalidate the previous and the next item
-                using (var region = new Region(nextItemBounds))
-                {
-                    //Add the rectangle of the previously selected item, 
-                    //if relevant (if there was previously no selected item, 
-                    //the selected index was -1.
-                    if (SelectedIndex >= 0 && SelectedIndex < Items.Count)
-                    {
-                        region.Xor(Items[SelectedIndex].Bounds);
-                    }
-
-                    SelectedIndex = index;
-                    Invalidate(region);
-                }
-            }
-            else
-            {
-                //We need to scroll so we invalidate the whole control. Note that
-                //scrolling in code does not call OnScroll, hence why we call invalidate here.              
-                SelectedIndex = index;
-                ScrollToItem(index);
-                Invalidate();
-            }
+        //Call this method whenever an item is about to be removed. This ensure 
+        //that this control does not hold any values that refer to an item that 
+        //it no longer holds.
+        internal void OnItemRemovingInternal(int index)
+        {
+            SelectedIndex = -1;
+            //Purposely use the field instead of the property in order to avoid invalidation. 
+            //We can't do the same with SelectedIndex since it has a public event that may
+            //need to be raised.
+            _hotItemIndex = -1;
         }
 
         /// <summary>
         ///     Scrolls the view to make the item at the specified index visible, if it is not already.
         /// </summary>        
-        private void ScrollToItem(int itemIndex)
+        private bool ScrollToItem(int itemIndex)
         {
             var itemBounds = Items[itemIndex].Bounds;
+            var scrollPerformed = false;
             //Check if (ClientSize.Height < ItemSize.Height) because in that condition, aligning the item at the
             //top crops the bottom, which causes the item to be realigned at the bottom when clicked a second time.
             if (itemBounds.Top - _itemSpacing < ClientRectangle.Top || ClientSize.Height < ItemSize.Height)
             {
                 AutoScrollPosition = new Point(AutoScrollPosition.X, ItemDisplayBounds[itemIndex].Top - _itemSpacing + Padding.Top);
+                scrollPerformed = true;
             }
             else if (itemBounds.Bottom > ClientRectangle.Bottom)
             {
                 AutoScrollPosition = new Point(AutoScrollPosition.X, ItemDisplayBounds[itemIndex].Bottom - ClientRectangle.Height + Padding.Top);
+                scrollPerformed = true;
             }
+            //Setting the AutoScrollPosition property does not invalidate the control, 
+            //so we need to do it ourselves
+            if (scrollPerformed)
+            {
+                Invalidate();
+            }
+            return scrollPerformed;
         }
 
         /// <summary>
@@ -542,10 +559,7 @@ namespace TileIconifier.Controls.IconListView
             base.OnMouseDown(e);
 
             var clickedItem = GetItemAt(e.Location);
-            if (clickedItem != null)
-            {
-                clickedItem.Selected = true;
-            }
+            SelectedIndex = (clickedItem != null) ? clickedItem.Index : -1;
         }
 
         protected override void OnMouseDoubleClick(MouseEventArgs e)
@@ -628,11 +642,11 @@ namespace TileIconifier.Controls.IconListView
             {
                 if (newIndex >= Items.Count)
                 {
-                    SelectIndex(Items.Count - 1);
+                    SelectedIndex = Items.Count - 1;
                 }
                 else
                 {
-                    SelectIndex((int)newIndex);
+                    SelectedIndex = (int)newIndex;
                 }
             }
 
@@ -790,51 +804,6 @@ namespace TileIconifier.Controls.IconListView
             base.OnSizeChanged(e);
         }
 
-        ///// <summary>
-        /////     Invalidate the items with the specified indexes. -1 does not throw an exception, but is ignored.
-        ///// </summary>
-        ///// <param name="indexes">Indexes of the items to invalidate.</param>
-        //private void InvalidateItemsXor(params int[] indexes)
-        //{
-        //    using (var reg = new Region(Rectangle.Empty))
-        //    {
-        //        for (var i = 0; i < indexes.Length; i++)
-        //        {
-        //            if (indexes[i] == -1)
-        //            {
-        //                continue;
-        //            }
-        //            else if (indexes[i] < 0 || indexes[i] > Items.Count)
-        //            {
-        //                throw new ArgumentOutOfRangeException();
-        //            }
-        //            reg.Xor(Items[indexes[i]].Bounds);
-        //        }
-        //        Invalidate(reg);
-        //    }                
-        //}
-        //
-        ///// <summary>
-        /////     Invalidate the region of the control defined by the specified Rectangles.
-        ///// </summary>
-        ///// <param name="rects">Parts of the control to invalidate.</param>
-        //private void InvalidateRectangles(params Rectangle[] rects)
-        //{
-        //    if (rects.Length < 1)
-        //    {
-        //        return;
-        //    }
-        //
-        //    using (var reg = new Region(rects[0]))
-        //    {
-        //        for (var i = 1; i < rects.Length; i++)
-        //        {
-        //            reg.Union(rects[i]);
-        //        }
-        //        Invalidate(reg);
-        //    }
-        //}
-
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == NativeMethods.WM_NCPAINT)
@@ -896,7 +865,7 @@ namespace TileIconifier.Controls.IconListView
                     {
                         return;
                     }
-                    ControlPaint.DrawBorder(g, FullSizeRectangle, bColor, ButtonBorderStyle.Solid);
+                    ControlPaint.DrawBorder(g, NonClientRectangle, bColor, ButtonBorderStyle.Solid);
                 }
             }
         }
@@ -916,12 +885,12 @@ namespace TileIconifier.Controls.IconListView
                     var vsRenderer = GetVisualStyleRenderer(vsElement);
                     using (new GraphicsClippedToBorder(g, this, BorderStyle))
                     {
-                        vsRenderer.DrawBackground(g, FullSizeRectangle);
+                        vsRenderer.DrawBackground(g, NonClientRectangle);
                     }
                 }
             }
         }
-
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             //Paint the items
@@ -937,7 +906,7 @@ namespace TileIconifier.Controls.IconListView
                     }
                 }
             }
-
+            
             base.OnPaint(e);
         }
 

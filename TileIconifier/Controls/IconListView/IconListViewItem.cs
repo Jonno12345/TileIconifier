@@ -98,11 +98,19 @@ namespace TileIconifier.Controls.IconListView
         {
             get
             {
-                return (ListView.SelectedIndex == Index);
+                if (ListView != null)
+                {
+                    return ListView.SelectedIndex == Index;
+                }
+                return false;
             }
             set
             {
-                ListView.SelectIndex(value ? Index : -1);
+                if (ListView == null)
+                {
+                    throw new InvalidOperationException("Cannot select an item that is not owned by any IconListView.");
+                }
+                ListView.SelectedIndex = value ? Index : -1;
             }
         }
 
