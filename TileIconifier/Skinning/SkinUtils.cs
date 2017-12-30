@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using TileIconifier.Controls;
 using TileIconifier.Skinning.Skins;
 
-namespace TileIconifier.Skinning.Utilities
+namespace TileIconifier.Skinning
 {
     internal static class SkinUtils
     {    

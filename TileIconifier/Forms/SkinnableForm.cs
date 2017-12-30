@@ -32,7 +32,6 @@ using System.Windows.Forms;
 using TileIconifier.Properties;
 using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
-using TileIconifier.Skinning.Utilities;
 
 namespace TileIconifier.Forms
 {

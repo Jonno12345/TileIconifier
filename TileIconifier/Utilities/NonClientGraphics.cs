@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TileIconifier.Skinning.Utilities
+namespace TileIconifier.Utilities
 {
     //A little convinience wrapper that creates a non client Graphics from handles 
     //and releases all the associated resources when it's disposed.

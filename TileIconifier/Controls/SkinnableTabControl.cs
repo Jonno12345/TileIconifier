@@ -5,8 +5,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
+using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
-using TileIconifier.Skinning.Utilities;
 
 namespace TileIconifier.Controls
 {

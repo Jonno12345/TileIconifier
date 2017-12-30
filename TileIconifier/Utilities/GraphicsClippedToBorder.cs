@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace TileIconifier.Skinning.Utilities
+namespace TileIconifier.Utilities
 {
-    //A little helper object that temporarily modify the clipping region of a Graphics to exclude everything except the borders.
+    //A little helper object that temporarily modifies the clipping region of a Graphics to exclude everything except the borders.
     class GraphicsClippedToBorder : IDisposable
     {
         private bool _disposed = false;
@@ -31,9 +31,9 @@ namespace TileIconifier.Skinning.Utilities
         }
 
         /// <summary>
-        ///     Clip the region of a <see cref="Graphics"/> to the borders of the control.
+        ///     Clips the region of a <see cref="Graphics"/> to the borders of the control.
         /// </summary>
-        /// <param name="g">A <see cref="Graphics"/> for the non client area of the control.</param>
+        /// <param name="g">A <see cref="Graphics"/> for the non-client area of the control.</param>
         /// <param name="ctrl"></param>
         /// <param name="borderStyle"></param>
         public GraphicsClippedToBorder(Graphics g, Control ctrl, BorderStyle borderStyle)

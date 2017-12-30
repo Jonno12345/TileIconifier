@@ -38,7 +38,6 @@ using TileIconifier.Forms.Shared;
 using TileIconifier.Localization;
 using TileIconifier.Properties;
 using TileIconifier.Skinning;
-using TileIconifier.Skinning.Utilities;
 
 namespace TileIconifier
 {

@@ -31,9 +31,8 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using TileIconifier.Core.Utilities;
 using TileIconifier.Properties;
-using TileIconifier.Skinning.Utilities;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {

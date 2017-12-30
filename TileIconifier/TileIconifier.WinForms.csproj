@@ -347,11 +347,11 @@
     </Compile>
     <Compile Include="Skinning\ToolStripSystemColorTable.cs" />
     <Compile Include="Skinning\ToolStripSystemRendererEx.cs" />
-    <Compile Include="Skinning\Utilities\ButtonUtils.cs" />
-    <Compile Include="Skinning\Utilities\GraphicsClippedToBorder.cs" />
-    <Compile Include="Skinning\Utilities\LayoutAndPaintUtils.cs" />
-    <Compile Include="Skinning\Utilities\NonClientGraphics.cs" />
-    <Compile Include="Skinning\Utilities\SkinUtils.cs" />
+    <Compile Include="Utilities\ButtonUtils.cs" />
+    <Compile Include="Utilities\GraphicsClippedToBorder.cs" />
+    <Compile Include="Utilities\LayoutAndPaintUtils.cs" />
+    <Compile Include="Utilities\NonClientGraphics.cs" />
+    <Compile Include="Skinning\SkinUtils.cs" />
     <Compile Include="Utilities\ControlUtils.cs" />
     <Compile Include="Utilities\FontUtils.cs" />
     <Compile Include="Utilities\FormUtils.cs" />

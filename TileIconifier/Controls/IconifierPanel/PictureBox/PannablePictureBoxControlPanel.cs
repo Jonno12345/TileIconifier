@@ -32,13 +32,13 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using TileIconifier.Properties;
-using TileIconifier.Skinning.Utilities;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {
     public partial class PannablePictureBoxControlPanel : UserControl
     {
-        private int BUTTON_ICON__LOGICAL_SIZE = 16;
+        private int BUTTON_ICON_LOGICAL_SIZE = 16;
         
         public PannablePictureBoxControlPanel()
         {
@@ -170,7 +170,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
                 Resources.ExportPerformance_128x
             };
 
-            ButtonUtils.SetScaledImage(btns, imgs, new Size(BUTTON_ICON__LOGICAL_SIZE, BUTTON_ICON__LOGICAL_SIZE));
+            ButtonUtils.SetScaledImage(btns, imgs, new Size(BUTTON_ICON_LOGICAL_SIZE, BUTTON_ICON_LOGICAL_SIZE));
         }
     }
 }

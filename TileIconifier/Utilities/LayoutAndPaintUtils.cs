@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace TileIconifier.Skinning.Utilities
+namespace TileIconifier.Utilities
 {
     class LayoutAndPaintUtils
     {

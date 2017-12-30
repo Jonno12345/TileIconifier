@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using TileIconifier.Core.Utilities;
 
-namespace TileIconifier.Skinning.Utilities
+namespace TileIconifier.Utilities
 {
     internal static class ButtonUtils
     {

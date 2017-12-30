@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.ComponentModel;
 using TileIconifier.Skinning.Skins;
-using TileIconifier.Skinning.Utilities;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls
 {
