@@ -56,11 +56,22 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             set { lblHeader.Text = value; }
         }
         
-        public Size PannablePictureBoxOutputSize
+        public Size ImagePictureBoxOutputSize
         {
             get { return panPct.OutputSize; }
             set { panPct.OutputSize = value; }
-        }        
+        }
+
+        [
+            Localizable(true),
+            DefaultValue(null),
+            Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design", typeof(System.Drawing.Design.UITypeEditor))
+        ]
+        public string ImagePlaceholderText
+        {
+            get { return panPct.PlaceholderText; }
+            set { panPct.PlaceholderText = value; }
+        }
 
         public event EventHandler ChangeImageClick;
 

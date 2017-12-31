@@ -339,12 +339,6 @@
       <DependentUpon>Strings.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Skinning\Skins\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Skinning\Skins\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Skinning\ToolStripSystemColorTable.cs" />
     <Compile Include="Skinning\ToolStripSystemRendererEx.cs" />
     <Compile Include="Utilities\ButtonUtils.cs" />
@@ -418,9 +412,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Shared\FrmLoadingSplash.resx">
       <DependentUpon>FrmLoadingSplash.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Skinning\Skins\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>

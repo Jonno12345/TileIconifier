@@ -387,33 +387,6 @@ namespace TileIconifier.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Double.
-        /// </summary>
-        internal static string PanPctLine1 {
-            get {
-                return ResourceManager.GetString("PanPctLine1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click.
-        /// </summary>
-        internal static string PanPctLine2 {
-            get {
-                return ResourceManager.GetString("PanPctLine2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Me.
-        /// </summary>
-        internal static string PanPctLine3 {
-            get {
-                return ResourceManager.GetString("PanPctLine3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Path not found.
         /// </summary>
         internal static string PathNotFound {
