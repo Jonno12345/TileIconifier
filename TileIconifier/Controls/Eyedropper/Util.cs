@@ -155,6 +155,7 @@ namespace TileIconifier.Controls.Eyedropper
             var desktop = g.GetHdc();
             float logicalScreenHeight = NativeMethods.GetDeviceCaps(desktop, (int)NativeMethods.DeviceCap.Vertres);
             float physicalScreenHeight = NativeMethods.GetDeviceCaps(desktop, (int)NativeMethods.DeviceCap.Desktopvertres);
+            TileIconifier.NativeMethods.ReleaseDC(IntPtr.Zero, desktop);
 
             return physicalScreenHeight / logicalScreenHeight;
         }

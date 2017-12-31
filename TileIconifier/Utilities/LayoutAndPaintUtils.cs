@@ -23,6 +23,28 @@ namespace TileIconifier.Utilities
         }
 
         /// <summary>
+        /// Scales the specified point by the specified factor.
+        /// </summary>        
+        public static void ScalePoint(ref Point point, int factor)
+        {
+            point.X *= factor;
+            point.Y *= factor;
+        }
+
+        /// <summary>
+        /// Returns a <see cref="Point"/> located at the horizontal and 
+        /// vertical center of the specified rectangle.
+        /// </summary>        
+        public static Point GetRectangleCenter(Rectangle rect)
+        {
+            var center = rect.Location;
+            center.X += rect.Width / 2;
+            center.Y += rect.Height / 2;
+
+            return center;
+        }
+
+        /// <summary>
         ///     Returns a <see cref="Rectangle"/> whose size was increased or decreased from the specified 
         ///     <see cref="Rectangle"/> based on the specified <see cref="Padding"/>.
         /// </summary>
@@ -103,6 +125,10 @@ namespace TileIconifier.Utilities
         /// <remarks>Empty rectangles are ignored.</remarks>
         public static void InvalidateRectangles(Control control, params Rectangle[] rects)
         {
+            if (control == null)
+            {
+                throw new ArgumentNullException(nameof(control));
+            }
             if (rects == null)
             {
                 throw new ArgumentNullException(nameof(rects));
