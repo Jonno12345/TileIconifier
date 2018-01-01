@@ -48,8 +48,8 @@
             // 
             // pctLogo
             // 
-            resources.ApplyResources(this.pctLogo, "pctLogo");
             this.pctLogo.Image = global::TileIconifier.Properties.Resources.tiles2_shadow;
+            resources.ApplyResources(this.pctLogo, "pctLogo");
             this.pctLogo.Name = "pctLogo";
             this.pctLogo.TabStop = false;
             // 
@@ -63,7 +63,7 @@
             // FrmAbout
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.lblTileIconifier);
             this.Controls.Add(this.pctLogo);

@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
@@ -53,6 +54,7 @@ namespace TileIconifier.Forms.Main
             InitializeComponent();
 
             ApplySkin();
+            ilsShortcutItemsSmallIcons.ImageSize = SystemInformation.SmallIconSize;
         }
 
         private ShortcutItem CurrentShortcutItem => _currentShortcutListViewItem.ShortcutItem;
@@ -281,7 +283,7 @@ namespace TileIconifier.Forms.Main
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             UpdateFilteredList();
-            BuildShortcutList();
+            BuildListViewContent();
             UpdateShortcut();
         }
 

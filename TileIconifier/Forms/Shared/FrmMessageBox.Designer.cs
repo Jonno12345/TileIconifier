@@ -56,7 +56,7 @@
             this.tlpBody.RowCount = 2;
             this.tlpBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpBody.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpBody.Size = new System.Drawing.Size(323, 89);
+            this.tlpBody.Size = new System.Drawing.Size(323, 104);
             this.tlpBody.TabIndex = 0;
             // 
             // flpCommands
@@ -68,8 +68,8 @@
             this.flpCommands.Controls.Add(this.btn2);
             this.flpCommands.Controls.Add(this.btn1);
             this.flpCommands.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flpCommands.Location = new System.Drawing.Point(80, 60);
-            this.flpCommands.Margin = new System.Windows.Forms.Padding(0);
+            this.flpCommands.Location = new System.Drawing.Point(80, 75);
+            this.flpCommands.Margin = new System.Windows.Forms.Padding(0, 15, 0, 0);
             this.flpCommands.Name = "flpCommands";
             this.flpCommands.Size = new System.Drawing.Size(243, 29);
             this.flpCommands.TabIndex = 1;
@@ -137,6 +137,8 @@
             // 
             // FrmMessageBox
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(428, 222);

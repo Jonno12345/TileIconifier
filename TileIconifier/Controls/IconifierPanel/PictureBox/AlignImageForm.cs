@@ -29,39 +29,28 @@
 
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
+using TileIconifier.Properties;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {
     public partial class AlignImageForm : Form
     {
-        private ImageAlignAdjustement _lastClickType;
-
-        public event EventHandler<AlignImageEventArgs> ImageLocationChanged;
+        private int BUTTON_ICON_LOGICAL_SIZE = 24;
 
         public AlignImageForm()
         {
             InitializeComponent();
+            SetButtonImages();
 
-            //Unlike what its name implies, the "DoubleClickTime" system setting
-            //is not only used for double clicks. It more generally describes for
-            //how long a mouse button needs to be pressed before the click is
-            //considered as more than just a simple "click".
-            tmrScrollDelay.Interval = SystemInformation.DoubleClickTime;
-
-            //Setup the tags, which are used to determine which action
-            //is associated with each button.
-            btnLeft.Tag = ImageAlignAdjustement.LeftAlign;
-            btnXMiddle.Tag = ImageAlignAdjustement.XAlign;
-            btnRight.Tag = ImageAlignAdjustement.RightAlign;
-            btnTop.Tag = ImageAlignAdjustement.TopAlign;
-            btnYMiddle.Tag = ImageAlignAdjustement.YAlign;
-            btnBottom.Tag = ImageAlignAdjustement.BottomAlign;
-            btnNudgeUp.Tag = ImageAlignAdjustement.NudgeUp;
-            btnNudgeLeft.Tag = ImageAlignAdjustement.NudgeLeft;
-            btnCenter.Tag = ImageAlignAdjustement.Center;
-            btnNudgeRight.Tag = ImageAlignAdjustement.NudgeRight;
-            btnNudgeDown.Tag = ImageAlignAdjustement.NudgeDown;
+            //Setup the tags that are used to determine which command is associated
+            //with each button that perform a continuous adjustement.
+            btnNudgeUp.Tag = PannableImageContinuousAdjustement.NudgeUp;
+            btnNudgeLeft.Tag = PannableImageContinuousAdjustement.NudgeLeft;
+            btnNudgeRight.Tag = PannableImageContinuousAdjustement.NudgeRight;
+            btnNudgeDown.Tag = PannableImageContinuousAdjustement.NudgeDown;
         }        
 
         private PannablePictureBox _pannablePictureBox = null;
@@ -71,11 +60,80 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             get { return _pannablePictureBox; }
             set
             {
-                _pannablePictureBox = value;
-                //Controls are disabled if no PannablePictureBox is set
-                tlpBody.Enabled = (value != null);
-                SetPositionText();
+                if (_pannablePictureBox != value)
+                {
+                    //Remove the event handle attached to the old PannablePictureBox
+                    if (_pannablePictureBox != null)
+                    {
+                        _pannablePictureBox.OnPannablePictureImagePropertyChange -= PannablePictureBox_OnPannablePictureImagePropertyChange;
+                    }
+                    if (value == null)
+                    {
+                        tlpBody.Enabled = false;                        
+                    }
+                    else
+                    {
+                        tlpBody.Enabled = true;
+                        value.OnPannablePictureImagePropertyChange += PannablePictureBox_OnPannablePictureImagePropertyChange;
+                    }
+                    _pannablePictureBox = value;
+                    SetPositionText(); //Must be done AFTER the field is set
+                }
             }
+        }
+
+        private void PannablePictureBox_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
+        {
+            SetPositionText();
+        }
+
+
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            PannablePictureBox?.AlignLeft();
+        }
+
+        private void btnXMiddle_Click(object sender, EventArgs e)
+        {
+            PannablePictureBox?.AlignXMiddle();
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            PannablePictureBox?.AlignRight();
+        }
+
+        private void btnTop_Click(object sender, EventArgs e)
+        {
+            PannablePictureBox?.AlignTop();
+        }
+
+        private void btnYMiddle_Click(object sender, EventArgs e)
+        {
+            PannablePictureBox?.AlignYMiddle();
+        }
+
+        private void btnBottom_Click(object sender, EventArgs e)
+        {
+            PannablePictureBox?.AlignBottom();
+        }
+
+        private void btnCenter_Click(object sender, EventArgs e)
+        {
+            PannablePictureBox?.CenterImage();
+        }
+
+        private void NudgeButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            var ctrl = (Control)sender;
+            var adjustement = (PannableImageContinuousAdjustement)ctrl.Tag;
+            PannablePictureBox?.BeginContinuousAdjustment(adjustement);
+        }
+
+        private void NudgeButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            PannablePictureBox?.EndContinuousAdjustment();
         }
 
         protected override void OnDeactivate(EventArgs e)
@@ -85,99 +143,6 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             Close();
         }
 
-        private void AlignButton_Click(object sender, EventArgs e)
-        {
-            var ctrl = (Control)sender;
-            var adjustement = (ImageAlignAdjustement)ctrl.Tag;
-
-            DoAdjustement(adjustement);
-        }
-
-        private void PanButton_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left) return;
-
-            var ctrl = (Control)sender;
-            var adjustement = (ImageAlignAdjustement)ctrl.Tag;
-
-            _lastClickType = adjustement;
-            //First adjustement immediatly when the button is down, before the delay is considered.
-            DoAdjustement(adjustement);
-            tmrScrollDelay.Start();
-        }
-
-        private void PanButton_MouseUp(object sender, MouseEventArgs e)
-        {
-            //Don't forget to stop tmrDelay to prevent it from starting tmrNudge if the delay is not reached yet.
-            tmrScrollDelay.Stop();
-            tmrNudge.Stop();
-        }
-
-        private void TmrScrollDelay_Tick(object sender, EventArgs e)
-        {
-            tmrScrollDelay.Stop();
-            //Do an adjustement right now
-            DoAdjustement(_lastClickType);
-            //Start the continuous adjustement
-            tmrNudge.Start();
-        }
-
-        private void TmrNudge_Tick(object sender, EventArgs e)
-        {
-            DoAdjustement(_lastClickType);
-        }
-
-        private void DoAdjustement(ImageAlignAdjustement adjustementType)
-        {
-            if (PannablePictureBox != null)
-            {
-                switch (adjustementType)
-                {
-                    case ImageAlignAdjustement.LeftAlign:
-                        PannablePictureBox.AlignLeft();
-                        break;
-                    case ImageAlignAdjustement.BottomAlign:
-                        PannablePictureBox.AlignBottom();
-                        break;
-                    case ImageAlignAdjustement.RightAlign:
-                        PannablePictureBox.AlignRight();
-                        break;
-                    case ImageAlignAdjustement.TopAlign:
-                        PannablePictureBox.AlignTop();
-                        break;
-                    case ImageAlignAdjustement.XAlign:
-                        PannablePictureBox.AlignXMiddle();
-                        break;
-                    case ImageAlignAdjustement.YAlign:
-                        PannablePictureBox.AlignYMiddle();
-                        break;
-                    case ImageAlignAdjustement.NudgeUp:
-                        PannablePictureBox.Nudge(y: -1);
-                        break;
-                    case ImageAlignAdjustement.NudgeDown:
-                        PannablePictureBox.Nudge(y: 1);
-                        break;
-                    case ImageAlignAdjustement.NudgeLeft:
-                        PannablePictureBox.Nudge(-1);
-                        break;
-                    case ImageAlignAdjustement.NudgeRight:
-                        PannablePictureBox.Nudge(1);
-                        break;
-                    case ImageAlignAdjustement.Center:
-                        PannablePictureBox.CenterImage();
-                        break;
-                    case ImageAlignAdjustement.None:
-                        return;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(adjustementType), adjustementType, null);
-                }
-
-                SetPositionText();
-
-                ImageLocationChanged?.Invoke(this, new AlignImageEventArgs(adjustementType));
-            }            
-        }
-
         private void SetPositionText()
         {
             if (PannablePictureBox != null)
@@ -185,8 +150,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
                 var panImage = PannablePictureBox.PannablePictureBoxImage;
                 var x = panImage.X;
                 //Move the origin at the bottom of picture box since that's probably what most users expect.
-                //Should use client size here.
-                var y = PannablePictureBox.Height - panImage.Y - panImage.Height;
+                var y = PannablePictureBox.OutputSize.Height - panImage.Y - panImage.Height;
 
                 lblXValue.Text = x.ToString();
                 lblYValue.Text = y.ToString();
@@ -197,31 +161,38 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
                 lblYValue.Text = string.Empty;
             }
         }
-    }
 
-    public enum ImageAlignAdjustement
-    {
-        None = 0,
-        LeftAlign = 1,
-        RightAlign = 2,
-        TopAlign = 3,
-        BottomAlign = 4,
-        XAlign = 5,
-        YAlign = 6,
-        NudgeUp = 7,
-        NudgeDown = 8,
-        NudgeLeft = 9,
-        NudgeRight = 10,
-        Center = 11
-    }
-
-    public class AlignImageEventArgs : EventArgs
-    {
-        public ImageAlignAdjustement AlignButtonClicked { get; set; }
-
-        public AlignImageEventArgs(ImageAlignAdjustement alignButtonClick)
+        private void SetButtonImages()
         {
-            AlignButtonClicked = alignButtonClick;
+            Button[] btns =
+            {
+                btnLeft,
+                btnXMiddle,
+                btnRight,
+                btnTop,
+                btnYMiddle,
+                btnBottom,
+                btnNudgeUp,
+                btnNudgeLeft,
+                btnCenter,
+                btnNudgeRight,
+                btnNudgeDown
+            };
+            Image[] imgs = 
+            {
+                Resources.AlignLeft,
+                Resources.AlignXMiddle,
+                Resources.AlignRight,
+                Resources.AlignTop,
+                Resources.AlignYMiddle,
+                Resources.AlignBottom,
+                Resources.NudgeUp,
+                Resources.NudgeLeft,
+                Resources.AlignCenter,
+                Resources.NudgeRight,
+                Resources.NudgeDown
+            };
+            ButtonUtils.SetScaledImage(btns, imgs, new Size(BUTTON_ICON_LOGICAL_SIZE, BUTTON_ICON_LOGICAL_SIZE));
         }
     }
 }

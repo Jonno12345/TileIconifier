@@ -29,6 +29,7 @@
 
 using System.Drawing;
 using System.Windows.Forms;
+using TileIconifier.Controls;
 
 namespace TileIconifier.Skinning.Skins
 {
@@ -85,7 +86,9 @@ namespace TileIconifier.Skinning.Skins
         #endregion
 
         #region "ListView"        
-        public override FlatStyle ListViewFlatStyle => FlatStyle.Flat;
+        public override bool ListViewUseExplorerStyle => false;
+        public override BorderStyle ListViewBorderStyle => BorderStyle.FixedSingle;
+        public override ListViewHeaderAppearance ListViewHeaderStyle => ListViewHeaderAppearance.Flat;
         public override Color ListViewBackColor => LowBackColor;
         public override Color ListViewForeColor => CommonForeColor;
         public override Color ListViewHeaderBackColor => MediumBackColor;

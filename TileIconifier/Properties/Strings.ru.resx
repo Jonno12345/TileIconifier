@@ -225,15 +225,6 @@
   <data name="NewVersionAvailable" xml:space="preserve">
     <value>Доступна новая версия!</value>
   </data>
-  <data name="PanPctLine1" xml:space="preserve">
-    <value>Дважды</value>
-  </data>
-  <data name="PanPctLine2" xml:space="preserve">
-    <value>кликни</value>
-  </data>
-  <data name="PanPctLine3" xml:space="preserve">
-    <value>меня</value>
-  </data>
   <data name="PowershellErrorFull" xml:space="preserve">
     <value>Возникла проблема с функциональностью PowerShell. Он был отключен.</value>
   </data>

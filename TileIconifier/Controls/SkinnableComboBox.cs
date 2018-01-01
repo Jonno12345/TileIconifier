@@ -39,6 +39,7 @@ namespace TileIconifier.Controls
 
         //There is no event for when this properties is changed,
         //so we need to reimplement it to allow us to do stuff when it is changed.
+        //Not ideal since this could be bypassed. Will think about this...
         public new FlatStyle FlatStyle
         {
             get { return base.FlatStyle; }
@@ -171,18 +172,10 @@ namespace TileIconifier.Controls
                 int glyphAreaWidth = SystemInformation.HorizontalScrollBarThumbWidth;
 
                 //Border
-                Color borderColor = (Focused) ? FlatButtonBorderFocusedColor : FlatButtonBorderColor;
-                //Compensation needed when drawing with a 1px wide Pen with GDI+
-                bounds.Width--;
-                bounds.Height--;
+                Color borderColor = (Focused) ? FlatButtonBorderFocusedColor : FlatButtonBorderColor;                
+                ControlPaint.DrawBorder(e.Graphics, bounds, borderColor, ButtonBorderStyle.Solid);
 
-                using (var p = new Pen(borderColor))
-                    e.Graphics.DrawRectangle(p, bounds);
-
-                //Background
-                //Removes the 1 pixel GDI+ compensation.
-                bounds.Width++;
-                bounds.Height++;
+                //Background                
                 //Skrinks the rectangle to fit within the borders we have just drawn.
                 bounds.Inflate(-1, -1);
 

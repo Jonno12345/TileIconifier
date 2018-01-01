@@ -28,53 +28,253 @@
 #endregion
 
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using TileIconifier.Core.Utilities;
-using TileIconifier.Properties;
 using TileIconifier.Skinning;
 using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {
     [SkinIgnore]
-    public partial class PannablePictureBox : UserControl
+    public class PannablePictureBox : Control
     {
+        //Read only fields
+        private readonly int _maxHeight = 400; //4*pctBox.Height;
+        private readonly int _maxWidth = 400; //4*pctBox.Width;
+        private readonly int _minHeight = -200; //-2*pctBox.Height;
+        private readonly int _minWidth = -200; //-2*pctBox.Width;
         private readonly Font _overlayFont = new Font(FontUtils.GetSystemFontFamily(), 9f, FontStyle.Regular);
+
+        //Modifiable fields
         private Point _movingPoint = Point.Empty;
-        private bool _panning;
-
+        private bool _panning = false;
         private Point _startingPoint = Point.Empty;
-        internal int MaxHeight;
-        internal int MaxWidth;
-        internal int MinHeight;
-        internal int MinWidth;
-        public Color OverlayColor = Color.White;
+        private PannableImageContinuousAdjustement _adjustementInProgress = PannableImageContinuousAdjustement.None;
+        private Container _components;
+        private Timer _tmrScrollDelay;
+        private Timer _tmrNudge;
 
-        public PannablePictureBoxImage PannablePictureBoxImage;
+        //Read-only properties
+        [Browsable(false)]
+        public PannablePictureBoxImage PannablePictureBoxImage { get; } = new PannablePictureBoxImage();
 
-        public bool ShowTextOverlay = false;
-        public string TextOverlay;
+        [Browsable(false)]
+        public Rectangle ImageRectangle => Rectangle.Round(GetImageBounds());
 
-        public Point TextOverlayPoint;
+        //Modifiable properties with their field, if needed
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public override bool AutoSize
+        {
+            get { return base.AutoSize; }
+            set
+            {
+                SetStyle(ControlStyles.FixedWidth | ControlStyles.FixedHeight, value);
+                base.AutoSize = value;
+            }
+        }
+
+        private Color _textOverlayColor = Color.White;
+        [DefaultValue(typeof(Color), nameof(Color.White))]
+        public Color TextOverlayColor
+        {
+            get { return _textOverlayColor; }
+            set
+            {
+                if (_textOverlayColor != value)
+                {
+                    _textOverlayColor = value;
+                    Invalidate(); //We could only invalidate text area.
+                }
+            }
+        }
+
+        private bool _showTextOverlay = false;
+        [DefaultValue(false)]
+        public bool ShowTextOverlay
+        {
+            get { return _showTextOverlay; }
+            set
+            {
+                if (_showTextOverlay != value)
+                {
+                    _showTextOverlay = value;
+                    Invalidate(); //We could only invalidate text area.
+                }
+            }
+        }
+
+        private string _textOverlay = null;
+        [DefaultValue(null)]
+        public string TextOverlay
+        {
+            get { return _textOverlay; }
+            set
+            {
+                if (_textOverlay != value)
+                {
+                    _textOverlay = value;
+                    Invalidate(); //We could only invalidate text area.
+                }
+            }
+        }
+
+        private Point _textOverlayLocation = Point.Empty;
+        [DefaultValue(typeof(Point), "0, 0")]
+        public Point TextOverlayLocation
+        {
+            get { return _textOverlayLocation; }
+            set
+            {
+                if (_textOverlayLocation != value)
+                {
+                    _textOverlayLocation = value;
+                    Invalidate();
+                }
+            }
+        }
+
+        private int _borderThickness = 1;
+        [DefaultValue(1)]
+        public int BorderThickness
+        {
+            get { return _borderThickness; }
+            set
+            {
+                if (_borderThickness != value)
+                {
+                    if (value < 0)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(BorderThickness), value, "Border thickness must be positive.");
+                    }
+                    _borderThickness = value;
+                    Invalidate();
+                }
+            }
+        }
+
+        private Color _borderColor = SystemColors.WindowFrame;
+        [DefaultValue(typeof(Color), nameof(SystemColors.WindowFrame))]
+        public Color BorderColor
+        {
+            get { return _borderColor; }
+            set
+            {
+                if (_borderColor != value)
+                {
+                    _borderColor = value;
+                    if (!Focused)
+                    {
+                        Invalidate(); //We could only invalidate the border region
+                    }
+                }
+            }
+        }
+
+        private Color _borderFocusedColor = SystemColors.Highlight;
+        [DefaultValue(typeof(Color), nameof(SystemColors.Highlight))]
+        public Color BorderFocusedColor
+        {
+            get { return _borderFocusedColor; }
+            set
+            {
+                if (_borderFocusedColor != value)
+                {
+                    _borderFocusedColor = value;
+                    if (Focused)
+                    {
+                        Invalidate(); //We could only invalidate the border region
+                    }
+                }
+            }
+        }
+
+        private Color _imageBackColor = Color.Gray;
+        [DefaultValue(typeof(Color), nameof(Color.Gray))]
+        public Color ImageBackColor
+        {
+            get { return _imageBackColor; }
+            set
+            {
+                if (_imageBackColor != value)
+                {
+                    _imageBackColor = value;
+                    Invalidate(); //We could only invalidate text area.
+                }
+            }
+        }
+
+        private string _placeholderText;
+        [DefaultValue(null)]
+        [Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design", typeof(System.Drawing.Design.UITypeEditor))]
+        public string PlaceholderText
+        {
+            get { return _placeholderText; }
+            set
+            {
+                if (_placeholderText != value)
+                {
+                    _placeholderText = value;
+                    if (PannablePictureBoxImage.Image == null)
+                    {
+                        Invalidate();
+                    }
+                }
+            }
+        }
+
+        private Size _outputSize = new Size(25, 25);
+        [DefaultValue(typeof(Size), "25, 25")]
+        public Size OutputSize
+        {
+            get { return _outputSize; }
+            set
+            {
+                if (_outputSize != value)
+                {
+                    if (value.Width < 1 || value.Height < 1)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(OutputSize), value, "The width and height of the output size must be greater or equal to 1.");
+                    }
+                    _outputSize = value;
+                    if (AutoSize && Parent != null)
+                    {
+                        var oldSize = Size;
+                        Parent.PerformLayout(this, nameof(Bounds));
+                        //If performing the layout has changed the size of the control, the latter 
+                        //has been already invalidated, so there is no need to do it ourselves.
+                        if (Size == oldSize)
+                        {
+                            Invalidate();
+                        }
+                    }
+                    else
+                    {
+                        Invalidate();
+                    }
+                }
+            }
+        }
 
         public PannablePictureBox()
         {
-            InitializeComponent();
-            PannablePictureBoxImage = new PannablePictureBoxImage();
+            DoubleBuffered = true;
+            ResizeRedraw = true;
+            SetAutoSizeMode(AutoSizeMode.GrowAndShrink);
+            
+            //Components initialization
+            _components = new Container();
+            _tmrScrollDelay = new Timer(_components);
+            _tmrNudge = new Timer(_components);
+            _tmrScrollDelay.Interval = SystemInformation.DoubleClickTime;
+            _tmrNudge.Interval = 50;
+            _tmrScrollDelay.Tick += _tmrScrollDelay_Tick;
+            _tmrNudge.Tick += _tmrNudge_Tick;
+
             PannablePictureBoxImage.OnPannablePictureNewImageSet += Image_OnPannablePictureNewImageSet;
-            pctBox.MouseWheel += PctBox_MouseWheel;
         }
 
-        public Size AssociatedSize { get; set; }
-
-        public void PannablePictureBoxImage_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
-        {
-            TriggerUpdate();
-        }
-
-        public new event EventHandler Click;
-        public new event EventHandler DoubleClick;
         public event PannablePictureBoxImage.PannablePictureImagePropertyChanges OnPannablePictureImagePropertyChange;
 
         public void ShrinkImage()
@@ -91,21 +291,21 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         {
             ResetZoom(false);
             CenterImage(false);
-            pctBox.Invalidate();
+            Invalidate(ImageRectangle);
         }
 
         public void ResetZoom(bool invalidateImage = true)
         {
-            PannablePictureBoxImage.Width = pctBox.Width;
-            PannablePictureBoxImage.Height = (int) (PannablePictureBoxImage.Width/PannablePictureBoxImage.AspectRatio);
+            PannablePictureBoxImage.Width = OutputSize.Width;
+            PannablePictureBoxImage.Height = (int)(PannablePictureBoxImage.Width / PannablePictureBoxImage.AspectRatio);
             TriggerUpdate(invalidateImage);
         }
 
         public void CenterImage(bool invalidateImage = true)
         {
             if (PannablePictureBoxImage.Image == null) return;
-            PannablePictureBoxImage.X = (pctBox.Width - PannablePictureBoxImage.Width)/2;
-            PannablePictureBoxImage.Y = (pctBox.Height - PannablePictureBoxImage.Height)/2;
+            PannablePictureBoxImage.X = (OutputSize.Width - PannablePictureBoxImage.Width) / 2;
+            PannablePictureBoxImage.Y = (OutputSize.Height - PannablePictureBoxImage.Height) / 2;
             TriggerUpdate(invalidateImage);
         }
 
@@ -122,11 +322,11 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             var previousWidth = PannablePictureBoxImage.Width;
             var previousHeight = PannablePictureBoxImage.Height;
 
-            PannablePictureBoxImage.Width = (int) ((decimal) MaxWidth/100*value);
-            PannablePictureBoxImage.Height = (int) (PannablePictureBoxImage.Width/PannablePictureBoxImage.AspectRatio);
+            PannablePictureBoxImage.Width = (int)((decimal)_maxWidth / 100 * value);
+            PannablePictureBoxImage.Height = (int)(PannablePictureBoxImage.Width / PannablePictureBoxImage.AspectRatio);
 
-            PannablePictureBoxImage.X += (previousWidth - PannablePictureBoxImage.Width)/2;
-            PannablePictureBoxImage.Y += (previousHeight - PannablePictureBoxImage.Height)/2;
+            PannablePictureBoxImage.X += (previousWidth - PannablePictureBoxImage.Width) / 2;
+            PannablePictureBoxImage.Y += (previousHeight - PannablePictureBoxImage.Height) / 2;
 
             TriggerUpdate();
         }
@@ -143,110 +343,340 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
 
         public void AlignRight()
         {
-            Align(pctBox.Width - PannablePictureBoxImage.Width);
+            Align(OutputSize.Width - PannablePictureBoxImage.Width);
         }
 
         public void AlignBottom()
         {
-            Align(y: pctBox.Height - PannablePictureBoxImage.Height);
+            Align(y: OutputSize.Height - PannablePictureBoxImage.Height);
         }
 
         public void AlignXMiddle()
         {
-            Align((pctBox.Width - PannablePictureBoxImage.Width)/2);
+            Align((OutputSize.Width - PannablePictureBoxImage.Width) / 2);
         }
 
         public void AlignYMiddle()
         {
-            Align(y: (pctBox.Height - PannablePictureBoxImage.Height)/2);
+            Align(y: (OutputSize.Height - PannablePictureBoxImage.Height) / 2);
         }
 
         public void Nudge(int? x = null, int? y = null)
         {
             if (x != null)
-                PannablePictureBoxImage.X += (int) x;
+                PannablePictureBoxImage.X += (int)x;
             if (y != null)
-                PannablePictureBoxImage.Y += (int) y;
+                PannablePictureBoxImage.Y += (int)y;
             TriggerUpdate();
         }
 
+        private void DoContinuousAdjustment(PannableImageContinuousAdjustement adjustmentType)
+        {
+            switch (adjustmentType)
+            {
+                case PannableImageContinuousAdjustement.None:
+                    return;                
+                case PannableImageContinuousAdjustement.NudgeUp:
+                    Nudge(y: -1);
+                    break;
+                case PannableImageContinuousAdjustement.NudgeDown:
+                    Nudge(y: 1);
+                    break;
+                case PannableImageContinuousAdjustement.NudgeLeft:
+                    Nudge(-1);
+                    break;
+                case PannableImageContinuousAdjustement.NudgeRight:
+                    Nudge(1);
+                    break;                
+                case PannableImageContinuousAdjustement.Enlarge:
+                    EnlargeImage();
+                    break;
+                case PannableImageContinuousAdjustement.Shrink:
+                    ShrinkImage();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(adjustmentType), adjustmentType, null);
+            }
+        }
+
+        internal void BeginContinuousAdjustment(PannableImageContinuousAdjustement adjustmentType)
+        {
+            if (_adjustementInProgress != PannableImageContinuousAdjustement.None)
+            {
+                throw new InvalidOperationException("A continuous adjustement is already in progress.");
+            }
+
+            //First adjustement immediatly when the button is down, before the delay is considered.
+            //This also checks if the adjustement type is valid.
+            DoContinuousAdjustment(adjustmentType);
+            _adjustementInProgress = adjustmentType;
+            _tmrScrollDelay.Start();
+
+        }
+
+        internal void EndContinuousAdjustment()
+        {
+            //Don't forget to stop _tmrScrollDelay to prevent it from starting tmrNudge if the delay is not reached yet.
+            _tmrScrollDelay.Stop();
+            _tmrNudge.Stop();
+            _adjustementInProgress = PannableImageContinuousAdjustement.None;
+        }
 
         internal decimal GetZoomPercentage()
         {
-            var zoomPercentage = (decimal) PannablePictureBoxImage.Width/MaxWidth*
+            var zoomPercentage = (decimal)PannablePictureBoxImage.Width / _maxWidth *
                                  100;
             return zoomPercentage >= 1 ? zoomPercentage : 1;
         }
 
-        private void PctBox_MouseWheel(object sender, MouseEventArgs e)
+        private void _tmrScrollDelay_Tick(object sender, EventArgs e)
         {
-            if (e.Delta < 0)
-            {
-                ShrinkImage();
-            }
-            else
-            {
-                EnlargeImage();
-            }
+            _tmrScrollDelay.Stop();
+            //Do an adjustement right now
+            DoContinuousAdjustment(_adjustementInProgress);
+            //Start the continuous adjustement
+            _tmrNudge.Start();
+        }
+
+        private void _tmrNudge_Tick(object sender, EventArgs e)
+        {
+            DoContinuousAdjustment(_adjustementInProgress);
         }
 
         private void Image_OnPannablePictureNewImageSet(object sender, EventArgs e)
         {
-            pctBox.Invalidate();
+            Invalidate(ImageRectangle);
+        }
+        
+        protected override bool IsInputKey(Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Up:
+                case Keys.Down:
+                case Keys.Left:
+                case Keys.Right:
+                case Keys.Add:
+                case Keys.Subtract:
+                    return true;
+            }
+            return base.IsInputKey(keyData);
         }
 
-        private void pctBox_MouseDown(object sender, MouseEventArgs e)
+        protected override void OnKeyDown(KeyEventArgs e)
         {
-            if (e.Button != MouseButtons.Left)
-                return;
-            _panning = true;
+            if (PannablePictureBoxImage.Image != null)
+            {
+                PannableImageContinuousAdjustement adjustment = PannableImageContinuousAdjustement.None;
+                switch (e.KeyData)
+                {
+                    case Keys.Up:
+                        adjustment = PannableImageContinuousAdjustement.NudgeUp;
+                        break;
+                    case Keys.Down:
+                        adjustment = PannableImageContinuousAdjustement.NudgeDown;
+                        break;
+                    case Keys.Left:
+                        adjustment = PannableImageContinuousAdjustement.NudgeLeft;
+                        break;
+                    case Keys.Right:
+                        adjustment = PannableImageContinuousAdjustement.NudgeRight;
+                        break;
+                    case Keys.Add:
+                        adjustment = PannableImageContinuousAdjustement.Enlarge;
+                        break;
+                    case Keys.Subtract:
+                        adjustment = PannableImageContinuousAdjustement.Shrink;
+                        break;
+                }
+                if (adjustment != PannableImageContinuousAdjustement.None)
+                {
+                    DoContinuousAdjustment(adjustment);
+                }
+            }
 
-            pctBox.Invalidate();
-            _startingPoint = new Point(e.Location.X - _movingPoint.X,
-                e.Location.Y - _movingPoint.Y);
+            base.OnKeyDown(e);
         }
 
-        private void pctBox_MouseUp(object sender, MouseEventArgs e)
+        protected override void OnMouseWheel(MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left)
-                return;
-            _panning = false;
-            TriggerUpdate();
+            if (PannablePictureBoxImage.Image != null)
+            {
+                if (e.Delta < 0)
+                {
+                    ShrinkImage();
+                }
+                else
+                {
+                    EnlargeImage();
+                }
+            }
+
+            base.OnMouseWheel(e);
         }
 
-        private void pctBox_MouseMove(object sender, MouseEventArgs e)
+        protected override void OnMouseDown(MouseEventArgs e)
         {
-            if (!_panning || PannablePictureBoxImage.Image == null || e.Button != MouseButtons.Left) return;
-            _movingPoint = new Point(e.Location.X - _startingPoint.X,
-                e.Location.Y - _startingPoint.Y);
+            if (e.Button == MouseButtons.Left)
+            {
+                Focus();
 
-            if (_movingPoint.X + PannablePictureBoxImage.Width > MaxWidth*2)
-                _movingPoint.X = MaxWidth*2 - PannablePictureBoxImage.Width;
-            if (_movingPoint.Y + PannablePictureBoxImage.Height > MaxHeight*2)
-                _movingPoint.Y = MaxHeight*2 - PannablePictureBoxImage.Height;
-            if (_movingPoint.X < MinWidth*2)
-                _movingPoint.X = MinWidth*2;
-            if (_movingPoint.Y < MinHeight*2)
-                _movingPoint.Y = MinHeight*2;
+                _panning = true;
 
-            PannablePictureBoxImage.X = _movingPoint.X;
-            PannablePictureBoxImage.Y = _movingPoint.Y;
+                //"Unscale" the provided point so that the panning follow the mouse.
+                var scaleFactor = GetControlScaleFactor();
+                var location = e.Location;
+                LayoutAndPaintUtils.ScalePoint(ref location, new SizeF(1 / scaleFactor, 1 / scaleFactor));
 
-            pctBox.Invalidate();
+                _startingPoint = new Point(location.X - _movingPoint.X,
+                    location.Y - _movingPoint.Y);
+            }
+
+            base.OnMouseDown(e);
         }
 
-        private void pctBox_Paint(object sender, PaintEventArgs e)
+        protected override void OnMouseUp(MouseEventArgs e)
         {
-            e.Graphics.Clear(BackColor);
+            if (e.Button == MouseButtons.Left)
+            {
+                _panning = false;
+                TriggerUpdate();
+            }
+
+            base.OnMouseUp(e);
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            if (_panning && PannablePictureBoxImage.Image != null && e.Button == MouseButtons.Left)
+            {
+                //"Unscale" the provided point so that the panning follow the mouse.
+                var scaleFactor = GetControlScaleFactor();
+                var location = e.Location;
+                LayoutAndPaintUtils.ScalePoint(ref location, new SizeF(1 / scaleFactor, 1 / scaleFactor));
+
+                _movingPoint = new Point(location.X - _startingPoint.X,
+                    location.Y - _startingPoint.Y);
+
+                if (_movingPoint.X + PannablePictureBoxImage.Width > _maxWidth * 2)
+                    _movingPoint.X = _maxWidth * 2 - PannablePictureBoxImage.Width;
+                if (_movingPoint.Y + PannablePictureBoxImage.Height > _maxHeight * 2)
+                    _movingPoint.Y = _maxHeight * 2 - PannablePictureBoxImage.Height;
+                if (_movingPoint.X < _minWidth * 2)
+                    _movingPoint.X = _minWidth * 2;
+                if (_movingPoint.Y < _minHeight * 2)
+                    _movingPoint.Y = _minHeight * 2;
+
+                PannablePictureBoxImage.X = _movingPoint.X;
+                PannablePictureBoxImage.Y = _movingPoint.Y;
+
+                Invalidate(ImageRectangle);
+            }
+
+            base.OnMouseMove(e);
+        }
+
+        protected override void OnEnter(EventArgs e)
+        {
+            Invalidate(); //We could only invalidate the border region
+            base.OnEnter(e);
+        }
+
+        protected override void OnLeave(EventArgs e)
+        {
+            Invalidate(); //We could only invalidate the border region
+            base.OnLeave(e);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && _components != null)
+            {
+                _components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        public override Size GetPreferredSize(Size proposedSize)
+        {
+            //Calculate the perfect size to accomodate the image at its DPI scaled output size + the border.
+            //Don't use GetImageSize() or the image rectangle since that relies on the control size and 
+            //that's exactly what we are trying to calculate here.
+            var scaleFactor = GetDPIScaleFactor();
+            var prefSizeF = new SizeF();
+
+            prefSizeF.Width = OutputSize.Width * scaleFactor.Width + 2 * BorderThickness;
+            prefSizeF.Height = OutputSize.Height * scaleFactor.Height + 2 * BorderThickness;
+
+            var prefSize = Size.Round(prefSizeF);
+
+            //Enforce maximum size
+            //0 means no maximum
+            if (MaximumSize.Width > 0)
+            {
+                prefSize.Width = Math.Min(MaximumSize.Width, prefSize.Width);
+            }
+
+            if (MaximumSize.Height > 0)
+            {
+                prefSize.Height = Math.Min(MaximumSize.Height, prefSize.Height);
+            }
+
+            //Enforce minimum size
+            //0 means no minimum
+            if (MinimumSize.Width > 0)
+            {
+                prefSize.Width = Math.Max(MinimumSize.Width, prefSize.Width);
+            }
+
+            if (MinimumSize.Height > 0)
+            {
+                prefSize.Height = Math.Max(MinimumSize.Height, prefSize.Height);
+            }
+
+            return prefSize;
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
             if (PannablePictureBoxImage.Width < 1 ||
                 PannablePictureBoxImage.Height < 1)
                 return;
 
+            e.Graphics.Clear(BackColor);
+
+            var scaleFactor = GetControlScaleFactor();
+            var imgBounds = ImageRectangle;
+
             if (PannablePictureBoxImage.Image != null)
             {
-                e.Graphics.DrawImage(
-                    SetResolution(PannablePictureBoxImage.Image, PannablePictureBoxImage.Width,
-                        PannablePictureBoxImage.Height), PannablePictureBoxImage.X, PannablePictureBoxImage.Y);
+                //Set a clip with the image bounds so that when the PannablePictureBox image is offset
+                //or larger than the control can accomodate while the control is not exactly the right 
+                //aspect ratio, the overflow is not visible.
+                var oldClip = e.Graphics.Clip;
+                using (var imgClip = oldClip.Clone())
+                {
+                    imgClip.Intersect(imgBounds);
+                    e.Graphics.Clip = imgClip;
+
+                    //Draw image back color
+                    using (var b = new SolidBrush(ImageBackColor))
+                    {
+                        e.Graphics.FillRectangle(b, imgBounds);
+                    }
+
+                    //Draw image
+                    e.Graphics.DrawImage(
+                        PannablePictureBoxImage.Image,
+                        imgBounds.X + PannablePictureBoxImage.X * scaleFactor,
+                        imgBounds.Y + PannablePictureBoxImage.Y * scaleFactor,
+                        PannablePictureBoxImage.Width * scaleFactor,
+                        PannablePictureBoxImage.Height * scaleFactor);
+
+                    //Restore the old clip for future drawing, especially by the potential external 
+                    //Paint event listeners that may want to draw outside of the image bounds.
+                    e.Graphics.Clip = oldClip;
+                }
 
                 if (ShowTextOverlay)
                 {
@@ -264,38 +694,66 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
                     new SolidBrush(Color.Red), 0, 60);
 #endif
             }
-            else
+            else if (!string.IsNullOrEmpty(PlaceholderText))
             {
-                e.Graphics.DrawString(Strings.PanPctLine1, DefaultFont,
-                    new SolidBrush(Color.Red), 3, 3);
-                e.Graphics.DrawString(Strings.PanPctLine2, DefaultFont,
-                    new SolidBrush(Color.Red), 3, 19);
-                e.Graphics.DrawString(Strings.PanPctLine3, DefaultFont,
-                    new SolidBrush(Color.Red), 3, 35);
+                using (var sf = new StringFormat())
+                {
+                    sf.Trimming = StringTrimming.EllipsisCharacter;
+                    var bounds = imgBounds;
+                    bounds.Inflate(-2, -2); //Some margins
+                    e.Graphics.DrawString(PlaceholderText, Font, Brushes.Red, bounds);
+                }
             }
+
+            //Draw the border delimiting the image area and the rest of the control
+            if (BorderThickness > 0)
+            {
+                var c = Focused ? BorderFocusedColor : BorderColor;
+
+                imgBounds.Inflate(BorderThickness, BorderThickness);
+
+                ControlPaint.DrawBorder(e.Graphics, imgBounds,
+                    c, BorderThickness, ButtonBorderStyle.Solid,
+                    c, BorderThickness, ButtonBorderStyle.Solid,
+                    c, BorderThickness, ButtonBorderStyle.Solid,
+                    c, BorderThickness, ButtonBorderStyle.Solid);
+            }
+
+            base.OnPaint(e);
         }
 
         //not a fun mass of parsing. Attempts to closely match the label behaviour of the Windows 10 Start Menu. Haven't tested against Windows 8.1
         //probably fails in some instances...
         private void DrawTextOverlay(PaintEventArgs e)
         {
+            var scaleFactor = GetControlScaleFactor();
+            var fontScaleFactor = GetControlScaleFactorForFont(e.Graphics);
+            if (scaleFactor == 0 || fontScaleFactor == 0)
+            {
+                return;
+            }
+            var imgBounds = ImageRectangle;
+            var overlayBrush = new SolidBrush(TextOverlayColor);
+            var overlayLoc = new PointF(imgBounds.X + TextOverlayLocation.X * scaleFactor, imgBounds.Y + TextOverlayLocation.Y * scaleFactor);
+            var overlayFont = new Font(_overlayFont.FontFamily, _overlayFont.Size * fontScaleFactor, _overlayFont.Style);
+
             try
             {
                 //get the width of the text before any manipulation
-                var textWidth = e.Graphics.MeasureString(TextOverlay, _overlayFont).Width;
+                var textWidth = e.Graphics.MeasureString(TextOverlay, overlayFont).Width;
                 //maximum length for a string, without spaces, to fit on the initial line - TODO: Pass these values in if there is ever a new tile type available
-                const int maxSingleLineLength = 90;
+                var maxSingleLineLength = 90 * scaleFactor;
                 //maximum length of a line before truncating with ellipsis
-                const int ellipsisLength = 91;
+                var ellipsisLength = 91 * scaleFactor;
 
                 //function to loop through a line, removing a char at a time until the length satisfies the requirement
-                Func<string, int, string> getCharsToMaxLength = (inputString, length) =>
+                Func<string, float, string> getCharsToMaxLength = (inputString, length) =>
                 {
                     var textChunk = inputString;
                     do
                     {
                         textChunk = textChunk.Substring(0, textChunk.Length - 1);
-                    } while (e.Graphics.MeasureString(textChunk, _overlayFont).Width > length);
+                    } while (e.Graphics.MeasureString(textChunk, overlayFont).Width > length);
                     return textChunk;
                 };
 
@@ -341,9 +799,9 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
                     //
                     //2. XXXXXXXXXX...
                     //   X
-                    if (e.Graphics.MeasureString(firstLine, _overlayFont).Width > ellipsisLength)
+                    if (e.Graphics.MeasureString(firstLine, overlayFont).Width > ellipsisLength)
                         firstLine = getCharsToMaxLength(firstLine, ellipsisLength) + "...";
-                    if (e.Graphics.MeasureString(secondLine, _overlayFont).Width > ellipsisLength)
+                    if (e.Graphics.MeasureString(secondLine, overlayFont).Width > ellipsisLength)
                     {
                         var tempSecondLine = getCharsToMaxLength(secondLine, ellipsisLength);
 
@@ -366,64 +824,147 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
                     }
 
                     //draw our lines, first line 16px higher than the default (?) TODO: 16 should really be passed in if new tile types ever become available
-                    e.Graphics.DrawString(firstLine, _overlayFont, new SolidBrush(OverlayColor),
-                        new PointF(TextOverlayPoint.X, TextOverlayPoint.Y - 16));
-                    e.Graphics.DrawString(secondLine, _overlayFont, new SolidBrush(OverlayColor), TextOverlayPoint);
+                    e.Graphics.DrawString(firstLine, overlayFont, overlayBrush,
+                        new PointF(overlayLoc.X, overlayLoc.Y - 16 * scaleFactor));
+                    e.Graphics.DrawString(secondLine, overlayFont, overlayBrush, overlayLoc);
                 }
                 else
                 {
                     //if we have no spaces, it'll always be on a single line. Check if the line needs truncating and display in default position
                     var renderLine = TextOverlay;
-                    if (e.Graphics.MeasureString(renderLine, _overlayFont).Width > ellipsisLength)
+                    if (e.Graphics.MeasureString(renderLine, overlayFont).Width > ellipsisLength)
                         renderLine = getCharsToMaxLength(renderLine, ellipsisLength) + "...";
-                    e.Graphics.DrawString(renderLine, _overlayFont, new SolidBrush(OverlayColor), TextOverlayPoint);
+                    e.Graphics.DrawString(renderLine, overlayFont, overlayBrush, overlayLoc);
                 }
             }
             catch
             {
                 //ignore a failure
             }
-        }
-
-        private Image SetResolution(Image image, int width, int height)
-        {
-            if (image == null) return null;
-            image = ImageUtils.ScaleImage(image, width, height) ?? image;
-            return image;
-        }
-
-        private void pctBox_Click(object sender, EventArgs e)
-        {
-            Click?.Invoke(sender, e);
-        }
-
-        private void pctBox_DoubleClick(object sender, EventArgs e)
-        {
-            DoubleClick?.Invoke(this, e);
-        }
-
-        private void PannablePictureBox_Load(object sender, EventArgs e)
-        {
-            MinHeight = -200; //-2*pctBox.Height;
-            MaxHeight = 400; //4*pctBox.Height;
-            MinWidth = -200; //-2*pctBox.Width;
-            MaxWidth = 400; //4*pctBox.Width;
+            finally
+            {
+                overlayBrush.Dispose();
+                overlayFont.Dispose();
+            }
         }
 
         private void TriggerUpdate(bool invalidate = true)
         {
             OnPannablePictureImagePropertyChange?.Invoke(PannablePictureBoxImage, null);
-            if (invalidate) pctBox.Invalidate();
+            if (invalidate) Invalidate(ImageRectangle);
         }
 
         private void Align(int? x = null, int? y = null)
         {
             if (PannablePictureBoxImage.Image == null) return;
             if (x != null)
-                PannablePictureBoxImage.X = (int) x;
+                PannablePictureBoxImage.X = (int)x;
             if (y != null)
-                PannablePictureBoxImage.Y = (int) y;
+                PannablePictureBoxImage.Y = (int)y;
             TriggerUpdate();
         }
+        
+        /// <summary>
+        ///     Returns the bounding rectangle of the region where the image can be drawn.
+        /// </summary>        
+        private RectangleF GetImageBounds()
+        {
+            var imgSize = GetImageSize();
+            var imgRect = new RectangleF();
+
+            imgRect.Size = imgSize;
+            //Center the rectangle
+            imgRect.X = ClientRectangle.X + (ClientSize.Width - imgRect.Width) / 2F;
+            imgRect.Y = ClientRectangle.Y + (ClientSize.Height - imgRect.Height) / 2F;
+
+            return imgRect;
+        }
+
+        /// <summary>
+        ///     Returns the physical size, in pixel, of the image.
+        /// </summary>        
+        private SizeF GetImageSize()
+        {
+            var scale = GetControlScaleFactor();
+            var imgSize = new SizeF();
+
+            imgSize.Width = (OutputSize.Width * scale);
+            imgSize.Height = (OutputSize.Height * scale);
+
+            return imgSize;
+        }
+
+        /// <summary>
+        ///     Returns the scaling factor to apply on the <see cref="PannablePictureBoxImage"/> data
+        ///     considering the image size on the control.
+        /// </summary>
+        private float GetControlScaleFactor()
+        {
+            var scale = GetRawControlScaleFactor();
+
+            //Use the minimum scaling factor to make the image as 
+            //big as possible without cropping any of its size and 
+            //preserving its aspect ratio.
+            return Math.Min(scale.Width, scale.Height);
+        }
+
+        /// <summary>
+        ///     Returns the scaling factor to apply on a font considering the image
+        ///     size on the control, but undoing the DPI scaling since fonts are
+        ///     automatically scaled to the Graphics on which they are drawn.
+        /// </summary>        
+        private float GetControlScaleFactorForFont(Graphics g = null)
+        {
+            if (g == null)
+            {
+                g = CreateGraphics();
+            }
+
+            var scale = GetRawControlScaleFactor();
+
+            scale.Width *= 96F / g.DpiX;
+            scale.Height *= 96F / g.DpiY;
+
+            //Use the minimum scaling factor to make the image as 
+            //big as possible without cropping any of its size and 
+            //preserving its aspect ratio.
+            return Math.Min(scale.Width, scale.Height);
+        }
+
+        /// <summary>
+        ///     Return the horizontal and vertical scaling factor of the control
+        /// </summary>        
+        private SizeF GetRawControlScaleFactor()
+        {
+            var scale = new SizeF();
+
+            scale.Width = (float)(ClientSize.Width - 2 * BorderThickness) / OutputSize.Width; //Don't scale the border size! Apparently GDI+ does not scale Pens with DPI.
+            scale.Height = (float)(ClientSize.Height - 2 * BorderThickness) / OutputSize.Height;
+
+            return scale;
+        }
+
+        private SizeF GetDPIScaleFactor(Graphics g = null)
+        {
+            if (g == null)
+            {
+                g = CreateGraphics();
+            }
+
+            return new SizeF(g.DpiX / 96F, g.DpiY / 96F);
+        }
+    }
+
+    internal enum PannableImageContinuousAdjustement
+    {
+        None,
+        //Pan
+        NudgeUp,
+        NudgeDown,
+        NudgeLeft,
+        NudgeRight,        
+        //Zoom
+        Enlarge,
+        Shrink
     }
 }

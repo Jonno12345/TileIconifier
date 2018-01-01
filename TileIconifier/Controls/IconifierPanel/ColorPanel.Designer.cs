@@ -59,7 +59,6 @@
             // 
             resources.ApplyResources(this.eyedropperColorPicker, "eyedropperColorPicker");
             this.eyedropperColorPicker.Name = "eyedropperColorPicker";
-            this.eyedropperColorPicker.SelectedColor = System.Drawing.Color.Empty;
             this.eyedropperColorPicker.Zoom = 6;
             this.eyedropperColorPicker.SelectedColorChanged += new System.EventHandler(this.eyedropperColorPicker_SelectedColorChanged);
             // 

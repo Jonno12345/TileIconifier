@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -42,53 +43,73 @@ namespace TileIconifier.Forms.CustomShortcutForms
 {
     public partial class FrmCustomShortcutManagerMain : SkinnableForm
     {
-        private List<CustomShortcutListViewItem> _customShortcutsList;
+        private List<CustomShortcut> _customShortcutsList;
         public ShortcutItem GotoShortcutItem;
 
         public FrmCustomShortcutManagerMain()
         {
             InitializeComponent();
-            RefreshCustomShortcuts();
-        }
-
-        private void RefreshCustomShortcuts()
-        {
-            var customShortcuts = LoadCustomShortcuts();
-            _customShortcutsList = customShortcuts.Select(c => new CustomShortcutListViewItem(c)).ToList();
-            lstCustomShortcuts.Clear();
-
             BuildListBoxColumns();
+            //This clears all the images, so its really important that we do it before the list view is filled.
+            ilsCustomShortcutsSmallIcons.ImageSize = SystemInformation.SmallIconSize;
 
-            var smallImageList = new ImageList();
-            for (var i = 0; i < _customShortcutsList.Count; i++)
-            {
-                smallImageList.Images.Add(
-                    _customShortcutsList[i].CustomShortcut.ShortcutItem.Properties.CurrentState.MediumImage.CachedImage() ??
-                    (_customShortcutsList[i].CustomShortcut.ShortcutItem.StandardIcon ??
-                     Resources.QuestionMark));
-                _customShortcutsList[i].ImageIndex = i;
-                lstCustomShortcuts.Items.Add(_customShortcutsList[i]);
-            }
-            lstCustomShortcuts.SmallImageList = smallImageList;
+            RefreshCustomShortcuts();
         }
 
         private void BuildListBoxColumns()
         {
-            lstCustomShortcuts.Columns.Clear();
+            lstCustomShortcuts.BeginUpdate();
 
-            lstCustomShortcuts.Columns.Add(Strings.ShortcutName, lstCustomShortcuts.Width/4*2 - 2,
+            lstCustomShortcuts.Columns.Clear();
+            lstCustomShortcuts.Columns.Add(Strings.ShortcutName, lstCustomShortcuts.Width / 4 * 2 - 2,
                 HorizontalAlignment.Left);
-            lstCustomShortcuts.Columns.Add(Strings.ShortcutType, lstCustomShortcuts.Width/4 - 1,
+            lstCustomShortcuts.Columns.Add(Strings.ShortcutType, lstCustomShortcuts.Width / 4 - 1,
                 HorizontalAlignment.Left);
-            lstCustomShortcuts.Columns.Add(Strings.ShortcutUser, lstCustomShortcuts.Width/4 - 1,
+            lstCustomShortcuts.Columns.Add(Strings.ShortcutUser, lstCustomShortcuts.Width / 4 - 1,
                 HorizontalAlignment.Left);
+
+            lstCustomShortcuts.EndUpdate();
+        }
+
+        /// <summary>
+        ///     Refreshes the internal list of custom shortcuts as well as all the elements in the listview.
+        /// </summary>
+        private void RefreshCustomShortcuts()
+        {
+            //Refresh the list of custom shortcuts
+            _customShortcutsList = LoadCustomShortcuts().ToList();
+
+            //Refresh the image list
+            BuildListViewImageList();
+
+            //Refresh the list view items
+            lstCustomShortcuts.Items.Clear();
+            for (var i = 0; i < _customShortcutsList.Count; i++)
+            {
+                var item = new CustomShortcutListViewItem(_customShortcutsList[i]);
+                item.ImageIndex = i;
+                lstCustomShortcuts.Items.Add(item);
+            }
+        }
+
+        private void BuildListViewImageList()
+        {
+            ilsCustomShortcutsSmallIcons.Images.Clear();
+
+            for (var i = 0; i < _customShortcutsList.Count; i++)
+            {
+                ilsCustomShortcutsSmallIcons.Images.Add(
+                    _customShortcutsList[i].ShortcutItem.Properties.CurrentState.MediumImage.CachedImage() ??
+                    (_customShortcutsList[i].ShortcutItem.StandardIcon ??
+                     Resources.QuestionMark));
+            }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormUtils.ShowCenteredDialogForm<FrmCustomShortcutManagerHelp>(this);
         }
-        
+
         private static IEnumerable<CustomShortcut> LoadCustomShortcuts()
         {
             if (!Directory.Exists(CustomShortcutGetters.CustomShortcutVbsPath))
@@ -126,7 +147,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             if (lstCustomShortcuts.SelectedItems.Count == 0)
                 return;
 
-            var customShortcut = (CustomShortcutListViewItem) lstCustomShortcuts.SelectedItems[0];
+            var customShortcut = (CustomShortcutListViewItem)lstCustomShortcuts.SelectedItems[0];
 
             if (
                 FormUtils.ShowMessage(this,
@@ -155,7 +176,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
                 return;
 
             GotoShortcutItem =
-                ((CustomShortcutListViewItem) lstCustomShortcuts.SelectedItems[0]).CustomShortcut.ShortcutItem;
+                ((CustomShortcutListViewItem)lstCustomShortcuts.SelectedItems[0]).CustomShortcut.ShortcutItem;
             Close();
         }
 

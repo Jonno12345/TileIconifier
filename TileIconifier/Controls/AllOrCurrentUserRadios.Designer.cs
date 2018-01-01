@@ -36,8 +36,8 @@
             // 
             // radAllUsers
             // 
-            resources.ApplyResources(this.radAllUsers, "radAllUsers");
             this.radAllUsers.Checked = true;
+            resources.ApplyResources(this.radAllUsers, "radAllUsers");
             this.radAllUsers.Name = "radAllUsers";
             this.radAllUsers.TabStop = true;
             this.radAllUsers.UseVisualStyleBackColor = true;
@@ -56,7 +56,7 @@
             // AllOrCurrentUserRadios
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.radCurrentUser);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.radAllUsers);

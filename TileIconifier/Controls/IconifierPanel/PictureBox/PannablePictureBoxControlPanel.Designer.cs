@@ -43,8 +43,6 @@
             this.panPct = new TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBox();
             this.lblHeader = new System.Windows.Forms.Label();
             this.ttpCommands = new System.Windows.Forms.ToolTip(this.components);
-            this.tmrScrollDelay = new System.Windows.Forms.Timer(this.components);
-            this.tmrZoom = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.flpCommands.SuspendLayout();
             this.pnlZoomTrack.SuspendLayout();
@@ -78,31 +76,28 @@
             // 
             // btnEnlarge
             // 
-            this.btnEnlarge.BackgroundImage = global::TileIconifier.Properties.Resources.Zoom_5442;
-            resources.ApplyResources(this.btnEnlarge, "btnEnlarge");
             this.btnEnlarge.DisabledForeColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.btnEnlarge, "btnEnlarge");
             this.btnEnlarge.Name = "btnEnlarge";
             this.ttpCommands.SetToolTip(this.btnEnlarge, resources.GetString("btnEnlarge.ToolTip"));
             this.btnEnlarge.UseVisualStyleBackColor = true;
-            this.btnEnlarge.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ZoomButton_MouseDown);
-            this.btnEnlarge.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ZoomButton_MouseUp);
+            this.btnEnlarge.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnEnlarge_MouseDown);
+            this.btnEnlarge.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnEnlarge_MouseUp);
             // 
             // btnShrink
             // 
-            this.btnShrink.BackgroundImage = global::TileIconifier.Properties.Resources.ZoomOut_12927;
-            resources.ApplyResources(this.btnShrink, "btnShrink");
             this.btnShrink.DisabledForeColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.btnShrink, "btnShrink");
             this.btnShrink.Name = "btnShrink";
             this.ttpCommands.SetToolTip(this.btnShrink, resources.GetString("btnShrink.ToolTip"));
             this.btnShrink.UseVisualStyleBackColor = true;
-            this.btnShrink.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ZoomButton_MouseDown);
-            this.btnShrink.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ZoomButton_MouseUp);
+            this.btnShrink.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnShrink_MouseDown);
+            this.btnShrink.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnShrink_MouseUp);
             // 
             // btnReset
             // 
-            this.btnReset.BackgroundImage = global::TileIconifier.Properties.Resources.ZoomToFit;
-            resources.ApplyResources(this.btnReset, "btnReset");
             this.btnReset.DisabledForeColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.btnReset, "btnReset");
             this.btnReset.Name = "btnReset";
             this.ttpCommands.SetToolTip(this.btnReset, resources.GetString("btnReset.ToolTip"));
             this.btnReset.UseVisualStyleBackColor = true;
@@ -110,9 +105,8 @@
             // 
             // btnAlign
             // 
-            this.btnAlign.BackgroundImage = global::TileIconifier.Properties.Resources.Translate;
-            resources.ApplyResources(this.btnAlign, "btnAlign");
             this.btnAlign.DisabledForeColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.btnAlign, "btnAlign");
             this.btnAlign.Name = "btnAlign";
             this.ttpCommands.SetToolTip(this.btnAlign, resources.GetString("btnAlign.ToolTip"));
             this.btnAlign.UseVisualStyleBackColor = true;
@@ -120,9 +114,8 @@
             // 
             // btnOpenImage
             // 
-            this.btnOpenImage.BackgroundImage = global::TileIconifier.Properties.Resources.OpenComparisonResult_9697;
-            resources.ApplyResources(this.btnOpenImage, "btnOpenImage");
             this.btnOpenImage.DisabledForeColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.btnOpenImage, "btnOpenImage");
             this.btnOpenImage.Name = "btnOpenImage";
             this.ttpCommands.SetToolTip(this.btnOpenImage, resources.GetString("btnOpenImage.ToolTip"));
             this.btnOpenImage.UseVisualStyleBackColor = true;
@@ -148,8 +141,6 @@
             // panPct
             // 
             resources.ApplyResources(this.panPct, "panPct");
-            this.panPct.AssociatedSize = new System.Drawing.Size(0, 0);
-            this.panPct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panPct.Name = "panPct";
             // 
             // lblHeader
@@ -157,21 +148,12 @@
             resources.ApplyResources(this.lblHeader, "lblHeader");
             this.lblHeader.Name = "lblHeader";
             // 
-            // tmrScrollDelay
-            // 
-            this.tmrScrollDelay.Tick += new System.EventHandler(this.tmrScrollDelay_Tick);
-            // 
-            // tmrZoom
-            // 
-            this.tmrZoom.Interval = 50;
-            this.tmrZoom.Tick += new System.EventHandler(this.tmrZoom_Tick);
-            // 
             // PannablePictureBoxControlPanel
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PannablePictureBoxControlPanel";
-            resources.ApplyResources(this, "$this");
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flpCommands.ResumeLayout(false);
@@ -197,7 +179,5 @@
         private PannablePictureBox panPct;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.ToolTip ttpCommands;
-        private System.Windows.Forms.Timer tmrScrollDelay;
-        private System.Windows.Forms.Timer tmrZoom;
     }
 }

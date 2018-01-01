@@ -31,8 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlignImageForm));
             this.tlpBody = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpLocation = new System.Windows.Forms.TableLayoutPanel();
+            this.lblX = new System.Windows.Forms.Label();
+            this.lblXValue = new System.Windows.Forms.Label();
+            this.lblY = new System.Windows.Forms.Label();
+            this.lblYValue = new System.Windows.Forms.Label();
+            this.ttpCommands = new System.Windows.Forms.ToolTip(this.components);
             this.btnLeft = new TileIconifier.Controls.SkinnableButton();
-            this.ilsCommandIcons = new System.Windows.Forms.ImageList(this.components);
             this.btnXMiddle = new TileIconifier.Controls.SkinnableButton();
             this.btnRight = new TileIconifier.Controls.SkinnableButton();
             this.btnTop = new TileIconifier.Controls.SkinnableButton();
@@ -43,14 +48,6 @@
             this.btnCenter = new TileIconifier.Controls.SkinnableButton();
             this.btnNudgeRight = new TileIconifier.Controls.SkinnableButton();
             this.btnNudgeDown = new TileIconifier.Controls.SkinnableButton();
-            this.tlpLocation = new System.Windows.Forms.TableLayoutPanel();
-            this.lblX = new System.Windows.Forms.Label();
-            this.lblXValue = new System.Windows.Forms.Label();
-            this.lblY = new System.Windows.Forms.Label();
-            this.lblYValue = new System.Windows.Forms.Label();
-            this.tmrScrollDelay = new System.Windows.Forms.Timer(this.components);
-            this.tmrNudge = new System.Windows.Forms.Timer(this.components);
-            this.ttpCommands = new System.Windows.Forms.ToolTip(this.components);
             this.tlpBody.SuspendLayout();
             this.tlpLocation.SuspendLayout();
             this.SuspendLayout();
@@ -71,120 +68,6 @@
             this.tlpBody.Controls.Add(this.btnNudgeDown, 1, 5);
             this.tlpBody.Controls.Add(this.tlpLocation, 0, 7);
             this.tlpBody.Name = "tlpBody";
-            // 
-            // btnLeft
-            // 
-            resources.ApplyResources(this.btnLeft, "btnLeft");
-            this.btnLeft.ImageList = this.ilsCommandIcons;
-            this.btnLeft.Name = "btnLeft";
-            this.ttpCommands.SetToolTip(this.btnLeft, resources.GetString("btnLeft.ToolTip"));
-            this.btnLeft.UseVisualStyleBackColor = true;
-            this.btnLeft.Click += new System.EventHandler(this.AlignButton_Click);
-            // 
-            // ilsCommandIcons
-            // 
-            this.ilsCommandIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilsCommandIcons.ImageStream")));
-            this.ilsCommandIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilsCommandIcons.Images.SetKeyName(0, "AlignBottom.png");
-            this.ilsCommandIcons.Images.SetKeyName(1, "AlignCenter.png");
-            this.ilsCommandIcons.Images.SetKeyName(2, "AlignLeft.png");
-            this.ilsCommandIcons.Images.SetKeyName(3, "AlignRight.png");
-            this.ilsCommandIcons.Images.SetKeyName(4, "AlignTop.png");
-            this.ilsCommandIcons.Images.SetKeyName(5, "AlignXMiddle.png");
-            this.ilsCommandIcons.Images.SetKeyName(6, "AlignYMiddle.png");
-            this.ilsCommandIcons.Images.SetKeyName(7, "NudgeDown.png");
-            this.ilsCommandIcons.Images.SetKeyName(8, "NudgeLeft.png");
-            this.ilsCommandIcons.Images.SetKeyName(9, "NudgeRight.png");
-            this.ilsCommandIcons.Images.SetKeyName(10, "NudgeUp.png");
-            // 
-            // btnXMiddle
-            // 
-            resources.ApplyResources(this.btnXMiddle, "btnXMiddle");
-            this.btnXMiddle.ImageList = this.ilsCommandIcons;
-            this.btnXMiddle.Name = "btnXMiddle";
-            this.ttpCommands.SetToolTip(this.btnXMiddle, resources.GetString("btnXMiddle.ToolTip"));
-            this.btnXMiddle.UseVisualStyleBackColor = true;
-            this.btnXMiddle.Click += new System.EventHandler(this.AlignButton_Click);
-            // 
-            // btnRight
-            // 
-            resources.ApplyResources(this.btnRight, "btnRight");
-            this.btnRight.ImageList = this.ilsCommandIcons;
-            this.btnRight.Name = "btnRight";
-            this.ttpCommands.SetToolTip(this.btnRight, resources.GetString("btnRight.ToolTip"));
-            this.btnRight.UseVisualStyleBackColor = true;
-            this.btnRight.Click += new System.EventHandler(this.AlignButton_Click);
-            // 
-            // btnTop
-            // 
-            resources.ApplyResources(this.btnTop, "btnTop");
-            this.btnTop.ImageList = this.ilsCommandIcons;
-            this.btnTop.Name = "btnTop";
-            this.ttpCommands.SetToolTip(this.btnTop, resources.GetString("btnTop.ToolTip"));
-            this.btnTop.UseVisualStyleBackColor = true;
-            this.btnTop.Click += new System.EventHandler(this.AlignButton_Click);
-            // 
-            // btnYMiddle
-            // 
-            resources.ApplyResources(this.btnYMiddle, "btnYMiddle");
-            this.btnYMiddle.ImageList = this.ilsCommandIcons;
-            this.btnYMiddle.Name = "btnYMiddle";
-            this.ttpCommands.SetToolTip(this.btnYMiddle, resources.GetString("btnYMiddle.ToolTip"));
-            this.btnYMiddle.UseVisualStyleBackColor = true;
-            this.btnYMiddle.Click += new System.EventHandler(this.AlignButton_Click);
-            // 
-            // btnBottom
-            // 
-            resources.ApplyResources(this.btnBottom, "btnBottom");
-            this.btnBottom.ImageList = this.ilsCommandIcons;
-            this.btnBottom.Name = "btnBottom";
-            this.ttpCommands.SetToolTip(this.btnBottom, resources.GetString("btnBottom.ToolTip"));
-            this.btnBottom.UseVisualStyleBackColor = true;
-            this.btnBottom.Click += new System.EventHandler(this.AlignButton_Click);
-            // 
-            // btnNudgeUp
-            // 
-            resources.ApplyResources(this.btnNudgeUp, "btnNudgeUp");
-            this.btnNudgeUp.ImageList = this.ilsCommandIcons;
-            this.btnNudgeUp.Name = "btnNudgeUp";
-            this.btnNudgeUp.UseVisualStyleBackColor = true;
-            this.btnNudgeUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseDown);
-            this.btnNudgeUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseUp);
-            // 
-            // btnNudgeLeft
-            // 
-            resources.ApplyResources(this.btnNudgeLeft, "btnNudgeLeft");
-            this.btnNudgeLeft.ImageList = this.ilsCommandIcons;
-            this.btnNudgeLeft.Name = "btnNudgeLeft";
-            this.btnNudgeLeft.UseVisualStyleBackColor = true;
-            this.btnNudgeLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseDown);
-            this.btnNudgeLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseUp);
-            // 
-            // btnCenter
-            // 
-            resources.ApplyResources(this.btnCenter, "btnCenter");
-            this.btnCenter.ImageList = this.ilsCommandIcons;
-            this.btnCenter.Name = "btnCenter";
-            this.btnCenter.UseVisualStyleBackColor = true;
-            this.btnCenter.Click += new System.EventHandler(this.AlignButton_Click);
-            // 
-            // btnNudgeRight
-            // 
-            resources.ApplyResources(this.btnNudgeRight, "btnNudgeRight");
-            this.btnNudgeRight.ImageList = this.ilsCommandIcons;
-            this.btnNudgeRight.Name = "btnNudgeRight";
-            this.btnNudgeRight.UseVisualStyleBackColor = true;
-            this.btnNudgeRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseDown);
-            this.btnNudgeRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseUp);
-            // 
-            // btnNudgeDown
-            // 
-            resources.ApplyResources(this.btnNudgeDown, "btnNudgeDown");
-            this.btnNudgeDown.ImageList = this.ilsCommandIcons;
-            this.btnNudgeDown.Name = "btnNudgeDown";
-            this.btnNudgeDown.UseVisualStyleBackColor = true;
-            this.btnNudgeDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseDown);
-            this.btnNudgeDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanButton_MouseUp);
             // 
             // tlpLocation
             // 
@@ -218,14 +101,92 @@
             this.lblYValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblYValue.Name = "lblYValue";
             // 
-            // tmrScrollDelay
+            // btnLeft
             // 
-            this.tmrScrollDelay.Tick += new System.EventHandler(this.TmrScrollDelay_Tick);
+            resources.ApplyResources(this.btnLeft, "btnLeft");
+            this.btnLeft.Name = "btnLeft";
+            this.ttpCommands.SetToolTip(this.btnLeft, resources.GetString("btnLeft.ToolTip"));
+            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
-            // tmrNudge
+            // btnXMiddle
             // 
-            this.tmrNudge.Interval = 50;
-            this.tmrNudge.Tick += new System.EventHandler(this.TmrNudge_Tick);
+            resources.ApplyResources(this.btnXMiddle, "btnXMiddle");
+            this.btnXMiddle.Name = "btnXMiddle";
+            this.ttpCommands.SetToolTip(this.btnXMiddle, resources.GetString("btnXMiddle.ToolTip"));
+            this.btnXMiddle.UseVisualStyleBackColor = true;
+            this.btnXMiddle.Click += new System.EventHandler(this.btnXMiddle_Click);
+            // 
+            // btnRight
+            // 
+            resources.ApplyResources(this.btnRight, "btnRight");
+            this.btnRight.Name = "btnRight";
+            this.ttpCommands.SetToolTip(this.btnRight, resources.GetString("btnRight.ToolTip"));
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
+            // 
+            // btnTop
+            // 
+            resources.ApplyResources(this.btnTop, "btnTop");
+            this.btnTop.Name = "btnTop";
+            this.ttpCommands.SetToolTip(this.btnTop, resources.GetString("btnTop.ToolTip"));
+            this.btnTop.UseVisualStyleBackColor = true;
+            this.btnTop.Click += new System.EventHandler(this.btnTop_Click);
+            // 
+            // btnYMiddle
+            // 
+            resources.ApplyResources(this.btnYMiddle, "btnYMiddle");
+            this.btnYMiddle.Name = "btnYMiddle";
+            this.ttpCommands.SetToolTip(this.btnYMiddle, resources.GetString("btnYMiddle.ToolTip"));
+            this.btnYMiddle.UseVisualStyleBackColor = true;
+            this.btnYMiddle.Click += new System.EventHandler(this.btnYMiddle_Click);
+            // 
+            // btnBottom
+            // 
+            resources.ApplyResources(this.btnBottom, "btnBottom");
+            this.btnBottom.Name = "btnBottom";
+            this.ttpCommands.SetToolTip(this.btnBottom, resources.GetString("btnBottom.ToolTip"));
+            this.btnBottom.UseVisualStyleBackColor = true;
+            this.btnBottom.Click += new System.EventHandler(this.btnBottom_Click);
+            // 
+            // btnNudgeUp
+            // 
+            resources.ApplyResources(this.btnNudgeUp, "btnNudgeUp");
+            this.btnNudgeUp.Name = "btnNudgeUp";
+            this.btnNudgeUp.UseVisualStyleBackColor = true;
+            this.btnNudgeUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NudgeButton_MouseDown);
+            this.btnNudgeUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NudgeButton_MouseUp);
+            // 
+            // btnNudgeLeft
+            // 
+            resources.ApplyResources(this.btnNudgeLeft, "btnNudgeLeft");
+            this.btnNudgeLeft.Name = "btnNudgeLeft";
+            this.btnNudgeLeft.UseVisualStyleBackColor = true;
+            this.btnNudgeLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NudgeButton_MouseDown);
+            this.btnNudgeLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NudgeButton_MouseUp);
+            // 
+            // btnCenter
+            // 
+            resources.ApplyResources(this.btnCenter, "btnCenter");
+            this.btnCenter.Name = "btnCenter";
+            this.btnCenter.UseVisualStyleBackColor = true;
+            this.btnCenter.Click += new System.EventHandler(this.btnCenter_Click);
+            // 
+            // btnNudgeRight
+            // 
+            resources.ApplyResources(this.btnNudgeRight, "btnNudgeRight");
+            this.btnNudgeRight.Name = "btnNudgeRight";
+            this.btnNudgeRight.UseVisualStyleBackColor = true;
+            this.btnNudgeRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NudgeButton_MouseDown);
+            this.btnNudgeRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NudgeButton_MouseUp);
+            // 
+            // btnNudgeDown
+            // 
+            resources.ApplyResources(this.btnNudgeDown, "btnNudgeDown");
+            this.btnNudgeDown.Name = "btnNudgeDown";
+            this.btnNudgeDown.UseVisualStyleBackColor = true;
+            this.btnNudgeDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NudgeButton_MouseDown);
+            this.btnNudgeDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NudgeButton_MouseUp);
             // 
             // AlignImageForm
             // 
@@ -252,7 +213,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tlpBody;
         private SkinnableButton btnLeft;
-        private System.Windows.Forms.ImageList ilsCommandIcons;
         private SkinnableButton btnXMiddle;
         private SkinnableButton btnRight;
         private SkinnableButton btnTop;
@@ -268,8 +228,6 @@
         private System.Windows.Forms.Label lblXValue;
         private System.Windows.Forms.Label lblY;
         private System.Windows.Forms.Label lblYValue;
-        private System.Windows.Forms.Timer tmrScrollDelay;
-        private System.Windows.Forms.Timer tmrNudge;
         private System.Windows.Forms.ToolTip ttpCommands;
     }
 }

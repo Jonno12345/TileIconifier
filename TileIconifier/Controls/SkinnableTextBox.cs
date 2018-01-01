@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using TileIconifier.Skinning.Skins;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls
 {
@@ -59,9 +60,12 @@ namespace TileIconifier.Controls
                 if (borderColor != value)
                 {
                     borderColor = value;
-                    if (BorderStyle == BorderStyle.FixedSingle)
+                    if (BorderStyle == BorderStyle.FixedSingle && 
+                        ((Enabled && !Focused) ||
+                        (Focused && BorderFocusedColor.IsEmpty) ||
+                        (!Enabled && BorderDisabledColor.IsEmpty)))
                     {
-                        Invalidate();
+                        InvalidateBorder();
                     }                        
                 }                
             }
@@ -77,9 +81,9 @@ namespace TileIconifier.Controls
                 if (borderFocusedColor != value)
                 {
                     borderFocusedColor = value;
-                    if (BorderStyle == BorderStyle.FixedSingle)
+                    if (Focused && BorderStyle == BorderStyle.FixedSingle)
                     {
-                        Invalidate();
+                        InvalidateBorder();
                     }
                 }
             }
@@ -95,9 +99,9 @@ namespace TileIconifier.Controls
                 if (borderDisabledColor != value)
                 {
                     borderDisabledColor = value;
-                    if (BorderStyle == BorderStyle.FixedSingle)
+                    if (!Enabled && BorderStyle == BorderStyle.FixedSingle)
                     {
-                        Invalidate();
+                        InvalidateBorder();
                     }
                 }
             }
@@ -121,18 +125,55 @@ namespace TileIconifier.Controls
             }
         }
 
+        protected override void OnEnter(EventArgs e)
+        {
+            if (BorderStyle == BorderStyle.FixedSingle)
+            {
+                InvalidateBorder();
+            }
+
+            base.OnEnter(e);
+        }
+
+        protected override void OnLeave(EventArgs e)
+        {
+            if (BorderStyle == BorderStyle.FixedSingle)
+            {
+                InvalidateBorder();
+            }
+
+            base.OnLeave(e);
+        }
+
+        private void InvalidateBorder()
+        {
+            using (var reg = new Region(ClientRectangle))
+            {
+                var borderSize = SystemInformation.BorderSize;
+                var rectContent = ClientRectangle;
+                rectContent.Inflate(-borderSize.Width, -borderSize.Height);
+                reg.Exclude(rectContent);
+                Invalidate(reg);
+            }
+        }
+
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
 
-            //The paint event is not fired, so we must listen for the paint Windows message ourselves.
+            //Strangely enough, the border of TextBox is a part of the client area when its style is FixedSingle.
+            //I feel like this design decision was made to facilitate the customization of the border despite the 
+            //fact that it's semantically wrong. However, since this app already has several helpers for drawing 
+            //in the non client area, I have decided to paint the border as if it was part of the non client area so 
+            //that if MS ever decides to move the border in the non client area, where it should probably be, 
+            //we can just switch WM_PAINT with WM_NCPAINT. We would also need to update how we invalidate the border. 
             if (m.Msg == NativeMethods.WM_PAINT && BorderStyle == BorderStyle.FixedSingle)
             {                
-                PaintBorder();
+                PaintCustomBorder(m.HWnd, m.WParam);
             }
         }
 
-        private void PaintBorder()
+        private void PaintCustomBorder(IntPtr hWnd, IntPtr hRgn)
         {
             Color bColor;
             if (!Enabled && !BorderDisabledColor.IsEmpty)
@@ -149,14 +190,19 @@ namespace TileIconifier.Controls
             }
             else
             {
+                //Regular border, which has already been drawn by the system at this point
                 return;
             }
 
-            IntPtr hdc = NativeMethods.GetWindowDC(Handle);
-            using (var g = Graphics.FromHdc(hdc))
-            using (var p = new Pen(bColor))
-                g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
-            NativeMethods.ReleaseDC(Handle, hdc);
+            using (var ncg = new NonClientGraphics(hWnd, hRgn))
+            {
+                if (ncg.Graphics == null)
+                {
+                    return;
+                }
+
+                ControlPaint.DrawBorder(ncg.Graphics, new Rectangle(new Point(0), Size), bColor, ButtonBorderStyle.Solid);
+            }
         }
 
         public void ApplySkin(BaseSkin skin)

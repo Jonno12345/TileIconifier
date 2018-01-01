@@ -132,10 +132,7 @@
       <DependentUpon>AlignImageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBox.Designer.cs">
-      <DependentUpon>PannablePictureBox.cs</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxControlPanel.cs">
       <SubType>UserControl</SubType>
@@ -145,6 +142,12 @@
     </Compile>
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxImage.cs" />
     <Compile Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxMetaData.cs" />
+    <Compile Include="Controls\IconListView\IconListVewItemCollection.cs" />
+    <Compile Include="Controls\IconListView\IconListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\IconListView\IconListViewItem.cs" />
+    <Compile Include="Controls\IconListView\IconListViewPaintItemEventArgs.cs" />
     <Compile Include="Controls\ISkinnableButton.cs" />
     <Compile Include="Controls\ISkinnableCheckableButton.cs" />
     <Compile Include="Controls\ISkinnableControl.cs" />
@@ -343,7 +346,11 @@
     <Compile Include="Skinning\ToolStripSystemColorTable.cs" />
     <Compile Include="Skinning\ToolStripSystemRendererEx.cs" />
     <Compile Include="Utilities\ButtonUtils.cs" />
-    <Compile Include="Utilities\ContainerUtils.cs" />
+    <Compile Include="Utilities\GraphicsClippedToBorder.cs" />
+    <Compile Include="Utilities\LayoutAndPaintUtils.cs" />
+    <Compile Include="Utilities\NonClientGraphics.cs" />
+    <Compile Include="Skinning\SkinUtils.cs" />
+    <Compile Include="Utilities\ControlUtils.cs" />
     <Compile Include="Utilities\FontUtils.cs" />
     <Compile Include="Utilities\FormUtils.cs" />
     <Compile Include="Forms\Shared\FrmIconSelector.cs">
@@ -354,9 +361,6 @@
     </Compile>
     <EmbeddedResource Include="Controls\AllOrCurrentUserRadios.resx">
       <DependentUpon>AllOrCurrentUserRadios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\IconifierPanel\PictureBox\PannablePictureBox.resx">
-      <DependentUpon>PannablePictureBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\IconifierPanel\PictureBox\PannablePictureBoxControlPanel.resx">
       <DependentUpon>PannablePictureBoxControlPanel.cs</DependentUpon>
@@ -464,6 +468,11 @@
     <None Include="Resources\Translate.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\ZoomToFit_128x.png" />
+    <None Include="Resources\ZoomOut_128x.png" />
+    <None Include="Resources\ZoomIn_128x.png" />
+    <None Include="Resources\MoveGlyph_128x.png" />
+    <None Include="Resources\ExportPerformance_128x.png" />
     <None Include="FodyWeavers.xml" />
     <None Include="Resources\AlignCenter.png" />
     <None Include="Resources\NudgeUp.png" />

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
+using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
-using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls
 {
@@ -69,7 +70,6 @@ namespace TileIconifier.Controls
                 }
                 return base.BackColor;
             }
-
             set
             {
                 //We call the base class' setter just in case, but it
@@ -84,7 +84,7 @@ namespace TileIconifier.Controls
         public new TabAlignment Alignment
         {
             get { return base.Alignment; }
-            set { throw new NotSupportedException(UNSUPPORTED_PROPERTY_ERROR); }
+            set { base.Alignment = value; }
         }
 
         private Appearance appearance = Appearance.Normal;
@@ -110,13 +110,14 @@ namespace TileIconifier.Controls
             get { return flatStyle; }
             set
             {
-                if (flatStyle != value)
-                {
-                    flatStyle = value;
-                    SetBaseProperties();
-                    Invalidate();
-                    RefreshAllTabPagesColors();
-                }
+                //Don't check if the old value is the same as the new one,
+                //because this property sets other properties that are
+                //shadowed and therefore, they could be out-of-sync with
+                //this one.
+                flatStyle = value;
+                SetBaseProperties();
+                Invalidate();
+                RefreshAllTabPagesColors();
             }
         }
 
@@ -229,6 +230,13 @@ namespace TileIconifier.Controls
         /// </summary>
         private void EnableOwnerDrawing()
         {
+            //When the control is owner drawn, the tabs' auto size is not scaled to the screen DPI,
+            //even though the font is, which causes the text to be cropped. As 
+            //a workaround, we force a fixed size for all tabs.
+            if (SizeMode == TabSizeMode.Normal)
+            {
+                SizeMode = TabSizeMode.Fixed;
+            }
             var flags = new ControlStyles();
             foreach (ControlStyles s in customPaintingFlags)
             {
@@ -347,7 +355,7 @@ namespace TileIconifier.Controls
             }
         }
 
-        private void DrawRectangle(Graphics graphics, RectangleF bounds, Pen pen)
+        private static void DrawRectangle(Graphics graphics, RectangleF bounds, Pen pen)
         {
             graphics.DrawRectangle(pen, bounds.X, bounds.Y, bounds.Width, bounds.Height);
         }
@@ -362,6 +370,7 @@ namespace TileIconifier.Controls
                 var borderWidth = (float)FlatTabBorderWidth;
                 var borderPen = new Pen(FlatTabBorderColor, borderWidth);
                 var g = e.Graphics;
+                var scaleX = g.DpiX / 96F;
 
                 //Create a copy of all tab rectangles, since we will re-use and modify them
                 //several times.
@@ -377,7 +386,7 @@ namespace TileIconifier.Controls
                 //left side of the page. We hard-code the value, because there is no way that I know of to get the
                 //location of the first visible tab (the tab with an index of 0 is not necesserily the "leftiest" tab.)            
                 //+borderWidth / 2F ensures that we draw the border outside of the tab, as we do with the page.
-                var tabInflation = -2F + borderWidth / 2F;
+                var tabInflation = -2F * (float)Math.Floor(scaleX) + borderWidth / 2F;
                 for (int i = 0; i < tabRects.Length; i++)
                 {
                     tabRects[i].Inflate(tabInflation, 0);
@@ -385,7 +394,7 @@ namespace TileIconifier.Controls
 
                 //Let's start drawing!
 
-                e.Graphics.Clear(BackColor);
+                g.Clear(BackColor);
 
                 //Draw a border just outside of the page
                 var tabPageBorderBounds = (RectangleF)SelectedTab.Bounds;
@@ -401,13 +410,13 @@ namespace TileIconifier.Controls
                     var trect = tabRects[SelectedIndex];
                     var pts = new[]
                     {
-                    new PointF(trect.Left, tabPageBorderBounds.Top),
-                    tabPageBorderBounds.Location,
-                    new PointF(tabPageBorderBounds.Left, tabPageBorderBounds.Bottom),
-                    new PointF(tabPageBorderBounds.Right, tabPageBorderBounds.Bottom),
-                    new PointF(tabPageBorderBounds.Right, tabPageBorderBounds.Top),
-                    new PointF(trect.Right, tabPageBorderBounds.Top)
-                };
+                        new PointF(trect.Left, tabPageBorderBounds.Top),
+                        tabPageBorderBounds.Location,
+                        new PointF(tabPageBorderBounds.Left, tabPageBorderBounds.Bottom),
+                        new PointF(tabPageBorderBounds.Right, tabPageBorderBounds.Bottom),
+                        new PointF(tabPageBorderBounds.Right, tabPageBorderBounds.Top),
+                        new PointF(trect.Right, tabPageBorderBounds.Top)
+                    };
                     g.DrawLines(borderPen, pts);
                 }
 
@@ -492,6 +501,35 @@ namespace TileIconifier.Controls
             base.OnPaint(e);
         }
 
+        protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
+        {
+            base.ScaleControl(factor, specified);
+
+            //Implements scaling of the ItemSize property.
+            //We must ONLY scale the value of ItemSize if it has been set by the user, because the default value
+            //is already scaled by the system. Unfortunately, the ShouldSerializeItemSize method that allows us 
+            //to determine if the value is user-set is private, so we must use reflection to call it.
+            var method = typeof(TabControl).GetMethod("ShouldSerialize" + nameof(ItemSize), BindingFlags.NonPublic | BindingFlags.Instance);
+            if (method != null && method.ReturnType == typeof(bool))
+            {
+                var result = (bool)method.Invoke(this, null);
+                if (result)
+                {
+                    //Perform scaling
+                    var tabSizeF = (SizeF)ItemSize;
+                    if (specified.HasFlag(BoundsSpecified.Width))
+                    {
+                        tabSizeF.Width *= factor.Width;
+                    }
+                    if (specified.HasFlag(BoundsSpecified.Height))
+                    {
+                        tabSizeF.Height *= factor.Height;
+                    }
+                    ItemSize = Size.Round(tabSizeF);
+                }
+            }
+        }
+
         public void ApplySkin(BaseSkin skin)
         {
             FlatStyle = skin.TabControlFlatStyle;
@@ -501,7 +539,7 @@ namespace TileIconifier.Controls
             
             foreach (Control c in Controls)
             {
-                ContainerUtils.ApplySkinToControl(skin, c);
+                SkinUtils.ApplySkinToControl(skin, c);
             }          
         }        
     }

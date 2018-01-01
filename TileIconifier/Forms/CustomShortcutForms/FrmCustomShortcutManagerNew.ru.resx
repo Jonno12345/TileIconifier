@@ -129,11 +129,30 @@
   <data name="btnExplorerBrowse.Text" xml:space="preserve">
     <value>Обзор</value>
   </data>
-  <data name="radCustomFolder.Text" xml:space="preserve">
-    <value>Использовать свою папку</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="radSpecialFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 17</value>
   </data>
   <data name="radSpecialFolder.Text" xml:space="preserve">
     <value>Использовать специальную папку</value>
+  </data>
+  <data name="txtCustomFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>209, 41</value>
+  </data>
+  <data name="txtCustomFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>317, 20</value>
+  </data>
+  <data name="radCustomFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 17</value>
+  </data>
+  <data name="radCustomFolder.Text" xml:space="preserve">
+    <value>Использовать свою папку</value>
+  </data>
+  <data name="cmbExplorerGuids.Location" type="System.Drawing.Point, System.Drawing">
+    <value>209, 6</value>
+  </data>
+  <data name="cmbExplorerGuids.Size" type="System.Drawing.Size, System.Drawing">
+    <value>398, 21</value>
   </data>
   <data name="tabExplorer.Text" xml:space="preserve">
     <value>Проводник</value>
@@ -141,10 +160,10 @@
   <data name="btnSteamLibrariesPath.Text" xml:space="preserve">
     <value>Изменить</value>
   </data>
-  <data name="btnSteamExeChange.Text" xml:space="preserve">
+  <data name="btnSteamInstallationChange.Text" xml:space="preserve">
     <value>Изменить</value>
   </data>
-  <data name="btnSteamInstallationChange.Text" xml:space="preserve">
+  <data name="btnSteamExeChange.Text" xml:space="preserve">
     <value>Изменить</value>
   </data>
   <data name="btnChromeAppPathChange.Text" xml:space="preserve">
@@ -159,8 +178,8 @@
   <data name="tabWindowsStore.Text" xml:space="preserve">
     <value>Магазин Windows</value>
   </data>
-  <data name="lblUriString.Text" xml:space="preserve">
-    <value>Путь URI:</value>
+  <data name="lblUriExplain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>515, 91</value>
   </data>
   <data name="lblUriExplain.Text" xml:space="preserve">
     <value>Используйте этот раздел, чтобы создать пользовательский ярлык для любого пути URI. Под этим подразумеваются веб-адреса, которые вы хотите открыть в браузере по умолчанию.
@@ -170,11 +189,47 @@ https://www.google.com
 spotify:trackId
 mailto:test@example.com</value>
   </data>
-  <data name="lblOtherShortcutArguments.Text" xml:space="preserve">
-    <value>Параметры запуска</value>
+  <data name="txtUriString.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 109</value>
+  </data>
+  <data name="txtUriString.Size" type="System.Drawing.Size, System.Drawing">
+    <value>542, 20</value>
+  </data>
+  <data name="lblUriString.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 112</value>
+  </data>
+  <data name="lblUriString.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="lblUriString.Text" xml:space="preserve">
+    <value>Путь URI:</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 132</value>
+  </data>
+  <data name="lblOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
   </data>
   <data name="lblOtherTargetPath.Text" xml:space="preserve">
     <value>Путь</value>
+  </data>
+  <data name="txtOtherShortcutArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 41</value>
+  </data>
+  <data name="txtOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>407, 20</value>
+  </data>
+  <data name="lblOtherShortcutArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 13</value>
+  </data>
+  <data name="lblOtherShortcutArguments.Text" xml:space="preserve">
+    <value>Параметры запуска</value>
+  </data>
+  <data name="txtOtherTargetPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 7</value>
+  </data>
+  <data name="txtOtherTargetPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>407, 20</value>
   </data>
   <data name="btnOtherTargetBrowse.Text" xml:space="preserve">
     <value>Обзор</value>
@@ -182,10 +237,15 @@ mailto:test@example.com</value>
   <data name="tabOther.Text" xml:space="preserve">
     <value>Свой ярлык</value>
   </data>
+  <data name="tabShortcutType.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>120, 18</value>
+  </data>
+  <data name="refreshToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 20</value>
+  </data>
   <data name="refreshToolStripMenuItem.Text" xml:space="preserve">
     <value>Обновить</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAICAQAAAAAADoAgAAZgAAABAQEAAAAAAAKAEAAE4DAAAgIAAAAQAIAKgIAAB2BAAAEBAAAAEA

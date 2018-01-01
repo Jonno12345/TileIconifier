@@ -30,6 +30,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomShortcutManagerMain));
             this.btnCreateNewShortcut = new TileIconifier.Controls.SkinnableButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -37,6 +38,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             this.btnDeleteCustomShortcut = new TileIconifier.Controls.SkinnableButton();
             this.lstCustomShortcuts = new TileIconifier.Controls.SortableListView();
             this.btnGotoShortcut = new TileIconifier.Controls.SkinnableButton();
+            this.ilsCustomShortcutsSmallIcons = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +46,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             resources.ApplyResources(this.btnCreateNewShortcut, "btnCreateNewShortcut");
             this.btnCreateNewShortcut.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCreateNewShortcut.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.btnCreateNewShortcut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCreateNewShortcut.Name = "btnCreateNewShortcut";
             this.btnCreateNewShortcut.UseVisualStyleBackColor = true;
@@ -67,7 +68,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             resources.ApplyResources(this.btnDeleteCustomShortcut, "btnDeleteCustomShortcut");
             this.btnDeleteCustomShortcut.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDeleteCustomShortcut.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.btnDeleteCustomShortcut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnDeleteCustomShortcut.Name = "btnDeleteCustomShortcut";
             this.btnDeleteCustomShortcut.UseVisualStyleBackColor = true;
@@ -77,11 +77,12 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             resources.ApplyResources(this.lstCustomShortcuts, "lstCustomShortcuts");
             this.lstCustomShortcuts.BackColor = System.Drawing.SystemColors.Window;
-            this.lstCustomShortcuts.FlatBorderColor = System.Drawing.Color.Empty;
+            this.lstCustomShortcuts.BorderColor = System.Drawing.Color.Empty;
             this.lstCustomShortcuts.ForeColor = System.Drawing.SystemColors.WindowText;
             this.lstCustomShortcuts.FullRowSelect = true;
             this.lstCustomShortcuts.HideSelection = false;
             this.lstCustomShortcuts.Name = "lstCustomShortcuts";
+            this.lstCustomShortcuts.SmallImageList = this.ilsCustomShortcutsSmallIcons;
             this.lstCustomShortcuts.UseCompatibleStateImageBehavior = false;
             this.lstCustomShortcuts.View = System.Windows.Forms.View.Details;
             // 
@@ -89,16 +90,21 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             resources.ApplyResources(this.btnGotoShortcut, "btnGotoShortcut");
             this.btnGotoShortcut.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGotoShortcut.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.btnGotoShortcut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnGotoShortcut.Name = "btnGotoShortcut";
             this.btnGotoShortcut.UseVisualStyleBackColor = true;
             this.btnGotoShortcut.Click += new System.EventHandler(this.btnGotoShortcut_Click);
             // 
+            // ilsCustomShortcutsSmallIcons
+            // 
+            this.ilsCustomShortcutsSmallIcons.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            resources.ApplyResources(this.ilsCustomShortcutsSmallIcons, "ilsCustomShortcutsSmallIcons");
+            this.ilsCustomShortcutsSmallIcons.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // FrmCustomShortcutManagerMain
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnGotoShortcut);
             this.Controls.Add(this.lstCustomShortcuts);
             this.Controls.Add(this.btnDeleteCustomShortcut);
@@ -122,5 +128,6 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private TileIconifier.Controls.SkinnableButton btnDeleteCustomShortcut;
         private SortableListView lstCustomShortcuts;
         private TileIconifier.Controls.SkinnableButton btnGotoShortcut;
+        private System.Windows.Forms.ImageList ilsCustomShortcutsSmallIcons;
     }
 }

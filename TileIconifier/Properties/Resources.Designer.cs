@@ -73,6 +73,76 @@ namespace TileIconifier.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AlignBottom {
+            get {
+                object obj = ResourceManager.GetObject("AlignBottom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AlignCenter {
+            get {
+                object obj = ResourceManager.GetObject("AlignCenter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AlignLeft {
+            get {
+                object obj = ResourceManager.GetObject("AlignLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AlignRight {
+            get {
+                object obj = ResourceManager.GetObject("AlignRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AlignTop {
+            get {
+                object obj = ResourceManager.GetObject("AlignTop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AlignXMiddle {
+            get {
+                object obj = ResourceManager.GetObject("AlignXMiddle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AlignYMiddle {
+            get {
+                object obj = ResourceManager.GetObject("AlignYMiddle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap colorsquare {
             get {
                 object obj = ResourceManager.GetObject("colorsquare", resourceCulture);
@@ -116,9 +186,59 @@ namespace TileIconifier.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap OpenComparisonResult_9697 {
+        internal static System.Drawing.Bitmap ExportPerformance_128x {
             get {
-                object obj = ResourceManager.GetObject("OpenComparisonResult_9697", resourceCulture);
+                object obj = ResourceManager.GetObject("ExportPerformance_128x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MoveGlyph_128x {
+            get {
+                object obj = ResourceManager.GetObject("MoveGlyph_128x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NudgeDown {
+            get {
+                object obj = ResourceManager.GetObject("NudgeDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NudgeLeft {
+            get {
+                object obj = ResourceManager.GetObject("NudgeLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NudgeRight {
+            get {
+                object obj = ResourceManager.GetObject("NudgeRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NudgeUp {
+            get {
+                object obj = ResourceManager.GetObject("NudgeUp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,9 +286,9 @@ namespace TileIconifier.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Translate {
+        internal static System.Drawing.Bitmap ZoomIn_128x {
             get {
-                object obj = ResourceManager.GetObject("Translate", resourceCulture);
+                object obj = ResourceManager.GetObject("ZoomIn_128x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,9 +296,9 @@ namespace TileIconifier.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Zoom_5442 {
+        internal static System.Drawing.Bitmap ZoomOut_128x {
             get {
-                object obj = ResourceManager.GetObject("Zoom_5442", resourceCulture);
+                object obj = ResourceManager.GetObject("ZoomOut_128x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,19 +306,9 @@ namespace TileIconifier.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ZoomOut_12927 {
+        internal static System.Drawing.Bitmap ZoomToFit_128x {
             get {
-                object obj = ResourceManager.GetObject("ZoomOut_12927", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ZoomToFit {
-            get {
-                object obj = ResourceManager.GetObject("ZoomToFit", resourceCulture);
+                object obj = ResourceManager.GetObject("ZoomToFit_128x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
