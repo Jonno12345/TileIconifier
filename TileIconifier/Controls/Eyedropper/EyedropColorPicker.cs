@@ -29,6 +29,7 @@ namespace TileIconifier.Controls.Eyedropper
         private Color _selectedColor;
         private bool _isCapturing;
         private int _zoom = 6;
+        private float _dpiScaleFactor;
 
         public EyedropColorPicker()
         {
@@ -127,10 +128,10 @@ namespace TileIconifier.Controls.Eyedropper
             //"system dpi aware" and the screen dpi changes while the app is running)
             //the MousePosition property returns a value that is virtualised to the
             //system dpi, not the actual value for the current monitor dpi. Therefore,
-            //we need to correct it in order to obtain the real value.
-            var scaleFactor = Util.GetScalingFactor();
-            snapLoc.X = (int)Math.Round(snapLoc.X * scaleFactor);
-            snapLoc.Y = (int)Math.Round(snapLoc.Y * scaleFactor);
+            //we need to correct it in order to obtain the real value. This won't be
+            //needed when the app is per monitor dpi-aware...
+            snapLoc.X = (int)Math.Round(snapLoc.X * _dpiScaleFactor);
+            snapLoc.Y = (int)Math.Round(snapLoc.Y * _dpiScaleFactor);
 
             //Move the point to the upper-left corner of the image so that 
             //the cursor point is centered in the image.
@@ -162,6 +163,9 @@ namespace TileIconifier.Controls.Eyedropper
             if ((e.Button & MouseButtons.Left) != MouseButtons.Left) return;
 
             Cursor = Cursors.Cross;
+            //Remember that the monitor dpi setting can change while the app is running, 
+            //so we really need to check this each time we start capturing.
+            _dpiScaleFactor = Util.GetScalingFactor();
             _isCapturing = true;
             Invalidate();
         }
