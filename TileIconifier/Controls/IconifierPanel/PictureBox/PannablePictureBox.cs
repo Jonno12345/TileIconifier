@@ -915,20 +915,32 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         /// </summary>        
         private float GetControlScaleFactorForFont(Graphics g = null)
         {
-            if (g == null)
+            var ownGraphics = false;
+            try
             {
-                g = CreateGraphics();
+                if (g == null)
+                {
+                    g = CreateGraphics();
+                    ownGraphics = true;
+                }
+
+                var scale = GetRawControlScaleFactor();
+
+                scale.Width *= 96F / g.DpiX;
+                scale.Height *= 96F / g.DpiY;
+
+                //Use the minimum scaling factor to make the image as 
+                //big as possible without cropping any of its size and 
+                //preserving its aspect ratio.
+                return Math.Min(scale.Width, scale.Height);
             }
-
-            var scale = GetRawControlScaleFactor();
-
-            scale.Width *= 96F / g.DpiX;
-            scale.Height *= 96F / g.DpiY;
-
-            //Use the minimum scaling factor to make the image as 
-            //big as possible without cropping any of its size and 
-            //preserving its aspect ratio.
-            return Math.Min(scale.Width, scale.Height);
+            finally
+            {
+                if (ownGraphics)
+                {
+                    g.Dispose();
+                }
+            }
         }
 
         /// <summary>
@@ -946,12 +958,23 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
 
         private SizeF GetDPIScaleFactor(Graphics g = null)
         {
-            if (g == null)
+            var ownGraphics = false;
+            try
             {
-                g = CreateGraphics();
+                if (g == null)
+                {
+                    g = CreateGraphics();
+                    ownGraphics = true;
+                }
+                return new SizeF(g.DpiX / 96F, g.DpiY / 96F);
             }
-
-            return new SizeF(g.DpiX / 96F, g.DpiY / 96F);
+            finally
+            {
+                if (ownGraphics)
+                {
+                    g.Dispose();
+                }
+            }
         }
     }
 
