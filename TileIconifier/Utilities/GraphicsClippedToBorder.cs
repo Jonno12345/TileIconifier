@@ -5,7 +5,7 @@ using System.Windows.Forms;
 namespace TileIconifier.Utilities
 {
     //A little helper object that temporarily modifies the clipping region of a Graphics to exclude everything except the borders.
-    class GraphicsClippedToBorder : IDisposable
+    sealed class GraphicsClippedToBorder : IDisposable
     {
         private bool _disposed = false;
         private Graphics _graphics;
@@ -54,13 +54,7 @@ namespace TileIconifier.Utilities
 
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing && !_disposed)
+            if (!_disposed)
             {
                 if (_oldClip != null)
                 {

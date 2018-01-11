@@ -44,6 +44,11 @@ namespace TileIconifier.Utilities
             GC.SuppressFinalize(this);
         }
 
+        ~NonClientGraphics()
+        {
+            Dispose(false);
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
@@ -52,16 +57,21 @@ namespace TileIconifier.Utilities
                 {
                     Graphics.Dispose();
                 }
-                if (_hDC != IntPtr.Zero)
-                {
-                    NativeMethods.ReleaseDC(_hWnd, _hDC);
-                }
-                else if (_hRgnClip != IntPtr.Zero)
-                {
-                    //hrgn not null, but hdc null, so the region was created, but GetDCEx probably failed,
-                    //so it hasn't taken ownership of the region, so we need to delete it ourselves.
-                    NativeMethods.DeleteObject(_hRgnClip);
-                }
+            }
+            if (_hDC != IntPtr.Zero)
+            {
+                //The DC has been created and still exists
+                NativeMethods.ReleaseDC(_hWnd, _hDC);
+                _hDC = IntPtr.Zero;
+                //The system has taken ownership of the region, so no need to delete it, just mark it as null.
+                _hRgnClip = IntPtr.Zero;
+            }
+            else if (_hRgnClip != IntPtr.Zero)
+            {
+                //The region was created, but GetDCEx probably failed, so the system hasn't taken ownership 
+                //of the region, so we need to delete it ourselves.
+                NativeMethods.DeleteObject(_hRgnClip);
+                _hRgnClip = IntPtr.Zero;
             }
         }
     }

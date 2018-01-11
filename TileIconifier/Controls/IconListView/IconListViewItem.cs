@@ -145,6 +145,11 @@ namespace TileIconifier.Controls.IconListView
             GC.SuppressFinalize(this);
         }
 
+        ~IconListViewItem()
+        {
+            Dispose(false);
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
