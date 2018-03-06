@@ -112,8 +112,8 @@ namespace TileIconifier.Forms.Main
             catch (Exception ex)
             {
                 FormUtils.ShowMessage(this,
-                    "Failure iconifying shortcut",
-    "A failure has occurred creating the new tile. Use the Custom Shortcut Manager (or click 'Quick Build Custom Shortcut') instead.\r\n\r\nFailure reason: " + ex.Message , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+    "A failure has occurred creating the new tile (possible access issues if the software is an antivirus, firewall or system application). Use the Custom Shortcut Manager (or click 'Quick Build Custom Shortcut' in the bottom left corner) instead.\r\n\r\nFailure reason: " + ex.Message , "Failure iconifying shortcut", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             UpdateShortcut();
 

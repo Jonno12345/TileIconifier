@@ -689,8 +689,8 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
                     new SolidBrush(Color.Red), 0, 0);
                 e.Graphics.DrawString(PannablePictureBoxImage.X + ", " + PannablePictureBoxImage.Y, DefaultFont,
                     new SolidBrush(Color.Red), 0, 20);
-                e.Graphics.DrawString(pctBox.Width + ", " + pctBox.Height, DefaultFont, new SolidBrush(Color.Red), 0, 40);
-                e.Graphics.DrawString(MinWidth + "_" + MaxWidth + ", " + MinHeight + "_" + MaxHeight, DefaultFont,
+                e.Graphics.DrawString(Width + ", " + Height, DefaultFont, new SolidBrush(Color.Red), 0, 40);
+                e.Graphics.DrawString(_minWidth + "_" + _maxWidth + ", " + _minHeight + "_" + _maxHeight, DefaultFont,
                     new SolidBrush(Color.Red), 0, 60);
 #endif
             }
