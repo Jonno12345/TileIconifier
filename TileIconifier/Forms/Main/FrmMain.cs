@@ -105,7 +105,16 @@ namespace TileIconifier.Forms.Main
 
             var showForegroundColourWarning = CurrentShortcutItem.Properties.ForegroundTextColourChanged;
             var tileIconify = GenerateTileIcon();
-            tileIconify.RunIconify();
+            try
+            {
+                tileIconify.RunIconify();
+            }
+            catch (Exception ex)
+            {
+                FormUtils.ShowMessage(this,
+                    "Failure iconifying shortcut",
+    "A failure has occurred creating the new tile. Use the Custom Shortcut Manager (or click 'Quick Build Custom Shortcut') instead.\r\n\r\nFailure reason: " + ex.Message , MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             UpdateShortcut();
 
             if (showForegroundColourWarning)
