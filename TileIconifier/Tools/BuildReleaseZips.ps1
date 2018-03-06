@@ -27,8 +27,8 @@ function BuildReleaseZipFiles($sourceFolder, $destinationFolder, $zipFilePath)
 	ZipFiles $zipFilePath $destinationFolder
 }
 
-
-$strVersion = [System.Diagnostics.FileVersionInfo]::GetVersionInfo("C:\Users\Jonno\Documents\GitHub\TileIconify\TileIconifier\bin\x64\Release\TileIconifier.exe").FileVersion
+$scriptDir = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
+$strVersion = [System.Diagnostics.FileVersionInfo]::GetVersionInfo(((get-item $scriptDir).Parent.FullName) + "\bin\x64\Release\TileIconifier.exe").FileVersion
 $x64BuildFolderPath = Join-Path (Get-Item $PSScriptRoot).Parent.FullName -ChildPath ("Bin\x64\Release\")
 $x86BuildFolderPath = Join-Path (Get-Item $PSScriptRoot).Parent.FullName -ChildPath ("Bin\x86\Release\")
 $releaseBuildFolderPath = Join-Path (Get-Item $PSScriptRoot).Parent.FullName -ChildPath ("Releases\" + $strVersion + "\")
