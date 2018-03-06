@@ -32,7 +32,6 @@ using System.Windows.Forms;
 using TileIconifier.Properties;
 using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
-using TileIconifier.Utilities;
 
 namespace TileIconifier.Forms
 {
@@ -56,13 +55,12 @@ namespace TileIconifier.Forms
             //Apply the skin to any control newly added to the form.
             if (FormSkin != null && !DesignMode)
             {
-                ContainerUtils.ApplySkinToControl(FormSkin, e.Control);
+                SkinUtils.ApplySkinToControl(FormSkin, e.Control);
             }
         }
 
         protected override void OnLoad(EventArgs e)
         {
-
             Icon = Resources.tiles2_shadow_lyk_icon;
 
             SkinHandler.SkinChanged += OnSkinChanged;
@@ -105,7 +103,7 @@ namespace TileIconifier.Forms
         {
             foreach (Control c in Controls)
             {
-                ContainerUtils.ApplySkinToControl(FormSkin, c);
+                SkinUtils.ApplySkinToControl(FormSkin, c);
             }
         }        
     }

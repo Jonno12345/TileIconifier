@@ -139,7 +139,7 @@
     <value>btnCreateNewShortcut</value>
   </data>
   <data name="&gt;&gt;btnCreateNewShortcut.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6278.33577, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6386.31541, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnCreateNewShortcut.Parent" xml:space="preserve">
     <value>$this</value>
@@ -199,7 +199,7 @@
     <value>btnDeleteCustomShortcut</value>
   </data>
   <data name="&gt;&gt;btnDeleteCustomShortcut.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6278.33577, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6386.31541, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnDeleteCustomShortcut.Parent" xml:space="preserve">
     <value>$this</value>
@@ -216,6 +216,12 @@
   <data name="lstCustomShortcuts.Size" type="System.Drawing.Size, System.Drawing">
     <value>464, 246</value>
   </data>
+  <metadata name="ilsCustomShortcutsSmallIcons.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
+  <data name="ilsCustomShortcutsSmallIcons.ImageSize" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
   <data name="lstCustomShortcuts.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
@@ -223,7 +229,7 @@
     <value>lstCustomShortcuts</value>
   </data>
   <data name="&gt;&gt;lstCustomShortcuts.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6278.33577, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6386.31541, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lstCustomShortcuts.Parent" xml:space="preserve">
     <value>$this</value>
@@ -250,7 +256,7 @@
     <value>btnGotoShortcut</value>
   </data>
   <data name="&gt;&gt;btnGotoShortcut.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6278.33577, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6386.31541, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnGotoShortcut.Parent" xml:space="preserve">
     <value>$this</value>
@@ -261,6 +267,9 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>623, 285</value>
   </data>
@@ -737,10 +746,16 @@
   <data name="&gt;&gt;aboutToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ilsCustomShortcutsSmallIcons.Name" xml:space="preserve">
+    <value>ilsCustomShortcutsSmallIcons</value>
+  </data>
+  <data name="&gt;&gt;ilsCustomShortcutsSmallIcons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FrmCustomShortcutManagerMain</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6278.33577, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6386.31541, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

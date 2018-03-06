@@ -465,8 +465,8 @@ namespace TileIconifier.Forms.CustomShortcutForms
             // 
             // FrmCustomShortcutManagerNew
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.radShortcutLocation);
             this.Controls.Add(this.txtShortcutName);
             this.Controls.Add(this.lblShortcutName);

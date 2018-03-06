@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Reflection;
 using System.Windows.Forms;
 using TileIconifier.Controls;
-using TileIconifier.Skinning;
 using TileIconifier.Skinning.Skins;
 
-namespace TileIconifier.Utilities
+namespace TileIconifier.Skinning
 {
-    internal static class ContainerUtils
+    internal static class SkinUtils
     {    
         /// <summary>
         ///     Applies the specified skin on the specified control and all of its childs.
@@ -49,24 +47,6 @@ namespace TileIconifier.Utilities
             {
                 return SkinHandler.DefaultSkin;
             }
-        }
-
-        /// <summary>
-        /// Returns the control from which the ToolStrip originated.
-        /// </summary>
-        /// <param name="sender">ToolStripItem that was clicked.</param>        
-        public static Control GetToolStripSourceControl(object sender)
-        {
-            var menuItem = sender as ToolStripItem;
-            if (menuItem != null)
-            {
-                var owner = menuItem.Owner as ContextMenuStrip;
-                if (owner != null)
-                {
-                    return owner.SourceControl;
-                }
-            }
-            return null;
         }
     }
 }

@@ -3,89 +3,60 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using TileIconifier.Skinning.Skins;
+using TileIconifier.Utilities;
 
 namespace TileIconifier.Controls
 {
     class SkinnableListView : ListView, ISkinnableControl
-    {
-        private const string USE_FLATSTYLE_INSTEAD_ERROR = 
-            "Use the FlatStyle property instead.";
-
+    {        
         public SkinnableListView()
-        {
-            //Set the base class property to bypass the deprecated warning
-            base.OwnerDraw = true;
-
+        {            
+            OwnerDraw = true;
             DoubleBuffered = true;
         }
 
         #region "Properties"
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        [Obsolete(USE_FLATSTYLE_INSTEAD_ERROR)]
+        [Browsable(false)]        
         [DefaultValue(true)]
         public new bool OwnerDraw
         {
             get { return base.OwnerDraw; }
-            set { throw new NotSupportedException(USE_FLATSTYLE_INSTEAD_ERROR); }
+            set { base.OwnerDraw = value; }
         }
 
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        [Obsolete(USE_FLATSTYLE_INSTEAD_ERROR)]
-        public new BorderStyle BorderStyle
+        private bool _useExplorerStyle = true;
+        [DefaultValue(true)]
+        public bool UseExplorerStyle
         {
-            get { return base.BorderStyle; }
-            set { throw new NotSupportedException(USE_FLATSTYLE_INSTEAD_ERROR); }
-        }
-        
-        private FlatStyle flatStyle = FlatStyle.Standard;
-        [DefaultValue(FlatStyle.Standard)]
-        public FlatStyle FlatStyle
-        {
-            get { return flatStyle; }
+            get { return _useExplorerStyle; }
             set
             {
-                if (flatStyle != value)
+                if (_useExplorerStyle != value)
                 {
-                    flatStyle = value;
-
-                    switch (value)
-                    {                        
-                        case FlatStyle.Flat:
-                        case FlatStyle.Popup:
-                            //Popup effect not implemented, so FlatStyle.Popup behaves
-                            //exactly like FlatStyle.Flat.
-                            base.OwnerDraw = true;
-                            base.BorderStyle = BorderStyle.FixedSingle;                            
-                            break;
-
-                        case FlatStyle.Standard:
-                            //The appearance is still determined by the system, but at
-                            //least the Paint events are raised.
-                            base.OwnerDraw = true;
-                            base.BorderStyle = BorderStyle.Fixed3D;
-                            break;
-
-                        default:
-                            base.OwnerDraw = false;
-                            base.BorderStyle = BorderStyle.Fixed3D;
-                            break;
+                    _useExplorerStyle = value;
+                    if (IsHandleCreated)
+                    {
+                        //The documentation for SetWindowTheme does not suggest that this is needed, 
+                        //but some glitches occurs if we enable, then disable the explorer style
+                        //with the same handle.
+                        RecreateHandle();
                     }                    
                 }
             }
         }
-                
-        private bool drawStandardItems = true;
-        [DefaultValue(true)]
-        public bool DrawStandardItems
+
+        private ListViewHeaderAppearance _headerAppearance = ListViewHeaderAppearance.Standard;
+        [DefaultValue(ListViewHeaderAppearance.Standard)]
+        public ListViewHeaderAppearance HeaderAppearance
         {
-            get { return drawStandardItems; }
+            get { return _headerAppearance; }
             set
             {
-                if (drawStandardItems != value)
+                //Note that this property has no effect at design time because the OwnerDraw 
+                //property, which has to be true for this one to take effect, is ignored.
+                if (_headerAppearance != value)
                 {
-                    drawStandardItems = value;
+                    _headerAppearance = value;
                     Invalidate();
                 }
             }
@@ -101,7 +72,7 @@ namespace TileIconifier.Controls
                 if (flatHeaderBackColor != value)
                 {
                     flatHeaderBackColor = value;
-                    if (FlatStyle == FlatStyle.Flat)
+                    if (BorderStyle == BorderStyle.FixedSingle)
                     {
                         Invalidate();
                     }
@@ -119,7 +90,7 @@ namespace TileIconifier.Controls
                 if (flatHeaderForeColor != value)
                 {
                     flatHeaderForeColor = value;
-                    if (FlatStyle == FlatStyle.Flat)
+                    if (BorderStyle == BorderStyle.FixedSingle)
                     {
                         Invalidate();
                     }
@@ -127,167 +98,199 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color flatBorderColor = SystemColors.WindowFrame;
+        private Color _borderColor = SystemColors.WindowFrame;
         [DefaultValue(typeof(Color), nameof(SystemColors.WindowFrame))]
-        public Color FlatBorderColor
+        public Color BorderColor
         {
-            get { return flatBorderColor; }
+            get { return _borderColor; }
             set
             {
-                if (flatBorderColor != value)
+                if (_borderColor != value)
                 {
-                    flatBorderColor = value;
+                    _borderColor = value;
                     {
                         //This color is also used for the focused and the 
                         //disabled states if their value is empty.
-                        if (FlatStyle == FlatStyle.Flat && 
-                            (!Focused && Enabled || (Focused && FlatBorderFocusedColor.IsEmpty) ||
-                            (!Enabled && FlatBorderDisabledColor.IsEmpty)))
-                        {                            
-                            Invalidate();
+                        if (BorderStyle == BorderStyle.FixedSingle && 
+                            (!Focused && Enabled || (Focused && BorderFocusedColor.IsEmpty) ||
+                            (!Enabled && BorderDisabledColor.IsEmpty)))
+                        {
+                            InvalidateNonClient();
                         }
                     }
                 }
             }
         }
 
-        private Color flatBorderFocusedColor = Color.Empty;
+        private Color _borderFocusedColor = Color.Empty;
         [DefaultValue(typeof(Color), "")]
-        public Color FlatBorderFocusedColor
+        public Color BorderFocusedColor
         {
-            get { return flatBorderFocusedColor; }
+            get { return _borderFocusedColor; }
             set
             {
-                if (flatBorderFocusedColor != value)
+                if (_borderFocusedColor != value)
                 {
-                    flatBorderFocusedColor = value;
-                    if (FlatStyle == FlatStyle.Flat && Focused)
+                    _borderFocusedColor = value;
+                    if (BorderStyle == BorderStyle.FixedSingle && Focused)
                     {
-                        Invalidate();
+                        InvalidateNonClient();
                     }
                 }
             }
         }
 
-        private Color flatBorderDisabledColor = Color.Empty;
+        private Color _borderDisabledColor = Color.Empty;
         [DefaultValue(typeof(Color), "")]
-        public Color FlatBorderDisabledColor
+        public Color BorderDisabledColor
         {
-            get { return flatBorderDisabledColor; }
+            get { return _borderDisabledColor; }
             set
             {
-                if (flatBorderDisabledColor != value)
+                if (_borderDisabledColor != value)
                 {
-                    flatBorderDisabledColor = value;
-                    if (FlatStyle == FlatStyle.Flat && !Enabled)
+                    _borderDisabledColor = value;
+                    if (BorderStyle == BorderStyle.FixedSingle && !Enabled)
                     {
-                        Invalidate();
+                        InvalidateNonClient();
                     }
                 }
             }
         }
         #endregion
 
+        private void InvalidateNonClient()
+        {
+            LayoutAndPaintUtils.InvalidateNonClient(this);
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            NativeMethods.SetWindowTheme(Handle, UseExplorerStyle ? "Explorer" : null, null);
+
+            base.OnHandleCreated(e);
+        }
+
+        protected override void OnEnter(EventArgs e)
+        {
+            if (BorderStyle == BorderStyle.FixedSingle)
+            {
+                InvalidateNonClient();
+            }
+
+            base.OnEnter(e);
+        }
+
+        protected override void OnLeave(EventArgs e)
+        {
+            if (BorderStyle == BorderStyle.FixedSingle)
+            {
+                InvalidateNonClient();
+            }
+
+            base.OnLeave(e);
+        }
+
         protected override void OnDrawColumnHeader(DrawListViewColumnHeaderEventArgs e)
-        {    
-            if (FlatStyle == FlatStyle.Flat || FlatStyle == FlatStyle.Popup)
+        {
+            //Simply changes the default value. Users will have the oppurtunity to change 
+            //it when the event is raised.
+            e.DrawDefault = true;
+
+            base.OnDrawColumnHeader(e);
+
+            //Implements the flat header style
+            if (e.DrawDefault && HeaderAppearance == ListViewHeaderAppearance.Flat)
             {
                 using (var b = new SolidBrush(FlatHeaderBackColor))
                     e.Graphics.FillRectangle(b, e.Bounds);
 
-                TextFormatFlags flags =                     
+                TextFormatFlags flags =
                     TextFormatFlags.VerticalCenter |
                     TextFormatFlags.EndEllipsis |
-                    ConvertToTextFormatFlags(e.Header.TextAlign); //Header.TextAlign is already Rtl translated
+                    LayoutAndPaintUtils.ConvertToTextFormatFlags(e.Header.TextAlign); //Header.TextAlign is already Rtl translated
 
                 TextRenderer.DrawText(e.Graphics, e.Header.Text, Font, e.Bounds, FlatHeaderForeColor, flags);
-            }
-            else
-            {
-                e.DrawDefault = true;
-            }
 
-            base.OnDrawColumnHeader(e);
+                //Drawing handled, so tell the system to draw nothing
+                e.DrawDefault = false;
+            }
         }
 
         protected override void OnDrawItem(DrawListViewItemEventArgs e)
         {
-            e.DrawDefault = DrawStandardItems;
+            e.DrawDefault = true;
 
             base.OnDrawItem(e);            
         }
 
         protected override void OnDrawSubItem(DrawListViewSubItemEventArgs e)
         {
-            e.DrawDefault = DrawStandardItems;
+            e.DrawDefault = true;
 
             base.OnDrawSubItem(e); 
-        }
+        }        
 
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
 
-            if (m.Msg == NativeMethods.WM_PAINT && FlatStyle == FlatStyle.Flat)
+            if (m.Msg == NativeMethods.WM_NCPAINT && BorderStyle == BorderStyle.FixedSingle)
             {
-                DrawFlatBorder();
+                PaintCustomBorder(m.HWnd, m.WParam);
             }                
         }
 
-        private void DrawFlatBorder()
+        private void PaintCustomBorder(IntPtr hDC, IntPtr hRgn)
         {
             Color bColor;
-            if (!Enabled && !FlatBorderDisabledColor.IsEmpty)
+            if (!Enabled && !BorderDisabledColor.IsEmpty)
             {
-                bColor = FlatBorderDisabledColor;
+                bColor = BorderDisabledColor;
             }
-            else if (Focused && !FlatBorderFocusedColor.IsEmpty)
+            else if (Focused && !BorderFocusedColor.IsEmpty)
             {
-                bColor = FlatBorderFocusedColor;
-            }            
+                bColor = BorderFocusedColor;
+            }
+            else if (BorderColor != SystemColors.WindowFrame)
+            {
+                bColor = BorderColor;
+            }
             else
             {
-                //Unlike with the SkinnableTextBox, we need to draw the standard
-                //frame even if no color is specified for the standard state, because
-                //otherwise, the previous color gets stuck. 
-                bColor = FlatBorderColor;
+                //Regular border, which has already been drawn by the system at this point
+                return;
             }
-            
-            IntPtr hdc = NativeMethods.GetWindowDC(Handle);
-            using (var g = Graphics.FromHdc(hdc))
-            using (var p = new Pen(bColor))
-                g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
-            NativeMethods.ReleaseDC(Handle, hdc);
-        }
 
-        private TextFormatFlags ConvertToTextFormatFlags(HorizontalAlignment horiAlign)
-        {     
-            switch (horiAlign)
+            using (var ncg = new NonClientGraphics(hDC, hRgn))
             {
-                case HorizontalAlignment.Left:
-                    return TextFormatFlags.Left;
+                if (ncg.Graphics == null)
+                {
+                    return;
+                }
 
-                case HorizontalAlignment.Center:
-                    return TextFormatFlags.HorizontalCenter;
-
-                case HorizontalAlignment.Right:
-                    return TextFormatFlags.Right;
-
-                default:
-                    throw new ArgumentException("Unsupported horizontal alignement.");
-            }                
+                ControlPaint.DrawBorder(ncg.Graphics, new Rectangle(new Point(0), Size), bColor, ButtonBorderStyle.Solid);
+            }
         }
 
         public void ApplySkin(BaseSkin skin)
         {
-            FlatStyle = skin.ListViewFlatStyle;
+            UseExplorerStyle = skin.ListViewUseExplorerStyle;
+            BorderStyle = skin.ListViewBorderStyle;
+            HeaderAppearance = skin.ListViewHeaderStyle;
             FlatHeaderBackColor = skin.ListViewHeaderBackColor;
             FlatHeaderForeColor = skin.ListViewHeaderForeColor;
             BackColor = skin.ListViewBackColor;
             ForeColor = skin.ListViewForeColor;
-            FlatBorderColor = skin.ListViewBorderColor;
-            FlatBorderFocusedColor = skin.ListViewBorderFocusedColor;
-            FlatBorderDisabledColor = skin.ListViewBorderDisabledColor;
+            BorderColor = skin.ListViewBorderColor;
+            BorderFocusedColor = skin.ListViewBorderFocusedColor;
+            BorderDisabledColor = skin.ListViewBorderDisabledColor;
         }
+    }
+
+    public enum ListViewHeaderAppearance
+    {
+        Standard,
+        Flat
     }
 }

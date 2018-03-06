@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
@@ -51,9 +52,20 @@ namespace TileIconifier.Forms.Main
 
         private void FrmBatchShortcut_Load(object sender, EventArgs e)
         {
+            ilsIconifiedItemsSmallIcons.ImageSize = SystemInformation.SmallIconSize;
+            BuildListBoxColumns();
+
             GetIconifiedShortcuts();
             UpdateListViewBox();
             colorPanel_ColorUpdate(this, null);
+        }
+
+        /// <summary>
+        ///     Initialize the columns of the list view with the shortcut items.
+        /// </summary>
+        private void BuildListBoxColumns()
+        {
+            lstIconifiedItems.Columns.Add("Shortcut Name", lstIconifiedItems.ClientSize.Width);
         }
 
         private void GetIconifiedShortcuts()
@@ -62,29 +74,41 @@ namespace TileIconifier.Forms.Main
                 ShortcutItemListViewItemLibrary.LibraryAsListViewItems.Where(s => s.ShortcutItem.IsIconified).ToList();
         }
 
+        /// <summary>
+        ///     Updates the items as well as the icons of the list view with the shortcut items.
+        /// </summary>
         private void UpdateListViewBox()
         {
-            BuildListBoxColumns();
+            UpdateListViewImageList();
             UpdateListViewBoxItems();
-        }
+        }        
 
-        private void BuildListBoxColumns()
-        {
-            lstIconifiedItems.Columns.Add("Shortcut Name", lstIconifiedItems.ClientSize.Width);
-        }
-
+        /// <summary>
+        ///     Updates the items of the list view with the shortcut items, excluding the icons.
+        /// </summary>
         private void UpdateListViewBoxItems()
         {
-            var smallImageList = new ImageList();
+            lstIconifiedItems.Items.Clear();
             for (var i = 0; i < _iconifiedItems.Count; i++)
             {
                 var shortcutItem = _iconifiedItems[i];
-                lstIconifiedItems.Items.Add(shortcutItem);
-                smallImageList.Images.Add(shortcutItem.ShortcutItem.StandardIcon ??
-                                          Resources.QuestionMark);
+                lstIconifiedItems.Items.Add(shortcutItem);                
                 shortcutItem.ImageIndex = i;
+            }            
+        }
+
+        /// <summary>
+        ///     Updates the icons of the list view with the shortcut items.
+        /// </summary>
+        private void UpdateListViewImageList()
+        {
+            ilsIconifiedItemsSmallIcons.Images.Clear();
+            for (var i = 0; i < _iconifiedItems.Count; i++)
+            {
+                var shortcutItem = _iconifiedItems[i];
+                ilsIconifiedItemsSmallIcons.Images.Add(shortcutItem.ShortcutItem.StandardIcon ??
+                                          Resources.QuestionMark);
             }
-            lstIconifiedItems.SmallImageList = smallImageList;
         }
 
         private void btnSelectAll_Click(object sender, EventArgs e)

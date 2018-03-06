@@ -151,12 +151,14 @@ namespace TileIconifier.Controls.Eyedropper
 
         public static float GetScalingFactor()
         {
-            var g = Graphics.FromHwnd(IntPtr.Zero);
-            var desktop = g.GetHdc();
-            float logicalScreenHeight = NativeMethods.GetDeviceCaps(desktop, (int)NativeMethods.DeviceCap.Vertres);
-            float physicalScreenHeight = NativeMethods.GetDeviceCaps(desktop, (int)NativeMethods.DeviceCap.Desktopvertres);
+            using (var g = Graphics.FromHwnd(IntPtr.Zero))
+            {
+                var desktop = g.GetHdc();
+                float logicalScreenHeight = NativeMethods.GetDeviceCaps(desktop, (int)NativeMethods.DeviceCap.Vertres);
+                float physicalScreenHeight = NativeMethods.GetDeviceCaps(desktop, (int)NativeMethods.DeviceCap.Desktopvertres);
 
-            return physicalScreenHeight / logicalScreenHeight;
+                return physicalScreenHeight / logicalScreenHeight;
+            }
         }
     }
     

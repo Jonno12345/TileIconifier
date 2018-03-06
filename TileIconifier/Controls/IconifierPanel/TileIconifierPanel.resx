@@ -196,7 +196,7 @@
     <value>btnReset</value>
   </data>
   <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6313.27391, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6574.24932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnReset.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -206,6 +206,11 @@
   </data>
   <data name="pannablePictureBoxControlPanelMedium.HeaderText" xml:space="preserve">
     <value>Medium icon:</value>
+  </data>
+  <data name="pannablePictureBoxControlPanelMedium.ImagePlaceholderText" xml:space="preserve">
+    <value>Double
+Click
+Me</value>
   </data>
   <data name="pannablePictureBoxControlPanelMedium.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -223,7 +228,7 @@
     <value>pannablePictureBoxControlPanelMedium</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelMedium.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6313.27391, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6574.24932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelMedium.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -253,7 +258,7 @@
     <value>colorPanel</value>
   </data>
   <data name="&gt;&gt;colorPanel.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.ColorPanel, TileIconifier, Version=2.2.6313.27391, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.ColorPanel, TileIconifier, Version=2.2.6574.24932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorPanel.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -266,6 +271,11 @@
   </data>
   <data name="pannablePictureBoxControlPanelSmall.HeaderText" xml:space="preserve">
     <value>Small icon:</value>
+  </data>
+  <data name="pannablePictureBoxControlPanelSmall.ImagePlaceholderText" xml:space="preserve">
+    <value>Double
+Click
+Me</value>
   </data>
   <data name="pannablePictureBoxControlPanelSmall.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 0</value>
@@ -283,7 +293,7 @@
     <value>pannablePictureBoxControlPanelSmall</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6313.27391, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6574.24932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -316,7 +326,7 @@
     <value>chkUseSameImg</value>
   </data>
   <data name="&gt;&gt;chkUseSameImg.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableCheckBox, TileIconifier, Version=2.2.6313.27391, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableCheckBox, TileIconifier, Version=2.2.6574.24932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;chkUseSameImg.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -423,6 +433,9 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>500, 351</value>
   </data>

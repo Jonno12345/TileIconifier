@@ -91,32 +91,46 @@ namespace TileIconifier.Forms.Main
 
             if (srtlstShortcuts.InvokeRequired)
             {
-                srtlstShortcuts.Invoke(new Action(BuildShortcutList));
+                srtlstShortcuts.Invoke(new Action(BuildListViewContent));
             }
             else
             {
-                BuildShortcutList();
+                BuildListViewContent();
             }
         }
 
-        private void BuildShortcutList()
+        /// <summary>
+        ///     Updates the items and the images of the list view.
+        /// </summary>
+        private void BuildListViewContent()
         {
-            srtlstShortcuts.Items.Clear();
+            BuildListViewImageList();
 
-            var smallImageList = new ImageList();
+            srtlstShortcuts.Items.Clear();            
             for (var i = 0; i < _filteredList.Count; i++)
             {
                 var shortcutItem = _filteredList[i];
-                srtlstShortcuts.Items.Add(shortcutItem);
-                smallImageList.Images.Add(shortcutItem.ShortcutItem.StandardIcon ??
-                                          Resources.QuestionMark);
+                srtlstShortcuts.Items.Add(shortcutItem);                
                 shortcutItem.ImageIndex = i;
-            }
-            srtlstShortcuts.SmallImageList = smallImageList;
+            }            
 
             if (srtlstShortcuts.Items.Count > 0)
             {
                 srtlstShortcuts.Items[0].Selected = true;
+            }
+        }
+
+        /// <summary>
+        ///     Updates the images of the list view.
+        /// </summary>
+        private void BuildListViewImageList()
+        {
+            ilsShortcutItemsSmallIcons.Images.Clear();
+            for (var i = 0; i < _filteredList.Count; i++)
+            {
+                var shortcutItem = _filteredList[i].ShortcutItem;
+                ilsShortcutItemsSmallIcons.Images.Add(shortcutItem.StandardIcon ??
+                                          Resources.QuestionMark);
             }
         }
 

@@ -163,7 +163,7 @@
     <value>radShortcutLocation</value>
   </data>
   <data name="&gt;&gt;radShortcutLocation.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.AllOrCurrentUserRadios, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.AllOrCurrentUserRadios, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;radShortcutLocation.Parent" xml:space="preserve">
     <value>$this</value>
@@ -187,7 +187,7 @@
     <value>txtShortcutName</value>
   </data>
   <data name="&gt;&gt;txtShortcutName.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtShortcutName.Parent" xml:space="preserve">
     <value>$this</value>
@@ -241,7 +241,7 @@
     <value>btnGenerateShortcut</value>
   </data>
   <data name="&gt;&gt;btnGenerateShortcut.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnGenerateShortcut.Parent" xml:space="preserve">
     <value>$this</value>
@@ -337,7 +337,7 @@
     <value>btnExplorerBrowse</value>
   </data>
   <data name="&gt;&gt;btnExplorerBrowse.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnExplorerBrowse.Parent" xml:space="preserve">
     <value>tlpExplorer</value>
@@ -367,7 +367,7 @@
     <value>radSpecialFolder</value>
   </data>
   <data name="&gt;&gt;radSpecialFolder.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;radSpecialFolder.Parent" xml:space="preserve">
     <value>tlpExplorer</value>
@@ -394,7 +394,7 @@
     <value>txtCustomFolder</value>
   </data>
   <data name="&gt;&gt;txtCustomFolder.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtCustomFolder.Parent" xml:space="preserve">
     <value>tlpExplorer</value>
@@ -424,7 +424,7 @@
     <value>radCustomFolder</value>
   </data>
   <data name="&gt;&gt;radCustomFolder.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableRadioButton, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;radCustomFolder.Parent" xml:space="preserve">
     <value>tlpExplorer</value>
@@ -448,7 +448,7 @@
     <value>cmbExplorerGuids</value>
   </data>
   <data name="&gt;&gt;cmbExplorerGuids.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableComboBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableComboBox, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cmbExplorerGuids.Parent" xml:space="preserve">
     <value>tlpExplorer</value>
@@ -541,7 +541,7 @@
     <value>txtSteamInstallationPath</value>
   </data>
   <data name="&gt;&gt;txtSteamInstallationPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtSteamInstallationPath.Parent" xml:space="preserve">
     <value>tlpSteam</value>
@@ -565,7 +565,7 @@
     <value>lstSteamGames</value>
   </data>
   <data name="&gt;&gt;lstSteamGames.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lstSteamGames.Parent" xml:space="preserve">
     <value>tlpSteam</value>
@@ -601,7 +601,7 @@
     <value>btnSteamLibrariesPath</value>
   </data>
   <data name="&gt;&gt;btnSteamLibrariesPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnSteamLibrariesPath.Parent" xml:space="preserve">
     <value>tlpSteam</value>
@@ -637,7 +637,7 @@
     <value>btnSteamInstallationChange</value>
   </data>
   <data name="&gt;&gt;btnSteamInstallationChange.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnSteamInstallationChange.Parent" xml:space="preserve">
     <value>tlpSteam</value>
@@ -670,7 +670,7 @@
     <value>txtSteamLibraryPaths</value>
   </data>
   <data name="&gt;&gt;txtSteamLibraryPaths.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtSteamLibraryPaths.Parent" xml:space="preserve">
     <value>tlpSteam</value>
@@ -706,7 +706,7 @@
     <value>btnSteamExeChange</value>
   </data>
   <data name="&gt;&gt;btnSteamExeChange.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnSteamExeChange.Parent" xml:space="preserve">
     <value>tlpSteam</value>
@@ -739,7 +739,7 @@
     <value>txtSteamExecutablePath</value>
   </data>
   <data name="&gt;&gt;txtSteamExecutablePath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtSteamExecutablePath.Parent" xml:space="preserve">
     <value>tlpSteam</value>
@@ -832,7 +832,7 @@
     <value>txtChromeExePath</value>
   </data>
   <data name="&gt;&gt;txtChromeExePath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtChromeExePath.Parent" xml:space="preserve">
     <value>tlpChromeApps</value>
@@ -856,7 +856,7 @@
     <value>lstChromeAppItems</value>
   </data>
   <data name="&gt;&gt;lstChromeAppItems.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lstChromeAppItems.Parent" xml:space="preserve">
     <value>tlpChromeApps</value>
@@ -889,7 +889,7 @@
     <value>txtChromeAppPath</value>
   </data>
   <data name="&gt;&gt;txtChromeAppPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtChromeAppPath.Parent" xml:space="preserve">
     <value>tlpChromeApps</value>
@@ -925,7 +925,7 @@
     <value>btnChromeAppPathChange</value>
   </data>
   <data name="&gt;&gt;btnChromeAppPathChange.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnChromeAppPathChange.Parent" xml:space="preserve">
     <value>tlpChromeApps</value>
@@ -961,7 +961,7 @@
     <value>btnChromeExePathChange</value>
   </data>
   <data name="&gt;&gt;btnChromeExePathChange.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnChromeExePathChange.Parent" xml:space="preserve">
     <value>tlpChromeApps</value>
@@ -1045,7 +1045,7 @@
     <value>lstWindowsStoreApps</value>
   </data>
   <data name="&gt;&gt;lstWindowsStoreApps.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SortableListView, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lstWindowsStoreApps.Parent" xml:space="preserve">
     <value>tlpWindowsStore</value>
@@ -1173,7 +1173,7 @@ mailto:test@example.com</value>
     <value>txtUriString</value>
   </data>
   <data name="&gt;&gt;txtUriString.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtUriString.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1317,7 +1317,7 @@ mailto:test@example.com</value>
     <value>txtOtherShortcutArguments</value>
   </data>
   <data name="&gt;&gt;txtOtherShortcutArguments.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtOtherShortcutArguments.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1371,7 +1371,7 @@ mailto:test@example.com</value>
     <value>txtOtherTargetPath</value>
   </data>
   <data name="&gt;&gt;txtOtherTargetPath.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTextBox, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtOtherTargetPath.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1407,7 +1407,7 @@ mailto:test@example.com</value>
     <value>btnOtherTargetBrowse</value>
   </data>
   <data name="&gt;&gt;btnOtherTargetBrowse.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnOtherTargetBrowse.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1472,6 +1472,9 @@ mailto:test@example.com</value>
   <data name="&gt;&gt;tabOther.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="tabShortcutType.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>100, 18</value>
+  </data>
   <data name="tabShortcutType.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 27</value>
   </data>
@@ -1485,7 +1488,7 @@ mailto:test@example.com</value>
     <value>tabShortcutType</value>
   </data>
   <data name="&gt;&gt;tabShortcutType.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableTabControl, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableTabControl, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabShortcutType.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1529,6 +1532,9 @@ mailto:test@example.com</value>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>652, 396</value>
   </data>
@@ -2030,6 +2036,6 @@ mailto:test@example.com</value>
     <value>FrmCustomShortcutManagerNew</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6306.38020, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Forms.SkinnableForm, TileIconifier, Version=2.2.6575.23418, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -47,8 +47,8 @@ namespace TileIconifier.Forms.Shared
             this.txtImagePath = new TileIconifier.Controls.SkinnableTextBox();
             this.radUseCustomImage = new TileIconifier.Controls.SkinnableRadioButton();
             this.radIconFromTarget = new TileIconifier.Controls.SkinnableRadioButton();
-            this.lvwIcons = new TileIconifier.Controls.SkinnableListView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lvwIcons = new TileIconifier.Controls.IconListView.IconListView();
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -149,21 +149,6 @@ namespace TileIconifier.Forms.Shared
             this.radIconFromTarget.TabStop = true;
             this.radIconFromTarget.UseVisualStyleBackColor = true;
             // 
-            // lvwIcons
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.lvwIcons, 5);
-            resources.ApplyResources(this.lvwIcons, "lvwIcons");
-            this.lvwIcons.DrawStandardItems = false;
-            this.lvwIcons.MultiSelect = false;
-            this.lvwIcons.Name = "lvwIcons";
-            this.lvwIcons.TileSize = new System.Drawing.Size(50, 50);
-            this.lvwIcons.UseCompatibleStateImageBehavior = false;
-            this.lvwIcons.View = System.Windows.Forms.View.Tile;
-            this.lvwIcons.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.lvwIcons_DrawItem);
-            this.lvwIcons.SelectedIndexChanged += new System.EventHandler(this.lvwIcons_SelectedIndexChanged);
-            this.lvwIcons.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvwIcons_MouseClick);
-            this.lvwIcons.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvwIcons_MouseDoubleClick);
-            // 
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
@@ -179,14 +164,24 @@ namespace TileIconifier.Forms.Shared
             this.tableLayoutPanel1.Controls.Add(this.cmbCommonIconDlls, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblCommonDlls, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnBrowseCustomImage, 4, 4);
-            this.tableLayoutPanel1.Controls.Add(this.lvwIcons, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.radUseCustomImage, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lvwIcons, 0, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // lvwIcons
+            // 
+            resources.ApplyResources(this.lvwIcons, "lvwIcons");
+            this.tableLayoutPanel1.SetColumnSpan(this.lvwIcons, 5);
+            this.lvwIcons.ItemSize = new System.Drawing.Size(48, 48);
+            this.lvwIcons.Name = "lvwIcons";
+            this.lvwIcons.SelectedIndexChanged += new System.EventHandler(this.lvwIcons_SelectedIndexChanged);
+            this.lvwIcons.ItemActivate += new System.EventHandler(this.lvwIcons_ItemActivate);
+            this.lvwIcons.Click += new System.EventHandler(this.lvwIcons_Click);
             // 
             // FrmIconSelector
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmIconSelector";
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).EndInit();
@@ -197,8 +192,6 @@ namespace TileIconifier.Forms.Shared
         }
 
         #endregion
-
-        private TileIconifier.Controls.SkinnableListView lvwIcons;
         private TileIconifier.Controls.SkinnableRadioButton radIconFromTarget;
         private TileIconifier.Controls.SkinnableRadioButton radUseCustomImage;
         private SkinnableTextBox txtImagePath;
@@ -214,5 +207,6 @@ namespace TileIconifier.Forms.Shared
         private System.Windows.Forms.Label lblPreview;
         private System.Windows.Forms.PictureBox pctPreview;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Controls.IconListView.IconListView lvwIcons;
     }
 }

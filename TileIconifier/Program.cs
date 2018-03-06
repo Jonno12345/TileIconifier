@@ -38,8 +38,6 @@ using TileIconifier.Forms.Shared;
 using TileIconifier.Localization;
 using TileIconifier.Properties;
 using TileIconifier.Skinning;
-using TileIconifier.Skinning.Skins;
-using TileIconifier.Utilities;
 
 namespace TileIconifier
 {
@@ -56,7 +54,8 @@ namespace TileIconifier
         {
             SetUpLanguageFromConfig();
             ApplySkinFromConfig();
-
+            //Application.EnableVisualStyles(); //
+            //Application.Run(new Skinning.Skins.Form1()); //
             try
             {
                 if (!SystemUtils.IsAdministrator())
@@ -95,7 +94,7 @@ namespace TileIconifier
         {
             var skin = Config.Instance.LastSkin;
 
-            SkinHandler.SetCurrentSkin(ContainerUtils.SkinFromString(skin));
+            SkinHandler.SetCurrentSkin(SkinUtils.SkinFromString(skin));
         }
 
         private static void SetUpLanguageFromConfig()

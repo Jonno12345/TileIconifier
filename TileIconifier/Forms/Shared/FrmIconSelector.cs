@@ -34,6 +34,7 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using TileIconifier.Controls.IconListView;
 using TileIconifier.Core;
 using TileIconifier.Core.IconExtractor;
 using TileIconifier.Core.Utilities;
@@ -107,18 +108,20 @@ namespace TileIconifier.Forms.Shared
 
         public static IconSelectorResult GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
         {
-            var iconSelector = new FrmIconSelector(defaultPathForIconExtraction);
-            iconSelector.ShowDialog(owner);
-            if (iconSelector.ReturnedBitmapBytes == null)
+            using (var iconSelector = new FrmIconSelector(defaultPathForIconExtraction))
             {
-                throw new UserCancellationException();
-            }
+                iconSelector.ShowDialog(owner);
+                if (iconSelector.ReturnedBitmapBytes == null)
+                {
+                    throw new UserCancellationException();
+                }
 
-            return new IconSelectorResult
-            {
-                ImageBytes = iconSelector.ReturnedBitmapBytes,
-                ImagePath = iconSelector.ReturnedImagePath
-            };
+                return new IconSelectorResult
+                {
+                    ImageBytes = iconSelector.ReturnedBitmapBytes,
+                    ImagePath = iconSelector.ReturnedImagePath
+                };
+            }
         }
 
         private void SetUpOpenFileDialog()
@@ -191,10 +194,10 @@ namespace TileIconifier.Forms.Shared
             {
                 return;
             }
-
-            lvwIcons.BeginUpdate();
+            
             try
             {
+                //Get the icons
                 //icon files don't need extraction
                 if (string.Equals(Path.GetExtension(targetPath), ".ico", StringComparison.InvariantCultureIgnoreCase))
                 {
@@ -206,74 +209,36 @@ namespace TileIconifier.Forms.Shared
                     _icons = iconExtraction.GetAllIcons();
                 }
 
-                foreach (var i in _icons)
+                //Build the list view items
+                var items = new IconListViewItem[_icons.Length];
+                for (var i = 0; i < _icons.Length; i++)
                 {
-                    var splitIcons = IconUtil.Split(i);
+                    var splitIcons = IconUtil.Split(_icons[i]);
 
                     var largestIcon = splitIcons.OrderByDescending(k => k.Width)
                         .ThenByDescending(k => Math.Max(k.Height, k.Width))
                         .First();
 
-                    var item = new IconListViewItem {Bitmap = IconUtil.ToBitmap(largestIcon)};
-                    i.Dispose();
-                    largestIcon.Dispose();
+                    var bmp = IconUtil.ToBitmap(largestIcon);
+                    items[i] = new IconListViewItem(bmp);
 
-                    lvwIcons.Items.Add(item);
+                    //Icon cleanup
+                    _icons[i].Dispose();
+                    Array.ForEach(splitIcons, ic => ic.Dispose());
+                    //The listview creates its own copy of the bitmap
+                    bmp.Dispose();
                 }
+                lvwIcons.Items.AddRange(items);
             }
             catch
             {
                 // ignored
             }
-            finally
-            {
-                lvwIcons.EndUpdate();
-            }
         }
 
-        private void lvwIcons_DrawItem(object sender, DrawListViewItemEventArgs e)
+        private void lvwIcons_ItemActivate(object sender, EventArgs e)
         {
-            var item = e.Item as IconListViewItem;
-
-            // Draw item
-
-            e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
-
-            if (e.Item.Selected)
-                //If the skin ever gets a highlight color property specific 
-                //to listview (something like ListViewSelectedBackColor), 
-                //it is the one that we should use here instead of the generic highlight color.
-                using (var b = new SolidBrush(FormSkin.HighlightBackColor))
-                    e.Graphics.FillRectangle(b, e.Bounds);            
-
-            var w = (int) Math.Ceiling(lvwIcons.TileSize.Width*0.8);
-            var h = (int) Math.Ceiling(lvwIcons.TileSize.Height*0.8);
-
-            var x = e.Bounds.X + (e.Bounds.Width - w)/2;
-            var y = e.Bounds.Y + (e.Bounds.Height - h)/2;
-            var dstRect = new Rectangle(x, y, w, h);
-            if (item != null)
-            {
-                var srcRect = new Rectangle(Point.Empty, item.Bitmap.Size);
-
-                e.Graphics.DrawImage(item.Bitmap, dstRect, srcRect, GraphicsUnit.Pixel);
-            }
-            
-            //Draw a border that uses a blend of the ForeColor and the BackColor to
-            //ensure that it is good looking and visible with any skin.
-            var borderColor = ColorUtils.BlendColors(FormSkin.ListViewForeColor, 1, FormSkin.ListViewBackColor, 10);
-            var borderRect = e.Bounds;
-            borderRect.Width--;
-            borderRect.Height--;
-
-            using (var p = new Pen(borderColor))
-                e.Graphics.DrawRectangle(p, e.Bounds);
-        }        
-
-        private void lvwIcons_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            btnOk_Click(this, null);
+            btnOk.PerformClick();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -287,7 +252,7 @@ namespace TileIconifier.Forms.Shared
             {
                 if (radIconFromTarget.Checked)
                 {
-                    if (lvwIcons.SelectedItems.Count != 1)
+                    if (lvwIcons.SelectedIndex == -1)
                     {
                         FormUtils.ShowMessage(this, Strings.PleaseSelectAnIcon, Strings.PleaseSelectAnIcon, MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation);
@@ -318,9 +283,9 @@ namespace TileIconifier.Forms.Shared
 
         private byte[] GetLogoBytes()
         {
-            var item = lvwIcons.SelectedItems[0] as IconListViewItem;
+            var item = lvwIcons.SelectedItem;
 
-            return ImageUtils.ImageToByteArray(item?.Bitmap);
+            return ImageUtils.ImageToByteArray(item?.Image);
         }
 
         private void lvwIcons_SelectedIndexChanged(object sender, EventArgs e)
@@ -328,7 +293,7 @@ namespace TileIconifier.Forms.Shared
             radIconFromTarget.Checked = true;
         }
 
-        private void lvwIcons_MouseClick(object sender, MouseEventArgs e)
+        private void lvwIcons_Click(object sender, EventArgs e)
         {
             radIconFromTarget.Checked = true;
         }
@@ -428,11 +393,6 @@ namespace TileIconifier.Forms.Shared
             {
                 FormUtils.ShowMessage(this, Strings.ErrorLoadingImageFile);
             }
-        }
-
-        private class IconListViewItem : ListViewItem
-        {
-            public Bitmap Bitmap { get; set; }
         }
     }
 

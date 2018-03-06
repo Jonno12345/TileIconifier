@@ -1,21 +1,13 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+using TileIconifier.Core.Utilities;
 
 namespace TileIconifier.Utilities
 {
     internal static class ButtonUtils
     {
-        internal static readonly TextFormatFlags BaseTextFormatFlags = TextFormatFlags.WordBreak | TextFormatFlags.TextBoxControl;
-        
-        private static Rectangle CreatePaddedRectangle(Rectangle rect, Padding pad)
-        {
-            Rectangle r = Rectangle.FromLTRB(
-                    rect.Left + pad.Left,
-                    rect.Top + pad.Top,
-                    rect.Right - pad.Right,
-                    rect.Bottom - pad.Bottom);
-            return r;
-        }
+        private static readonly TextFormatFlags BaseTextFormatFlags = TextFormatFlags.WordBreak | TextFormatFlags.TextBoxControl;
         
         private static Size GetCheckBoxGlyphSize(Graphics graphics, FlatStyle flatStyle)
         {
@@ -57,7 +49,7 @@ namespace TileIconifier.Utilities
 
         private static Rectangle CreatePushButtonTextRectangle(Control control)
         {
-            return CreatePaddedRectangle(control.ClientRectangle, control.Padding);
+            return LayoutAndPaintUtils.InflateRectangle(control.ClientRectangle, control.Padding);
         }
 
         private static Rectangle CreateGlyphButtonTextRectangle(Control control, Size glyphSize)
@@ -68,7 +60,7 @@ namespace TileIconifier.Utilities
             //Some mysterious spacing on the left and right sides of the text.
             const int TEXT_LATTERAL_PADDING = 1;
 
-            Rectangle contentRect = CreatePaddedRectangle(control.ClientRectangle, control.Padding);
+            Rectangle contentRect = LayoutAndPaintUtils.InflateRectangle(control.ClientRectangle, control.Padding);
             Size checkAreaSize = new Size(glyphSize.Width + GLYPH_ADDITIONNAL_SPACE, glyphSize.Height + GLYPH_ADDITIONNAL_SPACE);
             Point textRectLocation;
             if (control.RightToLeft != RightToLeft.Yes)
@@ -84,42 +76,6 @@ namespace TileIconifier.Utilities
 
             return textRect;
         }
-                
-        /// <summary>
-        /// Converts a ContentAlignement value into a TextFormatFlags.
-        /// </summary>
-        /// <param name="contentAlign"></param>
-        /// <returns></returns>
-        private static TextFormatFlags ConvertToTextFormatFlags(ContentAlignment contentAlign)
-        {
-            TextFormatFlags flags = new TextFormatFlags();
-
-            //Top
-            if (contentAlign == ContentAlignment.TopLeft || contentAlign == ContentAlignment.TopCenter || contentAlign == ContentAlignment.TopRight)            
-                flags = flags | TextFormatFlags.Top;
-            
-            //Middle
-            if (contentAlign == ContentAlignment.MiddleLeft || contentAlign == ContentAlignment.MiddleCenter || contentAlign == ContentAlignment.MiddleRight)            
-                flags = flags | TextFormatFlags.VerticalCenter;            
-
-            //Bottom
-            if (contentAlign == ContentAlignment.BottomLeft || contentAlign == ContentAlignment.BottomCenter || contentAlign == ContentAlignment.BottomRight)
-                flags = flags | TextFormatFlags.Bottom;            
-
-            //Left
-            if (contentAlign == ContentAlignment.BottomLeft || contentAlign == ContentAlignment.MiddleLeft || contentAlign == ContentAlignment.TopLeft)            
-                flags = flags | TextFormatFlags.Left;
-           
-            //Center
-            if (contentAlign == ContentAlignment.BottomCenter || contentAlign == ContentAlignment.MiddleCenter || contentAlign == ContentAlignment.TopCenter)            
-                flags = flags | TextFormatFlags.HorizontalCenter;
-           
-            //Right
-            if (contentAlign == ContentAlignment.BottomRight || contentAlign == ContentAlignment.MiddleRight || contentAlign == ContentAlignment.TopRight)            
-                flags = flags | TextFormatFlags.Right;            
-
-            return flags;
-        }
 
         /// <summary>
         /// Returns a <see cref="TextFormatFlags"/> for the specified button.
@@ -132,7 +88,7 @@ namespace TileIconifier.Utilities
         /// <returns></returns>
         public static TextFormatFlags CreateTextFormatFlags(ButtonBase btn, ContentAlignment translatedContentAlign, bool showKeyboardCue)
         {
-            var flags = BaseTextFormatFlags | ConvertToTextFormatFlags(translatedContentAlign);
+            var flags = BaseTextFormatFlags | LayoutAndPaintUtils.ConvertToTextFormatFlags(translatedContentAlign);
 
             if (btn.RightToLeft == RightToLeft.Yes)
             {
@@ -183,6 +139,44 @@ namespace TileIconifier.Utilities
         public static Rectangle GetCheckBoxTextRectangle(CheckBox checkBox, Graphics graphics)
         {
             return CreateGlyphButtonTextRectangle(checkBox, GetCheckBoxGlyphSize(graphics, checkBox.FlatStyle));
+        }
+
+        /// <summary>
+        ///     Set the Image of the specified buttons to the specified images, scaled to the specified logical size.
+        /// </summary>
+        /// <param name="buttons"></param>
+        /// <param name="images"></param>
+        /// <param name="logicalMaxSize"></param>
+        internal static void SetScaledImage(ButtonBase[] buttons, Image[] images, Size logicalMaxSize)
+        {
+            if (buttons == null)
+            {
+                throw new ArgumentNullException(nameof(buttons));
+            }
+            if (images == null)
+            {
+                throw new ArgumentNullException(nameof(images));
+            }
+            if (buttons.Length < 1 || images.Length < 1 || buttons.Length != images.Length)
+            {
+                throw new ArgumentException("The amount of specified buttons must be equal to the amount of specified images. Furthermore, both must be greater than 0.");
+            }
+            //When the app targets .net 4.7 or higher, use Control.LogicalToDeviceUnit() instead
+            //of calculating the scaling factor ourselves.
+            float scaleX;
+            float scaleY;
+            using (var g = buttons[0].CreateGraphics())
+            {
+                scaleX = g.DpiX / 96F;
+                scaleY = g.DpiY / 96F;
+            }
+            var imgWidth = (int)Math.Round(logicalMaxSize.Width * scaleX);
+            var imgHeight = (int)Math.Round(logicalMaxSize.Height * scaleY);
+            //
+            for (var i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].Image = ImageUtils.ScaleImage(images[i], imgWidth, imgHeight);
+            }
         }
     }
 }
