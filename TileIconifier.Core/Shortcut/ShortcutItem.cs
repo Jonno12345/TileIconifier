@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 using TileIconifier.Core.Custom;
 using TileIconifier.Core.Shortcut.State;
 using TileIconifier.Core.Utilities;
@@ -53,12 +54,12 @@ namespace TileIconifier.Core.Shortcut
                 SmallImageResizeMetadataPath, TargetFolderPath);
         }
 
-        public ShortcutItem(string shortcutPath)
+        public ShortcutItem(string shortcutPath) : this(new FileInfo(shortcutPath))
         {
-            ShortcutFileInfo = new FileInfo(shortcutPath);
-            IsPinned = null;
-            Properties.LoadParameters(IsIconified, VisualElementManifestPath, MediumImageResizeMetadataPath,
-                SmallImageResizeMetadataPath, TargetFolderPath);
+            //ShortcutFileInfo = 
+            //IsPinned = null;
+            //Properties.LoadParameters(IsIconified, VisualElementManifestPath, MediumImageResizeMetadataPath,
+            //    SmallImageResizeMetadataPath, TargetFolderPath);
         }
 
         public bool IsTileIconifierCustomShortcut => new DirectoryInfo(TargetFolderPath).Parent?.FullName + "\\" ==
@@ -97,10 +98,34 @@ namespace TileIconifier.Core.Shortcut
 
         public bool IsValidForIconification => !string.IsNullOrEmpty(TargetFilePath) && File.Exists(TargetFilePath);
 
+        //todo: merge this with property IconifiedByTileIconifier at some point, should be a better indicator but won't work retroactively
         public bool IsIconified => File.Exists(VisualElementManifestPath)
                                    && Directory.Exists(VisualElementsPath)
                                    && File.Exists(FullMediumIconPath)
                                    && File.Exists(FullSmallIconPath);
+
+        public bool IconifiedByTileIconifier
+        {
+            get
+            {
+                if (!File.Exists(VisualElementManifestPath))
+                {
+                    return false;
+                }
+
+                var xmlDoc = XDocument.Load(VisualElementManifestPath);
+                try
+                {
+                    return (bool)xmlDoc.Root.Attribute("GeneratedByTileIconifier");
+                }
+                catch
+                {
+                    //ignore
+                }
+                return false;
+            }
+        }
+
 
         public Bitmap StandardIcon
         {
@@ -146,6 +171,9 @@ namespace TileIconifier.Core.Shortcut
 
         public string VisualElementManifestPath =>
             $"{TargetFolderPath}{Path.GetFileNameWithoutExtension(TargetFilePath)}.VisualElementsManifest.xml";
+
+        public string VisualElementManifestPathOriginalBackup =>
+            VisualElementManifestPath + ".originalbak";
 
         public string TargetFolderPath => Path.GetDirectoryName(TargetFilePath) + "\\";
 

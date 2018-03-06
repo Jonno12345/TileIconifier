@@ -49,6 +49,7 @@ namespace TileIconifier.Core.TileIconify
 
         public void RunIconify()
         {
+            BackupOriginalVisualManifest();
             BuildFilesAndFolders();
             SaveMetadata();
             SaveIcons();
@@ -59,16 +60,61 @@ namespace TileIconifier.Core.TileIconify
         public void DeIconify()
         {
             DeleteFilesAndFolders();
+            RestoreOriginalVisualManifest();
             RebuildLnkInStartMenu();
+        }
+
+        /// <summary>
+        /// Back up any original Visual Manifest XML in case of rollback
+        /// </summary>
+        private void BackupOriginalVisualManifest()
+        {
+            if(!File.Exists(_shortcutItem.VisualElementManifestPath) || 
+                _shortcutItem.IsIconified ||
+                _shortcutItem.IconifiedByTileIconifier)
+            {
+                return;
+            }
+
+            try
+            {
+                File.Copy(_shortcutItem.VisualElementManifestPath, _shortcutItem.VisualElementManifestPathOriginalBackup);
+            }
+            catch
+            {
+
+            }
+        }
+
+
+        /// <summary>
+        /// Restore a backed up Visual Manifest XML file after a rollback
+        /// </summary>
+        private void RestoreOriginalVisualManifest()
+        {
+            if(!File.Exists(_shortcutItem.VisualElementManifestPathOriginalBackup))
+            {
+                return;
+            }
+
+            try
+            {
+                File.Move(_shortcutItem.VisualElementManifestPathOriginalBackup, _shortcutItem.VisualElementManifestPath);
+            }
+            catch
+            {
+
+            }
         }
 
         private void BuildFilesAndFolders()
         {
             var xNamespace = XNamespace.Get("http://www.w3.org/2001/XMLSchema-instance");
-
+            
             var xDoc = new XDocument(
                 new XElement("Application",
                     new XAttribute(XNamespace.Xmlns + "xsi", xNamespace),
+                    new XAttribute("GeneratedByTileIconifier", true),
                     new XElement("VisualElements",
                         new XAttribute("ShowNameOnSquare150x150Logo",
                             _shortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo ? "on" : "off"),
@@ -77,7 +123,7 @@ namespace TileIconifier.Core.TileIconify
                         new XAttribute("ForegroundText", _shortcutItem.Properties.CurrentState.ForegroundText),
                         new XAttribute("BackgroundColor", _shortcutItem.Properties.CurrentState.BackgroundColor)
                         )));
-
+            
             if (!Directory.Exists(_shortcutItem.VisualElementsPath))
             {
                 Directory.CreateDirectory(_shortcutItem.VisualElementsPath);

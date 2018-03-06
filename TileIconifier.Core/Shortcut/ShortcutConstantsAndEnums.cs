@@ -86,7 +86,8 @@ namespace TileIconifier.Core.Shortcut
             "powerpnt.exe",
             "firefox.exe",
             "thunderbird.exe",
-            "OUTLOOK.EXE"
+            "OUTLOOK.EXE",
+            "devenv.exe"
         };
     }
 }
