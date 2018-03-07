@@ -85,6 +85,21 @@ namespace TileIconifier.Controls.IconListView
             _owner.OnItemAddedInternal(true);
         }
 
+        public void AddRange(List<IconListViewItem> items)
+        {
+            if(items == null)
+            {
+                throw new ArgumentNullException(nameof(items));
+            }
+
+            var newItems = new IconListViewItem[items.Count];
+            for(var i = 0; i < items.Count; i++)
+            {
+                newItems[i] = items[i];
+            }
+            AddRange(newItems);
+        }
+
         public void AddRange(IconListViewItem[] items)
         {
             if (items == null)

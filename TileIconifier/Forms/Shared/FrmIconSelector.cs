@@ -103,7 +103,7 @@ namespace TileIconifier.Forms.Shared
             SetUpOpenFileDialog();
             SetUpCommonDllComboBox();
             SetUpTargetPath(targetPath);
-            BuildListView();            
+            BuildListView();
         }
 
         public static IconSelectorResult GetImage(IWin32Window owner, string defaultPathForIconExtraction = "")
@@ -194,14 +194,14 @@ namespace TileIconifier.Forms.Shared
             {
                 return;
             }
-            
+
             try
             {
                 //Get the icons
                 //icon files don't need extraction
                 if (string.Equals(Path.GetExtension(targetPath), ".ico", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    _icons = new[] {new Icon(targetPath)};
+                    _icons = new[] { new Icon(targetPath) };
                 }
                 else
                 {
@@ -210,7 +210,7 @@ namespace TileIconifier.Forms.Shared
                 }
 
                 //Build the list view items
-                var items = new IconListViewItem[_icons.Length];
+                var items = new List<IconListViewItem>();
                 for (var i = 0; i < _icons.Length; i++)
                 {
                     var splitIcons = IconUtil.Split(_icons[i]);
@@ -218,9 +218,17 @@ namespace TileIconifier.Forms.Shared
                     var largestIcon = splitIcons.OrderByDescending(k => k.Width)
                         .ThenByDescending(k => Math.Max(k.Height, k.Width))
                         .First();
-
-                    var bmp = IconUtil.ToBitmap(largestIcon);
-                    items[i] = new IconListViewItem(bmp);
+                    Bitmap bmp = null;
+                    try
+                    {
+                        bmp = IconUtil.ToBitmap(largestIcon);
+                    }
+                    catch
+                    {
+                        //icon failed to convert to bitmap
+                        continue;
+                    }
+                    items.Add(new IconListViewItem(bmp));
 
                     //Icon cleanup
                     _icons[i].Dispose();
@@ -230,7 +238,7 @@ namespace TileIconifier.Forms.Shared
                 }
                 lvwIcons.Items.AddRange(items);
             }
-            catch
+            catch (Exception ex)
             {
                 // ignored
             }
