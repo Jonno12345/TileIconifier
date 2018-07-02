@@ -54,10 +54,11 @@ namespace TileIconifier.Core.Shortcut
 
             var shortcutsList = new List<ShortcutItem>();
 
+            //use all possible sources of start menu items
             var pathsToScan = new List<string>
             {
-                @"%PROGRAMDATA%\Microsoft\Windows\Start Menu",
-                @"%APPDATA%\Microsoft\Windows\Start Menu"
+                Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu),
+                Environment.GetFolderPath(Environment.SpecialFolder.StartMenu)
             };
 
             foreach (var pathToScan in pathsToScan)
@@ -78,7 +79,13 @@ namespace TileIconifier.Core.Shortcut
                         }
                 };
 
-                applyAllFiles(Environment.ExpandEnvironmentVariables(pathToScan), f =>
+                //potentially a start menu path may have resolved incorrectly if a user has tinkered?
+                if (!Directory.Exists(pathToScan))
+                {
+                    continue;
+                }
+
+                applyAllFiles(pathToScan, f =>
                 {
                     var extension = Path.GetExtension(f);
                     if (extension != null && !extension.Equals(".lnk", StringComparison.OrdinalIgnoreCase))

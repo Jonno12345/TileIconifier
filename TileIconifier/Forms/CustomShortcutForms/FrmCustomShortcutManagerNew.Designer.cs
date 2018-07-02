@@ -1,4 +1,5 @@
 ﻿using TileIconifier.Controls;
+using TileIconifier.Controls.CustomFolderBrowserDialog;
 
 namespace TileIconifier.Forms.CustomShortcutForms
 {
@@ -31,7 +32,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomShortcutManagerNew));
-            this.fldBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            this.fldBrowser = new FolderBrowserDialogEx();
             this.opnSteamExe = new System.Windows.Forms.OpenFileDialog();
             this.opnOtherTarget = new System.Windows.Forms.OpenFileDialog();
             this.opnChromeExe = new System.Windows.Forms.OpenFileDialog();
@@ -519,7 +520,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
         private TileIconifier.Controls.SkinnableButton btnSteamExeChange;
         private System.Windows.Forms.OpenFileDialog opnSteamExe;
         private TileIconifier.Controls.SkinnableButton btnSteamLibrariesPath;
-        private System.Windows.Forms.FolderBrowserDialog fldBrowser;
+        private FolderBrowserDialogEx fldBrowser;
         private AllOrCurrentUserRadios radShortcutLocation;
         private TileIconifier.Controls.SkinnableTextBox txtShortcutName;
         private System.Windows.Forms.Label lblShortcutName;

@@ -119,6 +119,9 @@
     <Compile Include="Controls\Eyedropper\EyedropColorPicker.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\CustomFolderBrowserDialog\FolderBrowserDialogEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\IconifierPanel\ColorPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
