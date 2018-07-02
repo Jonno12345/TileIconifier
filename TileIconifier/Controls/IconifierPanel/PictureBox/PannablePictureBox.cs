@@ -30,6 +30,7 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using TileIconifier.Skinning;
 using TileIconifier.Utilities;
@@ -650,6 +651,9 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
 
             if (PannablePictureBoxImage.Image != null)
             {
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
                 //Set a clip with the image bounds so that when the PannablePictureBox image is offset
                 //or larger than the control can accomodate while the control is not exactly the right 
                 //aspect ratio, the overflow is not visible.
@@ -682,6 +686,11 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
                 {
                     DrawTextOverlay(e);
                 }
+
+                //Now that the tile content is painted, set back the graphics to its default modes
+                //for the control border and future drawing.
+                e.Graphics.InterpolationMode = InterpolationMode.Default;
+                e.Graphics.PixelOffsetMode = PixelOffsetMode.Default;
 
                 //debug mode overlay
 #if DEBUG
