@@ -75,10 +75,10 @@ namespace TileIconifier.Forms.Main
                 catch (Exception ex)
                 {
                     FrmException.ShowExceptionHandler(ex);
-                    FormUtils.ShowMessage(this,
+                    Invoke(new Action(() => FormUtils.ShowMessage(this,
                         Strings.PowershellErrorFull,
                         Strings.PowershellFailure, MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                        MessageBoxIcon.Error)));
                     Invoke(new Action(() => getPinnedItemsRequiresPowershellToolStripMenuItem_Click(this, null)));
                 }
             }
