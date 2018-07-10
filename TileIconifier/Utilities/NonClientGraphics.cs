@@ -11,9 +11,9 @@ namespace TileIconifier.Utilities
     //and releases all the associated resources when it's disposed.
     class NonClientGraphics : IDisposable
     {
-        private IntPtr _hWnd = IntPtr.Zero;
+        private readonly IntPtr _hWnd = IntPtr.Zero;
         private IntPtr _hRgnClip = IntPtr.Zero;
-        private IntPtr _hDC = IntPtr.Zero;
+        private IntPtr _hDc = IntPtr.Zero;
 
         public Graphics Graphics { get; }
 
@@ -21,20 +21,20 @@ namespace TileIconifier.Utilities
         {
             _hWnd = hWnd;
 
-            var flagsDCX = NativeMethods.DCX_WINDOW | NativeMethods.DCX_CACHE | NativeMethods.DCX_CLIPSIBLINGS;
+            var flagsDcx = NativeMethods.DCX_WINDOW | NativeMethods.DCX_CACHE | NativeMethods.DCX_CLIPSIBLINGS;
             if (hRgnClip != IntPtr.Zero && hRgnClip != (IntPtr)1)
             {
                 //GetDCEx takes ownership of the region, so we give it a copy. This also means that we don't need to delete it afterward.
                 _hRgnClip = LayoutAndPaintUtils.CopyHRgn(hRgnClip);
                 //Only set this flag if we provide a valid region to GetDCEx. Otherwise, the latter fails and return null.
-                flagsDCX |= NativeMethods.DCX_INTERSECTRGN;
+                flagsDcx |= NativeMethods.DCX_INTERSECTRGN;
             }
 
-            _hDC = NativeMethods.GetDCEx(_hWnd, _hRgnClip, flagsDCX);
+            _hDc = NativeMethods.GetDCEx(_hWnd, _hRgnClip, flagsDcx);
 
-            if (_hDC != IntPtr.Zero)
+            if (_hDc != IntPtr.Zero)
             {
-                Graphics = Graphics.FromHdc(_hDC);
+                Graphics = Graphics.FromHdc(_hDc);
             }
         }
 
@@ -58,11 +58,11 @@ namespace TileIconifier.Utilities
                     Graphics.Dispose();
                 }
             }
-            if (_hDC != IntPtr.Zero)
+            if (_hDc != IntPtr.Zero)
             {
                 //The DC has been created and still exists
-                NativeMethods.ReleaseDC(_hWnd, _hDC);
-                _hDC = IntPtr.Zero;
+                NativeMethods.ReleaseDC(_hWnd, _hDc);
+                _hDc = IntPtr.Zero;
                 //The system has taken ownership of the region, so no need to delete it, just mark it as null.
                 _hRgnClip = IntPtr.Zero;
             }

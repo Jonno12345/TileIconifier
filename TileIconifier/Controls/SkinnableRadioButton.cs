@@ -8,7 +8,7 @@ namespace TileIconifier.Controls
 {
     class SkinnableRadioButton : RadioButton, ISkinnableCheckableButton
     {
-        private bool basePainting;
+        private bool _basePainting;
 
         public override string Text
         {
@@ -16,7 +16,7 @@ namespace TileIconifier.Controls
             {
                 //Lies to the base class by telling it there is no text to draw
                 //so that we can draw it ourselves.
-                if (basePainting && !Enabled)
+                if (_basePainting && !Enabled)
                     return "";
                 else
                     return base.Text;
@@ -24,19 +24,19 @@ namespace TileIconifier.Controls
             set { base.Text = value; }
         }
 
-        private Color disabledForeColor = SystemColors.GrayText;
+        private Color _disabledForeColor = SystemColors.GrayText;
         /// <summary>
         /// Gets or sets the foreground color of the button when it is disabled.
         /// </summary>
         [DefaultValue(typeof(Color), nameof(SystemColors.GrayText))]
         public Color DisabledForeColor
         {
-            get { return disabledForeColor; }
+            get { return _disabledForeColor; }
             set
             {
-                if (disabledForeColor != value)
+                if (_disabledForeColor != value)
                 {
-                    disabledForeColor = value;
+                    _disabledForeColor = value;
                     Invalidate();
                 }
             }
@@ -44,9 +44,9 @@ namespace TileIconifier.Controls
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
-            basePainting = true;
+            _basePainting = true;
             base.OnPaint(pevent);
-            basePainting = false;
+            _basePainting = false;
 
             //We paint the disabled text on top of the base class drawing using 
             //the ForeColorDisabled color that we have implemented ourselves.

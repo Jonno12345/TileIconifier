@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using TileIconifier.Skinning.Skins;
@@ -34,7 +35,7 @@ namespace TileIconifier.Controls.IconListView
         //This value may be fetched dozens of times per seconds in OnMouseMove, so we cache it. 
         //Ideally, we would also update it's value when the system setting is changed, probably 
         //using SystemEvents.UserPreferenceChanged.
-        private static bool _systemHotTrackingEnabled = SystemInformation.IsHotTrackingEnabled;
+        private static readonly bool _systemHotTrackingEnabled = SystemInformation.IsHotTrackingEnabled;
 
         //Lazy-loaded instance of the VisualStyleRenderer used to draw this control.
         //When it's needed, use the GetVisualStyleRenderer method instead of this field!
@@ -77,7 +78,7 @@ namespace TileIconifier.Controls.IconListView
                 {
                     return -1;
                 }
-                var value = ((VerticalScroll.Value - Padding.Top) / ItemsSpaceNeeded.Height) * _columns;
+                var value = (VerticalScroll.Value - Padding.Top) / ItemsSpaceNeeded.Height * _columns;
                 if (value < 0) value = 0;
                 return value;
             }
@@ -94,7 +95,7 @@ namespace TileIconifier.Controls.IconListView
                 {
                     return -1;
                 }
-                var value = ((int)Math.Ceiling((VerticalScroll.Value - Padding.Top + ClientSize.Height) / (double)ItemsSpaceNeeded.Height)) * _columns - 1;
+                var value = (int)Math.Ceiling((VerticalScroll.Value - Padding.Top + ClientSize.Height) / (double)ItemsSpaceNeeded.Height) * _columns - 1;
                 if (value < 0) value = 0;
                 else if (value >= Items.Count) value = Items.Count - 1;
                 return value;
@@ -376,8 +377,8 @@ namespace TileIconifier.Controls.IconListView
             {
                 var cp = base.CreateParams;
 
-                cp.ExStyle &= (~NativeMethods.WS_EX_CLIENTEDGE);
-                cp.Style &= (~NativeMethods.WS_BORDER);
+                cp.ExStyle &= ~NativeMethods.WS_EX_CLIENTEDGE;
+                cp.Style &= ~NativeMethods.WS_BORDER;
 
                 switch (BorderStyle)
                 {
@@ -431,16 +432,16 @@ namespace TileIconifier.Controls.IconListView
                 return;
             }
 
-            var cols = (int)Math.Floor((double)DisplayRectangle.Width / (ItemsSpaceNeeded.Width));
+            var cols = (int)Math.Floor((double)DisplayRectangle.Width / ItemsSpaceNeeded.Width);
             //When there is not enough place for a single column, cols is equals to 0 and 
             //prevents us to calculate the number of rows. Therefore, if the width is insuficient, 
             //we just act as if there was enought place for the column and let it be cropped.
-            _columns = (cols > 0) ? cols : 1;
+            _columns = cols > 0 ? cols : 1;
             _rows = (int)Math.Ceiling((double)Items.Count / _columns);
             //The value of the scrollbar indicates the vertical offset of all the items.
             //When the value is, say, 23, all the items are 23px higher than if the
             //scollbar value was 0;
-            var displayHeight = (ItemsSpaceNeeded.Height) * _rows;
+            var displayHeight = ItemsSpaceNeeded.Height * _rows;
             
             AutoScrollMinSize = new Size(ItemsSpaceNeeded.Width + Padding.Horizontal, displayHeight + Padding.Vertical);
             //Don't use the DisplayRectangle before this line, because the scroll properties set above are used for its calculation.
@@ -454,10 +455,13 @@ namespace TileIconifier.Controls.IconListView
                 {
                     for (var x = 0; x < _columns; x++)
                     {
-                        var r = new Rectangle();
-                        r.Size = ItemSize;
+                        var r = new Rectangle
+                        {
+                            Size = ItemSize,
+                            X = _itemSpacing
+                        };
 
-                        r.X = _itemSpacing; //Place the item in the first column
+                        //Place the item in the first column
                         r.X += ItemsSpaceNeeded.Width * x; //Adjust depending of the position
 
                         r.Y = _itemSpacing;
@@ -540,15 +544,7 @@ namespace TileIconifier.Controls.IconListView
         /// </summary>        
         public IconListViewItem GetItemAt(Point pt)
         {
-            for (var i = 0; i < Items.Count; i++)
-            {
-                if (Items[i].Bounds.Contains(pt))
-                {
-                    return Items[i];
-                }
-            }
-
-            return null;
+            return Items.FirstOrDefault(t => t.Bounds.Contains(pt));
         }
 
         #region "Input processing"
@@ -559,7 +555,7 @@ namespace TileIconifier.Controls.IconListView
             base.OnMouseDown(e);
 
             var clickedItem = GetItemAt(e.Location);
-            SelectedIndex = (clickedItem != null) ? clickedItem.Index : -1;
+            SelectedIndex = clickedItem?.Index ?? -1;
         }
 
         protected override void OnMouseDoubleClick(MouseEventArgs e)
@@ -808,7 +804,7 @@ namespace TileIconifier.Controls.IconListView
         {
             if (m.Msg == NativeMethods.WM_NCPAINT)
             {
-                WmNCPaint(ref m);
+                WmNcPaint(ref m);
             }
             else
             {
@@ -821,7 +817,7 @@ namespace TileIconifier.Controls.IconListView
             LayoutAndPaintUtils.InvalidateNonClient(this);
         }
 
-        private void WmNCPaint(ref Message m)
+        private void WmNcPaint(ref Message m)
         {
             base.WndProc(ref m);
 
@@ -1019,10 +1015,7 @@ namespace TileIconifier.Controls.IconListView
             {
                 foreach (IconListViewItem i in Items)
                 {
-                    if (i != null)
-                    {
-                        i.Dispose();
-                    }
+                    i?.Dispose();
                 }
             }
 

@@ -12,18 +12,12 @@ namespace TileIconifier.Controls
         
         //Fonts are very expensive to create and this one is only used
         //with the Flat FlatStyle, so it's worth loading it lazyly.
-        private Lazy<Font> glyphFont = new Lazy<Font>(() => new Font("Marlett", 10));
+        private readonly Lazy<Font> _glyphFont = new Lazy<Font>(() => new Font("Marlett", 10));
 
         /// <summary>
         ///     Indicates whether or not we should draw the control ourselves.
         /// </summary>
-        private bool HandleDrawing
-        {
-            get
-            {
-                return (FlatStyle == FlatStyle.Flat && DropDownStyle == ComboBoxStyle.DropDownList);                
-            }
-        }
+        private bool HandleDrawing => FlatStyle == FlatStyle.Flat && DropDownStyle == ComboBoxStyle.DropDownList;
 
         private TextFormatFlags TextFlags
         {
@@ -50,16 +44,16 @@ namespace TileIconifier.Controls
             }
         }
         
-        private Color flatButtonBackColor = SystemColors.Control;
+        private Color _flatButtonBackColor = SystemColors.Control;
         [DefaultValue(typeof(Color), nameof(SystemColors.Control))]
         public Color FlatButtonBackColor
         {
-            get { return flatButtonBackColor; }
+            get { return _flatButtonBackColor; }
             set
             {
-                if (flatButtonBackColor != value)
+                if (_flatButtonBackColor != value)
                 {
-                    flatButtonBackColor = value;
+                    _flatButtonBackColor = value;
                     if (HandleDrawing)
                     {
                         Invalidate();
@@ -68,16 +62,16 @@ namespace TileIconifier.Controls
             }
         }
                 
-        private Color flatButtonForeColor = SystemColors.ControlText;
+        private Color _flatButtonForeColor = SystemColors.ControlText;
         [DefaultValue(typeof(Color), nameof(SystemColors.ControlText))]
         public Color FlatButtonForeColor
         {
-            get { return flatButtonForeColor; }
+            get { return _flatButtonForeColor; }
             set
             {
-                if (flatButtonForeColor != value)
+                if (_flatButtonForeColor != value)
                 {
-                    flatButtonForeColor = value;
+                    _flatButtonForeColor = value;
                     if (HandleDrawing && Enabled)
                     {
                         Invalidate();
@@ -86,16 +80,16 @@ namespace TileIconifier.Controls
             }
         }
         
-        private Color flatButtonDisabledForeColor = SystemColors.GrayText;
+        private Color _flatButtonDisabledForeColor = SystemColors.GrayText;
         [DefaultValue(typeof(Color), nameof(SystemColors.GrayText))]
         public Color FlatButtonDisabledForeColor
         {
-            get { return flatButtonDisabledForeColor; }
+            get { return _flatButtonDisabledForeColor; }
             set
             {
-                if (flatButtonDisabledForeColor != value)
+                if (_flatButtonDisabledForeColor != value)
                 {
-                    flatButtonDisabledForeColor = value;
+                    _flatButtonDisabledForeColor = value;
                     if (HandleDrawing && !Enabled)
                     {
                         Invalidate();
@@ -104,16 +98,16 @@ namespace TileIconifier.Controls
             }
         }
         
-        private Color flatButtonBorderColor = SystemColors.ControlDark;
+        private Color _flatButtonBorderColor = SystemColors.ControlDark;
         [DefaultValue(typeof(Color), nameof(SystemColors.ControlDark))]
         public Color FlatButtonBorderColor
         {
-            get { return flatButtonBorderColor; }
+            get { return _flatButtonBorderColor; }
             set
             {
-                if (flatButtonBorderColor != value)
+                if (_flatButtonBorderColor != value)
                 {
-                    flatButtonBorderColor = value;
+                    _flatButtonBorderColor = value;
                     if (HandleDrawing && !Focused)
                     {
                         Invalidate();
@@ -122,20 +116,21 @@ namespace TileIconifier.Controls
             }
         }
         
-        private Color flatButtonBorderFocusedColor = SystemColors.Highlight;
+        private Color _flatButtonBorderFocusedColor = SystemColors.Highlight;
         [DefaultValue(typeof(Color), nameof(SystemColors.Highlight))]
         public Color FlatButtonBorderFocusedColor
         {
-            get { return flatButtonBorderFocusedColor; }
+            get { return _flatButtonBorderFocusedColor; }
             set
             {
-                if (flatButtonBorderFocusedColor != value)
+                if (_flatButtonBorderFocusedColor == value)
                 {
-                    flatButtonBorderFocusedColor = value;
-                    if (HandleDrawing && Focused)
-                    {
-                        Invalidate();
-                    }
+                    return;
+                }
+                _flatButtonBorderFocusedColor = value;
+                if (HandleDrawing && Focused)
+                {
+                    Invalidate();
                 }
             }
         }
@@ -172,7 +167,7 @@ namespace TileIconifier.Controls
                 int glyphAreaWidth = SystemInformation.HorizontalScrollBarThumbWidth;
 
                 //Border
-                Color borderColor = (Focused) ? FlatButtonBorderFocusedColor : FlatButtonBorderColor;                
+                Color borderColor = Focused ? FlatButtonBorderFocusedColor : FlatButtonBorderColor;                
                 ControlPaint.DrawBorder(e.Graphics, bounds, borderColor, ButtonBorderStyle.Solid);
 
                 //Background                
@@ -183,7 +178,7 @@ namespace TileIconifier.Controls
                     e.Graphics.FillRectangle(b, bounds);
 
                 //Selected item text
-                Color textColor = (Enabled) ? FlatButtonForeColor : FlatButtonDisabledForeColor;
+                Color textColor = Enabled ? FlatButtonForeColor : FlatButtonDisabledForeColor;
                 //We need to calculate the text bounds even when we don't draw text, 
                 //because we use that rectangle for the glyphRect.
                 //Same thing for the textColor.
@@ -199,10 +194,12 @@ namespace TileIconifier.Controls
                 }
 
                 //Glyph button
-                Rectangle buttonRect = new Rectangle();
-                buttonRect.Width = glyphAreaWidth;
-                buttonRect.Height = bounds.Height;
-                buttonRect.Y = bounds.Y;
+                Rectangle buttonRect = new Rectangle
+                {
+                    Width = glyphAreaWidth,
+                    Height = bounds.Height,
+                    Y = bounds.Y
+                };
                 TextFormatFlags glyphFlags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;
                 if (RightToLeft == RightToLeft.Yes)
                 {
@@ -212,7 +209,7 @@ namespace TileIconifier.Controls
                 {
                     buttonRect.X = bounds.X + bounds.Width;
                 }
-                TextRenderer.DrawText(e.Graphics, "u", glyphFont.Value, buttonRect, textColor, glyphFlags);
+                TextRenderer.DrawText(e.Graphics, "u", _glyphFont.Value, buttonRect, textColor, glyphFlags);
             }
 
             //The call to base.OnPaint must be after our custom drawing, in order to be
@@ -233,7 +230,7 @@ namespace TileIconifier.Controls
             if (index >= 0 && index < Items.Count)
             {
                 string itemText = GetItemText(Items[index]);
-                Color colTextColor = (e.State.HasFlag(DrawItemState.Selected)) ? SystemColors.HighlightText : ForeColor;                
+                Color colTextColor = e.State.HasFlag(DrawItemState.Selected) ? SystemColors.HighlightText : ForeColor;                
 
                 TextRenderer.DrawText(e.Graphics, itemText, Font, e.Bounds, colTextColor, TextFlags);
             }
@@ -243,9 +240,9 @@ namespace TileIconifier.Controls
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && glyphFont.IsValueCreated)
+            if (disposing && _glyphFont.IsValueCreated)
             {
-                glyphFont.Value.Dispose();
+                _glyphFont.Value.Dispose();
             }
 
             base.Dispose(disposing);

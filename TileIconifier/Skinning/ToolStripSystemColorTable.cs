@@ -9,24 +9,24 @@ namespace TileIconifier.Skinning
     /// </summary>
     internal class ToolStripSystemColorTable
     {
-        private BaseSkin skin;        
+        private readonly BaseSkin _skin;        
 
         #region "Constructor"
         internal ToolStripSystemColorTable(BaseSkin pSkin)
         {
-            skin = pSkin;
+            _skin = pSkin;
         }
         #endregion          
 
-        internal Color MenuBarBackColor { get { return skin.ToolStripMenuBarBackColor; } }
-        internal Color PopupBackColor { get { return skin.ToolStripPopupBackColor; } }
-        internal Color MenuBarBorderColor { get { return skin.ToolStripMenuBarBorderColor; } }
-        internal Color PopupBorderColor { get { return skin.ToolStripPopupBorderColor; } }
-        internal Color HighlightBackColor { get { return skin.ToolStripHighlightBackColor; } }
-        internal Color HighlightForeColor { get { return skin.ToolStripHighlightForeColor; } }
-        internal Color MenuBarForeColor { get { return skin.ToolStripMenuBarForeColor; } }
-        internal Color PopupForeColor { get { return skin.ToolStripPopupForeColor; } }
-        internal Color DisabledForeColor { get { return skin.ToolStripDisabledForeColor; } }
+        internal Color MenuBarBackColor { get { return _skin.ToolStripMenuBarBackColor; } }
+        internal Color PopupBackColor { get { return _skin.ToolStripPopupBackColor; } }
+        internal Color MenuBarBorderColor { get { return _skin.ToolStripMenuBarBorderColor; } }
+        internal Color PopupBorderColor { get { return _skin.ToolStripPopupBorderColor; } }
+        internal Color HighlightBackColor { get { return _skin.ToolStripHighlightBackColor; } }
+        internal Color HighlightForeColor { get { return _skin.ToolStripHighlightForeColor; } }
+        internal Color MenuBarForeColor { get { return _skin.ToolStripMenuBarForeColor; } }
+        internal Color PopupForeColor { get { return _skin.ToolStripPopupForeColor; } }
+        internal Color DisabledForeColor { get { return _skin.ToolStripDisabledForeColor; } }
 
         #region "Default colors"
         internal static Color DefaultMenuBarBackColor => SystemColors.MenuBar;

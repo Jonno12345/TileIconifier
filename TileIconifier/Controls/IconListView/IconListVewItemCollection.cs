@@ -6,8 +6,8 @@ namespace TileIconifier.Controls.IconListView
 {
     class IconListVewItemCollection : IList<IconListViewItem>
     {
-        private List<IconListViewItem> _items;
-        private IconListView _owner;
+        private readonly List<IconListViewItem> _items;
+        private readonly IconListView _owner;
 
         internal IconListVewItemCollection(IconListView owner)
         {
@@ -31,21 +31,9 @@ namespace TileIconifier.Controls.IconListView
             }
         }
 
-        public int Count
-        {
-            get
-            {
-                return _items.Count;
-            }
-        }
+        public int Count => _items.Count;
 
-        public bool IsReadOnly
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public bool IsReadOnly => false;
 
         /// <summary>
         ///     Setup an item before it is added.

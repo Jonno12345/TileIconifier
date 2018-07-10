@@ -200,20 +200,25 @@ namespace TileIconifier.Controls.Eyedropper
             {
                 //Draw the screenshot scaled
                 e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
-                var snapBounds = new Rectangle();
-                snapBounds.Width = _snapshot.Width * Zoom;
-                snapBounds.Height = _snapshot.Height * Zoom;
+                var snapBounds = new Rectangle
+                {
+                    Width = _snapshot.Width*Zoom,
+                    Height = _snapshot.Height*Zoom
+                };
                 e.Graphics.DrawImage(_snapshot, snapBounds);
                 e.Graphics.InterpolationMode = InterpolationMode.Default;
 
                 //Draw the square around the middle pixel
                 var pt = GetSnapShotSelectedPixelLocation();
                 LayoutAndPaintUtils.ScalePoint(ref pt, Zoom);
-                var rectBounds = new Rectangle();
-                rectBounds.X = pt.X - Zoom / 2;
-                rectBounds.Y = pt.Y - Zoom / 2;
-                rectBounds.Width = Zoom - 1; //In both cases, minus 1 is the typical GDI+ compensation
-                rectBounds.Height = Zoom - 1;
+                var rectBounds = new Rectangle
+                {
+                    X = pt.X - Zoom/2,
+                    Y = pt.Y - Zoom/2,
+                    Width = Zoom - 1,
+                    Height = Zoom - 1
+                };
+                //In both cases, minus 1 is the typical GDI+ compensation
                 //Use a black and white dotted pattern to ensure the 
                 //rectangle is visible with all background colors.
                 using (var p = new Pen(Color.Black))

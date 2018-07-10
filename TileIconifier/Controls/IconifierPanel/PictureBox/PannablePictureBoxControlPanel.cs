@@ -38,7 +38,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {
     public partial class PannablePictureBoxControlPanel : UserControl
     {
-        private int BUTTON_ICON_LOGICAL_SIZE = 16;
+        private readonly int _buttonIconLogicalSize = 16;
         
         public PannablePictureBoxControlPanel()
         {
@@ -124,9 +124,11 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
 
         private void btnAlign_Click(object sender, EventArgs e)
         {
-            var alignForm = new AlignImageForm();
-            alignForm.PannablePictureBox = PannablePictureBox;
-            alignForm.Location = MousePosition;
+            var alignForm = new AlignImageForm
+            {
+                PannablePictureBox = PannablePictureBox,
+                Location = MousePosition
+            };
             alignForm.Show(this);
         }
         
@@ -181,7 +183,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
                 Resources.ExportPerformance_128x
             };
 
-            ButtonUtils.SetScaledImage(btns, imgs, new Size(BUTTON_ICON_LOGICAL_SIZE, BUTTON_ICON_LOGICAL_SIZE));
+            ButtonUtils.SetScaledImage(btns, imgs, new Size(_buttonIconLogicalSize, _buttonIconLogicalSize));
         }
     }
 }

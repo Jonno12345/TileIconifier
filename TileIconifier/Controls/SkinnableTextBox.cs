@@ -12,11 +12,11 @@ namespace TileIconifier.Controls
     class SkinnableTextBox : TextBox, ISkinnableTextBox
     {   
         #region "Properties"
-        private Color backColor = SystemColors.Window;
+        private Color _backColor = SystemColors.Window;
         [DefaultValue(typeof(Color), nameof(SystemColors.Window))]
         public new Color BackColor
         {
-            get { return backColor; }
+            get { return _backColor; }
             set
             {
                 //Don't check if the old value is the same as the new one!
@@ -27,7 +27,7 @@ namespace TileIconifier.Controls
                 //should be the same. Ultimately, the base class *already*
                 //checks if the value is the same before doing expensive
                 //operations anyway.
-                backColor = value;
+                _backColor = value;
                 if (!ReadOnly)
                 {
                     base.BackColor = value;
@@ -35,14 +35,14 @@ namespace TileIconifier.Controls
             }
         }        
 
-        private Color readOnlyBackColor = SystemColors.Control;
+        private Color _readOnlyBackColor = SystemColors.Control;
         [DefaultValue(typeof(Color), nameof(SystemColors.Control))]
         public Color ReadOnlyBackColor
         {
-            get { return readOnlyBackColor; }
+            get { return _readOnlyBackColor; }
             set
             {
-                readOnlyBackColor = value;
+                _readOnlyBackColor = value;
                 if (ReadOnly)
                 {
                     base.BackColor = value;
@@ -50,16 +50,16 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color borderColor = SystemColors.WindowFrame;
+        private Color _borderColor = SystemColors.WindowFrame;
         [DefaultValue(typeof(Color), nameof(SystemColors.WindowFrame))]
         public Color BorderColor
         {
-            get { return borderColor; }
+            get { return _borderColor; }
             set
             {
-                if (borderColor != value)
+                if (_borderColor != value)
                 {
-                    borderColor = value;
+                    _borderColor = value;
                     if (BorderStyle == BorderStyle.FixedSingle && 
                         ((Enabled && !Focused) ||
                         (Focused && BorderFocusedColor.IsEmpty) ||
@@ -71,16 +71,16 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color borderFocusedColor = Color.Empty;
+        private Color _borderFocusedColor = Color.Empty;
         [DefaultValue(typeof(Color), "")]
         public Color BorderFocusedColor
         {
-            get { return borderFocusedColor; }
+            get { return _borderFocusedColor; }
             set
             {
-                if (borderFocusedColor != value)
+                if (_borderFocusedColor != value)
                 {
-                    borderFocusedColor = value;
+                    _borderFocusedColor = value;
                     if (Focused && BorderStyle == BorderStyle.FixedSingle)
                     {
                         InvalidateBorder();
@@ -89,16 +89,16 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color borderDisabledColor = Color.Empty;
+        private Color _borderDisabledColor = Color.Empty;
         [DefaultValue(typeof(Color), "")]
         public Color BorderDisabledColor
         {
-            get { return borderDisabledColor; }
+            get { return _borderDisabledColor; }
             set
             {
-                if (borderDisabledColor != value)
+                if (_borderDisabledColor != value)
                 {
-                    borderDisabledColor = value;
+                    _borderDisabledColor = value;
                     if (!Enabled && BorderStyle == BorderStyle.FixedSingle)
                     {
                         InvalidateBorder();
@@ -115,14 +115,7 @@ namespace TileIconifier.Controls
             //We use the base class property to change the actual color. 
             //This classe's BackColor property stores the not-read-only-BackColor 
             //value independently from the actual (current) Background color.
-            if (ReadOnly)
-            {
-                base.BackColor = ReadOnlyBackColor;
-            }
-            else
-            {
-                base.BackColor = BackColor;
-            }
+            base.BackColor = ReadOnly ? ReadOnlyBackColor : BackColor;
         }
 
         protected override void OnEnter(EventArgs e)

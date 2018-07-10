@@ -38,7 +38,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
 {
     public partial class AlignImageForm : Form
     {
-        private int BUTTON_ICON_LOGICAL_SIZE = 24;
+        private readonly int _buttonIconLogicalSize = 24;
 
         public AlignImageForm()
         {
@@ -192,7 +192,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
                 Resources.NudgeRight,
                 Resources.NudgeDown
             };
-            ButtonUtils.SetScaledImage(btns, imgs, new Size(BUTTON_ICON_LOGICAL_SIZE, BUTTON_ICON_LOGICAL_SIZE));
+            ButtonUtils.SetScaledImage(btns, imgs, new Size(_buttonIconLogicalSize, _buttonIconLogicalSize));
         }
     }
 }

@@ -11,15 +11,8 @@ namespace TileIconifier.Utilities
         public static Control GetToolStripSourceControl(object sender)
         {
             var menuItem = sender as ToolStripItem;
-            if (menuItem != null)
-            {
-                var owner = menuItem.Owner as ContextMenuStrip;
-                if (owner != null)
-                {
-                    return owner.SourceControl;
-                }
-            }
-            return null;
+            var owner = menuItem?.Owner as ContextMenuStrip;
+            return owner?.SourceControl;
         }
     }
 }

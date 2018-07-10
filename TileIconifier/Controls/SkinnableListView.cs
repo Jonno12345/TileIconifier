@@ -62,16 +62,16 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color flatHeaderBackColor = SystemColors.Control;
+        private Color _flatHeaderBackColor = SystemColors.Control;
         [DefaultValue(typeof(Color), nameof(SystemColors.Control))]
         public Color FlatHeaderBackColor
         {
-            get { return flatHeaderBackColor; }
+            get { return _flatHeaderBackColor; }
             set
             {
-                if (flatHeaderBackColor != value)
+                if (_flatHeaderBackColor != value)
                 {
-                    flatHeaderBackColor = value;
+                    _flatHeaderBackColor = value;
                     if (BorderStyle == BorderStyle.FixedSingle)
                     {
                         Invalidate();
@@ -80,16 +80,16 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color flatHeaderForeColor = SystemColors.ControlText;
+        private Color _flatHeaderForeColor = SystemColors.ControlText;
         [DefaultValue(typeof(Color), nameof(SystemColors.ControlText))]
         public Color FlatHeaderForeColor
         {
-            get { return flatHeaderForeColor; }
+            get { return _flatHeaderForeColor; }
             set
             {
-                if (flatHeaderForeColor != value)
+                if (_flatHeaderForeColor != value)
                 {
-                    flatHeaderForeColor = value;
+                    _flatHeaderForeColor = value;
                     if (BorderStyle == BorderStyle.FixedSingle)
                     {
                         Invalidate();
@@ -241,7 +241,7 @@ namespace TileIconifier.Controls
             }                
         }
 
-        private void PaintCustomBorder(IntPtr hDC, IntPtr hRgn)
+        private void PaintCustomBorder(IntPtr hDc, IntPtr hRgn)
         {
             Color bColor;
             if (!Enabled && !BorderDisabledColor.IsEmpty)
@@ -262,7 +262,7 @@ namespace TileIconifier.Controls
                 return;
             }
 
-            using (var ncg = new NonClientGraphics(hDC, hRgn))
+            using (var ncg = new NonClientGraphics(hDc, hRgn))
             {
                 if (ncg.Graphics == null)
                 {

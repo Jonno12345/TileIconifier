@@ -52,9 +52,9 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         private bool _panning = false;
         private Point _startingPoint = Point.Empty;
         private PannableImageContinuousAdjustement _adjustementInProgress = PannableImageContinuousAdjustement.None;
-        private Container _components;
-        private Timer _tmrScrollDelay;
-        private Timer _tmrNudge;
+        private readonly Container _components;
+        private readonly Timer _tmrScrollDelay;
+        private readonly Timer _tmrNudge;
 
         //Read-only properties
         [Browsable(false)]
@@ -603,7 +603,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             //Calculate the perfect size to accomodate the image at its DPI scaled output size + the border.
             //Don't use GetImageSize() or the image rectangle since that relies on the control size and 
             //that's exactly what we are trying to calculate here.
-            var scaleFactor = GetDPIScaleFactor();
+            var scaleFactor = GetDpiScaleFactor();
             var prefSizeF = new SizeF();
 
             prefSizeF.Width = OutputSize.Width * scaleFactor.Width + 2 * BorderThickness;
@@ -895,10 +895,12 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         private SizeF GetImageSize()
         {
             var scale = GetControlScaleFactor();
-            var imgSize = new SizeF();
+            var imgSize = new SizeF
+            {
+                Width = OutputSize.Width*scale,
+                Height = OutputSize.Height*scale
+            };
 
-            imgSize.Width = (OutputSize.Width * scale);
-            imgSize.Height = (OutputSize.Height * scale);
 
             return imgSize;
         }
@@ -965,7 +967,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             return scale;
         }
 
-        private SizeF GetDPIScaleFactor(Graphics g = null)
+        private SizeF GetDpiScaleFactor(Graphics g = null)
         {
             var ownGraphics = false;
             try

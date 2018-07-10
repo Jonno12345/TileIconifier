@@ -352,7 +352,7 @@ namespace TileIconifier.Controls.CustomFolderBrowserDialog
             }
             set
             {
-                this._descriptionText = (value == null) ? string.Empty : value;
+                this._descriptionText = value ?? string.Empty;
             }
         }
 

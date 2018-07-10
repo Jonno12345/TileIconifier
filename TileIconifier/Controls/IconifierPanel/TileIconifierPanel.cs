@@ -50,8 +50,8 @@ namespace TileIconifier.Controls.IconifierPanel
             new List<PannablePictureBoxMetaData>();
 
         private BaseSkin _currentBaseSkin;
-        private PannablePictureBox _panPctMediumIcon;
-        private PannablePictureBox _panPctSmallIcon;
+        private readonly PannablePictureBox _panPctMediumIcon;
+        private readonly PannablePictureBox _panPctSmallIcon;
 
         public TileIconifierPanel()
         {
@@ -393,10 +393,7 @@ namespace TileIconifier.Controls.IconifierPanel
         private void tmiCentreImage_Click(object sender, EventArgs e)
         {
             var panPctBox = ControlUtils.GetToolStripSourceControl(sender) as PannablePictureBox;
-            if (panPctBox != null)
-            {
-                panPctBox.CenterImage();
-            }
+            panPctBox?.CenterImage();
         }
 
         private void PanPctMediumIcon_OnPannablePictureImagePropertyChange(object sender, EventArgs e)

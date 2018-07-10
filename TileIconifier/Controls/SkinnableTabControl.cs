@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using TileIconifier.Skinning;
@@ -23,7 +24,7 @@ namespace TileIconifier.Controls
         ///     Collection of <see cref="ControlStyles"/> that should be set to true 
         ///     when we want to draw ourselves. 
         /// </summary>
-        private static readonly ReadOnlyCollection<ControlStyles> customPaintingFlags = new List<ControlStyles>
+        private static readonly ReadOnlyCollection<ControlStyles> _customPaintingFlags = new List<ControlStyles>
         {
             ControlStyles.UserPaint,
             ControlStyles.AllPaintingInWmPaint,
@@ -35,27 +36,20 @@ namespace TileIconifier.Controls
         ///     Dictionary of the default values for the <see cref="ControlStyles"/>
         ///     that we change when we are drawing ourselves. 
         /// </summary>
-        private readonly ReadOnlyDictionary<ControlStyles, bool> defaultPaintingFlags;                
+        private readonly ReadOnlyDictionary<ControlStyles, bool> _defaultPaintingFlags;                
 
         public SkinnableTabControl()
         {
             //Backup the initial ControlStyles in case we need to reset them.
-            var defaultsFlags = new Dictionary<ControlStyles, bool>();
-            foreach (var f in customPaintingFlags)
-            {
-                defaultsFlags.Add(f,GetStyle(f));
-            }
-            defaultPaintingFlags = new ReadOnlyDictionary<ControlStyles, bool>(defaultsFlags);
+            var defaultsFlags = _customPaintingFlags.ToDictionary(f => f, GetStyle);
+            _defaultPaintingFlags = new ReadOnlyDictionary<ControlStyles, bool>(defaultsFlags);
         }
 
         #region "Properties"
         /// <summary>
         ///     Indicates whether or not we should draw the control ourselves.
         /// </summary>
-        private bool HandleDrawing
-        {
-            get { return (FlatStyle == FlatStyle.Flat); }
-        }
+        private bool HandleDrawing => FlatStyle == FlatStyle.Flat;
 
         public override Color BackColor
         {
@@ -87,50 +81,50 @@ namespace TileIconifier.Controls
             set { base.Alignment = value; }
         }
 
-        private Appearance appearance = Appearance.Normal;
+        private Appearance _appearance = Appearance.Normal;
         [DefaultValue(Appearance.Normal)]
         public new Appearance Appearance
         {
-            get { return appearance; }
+            get { return _appearance; }
             set
             {
-                if (appearance != value)
+                if (_appearance != value)
                 {
-                    appearance = value;
+                    _appearance = value;
                     SetBaseProperties();
                     Invalidate();
                 }
             }
         }
 
-        private FlatStyle flatStyle = FlatStyle.Standard;
+        private FlatStyle _flatStyle = FlatStyle.Standard;
         [DefaultValue(FlatStyle.Standard)]
         public FlatStyle FlatStyle
         {
-            get { return flatStyle; }
+            get { return _flatStyle; }
             set
             {
                 //Don't check if the old value is the same as the new one,
                 //because this property sets other properties that are
                 //shadowed and therefore, they could be out-of-sync with
                 //this one.
-                flatStyle = value;
+                _flatStyle = value;
                 SetBaseProperties();
                 Invalidate();
                 RefreshAllTabPagesColors();
             }
         }
 
-        private Color flatTabSelectedBackColor = SystemColors.Window;
+        private Color _flatTabSelectedBackColor = SystemColors.Window;
         [DefaultValue(typeof(Color), nameof(SystemColors.Window))]
         public Color FlatTabSelectedBackColor
         {
-            get { return flatTabSelectedBackColor; }
+            get { return _flatTabSelectedBackColor; }
             set
             {
-                if (flatTabSelectedBackColor != value)
+                if (_flatTabSelectedBackColor != value)
                 {
-                    flatTabSelectedBackColor = value;
+                    _flatTabSelectedBackColor = value;
                     if (HandleDrawing)
                     {
                         if (SelectedIndex >= 0 && SelectedIndex < TabPages.Count)
@@ -143,16 +137,16 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color flatTabSelectedForeColor = SystemColors.WindowText;
+        private Color _flatTabSelectedForeColor = SystemColors.WindowText;
         [DefaultValue(typeof(Color), nameof(SystemColors.WindowText))]
         public Color FlatTabSelectedForeColor
         {
-            get { return flatTabSelectedForeColor; }
+            get { return _flatTabSelectedForeColor; }
             set
             {
-                if (flatTabSelectedForeColor != value)
+                if (_flatTabSelectedForeColor != value)
                 {
-                    flatTabSelectedForeColor = value;
+                    _flatTabSelectedForeColor = value;
                     if (HandleDrawing)
                     {
                         if (SelectedIndex >= 0 && SelectedIndex < TabPages.Count)
@@ -165,16 +159,16 @@ namespace TileIconifier.Controls
             }
         }
 
-        private Color flatTabBorderColor = SystemColors.WindowFrame;
+        private Color _flatTabBorderColor = SystemColors.WindowFrame;
         [DefaultValue(typeof(Color), nameof(SystemColors.WindowFrame))]
         public Color FlatTabBorderColor
         {
-            get { return flatTabBorderColor; }
+            get { return _flatTabBorderColor; }
             set
             {
-                if (flatTabBorderColor != value)
+                if (_flatTabBorderColor != value)
                 {
-                    flatTabBorderColor = value;
+                    _flatTabBorderColor = value;
                     if (HandleDrawing)
                     {
                         Invalidate();
@@ -183,16 +177,16 @@ namespace TileIconifier.Controls
             }
         }
 
-        private int flatTabBorderWidth = 1;
+        private int _flatTabBorderWidth = 1;
         [DefaultValue(1)]
         public int FlatTabBorderWidth
         {
-            get { return flatTabBorderWidth; }
+            get { return _flatTabBorderWidth; }
             set
             {
-                if (flatTabBorderWidth != value)
+                if (_flatTabBorderWidth != value)
                 {
-                    flatTabBorderWidth = value;
+                    _flatTabBorderWidth = value;
                     if (HandleDrawing)
                     {
                         Invalidate();
@@ -238,7 +232,7 @@ namespace TileIconifier.Controls
                 SizeMode = TabSizeMode.Fixed;
             }
             var flags = new ControlStyles();
-            foreach (ControlStyles s in customPaintingFlags)
+            foreach (ControlStyles s in _customPaintingFlags)
             {
                 flags |= s;
             }
@@ -251,9 +245,9 @@ namespace TileIconifier.Controls
         /// </summary>
         private void ResetOwnerDrawing()
         {
-            foreach (var k in defaultPaintingFlags.Keys)
+            foreach (var k in _defaultPaintingFlags.Keys)
             {
-                SetStyle(k, defaultPaintingFlags[k]);
+                SetStyle(k, _defaultPaintingFlags[k]);
             }
         }
 
@@ -478,7 +472,7 @@ namespace TileIconifier.Controls
                         {
                             var focusRect = Rectangle.Round(tabRects[i]);
                             focusRect.Inflate(-3, -3);
-                            ControlPaint.DrawFocusRectangle(g, focusRect, flatTabSelectedForeColor, FlatTabSelectedBackColor);
+                            ControlPaint.DrawFocusRectangle(g, focusRect, _flatTabSelectedForeColor, FlatTabSelectedBackColor);
                         }
 
                         textCol = FlatTabSelectedForeColor;

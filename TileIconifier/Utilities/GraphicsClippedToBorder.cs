@@ -7,10 +7,10 @@ namespace TileIconifier.Utilities
     //A little helper object that temporarily modifies the clipping region of a Graphics to exclude everything except the borders.
     sealed class GraphicsClippedToBorder : IDisposable
     {
-        private bool _disposed = false;
-        private Graphics _graphics;
-        private Region _oldClip;
-        private Region _tmpClip;
+        private bool _disposed;
+        private readonly Graphics _graphics;
+        private readonly Region _oldClip;
+        private readonly Region _tmpClip;
 
         private static Size GetBorderSize(BorderStyle borderStyle)
         {

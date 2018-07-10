@@ -7,7 +7,7 @@ namespace TileIconifier.Utilities
 {
     internal static class ButtonUtils
     {
-        private static readonly TextFormatFlags BaseTextFormatFlags = TextFormatFlags.WordBreak | TextFormatFlags.TextBoxControl;
+        private static readonly TextFormatFlags _baseTextFormatFlags = TextFormatFlags.WordBreak | TextFormatFlags.TextBoxControl;
         
         private static Size GetCheckBoxGlyphSize(Graphics graphics, FlatStyle flatStyle)
         {
@@ -56,22 +56,22 @@ namespace TileIconifier.Utilities
         {
             //Spacing between the edge of the glyph and the outer edge of the check area.
             //1px padding + 1px for the glyph border.
-            const int GLYPH_ADDITIONNAL_SPACE = 2;
+            const int glyphAdditionnalSpace = 2;
             //Some mysterious spacing on the left and right sides of the text.
-            const int TEXT_LATTERAL_PADDING = 1;
+            const int textLatteralPadding = 1;
 
             Rectangle contentRect = LayoutAndPaintUtils.InflateRectangle(control.ClientRectangle, control.Padding);
-            Size checkAreaSize = new Size(glyphSize.Width + GLYPH_ADDITIONNAL_SPACE, glyphSize.Height + GLYPH_ADDITIONNAL_SPACE);
+            Size checkAreaSize = new Size(glyphSize.Width + glyphAdditionnalSpace, glyphSize.Height + glyphAdditionnalSpace);
             Point textRectLocation;
             if (control.RightToLeft != RightToLeft.Yes)
             {
-                textRectLocation = new Point(contentRect.X + checkAreaSize.Width + TEXT_LATTERAL_PADDING, contentRect.Y);
+                textRectLocation = new Point(contentRect.X + checkAreaSize.Width + textLatteralPadding, contentRect.Y);
             }
             else
             {
-                textRectLocation = new Point(contentRect.X + TEXT_LATTERAL_PADDING);
+                textRectLocation = new Point(contentRect.X + textLatteralPadding);
             }
-            Size textRectSize = new Size(contentRect.Width - checkAreaSize.Width - 2 * TEXT_LATTERAL_PADDING, contentRect.Height);
+            Size textRectSize = new Size(contentRect.Width - checkAreaSize.Width - 2 * textLatteralPadding, contentRect.Height);
             Rectangle textRect = new Rectangle(textRectLocation, textRectSize);
 
             return textRect;
@@ -88,7 +88,7 @@ namespace TileIconifier.Utilities
         /// <returns></returns>
         public static TextFormatFlags CreateTextFormatFlags(ButtonBase btn, ContentAlignment translatedContentAlign, bool showKeyboardCue)
         {
-            var flags = BaseTextFormatFlags | LayoutAndPaintUtils.ConvertToTextFormatFlags(translatedContentAlign);
+            var flags = _baseTextFormatFlags | LayoutAndPaintUtils.ConvertToTextFormatFlags(translatedContentAlign);
 
             if (btn.RightToLeft == RightToLeft.Yes)
             {

@@ -196,7 +196,7 @@
     <value>btnReset</value>
   </data>
   <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6574.24932, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableButton, TileIconifier, Version=2.2.6758.978, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnReset.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -228,7 +228,7 @@ Me</value>
     <value>pannablePictureBoxControlPanelMedium</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelMedium.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6574.24932, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6758.978, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelMedium.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -258,7 +258,7 @@ Me</value>
     <value>colorPanel</value>
   </data>
   <data name="&gt;&gt;colorPanel.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.ColorPanel, TileIconifier, Version=2.2.6574.24932, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.ColorPanel, TileIconifier, Version=2.2.6758.978, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorPanel.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -293,7 +293,7 @@ Me</value>
     <value>pannablePictureBoxControlPanelSmall</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6574.24932, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.IconifierPanel.PictureBox.PannablePictureBoxControlPanel, TileIconifier, Version=2.2.6758.978, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pannablePictureBoxControlPanelSmall.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -326,7 +326,7 @@ Me</value>
     <value>chkUseSameImg</value>
   </data>
   <data name="&gt;&gt;chkUseSameImg.Type" xml:space="preserve">
-    <value>TileIconifier.Controls.SkinnableCheckBox, TileIconifier, Version=2.2.6574.24932, Culture=neutral, PublicKeyToken=null</value>
+    <value>TileIconifier.Controls.SkinnableCheckBox, TileIconifier, Version=2.2.6758.978, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;chkUseSameImg.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>

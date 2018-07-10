@@ -29,7 +29,7 @@ namespace TileIconifier.Controls.IconListView
             {
                 var bounds = Rectangle.Empty;
 
-                if (ListView != null && ListView.ItemDisplayBounds != null)
+                if (ListView?.ItemDisplayBounds != null)
                 {
                     bounds = ListView.ItemDisplayBounds[Index];
                     bounds.X += ListView.DisplayRectangle.X;
@@ -58,7 +58,7 @@ namespace TileIconifier.Controls.IconListView
             }
         }
 
-        public int Index => (ListView == null) ? -1 : ListView.Items.IndexOf(this);
+        public int Index => ListView?.Items.IndexOf(this) ?? -1;
 
         private string _text;
         public string Text
@@ -69,10 +69,7 @@ namespace TileIconifier.Controls.IconListView
                 if (_text != value)
                 {
                     _text = value;
-                    if (ListView != null)
-                    {
-                        ListView.Invalidate(Bounds);
-                    }
+                    ListView?.Invalidate(Bounds);
                 }
             }
         }
@@ -86,10 +83,7 @@ namespace TileIconifier.Controls.IconListView
                 if (_image != value)
                 {
                     _image = (Image)value.Clone();
-                    if (ListView != null)
-                    {
-                        ListView.Invalidate(Bounds);
-                    }
+                    ListView?.Invalidate(Bounds);
                 }
             }
         }
@@ -98,11 +92,7 @@ namespace TileIconifier.Controls.IconListView
         {
             get
             {
-                if (ListView != null)
-                {
-                    return ListView.SelectedIndex == Index;
-                }
-                return false;
+                return ListView?.SelectedIndex == Index;
             }
             set
             {
@@ -114,7 +104,7 @@ namespace TileIconifier.Controls.IconListView
             }
         }
 
-        public bool MouseIsOver => (ListView == null) ? false : ListView.HotItemIndex == Index;
+        public bool MouseIsOver => ListView == null ? false : ListView.HotItemIndex == Index;
 
         /// <summary>
         ///     Returns the biggest rectangle that can fit in the specified rectangle
@@ -130,9 +120,11 @@ namespace TileIconifier.Controls.IconListView
 
             var scaleMin = Math.Min(scaleX, scaleY);
 
-            var r = new RectangleF();
-            r.Width = aspectRatio.Width * scaleMin;
-            r.Height = aspectRatio.Height * scaleMin;
+            var r = new RectangleF
+            {
+                Width = aspectRatio.Width*scaleMin,
+                Height = aspectRatio.Height*scaleMin
+            };
             r.X = containerRect.X + (containerRect.Width - r.Width) / 2;
             r.Y = containerRect.Y + (containerRect.Height - r.Height) / 2;
 
@@ -154,10 +146,7 @@ namespace TileIconifier.Controls.IconListView
         {
             if (disposing)
             {
-                if (Image != null)
-                {
-                    Image.Dispose();
-                }
+                Image?.Dispose();
             }
         }
     }

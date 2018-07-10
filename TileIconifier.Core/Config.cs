@@ -63,6 +63,8 @@ namespace TileIconifier.Core
         public bool GetPinnedItems { get; set; }
         public string LastSkin { get; set; }
 
+        public int[] CustomColors { get; set; }
+
         public void SaveConfig()
         {
             SaveConfig(LoadedConfigFilePath);

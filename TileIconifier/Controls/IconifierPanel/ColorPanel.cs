@@ -33,6 +33,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TileIconifier.Controls.Eyedropper;
+using TileIconifier.Core;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Skinning;
@@ -112,7 +113,7 @@ namespace TileIconifier.Controls.IconifierPanel
         public void SetForegroundTextShow(bool b)
         {
             RemoveEventHandlers();
-            
+
             chkFGTxtEnabled.Checked = b;
             radFGDark.Enabled = b;
             radFGLight.Enabled = b;
@@ -172,13 +173,13 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void eyedropperColorPicker_SelectedColorChanged(object sender, EventArgs e)
         {
-            var eyedropper = (EyedropColorPicker) sender;
+            var eyedropper = (EyedropColorPicker)sender;
             txtBGColour.Text = ColorUtils.ColorToHex(eyedropper.SelectedColor);
         }
 
         private void txtBGColour_TextChanged(object sender, EventArgs e)
         {
-            var textBox = (TextBox) sender;
+            var textBox = (TextBox)sender;
             //if the textbox isn't filled it's definitely not a valid color, don't fire event
             if (textBox != null && textBox.Text.Length != textBox.MaxLength)
             {
@@ -221,10 +222,15 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void btnColourPicker_Click(object sender, EventArgs e)
         {
-            clrDialog.CustomColors = new[]
+            if (Config.Instance.CustomColors == null)
             {
-                ColorTranslator.ToOle(ColorUtils.HexToColor(ShortcutConstantsAndEnums.DefaultAccentColor))
-            };
+                clrDialog.CustomColors = new[]
+                {ColorTranslator.ToOle(ColorUtils.HexToColor(ShortcutConstantsAndEnums.DefaultAccentColor))};
+            }
+            else
+            {
+                clrDialog.CustomColors = Config.Instance.CustomColors;
+            }
 
             clrDialog.Color = cmbColour.Text.ToLower() == @"custom"
                 ? ColorUtils.HexToColor(txtBGColour.Text)
@@ -233,6 +239,8 @@ namespace TileIconifier.Controls.IconifierPanel
             if (clrDialog.ShowDialog(this) == DialogResult.OK)
             {
                 txtBGColour.Text = ColorUtils.ColorToHex(clrDialog.Color);
+                Config.Instance.CustomColors = clrDialog.CustomColors;
+                Config.Instance.SaveConfig();
             }
         }
 

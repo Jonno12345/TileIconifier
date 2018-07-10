@@ -17,14 +17,14 @@ namespace TileIconifier.Controls
         private VisualStyleRenderer _vsRenderer;
 
         #region "Properties"
-        private Color backColor = SystemColors.Window;
+        private Color _backColor = SystemColors.Window;
         [DefaultValue(typeof(Color), nameof(SystemColors.Window))]
         public new Color BackColor
         {
-            get { return backColor; }
+            get { return _backColor; }
             set
             {
-                backColor = value;
+                _backColor = value;
                 if (!ReadOnly)
                 {
                     base.BackColor = value;
@@ -32,14 +32,14 @@ namespace TileIconifier.Controls
             }
         }        
 
-        private Color readOnlyBackColor = SystemColors.Control;
+        private Color _readOnlyBackColor = SystemColors.Control;
         [DefaultValue(typeof(Color), nameof(SystemColors.Control))]
         public Color ReadOnlyBackColor
         {
-            get { return readOnlyBackColor; }
+            get { return _readOnlyBackColor; }
             set
             {
-                readOnlyBackColor = value;
+                _readOnlyBackColor = value;
                 if (ReadOnly)
                 {
                     base.BackColor = ReadOnlyBackColor;

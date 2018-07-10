@@ -82,7 +82,7 @@ namespace TileIconifier.Core.TileIconify
             }
             catch
             {
-
+                // ignored
             }
         }
 
@@ -103,7 +103,7 @@ namespace TileIconifier.Core.TileIconify
             }
             catch
             {
-
+                // ignored
             }
         }
 
