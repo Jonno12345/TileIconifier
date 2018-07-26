@@ -8,7 +8,7 @@ namespace TileIconifier.Controls
 {
     class SkinnableButton : Button, ISkinnableButton
     {
-        private bool _basePainting = false;  
+        private bool _basePainting;  
 
         public override string Text
         {

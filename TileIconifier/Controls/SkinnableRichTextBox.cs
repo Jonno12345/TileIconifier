@@ -130,14 +130,7 @@ namespace TileIconifier.Controls
             //We use the base class property to change the actual color. 
             //This classe's BackColor property stores the not-read-only-BackColor 
             //value independently from the actual (current) Background color.
-            if (ReadOnly)
-            {
-                base.BackColor = ReadOnlyBackColor;
-            }
-            else
-            {
-                base.BackColor = BackColor;
-            }
+            base.BackColor = ReadOnly ? ReadOnlyBackColor : BackColor;
         }
 
         protected override void OnSizeChanged(EventArgs e)

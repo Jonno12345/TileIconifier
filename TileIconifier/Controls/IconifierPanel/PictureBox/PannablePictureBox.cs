@@ -49,7 +49,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
 
         //Modifiable fields
         private Point _movingPoint = Point.Empty;
-        private bool _panning = false;
+        private bool _panning;
         private Point _startingPoint = Point.Empty;
         private PannableImageContinuousAdjustement _adjustementInProgress = PannableImageContinuousAdjustement.None;
         private readonly Container _components;
@@ -91,7 +91,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             }
         }
 
-        private bool _showTextOverlay = false;
+        private bool _showTextOverlay;
         [DefaultValue(false)]
         public bool ShowTextOverlay
         {
@@ -106,7 +106,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             }
         }
 
-        private string _textOverlay = null;
+        private string _textOverlay;
         [DefaultValue(null)]
         public string TextOverlay
         {
@@ -591,9 +591,9 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && _components != null)
+            if (disposing)
             {
-                _components.Dispose();
+                _components?.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -604,10 +604,12 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             //Don't use GetImageSize() or the image rectangle since that relies on the control size and 
             //that's exactly what we are trying to calculate here.
             var scaleFactor = GetDpiScaleFactor();
-            var prefSizeF = new SizeF();
+            var prefSizeF = new SizeF
+            {
+                Width = OutputSize.Width*scaleFactor.Width + 2*BorderThickness,
+                Height = OutputSize.Height*scaleFactor.Height + 2*BorderThickness
+            };
 
-            prefSizeF.Width = OutputSize.Width * scaleFactor.Width + 2 * BorderThickness;
-            prefSizeF.Height = OutputSize.Height * scaleFactor.Height + 2 * BorderThickness;
 
             var prefSize = Size.Round(prefSizeF);
 
@@ -879,9 +881,8 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         private RectangleF GetImageBounds()
         {
             var imgSize = GetImageSize();
-            var imgRect = new RectangleF();
+            var imgRect = new RectangleF {Size = imgSize};
 
-            imgRect.Size = imgSize;
             //Center the rectangle
             imgRect.X = ClientRectangle.X + (ClientSize.Width - imgRect.Width) / 2F;
             imgRect.Y = ClientRectangle.Y + (ClientSize.Height - imgRect.Height) / 2F;
@@ -959,11 +960,12 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
         /// </summary>        
         private SizeF GetRawControlScaleFactor()
         {
-            var scale = new SizeF();
-
-            scale.Width = (float)(ClientSize.Width - 2 * BorderThickness) / OutputSize.Width; //Don't scale the border size! Apparently GDI+ does not scale Pens with DPI.
-            scale.Height = (float)(ClientSize.Height - 2 * BorderThickness) / OutputSize.Height;
-
+            var scale = new SizeF
+            {
+                Width = (float) (ClientSize.Width - 2*BorderThickness)/OutputSize.Width, //Don't scale the border size! Apparently GDI+ does not scale Pens with DPI.
+                Height = (float) (ClientSize.Height - 2*BorderThickness)/OutputSize.Height
+            };
+            
             return scale;
         }
 

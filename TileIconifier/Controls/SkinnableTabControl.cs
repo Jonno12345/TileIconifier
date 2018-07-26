@@ -231,11 +231,7 @@ namespace TileIconifier.Controls
             {
                 SizeMode = TabSizeMode.Fixed;
             }
-            var flags = new ControlStyles();
-            foreach (ControlStyles s in _customPaintingFlags)
-            {
-                flags |= s;
-            }
+            var flags = _customPaintingFlags.Aggregate(new ControlStyles(), (current, s) => current | s);
 
             SetStyle(flags, true);
         }
@@ -271,28 +267,16 @@ namespace TileIconifier.Controls
                 case FlatStyle.Standard:
                     //Not supported. Fallback on FlatStyle.System
                 case FlatStyle.System:
-                    if (Appearance == Appearance.Button)
-                    {
-                        base.Appearance = TabAppearance.Buttons;
-                    }
-                    else
-                    {
-                        base.Appearance = TabAppearance.Normal;
-                    }
+                    base.Appearance = Appearance == Appearance.Button ? TabAppearance.Buttons : TabAppearance.Normal;
                     ResetOwnerDrawing();
                     break;
 
                 case FlatStyle.Popup:
-                    if (Appearance == Appearance.Button)
-                    {
+                    base.Appearance = Appearance == Appearance.Button ?
                         //Not a mistake, the "FlatButtons" Appearance really 
                         //better matches the "Popup" FlatStyle.
-                        base.Appearance = TabAppearance.FlatButtons;
-                    }
-                    else
-                    {
-                        base.Appearance = TabAppearance.Normal;
-                    }
+                        TabAppearance.FlatButtons : 
+                        TabAppearance.Normal;
                     ResetOwnerDrawing();
                     break;
 

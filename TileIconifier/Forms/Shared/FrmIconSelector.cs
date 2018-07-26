@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -211,14 +210,14 @@ namespace TileIconifier.Forms.Shared
 
                 //Build the list view items
                 var items = new List<IconListViewItem>();
-                for (var i = 0; i < _icons.Length; i++)
+                foreach (Icon icon in _icons)
                 {
-                    var splitIcons = IconUtil.Split(_icons[i]);
+                    var splitIcons = IconUtil.Split(icon);
 
                     var largestIcon = splitIcons.OrderByDescending(k => k.Width)
                         .ThenByDescending(k => Math.Max(k.Height, k.Width))
                         .First();
-                    Bitmap bmp = null;
+                    Bitmap bmp;
                     try
                     {
                         bmp = IconUtil.ToBitmap(largestIcon);
@@ -231,14 +230,14 @@ namespace TileIconifier.Forms.Shared
                     items.Add(new IconListViewItem(bmp));
 
                     //Icon cleanup
-                    _icons[i].Dispose();
+                    icon.Dispose();
                     Array.ForEach(splitIcons, ic => ic.Dispose());
                     //The listview creates its own copy of the bitmap
                     bmp.Dispose();
                 }
                 lvwIcons.Items.AddRange(items);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // ignored
             }

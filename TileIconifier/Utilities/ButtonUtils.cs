@@ -62,15 +62,10 @@ namespace TileIconifier.Utilities
 
             Rectangle contentRect = LayoutAndPaintUtils.InflateRectangle(control.ClientRectangle, control.Padding);
             Size checkAreaSize = new Size(glyphSize.Width + glyphAdditionnalSpace, glyphSize.Height + glyphAdditionnalSpace);
-            Point textRectLocation;
-            if (control.RightToLeft != RightToLeft.Yes)
-            {
-                textRectLocation = new Point(contentRect.X + checkAreaSize.Width + textLatteralPadding, contentRect.Y);
-            }
-            else
-            {
-                textRectLocation = new Point(contentRect.X + textLatteralPadding);
-            }
+            var textRectLocation = 
+                control.RightToLeft != RightToLeft.Yes ? 
+                new Point(contentRect.X + checkAreaSize.Width + textLatteralPadding, contentRect.Y) : 
+                new Point(contentRect.X + textLatteralPadding);
             Size textRectSize = new Size(contentRect.Width - checkAreaSize.Width - 2 * textLatteralPadding, contentRect.Height);
             Rectangle textRect = new Rectangle(textRectLocation, textRectSize);
 

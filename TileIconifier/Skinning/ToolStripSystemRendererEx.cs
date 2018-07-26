@@ -73,29 +73,11 @@ namespace TileIconifier.Skinning
 
             if (selected)
             {
-                if (enabled)
-                {
-                    //Hot
-                    state = 2;
-                }
-                else
-                {
-                    //DisabledHot
-                    state = 4;
-                }
+                state = enabled ? 2 : 4;
             }
             else
             {
-                if (enabled)
-                {
-                    //Normal
-                    state = 1;
-                }
-                else
-                {
-                    //Disabled
-                    state = 3;
-                }
+                state = enabled ? 1 : 3;
             }
 
             return VisualStyleElement.CreateElement(_vsClass, 14, state);
@@ -107,42 +89,15 @@ namespace TileIconifier.Skinning
 
             if (pushed)
             {
-                if (enabled)
-                {
-                    //Pushed
-                    state = 3;
-                }
-                else
-                {
-                    //DisabledPushed
-                    state = 6;
-                }
+                state = enabled ? 3 : 6;
             }
             else if (selected)
             {
-                if (enabled)
-                {
-                    //Hot
-                    state = 2;
-                }
-                else
-                {
-                    //DisabledHot
-                    state = 5;
-                }
+                state = enabled ? 2 : 5;
             }
             else
             {
-                if (enabled)
-                {
-                    //Normal
-                    state = 1;
-                }
-                else
-                {
-                    //Disabled
-                    state = 4;
-                }
+                state = enabled ? 1 : 4;
             }
 
             return VisualStyleElement.CreateElement(_vsClass, 8, state);
@@ -153,22 +108,13 @@ namespace TileIconifier.Skinning
             switch(glyph)
             {
                 case MenuGlyph.Arrow:
-                    if (enabled)                    
-                        return VisualStyleElement.CreateElement(_vsClass, 16, 1);                    
-                    else                    
-                        return VisualStyleElement.CreateElement(_vsClass, 16, 2);
+                    return VisualStyleElement.CreateElement(_vsClass, 16, enabled ? 1 : 2);
 
                 case MenuGlyph.Bullet:
-                    if (enabled)
-                        return VisualStyleElement.CreateElement(_vsClass, 11, 3);
-                    else
-                        return VisualStyleElement.CreateElement(_vsClass, 11, 4);
+                    return VisualStyleElement.CreateElement(_vsClass, 11, enabled ? 3 : 4);
 
                 case MenuGlyph.Checkmark:
-                    if (enabled)
-                        return VisualStyleElement.CreateElement(_vsClass, 11, 1);
-                    else
-                        return VisualStyleElement.CreateElement(_vsClass, 11, 2);
+                    return VisualStyleElement.CreateElement(_vsClass, 11, enabled ? 1 : 2);
 
                 default:
                     throw new ArgumentException("Supported value.", nameof(glyph));
@@ -178,13 +124,11 @@ namespace TileIconifier.Skinning
         /// <param name="bitmap">Set to true if the associated foreground image is not a standard glyph. (I think)</param>        
         private VisualStyleElement GetMenuGlyphBackgroundVsElement(bool enabled, bool bitmap)
         {
-            if (!enabled)
-                return VisualStyleElement.CreateElement(_vsClass, 12, 1);
-            else if (bitmap)
-                return VisualStyleElement.CreateElement(_vsClass, 12, 3);
-            else
-                return VisualStyleElement.CreateElement(_vsClass, 12, 2);
+            return !enabled ? 
+                VisualStyleElement.CreateElement(_vsClass, 12, 1) : 
+                VisualStyleElement.CreateElement(_vsClass, 12, bitmap ? 3 : 2);
         }
+
         #endregion
 
         #region "Drawing helpers"

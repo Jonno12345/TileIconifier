@@ -173,10 +173,12 @@ namespace TileIconifier.Utilities
             //Get the client rectangle relative to the screen.
             var clientToScreen = control.RectangleToScreen(control.ClientRectangle);
 
-            var clientRect = new Rectangle();
-            clientRect.X = clientToScreen.Left - nonClientToScreen.left;
-            clientRect.Y = clientToScreen.Top - nonClientToScreen.top;
-            clientRect.Size = clientToScreen.Size;
+            var clientRect = new Rectangle
+            {
+                X = clientToScreen.Left - nonClientToScreen.left,
+                Y = clientToScreen.Top - nonClientToScreen.top,
+                Size = clientToScreen.Size
+            };
 
             return clientRect;
         }

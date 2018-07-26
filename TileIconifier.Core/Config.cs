@@ -83,6 +83,8 @@ namespace TileIconifier.Core
                 Directory.CreateDirectory(dirPath);
             }
 
+            IoUtils.ForceDelete(filePath);
+
             using (var xmlFile = new FileStream(filePath, FileMode.Create))
             {
                 var xmlSerializer = new XmlSerializer(typeof (Config));

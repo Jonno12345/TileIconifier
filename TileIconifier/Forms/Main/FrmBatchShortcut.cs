@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using TileIconifier.Controls.Shortcut;
@@ -103,11 +102,10 @@ namespace TileIconifier.Forms.Main
         private void UpdateListViewImageList()
         {
             ilsIconifiedItemsSmallIcons.Images.Clear();
-            for (var i = 0; i < _iconifiedItems.Count; i++)
+            foreach (var shortcutItem in _iconifiedItems)
             {
-                var shortcutItem = _iconifiedItems[i];
                 ilsIconifiedItemsSmallIcons.Images.Add(shortcutItem.ShortcutItem.StandardIcon ??
-                                          Resources.QuestionMark);
+                                                       Resources.QuestionMark);
             }
         }
 

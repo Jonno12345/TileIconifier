@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -86,8 +85,7 @@ namespace TileIconifier.Forms.CustomShortcutForms
             lstCustomShortcuts.Items.Clear();
             for (var i = 0; i < _customShortcutsList.Count; i++)
             {
-                var item = new CustomShortcutListViewItem(_customShortcutsList[i]);
-                item.ImageIndex = i;
+                var item = new CustomShortcutListViewItem(_customShortcutsList[i]) {ImageIndex = i};
                 lstCustomShortcuts.Items.Add(item);
             }
         }
@@ -96,11 +94,11 @@ namespace TileIconifier.Forms.CustomShortcutForms
         {
             ilsCustomShortcutsSmallIcons.Images.Clear();
 
-            for (var i = 0; i < _customShortcutsList.Count; i++)
+            foreach (CustomShortcut customShortcut in _customShortcutsList)
             {
                 ilsCustomShortcutsSmallIcons.Images.Add(
-                    _customShortcutsList[i].ShortcutItem.Properties.CurrentState.MediumImage.CachedImage() ??
-                    (_customShortcutsList[i].ShortcutItem.StandardIcon ??
+                    customShortcut.ShortcutItem.Properties.CurrentState.MediumImage.CachedImage() ??
+                    (customShortcut.ShortcutItem.StandardIcon ??
                      Resources.QuestionMark));
             }
         }

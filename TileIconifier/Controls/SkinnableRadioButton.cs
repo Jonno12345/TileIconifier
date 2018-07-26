@@ -51,28 +51,22 @@ namespace TileIconifier.Controls
             //We paint the disabled text on top of the base class drawing using 
             //the ForeColorDisabled color that we have implemented ourselves.
             //Incomplete implementation: We don't consider the TextImageRelation property (yet).
-            
-            if (!Enabled)
+
+            if (Enabled)
             {
-                TextFormatFlags flags;
-                Rectangle textRect;
-
-                //Create flags
-                flags = ButtonUtils.CreateTextFormatFlags(this, RtlTranslateContent(TextAlign), ShowKeyboardCues);
-
-                //Create rectangle
-                if (Appearance == Appearance.Button)
-                {
-                    textRect = ButtonUtils.GetPushButtonTextRectangle(this);
-                }
-                else
-                {                    
-                    textRect = ButtonUtils.GetRadioButtonTextRectangle(this, pevent.Graphics);
-                }
-
-                //Draw
-                TextRenderer.DrawText(pevent.Graphics, Text, Font, textRect, DisabledForeColor, flags);
+                return;
             }
+
+            //Create flags
+            var flags = ButtonUtils.CreateTextFormatFlags(this, RtlTranslateContent(TextAlign), ShowKeyboardCues);
+
+            //Create rectangle
+            var textRect = Appearance == Appearance.Button ? 
+                ButtonUtils.GetPushButtonTextRectangle(this) : 
+                ButtonUtils.GetRadioButtonTextRectangle(this, pevent.Graphics);
+
+            //Draw
+            TextRenderer.DrawText(pevent.Graphics, Text, Font, textRect, DisabledForeColor, flags);
         }
 
         public void ApplySkin(BaseSkin skin)

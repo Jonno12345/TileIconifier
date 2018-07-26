@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TileIconifier.Utilities
 {
@@ -53,10 +49,7 @@ namespace TileIconifier.Utilities
         {
             if (disposing)
             {
-                if (Graphics != null)
-                {
-                    Graphics.Dispose();
-                }
+                Graphics?.Dispose();
             }
             if (_hDc != IntPtr.Zero)
             {

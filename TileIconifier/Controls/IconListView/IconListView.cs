@@ -661,7 +661,7 @@ namespace TileIconifier.Controls.IconListView
                 return;
             }
 
-            var mouseLoc = default(Point);
+            Point mouseLoc;
 
             if (mouseLocation == null)
             {

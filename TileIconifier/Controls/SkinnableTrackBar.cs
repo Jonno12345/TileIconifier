@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using TileIconifier.Skinning.Skins;
 
@@ -33,11 +34,7 @@ namespace TileIconifier.Controls
         public SkinnableTrackBar()
         {
             //Backup the initial ControlStyles in case we need to reset them.
-            var defaultsFlags = new Dictionary<ControlStyles, bool>();
-            foreach (var f in _customPaintingFlags)
-            {
-                defaultsFlags.Add(f, GetStyle(f));
-            }
+            var defaultsFlags = _customPaintingFlags.ToDictionary(f => f, GetStyle);
             _defaultPaintingFlags = new ReadOnlyDictionary<ControlStyles, bool>(defaultsFlags);
         }
 
@@ -45,10 +42,7 @@ namespace TileIconifier.Controls
         /// <summary>
         ///     Indicates whether or not we should draw the control ourselves.
         /// </summary>
-        private bool HandleDrawing
-        {
-            get { return (FlatStyle == FlatStyle.Flat); }
-        }
+        private bool HandleDrawing => FlatStyle == FlatStyle.Flat;
 
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -300,16 +294,16 @@ namespace TileIconifier.Controls
             switch (TickStyle)
             {
                 case TickStyle.TopLeft:
-                    return new Rectangle[] { new Rectangle(x, 4, tickWidth, tickHeight) };
+                    return new[] { new Rectangle(x, 4, tickWidth, tickHeight) };
 
                 case TickStyle.BottomRight:
-                    return new Rectangle[] { new Rectangle(x, 23, tickWidth, tickHeight) };
+                    return new[] { new Rectangle(x, 23, tickWidth, tickHeight) };
 
                 case TickStyle.Both:
-                    return new Rectangle[] { new Rectangle(x, 4, tickWidth, tickHeight), new Rectangle(x, 34, tickWidth, tickHeight) };
+                    return new[] { new Rectangle(x, 4, tickWidth, tickHeight), new Rectangle(x, 34, tickWidth, tickHeight) };
 
                 default:
-                    return new Rectangle[] { Rectangle.Empty };
+                    return new[] { Rectangle.Empty };
             }
         }
 
@@ -318,11 +312,7 @@ namespace TileIconifier.Controls
         /// </summary>
         private void EnableOwnerDrawing()
         {
-            var flags = new ControlStyles();
-            foreach (ControlStyles s in _customPaintingFlags)
-            {
-                flags |= s;
-            }
+            var flags = _customPaintingFlags.Aggregate(new ControlStyles(), (current, s) => current | s);
 
             SetStyle(flags, true);
         }

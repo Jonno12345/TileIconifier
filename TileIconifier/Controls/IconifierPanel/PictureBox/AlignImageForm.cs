@@ -53,7 +53,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
             btnNudgeDown.Tag = PannableImageContinuousAdjustement.NudgeDown;
         }        
 
-        private PannablePictureBox _pannablePictureBox = null;
+        private PannablePictureBox _pannablePictureBox;
         [DefaultValue(null)]
         public PannablePictureBox PannablePictureBox
         {
@@ -164,7 +164,7 @@ namespace TileIconifier.Controls.IconifierPanel.PictureBox
 
         private void SetButtonImages()
         {
-            Button[] btns =
+            ButtonBase[] btns =
             {
                 btnLeft,
                 btnXMiddle,

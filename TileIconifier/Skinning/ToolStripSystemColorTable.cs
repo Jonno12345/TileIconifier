@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Windows.Forms;
 using TileIconifier.Skinning.Skins;
 
 namespace TileIconifier.Skinning
@@ -18,15 +17,15 @@ namespace TileIconifier.Skinning
         }
         #endregion          
 
-        internal Color MenuBarBackColor { get { return _skin.ToolStripMenuBarBackColor; } }
-        internal Color PopupBackColor { get { return _skin.ToolStripPopupBackColor; } }
-        internal Color MenuBarBorderColor { get { return _skin.ToolStripMenuBarBorderColor; } }
-        internal Color PopupBorderColor { get { return _skin.ToolStripPopupBorderColor; } }
-        internal Color HighlightBackColor { get { return _skin.ToolStripHighlightBackColor; } }
-        internal Color HighlightForeColor { get { return _skin.ToolStripHighlightForeColor; } }
-        internal Color MenuBarForeColor { get { return _skin.ToolStripMenuBarForeColor; } }
-        internal Color PopupForeColor { get { return _skin.ToolStripPopupForeColor; } }
-        internal Color DisabledForeColor { get { return _skin.ToolStripDisabledForeColor; } }
+        internal Color MenuBarBackColor => _skin.ToolStripMenuBarBackColor;
+        internal Color PopupBackColor => _skin.ToolStripPopupBackColor;
+        internal Color MenuBarBorderColor => _skin.ToolStripMenuBarBorderColor;
+        internal Color PopupBorderColor => _skin.ToolStripPopupBorderColor;
+        internal Color HighlightBackColor => _skin.ToolStripHighlightBackColor;
+        internal Color HighlightForeColor => _skin.ToolStripHighlightForeColor;
+        internal Color MenuBarForeColor => _skin.ToolStripMenuBarForeColor;
+        internal Color PopupForeColor => _skin.ToolStripPopupForeColor;
+        internal Color DisabledForeColor => _skin.ToolStripDisabledForeColor;
 
         #region "Default colors"
         internal static Color DefaultMenuBarBackColor => SystemColors.MenuBar;

@@ -237,10 +237,7 @@ namespace TileIconifier.Forms.Shared
 
         protected override void OnShown(EventArgs e)
         {
-            if (_sound != null)
-            {
-                _sound.Play();
-            }
+            _sound?.Play();
 
             base.OnShown(e);
         }

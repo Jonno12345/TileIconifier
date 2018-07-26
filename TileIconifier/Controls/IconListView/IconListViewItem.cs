@@ -104,7 +104,7 @@ namespace TileIconifier.Controls.IconListView
             }
         }
 
-        public bool MouseIsOver => ListView == null ? false : ListView.HotItemIndex == Index;
+        public bool MouseIsOver => ListView != null && ListView.HotItemIndex == Index;
 
         /// <summary>
         ///     Returns the biggest rectangle that can fit in the specified rectangle

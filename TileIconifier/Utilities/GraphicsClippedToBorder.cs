@@ -39,11 +39,13 @@ namespace TileIconifier.Utilities
         public GraphicsClippedToBorder(Graphics g, Control ctrl, BorderStyle borderStyle)
         {
             var sizeBorder = GetBorderSize(borderStyle);
-            var rectExclude = new Rectangle();
-            rectExclude.Width = ctrl.Width - 2 * sizeBorder.Width;
-            rectExclude.Height = ctrl.Height - 2 * sizeBorder.Height;
-            rectExclude.X = sizeBorder.Width;
-            rectExclude.Y = sizeBorder.Height;
+            var rectExclude = new Rectangle
+            {
+                Width = ctrl.Width - 2*sizeBorder.Width,
+                Height = ctrl.Height - 2*sizeBorder.Height,
+                X = sizeBorder.Width,
+                Y = sizeBorder.Height
+            };
 
             _graphics = g;
             _oldClip = _graphics.Clip;
@@ -54,19 +56,18 @@ namespace TileIconifier.Utilities
 
         public void Dispose()
         {
-            if (!_disposed)
+            if (_disposed)
             {
-                if (_oldClip != null)
-                {
-                    _graphics.Clip = _oldClip;
-                }
-                if (_tmpClip != null)
-                {
-                    _tmpClip.Dispose();
-                }
-
-                _disposed = true;
+                return;
             }
+
+            if (_oldClip != null)
+            {
+                _graphics.Clip = _oldClip;
+            }
+            _tmpClip?.Dispose();
+
+            _disposed = true;
         }
     }
 }
