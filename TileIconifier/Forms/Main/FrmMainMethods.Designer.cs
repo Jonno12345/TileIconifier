@@ -188,7 +188,7 @@ namespace TileIconifier.Forms.Main
                 textBox.ScrollToCaret();
             };
             updateTextBox(txtLnkPath, CurrentShortcutItem.ShortcutFileInfo.FullName);
-            updateTextBox(txtExePath, CurrentShortcutItem.TargetFilePath);
+            updateTextBox(txtExePath, CurrentShortcutItem.TargetInfo.FilePath);
 
             //only show remove if the icon is currently iconified
             btnRemove.Enabled = CurrentShortcutItem.IsIconified;
@@ -387,7 +387,7 @@ namespace TileIconifier.Forms.Main
         {
             return !_currentShortcutListViewItem.ShortcutItem.IsTileIconifierCustomShortcut
                    && ShortcutConstantsAndEnums.KnownShortcutTargetsWithIssues.Any(s =>
-                       _currentShortcutListViewItem.ShortcutItem.TargetFilePath.ToUpper().EndsWith(s.ToUpper()));
+                       _currentShortcutListViewItem.ShortcutItem.TargetInfo.FilePath.ToUpper().EndsWith(s.ToUpper()));
         }
     }
 }

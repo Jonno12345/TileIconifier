@@ -242,10 +242,11 @@ namespace TileIconifier.Forms.Main
 
             shortcutName = cloneConfirmation.ShortcutName;
 
-            var parameters = new GenerateCustomShortcutParams(CurrentShortcutItem.TargetFilePath, string.Empty,
+            var parameters = new GenerateCustomShortcutParams(CurrentShortcutItem.TargetInfo.FilePath, CurrentShortcutItem.TargetInfo.Arguments,
                 CustomShortcutGetters.CustomShortcutCurrentUserPath)
             {
-                WorkingFolder = CurrentShortcutItem.ShortcutFileInfo.Directory?.FullName
+                WorkingFolder = CurrentShortcutItem.ShortcutFileInfo.Directory?.FullName,
+                IconPath = CurrentShortcutItem.TargetInfo.IconLocation
             };
 
             var customShortcut = new OtherCustomShortcutBuilder(parameters).GenerateCustomShortcut(shortcutName);
@@ -276,7 +277,7 @@ namespace TileIconifier.Forms.Main
 
             try
             {
-                var customShortcut = CustomShortcut.Load(CurrentShortcutItem.TargetFilePath);
+                var customShortcut = CustomShortcut.Load(CurrentShortcutItem.TargetInfo.FilePath);
                 customShortcut.Delete();
             }
             catch (Exception ex)

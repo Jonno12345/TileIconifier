@@ -97,6 +97,7 @@
     <Compile Include="Shortcut\ShortcutItem.cs" />
     <Compile Include="Shortcut\ShortcutItemEnumeration.cs" />
     <Compile Include="Shortcut\ShortcutItemImage.cs" />
+    <Compile Include="Shortcut\ShortcutItemTarget.cs" />
     <Compile Include="Shortcut\State\ShortcutItemState.cs" />
     <Compile Include="Shortcut\State\ShortcutItemStateController.cs" />
     <Compile Include="TileIconify\TileIcon.cs" />

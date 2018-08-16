@@ -187,7 +187,7 @@ namespace TileIconifier.Core.Custom.Steam
 
             if (SteamShortcutItem != null)
             {
-                return SteamShortcutItem.TargetFilePath;
+                return SteamShortcutItem.TargetInfo.FilePath;
             }
             var assumedSteamExePath = _steamInstallationFolderPath + "Steam.exe";
             if (File.Exists(assumedSteamExePath))

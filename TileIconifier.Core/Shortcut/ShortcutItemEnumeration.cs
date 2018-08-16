@@ -216,7 +216,7 @@ namespace TileIconifier.Core.Shortcut
                 if (!string.IsNullOrEmpty(DesktopApplicationId))
                 {
                     matchingShortcutItems.AddRange(_shortcutsCache.Where(
-                        s => Path.GetFullPath(Environment.ExpandEnvironmentVariables(s.TargetFilePath)) ==
+                        s => Path.GetFullPath(Environment.ExpandEnvironmentVariables(s.TargetInfo.FilePath)) ==
                              Path.GetFullPath(Environment.ExpandEnvironmentVariables(DesktopApplicationId))));
                     matchingShortcutItems.AddRange(shortcutsCache.Where(s => s.AppId == DesktopApplicationId));
                 }
