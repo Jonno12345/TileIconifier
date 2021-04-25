@@ -80,7 +80,7 @@ namespace TileIconifier.Forms.Main
         {
             UpdateListViewImageList();
             UpdateListViewBoxItems();
-        }        
+        }
 
         /// <summary>
         ///     Updates the items of the list view with the shortcut items, excluding the icons.
@@ -91,9 +91,9 @@ namespace TileIconifier.Forms.Main
             for (var i = 0; i < _iconifiedItems.Count; i++)
             {
                 var shortcutItem = _iconifiedItems[i];
-                lstIconifiedItems.Items.Add(shortcutItem);                
+                lstIconifiedItems.Items.Add(shortcutItem);
                 shortcutItem.ImageIndex = i;
-            }            
+            }
         }
 
         /// <summary>
@@ -148,6 +148,7 @@ namespace TileIconifier.Forms.Main
 
             if (RunBulkAction(item =>
             {
+                item.Properties.CurrentState.TileIconifierColorSelection = colorPanelResult.ColorSelection.Value;
                 item.Properties.CurrentState.BackgroundColor = colorPanelResult.BackgroundColor;
 
                 new TileIcon(item).RunIconify();
@@ -218,7 +219,7 @@ namespace TileIconifier.Forms.Main
                         return;
                     }
                     var shortcutItem = item.ShortcutItem;
-                    colorPanel.SetBackgroundColor(shortcutItem.Properties.CurrentState.BackgroundColor);
+                    colorPanel.SetBackgroundColor(shortcutItem.Properties.CurrentState.TileIconifierColorSelection, shortcutItem.Properties.CurrentState.BackgroundColor);
                     colorPanel_ColorUpdate(this, null);
                 });
             contextMenu.MenuItems.Add(menuItem);

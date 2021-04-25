@@ -3,7 +3,7 @@
 // /*
 //         The MIT License (MIT)
 // 
-//         Copyright (c) 2016 Johnathon M
+//         Copyright (c) 2021 Johnathon M
 // 
 //         Permission is hereby granted, free of charge, to any person obtaining a copy
 //         of this software and associated documentation files (the "Software"), to deal
@@ -28,12 +28,14 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TileIconifier.Controls.Eyedropper;
 using TileIconifier.Core;
+using TileIconifier.Core.Enums;
 using TileIconifier.Core.Shortcut;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Skinning;
@@ -42,26 +44,38 @@ namespace TileIconifier.Controls.IconifierPanel
 {
     public partial class ColorPanel : UserControl
     {
-        private readonly Color[] _dropDownColors =
+        private readonly List<ColorSelection> colorSelections = new List<ColorSelection>
         {
-            Color.Black,
-            Color.Silver,
-            Color.Gray,
-            Color.White,
-            Color.Maroon,
-            Color.Red,
-            Color.Purple,
-            Color.Fuchsia,
-            Color.Green,
-            Color.Lime,
-            Color.Olive,
-            Color.Yellow,
-            Color.Navy,
-            Color.Blue,
-            Color.Teal,
-            Color.Aqua
+            ColorSelection.Black,
+        ColorSelection.Silver,
+        ColorSelection.Gray,
+        ColorSelection.White,
+        ColorSelection.Maroon,
+        ColorSelection.Red,
+        ColorSelection.Purple,
+        ColorSelection.Fuchsia,
+        ColorSelection.Green,
+        ColorSelection.Lime,
+        ColorSelection.Olive,
+        ColorSelection.Yellow,
+        ColorSelection.Navy,
+        ColorSelection.Blue,
+        ColorSelection.Teal,
+        ColorSelection.Aqua,
+ColorSelection.Custom
         };
 
+        private ColorSelection? CurrentColorSelection
+        {
+            get
+            {
+                if (Enum.TryParse<ColorSelection>(cmbColour.Text, out ColorSelection colorSelection))
+                {
+                    return colorSelection;
+                }
+                return null;
+            }
+        }
         public ColorPanel()
         {
             InitializeComponent();
@@ -85,28 +99,33 @@ namespace TileIconifier.Controls.IconifierPanel
 
             return new ColorPanelResult
             {
+                ColorSelection = CurrentColorSelection,
                 BackgroundColor = GetBackgroundColor(),
                 DisplayForegroundText = chkFGTxtEnabled.Checked,
                 ForegroundColor = radFGLight.Checked ? "light" : "dark"
             };
         }
 
-        public void SetBackgroundColor(string color)
+        public void SetBackgroundColor(ColorSelection color, string customColor)
         {
             RemoveEventHandlers();
             //reset the combo box -choose actual color, or custom if none of the combobox items match
-            var matchingColor = _dropDownColors.FirstOrDefault(c => string.Equals(c.Name, color, StringComparison.InvariantCultureIgnoreCase));
-            if (matchingColor != Color.Empty)
+            if (color == ColorSelection.Custom)
             {
-                cmbColour.SelectedItem = matchingColor.Name.ToLower();
-                txtBGColour.Enabled = false;
+                cmbColour.Text = ColorSelection.Custom.ToString();
+                txtBGColour.Enabled = true;
+                txtBGColour.Text = customColor;
+
+            }
+            else if (color == ColorSelection.Default)
+            {
+                cmbColour.Text = ColorSelection.Default.ToString();
             }
             else
             {
-                cmbColour.Text = @"Custom";
-                txtBGColour.Enabled = true;
-                txtBGColour.Text = color;
+                cmbColour.Text = color.ToString();
             }
+
             AddEventHandlers();
         }
 
@@ -142,7 +161,7 @@ namespace TileIconifier.Controls.IconifierPanel
             };
 
             //if a custom color has been specified, check it's valid hex REGEX
-            if (cmbColour.Text == @"Custom" && !Regex.Match(txtBGColour.Text, @"^#[0-9a-fA-F]{6}$").Success)
+            if (CurrentColorSelection == ColorSelection.Custom && !Regex.Match(txtBGColour.Text, @"^#[0-9a-fA-F]{6}$").Success)
             {
                 controlInvalid(txtBGColour);
             }
@@ -186,21 +205,27 @@ namespace TileIconifier.Controls.IconifierPanel
                 return;
             }
 
-            cmbColour.Text = @"Custom";
+            cmbColour.Text = ColorSelection.Custom.ToString();
             RunFullUpdate();
         }
 
         private void cmbColour_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtBGColour.Enabled = cmbColour.Text == @"Custom";
+            txtBGColour.Enabled = CurrentColorSelection == ColorSelection.Custom;
             RunFullUpdate();
         }
 
         private string GetBackgroundColor()
         {
-            return cmbColour.Text == @"Custom"
-                ? txtBGColour.Text
-                : cmbColour.Text;
+            if (CurrentColorSelection == ColorSelection.Custom)
+            {
+                return txtBGColour.Text;
+            }
+            if (CurrentColorSelection == ColorSelection.Default)
+            {
+                return ShortcutConstantsAndEnums.DefaultAccentColor;
+            }
+            return cmbColour.Text.ToLower();
         }
 
         private void chkFGTxtEnabled_CheckedChanged(object sender, EventArgs e)
@@ -232,7 +257,7 @@ namespace TileIconifier.Controls.IconifierPanel
                 clrDialog.CustomColors = Config.Instance.CustomColors;
             }
 
-            clrDialog.Color = cmbColour.Text.ToLower() == @"custom"
+            clrDialog.Color = cmbColour.Text == ColorSelection.Custom.ToString()
                 ? ColorUtils.HexToColor(txtBGColour.Text)
                 : Color.FromName(cmbColour.Text);
 
@@ -246,16 +271,21 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void ColorPanel_Load(object sender, EventArgs e)
         {
-            cmbColour.Items.AddRange(_dropDownColors.Select(c => c.Name.ToLower()).ToArray<object>());
-            cmbColour.Items.Add("Custom");
-            cmbColour.SelectedItem = "Custom";
+            if (Config.StartMenuUpgradeEnabled)
+            {
+                colorSelections.Add(ColorSelection.Default);
+            }
+            cmbColour.Items.AddRange(colorSelections.Select(t => t.ToString()).ToArray());
+            cmbColour.SelectedItem = ColorSelection.Custom.ToString();
         }
     }
 
     public class ColorPanelResult
     {
-        public string BackgroundColor;
-        public bool DisplayForegroundText;
-        public string ForegroundColor;
+        public string BackgroundColor { get; set; }
+        public bool DisplayForegroundText { get; set; }
+        public string ForegroundColor { get; set; }
+
+        public ColorSelection? ColorSelection { get; set; }
     }
 }

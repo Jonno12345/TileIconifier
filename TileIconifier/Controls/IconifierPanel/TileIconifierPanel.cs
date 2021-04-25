@@ -3,7 +3,7 @@
 // /*
 //         The MIT License (MIT)
 // 
-//         Copyright (c) 2016 Johnathon M
+//         Copyright (c) 2021 Johnathon M
 // 
 //         Permission is hereby granted, free of charge, to any person obtaining a copy
 //         of this software and associated documentation files (the "Software"), to deal
@@ -86,7 +86,7 @@ namespace TileIconifier.Controls.IconifierPanel
 
             //update color panel
             UpdateColorPanelControlsToCurrentShortcut();
-            
+
             //update the picture boxes to show the relevant images
             UpdatePictureBoxImage(_panPctMediumIcon, CurrentShortcutItem.Properties.CurrentState.MediumImage);
             UpdatePictureBoxImage(_panPctSmallIcon, CurrentShortcutItem.Properties.CurrentState.SmallImage);
@@ -159,7 +159,7 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void UpdateColorPanelControlsToCurrentShortcut()
         {
-            colorPanel.SetBackgroundColor(
+            colorPanel.SetBackgroundColor(CurrentShortcutItem.Properties.CurrentState.TileIconifierColorSelection,
                 CurrentShortcutItem.Properties.CurrentState.BackgroundColor);
             colorPanel.SetForegroundColorRadio(CurrentShortcutItem.Properties.CurrentState.ForegroundText == "light");
             colorPanel.SetForegroundTextShow(CurrentShortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo);
@@ -227,7 +227,7 @@ namespace TileIconifier.Controls.IconifierPanel
 
             var pictureBoxMetaDataToUse = chkUseSameImg.Checked
                 ? _pannablePictureBoxMetaDatas
-                : new List<PannablePictureBoxMetaData> {GetSenderPictureBoxToMetaData(sender)};
+                : new List<PannablePictureBoxMetaData> { GetSenderPictureBoxToMetaData(sender) };
 
             foreach (var pictureBoxMetaData in pictureBoxMetaDataToUse)
             {
@@ -243,13 +243,13 @@ namespace TileIconifier.Controls.IconifierPanel
         private PannablePictureBoxMetaData GetSenderPictureBoxToMetaData(object sender)
         {
             PannablePictureBox senderPictureBox = null;
-            if (sender.GetType() == typeof (PannablePictureBoxControlPanel))
+            if (sender.GetType() == typeof(PannablePictureBoxControlPanel))
             {
-                senderPictureBox = ((PannablePictureBoxControlPanel) sender).PannablePictureBox;
+                senderPictureBox = ((PannablePictureBoxControlPanel)sender).PannablePictureBox;
             }
-            if (sender.GetType() == typeof (PannablePictureBox))
+            if (sender.GetType() == typeof(PannablePictureBox))
             {
-                senderPictureBox = (PannablePictureBox) sender;
+                senderPictureBox = (PannablePictureBox)sender;
             }
             if (senderPictureBox == null)
             {
@@ -339,7 +339,7 @@ namespace TileIconifier.Controls.IconifierPanel
             _panPctSmallIcon.OnPannablePictureImagePropertyChange += PanPctSmallIcon_OnPannablePictureImagePropertyChange;
             _panPctMediumIcon.DoubleClick += _panPctMediumIcon_DoubleClick;
             _panPctSmallIcon.DoubleClick += _panPctSmallIcon_DoubleClick;
-        }        
+        }
 
         private void ColorPanelColorUpdate(object sender, EventArgs eventArgs)
         {
@@ -355,6 +355,7 @@ namespace TileIconifier.Controls.IconifierPanel
                 return;
             }
 
+            CurrentShortcutItem.Properties.CurrentState.TileIconifierColorSelection = result.ColorSelection.Value;
             CurrentShortcutItem.Properties.CurrentState.BackgroundColor = result.BackgroundColor;
             CurrentShortcutItem.Properties.CurrentState.ShowNameOnSquare150X150Logo = result.DisplayForegroundText;
             CurrentShortcutItem.Properties.CurrentState.ForegroundText = result.ForegroundColor;
@@ -369,7 +370,7 @@ namespace TileIconifier.Controls.IconifierPanel
                 PanPctSmallIcon_OnPannablePictureImagePropertyChange;
             _panPctMediumIcon.DoubleClick -= _panPctMediumIcon_DoubleClick;
             _panPctSmallIcon.DoubleClick -= _panPctSmallIcon_DoubleClick;
-        }        
+        }
 
         private void _panPctMediumIcon_DoubleClick(object sender, EventArgs e)
         {
@@ -398,7 +399,7 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void PanPctMediumIcon_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
         {
-            var item = (PannablePictureBoxImage) sender;
+            var item = (PannablePictureBoxImage)sender;
             CurrentShortcutItem.Properties.CurrentState.MediumImage.X = item.X;
             CurrentShortcutItem.Properties.CurrentState.MediumImage.Y = item.Y;
             CurrentShortcutItem.Properties.CurrentState.MediumImage.Width = item.Width;
@@ -409,7 +410,7 @@ namespace TileIconifier.Controls.IconifierPanel
 
         private void PanPctSmallIcon_OnPannablePictureImagePropertyChange(object sender, EventArgs e)
         {
-            var item = (PannablePictureBoxImage) sender;
+            var item = (PannablePictureBoxImage)sender;
             CurrentShortcutItem.Properties.CurrentState.SmallImage.X = item.X;
             CurrentShortcutItem.Properties.CurrentState.SmallImage.Y = item.Y;
             CurrentShortcutItem.Properties.CurrentState.SmallImage.Width = item.Width;

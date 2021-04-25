@@ -3,7 +3,7 @@
 // /*
 //         The MIT License (MIT)
 // 
-//         Copyright (c) 2016 Johnathon M
+//         Copyright (c) 2021 Johnathon M
 // 
 //         Permission is hereby granted, free of charge, to any person obtaining a copy
 //         of this software and associated documentation files (the "Software"), to deal
@@ -58,12 +58,16 @@ namespace TileIconifier.Core
 
         private static string ConfigFileName => "TileIconifierConfig.xml";
         private static string ConfigFilePath => Path.Combine(IoUtils.ProgramDataPath, ConfigFileName);
-        
+
         public string LocaleToUse { get; set; }
         public bool GetPinnedItems { get; set; }
         public string LastSkin { get; set; }
 
         public int[] CustomColors { get; set; }
+
+        //calculated on every load - not committed to config file
+        public static bool StartMenuUpgradeEnabled { get; set; }
+        public bool DisableUpgradedStartMessage { get; set; }
 
         public void SaveConfig()
         {
@@ -87,7 +91,7 @@ namespace TileIconifier.Core
 
             using (var xmlFile = new FileStream(filePath, FileMode.Create))
             {
-                var xmlSerializer = new XmlSerializer(typeof (Config));
+                var xmlSerializer = new XmlSerializer(typeof(Config));
                 xmlSerializer.Serialize(xmlFile, this);
             }
         }
@@ -100,8 +104,8 @@ namespace TileIconifier.Core
             {
                 using (var xmlFile = new FileStream(filePath, FileMode.Open))
                 {
-                    var xmlDeserializer = new XmlSerializer(typeof (Config));
-                    var config = (Config) xmlDeserializer.Deserialize(xmlFile);
+                    var xmlDeserializer = new XmlSerializer(typeof(Config));
+                    var config = (Config)xmlDeserializer.Deserialize(xmlFile);
                     config.LoadedConfigFilePath = filePath;
                     return config;
                 }

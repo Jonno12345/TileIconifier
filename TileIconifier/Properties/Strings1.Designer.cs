@@ -19,7 +19,7 @@ namespace TileIconifier.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Strings {
@@ -275,6 +275,15 @@ namespace TileIconifier.Properties {
         internal static string IncorrectPlatformFull {
             get {
                 return ResourceManager.GetString("IncorrectPlatformFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        internal static string Information {
+            get {
+                return ResourceManager.GetString("Information", resourceCulture);
             }
         }
         
@@ -662,6 +671,15 @@ namespace TileIconifier.Properties {
         internal static string UpdateAvailableFull {
             get {
                 return ResourceManager.GetString("UpdateAvailableFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The start menu changes introduced in 20H2 are currently disabled. The application can now support these changes. It is recommended you revert this to use full functionality (click Cancel to disable this warning).
+        /// </summary>
+        internal static string UpgradedStartDisabled {
+            get {
+                return ResourceManager.GetString("UpgradedStartDisabled", resourceCulture);
             }
         }
         

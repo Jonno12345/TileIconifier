@@ -3,7 +3,7 @@
 // /*
 //         The MIT License (MIT)
 // 
-//         Copyright (c) 2016 Johnathon M
+//         Copyright (c) 2021 Johnathon M
 // 
 //         Permission is hereby granted, free of charge, to any person obtaining a copy
 //         of this software and associated documentation files (the "Software"), to deal
@@ -27,9 +27,9 @@
 
 #endregion
 
+using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Drawing;
-using Microsoft.Win32;
 using TileIconifier.Core.TileIconify;
 
 namespace TileIconifier.Core.Shortcut

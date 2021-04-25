@@ -3,7 +3,7 @@
 // /*
 //         The MIT License (MIT)
 // 
-//         Copyright (c) 2016 Johnathon M
+//         Copyright (c) 2021 Johnathon M
 // 
 //         Permission is hereby granted, free of charge, to any person obtaining a copy
 //         of this software and associated documentation files (the "Software"), to deal
@@ -40,6 +40,7 @@ namespace TileIconifier.Core.Shortcut.State
         public ShortcutItemState CurrentState { get; set; }
 
         public bool HasUnsavedChanges => !CurrentState.Equals(OldState);
+
         public bool ForegroundTextColourChanged => CurrentState.ForegroundText != OldState.ForegroundText;
 
         public void SaveMediumIconMetadata(string filePath)
@@ -69,6 +70,7 @@ namespace TileIconifier.Core.Shortcut.State
             //defaults
             OldState = new ShortcutItemState
             {
+                TileIconifierColorSelection = Enums.ColorSelection.Custom,
                 BackgroundColor = ShortcutConstantsAndEnums.DefaultAccentColor ?? "black",
                 ForegroundText = "light",
                 ShowNameOnSquare150X150Logo = true,
@@ -99,33 +101,39 @@ namespace TileIconifier.Core.Shortcut.State
                     }
 
                     var parameters = from b in xmlDoc.Descendants("VisualElements")
-                        select new ShortcutItemState
-                        {
-                            BackgroundColor = b.Attribute("BackgroundColor")?.Value,
-                            ForegroundText = b.Attribute("ForegroundText")?.Value,
-                            ShowNameOnSquare150X150Logo = b.Attribute("ShowNameOnSquare150x150Logo")?.Value == "on",
-                            MediumImage =
-                                mediumImage ?? new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutOutputSize)
-                                {
-                                    Bytes =
-                                        ImageUtils.LoadFileToByteArray(targetFolderPath +
-                                                                       b.Attribute("Square150x150Logo")?.Value),
-                                    X = 0,
-                                    Y = 0
-                                },
-                            SmallImage =
-                                smallImage ?? new ShortcutItemImage(ShortcutConstantsAndEnums.SmallShortcutOutputSize)
-                                {
-                                    Bytes =
-                                        ImageUtils.LoadFileToByteArray(targetFolderPath +
-                                                                       b.Attribute("Square70x70Logo")?.Value),
-                                    X = 0,
-                                    Y = 0
-                                }
-                        };
+                                     select new ShortcutItemState
+                                     {
+                                         TileIconifierMetadataCreatedWithUpgrade = b.Attribute("TileIconifierCreatedWithUpgrade")?.Value,
+                                         TileIconifierMetadataColorSelection = b.Attribute("TileIconifierColorSelection")?.Value,
+                                         BackgroundColor = b.Attribute("BackgroundColor")?.Value,
+                                         ForegroundText = b.Attribute("ForegroundText")?.Value,
+                                         ShowNameOnSquare150X150Logo = b.Attribute("ShowNameOnSquare150x150Logo")?.Value == "on",
+                                         MediumImage =
+                                             mediumImage ?? new ShortcutItemImage(ShortcutConstantsAndEnums.MediumShortcutOutputSize)
+                                             {
+                                                 Bytes =
+                                                     ImageUtils.LoadFileToByteArray(targetFolderPath +
+                                                                                    b.Attribute("Square150x150Logo")?.Value),
+                                                 X = 0,
+                                                 Y = 0
+                                             },
+                                         SmallImage =
+                                             smallImage ?? new ShortcutItemImage(ShortcutConstantsAndEnums.SmallShortcutOutputSize)
+                                             {
+                                                 Bytes =
+                                                     ImageUtils.LoadFileToByteArray(targetFolderPath +
+                                                                                    b.Attribute("Square70x70Logo")?.Value),
+                                                 X = 0,
+                                                 Y = 0
+                                             }
+                                     };
 
                     OldState = parameters.Single();
                     CurrentState = OldState.Clone();
+                    if (Config.StartMenuUpgradeEnabled)
+                    {
+                        CurrentState.TileIconifierMetadataCreatedWithUpgrade = true.ToString();
+                    }
                 }
                 catch
                 {

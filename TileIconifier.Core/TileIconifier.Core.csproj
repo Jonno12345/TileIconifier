@@ -83,6 +83,7 @@
     <Compile Include="Custom\Steam\SteamLibrary.cs" />
     <Compile Include="Custom\WindowsStoreShellMethod\WindowsStoreApp.cs" />
     <Compile Include="Custom\WindowsStoreShellMethod\WindowsStoreLibrary.cs" />
+    <Compile Include="Enums\ColorSelection.cs" />
     <Compile Include="IconExtractor\IconExtractor.cs" />
     <Compile Include="IconExtractor\IconUtil.cs" />
     <Compile Include="IconExtractor\NativeMethods.cs" />

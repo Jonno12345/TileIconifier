@@ -106,6 +106,7 @@ namespace TileIconifier.Controls.IconifierPanel
             // 
             // cmsPicBox
             // 
+            this.cmsPicBox.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsPicBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tmiChangeImage,
             this.tmiCentreImage});

@@ -3,7 +3,7 @@
 // /*
 //         The MIT License (MIT)
 // 
-//         Copyright (c) 2016 Johnathon M
+//         Copyright (c) 2021 Johnathon M
 // 
 //         Permission is hereby granted, free of charge, to any person obtaining a copy
 //         of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,6 @@
 
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -106,13 +105,13 @@ namespace TileIconifier.Forms.Main
         {
             BuildListViewImageList();
 
-            srtlstShortcuts.Items.Clear();            
+            srtlstShortcuts.Items.Clear();
             for (var i = 0; i < _filteredList.Count; i++)
             {
                 var shortcutItem = _filteredList[i];
-                srtlstShortcuts.Items.Add(shortcutItem);                
+                srtlstShortcuts.Items.Add(shortcutItem);
                 shortcutItem.ImageIndex = i;
-            }            
+            }
 
             if (srtlstShortcuts.Items.Count > 0)
             {
@@ -193,7 +192,7 @@ namespace TileIconifier.Forms.Main
             //only show remove if the icon is currently iconified
             btnRemove.Enabled = CurrentShortcutItem.IsIconified;
 
-            //only enable Iconify button if shortcut has unsaved changes
+            //only enable Iconify button if shortcut has unsaved changes or should be upgraded
             btnIconify.Enabled = CurrentShortcutItem.Properties.HasUnsavedChanges;
 
             //disable Build Custom Shortcut for items that are already custom shortcuts

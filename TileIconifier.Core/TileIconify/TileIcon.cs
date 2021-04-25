@@ -3,7 +3,7 @@
 // /*
 //         The MIT License (MIT)
 // 
-//         Copyright (c) 2016 Johnathon M
+//         Copyright (c) 2021 Johnathon M
 // 
 //         Permission is hereby granted, free of charge, to any person obtaining a copy
 //         of this software and associated documentation files (the "Software"), to deal
@@ -69,7 +69,7 @@ namespace TileIconifier.Core.TileIconify
         /// </summary>
         private void BackupOriginalVisualManifest()
         {
-            if(!File.Exists(_shortcutItem.VisualElementManifestPath) || 
+            if (!File.Exists(_shortcutItem.VisualElementManifestPath) ||
                 _shortcutItem.IsIconified ||
                 _shortcutItem.IconifiedByTileIconifier)
             {
@@ -92,7 +92,7 @@ namespace TileIconifier.Core.TileIconify
         /// </summary>
         private void RestoreOriginalVisualManifest()
         {
-            if(!File.Exists(_shortcutItem.VisualElementManifestPathOriginalBackup))
+            if (!File.Exists(_shortcutItem.VisualElementManifestPathOriginalBackup))
             {
                 return;
             }
@@ -110,7 +110,7 @@ namespace TileIconifier.Core.TileIconify
         private void BuildFilesAndFolders()
         {
             var xNamespace = XNamespace.Get("http://www.w3.org/2001/XMLSchema-instance");
-            
+
             var xDoc = new XDocument(
                 new XElement("Application",
                     new XAttribute(XNamespace.Xmlns + "xsi", xNamespace),
@@ -121,9 +121,11 @@ namespace TileIconifier.Core.TileIconify
                         new XAttribute("Square150x150Logo", _shortcutItem.RelativeMediumIconPath),
                         new XAttribute("Square70x70Logo", _shortcutItem.RelativeSmallIconPath),
                         new XAttribute("ForegroundText", _shortcutItem.Properties.CurrentState.ForegroundText),
-                        new XAttribute("BackgroundColor", _shortcutItem.Properties.CurrentState.BackgroundColor)
+                        new XAttribute("BackgroundColor", _shortcutItem.Properties.CurrentState.BackgroundColor),
+                        new XAttribute("TileIconifierColorSelection", _shortcutItem.Properties.CurrentState.TileIconifierColorSelection),
+                        new XAttribute("TileIconifierCreatedWithUpgrade", Config.StartMenuUpgradeEnabled)
                         )));
-            
+
             if (!Directory.Exists(_shortcutItem.VisualElementsPath))
             {
                 Directory.CreateDirectory(_shortcutItem.VisualElementsPath);
@@ -160,15 +162,19 @@ namespace TileIconifier.Core.TileIconify
         {
             BuildShortcutItemIcon(_shortcutItem.FullMediumIconPath, ShortcutConstantsAndEnums.MediumShortcutOutputSize,
                 _shortcutItem.Properties.CurrentState.MediumImage,
-                ShortcutConstantsAndEnums.MediumXyRatio);
+                ShortcutConstantsAndEnums.MediumXyRatio,
+                _shortcutItem.Properties.CurrentState.TileIconifierColorSelection,
+                _shortcutItem.Properties.CurrentState.BackgroundColor);
 
             BuildShortcutItemIcon(_shortcutItem.FullSmallIconPath, ShortcutConstantsAndEnums.SmallShortcutOutputSize,
                 _shortcutItem.Properties.CurrentState.SmallImage,
-                ShortcutConstantsAndEnums.SmallXyRatio);
+                ShortcutConstantsAndEnums.SmallXyRatio,
+                _shortcutItem.Properties.CurrentState.TileIconifierColorSelection,
+                _shortcutItem.Properties.CurrentState.BackgroundColor);
         }
 
         private static void BuildShortcutItemIcon(string fullIconPath, Size outputSize,
-            ShortcutItemImage shortcutItemImage, XyRatio xyRatio)
+            ShortcutItemImage shortcutItemImage, XyRatio xyRatio, Enums.ColorSelection tileIconifierColorSelection, string backgroundColor)
         {
             BuildIcon(fullIconPath, outputSize.Width,
                 outputSize.Height,
@@ -176,27 +182,40 @@ namespace TileIconifier.Core.TileIconify
                 (int)Math.Round(shortcutItemImage.Width * xyRatio.X, 0),
                 (int)Math.Round(shortcutItemImage.Height * xyRatio.Y, 0),
                 (int)Math.Round(shortcutItemImage.X * xyRatio.X, 0),
-                (int)Math.Round(shortcutItemImage.Y * xyRatio.Y, 0));
+                (int)Math.Round(shortcutItemImage.Y * xyRatio.Y, 0),
+                tileIconifierColorSelection,
+                backgroundColor);
         }
 
         private static void BuildIcon(string filePath, int width, int height, byte[] imageBytes, int imageWidth,
-            int imageHeight, int imageX, int imageY)
+            int imageHeight, int imageX, int imageY,
+            Enums.ColorSelection tileIconifierColorSelection,
+            string backgroundColor)
         {
             IoUtils.ForceDelete(filePath);
             using (var fs = new FileStream(filePath, FileMode.Create))
             {
-                var outputBitmap = new Bitmap(width, height);
+                var outputBitmap = new Bitmap(width, height, PixelFormat.Format32bppArgb);
 
                 var tempImage = ImageUtils.ByteArrayToImage(imageBytes);
                 tempImage = ImageUtils.ScaleImage(tempImage, imageWidth, imageHeight);
 
                 using (var graphics = Graphics.FromImage(outputBitmap))
                 {
-                    graphics.CompositingMode = CompositingMode.SourceCopy;
+                    if (Config.StartMenuUpgradeEnabled && tileIconifierColorSelection != Enums.ColorSelection.Default)
+                    {
+                        var color = ColorUtils.HexOrNameToColor(backgroundColor);
+                        graphics.Clear(color);
+                    }
+                    else
+                    {
+                        graphics.CompositingMode = CompositingMode.SourceCopy;
+                    }
                     graphics.CompositingQuality = CompositingQuality.HighQuality;
                     graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
                     graphics.SmoothingMode = SmoothingMode.HighQuality;
                     graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
                     graphics.DrawImage(tempImage,
                         new PointF(imageX, imageY));
                 }

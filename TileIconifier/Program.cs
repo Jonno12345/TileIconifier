@@ -3,7 +3,7 @@
 // /*
 //         The MIT License (MIT)
 // 
-//         Copyright (c) 2016 Johnathon M
+//         Copyright (c) 2021 Johnathon M
 // 
 //         Permission is hereby granted, free of charge, to any person obtaining a copy
 //         of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@
 
 #endregion
 
+using Microsoft.Win32;
 using System;
 using System.Globalization;
 using System.Threading;
@@ -54,8 +55,6 @@ namespace TileIconifier
         {
             SetUpLanguageFromConfig();
             ApplySkinFromConfig();
-            //Application.EnableVisualStyles(); //
-            //Application.Run(new Skinning.Skins.Form1()); //
             try
             {
                 if (!SystemUtils.IsAdministrator())
@@ -114,12 +113,46 @@ namespace TileIconifier
             //Test the machine is Windows 10 >= build 10586 or Windows 8.1
             var ver = Environment.OSVersion.Version;
             if (ver.Major < 6 || (ver.Major == 6 && ver.Minor < 3))
+            {
                 MessageBox.Show(Strings.WindowsBefore81,
                     @"TileIconifier - " + Strings.WindowsTooEarly, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            else if (ver.Major == 10 && ver.Build < 10586)
-                MessageBox.Show(
-                    Strings.WrongBuildWindows10,
-                    @"TileIconifier - " + Strings.BuildTooEarly, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            else if (ver.Major == 10)
+            {
+                if (ver.Build < 10586)
+                {
+                    MessageBox.Show(
+                        Strings.WrongBuildWindows10,
+                        @"TileIconifier - " + Strings.BuildTooEarly, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+                else if (ver.Build >= 19042)
+                {
+                    try
+                    {
+                        var enabledState = (int)Registry.GetValue(
+                            @"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FeatureManagement\Overrides\0\2093230218",
+                            "EnabledState", null);
+
+                        var upgradedStartEnabled = enabledState == 2;
+                        if (!Config.Instance.DisableUpgradedStartMessage && !upgradedStartEnabled)
+                        {
+                            if (MessageBox.Show(
+                                 Strings.UpgradedStartDisabled,
+                                 @"TileIconifier - " + Strings.Information, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.Cancel)
+                            {
+                                Config.Instance.DisableUpgradedStartMessage = true;
+                                Config.Instance.SaveConfig();
+                            }
+                        }
+                        Config.StartMenuUpgradeEnabled = upgradedStartEnabled;
+                    }
+                    catch
+                    {
+                        Config.StartMenuUpgradeEnabled = true;
+                    }
+                }
+            }
+
 
 
             ////Warning for Windows 8.1, but I think it's actually fine with all builds... Disabled it

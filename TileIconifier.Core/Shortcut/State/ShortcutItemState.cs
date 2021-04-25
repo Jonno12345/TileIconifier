@@ -3,7 +3,7 @@
 // /*
 //         The MIT License (MIT)
 // 
-//         Copyright (c) 2016 Johnathon M
+//         Copyright (c) 2021 Johnathon M
 // 
 //         Permission is hereby granted, free of charge, to any person obtaining a copy
 //         of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +29,7 @@
 
 using System;
 using System.Drawing;
+using TileIconifier.Core.Enums;
 
 namespace TileIconifier.Core.Shortcut.State
 {
@@ -55,6 +56,30 @@ namespace TileIconifier.Core.Shortcut.State
             set { _showNameOnSquare150X150Logo = value ? "on" : "off"; }
         }
 
+        public ColorSelection TileIconifierColorSelection
+        {
+            get { return (ColorSelection)Enum.Parse(typeof(ColorSelection), TileIconifierMetadataColorSelection); }
+            set
+            {
+                TileIconifierMetadataColorSelection = value.ToString("G");
+            }
+        }
+        public bool TileIconifierCreatedWithUpgrade
+        {
+            get
+            {
+                bool.TryParse(TileIconifierMetadataCreatedWithUpgrade, out var result);
+                return result;
+            }
+            set
+            {
+                TileIconifierMetadataCreatedWithUpgrade = value.ToString();
+            }
+        }
+
+        internal string TileIconifierMetadataColorSelection { get; set; }
+        internal string TileIconifierMetadataCreatedWithUpgrade { get; set; }
+
         public bool Equals(ShortcutItemState other)
         {
             if (ReferenceEquals(this, other))
@@ -65,7 +90,9 @@ namespace TileIconifier.Core.Shortcut.State
                    && ShowNameOnSquare150X150Logo == other?.ShowNameOnSquare150X150Logo
                    && MediumImage.Equals(other.MediumImage)
                    && SmallImage.Equals(other.SmallImage)
-                   && UseSystemAccentColor == other.UseSystemAccentColor;
+                   && UseSystemAccentColor == other.UseSystemAccentColor
+                   && TileIconifierColorSelection == other.TileIconifierColorSelection
+                   && TileIconifierCreatedWithUpgrade == other.TileIconifierCreatedWithUpgrade;
         }
 
         public bool MediumImageBytesEqual(ShortcutItemState other)
@@ -82,6 +109,8 @@ namespace TileIconifier.Core.Shortcut.State
         {
             return new ShortcutItemState
             {
+                TileIconifierColorSelection = TileIconifierColorSelection,
+                TileIconifierMetadataCreatedWithUpgrade = TileIconifierMetadataCreatedWithUpgrade,
                 BackgroundColor = BackgroundColor,
                 ForegroundText = ForegroundText,
                 ShowNameOnSquare150X150Logo = ShowNameOnSquare150X150Logo,

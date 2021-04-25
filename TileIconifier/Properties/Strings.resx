@@ -344,4 +344,10 @@ Do you wish to proceed to the donation page (https://www.paypal.me/Jonno12345)?<
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="UpgradedStartDisabled" xml:space="preserve">
+    <value>The start menu changes introduced in 20H2 are currently disabled. The application can now support these changes. It is recommended you revert this to use full functionality (click Cancel to disable this warning)</value>
+  </data>
 </root>
