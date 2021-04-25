@@ -32,6 +32,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using IWshRuntimeLibrary;
 using TileIconifier.Core.Properties;
+using TileIconifier.Core.Shortcut;
 using File = System.IO.File;
 
 namespace TileIconifier.Core.Utilities
@@ -39,11 +40,11 @@ namespace TileIconifier.Core.Utilities
     // Source: https://astoundingprogramming.wordpress.com/2012/12/17/how-to-get-the-target-of-a-windows-shortcut-c/
     public static class ShortcutUtils
     {
-        public static string GetTargetPath(string filePath)
+        public static ShortcutItemTarget GetTargetInfo(string filePath)
         {
-            var targetPath = ResolveMsiShortcut(filePath) ?? ResolveShortcut(filePath);
+            var targetInfo = ResolveMsiShortcut(filePath) ?? ResolveShortcut(filePath);
 
-            return targetPath;
+            return targetInfo;
         }
 
         public static string GetInternetShortcut(string filePath)
@@ -66,7 +67,7 @@ namespace TileIconifier.Core.Utilities
             return url;
         }
 
-        public static string ResolveShortcut(string filePath)
+        public static ShortcutItemTarget ResolveShortcut(string filePath)
         {
             // IWshRuntimeLibrary is in the COM library "Windows Script Host Object Model"
             var shell = new WshShell();
@@ -74,7 +75,13 @@ namespace TileIconifier.Core.Utilities
             try
             {
                 var shortcut = (IWshShortcut) shell.CreateShortcut(filePath);
-                return shortcut.TargetPath;
+                var iconLocation = shortcut.IconLocation ?? string.Empty;
+                return new ShortcutItemTarget
+                {
+                    FilePath = shortcut.TargetPath,
+                    Arguments = shortcut.Arguments,
+                    IconLocation = shortcut.IconLocation.Split(',')[0]
+                };
             }
             catch (COMException)
             {
@@ -110,7 +117,7 @@ namespace TileIconifier.Core.Utilities
             File.WriteAllText(path, string.Format(Resources.UrlFileTemplate, target));
         }
 
-        private static string ResolveMsiShortcut(string file)
+        private static ShortcutItemTarget ResolveMsiShortcut(string file)
         {
             var product = new StringBuilder(NativeMethods.MAX_GUID_LENGTH + 1);
             var feature = new StringBuilder(NativeMethods.MAX_FEATURE_LENGTH + 1);
@@ -124,7 +131,7 @@ namespace TileIconifier.Core.Utilities
             var installState = NativeMethods.MsiGetComponentPath(product.ToString(), component.ToString(), path,
                 ref pathLength);
 
-            return installState == NativeMethods.InstallState.Local ? path.ToString() : null;
+            return installState == NativeMethods.InstallState.Local ? (new ShortcutItemTarget { FilePath = path.ToString() }) : null;
         }
 
         private static class NativeMethods

@@ -144,7 +144,7 @@ namespace TileIconifier.Core.TileIconify
             }
 
             var manifestPath =
-                $"{_shortcutItem.TargetFolderPath}\\{Path.GetFileNameWithoutExtension(_shortcutItem.TargetFilePath)}.VisualElementsManifest.xml";
+                $"{_shortcutItem.TargetFolderPath}\\{Path.GetFileNameWithoutExtension(_shortcutItem.TargetInfo.FilePath)}.VisualElementsManifest.xml";
 
             if (File.Exists(manifestPath))
             {

@@ -75,7 +75,7 @@ namespace TileIconifier.Core.Shortcut
                 }
                 try
                 {
-                    return CustomShortcut.Load(TargetFilePath);
+                    return CustomShortcut.Load(TargetInfo.FilePath);
                 }
                 catch
                 {
@@ -96,7 +96,7 @@ namespace TileIconifier.Core.Shortcut
             }
         }
 
-        public bool IsValidForIconification => !string.IsNullOrEmpty(TargetFilePath) && File.Exists(TargetFilePath);
+        public bool IsValidForIconification => !string.IsNullOrEmpty(TargetInfo.FilePath) && File.Exists(TargetInfo.FilePath);
 
         //todo: merge this with property IconifiedByTileIconifier at some point, should be a better indicator but won't work retroactively
         public bool IsIconified => File.Exists(VisualElementManifestPath)
@@ -151,39 +151,39 @@ namespace TileIconifier.Core.Shortcut
 
         #region Path properties
 
-        private string _targetFilePath;
+        private ShortcutItemTarget _targetInfo = new ShortcutItemTarget();
 
-        public string TargetFilePath
+        public ShortcutItemTarget TargetInfo
         {
             get
             {
-                if (string.IsNullOrEmpty(_targetFilePath))
+                if (string.IsNullOrEmpty(_targetInfo.FilePath))
                 {
-                    _targetFilePath = ShortcutUtils.GetTargetPath(ShortcutFileInfo.FullName);
+                    _targetInfo = ShortcutUtils.GetTargetInfo(ShortcutFileInfo.FullName);
                 }
 
                 return
                     Environment.ExpandEnvironmentVariables("%PATHEXT%").Split(';').Any(
                         e =>
-                            string.Equals(Path.GetExtension(_targetFilePath), e,
+                            string.Equals(Path.GetExtension(_targetInfo.FilePath), e,
                                 StringComparison.InvariantCultureIgnoreCase))
-                        ? _targetFilePath
-                        : null;
+                        ? _targetInfo
+                        : new ShortcutItemTarget();
             }
         }
 
         public string VisualElementManifestPath =>
-            $"{TargetFolderPath}{Path.GetFileNameWithoutExtension(TargetFilePath)}.VisualElementsManifest.xml";
+            $"{TargetFolderPath}{Path.GetFileNameWithoutExtension(TargetInfo.FilePath)}.VisualElementsManifest.xml";
 
         public string VisualElementManifestPathOriginalBackup =>
             VisualElementManifestPath + ".originalbak";
 
-        public string TargetFolderPath => Path.GetDirectoryName(TargetFilePath) + "\\";
+        public string TargetFolderPath => Path.GetDirectoryName(TargetInfo.FilePath) + "\\";
 
         public string VisualElementsPath => TargetFolderPath + @"\VisualElements\";
 
         public string MediumIconName
-            => $"MediumIcon{Path.GetFileNameWithoutExtension(TargetFilePath)}.png";
+            => $"MediumIcon{Path.GetFileNameWithoutExtension(TargetInfo.FilePath)}.png";
 
         public string RelativeMediumIconPath
             => $"{Path.GetFileName(Path.GetDirectoryName(VisualElementsPath))}\\{MediumIconName}";
@@ -191,7 +191,7 @@ namespace TileIconifier.Core.Shortcut
         public string FullMediumIconPath => $"{VisualElementsPath}{MediumIconName}";
 
         public string SmallIconName
-            => $"SmallIcon{Path.GetFileNameWithoutExtension(TargetFilePath)}.png";
+            => $"SmallIcon{Path.GetFileNameWithoutExtension(TargetInfo.FilePath)}.png";
 
         public string RelativeSmallIconPath
             => $"{Path.GetFileName(Path.GetDirectoryName(VisualElementsPath))}\\{SmallIconName}";

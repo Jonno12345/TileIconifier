@@ -203,19 +203,19 @@ namespace TileIconifier.Controls.IconifierPanel
                     {
                         try
                         {
-                            var customShortcutExecutionTarget = CustomShortcut.Load(CurrentShortcutItem.TargetFilePath);
+                            var customShortcutExecutionTarget = CustomShortcut.Load(CurrentShortcutItem.TargetInfo.FilePath);
                             imagePath = customShortcutExecutionTarget.TargetPath.UnQuoteWrap();
                         }
                         catch (InvalidCustomShortcutException)
                         {
                             //corrupted custom shortcut?
-                            imagePath = CurrentShortcutItem.TargetFilePath;
+                            imagePath = CurrentShortcutItem.TargetInfo.FilePath;
                         }
                     }
                     else
                     {
                         //otherwise we just use the target file path from the shortcut
-                        imagePath = CurrentShortcutItem.TargetFilePath;
+                        imagePath = CurrentShortcutItem.TargetInfo.FilePath;
                     }
                 }
                 selectedImage = FrmIconSelector.GetImage(this, imagePath);
