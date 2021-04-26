@@ -1,5 +1,5 @@
 # TileIconifier
-Creates tiles for any Windows 8.1 (Largely untested) and Windows 10 (Build 10586 and above) Start Menu icon. Now has support for 2H20 release.
+Creates tiles for any Windows 8.1 (Largely untested) and Windows 10 (Build 10586 and above) Start Menu icon. Now has support for 20H2 release.
 
 --------------
 
