@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlignCentre" xml:space="preserve">
+    <value>Alinhar ao Centro</value>
+    <comment/>
+  </data>
+  <data name="AppId" xml:space="preserve">
+    <value>Id do App</value>
+    <comment/>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Nome do App</value>
+    <comment/>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+    <comment/>
+  </data>
+  <data name="GameName" xml:space="preserve">
+    <value>Nome do Jogo</value>
+    <comment/>
+  </data>
+  <data name="IsCustom" xml:space="preserve">
+    <value>É Personalizada</value>
+    <comment/>
+  </data>
+  <data name="IsIconified" xml:space="preserve">
+    <value>É Iconificada</value>
+    <comment/>
+  </data>
+  <data name="IsPinned" xml:space="preserve">
+    <value>Está Fixada</value>
+    <comment/>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+    <comment/>
+  </data>
+  <data name="ShortcutName" xml:space="preserve">
+    <value>Nome do Atalho</value>
+    <comment/>
+  </data>
+  <data name="ShortcutType" xml:space="preserve">
+    <value>Tipo de Atalho</value>
+    <comment/>
+  </data>
+  <data name="ShortcutUser" xml:space="preserve">
+    <value>Usuário do Atalho</value>
+    <comment/>
+  </data>
+  <data name="ChromeExtensionsFolder" xml:space="preserve">
+    <value>Selecione sua pasta de extensões do Chrome</value>
+    <comment/>
+  </data>
+  <data name="SteamExecutablePath" xml:space="preserve">
+    <value>Caminho do executável Steam</value>
+    <comment/>
+  </data>
+  <data name="SteamExecutablePathNotFound" xml:space="preserve">
+    <value>Caminho do executável Steam não encontrado!</value>
+    <comment/>
+  </data>
+  <data name="SteamInstallationPath" xml:space="preserve">
+    <value>Caminho de instalação da Steam</value>
+    <comment/>
+  </data>
+  <data name="SteamInstallationPathNotFound" xml:space="preserve">
+    <value>Caminho de instalação da Steam não encontrado!</value>
+    <comment/>
+  </data>
+  <data name="SteamLibraryFolders" xml:space="preserve">
+    <value>Pastas da biblioteca Steam</value>
+    <comment/>
+  </data>
+  <data name="SteamLibraryFoldersNotFound" xml:space="preserve">
+    <value>Pastas da biblioteca Steam não encontradas!</value>
+    <comment/>
+  </data>
+  <data name="SelectSteamInstallationPath" xml:space="preserve">
+    <value>Selecione a pasta contendo sua instalação Steam</value>
+    <comment/>
+  </data>
+  <data name="FileCouldNotBeFound" xml:space="preserve">
+    <value>Arquivo não encontrado</value>
+    <comment/>
+  </data>
+  <data name="InvalidSteamLibraryPath" xml:space="preserve">
+    <value>A pasta selecionada é inválida (as pastas válidas devem conter uma subpasta chamada "steamapps"), tente novamente ou cancele.</value>
+    <comment/>
+  </data>
+  <data name="SelectSteamLibraryPath" xml:space="preserve">
+    <value>Selecione uma pasta contendo sua biblioteca Steam (Esta será uma pasta contendo uma pasta "steamapps")</value>
+    <comment/>
+  </data>
+  <data name="QuickBuildExplanation" xml:space="preserve">
+    <value>Isso criará um atalho personalizado com os mesmos parâmetros que {0}. Isso é útil para blocos que não funcionam por padrão (como Microsoft Office e Mozilla Firefox). Por favor, confirme o nome do novo atalho (O mesmo nome do original não é um problema)</value>
+    <comment/>
+  </data>
+  <data name="ShortcutCreatedNeedsPinning" xml:space="preserve">
+    <value>Um atalho para {0} foi criado no menu iniciar em TileIconify. O item precisará ser fixado manualmente.</value>
+    <comment/>
+  </data>
+  <data name="UsesPowershell" xml:space="preserve">
+    <value>Nota - Este recurso usa Powershell e pode demorar um pouco mais para atualizar. Continuar?</value>
+    <comment/>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+    <comment/>
+  </data>
+  <data name="ShortcutCreated" xml:space="preserve">
+    <value>Atalho criado!</value>
+    <comment/>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Tem certeza?</value>
+    <comment/>
+  </data>
+  <data name="ConfirmDeleteCustomShortcut" xml:space="preserve">
+    <value>Tem certeza que deseja excluir o atalho para {0}?</value>
+    <comment/>
+  </data>
+  <data name="UnableToClearShortcuts" xml:space="preserve">
+    <value>Erro ao remover atalhos.</value>
+    <comment/>
+  </data>
+  <data name="WindowsBefore81" xml:space="preserve">
+    <value>Você está em uma versão do Windows anterior ao 8.1, alterações podem não ter qualquer efeito.</value>
+    <comment/>
+  </data>
+  <data name="WindowsTooEarly" xml:space="preserve">
+    <value>Versão Windows muito antiga</value>
+    <comment/>
+  </data>
+  <data name="WrongBuildWindows10" xml:space="preserve">
+    <value>Você está usando Windows 10, mas a build 10586 ou superior. O programa vai rodar, mas algumas coisas podem não funcionar.</value>
+    <comment/>
+  </data>
+  <data name="BuildTooEarly" xml:space="preserve">
+    <value>Build Muito Antiga</value>
+    <comment/>
+  </data>
+  <data name="IncorrectPlatformFull" xml:space="preserve">
+    <value>Você está executando como um processo de 32 bits dentro de um sistema operacional de 64 bits. Certas funcionalidades, como powershell, podem não funcionar corretamente.</value>
+    <comment/>
+  </data>
+  <data name="IncorrectPlatform" xml:space="preserve">
+    <value>Plataforma Incorreta</value>
+    <comment/>
+  </data>
+  <data name="RunAsAdminFull" xml:space="preserve">
+    <value>Você deve executar este programa como Administrador!</value>
+    <comment/>
+  </data>
+  <data name="RunAsAdmin" xml:space="preserve">
+    <value>Executar Como Administrador</value>
+    <comment/>
+  </data>
+  <data name="VerifyAdminFull" xml:space="preserve">
+    <value>Um erro ocoreu ao detectar o status de Administrador. Por favor confira se o programa realmente está rodando com os privilégios necessários.</value>
+    <comment/>
+  </data>
+  <data name="VerifyAdmin" xml:space="preserve">
+    <value>Verificar Administrador</value>
+    <comment/>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Carregando</value>
+    <comment/>
+  </data>
+  <data name="Refreshing" xml:space="preserve">
+    <value>Atualizando</value>
+    <comment/>
+  </data>
+  <data name="UpToDate" xml:space="preserve">
+    <value>Atualizado</value>
+    <comment/>
+  </data>
+  <data name="AlreadyLatest" xml:space="preserve">
+    <value>Você já está usando a versão mais recente!</value>
+    <comment/>
+  </data>
+  <data name="UpdateAvailableFull" xml:space="preserve">
+    <value>Atualização disponível! Gostaria de visitar a página de lançamentos? (Versão instalada: {0} - Última versão: {1})</value>
+    <comment/>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>Nova versão disponível!</value>
+    <comment/>
+  </data>
+  <data name="UpdateAvailableError" xml:space="preserve">
+    <value>Um erro ocoreu ao tentar obter detalhes sobre a atualização. Clique em OK para visitar a página de downloads. (Versão instalada: {0})</value>
+    <comment/>
+  </data>
+  <data name="UnableToCheckServer" xml:space="preserve">
+    <value>Não foi possível chegar aos servidores!</value>
+    <comment/>
+  </data>
+  <data name="PowershellErrorFull" xml:space="preserve">
+    <value>Um erro ocorreu ao acessar o PowerShell. Função desabilitada.</value>
+    <comment/>
+  </data>
+  <data name="PowershellFailure" xml:space="preserve">
+    <value>Falha no PowerShell</value>
+    <comment/>
+  </data>
+  <data name="ErrorLoadingImageFile" xml:space="preserve">
+    <value>Um erro ocorreu ao carregar o arquivo de imagem! Por favor tente outro.</value>
+    <comment/>
+  </data>
+  <data name="PleaseSelectAnIcon" xml:space="preserve">
+    <value>Selecione um ícone</value>
+    <comment/>
+  </data>
+  <data name="DonationNotification" xml:space="preserve">
+    <value>Doações para este app NUNCA serão exigidas mas SEMPRE serão bem-vindas. Este aplicativo SEMPRE será gratuito, open source, e com o melhor do meu suporte. Se você puder me ajudar com este e outros aplicativos, serei sempre grato de coração! Gostaria de ir para a página de doação (https://www.paypal.me/Jonno12345)?</value>
+    <comment/>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>Doação</value>
+    <comment/>
+  </data>
+  <data name="ConfirmRemoveIconification" xml:space="preserve">
+    <value>Deseja mesmo remover a iconificação?</value>
+    <comment/>
+  </data>
+  <data name="NoIconHasBeenSelected" xml:space="preserve">
+    <value>Nenhum ícone selecionado!</value>
+    <comment/>
+  </data>
+  <data name="TargetPathIsEmpty" xml:space="preserve">
+    <value>O caminho de destino está em branco!</value>
+    <comment/>
+  </data>
+  <data name="IssueWithImageSelected" xml:space="preserve">
+    <value>Um erro ocorreu com a imagem selecionada. Por favor tente de novo ou use outra imagem.</value>
+    <comment/>
+  </data>
+  <data name="IconError" xml:space="preserve">
+    <value>Erro no ícone</value>
+    <comment/>
+  </data>
+  <data name="InvalidCharactersOrInvalidShortcutName" xml:space="preserve">
+    <value>Carecteres inválidos ou nome de atalho inválido!</value>
+    <comment/>
+  </data>
+  <data name="SelectAFolder" xml:space="preserve">
+    <value>Selecione uma pasta</value>
+    <comment/>
+  </data>
+  <data name="ForegroundColourChangeExplain" xml:space="preserve">
+    <value>As alterações de cor em primeiro plano nem sempre se aplicam instantaneamente. Se essa mudança não for aplicada, tente desafixar e refixar o atalho.</value>
+    <comment/>
+  </data>
+  <data name="ForegroundColourChange" xml:space="preserve">
+    <value>Mudar Cor de Primeiro Plano</value>
+    <comment/>
+  </data>
+  <data name="UnableToClearUpShortcuts" xml:space="preserve">
+    <value>Erro ao limpar os atalhos.</value>
+    <comment/>
+  </data>
+  <data name="UnableToFindChromeInstallationPath" xml:space="preserve">
+    <value>Erro ao acessar o caminho de instalação do Chrome!</value>
+    <comment/>
+  </data>
+  <data name="PathNotFound" xml:space="preserve">
+    <value>Caminho não encontrado!</value>
+    <comment/>
+  </data>
+  <data name="NoItemsHaveBeenSelected" xml:space="preserve">
+    <value>Nenhum item foi selecionado!</value>
+    <comment/>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Concluído</value>
+    <comment/>
+  </data>
+  <data name="SelectValidColor" xml:space="preserve">
+    <value>Selecione uma cor válida!</value>
+    <comment/>
+  </data>
+  <data name="Abort" xml:space="preserve">
+    <value>Abortar</value>
+    <comment/>
+  </data>
+  <data name="Ignore" xml:space="preserve">
+    <value>Ignorar</value>
+    <comment/>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Não</value>
+    <comment/>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Repetir</value>
+    <comment/>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sim</value>
+    <comment/>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Informação</value>
+    <comment/>
+  </data>
+  <data name="UpgradedStartDisabled" xml:space="preserve">
+    <value>As alterações do menu iniciar introduzidas em 20H2 estão atualmente desativadas. O aplicativo agora pode suportar essas alterações. Recomenda-se que você reverta isso para usar a funcionalidade completa (clique em Cancelar para desativar este aviso)</value>
+    <comment/>
+  </data>
+</root>
