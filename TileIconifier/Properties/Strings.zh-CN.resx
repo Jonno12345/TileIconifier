@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlignCentre" xml:space="preserve">
+    <value>居中对齐</value>
+  </data>
+  <data name="AppId" xml:space="preserve">
+    <value>应用ID</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>应用名称</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="GameName" xml:space="preserve">
+    <value>游戏名称</value>
+  </data>
+  <data name="IsCustom" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="IsIconified" xml:space="preserve">
+    <value>图标化</value>
+  </data>
+  <data name="IsPinned" xml:space="preserve">
+    <value>固定</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>好的</value>
+  </data>
+  <data name="ShortcutName" xml:space="preserve">
+    <value>快捷方式名称</value>
+  </data>
+  <data name="ShortcutType" xml:space="preserve">
+    <value>快捷方式类型</value>
+  </data>
+  <data name="ShortcutUser" xml:space="preserve">
+    <value>快捷方式用户</value>
+  </data>
+  <data name="ChromeExtensionsFolder" xml:space="preserve">
+    <value>选择您的 Chrome `扩展程序` 文件夹</value>
+  </data>
+  <data name="SteamExecutablePath" xml:space="preserve">
+    <value>Steam 可执行文件路径：</value>
+  </data>
+  <data name="SteamExecutablePathNotFound" xml:space="preserve">
+    <value>未找到 Steam 可执行文件路径！！！</value>
+  </data>
+  <data name="SteamInstallationPath" xml:space="preserve">
+    <value>Steam 安装路径</value>
+  </data>
+  <data name="SteamInstallationPathNotFound" xml:space="preserve">
+    <value>未找到 Steam 安装路径！！！</value>
+  </data>
+  <data name="SteamLibraryFolders" xml:space="preserve">
+    <value>Steam 库文件夹</value>
+  </data>
+  <data name="SteamLibraryFoldersNotFound" xml:space="preserve">
+    <value>未找到 Steam 库路径！！！</value>
+  </data>
+  <data name="SelectSteamInstallationPath" xml:space="preserve">
+    <value>请选择您 Steam 所安装的文件夹</value>
+  </data>
+  <data name="FileCouldNotBeFound" xml:space="preserve">
+    <value>无法找到文件</value>
+  </data>
+  <data name="InvalidSteamLibraryPath" xml:space="preserve">
+    <value>所选文件夹无效（有效文件夹应包含名为“steamapps”的子文件夹），请重试或取消。</value>
+  </data>
+  <data name="SelectSteamLibraryPath" xml:space="preserve">
+    <value>选择一个包含您的 Steam 库的文件夹（该文件夹包含“steamapps”文件夹）</value>
+  </data>
+  <data name="QuickBuildExplanation" xml:space="preserve">
+    <value>这将创建一个与 {0} 具有相同参数的自定义快捷方式。这对于默认情况下不起作用的磁贴（例如 Microsoft Office 和 Mozilla Firefox）很有效。请确认新快捷方式的名称（可与原始名称相同）</value>
+  </data>
+  <data name="ShortcutCreatedNeedsPinning" xml:space="preserve">
+    <value>已在 TileIconify 下的开始菜单中创建了快捷方式“{0}”。该项目需要手动固定。</value>
+  </data>
+  <data name="UsesPowershell" xml:space="preserve">
+    <value>注意 - 此功能使用了 Powershell，可能需要稍长时间才能刷新。 是否继续？</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="ShortcutCreated" xml:space="preserve">
+    <value>快捷方式已创建！</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>您确定吗？</value>
+  </data>
+  <data name="ConfirmDeleteCustomShortcut" xml:space="preserve">
+    <value>您确定要删除 {0} 的自定义快捷方式吗？</value>
+  </data>
+  <data name="UnableToClearShortcuts" xml:space="preserve">
+    <value>无法清除快捷方式。</value>
+  </data>
+  <data name="WindowsBefore81" xml:space="preserve">
+    <value>您使用的是低于 8.1 版本的 Windows 系统，更改可能不会生效。</value>
+  </data>
+  <data name="WindowsTooEarly" xml:space="preserve">
+    <value>Windows 版本过旧</value>
+  </data>
+  <data name="WrongBuildWindows10" xml:space="preserve">
+    <value>您运行的是 Windows 10，但不是 Build 10586 或更高版本。程序将运行，但某些更改可能不会生效。</value>
+  </data>
+  <data name="BuildTooEarly" xml:space="preserve">
+    <value>构建过早</value>
+  </data>
+  <data name="IncorrectPlatformFull" xml:space="preserve">
+    <value>您在 64 位系统中以 32 位运行。某些功能（例如 powershell）可能无法正常工作。</value>
+  </data>
+  <data name="IncorrectPlatform" xml:space="preserve">
+    <value>平台错误</value>
+  </data>
+  <data name="RunAsAdminFull" xml:space="preserve">
+    <value>您必须以管理员身份运行此应用程序！</value>
+  </data>
+  <data name="RunAsAdmin" xml:space="preserve">
+    <value>以管理员身份运行</value>
+  </data>
+  <data name="VerifyAdminFull" xml:space="preserve">
+    <value>检测管理员状态时出错。请确认您以管理员身份运行，否则可能会出现问题。</value>
+  </data>
+  <data name="VerifyAdmin" xml:space="preserve">
+    <value>检测管理员状态</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>加载中</value>
+  </data>
+  <data name="Refreshing" xml:space="preserve">
+    <value>正在刷新</value>
+  </data>
+  <data name="UpToDate" xml:space="preserve">
+    <value>检测更新</value>
+  </data>
+  <data name="AlreadyLatest" xml:space="preserve">
+    <value>您已经使用了最新版本！</value>
+  </data>
+  <data name="UpdateAvailableFull" xml:space="preserve">
+    <value>有可用的更新！您想访问发布页面吗？（您的版本：{0} - 最新版本：{1}）</value>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>新版本可用！</value>
+  </data>
+  <data name="UpdateAvailableError" xml:space="preserve">
+    <value>获取最新版本信息时出错。请单击“确定”按钮访问最新版本页面以手动检查。（您的版本：{0}）</value>
+  </data>
+  <data name="UnableToCheckServer" xml:space="preserve">
+    <value>无法检查服务器！</value>
+  </data>
+  <data name="PowershellErrorFull" xml:space="preserve">
+    <value>PowerShell 功能出现问题。它已被禁用。</value>
+  </data>
+  <data name="PowershellFailure" xml:space="preserve">
+    <value>PowerShell 错误</value>
+  </data>
+  <data name="ErrorLoadingImageFile" xml:space="preserve">
+    <value>尝试加载此图像文件时发生错误！请尝试另一个。</value>
+  </data>
+  <data name="PleaseSelectAnIcon" xml:space="preserve">
+    <value>请选择一个图标</value>
+  </data>
+  <data name="DonationNotification" xml:space="preserve">
+    <value>本软件将“永远不强制捐款”，但如果您打赏我，我将十分感谢。此应用程序将“始终”是免费开源的，并且我将尽我所能提供支持。如果您愿意在此和未来的应用程序中帮助支持我，我将不胜感激！
+
+您想进入打赏页面（ https://www.paypal.me/Jonno12345 ）吗？
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>打赏</value>
+  </data>
+  <data name="ConfirmRemoveIconification" xml:space="preserve">
+    <value>您确定要删除图标化吗？</value>
+  </data>
+  <data name="NoIconHasBeenSelected" xml:space="preserve">
+    <value>未选择图标！</value>
+  </data>
+  <data name="TargetPathIsEmpty" xml:space="preserve">
+    <value>目标路径为空！</value>
+  </data>
+  <data name="IssueWithImageSelected" xml:space="preserve">
+    <value>所选图像出现问题。请重新加载图标或尝试另一个。</value>
+  </data>
+  <data name="IconError" xml:space="preserve">
+    <value>图标错误</value>
+  </data>
+  <data name="InvalidCharactersOrInvalidShortcutName" xml:space="preserve">
+    <value>无效字符或无效快捷方式名称！</value>
+  </data>
+  <data name="SelectAFolder" xml:space="preserve">
+    <value>请选择一个文件夹</value>
+  </data>
+  <data name="ForegroundColourChangeExplain" xml:space="preserve">
+    <value>前景色更改并不总是立即应用。如果此更改尚未应用，请尝试取消固定并重新固定快捷方式。</value>
+  </data>
+  <data name="ForegroundColourChange" xml:space="preserve">
+    <value>更改前景色</value>
+  </data>
+  <data name="UnableToClearUpShortcuts" xml:space="preserve">
+    <value>无法清除快捷方式。</value>
+  </data>
+  <data name="UnableToFindChromeInstallationPath" xml:space="preserve">
+    <value>无法找到 Chrome 安装路径！</value>
+  </data>
+  <data name="PathNotFound" xml:space="preserve">
+    <value>未找到路径</value>
+  </data>
+  <data name="NoItemsHaveBeenSelected" xml:space="preserve">
+    <value>没有选择任何项目！</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>已完成</value>
+  </data>
+  <data name="SelectValidColor" xml:space="preserve">
+    <value>请选择有效的颜色！</value>
+  </data>
+  <data name="Abort" xml:space="preserve">
+    <value>舍弃</value>
+  </data>
+  <data name="Ignore" xml:space="preserve">
+    <value>忽略</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>重试</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="UpgradedStartDisabled" xml:space="preserve">
+    <value>在 Windows(20H2) 中引入的开始菜单更改当前已禁用。本应用现在支持这些更改。建议您将其启用以使用完整功能（单击取消以禁用此警告）</value>
+  </data>
+</root>
