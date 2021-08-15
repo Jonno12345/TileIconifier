@@ -40,8 +40,8 @@ namespace TileIconifier.Core.Custom.Steam
     {
         private readonly string[] _defaultInstallationPaths =
         {
-            Environment.ExpandEnvironmentVariables(@"%programfiles(x86)%\Steam\"),
-            Environment.ExpandEnvironmentVariables(@"%programfiles%\Steam\")
+            Environment.ExpandEnvironmentVariables(@"D:\Steam"),
+            Environment.ExpandEnvironmentVariables(@"D:\Steam")
         };
 
         private readonly List<string> _steamLibraryFolders = new List<string>();
