@@ -1,30 +1,26 @@
 ﻿#region LICENCE
 
-// /*
-//         The MIT License (MIT)
-// 
-//         Copyright (c) 2021 Johnathon M
-// 
-//         Permission is hereby granted, free of charge, to any person obtaining a copy
-//         of this software and associated documentation files (the "Software"), to deal
-//         in the Software without restriction, including without limitation the rights
-//         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//         copies of the Software, and to permit persons to whom the Software is
-//         furnished to do so, subject to the following conditions:
-// 
-//         The above copyright notice and this permission notice shall be included in
-//         all copies or substantial portions of the Software.
-// 
-//         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-//         THE SOFTWARE.
-// 
-// */
-
+/****************************************************************************
+ *  Library: KeyValues 
+ *  Version: 1.0.0.0
+ *  By: Callysto.net (http://www.callysto.net)
+ *  Target: .NET FRAMEWORK 2.0
+ *  
+ * 
+ *  This library is inspired on "Source Engine" (HL2SDK) KeyValues Class
+ *  http://developer.valvesoftware.com/wiki/KeyValues_class (SourceSDK KeyValues Class)
+ *  It was used to save data and for send data to a entity.
+ *  It can have unlimited keys and subkeys inside a KeyValue
+ *  SourceSDK KeyValues metods: http://svn.alliedmods.net/viewvc.cgi/hl2sdk/public/tier1/KeyValues.h?view=co&root=sourcemm
+ *  Diferences: 
+ *  * More Metods
+ *  ** More easy to loop all keys
+ *  *** Easy to update or add features
+ *
+ *  
+ *  
+ * ***************************************************************************
+*/
 #endregion
 
 using System;
@@ -136,6 +132,25 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
             SetComment(firstKey, firstComment);
             SetString(secoundKey, secoundValue);
             SetComment(secoundKey, secoundComment);
+        }
+
+        public List<KeyValuesData> GetFlattenedKeyValuePairs()
+        {
+            return GetFlattenedItems(this).Distinct().ToList();
+        }
+        private static IEnumerable<KeyValuesData> GetFlattenedItems(KeyValues keyValues)
+        {
+            foreach (var knv in keyValues.KeyNameValues)
+            {
+                yield return knv;
+            }
+            foreach (var childItem in keyValues.KeyChilds)
+            {
+                foreach (var flattened in GetFlattenedItems(childItem))
+                {
+                    yield return flattened;
+                }
+            }
         }
 
         public KeyValues(string setName, KeyValuesData keyValue)
@@ -260,7 +275,7 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj is KeyValues && Equals((KeyValues) obj);
+            return obj is KeyValues && Equals((KeyValues)obj);
         }
 
         /// <summary>
@@ -273,16 +288,22 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
         /// <filterpriority>2</filterpriority>
         public override int GetHashCode()
         {
-            // Getting hash codes from volatile variables doesn't seem a good move... //TODO Find an immutable way?
-            var result = Name?.GetHashCode() ?? 0;
-            result = (result*397) ^ (KeyNameValues?.GetHashCode() ?? 0);
-            result = (result*397) ^ (KeyChilds?.GetHashCode() ?? 0);
-            result = (result*397) ^ (FirstParent?.GetHashCode() ?? 0);
-            result = (result*397) ^ (Parent?.GetHashCode() ?? 0);
-            result = (result*397) ^ NextSubKeyIndex.GetHashCode();
-            result = (result*397) ^ NextKeyValueIndex.GetHashCode();
-            result = (result*397) ^ DistanceFromTop.GetHashCode();
-            return result;
+            unchecked
+            {
+                // Getting hash codes from volatile variables doesn't seem a good move... //TODO Find an immutable way?
+                var result = Name?.GetHashCode() ?? 0;
+                result = (result * 397) ^ (KeyNameValues?.GetHashCode() ?? 0);
+                result = (result * 397) ^ (KeyChilds?.GetHashCode() ?? 0);
+                if (FirstParent != this) //prevent stack overflow when hitting top level parent
+                {
+                    result = (result * 397) ^ (FirstParent?.GetHashCode() ?? 0);
+                }
+                result = (result * 397) ^ (Parent?.GetHashCode() ?? 0);
+                result = (result * 397) ^ NextSubKeyIndex.GetHashCode();
+                result = (result * 397) ^ NextKeyValueIndex.GetHashCode();
+                result = (result * 397) ^ DistanceFromTop.GetHashCode();
+                return result;
+            }
         }
 
         /// <summary>
@@ -544,7 +565,7 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
             {
                 wasQuoted = true;
                 line = line.Remove(0, 1);
-                var delimeedString = line.Split(new[] {'"'}, StringSplitOptions.RemoveEmptyEntries);
+                var delimeedString = line.Split(new[] { '"' }, StringSplitOptions.RemoveEmptyEntries);
                 var assertSplit = false;
                 foreach (var s in delimeedString)
                 {
@@ -623,13 +644,13 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
         private uint RetriveIndex(List<string> lines, string search, uint startIndex)
         {
             if (string.IsNullOrEmpty(search)) return 0;
-            for (var i = (int) startIndex; i < lines.Count; i++)
+            for (var i = (int)startIndex; i < lines.Count; i++)
             {
                 bool wasQuote;
                 bool wasComment;
                 var kvPair = ReadToken(lines[i], out wasQuote, out wasComment);
                 if (kvPair.Key == search && !wasComment && !wasQuote)
-                    return (uint) i;
+                    return (uint)i;
             }
             return 0;
         }
@@ -669,7 +690,7 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
             {
                 bool wasQuoted;
                 bool wasComment;
-                var kvPair = ReadToken(stream[(int) i], out wasQuoted, out wasComment);
+                var kvPair = ReadToken(stream[(int)i], out wasQuoted, out wasComment);
                 if (string.IsNullOrEmpty(kvPair.Key)) continue;
                 endPos = i;
                 // Is the end of KeyValues Class?
@@ -930,7 +951,7 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
             if (NextSubKeyIndex < KeyChilds.Count)
             {
                 NextSubKeyIndex++;
-                return KeyChilds[(int) NextSubKeyIndex - 1];
+                return KeyChilds[(int)NextSubKeyIndex - 1];
             }
             return null;
         }
@@ -951,7 +972,7 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
             if (NextKeyValueIndex < KeyNameValues.Count)
             {
                 NextKeyValueIndex++;
-                return KeyNameValues[(int) NextKeyValueIndex - 1];
+                return KeyNameValues[(int)NextKeyValueIndex - 1];
             }
             return null;
         }
@@ -970,7 +991,7 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
             uint count = 0;
             for (var i = startPos; i < KeyNameValues.Count; i++)
             {
-                KeyNameValues[(int) i].Parent = null;
+                KeyNameValues[(int)i].Parent = null;
                 count++;
             }
             KeyNameValues.Clear();
@@ -1033,7 +1054,7 @@ namespace TileIconifier.Core.Custom.Steam.KeyValues
                 return false;
             if (index >= KeyNameValues.Count)
                 return false;
-            KeyNameValues[(int) index].Comment = value;
+            KeyNameValues[(int)index].Comment = value;
             return true;
         }
 

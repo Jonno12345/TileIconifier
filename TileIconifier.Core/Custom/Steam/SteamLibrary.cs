@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using TileIconifier.Core.Shortcut;
 
 namespace TileIconifier.Core.Custom.Steam
@@ -103,9 +102,10 @@ namespace TileIconifier.Core.Custom.Steam
 
             var kv = new KeyValues.KeyValues("LibraryFolders");
             kv.LoadFromFile(GetLibraryFoldersVdf());
+            var flattenedKvp = kv.GetFlattenedKeyValuePairs();
             foreach (
                 var keyValuePair in
-                    kv.KeyNameValues.Where(keyValuePair => Regex.Match(keyValuePair.Key, @"\d+").Success))
+                    flattenedKvp.Where(keyValuePair => keyValuePair.Key == "path"))
             {
                 try
                 {
