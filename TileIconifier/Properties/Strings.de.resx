@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppId" xml:space="preserve">
+    <value>App-ID</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>App-Name</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="GameName" xml:space="preserve">
+    <value>Spielname</value>
+  </data>
+  <data name="IsCustom" xml:space="preserve">
+    <value>Ist benutzerdefiniert</value>
+  </data>
+  <data name="IsPinned" xml:space="preserve">
+    <value>Ist angeheftet</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ShortcutName" xml:space="preserve">
+    <value>Verknüpfung-Name</value>
+  </data>
+  <data name="ShortcutType" xml:space="preserve">
+    <value>Verknüpfung-Typ</value>
+  </data>
+  <data name="ShortcutUser" xml:space="preserve">
+    <value>Verknüpfung-Benutzer</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="ShortcutCreated" xml:space="preserve">
+    <value>Verknüpfung erstellt!</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Sind Sie sicher?</value>
+  </data>
+  <data name="ConfirmDeleteCustomShortcut" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie die benutzerdefinierte Verknüpfung für {0} löschen möchten?</value>
+  </data>
+  <data name="UnableToClearShortcuts" xml:space="preserve">
+    <value>Verknüpfungen konnten nicht bereinigt werden.</value>
+  </data>
+  <data name="WindowsBefore81" xml:space="preserve">
+    <value>Sie verwenden eine Version von Windows vor 8.1, so dass die Änderungen möglicherweise keine Auswirkungen haben.</value>
+  </data>
+  <data name="WindowsTooEarly" xml:space="preserve">
+    <value>Version von Windows nicht geeignet</value>
+  </data>
+  <data name="WrongBuildWindows10" xml:space="preserve">
+    <value>Sie verwenden Windows 10, aber nicht die Build 10586 oder höher. Das Programm wird ausgeführt, aber einige Änderungen haben möglicherweise keine Auswirkungen.</value>
+  </data>
+  <data name="BuildTooEarly" xml:space="preserve">
+    <value>Build zu niedrig</value>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>Spende</value>
+  </data>
+  <data name="NoIconHasBeenSelected" xml:space="preserve">
+    <value>Es wurde kein Symbol ausgewählt!</value>
+  </data>
+  <data name="TargetPathIsEmpty" xml:space="preserve">
+    <value>Ziel-Pfad ist leer!</value>
+  </data>
+  <data name="IconError" xml:space="preserve">
+    <value>Symbolfehler</value>
+  </data>
+  <data name="SelectAFolder" xml:space="preserve">
+    <value>Einen Ordner auswählen</value>
+  </data>
+  <data name="UnableToFindChromeInstallationPath" xml:space="preserve">
+    <value>Installationsverzeichnis von Chrome konnte nicht gefunden werden!</value>
+  </data>
+  <data name="PathNotFound" xml:space="preserve">
+    <value>Pfad nicht gefunden</value>
+  </data>
+  <data name="NoItemsHaveBeenSelected" xml:space="preserve">
+    <value>Es wurden keine Einträge ausgewählt!</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Fertiggestellt</value>
+  </data>
+  <data name="SelectValidColor" xml:space="preserve">
+    <value>Bitte eine gültige Farbe auswählen!</value>
+  </data>
+  <data name="Abort" xml:space="preserve">
+    <value>Abbruch</value>
+  </data>
+  <data name="Ignore" xml:space="preserve">
+    <value>Ignorieren</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Wiederholen</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Wird geladen</value>
+  </data>
+  <data name="Refreshing" xml:space="preserve">
+    <value>Aktualisiere</value>
+  </data>
+  <data name="UpToDate" xml:space="preserve">
+    <value>Ist aktuell</value>
+  </data>
+  <data name="AlreadyLatest" xml:space="preserve">
+    <value>Sie verwenden bereits die aktuellste Version!</value>
+  </data>
+  <data name="UpdateAvailableFull" xml:space="preserve">
+    <value>Ein Update ist verfügbar! Wollen Sie die Downloadseite öffnen? (Ihre Version: {0} - Aktuelle Version: {1})</value>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>Neue Version verfügbar!</value>
+  </data>
+  <data name="UnableToCheckServer" xml:space="preserve">
+    <value>Verbindung zum Server nicht möglich!</value>
+  </data>
+  <data name="PowershellFailure" xml:space="preserve">
+    <value>PowerShell-Fehler</value>
+  </data>
+  <data name="PleaseSelectAnIcon" xml:space="preserve">
+    <value>Bitte wählen Sie ein Symbol</value>
+  </data>
+  <data name="IncorrectPlatform" xml:space="preserve">
+    <value>Nicht geeignete Plattform</value>
+  </data>
+  <data name="RunAsAdminFull" xml:space="preserve">
+    <value>Sie müssen diese Anwendung als Administrator ausführen!</value>
+  </data>
+  <data name="RunAsAdmin" xml:space="preserve">
+    <value>Als Administrator ausführen</value>
+  </data>
+  <data name="VerifyAdminFull" xml:space="preserve">
+    <value>Bei der Prüfung auf Administrator-Rechte ist ein Fehler aufgetreten. Bitte prüfen Sie ob die Anwendung als Administrator ausgeführt wird, da sonst Probleme auftreten können.</value>
+  </data>
+  <data name="VerifyAdmin" xml:space="preserve">
+    <value>Administrator verifizieren</value>
+  </data>
+  <data name="AlignCentre" xml:space="preserve">
+    <value>Mittig anordnen</value>
+  </data>
+  <data name="IsIconified" xml:space="preserve">
+    <value>Ist symbolisiert</value>
+  </data>
+  <data name="ChromeExtensionsFolder" xml:space="preserve">
+    <value>Wählen Sie Ihren Chrome-Erweiterungs-Ordner</value>
+  </data>
+  <data name="SteamExecutablePath" xml:space="preserve">
+    <value>Pfad zur Steam.exe</value>
+  </data>
+  <data name="SteamExecutablePathNotFound" xml:space="preserve">
+    <value>Pfad zur Steam.exe nicht gefunden!!!</value>
+  </data>
+  <data name="SteamInstallationPath" xml:space="preserve">
+    <value>Steam-Installationspfad</value>
+  </data>
+  <data name="SteamInstallationPathNotFound" xml:space="preserve">
+    <value>Steam-Installationspfad nicht gefunden!!!</value>
+  </data>
+  <data name="SteamLibraryFolders" xml:space="preserve">
+    <value>Steam-Bibliothekordner</value>
+  </data>
+  <data name="SteamLibraryFoldersNotFound" xml:space="preserve">
+    <value>Steam-Bibliothekrodner nicht gefunden!!!</value>
+  </data>
+  <data name="SelectSteamInstallationPath" xml:space="preserve">
+    <value>Wählen Sie den Ordner der die Installation von Steam enthält</value>
+  </data>
+  <data name="FileCouldNotBeFound" xml:space="preserve">
+    <value>Datei konnte nicht gefunden werden!!!</value>
+  </data>
+  <data name="InvalidSteamLibraryPath" xml:space="preserve">
+    <value>Ausgewähltes Verzeichnis ist ungültig (gültige Ordner sollten einen Unterordner namens "steamapps" enthalten). Bitte erneut versuchen oder abbrechen.</value>
+  </data>
+  <data name="SelectSteamLibraryPath" xml:space="preserve">
+    <value>Einen Ordner auswählen, der Ihre Steam-Bibliothek enthält (das muss ein Ordner sein, der einen Ordner namens "steamapps" enthält)</value>
+  </data>
+  <data name="QuickBuildExplanation" xml:space="preserve">
+    <value>Dies wird eine benutzerdefinierte Verknüpfung, mit den selben Parametern wie {0}, erstellen. Das ist sinnvoll für Kacheln die anders als der Standard funtkionieren (z.B. Microsoft Office und Mozilla Firefox). Bitte bestätigen Sie den Namen der neuen Verknüpfung (der selbe Name wie das Original stellt kein Problem dar).</value>
+  </data>
+  <data name="ShortcutCreatedNeedsPinning" xml:space="preserve">
+    <value>Eine Verknüpfung für {0} wurde in Ihrem Startmenü unter Tileconify erstellt. Der Eintrag muss manuell angeheftet werden.</value>
+  </data>
+  <data name="UsesPowershell" xml:space="preserve">
+    <value>Hinweis: Diese Funktion nutzt PowerShell und benötigt möglicherweise länger zum aktualisieren. Fortfahren?</value>
+  </data>
+  <data name="IncorrectPlatformFull" xml:space="preserve">
+    <value>Sie führen einen 32bit-Prozess auf einem 64bit-Betriebssystem aus. Bestimmte Funktionalitäten, wie z.B. PowerShell, arbeiten möglicherweise nicht korrekt.</value>
+  </data>
+  <data name="UpdateAvailableError" xml:space="preserve">
+    <value>Beim Abruf der Informationen für das aktuellste Release ist ein Fehler aufgetreten. Klicken Sie auf OK um die Release-Webseite aufzurufen. (Ihre Version: {0})</value>
+  </data>
+  <data name="PowershellErrorFull" xml:space="preserve">
+    <value>Mit PowerShell ist ein Fehler aufgetreten. Diese wurde deaktiviert.</value>
+  </data>
+  <data name="ErrorLoadingImageFile" xml:space="preserve">
+    <value>Es ist ein Fehler beim Laden der Bilddatei aufgetreten! Bitte versuchen Sie eine andere Datei.</value>
+  </data>
+  <data name="DonationNotification" xml:space="preserve">
+    <value>Für diese Anwendung zu spenden ist kein Zwang, es ist aber wünschenswert. Die Anwendung wird IMMER kostenlos, quelloffen und nach bestem Wissen und Gewissen von mir unterstützt werden. Wenn Sie mich mit dieser oder anderen Anwendungen unterstützten möchten, wäre ich sehr dankbar!
+
+Möchten Sie zur Spenden-Seite (https://www.paypal.me/Jonno12345) weitergeleitet werden?</value>
+  </data>
+  <data name="ConfirmRemoveIconification" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie die Darstellung entfernen möchten?</value>
+  </data>
+  <data name="IssueWithImageSelected" xml:space="preserve">
+    <value>Es gibt ein Problem mit dem ausgewählten Bild. Bitte laden Sie das Symbol erneut oder versuchen ein anderes.</value>
+  </data>
+  <data name="InvalidCharactersOrInvalidShortcutName" xml:space="preserve">
+    <value>Ungültige Zeichen oder unültiger Verknüpfungsname!</value>
+  </data>
+  <data name="ForegroundColourChangeExplain" xml:space="preserve">
+    <value>Änderungen der Vordergrundfarbe können nicht immer sofort angewandt werden. Wenn dies der Fall sein sollte, entfernen Sie die Verknüpfung und heften Sie diese erneut an.</value>
+  </data>
+  <data name="ForegroundColourChange" xml:space="preserve">
+    <value>Änderung der Vordergrundfarbe</value>
+  </data>
+  <data name="UnableToClearUpShortcuts" xml:space="preserve">
+    <value>Verknüpfungen konnten nicht bereinigt werden.</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="UpgradedStartDisabled" xml:space="preserve">
+    <value>Die mit 20H2 eingeführten Änderungen des Startmenü sind derzeit deaktiviert. Die Anwendung unterstüzt nunmehr diese Änderungen. Es wird empfohlen dies zurückzusetzen, um die volle Funktionalität zu verwenden (zum deaktivieren der Warnung auf Abbrechen drücken).</value>
+  </data>
+</root>
