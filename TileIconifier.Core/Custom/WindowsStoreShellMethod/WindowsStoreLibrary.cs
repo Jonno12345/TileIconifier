@@ -27,6 +27,7 @@
 
 #endregion
 
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -34,7 +35,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Microsoft.Win32;
 using TileIconifier.Core.Utilities;
 
 namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
@@ -58,24 +58,24 @@ namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
             // valid keys will have a subkey of "Application". This will have either a default value which is a human readable displayname
             // or will have a resource file display name in "FriendlyTypeName". We also need AppUserModelID, and get the logo from ApplicationIcon
             foreach (var storeApp in from appPackage in appPackages
-                select rootKey.OpenSubKey(appPackage)
+                                     select rootKey.OpenSubKey(appPackage)
                 into appPackageSubKey
-                where
-                    appPackageSubKey != null &&
-                    appPackageSubKey.GetSubKeyNames()
-                        .Any(s => string.Equals(s, "application", StringComparison.InvariantCultureIgnoreCase))
-                let appPackageApplicationKey =
-                    (string) appPackageSubKey.OpenSubKey("Application")?.GetValue("AppUserModelID")
-                let appPackageIconPath =
-                    GetIconPath((string) appPackageSubKey.OpenSubKey("Application")?.GetValue("ApplicationIcon"))
-                let appPackageDisplayName = appPackageSubKey.GetValueNames().Contains("FriendlyTypeName")
-                    ? GetDisplayName((string) appPackageSubKey.GetValue("FriendlyTypeName"))
-                    : (string) appPackageSubKey.GetValue(null)
-                where !string.IsNullOrEmpty(appPackageDisplayName) && !string.IsNullOrEmpty(appPackageApplicationKey)
-                select new WindowsStoreApp(appPackageDisplayName, appPackageIconPath, appPackageApplicationKey)
+                                     where
+                                         appPackageSubKey != null &&
+                                         appPackageSubKey.GetSubKeyNames()
+                                             .Any(s => string.Equals(s, "application", StringComparison.InvariantCultureIgnoreCase))
+                                     let appPackageApplicationKey =
+                                         (string)appPackageSubKey.OpenSubKey("Application")?.GetValue("AppUserModelID")
+                                     let appPackageIconPath =
+                                         GetIconPath((string)appPackageSubKey.OpenSubKey("Application")?.GetValue("ApplicationIcon"))
+                                     let appPackageDisplayName = appPackageSubKey.GetValueNames().Contains("FriendlyTypeName")
+                                         ? GetDisplayName((string)appPackageSubKey.GetValue("FriendlyTypeName"))
+                                         : (string)appPackageSubKey.GetValue(null)
+                                     where !string.IsNullOrEmpty(appPackageDisplayName) && !string.IsNullOrEmpty(appPackageApplicationKey)
+                                     select new WindowsStoreApp(appPackageDisplayName, appPackageIconPath, appPackageApplicationKey)
                 into storeApp
-                where !storeApps.Contains(storeApp, new WindowsStoreAppEqualityComparer())
-                select storeApp)
+                                     where !storeApps.Contains(storeApp, new WindowsStoreAppEqualityComparer())
+                                     select storeApp)
             {
                 storeApps.Add(storeApp);
             }
@@ -100,21 +100,21 @@ namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
             var appPackages = rootKey.GetSubKeyNames();
 
             foreach (var tempStoreApp in from appPackage in appPackages
-                let mainKey = rootKey.OpenSubKey(appPackage)
-                let activatableClassIdKey = mainKey?.OpenSubKey("ActivatableClassId")
-                where activatableClassIdKey != null
-                let subKeys = activatableClassIdKey.GetSubKeyNames()
-                where subKeys.Any()
-                let workingKey = activatableClassIdKey.OpenSubKey(subKeys[0])
-                where workingKey != null
-                let iconPath = GetIconPath((string) workingKey.GetValue("Icon"))
-                let displayName = GetDisplayName((string) workingKey.GetValue("DisplayName"))
-                let executionPath = GetExecutionPathFromName(appPackage) + "!" + subKeys[0]
-                where !string.IsNullOrEmpty(executionPath) && !string.IsNullOrEmpty(displayName)
-                select new WindowsStoreApp(displayName, iconPath, executionPath)
+                                         let mainKey = rootKey.OpenSubKey(appPackage)
+                                         let activatableClassIdKey = mainKey?.OpenSubKey("ActivatableClassId")
+                                         where activatableClassIdKey != null
+                                         let subKeys = activatableClassIdKey.GetSubKeyNames()
+                                         where subKeys.Any()
+                                         let workingKey = activatableClassIdKey.OpenSubKey(subKeys[0])
+                                         where workingKey != null
+                                         let iconPath = GetIconPath((string)workingKey.GetValue("Icon"))
+                                         let displayName = GetDisplayName((string)workingKey.GetValue("DisplayName"))
+                                         let executionPath = GetExecutionPathFromName(appPackage) + "!" + subKeys[0]
+                                         where !string.IsNullOrEmpty(executionPath) && !string.IsNullOrEmpty(displayName)
+                                         select new WindowsStoreApp(displayName, iconPath, executionPath)
                 into tempStoreApp
-                where !storeApps.Contains(tempStoreApp, new WindowsStoreAppEqualityComparer())
-                select tempStoreApp)
+                                         where !storeApps.Contains(tempStoreApp, new WindowsStoreAppEqualityComparer())
+                                         select tempStoreApp)
             {
                 storeApps.Add(tempStoreApp);
             }
@@ -162,37 +162,47 @@ namespace TileIconifier.Core.Custom.WindowsStoreShellMethod
                 FileInfo largestLogoPath = null;
                 Image largestLogoImage = null;
 
-                foreach (
-                    var matchingLogoFiles in
-                        folderPaths.Select(folderPath => folderPath?.GetFiles($@"{imageNameWithoutExtension}*",
-                            SearchOption.AllDirectories)))
+                foreach (var folderPath in folderPaths)
                 {
-                    if (matchingLogoFiles == null) return string.Empty;
-                    foreach (var logoFile in matchingLogoFiles)
+                    try
                     {
-                        try
+                        var matchingLogoFiles = folderPath?.GetFiles($@"{imageNameWithoutExtension}*", SearchOption.AllDirectories);
+
+                        if (matchingLogoFiles == null) return string.Empty;
+                        foreach (var logoFile in matchingLogoFiles)
                         {
-                            var image = ImageUtils.LoadFileToBitmap(logoFile.FullName);
-                            if (largestLogoPath == null)
+                            try
                             {
-                                largestLogoPath = logoFile;
-                                largestLogoImage = (Image) image.Clone();
-                            }
-                            else
-                            {
-                                if (image.Width*image.Height > largestLogoImage?.Width*largestLogoImage?.Height)
+                                var image = ImageUtils.LoadFileToBitmap(logoFile.FullName);
+                                if (image == null)
+                                {
+                                    continue;
+                                }
+                                if (largestLogoPath == null)
                                 {
                                     largestLogoPath = logoFile;
-                                    largestLogoImage.Dispose();
-                                    largestLogoImage = (Image) image.Clone();
+                                    largestLogoImage = (Image)image.Clone();
                                 }
+                                else
+                                {
+                                    if (image.Width * image.Height > largestLogoImage?.Width * largestLogoImage?.Height)
+                                    {
+                                        largestLogoPath = logoFile;
+                                        largestLogoImage.Dispose();
+                                        largestLogoImage = (Image)image.Clone();
+                                    }
+                                }
+                                image.Dispose();
                             }
-                            image.Dispose();
+                            catch
+                            {
+                                // ignore
+                            }
                         }
-                        catch
-                        {
-                            // ignore
-                        }
+                    }
+                    catch (IOException)
+                    {
+                        //ignore - access error
                     }
                 }
                 largestLogoImage?.Dispose();
