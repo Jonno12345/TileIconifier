@@ -153,6 +153,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\IconListView\IconListViewItem.cs" />
+    <Compile Include="Controls\IconListView\IconListViewItemFactory.cs" />
     <Compile Include="Controls\IconListView\IconListViewPaintItemEventArgs.cs" />
     <Compile Include="Controls\ISkinnableButton.cs" />
     <Compile Include="Controls\ISkinnableCheckableButton.cs" />

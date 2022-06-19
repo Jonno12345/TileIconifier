@@ -29,10 +29,15 @@
 
 using Microsoft.Win32;
 using System;
+using System.Drawing;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
+using TileIconifier.Controls.IconListView;
 using TileIconifier.Core;
+using TileIconifier.Core.IconExtractor;
+using TileIconifier.Core.Shortcut;
+using TileIconifier.Core.TileIconify;
 using TileIconifier.Core.Utilities;
 using TileIconifier.Forms.Main;
 using TileIconifier.Forms.Shared;
@@ -51,8 +56,13 @@ namespace TileIconifier
         ///     The main entry point for the application.
         /// </summary>
         [STAThread]
-        private static void Main()
+        private static void Main(string[] args)
         {
+            if (args.Length > 0)
+            {
+                AutomaticTile(args);
+                return;
+            }
             SetUpLanguageFromConfig();
             ApplySkinFromConfig();
             try
@@ -185,6 +195,27 @@ namespace TileIconifier
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(newCulture);
             _doNotExit = true;
             _fm?.Close();
+        }
+
+        private static void AutomaticTile(string[] args)
+        {
+            // Command line args:
+            // Path-to-lnk Icon-index background-color
+            ShortcutItem shortcutItem = new ShortcutItem(args[0]);
+            var iconExtraction = new IconExtractor(shortcutItem.TargetInfo.FilePath);
+            Icon[] icons = iconExtraction.GetAllIcons();
+            IconListViewItemFactory iconListViewItemFactory = new IconListViewItemFactory();
+            var items = iconListViewItemFactory.Create(icons);
+            byte[] imageBytes = ImageUtils.ImageToByteArray(items[Int32.Parse(args[1])]?.Image);
+            shortcutItem.Properties.CurrentState.MediumImage.Path = shortcutItem.TargetInfo.FilePath;
+            shortcutItem.Properties.CurrentState.MediumImage.SetImage(imageBytes, ShortcutConstantsAndEnums.MediumShortcutDisplaySize);
+
+            shortcutItem.Properties.CurrentState.SmallImage.Path = shortcutItem.TargetInfo.FilePath;
+            shortcutItem.Properties.CurrentState.SmallImage.SetImage(imageBytes, ShortcutConstantsAndEnums.SmallShortcutDisplaySize);
+
+            shortcutItem.Properties.CurrentState.BackgroundColor = args[2];
+            TileIcon tileIcon = new TileIcon(shortcutItem);
+            tileIcon.RunIconify();
         }
     }
 }
